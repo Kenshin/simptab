@@ -11,9 +11,13 @@ define( ["jquery"], function($){
 				var begin = data.indexOf( "g_img=" ),
 				    end   = data.indexOf( "'};fadeComplete()"),
 				    url   = data.substring( begin + 12, end );
+
 				console.log("url = " + url);
 				console.log("end = " + end);
 				console.log("begin = " + begin);
+
+				// set background image
+				$("body").css({ "background-image": "url(" + url + ")" });
 			}
 		});
 	}
