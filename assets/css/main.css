@@ -1,3 +1,10 @@
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+  }
+
 body {
 	position: absolute;
 	top: 0;
@@ -9,7 +16,8 @@ body {
 	background-position: center center;
 	background-attachment: fixed;
 	margin: 0px;
-    padding: 0px;
+	padding: 0px;
+	 font-family:'Roboto';
 }
 
 body div {
