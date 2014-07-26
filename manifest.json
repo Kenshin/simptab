@@ -11,6 +11,9 @@
 		"48": "icon48.png",
 		"128": "icon128.png"
 	},
+	"permissions": [
+		"http://*.bing.com"
+	],
 	"update_url": "https://clients2.google.com/service/update2/crx",
 	"manifest_version": 2
 }
