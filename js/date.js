@@ -1,15 +1,15 @@
 
-define( ["jquery"], function($){
+define([ "jquery" ], function( $ ) {
 
 	return {
 		Show: function () {
 			var date = new Date();
 
-			$("#time").text(date.getHours() + ":" + date.getMinutes());
+			$( "#time" ).text( date.getHours() + ":" + date.getMinutes() );
 			setInterval(function() {
 				date = new Date();
-				$("#time").text(date.getHours() + ":" + date.getMinutes());
-			},1000 * 30);
+				$( "#time" ).text(date.getHours() + ":" + date.getMinutes() );
+			}, 1000 * 30 );
 		}
 	}
 });

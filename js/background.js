@@ -1,5 +1,5 @@
 
-define( ["jquery"], function($){
+define([ "jquery" ], function( $ ) {
 
 	getDefault = function () {
 		$.ajax({
