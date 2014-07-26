@@ -8,9 +8,24 @@ body {
 	background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
+	margin: 0px;
+    padding: 0px;
+}
+
+body div {
+	position: absolute;
+}
+
+.bottom {
+	width: 150px;
+	height: 70px;
+	right: 0px;
+	bottom:0px;
+	padding:10px;
 }
 
 #time {
-	right: 10px;
-	bottom:10px;
+	color: #fff;
+	font-size: 60px;
+	font-weight: 200;
 }
