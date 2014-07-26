@@ -9,8 +9,8 @@ define( ["jquery"], function($){
 			success    : function( data ) {
 				//console.log(data);
 				var begin = data.indexOf( "g_img=" ),
-				    end   = data.indexOf( "'};fadeComplete()"),
-				    url   = data.substring( begin + 12, end );
+				    end   = data.indexOf( ".jpg"),
+				    url   = data.substring( begin + 12, end ) + ".jpg";
 
 				console.log("url = " + url);
 				console.log("end = " + end);
