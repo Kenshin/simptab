@@ -42,7 +42,19 @@ body div {
 
 .controlbar li {
 	display:inline;
-	padding: 0 15px;
+}
+
+.controlbar a {
+	margin: 10px 5px;
+	padding: 5px 10px;
+	-webkit-border-radius:3px;
+	transition: background .3s ease;
+	color: #fff;
+	text-decoration: none;
+}
+
+.controlbar a:hover {
+	background: rgba(0,0,0,.4)
 }
 
 .bottom {
