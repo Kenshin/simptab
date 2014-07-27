@@ -1,19 +1,19 @@
 {
-	"name"        : "SimpTab",
-	"version"     : "0.0.1",
-	"description" : "The minimalistic new tab page, Let every time you open the Tab when there are new and different.",
-	"homepage_url": "https://github.com/kenshin/simptab",
-	"chrome_url_overrides": {
-		"newtab": "main.html"
-	},
-	"icons": {
-		"16": "icon16.png",
-		"48": "icon48.png",
-		"128": "icon128.png"
-	},
-	"permissions": [
-		"http://*/*"
-	],
-	"update_url": "https://clients2.google.com/service/update2/crx",
-	"manifest_version": 2
+    "name"        : "SimpTab",
+    "version"     : "0.0.1",
+    "description" : "The minimalistic new tab page, Let every time you open the Tab when there are new and different.",
+    "homepage_url": "https://github.com/kenshin/simptab",
+    "chrome_url_overrides": {
+        "newtab": "main.html"
+    },
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "permissions": [
+        "http://*/*"
+    ],
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "manifest_version": 2
 }

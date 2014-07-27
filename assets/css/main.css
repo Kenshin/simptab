@@ -1,71 +1,71 @@
 @font-face {
-	font-family: 'Roboto';
-	src: url('../fonts/Roboto-Regular.ttf');
-	font-weight: normal;
-	font-style: normal;
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
   }
 
 body {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: transparent;
-	background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-	margin: 0px;
-	padding: 0px;
-	 font-family:'Roboto';
-	 min-height: 50px;
-	color: #fff;
-	font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin: 0px;
+    padding: 0px;
+    font-family:"Roboto";
+    min-height: 50px;
+    color: #fff;
+    font-weight: bold;
 }
 
 body div {
-	position: absolute;
+    position: absolute;
 }
 
 .top {
-	padding: 10px;
-	right: 0px;
-	top: 0px;
+    padding: 10px;
+    right: 0px;
+    top: 0px;
 }
 
 .controlbar {
-	list-style: none;
-	font-size: 15px;
-	padding-left: 0px;
-	margin: 0px;
+    list-style: none;
+    font-size: 15px;
+    padding-left: 0px;
+    margin: 0px;
 }
 
 .controlbar li {
-	display:inline;
+    display:inline;
 }
 
 .controlbar a {
-	margin: 10px 5px;
-	padding: 5px 10px;
-	-webkit-border-radius:3px;
-	transition: background .3s ease;
-	color: #fff;
-	text-decoration: none;
+    margin: 10px 5px;
+    padding: 5px 10px;
+    -webkit-border-radius:3px;
+    transition: background .3s ease;
+    color: #fff;
+    text-decoration: none;
 }
 
 .controlbar a:hover {
-	background: rgba(0,0,0,.4)
+    background: rgba(0,0,0,.4)
 }
 
 .bottom {
-	width: 150px;
-	height: 70px;
-	right: 0px;
-	bottom:0px;
-	padding:10px;
+    width: 150px;
+    height: 70px;
+    right: 0px;
+    bottom:0px;
+    padding:10px;
 }
 
 #time {
-	font-size: 60px;
-	font-weight: 200;
+    font-size: 60px;
+    font-weight: 200;
 }
