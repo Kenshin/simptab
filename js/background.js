@@ -106,17 +106,18 @@ define([ "jquery", "date" ], function( $, date ) {
                 if ( result && !$.isEmptyObject( result )) {
 
                     var today = date.Today(),
-                        data  = result["simptab-background"];
-                    console.log("today = " + today)
-                    console.log("data = "  + data.date)
+                        data  = result["simptab-background"],
+                        url   = data.background;
 
-                    // get dataURI
-                    url = result["simptab-background"].background;
+                    console.log("today = " + today)
+                    console.log("data  = "  + data.date)
 
                     // download
                     download( data.url, data.name );
 
-                    if ( today != result["simptab-background"].date ) {
+                    if ( random != localStorage["simptab-background-random"] ) {
+                        // save random
+                        localStorage["simptab-background-random"] = random;
                         // get background
                         getBackgroundByAPI( random );
                     }
@@ -124,6 +125,9 @@ define([ "jquery", "date" ], function( $, date ) {
                 else {
                     // get background
                     getBackgroundByAPI( random );
+
+                    // save random
+                    localStorage["simptab-background-random"] = random;
                 }
                 // set background
                 $("body").css({ "background-image": "url(" + url + ")" });
