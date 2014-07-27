@@ -18,13 +18,17 @@ define([ "jquery" ], function( $ ) {
                 console.log("begin = " + begin);
 
                 // set background image
-                $("body").css({ "background-image": "url(" + url + ")" });
+                $("body").css({ "background-image": "url(" + get1080p( url ) + ")" });
             }
         });
     }
 
     getRandom = function () {
         console.log("getRandom")
+    }
+
+    get1080p = function ( url ) {
+        return url.replace( "1366x768", "1920x1080" );
     }
 
     return {
