@@ -78,7 +78,7 @@ define([ "jquery" ], function( $ ) {
             var url = "../assets/images/background.jpg";
             chrome.storage.local.get( "background", function( result ) {
                 if ( result && !$.isEmptyObject( result )) {
-                    //url = result.background;
+                    url = result.background;
                 } else {
                     // get background
                     if ( is_random ) {
@@ -91,7 +91,7 @@ define([ "jquery" ], function( $ ) {
                 // set background
                 $("body").css({ "background-image": "url(" + url + ")" });
                 // temp
-                getDefault();
+                //getDefault();
             });
         }
     }
