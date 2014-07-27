@@ -12,6 +12,7 @@
         "128": "icon128.png"
     },
     "permissions": [
+        "storage",
         "http://*/*"
     ],
     "update_url": "https://clients2.google.com/service/update2/crx",

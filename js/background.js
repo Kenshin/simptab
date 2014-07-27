@@ -19,6 +19,9 @@ define([ "jquery" ], function( $ ) {
 
                 // set background image
                 $("body").css({ "background-image": "url(" + get1080p( url ) + ")" });
+
+                // save
+                save( url );
             }
         });
     }
@@ -31,14 +34,38 @@ define([ "jquery" ], function( $ ) {
         return url.replace( "1366x768", "1920x1080" );
     }
 
+    save = function ( url ) {
+        var img = new Image();
+        img.onload = function() {
+            var canvas = document.createElement( "canvas" );
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext( "2d" );
+            ctx.drawImage( img, 0, 0 );
+            var dataURI = canvas.toDataURL();
+            chrome.storage.local.set({ background : dataURI });
+        }
+        img.src = url;
+    }
+
     return {
-        Get: function ( is_random ) {
-            if ( is_random ) {
-                getRandom();
-            }
-            else {
-                getDefault();
-            }
+        Init: function ( is_random ) {
+            var url = "../assets/images/background.jpg";
+            chrome.storage.local.get( "background", function( result ) {
+                if ( result && !$.isEmptyObject( result )) {
+                    url = result.background;
+                } else {
+                    // get background
+                    if ( is_random ) {
+                        getRandom();
+                    }
+                    else {
+                        getDefault();
+                    }
+                }
+                // set background
+                $("body").css({ "background-image": "url(" + url + ")" });
+            });
         }
     }
 });
