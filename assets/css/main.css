@@ -40,10 +40,6 @@ body div {
     margin: 0px;
 }
 
-.controlbar li {
-    display:inline;
-}
-
 .controlbar a {
     margin: 10px 5px;
     padding: 5px 10px;
@@ -55,6 +51,40 @@ body div {
 
 .controlbar a:hover {
     background: rgba(0,0,0,.4)
+}
+
+.chromelink {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position:center;
+}
+
+.bookmarksicon {
+    background-image: url("../images/bookmarks.png");
+}
+
+.historyicon {
+    background-image: url("../images/history.png");
+}
+
+.appsicon {
+    background-image: url("../images/apps.png");
+}
+
+.downloadicon {
+    background-image: url("../images/download.png");
+}
+
+.settingicon {
+    background-image: url("../images/setting.png");
 }
 
 .bottom {
