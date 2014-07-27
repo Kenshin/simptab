@@ -1,13 +1,13 @@
 
-define([ "jquery" ], function( $ ) {
+define([ "jquery", "date" ], function( $, date ) {
 
+    /*
     getDefault = function () {
         $.ajax({
             type       : "GET",
             timeout    : 2000,
             url        : "http://bing.com",
             success    : function( data ) {
-                console.log(data)
                 var begin   = data.indexOf( "g_img=" ),
                     newdata = data.substr( begin ),
                     end     = newdata.indexOf( ".jpg" ),
@@ -35,16 +35,41 @@ define([ "jquery" ], function( $ ) {
             }
         });
     }
+    */
 
-    getRandom = function () {
-        console.log("getRandom")
+    getBackgroundByAPI = function ( random ) {
+        $.ajax({
+            type       : "GET",
+            timeout    : 2000,
+            url        : "http://bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1",
+            dataType   : "json",
+            success    : function( result ) {
+                if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
+                    var data = result.images[0],
+                        url  = data.url,
+                        hdurl= getHDurl( url ),
+                        name = data.copyright,
+                        enddate = data.enddate;
+
+                    // set background image
+                    $("body").css({ "background-image": "url(" + hdurl + ")" });
+
+                    // transfor to datauri
+                    save( hdurl, enddate, name );
+
+                    // download
+                    download( hdurl, name );
+
+                }
+            }
+        });
     }
 
     getHDurl = function ( url ) {
         return url.replace( "1366x768", "1920x1080" );
     }
 
-    save = function ( url ) {
+    save = function ( url, enddate, name ) {
         var img = new Image();
         img.onload = function() {
 
@@ -59,7 +84,7 @@ define([ "jquery" ], function( $ ) {
             var dataURI = canvas.toDataURL();
 
             // set chrome local storage
-            chrome.storage.local.set({ background : dataURI });
+            chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
 
         }
         img.src = url;
@@ -74,24 +99,36 @@ define([ "jquery" ], function( $ ) {
     }
 
     return {
-        Init: function ( is_random ) {
+        Init: function ( random ) {
             var url = "../assets/images/background.jpg";
-            chrome.storage.local.get( "background", function( result ) {
+            chrome.storage.local.get( "simptab-background", function( result ) {
+                console.log(result)
                 if ( result && !$.isEmptyObject( result )) {
-                    url = result.background;
-                } else {
+
+                    var today = date.Today(),
+                        data  = result["simptab-background"];
+                    console.log("today = " + today)
+                    console.log("data = "  + data.date)
+
+                    // get dataURI
+                    url = result["simptab-background"].background;
+
+                    // download
+                    download( data.url, data.name );
+
+                    if ( today != result["simptab-background"].date ) {
+                        // get background
+                        getBackgroundByAPI( random );
+                    }
+                }
+                else {
                     // get background
-                    if ( is_random ) {
-                        getRandom();
-                    }
-                    else {
-                        getDefault();
-                    }
+                    getBackgroundByAPI( random );
                 }
                 // set background
                 $("body").css({ "background-image": "url(" + url + ")" });
                 // temp
-                //getDefault();
+                //getBackgroundByAPI( random );
             });
         }
     }

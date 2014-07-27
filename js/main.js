@@ -13,7 +13,7 @@ requirejs.config({
 requirejs([ "jquery", "background", "date" , "controlbar" ], function ( $, background, date, controlbar ) {
 
   // get background image
-  background.Init( false );
+  background.Init( 0 );
 
   // get time
   date.Show();
