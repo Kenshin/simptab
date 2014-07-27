@@ -47,10 +47,12 @@ body div {
     transition: background .3s ease;
     color: #fff;
     text-decoration: none;
+    opacity: 0.3;
 }
 
 .controlbar a:hover {
-    background: rgba(0,0,0,.4)
+    background: rgba(0,0,0,.4);
+    opacity: 1;
 }
 
 .chromelink, .controlink {
