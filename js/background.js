@@ -86,6 +86,9 @@ define([ "jquery", "date" ], function( $, date ) {
             // set chrome local storage
             chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
 
+            // save image to local
+            //saveImage( canvas );
+
         }
         img.src = url;
     }
@@ -98,6 +101,47 @@ define([ "jquery", "date" ], function( $, date ) {
         });
     }
 
+    /*
+    saveImage = function ( myCanvas ) {
+    	window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+		window.requestFileSystem(window.PERSISTENT, 52428800, function(fs){
+		    fs.root.getFile("aaaaaaaaaa.jpg", {create:true}, function(fileEntry) {
+		    	fileEntry.fullPath == '/aaaaaaaaaa.jpg';
+		        fileEntry.createWriter(function(fileWriter) {
+		            fileWriter.write(dataURItoBlob(myCanvas.toDataURL("image/jpeg")));
+		        }, errorHandler);
+		    }, errorHandler);
+		}, errorHandler);
+    }
+
+    errorHandler = function (e) {
+    	console.log(e)
+    }
+
+    dataURItoBlob = function (dataURI, callback) {
+	    // convert base64 to raw binary data held in a string
+	    // doesn't handle URLEncoded DataURIs
+	    var byteString = atob(dataURI.split(',')[1]);
+
+	    // separate out the mime component
+	    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+	    // write the bytes of the string to an ArrayBuffer
+	    var ab = new ArrayBuffer(byteString.length);
+	    var ia = new Uint8Array(ab);
+	    for (var i = 0; i < byteString.length; i++) {
+	        ia[i] = byteString.charCodeAt(i);
+	    }
+
+	    // write the ArrayBuffer to a blob, and you're done
+	    //var bb = new window.WebKitBlobBuilder(); // or just BlobBuilder() if not using Chrome
+	    //bb.append(ab);
+	    //return bb.getBlob(mimeString);
+	    var blob = new Blob(ia, {type: ''})
+	    return blob
+	};
+	*/
+
     return {
         Get: function ( is_random ) {
 
@@ -106,7 +150,6 @@ define([ "jquery", "date" ], function( $, date ) {
 
             // get simptab-background
             chrome.storage.local.get( "simptab-background", function( result ) {
-                console.log(result)
                 if ( result && !$.isEmptyObject( result )) {
                     // reset-background
                     var today  = date.Today(),
