@@ -81,7 +81,7 @@ define([ "jquery", "date" ], function( $, date ) {
             ctx.drawImage( img, 0, 0 );
 
             // get datauri
-            var dataURI = canvas.toDataURL();
+            var dataURI = canvas.toDataURL( "image/jpg" );
 
             // set chrome local storage
             chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
@@ -101,46 +101,83 @@ define([ "jquery", "date" ], function( $, date ) {
         });
     }
 
-    /*
     saveImage = function ( myCanvas ) {
-    	window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-		window.requestFileSystem(window.PERSISTENT, 52428800, function(fs){
-		    fs.root.getFile("aaaaaaaaaa.jpg", {create:true}, function(fileEntry) {
-		    	fileEntry.fullPath == '/aaaaaaaaaa.jpg';
-		        fileEntry.createWriter(function(fileWriter) {
-		            fileWriter.write(dataURItoBlob(myCanvas.toDataURL("image/jpeg")));
-		        }, errorHandler);
-		    }, errorHandler);
-		}, errorHandler);
+        window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+        window.requestFileSystem( window.PERSISTENT, 52428800, function( fs ) {
+
+            var fileName = Math.round(+new Date()) + ".jpg";
+
+            fs.root.getFile( fileName, { create:true, exclusive: true }, function( fileEntry ) {
+                fileEntry.createWriter(function(fileWriter) {
+
+                    console.log("fileEntry.toURL() = " + fileEntry.toURL())
+
+                    fileWriter.onwriteend = function(e) {
+                        console.log('Write completed.');
+                    };
+
+                    fileWriter.onerror = function(e) {
+                        console.log('Write failed: ' + e.toString());
+                    };
+
+                    fileWriter.write( dataURItoBlob( myCanvas.toDataURL( "image/jpg" )));
+
+                }, errorHandler);
+            }, errorHandler);
+
+            /*
+            fs.root.getFile('log222.txt', {create: true, exclusive: true}, function(fileEntry) {
+
+                // Create a FileWriter object for our FileEntry (log.txt).
+                fileEntry.createWriter(function(fileWriter) {
+
+                  fileWriter.onwriteend = function(e) {
+                    console.log('Write completed.');
+                  };
+
+                  fileWriter.onerror = function(e) {
+                    console.log('Write failed: ' + e.toString());
+                  };
+
+                  // Create a new Blob and write it to log.txt.
+                  var blob = new Blob(['Lorem Ipsum'], {type: 'text/plain'});
+
+                  fileWriter.write(blob);
+
+                }, errorHandler);
+
+            }, errorHandler);
+            */
+
+        }, errorHandler);
     }
 
     errorHandler = function (e) {
-    	console.log(e)
+        console.log(e)
     }
 
     dataURItoBlob = function (dataURI, callback) {
-	    // convert base64 to raw binary data held in a string
-	    // doesn't handle URLEncoded DataURIs
-	    var byteString = atob(dataURI.split(',')[1]);
+        // convert base64 to raw binary data held in a string
+        // doesn't handle URLEncoded DataURIs
+        var byteString = atob(dataURI.split(',')[1]);
 
-	    // separate out the mime component
-	    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
 
-	    // write the bytes of the string to an ArrayBuffer
-	    var ab = new ArrayBuffer(byteString.length);
-	    var ia = new Uint8Array(ab);
-	    for (var i = 0; i < byteString.length; i++) {
-	        ia[i] = byteString.charCodeAt(i);
-	    }
+        // write the bytes of the string to an ArrayBuffer
+        var ab = new ArrayBuffer(byteString.length);
+        var ia = new Array(ab);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
 
-	    // write the ArrayBuffer to a blob, and you're done
-	    //var bb = new window.WebKitBlobBuilder(); // or just BlobBuilder() if not using Chrome
-	    //bb.append(ab);
-	    //return bb.getBlob(mimeString);
-	    var blob = new Blob(ia, {type: ''})
-	    return blob
-	};
-	*/
+        // write the ArrayBuffer to a blob, and you're done
+        //var bb = new window.WebKitBlobBuilder(); // or just BlobBuilder() if not using Chrome
+        //bb.append(ab);
+        //return bb.getBlob(mimeString);
+        var blob = new Blob(ia, { type: "image/jpg" });
+        return blob;
+    };
 
     return {
         Get: function ( is_random ) {
