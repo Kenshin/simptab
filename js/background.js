@@ -108,7 +108,7 @@ define([ "jquery", "date" ], function( $, date ) {
             chrome.storage.local.get( "simptab-background", function( result ) {
                 console.log(result)
                 if ( result && !$.isEmptyObject( result )) {
-                	// reset-background
+                    // reset-background
                     var today  = date.Today(),
                         data   = result["simptab-background"];
                     url    = data.background;
@@ -116,10 +116,10 @@ define([ "jquery", "date" ], function( $, date ) {
                     // random = true
                     if ( is_random ) {
                         if ( localStorage["simptab-background-random"] != undefined ) {
-                        	random = parseInt(localStorage["simptab-background-random"]) + 1;
-                        	if ( random > 19 ) {
-                        		random = 4;
-                        	}
+                            random = parseInt(localStorage["simptab-background-random"]) + 1;
+                            if ( random > 19 ) {
+                                random = 4;
+                            }
                         }
                         // save random
                         localStorage["simptab-background-random"] = random;
@@ -129,18 +129,18 @@ define([ "jquery", "date" ], function( $, date ) {
                     // random = false
                     else {
 
-	                    console.log("today = " + today)
-	                    console.log("data  = "  + data.date)
+                        console.log("today = " + today)
+                        console.log("data  = "  + data.date)
 
                         if ( today != data.date ) {
-	                        // get background
-	                        getBackgroundByAPI( random );
+                            // get background
+                            getBackgroundByAPI( random );
                         }
                         else {
-	                        // download
-	                        download( data.url, data.name );
-			                // set background
-			                $("body").css({ "background-image": "url(" + url + ")" });
+                            // download
+                            download( data.url, data.name );
+                            // set background
+                            $("body").css({ "background-image": "url(" + url + ")" });
                         }
                     }
 
@@ -150,8 +150,8 @@ define([ "jquery", "date" ], function( $, date ) {
                     getBackgroundByAPI( random );
                     // save random
                     localStorage["simptab-background-random"] = random;
-	                // set background
-	                $("body").css({ "background-image": "url(" + url + ")" });
+                    // set background
+                    $("body").css({ "background-image": "url(" + url + ")" });
                 }
             });
         }

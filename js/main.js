@@ -2,10 +2,10 @@
 requirejs.config({
     baseUrl: ".",
     paths: {
-      "jquery"             : "vender/jquery-2.1.1.min",
+      "jquery"     : "vender/jquery-2.1.1.min",
       "background" : "js/background",
-      "date"                 : "js/date",
-      "controlbar"     : "js/controlbar"
+      "date"       : "js/date",
+      "controlbar" : "js/controlbar"
     }
 });
 
@@ -13,7 +13,7 @@ requirejs.config({
 requirejs([ "jquery", "background", "date" , "controlbar" ], function ( $, background, date, controlbar ) {
 
   // get background image
-  background.Get( false );
+  background.Get( true );
 
   // get time
   date.Show();
