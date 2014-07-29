@@ -52,13 +52,13 @@ define([ "jquery", "date" ], function( $, date ) {
                         enddate = data.enddate;
 
                     // set background image
-                    setBackground( hdurl );
+                    //setBackground( hdurl );
 
                     // transfor to datauri
                     image2URI( hdurl, enddate, name );
 
-                    // downloadURL
-                    downloadURL( hdurl, name );
+                    // setDownloadURL
+                    setDownloadURL( hdurl, name );
 
                 }
             }
@@ -93,7 +93,7 @@ define([ "jquery", "date" ], function( $, date ) {
         img.src = url;
     }
 
-    downloadURL = function( url, name ) {
+    setDownloadURL = function( url, name ) {
         // set download href
         $( ".controlink[url='download']" ).attr({
             'href'      : url,
@@ -116,6 +116,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     fileWriter.onwriteend = function(e) {
                         console.log('Write completed.');
+                        setBackground( fileEntry.toURL() );
                     };
 
                     fileWriter.onerror = function(e) {
@@ -190,8 +191,8 @@ define([ "jquery", "date" ], function( $, date ) {
                             getBackgroundByAPI( random );
                         }
                         else {
-                            // download
-                            download( data.url, data.name );
+                            // set download url
+                            setDownloadURL( data.url, data.name );
                             // set background
                             setBackground( url );
                         }
