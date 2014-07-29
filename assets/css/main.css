@@ -44,7 +44,8 @@ body div {
     height: 100%;
     background: #fff;
     opacity: 0;
-    color: #000;
+    color: #555;
+    display: block;
 }
 
 .controlbar {
@@ -112,4 +113,48 @@ body div {
 #time {
     font-size: 60px;
     font-weight: 200;
+}
+
+.radio {
+	display: none;
+	margin: 40px 0px 0px 15px;
+}
+
+.radio label:before {
+    border-radius: 8px;
+}
+
+input[type=radio]:checked + label:before {
+    content: "\2022";
+    color: #f3f3f3;
+    font-size: 30px;
+    text-align: center;
+    line-height: 18px;
+}
+label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+label:before {
+    content: "";
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #aaa;
+    -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
 }
