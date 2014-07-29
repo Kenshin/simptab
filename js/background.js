@@ -52,12 +52,12 @@ define([ "jquery", "date" ], function( $, date ) {
                         enddate = data.enddate;
 
                     // set background image
-                    //setBackground( hdurl );
+                    setBackground( hdurl );
 
                     // transfor to datauri
                     image2URI( hdurl, enddate, name );
 
-                    // setDownloadURL
+                    // set download url
                     setDownloadURL( hdurl, name );
 
                 }
@@ -116,7 +116,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     fileWriter.onwriteend = function(e) {
                         console.log('Write completed.');
-                        setBackground( fileEntry.toURL() );
+                        //setBackground( fileEntry.toURL() );
                     };
 
                     fileWriter.onerror = function(e) {
