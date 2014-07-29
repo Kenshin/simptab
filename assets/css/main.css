@@ -28,23 +28,23 @@ body div {
 }
 
 .content {
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	top: 0px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    top: 0px;
 }
 
 .sidebar {
-	right: 0px;
+    right: 0px;
 }
 
 .setting {
-	right: 0px;
-	width: 0px;
-	height: 100%;
-	background: #fff;
-	opacity: 0;
-	color: #000;
+    right: 0px;
+    width: 0px;
+    height: 100%;
+    background: #fff;
+    opacity: 0;
+    color: #000;
 }
 
 .controlbar {
