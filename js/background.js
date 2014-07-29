@@ -89,7 +89,7 @@ define([ "jquery", "date" ], function( $, date ) {
             ctx.drawImage( img, 0, 0 );
 
             // get datauri
-            var dataURI = canvas.toDataURL( "image/jpg" );
+            var dataURI = canvas.toDataURL();
 
             // set chrome local storage
             chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
