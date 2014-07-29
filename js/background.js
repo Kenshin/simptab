@@ -59,11 +59,13 @@ define([ "jquery", "date" ], function( $, date ) {
                         name = data.copyright,
                         enddate = data.enddate;
 
-                    // set background image
-                    //setBackground( hdurl );
+                    if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+	                    // set background image
+	                    setBackground( hdurl );
 
-                    // set download url
-                    //setDownloadURL( hdurl, name );
+	                    // set download url
+	                    setDownloadURL( hdurl, name );
+                    }
 
                     // transfor to datauri
                     image2URI( hdurl, enddate, name );
@@ -166,6 +168,9 @@ define([ "jquery", "date" ], function( $, date ) {
             var random = 0,
                 url    = "../assets/images/background.jpg";
 
+            // set background refresh
+            localStorage["simptab-background-refresh"] = "false";
+
             // get simptab-background
             chrome.storage.local.get( "simptab-background", function( result ) {
                 if ( result && !$.isEmptyObject( result )) {
@@ -196,15 +201,17 @@ define([ "jquery", "date" ], function( $, date ) {
                     else {
 
                         console.log("today = " + today)
-                        console.log("data  = "  + data.date)
+                        console.log("data  = " + data.date)
 
                         if ( today != data.date ) {
+		                    // set background refresh
+		                    localStorage["simptab-background-refresh"] = "true";
                             // get background
                             getBackgroundByAPI( random );
                         }
                         else {
                             // set background image
-                            setBackground( url );
+                            setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                             // set download url
                             setDownloadURL( data.url, data.name );
                         }
