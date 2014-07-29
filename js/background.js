@@ -52,7 +52,7 @@ define([ "jquery", "date" ], function( $, date ) {
                         enddate = data.enddate;
 
                     // set background image
-                    $("body").css({ "background-image": "url(" + hdurl + ")" });
+                    setBackground( hdurl );
 
                     // transfor to datauri
                     image2URI( hdurl, enddate, name );
@@ -99,6 +99,10 @@ define([ "jquery", "date" ], function( $, date ) {
             'href'      : url,
             'download'  : name + '.jpg'
         });
+    }
+
+    setBackground = function( url ) {
+    	$("body").css({ "background-image": "url(" + url + ")" });
     }
 
     saveImg2Local = function ( canvas ) {
@@ -189,7 +193,7 @@ define([ "jquery", "date" ], function( $, date ) {
                             // download
                             download( data.url, data.name );
                             // set background
-                            $("body").css({ "background-image": "url(" + url + ")" });
+                            setBackground( url );
                         }
                     }
 
@@ -200,7 +204,7 @@ define([ "jquery", "date" ], function( $, date ) {
                     // save random
                     localStorage["simptab-background-random"] = random;
                     // set background
-                    $("body").css({ "background-image": "url(" + url + ")" });
+                    setBackground( url );
                 }
             });
         }
