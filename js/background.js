@@ -37,6 +37,14 @@ define([ "jquery", "date" ], function( $, date ) {
     }
     */
 
+    createRandom = function() {
+    	random = Math.floor( Math.random() * 20 );
+    	if ( random > 19 ) {
+    		random = 19 - random;
+    	}
+    	return random;
+    }
+
     getBackgroundByAPI = function ( random ) {
         $.ajax({
             type       : "GET",
@@ -170,11 +178,9 @@ define([ "jquery", "date" ], function( $, date ) {
                     if ( is_random ) {
                     	// set random
                         if ( localStorage["simptab-background-random"] != undefined ) {
-                            random = parseInt(localStorage["simptab-background-random"]) + 1;
-                            if ( random > 19 ) {
-                                random = 4;
-                            }
+                        	random = createRandom();
                         }
+                        console.log("random = " + random )
                         // save random
                         localStorage["simptab-background-random"] = random;
                         // set background image
