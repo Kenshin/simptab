@@ -60,13 +60,13 @@ define([ "jquery", "date" ], function( $, date ) {
                         enddate = data.enddate;
 
                     // set background image
-                    setBackground( hdurl );
+                    //setBackground( hdurl );
+
+                    // set download url
+                    //setDownloadURL( hdurl, name );
 
                     // transfor to datauri
                     image2URI( hdurl, enddate, name );
-
-                    // set download url
-                    setDownloadURL( hdurl, name );
 
                 }
             }
@@ -183,8 +183,12 @@ define([ "jquery", "date" ], function( $, date ) {
                         console.log("random = " + random )
                         // save random
                         localStorage["simptab-background-random"] = random;
+
                         // set background image
-                        //setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
+                        setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
+	                    // set download url
+	                    setDownloadURL( data.url, data.name );
+
                         // get background
                         getBackgroundByAPI( random );
                     }
@@ -199,10 +203,10 @@ define([ "jquery", "date" ], function( $, date ) {
                             getBackgroundByAPI( random );
                         }
                         else {
+                            // set background image
+                            setBackground( url );
                             // set download url
                             setDownloadURL( data.url, data.name );
-                            // set background
-                            setBackground( url );
                         }
                     }
 
@@ -210,8 +214,12 @@ define([ "jquery", "date" ], function( $, date ) {
                 else {
                     // save random
                     localStorage["simptab-background-random"] = random;
-                    // set background
+
+                    // set background image
                     setBackground( url );
+                    // set download url
+                    setDownloadURL( url, "background" );
+
                     // get background
                     getBackgroundByAPI( random );
                 }
