@@ -3,7 +3,6 @@
     "version"     : "0.0.1",
     "description" : "The minimalistic new tab page, Let every time you open the Tab when there are new and different.",
     "homepage_url": "https://github.com/kenshin/simptab",
-    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://query.yahooapis.com https://suggestqueries.google.com https://*.staticflickr.com 'unsafe-eval'; object-src 'self'",
     "chrome_url_overrides": {
         "newtab": "main.html"
     },

@@ -55,10 +55,10 @@ define([ "jquery", "date" ], function( $, date ) {
                     $("body").css({ "background-image": "url(" + hdurl + ")" });
 
                     // transfor to datauri
-                    save( hdurl, enddate, name );
+                    image2URI( hdurl, enddate, name );
 
-                    // download
-                    download( hdurl, name );
+                    // downloadURL
+                    downloadURL( hdurl, name );
 
                 }
             }
@@ -69,7 +69,7 @@ define([ "jquery", "date" ], function( $, date ) {
         return url.replace( "1366x768", "1920x1080" );
     }
 
-    save = function ( url, enddate, name ) {
+    image2URI = function ( url, enddate, name ) {
         var img = new Image();
         img.onload = function() {
 
@@ -87,13 +87,13 @@ define([ "jquery", "date" ], function( $, date ) {
             chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
 
             // save image to local
-            //saveImage( canvas );
+            saveImg2Local( canvas );
 
         }
         img.src = url;
     }
 
-    download = function( url, name ) {
+    downloadURL = function( url, name ) {
         // set download href
         $( ".controlink[url='download']" ).attr({
             'href'      : url,
@@ -101,13 +101,11 @@ define([ "jquery", "date" ], function( $, date ) {
         });
     }
 
-    saveImage = function ( myCanvas ) {
+    saveImg2Local = function ( canvas ) {
         window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem( window.PERSISTENT, 52428800, function( fs ) {
+        window.requestFileSystem( window.TEMPORARY , 52428800, function( fs ) {
 
-            var fileName = Math.round(+new Date()) + ".jpg";
-
-            fs.root.getFile( fileName, { create:true, exclusive: true }, function( fileEntry ) {
+            fs.root.getFile( "background.jpg", { create:true }, function( fileEntry ) {
                 fileEntry.createWriter(function(fileWriter) {
 
                     console.log("fileEntry.toURL() = " + fileEntry.toURL())
@@ -120,62 +118,33 @@ define([ "jquery", "date" ], function( $, date ) {
                         console.log('Write failed: ' + e.toString());
                     };
 
-                    fileWriter.write( dataURItoBlob( myCanvas.toDataURL( "image/jpg" )));
+                    fileWriter.write( dataURItoBlob( canvas.toDataURL()));
 
-                }, errorHandler);
-            }, errorHandler);
+                }, errorHandler );
+            }, errorHandler );
 
-            /*
-            fs.root.getFile('log222.txt', {create: true, exclusive: true}, function(fileEntry) {
-
-                // Create a FileWriter object for our FileEntry (log.txt).
-                fileEntry.createWriter(function(fileWriter) {
-
-                  fileWriter.onwriteend = function(e) {
-                    console.log('Write completed.');
-                  };
-
-                  fileWriter.onerror = function(e) {
-                    console.log('Write failed: ' + e.toString());
-                  };
-
-                  // Create a new Blob and write it to log.txt.
-                  var blob = new Blob(['Lorem Ipsum'], {type: 'text/plain'});
-
-                  fileWriter.write(blob);
-
-                }, errorHandler);
-
-            }, errorHandler);
-            */
-
-        }, errorHandler);
+        }, errorHandler );
     }
 
     errorHandler = function (e) {
         console.log(e)
     }
 
-    dataURItoBlob = function (dataURI, callback) {
+    dataURItoBlob = function ( dataURI ) {
         // convert base64 to raw binary data held in a string
-        // doesn't handle URLEncoded DataURIs
-        var byteString = atob(dataURI.split(',')[1]);
+        var byteString = atob( dataURI.split(',')[1] );
 
         // separate out the mime component
         var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
 
         // write the bytes of the string to an ArrayBuffer
-        var ab = new ArrayBuffer(byteString.length);
-        var ia = new Array(ab);
-        for (var i = 0; i < byteString.length; i++) {
+        var ab = new ArrayBuffer( byteString.length );
+        var ia = new Uint8Array( ab );
+        for ( var i = 0; i < byteString.length; i++ ) {
             ia[i] = byteString.charCodeAt(i);
         }
 
-        // write the ArrayBuffer to a blob, and you're done
-        //var bb = new window.WebKitBlobBuilder(); // or just BlobBuilder() if not using Chrome
-        //bb.append(ab);
-        //return bb.getBlob(mimeString);
-        var blob = new Blob(ia, { type: "image/jpg" });
+        var blob = new Blob( [ia], { type: "image/jpg" });
         return blob;
     };
 
