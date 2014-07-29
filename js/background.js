@@ -93,11 +93,14 @@ define([ "jquery", "date" ], function( $, date ) {
             // get datauri
             var dataURI = canvas.toDataURL();
 
-            // set chrome local storage
-            chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
-
             // save image to local
             saveImg2Local( dataURI );
+
+            // set chrome local storage
+            // no use cache mode
+            //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
+            // use local mode
+            chrome.storage.local.set({ "simptab-background" : { "url" : url, "date" : enddate, "name" : name } });
 
         }
         img.src = url;
@@ -177,7 +180,9 @@ define([ "jquery", "date" ], function( $, date ) {
                     // reset-background
                     var today  = date.Today(),
                         data   = result["simptab-background"];
-                    url    = data.background;
+
+                    // no use cache
+                    //url    = data.background;
 
                     // random = true
                     if ( is_random ) {
