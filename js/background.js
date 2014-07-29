@@ -95,7 +95,7 @@ define([ "jquery", "date" ], function( $, date ) {
             chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
 
             // save image to local
-            saveImg2Local( canvas );
+            saveImg2Local( dataURI );
 
         }
         img.src = url;
@@ -113,7 +113,7 @@ define([ "jquery", "date" ], function( $, date ) {
     	$("body").css({ "background-image": "url(" + url + ")" });
     }
 
-    saveImg2Local = function ( canvas ) {
+    saveImg2Local = function ( dataURI ) {
         window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
         window.requestFileSystem( window.TEMPORARY , 52428800, function( fs ) {
 
@@ -130,7 +130,7 @@ define([ "jquery", "date" ], function( $, date ) {
                         console.log('Write failed: ' + e.toString());
                     };
 
-                    fileWriter.write( dataURItoBlob( canvas.toDataURL()));
+                    fileWriter.write( dataURItoBlob( dataURI ));
 
                 }, errorHandler );
             }, errorHandler );
