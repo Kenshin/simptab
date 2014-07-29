@@ -116,7 +116,6 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     fileWriter.onwriteend = function(e) {
                         console.log('Write completed.');
-                        //setBackground( fileEntry.toURL() );
                     };
 
                     fileWriter.onerror = function(e) {
@@ -169,6 +168,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     // random = true
                     if ( is_random ) {
+                    	// set random
                         if ( localStorage["simptab-background-random"] != undefined ) {
                             random = parseInt(localStorage["simptab-background-random"]) + 1;
                             if ( random > 19 ) {
@@ -177,6 +177,8 @@ define([ "jquery", "date" ], function( $, date ) {
                         }
                         // save random
                         localStorage["simptab-background-random"] = random;
+                        // set background image
+                        //setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                         // get background
                         getBackgroundByAPI( random );
                     }
@@ -200,12 +202,12 @@ define([ "jquery", "date" ], function( $, date ) {
 
                 }
                 else {
-                    // get background
-                    getBackgroundByAPI( random );
                     // save random
                     localStorage["simptab-background-random"] = random;
                     // set background
                     setBackground( url );
+                    // get background
+                    getBackgroundByAPI( random );
                 }
             });
         }
