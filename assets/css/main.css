@@ -46,6 +46,7 @@ body div {
     opacity: 0;
     color: #555;
     display: block;
+    box-shadow: -5px 0 4px rgba(0,0,0,.2);
 }
 
 .controlbar {
@@ -115,6 +116,9 @@ body div {
     font-weight: 200;
 }
 
+/*
+ * option radio
+*/
 .radio {
 	display: none;
 	margin: 40px 0px 0px 15px;
@@ -157,4 +161,20 @@ label:before {
     bottom: 1px;
     background-color: #aaa;
     -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+}
+
+.footer {
+    bottom: 0px;
+    right: 0px;
+    width: 250px;
+    height: 100px;
+}
+
+.weibo {
+    padding: 5px;
+    opacity: 0.8;
+}
+
+.weiboicon {
+    background-image: url("../images/weibo.png");
 }
