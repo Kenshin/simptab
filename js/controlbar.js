@@ -20,14 +20,14 @@ define([ "jquery" ], function( $ ) {
                         $( ".sidebar" ).animate({ right: "250" }, 500, function() {
                             $target.addClass( "close" );
                         });
-                        $( ".changestate" ).show(500);
+                        $( ".option" ).show( 500 );
                     }
                     else {
                         $( ".setting" ).animate({ width: "0", opacity : 0 }, 500 );
                         $( ".sidebar" ).animate({ right: "0" }, 500, function() {
                             $target.removeClass( "close" );
                         });
-                        $( ".changestate" ).hide(500);
+                        $( ".option" ).hide( 500 );
                     }
 
                 }

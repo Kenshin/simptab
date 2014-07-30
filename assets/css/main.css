@@ -118,25 +118,27 @@ body div {
 }
 
 /*
- * option changestate
+ * option
 */
-.changestate {
-	margin: 40px 0px 0px 15px;
+.option {
     display: none;
 }
 
-.clock {
+.changestate {
+	margin: 40px 0px 0px 15px;
+}
+
+.clockstate {
     margin: 100px 0px 0px 15px;
-    display: none;
 }
 
 .changestate label:before,
-.clock label:before {
+.clockstate label:before {
     border-radius: 8px;
 }
 
 .changestate span,
-.clock span {
+.clockstate span {
     display: block;
 }
 

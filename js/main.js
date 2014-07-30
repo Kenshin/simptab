@@ -18,7 +18,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "option" ], function 
 
   // set is_random
   var is_random = true;
-  if ( option.Get() != undefined ) {
+  if ( option.Get( "changestate" ) != undefined ) {
     is_random = false;
   }
 
@@ -26,7 +26,12 @@ requirejs([ "jquery", "background", "date" , "controlbar", "option" ], function 
   background.Get( is_random );
 
   // get time
-  date.Show();
+  if ( option.Get( "clockstate" ) != undefined ) {
+    date.Show();
+  }
+  else {
+    date.Hide();
+  }
 
   // listen
   controlbar.Listen();
