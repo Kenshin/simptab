@@ -122,10 +122,12 @@ body div {
 */
 .radio {
 	margin: 40px 0px 0px 15px;
+    display: none;
 }
 
 .clock {
     margin: 100px 0px 0px 15px;
+    display: none;
 }
 
 .radio label:before,
