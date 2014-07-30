@@ -121,12 +121,21 @@ body div {
  * option radio
 */
 .radio {
-	display: none;
 	margin: 40px 0px 0px 15px;
 }
 
-.radio label:before {
+.clock {
+    margin: 100px 0px 0px 15px;
+}
+
+.radio label:before,
+.clock label:before {
     border-radius: 8px;
+}
+
+.radio span,
+.clock span {
+    display: block;
 }
 
 input[type=radio]:checked + label:before {
@@ -136,6 +145,7 @@ input[type=radio]:checked + label:before {
     text-align: center;
     line-height: 18px;
 }
+
 label {
     display: inline-block;
     cursor: pointer;
