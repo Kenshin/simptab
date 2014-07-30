@@ -173,6 +173,23 @@ label:before {
     -webkit-box-sizing:border-box;
 }
 
+.footer a {
+    opacity: 0.8;
+}
+
+.footer a:hover {
+    opacity: 1;
+    -webkit-transition: opacity .3s ease;
+}
+
+.weiboicon {
+    background-image: url("../images/weibo.png");
+}
+
+.emailicon {
+    background-image: url("../images/email.png");
+}
+
 .footer p {
     border-top: 1px solid #555;
 }
@@ -186,17 +203,4 @@ label:before {
     background-color: rgba(0,0,0,.4);
     -webkit-transition: background-color 1s ease;
     -webkit-border-radius:3px;
-}
-
-.footer a {
-    opacity: 0.8;
-}
-
-.footer a:hover {
-    opacity: 1;
-    -webkit-transition: opacity .3s ease;
-}
-
-.weiboicon {
-    background-image: url("../images/weibo.png");
 }
