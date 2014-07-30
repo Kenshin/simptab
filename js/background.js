@@ -107,10 +107,10 @@ define([ "jquery", "date" ], function( $, date ) {
     }
 
     setDownloadURL = function( url, name ) {
-        // set download href
         $( ".controlink[url='download']" ).attr({
-            'href'      : url,
-            'download'  : name + '.jpg'
+            "title"    : name,
+            "href"     : url,
+            "download" : name + ".jpg"
         });
     }
 
