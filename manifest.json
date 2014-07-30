@@ -1,7 +1,7 @@
 {
     "name"        : "SimpTab",
     "version"     : "1.0.0",
-    "description" : "The minimalistic chrome tab page extension, hope every time open, you have a good mood.",
+    "description" : "Minimalistic's chrome  new tab page extension, hope every time open, you have a good mood.",
     "homepage_url": "https://github.com/kenshin/simptab",
     "chrome_url_overrides": {
         "newtab": "main.html"
