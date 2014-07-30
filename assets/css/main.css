@@ -95,6 +95,10 @@ body div {
     background-image: url("../images/apps.png");
 }
 
+.infoicon {
+    background-image: url("../images/info.png");
+}
+
 .downloadicon {
     background-image: url("../images/download.png");
 }
