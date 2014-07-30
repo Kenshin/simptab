@@ -38,10 +38,13 @@ define([ "jquery", "date" ], function( $, date ) {
     */
 
     createRandom = function() {
-    	random = Math.floor( Math.random() * 20 );
+    	var random = Math.floor( Math.random() * 20 );
     	if ( random > 19 ) {
     		random = 19 - random;
     	}
+        if ( localStorage["simptab-background-random"] == random ) {
+            createRandom();
+        }
     	return random;
     }
 
