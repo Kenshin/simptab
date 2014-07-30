@@ -60,7 +60,7 @@ body div {
     margin: 10px 5px;
     padding: 5px 10px;
     -webkit-border-radius:3px;
-    transition: background .3s ease;
+    -webkit-transition: background .3s ease;
     color: #fff;
     text-decoration: none;
     opacity: 0.3;
@@ -109,6 +109,7 @@ body div {
     right: 0px;
     bottom:0px;
     padding:10px;
+    z-index: -1;
 }
 
 #time {
@@ -168,11 +169,32 @@ label:before {
     right: 0px;
     width: 250px;
     height: 100px;
+    padding: 0px 8px;
+    -webkit-box-sizing:border-box;
 }
 
-.weibo {
-    padding: 5px;
+.footer p {
+    border-top: 1px solid #555;
+}
+
+.footer p a {
+    color: #555;
+    text-decoration: none;
+}
+
+.footer p a:hover {
+    background-color: rgba(0,0,0,.4);
+    -webkit-transition: background-color 1s ease;
+    -webkit-border-radius:3px;
+}
+
+.footer a {
     opacity: 0.8;
+}
+
+.footer a:hover {
+    opacity: 1;
+    -webkit-transition: opacity .3s ease;
 }
 
 .weiboicon {
