@@ -118,9 +118,9 @@ body div {
 }
 
 /*
- * option radio
+ * option changestate
 */
-.radio {
+.changestate {
 	margin: 40px 0px 0px 15px;
     display: none;
 }
@@ -130,12 +130,12 @@ body div {
     display: none;
 }
 
-.radio label:before,
+.changestate label:before,
 .clock label:before {
     border-radius: 8px;
 }
 
-.radio span,
+.changestate span,
 .clock span {
     display: block;
 }
