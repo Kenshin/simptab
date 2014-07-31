@@ -38,14 +38,14 @@ define([ "jquery", "date" ], function( $, date ) {
     */
 
     createRandom = function() {
-    	var random = Math.floor( Math.random() * 20 );
-    	if ( random > 19 ) {
-    		random = 19 - random;
-    	}
+        var random = Math.floor( Math.random() * 20 );
+        if ( random > 19 ) {
+            random = 19 - random;
+        }
         if ( localStorage["simptab-background-random"] == random ) {
             createRandom();
         }
-    	return random;
+        return random;
     }
 
     getBackgroundByAPI = function ( random ) {
@@ -64,8 +64,8 @@ define([ "jquery", "date" ], function( $, date ) {
                         info = getInfo( data.copyrightlink );
 
                     if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
-	                    // set background image
-	                    setBackground( hdurl );
+                        // set background image
+                        setBackground( hdurl );
                         // set download url
                         setDownloadURL( hdurl, name );
                         // set info url
@@ -131,7 +131,7 @@ define([ "jquery", "date" ], function( $, date ) {
     }
 
     setBackground = function( url ) {
-    	$("body").css({ "background-image": "url(" + url + ")" });
+        $("body").css({ "background-image": "url(" + url + ")" });
     }
 
     saveImg2Local = function ( dataURI ) {
@@ -202,9 +202,9 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     // random = true
                     if ( is_random ) {
-                    	// set random
+                        // set random
                         if ( localStorage["simptab-background-random"] != undefined ) {
-                        	random = createRandom();
+                            random = createRandom();
                         }
                         console.log("random = " + random )
                         // save random
@@ -227,8 +227,8 @@ define([ "jquery", "date" ], function( $, date ) {
                         console.log("data  = " + data.date)
 
                         if ( today != data.date ) {
-		                    // set background refresh
-		                    localStorage["simptab-background-refresh"] = "true";
+                            // set background refresh
+                            localStorage["simptab-background-refresh"] = "true";
                             // get background
                             getBackgroundByAPI( random );
                         }
