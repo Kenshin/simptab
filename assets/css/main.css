@@ -156,6 +156,43 @@ body {
     display: block;
 }
 
+.lineradio {
+    display: -webkit-box;
+    -webkit-box-align: center;
+
+    margin: 5px 0px;
+
+    font-size: 13px;
+    color: #fff;
+    background: #555;
+
+    border: none;
+    -webkit-border-radius: 3px;
+
+}
+
+.lineradio:hover {
+    background-color: #8b8986;
+    -webkit-transition: background-color 1s ease;
+}
+
+.lineradio span {
+    width: 14px;
+    height: 15px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position:center;
+}
+
+.lineradio .checked {
+    background-image: url("../images/checked.png");
+}
+
+.lineradio .unchecked {
+    background-image: url("../images/unchecked.png");
+}
+
+/*
 input[type=radio]:checked + label:before {
     content: "\2022";
     color: #f3f3f3;
@@ -163,33 +200,22 @@ input[type=radio]:checked + label:before {
     text-align: center;
     line-height: 18px;
 }
-
-label {
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    padding-left: 25px;
-    margin-right: 15px;
-    font-size: 13px;
-}
+*/
 
 input[type=radio] {
     display: none;
 }
 
+label {
+    display: block;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+}
+
 label:before {
-    content: "";
-    display: inline-block;
-
-    width: 16px;
-    height: 16px;
-
-    margin-right: 10px;
+    opacity: 0;
     position: absolute;
-    left: 0;
-    bottom: 1px;
-    background-color: #aaa;
-    -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
 }
 
 /*
