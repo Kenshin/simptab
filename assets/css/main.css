@@ -51,8 +51,12 @@ body {
     box-shadow: -5px 0 4px rgba(0,0,0,.2);
 }
 
-.content, .sidebar, .setting {
-	-webkit-box-sizing: border-box;
+.setting div {
+    padding: 0px 8px;
+}
+
+.setting div[class$=state] {
+    padding: 26px 8px 0px 8px;
 }
 
 /*
@@ -66,6 +70,11 @@ body {
 
     list-style: none;
     font-size: 15px;
+}
+
+.controlbar li {
+    display: -webkit-box;
+    -webkit-box-align: end;
 }
 
 .controlbar a {
@@ -135,16 +144,8 @@ body {
 }
 
 /*
- * option
+ * setting
 */
-.setting div {
-    padding: 0px 8px;
-}
-
-.setting div[class$=state] {
-    padding: 26px 8px 0px 8px;
-}
-
 .changestate label:before,
 .clockstate label:before {
     border-radius: 8px;
@@ -222,6 +223,11 @@ label:before {
 /*
 * footer
 */
+.footer {
+    display: -webkit-box;
+    -webkit-box-align: end;
+}
+
 .footer p {
     border-top: 1px solid #555;
 }
