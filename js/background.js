@@ -38,11 +38,14 @@ define([ "jquery", "date" ], function( $, date ) {
     */
 
     createRandom = function() {
-    	random = Math.floor( Math.random() * 20 );
-    	if ( random > 19 ) {
-    		random = 19 - random;
-    	}
-    	return random;
+        var random = Math.floor( Math.random() * 20 );
+        if ( random > 19 ) {
+            random = 19 - random;
+        }
+        if ( localStorage["simptab-background-random"] == random ) {
+            createRandom();
+        }
+        return random;
     }
 
     getBackgroundByAPI = function ( random ) {
@@ -57,18 +60,26 @@ define([ "jquery", "date" ], function( $, date ) {
                         url  = data.url,
                         hdurl= getHDurl( url ),
                         name = data.copyright,
-                        enddate = data.enddate;
+                        enddate = data.enddate,
+                        info = getInfo( data.copyrightlink );
 
                     if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
-	                    // set background image
-	                    setBackground( hdurl );
-
-	                    // set download url
-	                    setDownloadURL( hdurl, name );
+                        // set background image
+                        setBackground( hdurl );
+                        // set download url
+                        setDownloadURL( hdurl, name );
+                        // set info url
+                        setInfoURL( info, name );
                     }
 
                     // transfor to datauri
-                    image2URI( hdurl, enddate, name );
+                    image2URI( hdurl );
+
+                    // set chrome local storage
+                    // no use cache mode
+                    //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
+                    // use local mode
+                    chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
 
                 }
             }
@@ -77,6 +88,10 @@ define([ "jquery", "date" ], function( $, date ) {
 
     getHDurl = function ( url ) {
         return url.replace( "1366x768", "1920x1080" );
+    }
+
+    getInfo = function ( url ) {
+        return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
     }
 
     image2URI = function ( url, enddate, name ) {
@@ -96,26 +111,27 @@ define([ "jquery", "date" ], function( $, date ) {
             // save image to local
             saveImg2Local( dataURI );
 
-            // set chrome local storage
-            // no use cache mode
-            //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
-            // use local mode
-            chrome.storage.local.set({ "simptab-background" : { "url" : url, "date" : enddate, "name" : name } });
-
         }
         img.src = url;
     }
 
     setDownloadURL = function( url, name ) {
-        // set download href
         $( ".controlink[url='download']" ).attr({
-            'href'      : url,
-            'download'  : name + '.jpg'
+            "title"    : name,
+            "href"     : url,
+            "download" : name + ".jpg"
+        });
+    }
+
+    setInfoURL = function( url, name ) {
+        $( ".controlink[url='info']" ).attr({
+            "title"    : name,
+            "href"     : url
         });
     }
 
     setBackground = function( url ) {
-    	$("body").css({ "background-image": "url(" + url + ")" });
+        $("body").css({ "background-image": "url(" + url + ")" });
     }
 
     saveImg2Local = function ( dataURI ) {
@@ -186,9 +202,9 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     // random = true
                     if ( is_random ) {
-                    	// set random
+                        // set random
                         if ( localStorage["simptab-background-random"] != undefined ) {
-                        	random = createRandom();
+                            random = createRandom();
                         }
                         console.log("random = " + random )
                         // save random
@@ -196,8 +212,10 @@ define([ "jquery", "date" ], function( $, date ) {
 
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
-	                    // set download url
-	                    setDownloadURL( data.url, data.name );
+                        // set download url
+                        setDownloadURL( data.url, data.name );
+                        // set info url
+                        setInfoURL( data.info, data.name );
 
                         // get background
                         getBackgroundByAPI( random );
@@ -209,8 +227,8 @@ define([ "jquery", "date" ], function( $, date ) {
                         console.log("data  = " + data.date)
 
                         if ( today != data.date ) {
-		                    // set background refresh
-		                    localStorage["simptab-background-refresh"] = "true";
+                            // set background refresh
+                            localStorage["simptab-background-refresh"] = "true";
                             // get background
                             getBackgroundByAPI( random );
                         }
@@ -219,6 +237,8 @@ define([ "jquery", "date" ], function( $, date ) {
                             setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                             // set download url
                             setDownloadURL( data.url, data.name );
+                            // set info url
+                            setInfoURL( data.info, data.name );
                         }
                     }
 
@@ -231,6 +251,8 @@ define([ "jquery", "date" ], function( $, date ) {
                     setBackground( url );
                     // set download url
                     setDownloadURL( url, "background" );
+                    // set info url
+                    setInfoURL( "#", "Info" );
 
                     // get background
                     getBackgroundByAPI( random );

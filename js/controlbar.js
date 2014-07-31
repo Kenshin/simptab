@@ -11,9 +11,25 @@ define([ "jquery" ], function( $ ) {
 
             // listen control link
             $( ".controlink" ).click( function( event ) {
-                $target = $( event.currentTarget ).attr( "url" );
-                if ( $target == "setting" ) {
-                    //TO DO
+                var $target =  $( event.currentTarget ),
+                    url     = $target.attr( "url" );
+                if ( url == "setting" ) {
+
+                    if ( !$target.hasClass( "close" )) {
+                        $( ".setting" ).animate({ width: "250", opacity : 0.8 }, 500 );
+                        $( ".sidebar" ).animate({ right: "250" }, 500, function() {
+                            $target.addClass( "close" );
+                        });
+                        $( ".option" ).show( 500 );
+                    }
+                    else {
+                        $( ".setting" ).animate({ width: "0", opacity : 0 }, 500 );
+                        $( ".sidebar" ).animate({ right: "0" }, 500, function() {
+                            $target.removeClass( "close" );
+                        });
+                        $( ".option" ).hide( 500 );
+                    }
+
                 }
             });
         }
