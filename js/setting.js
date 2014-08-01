@@ -1,21 +1,41 @@
 
 define([ "jquery", "date" ], function( $, date ) {
 
-    changeRadioIcon = function( $target ) {
+    initLR = function () {
+        $( ".lineradio" ).each( function( index, item ) {
+            if ( $( item ).hasClass("lrselected") ) {
+                $( item ).prepend( '<span class="checked"></span>' );
+                $( item ).find( "input" ).attr( "checked", true    );
+            }
+            else {
+                $( item ).prepend( '<span class="unchecked"></span>' );
+            }
+        });
+    }
+
+    updateLR = function( $target ) {
+        updateLrIcon( $target );
+        updateLrState( $target );
+    }
+
+    updateLrIcon = function( $target ) {
         var $current = $target.parent(),
             $prev    = $current.prev(),
             $next    = $current.next();
 
         if ( $prev.find( "span" ).length > 0 ) {
-            $prev.find( "span" ).attr( "class", "unchecked" );
+            $prev.find( "span"  ).attr( "class", "unchecked" );
+            $prev.find( "input" ).attr( "checked", false );
         }
         else {
-            $next.find( "span" ).attr( "class", "unchecked" );
+            $next.find( "span"  ).attr( "class", "unchecked" );
+            $next.find( "input" ).attr( "checked", false );
         }
-        $current.find( "span" ).attr( "class", "checked"    );
+        $current.find( "span"  ).attr( "class", "checked"    );
+        $current.find( "input" ).attr( "checked", true    );
     }
 
-    changeRadioState = function( $target ) {
+    updateLrState = function( $target ) {
         var $current = $target.parent(),
             $prev    = $current.prev(),
             $next    = $current.next();
@@ -32,20 +52,21 @@ define([ "jquery", "date" ], function( $, date ) {
     return {
         Init: function() {
 
-            var mode = localStorage["simptab-background-mode"];
+            // init line radio
+            initLR();
+
+            // update changestate lineradio
+            var mode      = localStorage["simptab-background-mode"],
+                checked   = $( ".changestate input[value=" +  mode + "]" );
             if ( mode != undefined ) {
-                $( ".changestate input[value=" +  mode + "]" ).attr( "checked", true );
-                $( ".changestate input[value!=" + mode + "]" ).attr( "checked", false );
-                changeRadioIcon( $( ".changestate input[value=" + mode + "]" ) );
-                changeRadioState( $( ".changestate input[value=" + mode + "]" ) );
+                updateLR( checked  );
             }
 
-            mode = localStorage["simptab-background-clock"];
+            // update clockstate lineradio
+            mode      = localStorage["simptab-background-clock"];
+            checked   = $( ".clockstate input[value=" +  mode + "]" );
             if ( mode != undefined ) {
-                $( ".clockstate input[value=" +  mode + "]" ).attr( "checked", true );
-                $( ".clockstate input[value!=" + mode + "]" ).attr( "checked", false );
-                changeRadioIcon( $( ".clockstate input[value=" + mode + "]" ) );
-                changeRadioState( $( ".clockstate input[value=" + mode + "]" ) );
+                updateLR( checked );
             }
         },
 
@@ -53,15 +74,13 @@ define([ "jquery", "date" ], function( $, date ) {
 
             $( ".changestate input" ).click( function( event ) {
                 localStorage["simptab-background-mode"] = $(event.currentTarget).attr( "value" );
-                changeRadioIcon( $( event.currentTarget ));
-                changeRadioState( $( event.currentTarget ));
+                updateLR( $( event.currentTarget ));
             });
 
             $( ".clockstate input" ).click( function( event ) {
 
                 localStorage["simptab-background-clock"] = $(event.currentTarget).attr( "value" );
-                changeRadioIcon( $( event.currentTarget ));
-                changeRadioState( $( event.currentTarget ));
+                updateLR( $( event.currentTarget ));
 
                 if ( localStorage["simptab-background-clock"] == "show") {
                     date.Show();
