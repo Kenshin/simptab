@@ -1,0 +1,57 @@
+{
+    "extension_name": {
+        "message": "SimpTab"
+    },
+
+    "extension_desc": {
+        "message": "Minimalistic's chrome  new tab page extension, hope every time open, you have a good mood."
+    },
+
+    "controlbar_bookmarks": {
+        "message": "Bookmarks"
+    },
+
+    "controlbar_history": {
+        "message": "History"
+    },
+
+    "controlbar_apps": {
+        "message": "Apps"
+    },
+
+    "controlbar_info": {
+        "message": "Information"
+    },
+
+    "controlbar_download": {
+        "message": "Download background"
+    },
+
+    "controlbar_setting": {
+        "message": "Setting"
+    },
+
+    "setting_background_every_day": {
+        "message": "Change Background Every Day"
+    },
+
+    "setting_background_every_time": {
+        "message": "Change Background Every Time"
+    },
+
+    "setting_show_clock": {
+        "message": "Show Clock"
+    },
+
+    "setting_hide_clock": {
+        "message": "Hide Clock"
+    },
+
+    "setting_contact_weibo": {
+        "message": "Share weibo.com"
+    },
+
+    "setting_contact_me": {
+        "message": "Contact Me"
+    }
+}

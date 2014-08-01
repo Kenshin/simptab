@@ -1,14 +1,15 @@
 {
-    "name"        : "SimpTab",
-    "version"     : "1.0.0",
-    "description" : "Minimalistic's chrome  new tab page extension, hope every time open, you have a good mood.",
-    "homepage_url": "https://github.com/kenshin/simptab",
+    "name"           : "__MSG_extension_name__",
+    "version"        : "1.0.0",
+    "description"    : "__MSG_extension_desc__",
+    "default_locale" : "en",
+    "homepage_url"   : "https://github.com/kenshin/simptab",
     "chrome_url_overrides": {
         "newtab": "main.html"
     },
     "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
+        "16" : "icon16.png",
+        "48" : "icon48.png",
         "128": "icon128.png"
     },
     "permissions": [
