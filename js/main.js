@@ -6,19 +6,19 @@ requirejs.config({
       "background" : "js/background",
       "date"       : "js/date",
       "controlbar" : "js/controlbar",
-      "option"     : "js/option"
+      "setting"     : "js/setting"
     }
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "option" ], function ( $, background, date, controlbar, option ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting" ], function ( $, background, date, controlbar, setting ) {
 
   // init radio input
-  option.Init();
+  setting.Init();
 
   // set is_random
   var is_random = true;
-  if ( option.Get( "changestate" ) != undefined ) {
+  if ( setting.Get( "changestate" ) != undefined ) {
     is_random = false;
   }
 
@@ -26,7 +26,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "option" ], function 
   background.Get( is_random );
 
   // get time
-  if ( option.Get( "clockstate" ) != undefined ) {
+  if ( setting.Get( "clockstate" ) != undefined ) {
     date.Show();
   }
   else {
@@ -35,6 +35,6 @@ requirejs([ "jquery", "background", "date" , "controlbar", "option" ], function 
 
   // listen
   controlbar.Listen();
-  option.Listen();
+  setting.Listen();
 
 });
