@@ -193,6 +193,10 @@ body {
     background-image: url("../images/unchecked.png");
 }
 
+.lrselected {
+    background: #222;
+}
+
 /*
 * contact
 */
