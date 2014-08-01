@@ -178,10 +178,11 @@ body {
 }
 
 .lineradio label {
-    display: block;
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+
     cursor: pointer;
     padding: 5px;
-    width: 100%;
 }
 
 .lineradio .checked {

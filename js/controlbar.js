@@ -16,12 +16,12 @@ define([ "jquery" ], function( $ ) {
                 if ( url == "setting" ) {
 
                     if ( !$target.hasClass( "close" )) {
-                        $( ".setting" ).animate({ width: "250", opacity : 0.8 }, 500, function() {
+                        $( ".setting" ).animate({ width: 240, opacity : 0.8 }, 500, function() {
                             $target.addClass( "close" );
                         });
                     }
                     else {
-                        $( ".setting" ).animate({ width: "0", opacity : 0 }, 500, function() {
+                        $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                             $target.removeClass( "close" );
                         });
                     }
