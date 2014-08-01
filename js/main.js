@@ -6,12 +6,15 @@ requirejs.config({
       "background" : "js/background",
       "date"       : "js/date",
       "controlbar" : "js/controlbar",
-      "setting"     : "js/setting"
+      "setting"    : "js/setting",
+      "i18n"       : "js/i18n",
     }
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting" ], function ( $, background, date, controlbar, setting ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n" ], function ( $, background, date, controlbar, setting, i18n ) {
+
+  i18n.Init();
 
   // init radio input
   setting.Init();
