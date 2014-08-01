@@ -23,7 +23,6 @@ body {
     background-attachment: fixed;
 
     font-family:"Roboto";
-    font-weight: bold;
 }
 
 .content {
@@ -230,6 +229,7 @@ body {
 }
 
 .footer p {
+    width: 100%;
     border-top: 1px solid #555;
 }
 

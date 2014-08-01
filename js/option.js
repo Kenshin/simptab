@@ -7,17 +7,12 @@ define([ "jquery", "date" ], function( $, date ) {
             $next    = $current.next();
 
         if ( $prev.find( "span" ).length > 0 ) {
-            $prev.find( "span" ).removeClass( "checked" );
-            $prev.find( "span" ).addClass( "unchecked" );
-            $current.find( "span" ).removeClass( "unchecked" );
-            $current.find( "span" ).addClass( "checked" );
+            $prev.find( "span" ).attr( "class", "unchecked" );
         }
         else {
-            $next.find( "span" ).removeClass( "checked" );
-            $next.find( "span" ).addClass( "unchecked" );
-            $current.find( "span" ).removeClass( "unchecked" );
-            $current.find( "span" ).addClass( "checked" );
+            $next.find( "span" ).attr( "class", "unchecked" );
         }
+        $current.find( "span" ).attr( "class", "checked"    );
     }
 
     return {
