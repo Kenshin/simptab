@@ -1,5 +1,6 @@
 
-define([ "jquery" ], function( $ ) {
+define([ "jquery", "i18n" ], function( $, i18n ) {
+
 
     return {
         Listen: function () {
@@ -16,7 +17,7 @@ define([ "jquery" ], function( $ ) {
                 if ( url == "setting" ) {
 
                     if ( !$target.hasClass( "close" )) {
-                        $( ".setting" ).animate({ width: 225, opacity : 0.8 }, 500, function() {
+                        $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
                             $target.addClass( "close" );
                         });
                     }

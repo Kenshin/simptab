@@ -31,6 +31,10 @@
         "message": "Setting"
     },
 
+    "setting_width": {
+        "message": "270"
+    },
+
     "setting_background_every_day": {
         "message": "Change Background Every Day"
     },

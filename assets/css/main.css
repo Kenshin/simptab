@@ -1,5 +1,5 @@
 @font-face {
-    src: url("../fonts/HapnaMono-Light.otf");
+    src: url("../fonts/HapnaMono-Light.otf") format( "opentype" );
     font-family: "simptabfont";
 }
 
@@ -21,7 +21,10 @@ body {
     background-attachment: fixed;
 
     font-family:"simptabfont";
+    font-weight: bold;
+
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .content {
@@ -230,6 +233,9 @@ body {
 .footer {
     display: -webkit-box;
     -webkit-box-align: end;
+
+    font-weight: normal;
+    letter-spacing: 0px;
 }
 
 .footer p {

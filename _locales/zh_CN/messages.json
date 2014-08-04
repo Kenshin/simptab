@@ -31,6 +31,10 @@
         "message": "\u8bbe\u5b9a"
     },
 
+    "setting_width": {
+        "message": "225"
+    },
+
     "setting_background_every_day": {
         "message": "\u6bcf\u5929\u66f4\u6362\u80cc\u666f"
     },

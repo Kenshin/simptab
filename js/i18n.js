@@ -24,11 +24,14 @@ define([ "jquery" ], function( $ ) {
         $($(".setting .contact").find("a")[1]).attr( "title", i18n( "setting_contact_me" ));
     }
 
-
     return {
         Init: function () {
             controlbar();
             setting();
+        },
+
+        GetSettingWidth: function () {
+            return i18n( "setting_width" );
         }
     }
 });
