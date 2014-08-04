@@ -3,6 +3,11 @@
     font-family: "simptabfont";
 }
 
+@font-face {
+    src: url("../fonts/SiYuanRegular.svg") format( "svg" );
+    font-family: "SiYuanRegular59442";
+}
+
 html {
 	height: 100%;
     overflow: hidden;
@@ -20,7 +25,7 @@ body {
     background-position: center center;
     background-attachment: fixed;
 
-    font-family:"simptabfont";
+    font-family: "SiYuanRegular59442", "simptabfont", "Microsoft YaHei";
     font-weight: bold;
 
     text-transform: uppercase;
