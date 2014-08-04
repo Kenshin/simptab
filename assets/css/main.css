@@ -1,8 +1,6 @@
 @font-face {
-    src: url("../fonts/Roboto-Regular.ttf") format( "truetype" );
+    src: url("../fonts/HapnaMono-Light.otf");
     font-family: "simptabfont";
-    font-weight: normal;
-    font-style: normal;
 }
 
 html {
@@ -23,6 +21,7 @@ body {
     background-attachment: fixed;
 
     font-family:"simptabfont";
+    text-transform: uppercase;
 }
 
 .content {

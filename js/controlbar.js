@@ -16,7 +16,7 @@ define([ "jquery" ], function( $ ) {
                 if ( url == "setting" ) {
 
                     if ( !$target.hasClass( "close" )) {
-                        $( ".setting" ).animate({ width: 240, opacity : 0.8 }, 500, function() {
+                        $( ".setting" ).animate({ width: 225, opacity : 0.8 }, 500, function() {
                             $target.addClass( "close" );
                         });
                     }
