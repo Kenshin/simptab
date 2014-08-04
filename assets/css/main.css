@@ -1,6 +1,6 @@
 @font-face {
-    src: url("../fonts/Roboto-Regular.ttf");
-    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.ttf") format( "truetype" );
+    font-family: "simptabfont";
     font-weight: normal;
     font-style: normal;
 }
@@ -22,7 +22,7 @@ body {
     background-position: center center;
     background-attachment: fixed;
 
-    font-family:"Roboto";
+    font-family:"simptabfont";
 }
 
 .content {
