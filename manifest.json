@@ -8,9 +8,9 @@
         "newtab": "main.html"
     },
     "icons": {
-        "16" : "icon16.png",
-        "48" : "icon48.png",
-        "128": "icon128.png"
+        "16" : "assets/images/icon16.png",
+        "48" : "assets/images/icon48.png",
+        "128": "assets/images/icon128.png"
     },
     "permissions": [
         "storage",
