@@ -282,6 +282,8 @@ body {
     -webkit-transform: scale(0);
     opacity: 0;
 
+    cursor: default;
+
 }
 
 .tooltip-left {
