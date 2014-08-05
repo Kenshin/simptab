@@ -9,7 +9,7 @@
 }
 
 @font-face {
-    src: url("../fonts/zh_TW.ttf") format( "truetype" );
+    src: url("../fonts/zh_TW.otf") format( "opentype" );
     font-family: "zh_TW";
 }
 
@@ -246,7 +246,7 @@ body {
     font-weight: normal;
     letter-spacing: 0px;
 
-    font-family: en;
+    font-family: "en";
 }
 
 .footer p {
@@ -269,6 +269,8 @@ body {
 * tooltip
 */
 .tooltip  {
+    display: -webkit-box;
+
     color: #fff;
     background: rgba(0,0,0,.4);
     border-radius: 3px;
