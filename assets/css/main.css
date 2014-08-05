@@ -134,19 +134,23 @@ body {
 }
 
 /*
-* time
+* clock
 */
-#time {
+.clock {
     display: -webkit-box;
     -webkit-box-flex: 1;
     -webkit-box-pack: end;
     -webkit-box-align: end;
 
     padding: 0px 15px;
+    color: #fff;
+}
 
+#time {
     font-size: 60px;
     font-weight: 200;
-    color: #fff;
+
+    cursor: pointer;
 }
 
 /*
@@ -282,7 +286,15 @@ body {
     -webkit-box-pack: start;
 }
 
-.tooltip-left:hover .tooltip  {
+.tooltip-top {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: center;
+    -webkit-box-pack: start;
+}
+
+.tooltip-left:hover .tooltip,
+.tooltip-top:hover  .tooltip {
     -webkit-transform: scale(1);
     -webkit-transition: opacity 2s ease;
     opacity: 0.8;
