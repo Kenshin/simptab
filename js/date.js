@@ -13,10 +13,14 @@ define([ "jquery" ], function( $ ) {
             $( "#time" ).fadeIn( 500 );
             var date = new Date();
 
+            // set date
+            $($( "#time" ).prev()).text( date.getFullYear() + "-" + ( date.getUTCMonth() + 1 ) + "-" + date.getDate() );
+
+            // set time
             $( "#time" ).text( date.getHours() + ":" + format(date.getMinutes()) );
             setInterval(function() {
                 date = new Date();
-                $( "#time" ).text(date.getHours() + ":" + format(date.getMinutes()) );
+                $( "#time" ).text( date.getHours() + ":" + format(date.getMinutes()) );
             }, 1000 * 30 );
         },
 
