@@ -6,12 +6,12 @@ define([ "jquery" ], function( $ ) {
     }
 
     controlbar = function () {
-        $($( ".controlbar" ).children()[0]).find( "a" ).attr( "title", i18n( "controlbar_bookmarks" ));
-        $($( ".controlbar" ).children()[1]).find( "a" ).attr( "title", i18n( "controlbar_history" ));
-        $($( ".controlbar" ).children()[2]).find( "a" ).attr( "title", i18n( "controlbar_apps" ));
-        $($( ".controlbar" ).children()[3]).find( "a" ).attr( "title", i18n( "controlbar_info" ));
-        $($( ".controlbar" ).children()[4]).find( "a" ).attr( "title", i18n( "controlbar_download" ));
-        $($( ".controlbar" ).children()[5]).find( "a" ).attr( "title", i18n( "controlbar_setting" ));
+        $($( ".controlbar" ).children()[0]).find( ".tooltip" ).text( i18n( "controlbar_bookmarks" ));
+        $($( ".controlbar" ).children()[1]).find( ".tooltip" ).text( i18n( "controlbar_history" ));
+        $($( ".controlbar" ).children()[2]).find( ".tooltip" ).text( i18n( "controlbar_apps" ));
+        $($( ".controlbar" ).children()[3]).find( ".tooltip" ).text( i18n( "controlbar_info" ));
+        $($( ".controlbar" ).children()[4]).find( ".tooltip" ).text( i18n( "controlbar_download" ));
+        $($( ".controlbar" ).children()[5]).find( ".tooltip" ).text( i18n( "controlbar_setting" ));
     }
 
     setting = function () {

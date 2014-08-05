@@ -44,7 +44,7 @@ body {
 .sidebar {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-	width: 175px;
+    -webkit-box-flex: 1;
 }
 
 .setting {
@@ -81,11 +81,6 @@ body {
 
     list-style: none;
     font-size: 15px;
-}
-
-.controlbar li {
-    display: -webkit-box;
-    -webkit-box-align: end;
 }
 
 .controlbar a {
@@ -264,4 +259,31 @@ body {
     background-color: rgba(0,0,0,.4);
     -webkit-transition: background-color 1s ease;
     -webkit-border-radius:3px;
+}
+
+/*
+* tooltip
+*/
+.tooltip  {
+    color: #fff;
+    background: rgba(0,0,0,.4);
+    border-radius: 3px;
+
+    padding: 2px 5px;
+
+    -webkit-transform: scale(0);
+    opacity: 0;
+
+}
+
+.tooltip-left {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: start;
+}
+
+.tooltip-left:hover .tooltip  {
+    -webkit-transform: scale(1);
+    -webkit-transition: opacity 2s ease;
+    opacity: 0.8;
 }
