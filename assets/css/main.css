@@ -1,11 +1,11 @@
 @font-face {
-    src: url("../fonts/HapnaMono-Light.otf") format( "opentype" );
-    font-family: "simptabfont";
+    src: url("../fonts/en.otf") format( "opentype" );
+    font-family: "en";
 }
 
 @font-face {
-    src: url("../fonts/SiYuanRegular.svg") format( "svg" );
-    font-family: "SiYuanRegular59442";
+    src: url("../fonts/zh_CN.svg") format( "svg" );
+    font-family: "zh_CN";
 }
 
 html {
@@ -25,7 +25,7 @@ body {
     background-position: center center;
     background-attachment: fixed;
 
-    font-family: "SiYuanRegular59442", "simptabfont", "Microsoft YaHei";
+    font-family: "zh_CN", "en", "Microsoft YaHei";
     font-weight: bold;
 
     text-transform: uppercase;
@@ -241,6 +241,8 @@ body {
 
     font-weight: normal;
     letter-spacing: 0px;
+
+    font-family: en;
 }
 
 .footer p {
