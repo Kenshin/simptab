@@ -9,7 +9,7 @@
 }
 
 @font-face {
-    src: url("../fonts/zh_TW.ttf");
+    src: url("../fonts/zh_TW.ttf") format( "truetype" );
     font-family: "zh_TW";
 }
 
