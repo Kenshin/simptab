@@ -8,6 +8,11 @@
     font-family: "zh_CN";
 }
 
+@font-face {
+    src: url("../fonts/zh_TW.ttf");
+    font-family: "zh_TW";
+}
+
 html {
 	height: 100%;
     overflow: hidden;
@@ -25,7 +30,7 @@ body {
     background-position: center center;
     background-attachment: fixed;
 
-    font-family: "zh_CN", "en", "Microsoft YaHei";
+    font-family: "zh_CN", "zh_TW", "en";
     font-weight: bold;
 
     text-transform: uppercase;
