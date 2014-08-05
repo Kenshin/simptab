@@ -30,7 +30,7 @@ body {
     background-position: center center;
     background-attachment: fixed;
 
-    font-family: "zh_CN", "zh_TW", "en";
+    font-family: "zh_CN", "en", "zh_TW";
     font-weight: bold;
 
     text-transform: uppercase;
@@ -144,6 +144,8 @@ body {
 
     padding: 0px 15px;
     color: #fff;
+
+    font-family: "en";
 }
 
 #time {
