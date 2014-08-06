@@ -1,4 +1,8 @@
 {
+    "locales": {
+        "message": "en"
+    },
+
     "extension_name": {
         "message": "SimpTab"
     },

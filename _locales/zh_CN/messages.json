@@ -1,4 +1,8 @@
 {
+    "locales": {
+        "message": "zh_CN"
+    },
+
     "extension_name": {
         "message": "\u7b80 Tab"
     },

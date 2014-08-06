@@ -32,6 +32,11 @@ define([ "jquery" ], function( $ ) {
 
         GetSettingWidth: function () {
             return i18n( "setting_width" );
+        },
+
+        GetLang: function() {
+            return i18n( "locales" );
         }
+
     }
 });

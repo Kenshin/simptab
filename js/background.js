@@ -265,6 +265,10 @@ define([ "jquery", "date" ], function( $, date ) {
                     getBackgroundByAPI( random );
                 }
             });
+        },
+
+        setLang: function( lang ) {
+            $( "body" ).css({ "font-family" : lang });
         }
     }
 });
