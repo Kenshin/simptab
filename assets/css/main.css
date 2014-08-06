@@ -271,8 +271,6 @@ body {
 * tooltip
 */
 .tooltip  {
-    display: -webkit-box;
-
     color: #fff;
     background: rgba(0,0,0,.4);
     border-radius: 3px;
@@ -284,6 +282,10 @@ body {
 
     cursor: default;
 
+}
+
+.tooltip:hover {
+    display: none;
 }
 
 .tooltip-left {
