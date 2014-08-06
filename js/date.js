@@ -30,7 +30,7 @@ define([ "jquery" ], function( $ ) {
 
         Today: function () {
             var date = new Date();
-            return date.getFullYear() + format( date.getUTCMonth() + 1 ) + date.getUTCDate()
+            return date.getFullYear() + format( date.getUTCMonth() + 1 ) + format( date.getUTCDate());
         }
     }
 });

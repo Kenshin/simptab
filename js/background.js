@@ -58,7 +58,7 @@ define([ "jquery", "date" ], function( $, date ) {
                 if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
                     var data = result.images[0],
                         url  = data.url,
-                        hdurl= getHDurl( url ),
+                        hdurl= getHDurl( getTrueUrl( url )),
                         name = data.copyright,
                         enddate = data.enddate,
                         info = getInfo( data.copyrightlink );
@@ -84,6 +84,13 @@ define([ "jquery", "date" ], function( $, date ) {
                 }
             }
         });
+    }
+
+    getTrueUrl = function ( url ) {
+        if ( url.indexOf( "/" ) == 0 ) {
+            return "http://www.bing.com" + url;
+        }
+        return url;
     }
 
     getHDurl = function ( url ) {
