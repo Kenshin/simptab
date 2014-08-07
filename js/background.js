@@ -268,6 +268,13 @@ define([ "jquery", "date" ], function( $, date ) {
         },
 
         setLang: function( lang ) {
+
+        	// check locales
+        	if ( lang != "en" && lang != "zh_CN" && lang != "zh_TW" ) {
+        		lang = "en";
+        	}
+
+        	// set font-family
             $( "body" ).css({ "font-family" : lang });
         }
     }
