@@ -141,7 +141,7 @@ define([ "jquery", "date" ], function( $, date ) {
         console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
 
         // when 'simptab-background-state' is failed set background default
-        if ( localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] == "failed" ) {
+        if ( localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success" ) {
         	url = "../assets/images/background.jpg";
         }
 
