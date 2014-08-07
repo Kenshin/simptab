@@ -2,6 +2,7 @@
 requirejs.config({
     baseUrl: ".",
     paths: {
+      "main"       : "js/main",
       "jquery"     : "vender/jquery-2.1.1.min",
       "background" : "js/background",
       "date"       : "js/date",
