@@ -142,14 +142,13 @@ define([ "jquery", "date" ], function( $, date ) {
 
         // when 'simptab-background-state' is failed set background default
         if ( localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success" ) {
-        	url = "../assets/images/background.jpg";
+            url = "../assets/images/background.jpg";
         }
 
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 
     saveImg2Local = function ( dataURI ) {
-        localStorage["simptab-background-state"] = "pending";
         window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
         window.requestFileSystem( window.TEMPORARY , 52428800, function( fs ) {
 
@@ -158,13 +157,28 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     console.log("fileEntry.toURL() = " + fileEntry.toURL())
 
+                    fileWriter.onwritestart  = function(e) {
+                        console.log( "Write start: ", e );
+                        localStorage["simptab-background-state"] = "staring";
+                    };
+
+                    fileWriter.onprogress  = function(e) {
+                        console.log( "Write process: ", e );
+                        localStorage["simptab-background-state"] = "pending";
+                    };
+
                     fileWriter.onwriteend = function(e) {
-                        console.log('Write completed.');
+                        console.log( "Write completed: ", e );
                         localStorage["simptab-background-state"] = "success";
                     };
 
+                    fileWriter.onabort  = function(e) {
+                        console.log( "Write abort: ", e );
+                        localStorage["simptab-background-state"] = "failed";
+                    };
+
                     fileWriter.onerror = function(e) {
-                        console.log('Write failed: ' + e.toString());
+                        console.log( "Write failed: ", e );
                         localStorage["simptab-background-state"] = "failed";
                     };
 
@@ -178,6 +192,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
     errorHandler = function (e) {
         console.log(e)
+        localStorage["simptab-background-state"] = "failed";
     }
 
     dataURItoBlob = function ( dataURI ) {
