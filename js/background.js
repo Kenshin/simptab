@@ -54,6 +54,11 @@ define([ "jquery", "date" ], function( $, date ) {
             timeout    : 2000,
             url        : "http://bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1",
             dataType   : "json",
+            error      : function(  jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR)
+                console.log(textStatus)
+                console.log(errorThrown)
+            },
             success    : function( result ) {
                 if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
                     var data = result.images[0],
@@ -98,6 +103,11 @@ define([ "jquery", "date" ], function( $, date ) {
     }
 
     getInfo = function ( url ) {
+        reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
+        if( !reg.test( url )) {
+            return "#";
+        }
+
         return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
     }
 
