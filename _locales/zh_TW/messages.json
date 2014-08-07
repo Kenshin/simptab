@@ -28,7 +28,7 @@
     },
 
     "controlbar_download": {
-        "message": "\u4e0b\u8f09\u7576\u524d\u63f9\u666f"
+        "message": "\u4e0b\u8f09\u7576\u524d\u80cc\u666f"
     },
 
     "controlbar_setting": {
@@ -40,11 +40,11 @@
     },
 
     "setting_background_every_day": {
-        "message": "\u6bcf\u5929\u66f4\u63db\u63f9\u666f"
+        "message": "\u6bcf\u5929\u66f4\u63db\u80cc\u666f"
     },
 
     "setting_background_every_time": {
-        "message": "\u96a8\u6a5f\u66f4\u63db\u63f9\u666f"
+        "message": "\u96a8\u6a5f\u66f4\u63db\u80cc\u666f"
     },
 
     "setting_show_clock": {
