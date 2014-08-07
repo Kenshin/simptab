@@ -16,6 +16,6 @@
         "storage",
         "*://*/bing.com*"
     ],
-    "update_url": "https://clients2.google.com/service/update2/crx",
+    "update_url": "http://k-zone.cn/simptab/updates.xml",
     "manifest_version": 2
 }
