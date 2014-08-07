@@ -138,10 +138,18 @@ define([ "jquery", "date" ], function( $, date ) {
     }
 
     setBackground = function( url ) {
+        console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
+
+        // when 'simptab-background-state' is failed set background default
+        if ( localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] == "failed" ) {
+        	url = "../assets/images/background.jpg";
+        }
+
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 
     saveImg2Local = function ( dataURI ) {
+        localStorage["simptab-background-state"] = "pending";
         window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
         window.requestFileSystem( window.TEMPORARY , 52428800, function( fs ) {
 
@@ -152,10 +160,12 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     fileWriter.onwriteend = function(e) {
                         console.log('Write completed.');
+                        localStorage["simptab-background-state"] = "success";
                     };
 
                     fileWriter.onerror = function(e) {
                         console.log('Write failed: ' + e.toString());
+                        localStorage["simptab-background-state"] = "failed";
                     };
 
                     fileWriter.write( dataURItoBlob( dataURI ));
@@ -269,12 +279,12 @@ define([ "jquery", "date" ], function( $, date ) {
 
         setLang: function( lang ) {
 
-        	// check locales
-        	if ( lang != "en" && lang != "zh_CN" && lang != "zh_TW" ) {
-        		lang = "en";
-        	}
+            // check locales
+            if ( lang != "en" && lang != "zh_CN" && lang != "zh_TW" ) {
+                lang = "en";
+            }
 
-        	// set font-family
+            // set font-family
             $( "body" ).css({ "font-family" : lang });
         }
     }
