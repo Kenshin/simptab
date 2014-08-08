@@ -21,11 +21,10 @@ module.exports = function( grunt ) {
     },
 
     requirejs: {
-      compile: {
+      js: {
         options: {
           baseUrl        : ".",
           mainConfigFile : "./js/main.js",
-          optimizeCss    : "standard.keepLines",
           name           : "main",
           include        : [ "jquery", "background", "date" , "controlbar", "setting", "i18n" ],
           out            : "./dest/js/main.js",
@@ -36,6 +35,15 @@ module.exports = function( grunt ) {
               drop_console : true
             }
           }
+        }
+      },
+
+      css: {
+        options: {
+          baseUrl        : ".",
+          optimizeCss    : "standard",
+          cssIn          : "./assets/css/main.css",
+          out            : "./dest/assets/css/main.css"
         }
       }
     }
