@@ -17,22 +17,21 @@ module.exports = function( grunt ) {
     watch: {
 
       options: {
-        livereload: true,
+        livereload: 35729,
       },
 
       css: {
         files: [ "assets/css/*.styl" ],
-        tasks: [ "stylus", "connect" ],
+        tasks: [ "stylus" ],
       },
 
       js: {
         files: [ "gruntfile.js" ],
-        tasks: [ "jshint", "connect" ]
+        tasks: [ "jshint" ]
       },
 
       html: {
-        files: [ "index.html" ],
-        tasks: [ "connect" ],
+        files: [ "index.html" ]
       }
 
     },
@@ -40,8 +39,17 @@ module.exports = function( grunt ) {
     connect: {
       server: {
         options: {
-          port: 8000,
-          hostname: "localhost"
+          port: 80,
+          hostname: "localhost",
+          open: true,
+          middleware: function( connect, options ) {
+            var lrSnippet = require( "grunt-contrib-livereload/lib/utils" ).livereloadSnippet,
+                base      = options.base;
+            return [
+              lrSnippet,
+              connect.static( base.toString() )
+            ];
+          }
         }
       }
     },

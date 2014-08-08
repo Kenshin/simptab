@@ -9,10 +9,11 @@
     "grunt-contrib-clean"     : "*",
     "grunt-contrib-copy"      : "*",
     "grunt-contrib-stylus"    : "*",
+    "grunt-contrib-connect"   : "*",
+    "grunt-contrib-livereload": "*",
     "grunt-contrib-watch"     : "*",
     "grunt-contrib-jshint"    : "*",
     "grunt-contrib-requirejs" : "*",
-    "grunt-contrib-connect"   : "*",
     "matchdep": "*"
   }
 }
