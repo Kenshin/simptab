@@ -1,9 +1,8 @@
 vendors = webkit moz o ms official
-
 all-browser( prop, arguments )
-  border-radius: arguments
+  { prop }: arguments
   for vendor in vendors
-      -{vendor}-border-radius: arguments
+     -{ vendor }-{ prop }: arguments
 
 @font-face 
     src: url( ../font/en.otf ) format( opentype )
