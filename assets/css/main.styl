@@ -1,7 +1,13 @@
-@font-face {
-    src: url( "../font/en.otf" ) format( "opentype" )
-    font-family: "en"
-}
+vendors = webkit moz o ms official
+
+all-browser( prop, arguments )
+  border-radius: arguments
+  for vendor in vendors
+      -{vendor}-border-radius: arguments
+
+@font-face 
+    src: url( ../font/en.otf ) format( opentype )
+    font-family: en
 
 html
     width  : 100%
@@ -18,10 +24,10 @@ body
 
     font-family : en
 
-body div
-    display : -webkit-box
-    -webkit-box-pack : center
-    -webkit-box-align: center
+    div
+        display : -webkit-box
+        -webkit-box-pack : center
+        -webkit-box-align: center
 
 .top
     height : 50px
