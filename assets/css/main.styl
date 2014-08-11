@@ -4,6 +4,9 @@ all-browser( prop, arguments )
   for vendor in vendors
      -{ vendor }-{ prop }: arguments
 
+division()
+    padding: 0px 0px 33px 0px
+
 @font-face
     src: url( ../font/en.otf ) format( opentype )
     font-family: en
@@ -61,6 +64,8 @@ hr
     display: -webkit-box
     -webkit-box-align: end
 
+    division()
+
 .btn-download
     display: -webkit-box
 
@@ -115,6 +120,8 @@ hr
         height: 335px
 
         border: 0px
+
+        division()
 
 .content
     width: 100%
