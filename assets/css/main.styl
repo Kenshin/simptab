@@ -112,6 +112,8 @@ hr
     font-size: 10px
 
 .main
+    division()
+
     div
         -webkit-box-orient: vertical
 
@@ -156,6 +158,18 @@ hr
                 div
                     background: url( /assets/image/download.png ) no-repeat
 
+.footer
+    height: 200px
+    background-color: #333
+    color: #fff
 
+    a
+        text-decoration: none
+        color: #fff
 
+        &:hover
+            color: #000
+            background-color  : rgba(255,255,155,.4)
+            all-browser: "transition", background-color 1s ease
+            all-browser: "border-radius", 3px
 
