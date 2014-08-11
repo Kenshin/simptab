@@ -1,4 +1,4 @@
-vendors = webkit moz o ms official
+vendors = webkit moz o ms
 all-browser( prop, arguments )
   { prop }: arguments
   for vendor in vendors
@@ -13,7 +13,7 @@ html
     height : 100%
 
 body
-    display : -webkit-box
+    display: -webkit-box
     -webkit-box-flex: 1
     -webkit-box-orient: vertical
 
@@ -21,7 +21,7 @@ body
     margin  : 0px
     padding : 0px
 
-    font-family : en
+    font-family: en
     font-weight: bold
 
     div
@@ -30,70 +30,68 @@ body
         -webkit-box-align: center
 
 .top
-    height : 50px
+    height: 50px
 
 .title
     h1
         font-size: 50px
     span
-        display: block
+        display : block
         position: relative
 
-        left: 181px
+        left  : 181px
         bottom: 64px
 
-        width: 24px
+        width : 24px
         height: 24px
 
-        background: url( "/assets/image/chrome.png" ) no-repeat
+        background: url( /assets/image/chrome.png ) no-repeat
 
 .download
-    display: -webkit-box;
-    -webkit-box-align: end;
+    display: -webkit-box
+    -webkit-box-align: end
 
 .btn-download
+    display: -webkit-box
+
+    padding: 15px
+
     color: #fff
-    font-size : 43px
+    font-size: 43px
 
-    text-shadow: #136491 0px 1px 2px
-
-    background-color: #2292CC
-    background-image: linear-gradient(to bottom,#2FA6E4,#2292CC)
-    background-repeat: repeat-x
-
-    border-color: #066397
-    all-browser: 'box-shadow', inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-
-    padding : 15px
+    text-shadow    : #136491 0px 1px 2px
     text-decoration: none
 
-    all-browser: 'border-radius', 6px
+    background: linear-gradient(to bottom,#2FA6E4,#2292CC) #2292CC repeat-x
 
-    display : -webkit-box
+    border-color: #066397
+    all-browser : "box-shadow", inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    all-browser : "border-radius", 6px
 
     span
-        display : block
+        display: block
 
         width : 48px
-        height : 48px
+        height: 48px
 
-        background: url( "/assets/image/webstore.png" ) no-repeat
+        background: url( /assets/image/webstore.png ) no-repeat
 
     &:hover
         text-decoration: none
         background-position: 0 -15px
 
-        all-browser 'transition', background-position 0.1s linear
+        all-browser: "transition", background-position 0.1s linear
 
 .btn-offline-download
-    text-decoration: none
-    color: #000
     padding: 0px 2px
 
+    text-decoration: none
+    color: #000
+
     &:hover
-        background-color: rgba(0,0,0,.4)
-        -webkit-transition: background-color 1s ease
-        -webkit-border-radius: 3px
+        background-color  : rgba(0,0,0,.4)
+        all-browser: "transition", background-color 1s ease
+        all-browser: "border-radius", 3px
 
 .smaller
     font-size: 10px
