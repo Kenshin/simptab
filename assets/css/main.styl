@@ -164,9 +164,11 @@ hr
 .footer
     -webkit-box-orient: vertical
 
-    height: 200px
     background-color: #333
     color: #fff
+
+    .copyright
+        padding: 0px 0px 10px 0px
 
     a
         padding: 0px 2px
@@ -179,6 +181,7 @@ hr
             all-browser: "transition", background-color 1s ease
             all-browser: "border-radius", 3px
 
+    // first child
     ul
         display           : -webkit-box
         -webkit-box-orient: horizontal
@@ -197,6 +200,7 @@ hr
 
             div
                 -webkit-box-pack: start
+                -webkit-box-flex: 1
 
             // author
             &:nth-child(2)
