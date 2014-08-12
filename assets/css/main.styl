@@ -7,6 +7,8 @@ all-browser( prop, arguments )
 division()
     padding: 0px 0px 33px 0px
 
+main-width = 960px
+
 @font-face
     src: url( ../font/en.otf ) format( opentype )
     font-family: en
@@ -118,7 +120,7 @@ hr
         -webkit-box-orient: vertical
 
     img
-        width : 960px
+        width : main-width
         height: 335px
 
         border: 0px
@@ -160,6 +162,8 @@ hr
                     background: url( /assets/image/download.png ) no-repeat
 
 .footer
+    -webkit-box-orient: vertical
+
     height: 200px
     background-color: #333
     color: #fff
@@ -167,7 +171,6 @@ hr
     a
         padding: 0px 2px
 
-        text-decoration: none
         color: #fff
 
         &:hover
@@ -175,4 +178,63 @@ hr
             background-color  : rgba(255,255,155,1)
             all-browser: "transition", background-color 1s ease
             all-browser: "border-radius", 3px
+
+    ul
+        display           : -webkit-box
+        -webkit-box-orient: horizontal
+        -webkit-box-sizing: border-box
+        -webkit-box-pack  : center
+
+        list-style: none
+
+        li
+            display: -webkit-box
+            -webkit-box-flex: 1
+            -webkit-box-orient: vertical
+
+            width: ( main-width / 2 )
+            padding: 5px
+
+            div
+                -webkit-box-pack: start
+
+            // author
+            &:nth-of-type(2)
+
+                .author
+                    -webkit-box-orient: vertical
+                    -webkit-box-align: start
+
+                    // photo
+                    div:nth-of-type(1)
+
+                        span:nth-of-type(1)
+                            display: block
+
+                            width: 46px
+                            height: @width
+
+                            all-browser 'border-radius', 50%
+
+                            background: url( /assets/image/photo.jpg ) no-repeat
+
+                        p
+                            padding: 0px 5px
+                            margin: 0px
+
+                        /*span[class$="-icon"]
+                            display: block
+
+                            width : 24px
+                            height: @width
+
+                        .weibo-icon
+                            background: url( /assets/image/weibo-icon.png ) no-repeat*/
+
+                    // photo
+                    /*div:nth-of-type(2)
+
+                        padding: 2px 0px 0px 0px*/
+
+
 
