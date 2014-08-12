@@ -1,8 +1,18 @@
-vendors = webkit moz o ms
-all-browser( prop, arguments )
-  { prop }: arguments
+// adapter all browser css propery
+vendors = -webkit -moz -o -ms
+prefix  = "-"
+all-browser( prop, arguments, ppro = true )
+  if ppro
+    { prop }: arguments
   for vendor in vendors
-     -{ vendor }-{ prop }: arguments
+     { vendor }-{ prop }: arguments
+
+display-group(value)
+  value + prefix + box
+
+adapter-display()
+  for vendor in vendors
+    display: display-group( vendor )
 
 division()
     padding: 0px 0px 33px 0px
@@ -18,10 +28,11 @@ html
     height : 100%
 
 body
-    display: -webkit-box
-    -webkit-box-flex: 1
-    -webkit-box-orient: vertical
+    adapter-display()
+    all-browser "box-flex", 1, false
+    all-browser "box-orient", vertical, false
 
+    width   : 100%
     height  : 100%
     margin  : 0px
     padding : 0px
@@ -32,9 +43,9 @@ body
     background: url( /assets/image/bg.png ) repeat
 
     div
-        display : -webkit-box
-        -webkit-box-pack : center
-        -webkit-box-align: center
+        adapter-display()
+        all-browser "box-pack",  center, false
+        all-browser "box-align", center, false
 
 hr
     width : 100%
@@ -63,13 +74,13 @@ hr
         background: url( /assets/image/chrome.png ) no-repeat
 
 .download
-    display: -webkit-box
-    -webkit-box-align: end
+    adapter-display()
+    all-browser "box-align", end, false
 
     division()
 
 .btn-download
-    display: -webkit-box
+    adapter-display()
 
     padding: 15px
 
@@ -117,7 +128,7 @@ hr
     division()
 
     div
-        -webkit-box-orient: vertical
+        all-browser "box-orient", vertical, false
 
     img
         width : main-width
@@ -129,25 +140,32 @@ hr
 
 .content
     width: 100%
-    -webkit-box-align: start
+    all-browser "box-align", start, false
 
     ul
         width: 100%
 
         li
-            display: -webkit-box
-            -webkit-box-orient: horizontal
-            -webkit-box-flex: 1
-            -webkit-box-align: center
+            adapter-display()
+            all-browser "box-orient", horizontal, false
+            all-browser "box-flex",   1,          false
+            all-browser "box-align",  center,     false
 
             list-style: none
+
+            width: 100%
 
             div
                 width:  410px
                 height: 270px
 
+            span
+                adapter-display()
+                all-browser "box-flex",   1,          false
+                all-browser "box-align",  center,     false
+
             &:nth-of-type(even)
-                -webkit-box-pack: end
+                all-browser "box-pack", end, false
 
             &:nth-of-type(1)
                 div
@@ -156,13 +174,15 @@ hr
             &:nth-of-type(2)
                 div
                     background: url( /assets/image/infomation.png ) no-repeat
+                span
+                    all-browser "box-pack", end, false
 
             &:nth-of-type(3)
                 div
                     background: url( /assets/image/download.png ) no-repeat
 
 .footer
-    -webkit-box-orient: vertical
+    all-browser "box-orient", vertical, false
 
     background-color: #333
     color: #fff
@@ -183,24 +203,24 @@ hr
 
     // first child
     ul
-        display           : -webkit-box
-        -webkit-box-orient: horizontal
-        -webkit-box-sizing: border-box
-        -webkit-box-pack  : center
+        adapter-display()
+        all-browser "box-orient", horizontal, false
+        all-browser "box-sizing", border-box, false
+        all-browser "box-pack",   center,     false
 
         list-style: none
 
         li
-            display: -webkit-box
-            -webkit-box-flex: 1
-            -webkit-box-orient: vertical
+            adapter-display()
+            all-browser "box-flex",   1,        false
+            all-browser "box-orient", vertical, false
 
             width: ( main-width / 2 )
             padding: 5px
 
             div
-                -webkit-box-pack: start
-                -webkit-box-flex: 1
+                all-browser "box-pack", start, false
+                all-browser "box-flex", 1,     false
 
             // author
             &:nth-child(2)
@@ -217,9 +237,9 @@ hr
 
                 div
                     div
-                        display: -webkit-box
-                        -webkit-box-orient: vertical
-                        -webkit-box-align:start
+                        adapter-display()
+                        all-browser "box-orient", vertical, false
+                        all-browser "box-align",  start,    false
 
                         padding: 0px 5px
 
@@ -227,8 +247,8 @@ hr
                             margin: 0px
 
                         div
-                            display: -webkit-box
-                            -webkit-box-orient: horizontal
+                            adapter-display()
+                            all-browser "box-orient", horizontal, false
 
                             padding: 0px
 
