@@ -82,7 +82,7 @@ hr
     background: linear-gradient(to bottom,#2FA6E4,#2292CC) #2292CC repeat-x
 
     border-color: #066397
-    all-browser : "box-shadow", inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    all-browser : "box-shadow", inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)
     all-browser : "border-radius", 6px
 
     span
@@ -138,7 +138,7 @@ hr
             display: -webkit-box
             -webkit-box-orient: horizontal
             -webkit-box-flex: 1
-            -webkit-box-align: center;
+            -webkit-box-align: center
 
             list-style: none
 
@@ -199,42 +199,73 @@ hr
                 -webkit-box-pack: start
 
             // author
-            &:nth-of-type(2)
+            &:nth-child(2)
 
-                .author
-                    -webkit-box-orient: vertical
-                    -webkit-box-align: start
+                .photo
+                    display: block
 
-                    // photo
-                    div:nth-of-type(1)
+                    width : 46px
+                    height: @width
 
-                        span:nth-of-type(1)
-                            display: block
+                    all-browser 'border-radius', 50%
 
-                            width: 46px
-                            height: @width
+                    background: url( /assets/image/photo.jpg ) no-repeat
 
-                            all-browser 'border-radius', 50%
+                div
+                    div
+                        display: -webkit-box
+                        -webkit-box-orient: vertical
+                        -webkit-box-align:start
 
-                            background: url( /assets/image/photo.jpg ) no-repeat
+                        padding: 0px 5px
 
                         p
-                            padding: 0px 5px
                             margin: 0px
 
-                        /*span[class$="-icon"]
-                            display: block
+                        div
+                            display: -webkit-box
+                            -webkit-box-orient: horizontal
 
-                            width : 24px
-                            height: @width
+                            padding: 0px
 
-                        .weibo-icon
-                            background: url( /assets/image/weibo-icon.png ) no-repeat*/
+                            a
+                                padding: 0px
 
-                    // photo
-                    /*div:nth-of-type(2)
+                            span[class$="-icon"]
+                                display: block
 
-                        padding: 2px 0px 0px 0px*/
+                                width : 24px
+                                height: @width
 
+                                padding-right: 5px
 
+                                opacity: 0.4
+
+                                &:hover
+                                    all-browser "transition", opacity .3s ease
+                                    opacity: 1
+
+                            .weibo-icon
+                                background: url( /assets/image/weibo-icon.png ) no-repeat
+
+                            .douban-icon
+                                background: url( /assets/image/douban-icon.png ) no-repeat
+
+                            .gplus-icon
+                                background: url( /assets/image/gplus-icon.png ) no-repeat
+
+                            .linkin-icon
+                                background: url( /assets/image/linkin-icon.png ) no-repeat
+
+                            span[class^="weibo"]:hover
+                                background: url( /assets/image/weibo-hover-icon.png ) no-repeat
+
+                            span[class^="douban"]:hover
+                                background: url( /assets/image/douban-hover-icon.png ) no-repeat
+
+                            span[class^="gplus"]:hover
+                                background: url( /assets/image/gplus-hover-icon.png ) no-repeat
+
+                            span[class^="linkin"]:hover
+                                background: url( /assets/image/linkin-hover-icon.png ) no-repeat
 
