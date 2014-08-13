@@ -41,10 +41,10 @@ $( document ).ready( function() {
     i18n.init( options, function( t ) {
 
     	$(".title > h1 > div").html( t( "title" ));
+    	$(".download > .btn-download > div").html( t( "download" ));
     });
 
 });
-
 
 function getQueryString( name ) {
     var reg = new RegExp( "(^|&)" + name + "=([^&]*)(&|$)", "i" );
