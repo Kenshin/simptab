@@ -58,7 +58,41 @@ hr
     margin: 30px 0px;
 
 .top
+
     height: 50px
+
+    nav
+        adapter-display()
+        all-browser "box-orient", horizontal
+        all-browser "box-pack",   end, false
+
+        width : main-width
+
+        a[class$="flag"] span:hover
+            background-position: 0 3px
+            all-browser: "transition", background-position 0.3s linear
+
+        a
+
+            span
+                display: block
+
+                width : 32px
+                height: @width
+
+                padding: 0px 7px 0px 0px
+
+            &:nth-child(1)
+                span
+                    background: url( /assets/image/zh-cn-flag.png ) no-repeat
+
+            &:nth-child(2)
+                span
+                    background: url( /assets/image/zh-tw-flag.png ) no-repeat
+
+            &:nth-child(3)
+                span
+                    background: url( /assets/image/en-flag.png ) no-repeat
 
 .title
     h1
