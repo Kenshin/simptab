@@ -40,7 +40,6 @@ $( document ).ready( function() {
         lng          : lang,
         lowerCaseLng : true,
         fallbackLng  : false,
-        debug        : true,
         cookieName   : "lang",
         useCookie    : true,
         detectLngQS  : "lang"

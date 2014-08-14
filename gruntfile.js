@@ -80,21 +80,15 @@ module.exports = function( grunt ) {
           }]
       }
     },
-
-    requirejs: {
-      js: {
-        options: {
-          baseUrl        : ".",
-          name           : "js/main.js",
-          include        : [ "js/main.js" ],
-          out            : "./dest-www/js/main.js",
-          keepBuildDir   : true,
-          optimize       : "uglify2",
-          uglify2        : {
-            compress     : {
-              drop_console : true
-            }
+    uglify: {
+      options: {
+          compress     : {
+            drop_console : true
           }
+      },
+      my_target: {
+        files: {
+          "./dest-www/js/main.js": [ "./js/main.js" ]
         }
       }
     }
@@ -107,6 +101,6 @@ module.exports = function( grunt ) {
 
   grunt.registerTask( "default", [ "connect", "watch" ]);
 
-  grunt.registerTask( "publish", [ "clean", "copy", "requirejs" ]);
+  grunt.registerTask( "publish", [ "clean", "copy", "uglify" ]);
 
 };

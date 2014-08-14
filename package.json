@@ -13,7 +13,7 @@
     "grunt-contrib-livereload": "*",
     "grunt-contrib-watch"     : "*",
     "grunt-contrib-jshint"    : "*",
-    "grunt-contrib-requirejs" : "*",
+    "grunt-contrib-uglify"    : "*",
     "matchdep": "*"
   }
 }
