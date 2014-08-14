@@ -8,11 +8,6 @@ $( document ).ready( function() {
         lang = "en";
     }
 
-    // set default language
-    if ( lang != "en" && lang !== "zh-CN" && lang !== "zh-TW" ) {
-        lang = "en";
-    }
-
     // set cookie
     var newLang = $.cookie( "lang" );
     if ( newLang !== undefined ) {
@@ -23,6 +18,14 @@ $( document ).ready( function() {
     newLang = getQueryString( "lang" );
     if ( newLang !== null ) {
         lang = newLang;
+    }
+
+    // set lower case
+    lang = lang.toLowerCase();
+
+    // set default language
+    if ( lang != "en" && lang !== "zh-cn" && lang !== "zh-tw" ) {
+        lang = "en";
     }
 
     // set body font-family
