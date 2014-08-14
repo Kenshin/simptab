@@ -75,8 +75,8 @@ module.exports = function( grunt ) {
       publish: {
         files: [{
             expand: true,
-            src: [ "assets/**", "index.html", "js/**" ],
-            dest: "dest"
+            src: [ "assets/**", "locales/**", "js/**", "vender/**", "index.html", "favicon.ico" ],
+            dest: "dest-www"
           }]
       }
     },
@@ -85,9 +85,9 @@ module.exports = function( grunt ) {
       js: {
         options: {
           baseUrl        : ".",
-          name           : ".js/main.js",
-          include        : [ ".js/main.js" ],
-          out            : "./dest/js/main.js",
+          name           : "js/main.js",
+          include        : [ "js/main.js" ],
+          out            : "./dest-www/js/main.js",
           keepBuildDir   : true,
           optimize       : "uglify2",
           uglify2        : {
@@ -103,7 +103,7 @@ module.exports = function( grunt ) {
           baseUrl        : ".",
           optimizeCss    : "standard",
           cssIn          : "./assets/css/main.css",
-          out            : "./dest/assets/css/main.css"
+          out            : "./dest-www/assets/css/main.css"
         }
       }
     }
