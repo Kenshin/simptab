@@ -55,6 +55,15 @@ module.exports = function( grunt ) {
     },
 
     jshint: {
+      options: {
+        browser: true,
+        jquery : true,
+        node   : true,
+        nonstandard: true,
+        globals: {
+          i18n : false
+        }
+      },
       all: [ "gruntfile.js", "js/*.js" ]
     },
 

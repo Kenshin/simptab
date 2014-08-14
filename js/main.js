@@ -9,26 +9,25 @@ $( document ).ready( function() {
     }
 
     // set default language
-    if ( lang != "en" && lang != "zh-CN" && lang != "zh-TW" ) {
+    if ( lang != "en" && lang !== "zh-CN" && lang !== "zh-TW" ) {
         lang = "en";
     }
 
     // set cookie
     var newLang = $.cookie( "lang" );
-    if ( newLang != undefined ) {
+    if ( newLang !== undefined ) {
         lang = newLang;
     }
 
     // get http://xxxx.index.html?lang=xxx
-    newLang = getQueryString( "lang" )
-    if ( newLang != null ) {
+    newLang = getQueryString( "lang" );
+    if ( newLang !== null ) {
         lang = newLang;
     }
 
     // set body font-family
     $( "body" ).css({ "font-family": lang.toLowerCase() });
-
-    if ( lang != "en" ) {
+    if ( lang !== "en" ) {
         $( "body" ).css({ "font-weight": "normal" });
     }
 
@@ -73,5 +72,5 @@ $( document ).ready( function() {
 function getQueryString( name ) {
     var reg = new RegExp( "(^|&)" + name + "=([^&]*)(&|$)", "i" );
     var r = window.location.search.substr(1).match( reg );
-    if (r != null) return unescape(r[2]); return null;
+    if (r !== null) return unescape(r[2]); return null;
 }
