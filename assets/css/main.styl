@@ -48,7 +48,7 @@ body
     font-family: en
     font-weight: bold
 
-    background: url( ..../image/bg.png ) repeat
+    background: url( ../image/bg.png ) repeat
 
     div
         adapter-display()
@@ -185,11 +185,10 @@ hr
         division()
 
 .content
-    width: 100%
-    all-browser "box-align", start, false
-
     ul
-        width: 100%
+        adapter-display()
+        all-browser "box-orient", vertical, false
+        width: main-width
 
         li
             adapter-display()
