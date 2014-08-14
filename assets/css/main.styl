@@ -234,6 +234,8 @@ hr
 
     font-weight: normal
 
+    width: 100%
+
     .copyright
         padding: 0px 0px 10px 0px
 
@@ -270,6 +272,14 @@ hr
             div
                 all-browser "box-pack", start, false
                 all-browser "box-flex", 1,     false
+
+            // support
+            &:nth-child(1)
+                nav
+                    adapter-display()
+                    all-browser "box-orient", vertical, false
+                    all-browser "box-flex" 1, false
+                    padding: 13px 0px;
 
             // author
             &:nth-child(2)
