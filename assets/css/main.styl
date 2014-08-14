@@ -7,12 +7,12 @@ all-browser( prop, arguments, ppro = true )
   for vendor in vendors
      { vendor }-{ prop }: arguments
 
-display-group(value)
-  value + prefix + box
+display-group( value, type )
+  value + prefix + type
 
-adapter-display()
+adapter-display( type = box )
   for vendor in vendors
-    display: display-group( vendor )
+    display: display-group( vendor, type )
 
 division()
     padding: 0px 0px 33px 0px
@@ -81,14 +81,14 @@ hr
             all-browser: "transition", background-position 0.3s linear
 
         a
+            adapter-display()
+            padding: 0px 5px 0px 0px
 
             span
-                display: block
+                adapter-display( "inline-box" )
 
                 width : 32px
                 height: @width
-
-                padding: 0px 7px 0px 0px
 
             &:nth-child(1)
                 span
@@ -302,15 +302,16 @@ hr
                             padding: 1px 0px
 
                             a
-                                padding: 0px
+                                adapter-display()
+                                padding: 0px 7px 0px 0px
+
+                                background-color: initial
 
                             span[class$="-icon"]
-                                display: block
+                                adapter-display( "inline-box" )
 
                                 width : 24px
                                 height: @width
-
-                                padding-right: 5px
 
                                 opacity: 0.4
 
