@@ -86,7 +86,7 @@ module.exports = function( grunt ) {
             drop_console : true
           }
       },
-      my_target: {
+      publish: {
         files: {
           "./dest-www/js/main.js": [ "./js/main.js" ]
         }
