@@ -96,15 +96,6 @@ module.exports = function( grunt ) {
             }
           }
         }
-      },
-
-      css: {
-        options: {
-          baseUrl        : ".",
-          optimizeCss    : "standard",
-          cssIn          : "./assets/css/main.css",
-          out            : "./dest-www/assets/css/main.css"
-        }
       }
     }
 
