@@ -1,0 +1,345 @@
+// adapter all browser css propery
+vendors = -webkit -moz -o -ms
+prefix  = "-"
+all-browser( prop, arguments, ppro = true )
+  if ppro
+    { prop }: arguments
+  for vendor in vendors
+     { vendor }-{ prop }: arguments
+
+display-group( value, type )
+  value + prefix + type
+
+adapter-display( type = box )
+  for vendor in vendors
+    display: display-group( vendor, type )
+
+division()
+    padding: 0px 0px 33px 0px
+
+main-width = 960px
+
+@font-face
+    src: url( ../font/en.otf )
+    font-family: en
+
+@font-face
+    src: url( ../font/zh-cn.woff )
+    font-family: zh-cn
+
+@font-face
+    src: url( ../font/zh-tw.ttf )
+    font-family: zh-tw
+
+html
+    width  : 100%
+    height : 100%
+
+body
+    adapter-display()
+    all-browser "box-flex", 1, false
+    all-browser "box-orient", vertical, false
+
+    width   : 100%
+    height  : 100%
+    margin  : 0px
+    padding : 0px
+
+    font-family: en
+    font-weight: bold
+
+    background: url( /assets/image/bg.png ) repeat
+
+    div
+        adapter-display()
+        all-browser "box-pack",  center, false
+        all-browser "box-align", center, false
+
+hr
+    width : 100%
+    height: 1px
+
+    border: 0px
+
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0))
+
+    margin: 30px 0px;
+
+.top
+
+    height: 50px
+
+    nav
+        adapter-display()
+        all-browser "box-orient", horizontal
+        all-browser "box-pack",   end, false
+
+        width : main-width
+
+        a[class$="flag"] span:hover
+            background-position: 0 3px
+            all-browser: "transition", background-position 0.3s linear
+
+        a
+            adapter-display()
+            padding: 0px 5px 0px 0px
+
+            span
+                adapter-display( "inline-box" )
+
+                width : 32px
+                height: @width
+
+            &:nth-child(1)
+                span
+                    background: url( /assets/image/zh-cn-flag.png ) no-repeat
+
+            &:nth-child(2)
+                span
+                    background: url( /assets/image/zh-tw-flag.png ) no-repeat
+
+            &:nth-child(3)
+                span
+                    background: url( /assets/image/en-flag.png ) no-repeat
+
+.title
+    h1
+        font-size: 50px
+    span
+        display : block
+        position: relative
+
+        left  : 181px
+        bottom: 64px
+
+        width : 24px
+        height: 24px
+
+        background: url( /assets/image/chrome.png ) no-repeat
+
+.download
+    adapter-display()
+    all-browser "box-align", end, false
+
+    division()
+
+.btn-download
+    adapter-display()
+    all-browser : "box-align", center, false
+
+    padding: 15px
+
+    color: #fff
+    font-size: 42px
+
+    text-shadow    : #136491 0px 1px 2px
+    text-decoration: none
+
+    background: linear-gradient(to bottom,#2FA6E4,#2292CC) #2292CC repeat-x
+
+    border-color: #066397
+    all-browser : "border-radius", 6px
+    all-browser : "box-shadow", 0 1px 5px rgba(0, 0, 0, 0.75)
+
+    span
+        display: block
+
+        width : 48px
+        height: 48px
+
+        background: url( /assets/image/webstore.png ) no-repeat
+
+    &:hover
+        text-decoration: none
+        background-position: 0 -15px
+
+        all-browser: "transition", background-position 0.1s linear
+        all-browser: "box-shadow", initial
+
+.btn-offline-download
+    padding: 0px 2px
+
+    text-decoration: none
+    color: #000
+
+    &:hover
+        background-color  : rgba(0,0,0,.4)
+        all-browser: "transition", background-color 1s ease
+        all-browser: "border-radius", 3px
+
+.smaller
+    font-size: 10px
+
+.main
+    division()
+
+    div
+        all-browser "box-orient", vertical, false
+
+    img
+        width : main-width
+        height: 335px
+
+        border: 0px
+
+        division()
+
+.content
+    width: 100%
+    all-browser "box-align", start, false
+
+    ul
+        width: 100%
+
+        li
+            adapter-display()
+            all-browser "box-orient", horizontal, false
+            all-browser "box-flex",   1,          false
+            all-browser "box-align",  center,     false
+
+            list-style: none
+
+            width: 100%
+
+            div
+                width:  350px
+                height: 175px
+
+            span
+                adapter-display()
+                all-browser "box-flex",   1,          false
+                all-browser "box-align",  center,     false
+
+            &:nth-of-type(even)
+                all-browser "box-pack", end, false
+
+            &:nth-of-type(1)
+                div
+                    background: url( /assets/image/mutil-language.png ) no-repeat
+
+            &:nth-of-type(2)
+                div
+                    background: url( /assets/image/infomation.png ) no-repeat
+                span
+                    all-browser "box-pack", end, false
+
+            &:nth-of-type(3)
+                div
+                    background: url( /assets/image/download.png ) no-repeat
+
+.footer
+    all-browser "box-orient", vertical, false
+
+    background-color: #333
+    color: #fff
+
+    font-weight: normal
+
+    .copyright
+        padding: 0px 0px 10px 0px
+
+    a
+        padding: 0px 2px
+
+        color: #fff
+        text-decoration: none
+        font-weight: bold
+
+        &:hover
+            color: #000
+            background-color  : rgba(255,255,255,1)
+            all-browser: "transition", background-color 1s ease
+            all-browser: "border-radius", 3px
+
+    // first child
+    ul
+        adapter-display()
+        all-browser "box-orient", horizontal, false
+        all-browser "box-sizing", border-box, false
+        all-browser "box-pack",   center,     false
+
+        list-style: none
+
+        li
+            adapter-display()
+            all-browser "box-flex",   1,        false
+            all-browser "box-orient", vertical, false
+
+            width: ( main-width / 2 )
+            padding: 5px
+
+            div
+                all-browser "box-pack", start, false
+                all-browser "box-flex", 1,     false
+
+            // author
+            &:nth-child(2)
+
+                .photo
+                    display: block
+
+                    width : 46px
+                    height: @width
+
+                    all-browser "border-radius", 50%
+
+                    background: url( /assets/image/photo.jpg ) no-repeat
+
+                div
+                    div
+                        adapter-display()
+                        all-browser "box-orient", vertical, false
+                        all-browser "box-align",  start,    false
+
+                        padding: 0px 5px
+
+                        p
+                            margin: 0px
+
+                        nav
+                            adapter-display()
+
+                            padding: 1px 0px
+
+                            a
+                                adapter-display()
+                                padding: 0px 7px 0px 0px
+
+                                background-color: initial
+
+                            span[class$="-icon"]
+                                adapter-display( "inline-box" )
+
+                                width : 24px
+                                height: @width
+
+                                opacity: 0.4
+
+                                &:hover
+                                    all-browser "transition", opacity .3s ease
+                                    opacity: 1
+
+                            .weibo-icon
+                                background: url( /assets/image/weibo-icon.png ) no-repeat
+
+                            .douban-icon
+                                background: url( /assets/image/douban-icon.png ) no-repeat
+
+                            .gplus-icon
+                                background: url( /assets/image/gplus-icon.png ) no-repeat
+
+                            .linkin-icon
+                                background: url( /assets/image/linkin-icon.png ) no-repeat
+
+                            span[class^="weibo"]:hover
+                                background: url( /assets/image/weibo-hover-icon.png ) no-repeat
+
+                            span[class^="douban"]:hover
+                                background: url( /assets/image/douban-hover-icon.png ) no-repeat
+
+                            span[class^="gplus"]:hover
+                                background: url( /assets/image/gplus-hover-icon.png ) no-repeat
+
+                            span[class^="linkin"]:hover
+                                background: url( /assets/image/linkin-hover-icon.png ) no-repeat
+

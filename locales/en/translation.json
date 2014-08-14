@@ -1,0 +1,16 @@
+{
+    "title"   : "SimpTab - Minimalistic New Tab Page",
+    "download": "DOWNLOAD",
+    "or"      : "&nbsp;or",
+    "offline" : "offline Download",
+    "feature1": "Multiple language support, automatic switch, without your intervention.",
+    "feature2": "The story behind each picture.",
+    "feature3": "Each HD picture is available for download.",
+    "support" : "Support",
+    "feedback": "If you experience any problems, please feedback:",
+    "contact" : " or Contact ",
+    "author"  : "Author",
+    "end"     : ".",
+    "job"     : "Web front-end Engineer and Flex Architect",
+    "footer"  : "SimpTab - Minimalistic's chrome new tab page extension"
+}
