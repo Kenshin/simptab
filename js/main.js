@@ -28,6 +28,10 @@ $( document ).ready( function() {
     // set body font-family
     $( "body" ).css({ "font-family": lang.toLowerCase() });
 
+    if ( lang != "en" ) {
+        $( "body" ).css({ "font-weight": "normal" });
+    }
+
     // set options
     var options = {
         load         : "current",
@@ -56,7 +60,7 @@ $( document ).ready( function() {
         $(".footer li:nth-child(1) div span:nth-of-type(1)").html( t( "feedback" ));
         $(".footer li:nth-child(1) div span:nth-of-type(2)").html( t( "contact" ));
         $(".footer li:nth-child(1) div a:nth-of-type(2)").html( t( "author" ).toLowerCase() );
-        $(".footer li:nth-child(1) div span:nth-of-type(3)").html( t( "author" ).toLowerCase() );
+        $(".footer li:nth-child(1) div span:nth-of-type(3)").html( t( "end" ).toLowerCase() );
 
         $(".footer li:nth-child(2) h2").html( t( "author" ));
         $(".footer li:nth-child(2) p:nth-child(2)").html( t( "job" ));

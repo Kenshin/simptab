@@ -1,4 +1,16 @@
 {
-	"title": "簡&nbsp;&nbsp;Tab - 极簡的Chrome新標簽頁擴展",
-	"download": "下载"
+    "title"   : "&nbsp;&nbsp;簡&nbsp;Tab - 極簡的Chrome新標簽頁擴展",
+    "download": "立即下載",
+    "or"      : "&nbsp;或者",
+    "offline" : "離線下載",
+    "feature1": "多語言支持，自動切換，無需幹預。",
+    "feature2": "每張圖片背後的故事。",
+    "feature3": "每張高清圖片可下載。",
+    "support" : "支持",
+    "feedback": "如果在使用的過程中遇到了任何問題，請反饋：",
+    "contact" : "或者 聯系",
+    "author"  : "作者",
+    "end"     : "。",
+    "job"     : "前端開發工程師/Flex架構師",
+    "footer"  : "簡&nbsp;Tab - 極簡的Chrome新標簽頁擴展，望妳每次打開都有好心情"
 }
