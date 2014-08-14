@@ -25,6 +25,9 @@ $( document ).ready( function() {
         lang = newLang;
     }
 
+    // set body font-family
+    $( "body" ).css({ "font-family": lang.toLowerCase() });
+
     // set options
     var options = {
         load         : "current",
