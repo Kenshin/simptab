@@ -4,7 +4,7 @@
 }
 
 @font-face {
-    src: url("../fonts/zh_CN.woff") format( "woff" );
+    src: url("../fonts/zh_CN.svg") format( "svg" );
     font-family: "zh_CN";
 }
 
