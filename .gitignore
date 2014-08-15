@@ -1,4 +1,5 @@
 #ignore node_modules
 node_modules/**
-dest/**
+dest-extension/**
+dest-www/**
 publish/**

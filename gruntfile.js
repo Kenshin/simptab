@@ -7,7 +7,7 @@ module.exports = function( grunt ) {
     pkg        : grunt.file.readJSON( "package.json" ),
 
     clean: {
-      publish: [ "dest" ]
+      publish: [ "dest-extension" ]
     },
 
     copy: {
@@ -15,7 +15,7 @@ module.exports = function( grunt ) {
         files: [{
             expand: true,
             src: [ "_locales/**", "assets/**", "vender/require.js", "main.html", "manifest.json" ],
-            dest: "dest"
+            dest: "dest-extension"
           }]
       }
     },
@@ -27,7 +27,7 @@ module.exports = function( grunt ) {
           mainConfigFile : "./js/main.js",
           name           : "main",
           include        : [ "jquery", "background", "date" , "controlbar", "setting", "i18n" ],
-          out            : "./dest/js/main.js",
+          out            : "./dest-extension/js/main.js",
           keepBuildDir   : true,
           optimize       : "uglify2",
           uglify2        : {
@@ -43,7 +43,7 @@ module.exports = function( grunt ) {
           baseUrl        : ".",
           optimizeCss    : "standard",
           cssIn          : "./assets/css/main.css",
-          out            : "./dest/assets/css/main.css"
+          out            : "./dest-extension/assets/css/main.css"
         }
       }
     }
