@@ -127,10 +127,10 @@ hr
     adapter-display()
     all-browser : "box-align", center, false
 
-    padding: 15px
+    padding: 15px 15px 10px 15px
 
     color: #fff
-    font-size: 42px
+    font-size: 33px
 
     text-shadow    : #136491 0px 1px 2px
     text-decoration: none
@@ -145,16 +145,32 @@ hr
         display: block
 
         width : 48px
-        height: 48px
+        height: @width
 
         background: url( ../image/webstore.png ) no-repeat
+
+    nav
+        adapter-display()
+        all-browser "box-orient", vertical, false
+        all-browser "box-align",  end,      false
+
+        line-height: 0.5
+
+        h3
+            padding: 0px
+            margin : 0px
+
+            line-height: 48px
+
+        div
+            font-size  : 10px
 
     &:hover
         text-decoration: none
         background-position: 0 -15px
 
         all-browser: "transition", background-position 0.1s linear
-        all-browser: "box-shadow", initial
+        all-browser: "box-shadow", 0 1px 5px rgba(0, 0, 0, 0)
 
 .btn-offline-download
     padding: 0px 2px
