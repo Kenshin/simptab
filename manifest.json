@@ -3,7 +3,7 @@
     "version"        : "1.0.0",
     "description"    : "__MSG_extension_desc__",
     "default_locale" : "en",
-    "homepage_url"   : "https://github.com/kenshin/simptab",
+    "homepage_url"   : "http://kenshin.github.io/simptab",
     "chrome_url_overrides": {
         "newtab": "main.html"
     },
