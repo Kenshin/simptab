@@ -16,6 +16,6 @@
         "storage",
         "*://*/bing.com*"
     ],
-    "update_url": "http://k-zone.cn/simptab/updates.xml",
+    "update_url": "http://kenshin.github.io/simptab/updates.xml",
     "manifest_version": 2
 }
