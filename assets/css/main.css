@@ -233,6 +233,10 @@ body {
     background-image: url("../images/weibo.png");
 }
 
+.twittericon {
+    background-image: url("../images/twitter.png");
+}
+
 .emailicon {
     background-image: url("../images/email.png");
 }
