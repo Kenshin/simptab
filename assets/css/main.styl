@@ -297,6 +297,35 @@ hr
                     all-browser "box-flex" 1, false
                     padding: 13px 0px;
 
+                    // share
+                    nav
+                        padding: 0px
+                        all-browser "box-orient", horizontal, false
+
+                        a
+                            background-color: rgba(0, 0, 0, 0)
+                            padding: 0px 2px 0px 0px
+
+                            span
+                                display: block
+
+                                width : 24px
+                                height: @width
+
+                                opacity: 0.8
+
+                            .weibo-share-icon
+                                background: url( ../image/weibo-share-icon.png ) no-repeat
+
+                            .twitter-share-icon
+                                background: url( ../image/twitter-share-icon.png ) no-repeat
+
+                            .facebook-share-icon
+                                background: url( ../image/facebook-share-icon.png ) no-repeat
+
+                            .gplus-share-icon
+                                background: url( ../image/gplus-share-icon.png ) no-repeat
+
             // author
             &:nth-child(2)
 
