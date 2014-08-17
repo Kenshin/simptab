@@ -237,6 +237,13 @@ body {
     background-image: url("../images/twitter.png");
 }
 
+.facebookicon {
+    background-image: url("../images/facebook.png");
+}
+
+.gplusicon {
+    background-image: url("../images/gplus.png");
+}
 .emailicon {
     background-image: url("../images/email.png");
 }
