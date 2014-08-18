@@ -256,8 +256,6 @@ hr
         padding: 0px 0px 10px 0px
 
     a
-        padding: 0px 2px
-
         color: #fff
         text-decoration: none
         font-weight: bold
@@ -291,11 +289,53 @@ hr
 
             // support
             &:nth-child(1)
-                nav
+                div
                     adapter-display()
                     all-browser "box-orient", vertical, false
-                    all-browser "box-flex" 1, false
-                    padding: 13px 0px;
+                    all-browser "box-flex",   1,        false
+                    all-browser "box-align",  start,    false
+
+                    div:nth-of-type(2)
+                        adapter-display()
+                        all-browser "box-orient", horizontal, false
+                        all-browser "box-flex",   1,          false
+
+                    // share
+                    nav
+                        adapter-display()
+                        all-browser "box-orient", horizontal, false
+
+                        padding: 0px
+
+                        a
+                            adapter-display()
+                            padding: 0px 7px 0px 0px
+
+                            background-color: rgba(0, 0, 0, 0)
+
+                            span
+                                display: block
+
+                                width : 24px
+                                height: @width
+
+                                opacity: 0.2
+
+                                &:hover
+                                  opacity: 1
+                                  all-browser: "transition", opacity 1s ease
+
+                            .weibo-share-icon
+                                background: url( ../image/weibo-share-icon.png ) no-repeat
+
+                            .twitter-share-icon
+                                background: url( ../image/twitter-share-icon.png ) no-repeat
+
+                            .facebook-share-icon
+                                background: url( ../image/facebook-share-icon.png ) no-repeat
+
+                            .gplus-share-icon
+                                background: url( ../image/gplus-share-icon.png ) no-repeat
 
             // author
             &:nth-child(2)
@@ -338,7 +378,7 @@ hr
                                 width : 24px
                                 height: @width
 
-                                opacity: 0.4
+                                opacity: 0.2
 
                                 &:hover
                                     all-browser "transition", opacity .3s ease
