@@ -58,10 +58,10 @@ $( document ).ready( function() {
         $(".main li:nth-of-type(3) span").html( t( "feature3" ));
 
         $(".footer li:nth-child(1) h2").html( t( "support" ));
-        $(".footer li:nth-child(1) div div:nth-of-type(1)").html( t( "feedback" ));
-        $(".footer li:nth-child(1) div div:nth-of-type(2) span:nth-of-type(1)").html( t( "contact" ));
-        $(".footer li:nth-child(1) div div:nth-of-type(2) a:nth-of-type(2)").html( t( "author" ).toLowerCase() );
-        $(".footer li:nth-child(1) div div:nth-of-type(2) span:nth-of-type(2)").html( t( "end" ).toLowerCase() );
+        $(".footer li:nth-child(1) div p:nth-of-type(1)").html( t( "feedback" ));
+        $(".footer li:nth-child(1) div p:nth-of-type(2) span:nth-of-type(1)").html( t( "contact" ));
+        $(".footer li:nth-child(1) div p:nth-of-type(2) a:nth-of-type(2)").html( t( "author" ).toLowerCase() );
+        $(".footer li:nth-child(1) div p:nth-of-type(2) span:nth-of-type(2)").html( t( "end" ).toLowerCase() );
 
         $(".footer li:nth-child(2) h2").html( t( "author" ));
         $(".footer li:nth-child(2) p:nth-child(2)").html( t( "job" ));
