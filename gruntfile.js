@@ -68,14 +68,14 @@ module.exports = function( grunt ) {
     },
 
     clean: {
-      publish: [ "dest" ]
+      publish: [ "dest-www" ]
     },
 
     copy: {
       publish: {
         files: [{
             expand: true,
-            src: [ "assets/**", "locales/**", "js/**", "vender/**", "favicon.ico" ],
+            src: [ "assets/**","!assets/**/*.styl", "locales/**", "js/**", "vender/**", "favicon.ico" ],
             dest: "dest-www"
           }]
       }
@@ -88,7 +88,7 @@ module.exports = function( grunt ) {
           collapseWhitespace: true
         },
         files: {
-          'dest-www/index.html': 'index.html'
+          "dest-www/index.html": "index.html"
         }
       }
     },
@@ -112,7 +112,7 @@ module.exports = function( grunt ) {
     use matchdep each grunt-* with grunt.loadNpmTasks method */
   require( "matchdep" ).filterDev( "grunt-*" ).forEach( grunt.loadNpmTasks );
 
-  grunt.registerTask( "default", [ "connect", "watch" ]);
+  grunt.registerTask( "default", [ "jshint", "stylus", "connect", "watch" ]);
 
   grunt.registerTask( "publish", [ "clean", "copy", "htmlmin", "uglify" ]);
 
