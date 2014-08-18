@@ -3,7 +3,7 @@
     "version"        : "1.0.0",
     "description"    : "__MSG_extension_desc__",
     "default_locale" : "en",
-    "homepage_url"   : "http://kenshin.github.io/simptab",
+    "homepage_url"   : "http://ksria.com/simptab",
     "chrome_url_overrides": {
         "newtab": "main.html"
     },
@@ -16,6 +16,6 @@
         "storage",
         "*://*/bing.com*"
     ],
-    "update_url": "http://kenshin.github.io/simptab/updates.xml",
+    "update_url": "http://ksria.com/simptab/updates.xml",
     "manifest_version": 2
 }
