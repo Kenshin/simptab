@@ -75,11 +75,24 @@ module.exports = function( grunt ) {
       publish: {
         files: [{
             expand: true,
-            src: [ "assets/**", "locales/**", "js/**", "vender/**", "index.html", "favicon.ico" ],
+            src: [ "assets/**", "locales/**", "js/**", "vender/**", "favicon.ico" ],
             dest: "dest-www"
           }]
       }
     },
+
+    htmlmin: {
+      publish: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'dest-www/index.html': 'index.html'
+        }
+      }
+    },
+
     uglify: {
       options: {
           compress     : {
@@ -101,6 +114,6 @@ module.exports = function( grunt ) {
 
   grunt.registerTask( "default", [ "connect", "watch" ]);
 
-  grunt.registerTask( "publish", [ "clean", "copy", "uglify" ]);
+  grunt.registerTask( "publish", [ "clean", "copy", "htmlmin", "uglify" ]);
 
 };
