@@ -256,7 +256,7 @@ hr
         padding: 0px 0px 10px 0px
 
     a
-        padding: 0px 2px
+        //padding: 0px 2px
 
         color: #fff
         text-decoration: none
@@ -291,11 +291,17 @@ hr
 
             // support
             &:nth-child(1)
-                nav
+                div
                     adapter-display()
                     all-browser "box-orient", vertical, false
-                    all-browser "box-flex" 1, false
-                    padding: 13px 0px;
+                    all-browser "box-flex",   1,        false
+                    all-browser "box-align",  start,    false
+
+                    div:nth-of-type(2)
+                        adapter-display()
+                        all-browser "box-orient", horizontal, false
+                        all-browser "box-flex",   1,          false
+
 
                     // share
                     nav
@@ -306,7 +312,7 @@ hr
 
                         a
                             adapter-display()
-                            padding: 0px 2px 0px 0px
+                            padding: 0px 7px 0px 0px
 
                             background-color: rgba(0, 0, 0, 0)
 
