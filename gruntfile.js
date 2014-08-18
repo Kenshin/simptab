@@ -14,9 +14,21 @@ module.exports = function( grunt ) {
       publish: {
         files: [{
             expand: true,
-            src: [ "_locales/**", "assets/**", "!assets/**/*.woff", "vender/require.js", "main.html", "manifest.json" ],
+            src: [ "_locales/**", "assets/**", "!assets/**/*.woff", "vender/require.js", "manifest.json" ],
             dest: "dest-extension"
           }]
+      }
+    },
+
+    htmlmin: {
+      publish: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          "dest-extension/main.html": "main.html"
+        }
       }
     },
 
@@ -54,6 +66,6 @@ module.exports = function( grunt ) {
     use matchdep each grunt-* with grunt.loadNpmTasks method */
   require( "matchdep" ).filterDev( "grunt-*" ).forEach( grunt.loadNpmTasks );
 
-  grunt.registerTask( "default", [ "clean", "copy", "requirejs" ]);
+  grunt.registerTask( "default", [ "clean", "copy", "htmlmin", "requirejs" ]);
 
 };

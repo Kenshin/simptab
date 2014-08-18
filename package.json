@@ -9,6 +9,7 @@
     "grunt-contrib-clean"     : "*",
     "grunt-contrib-copy"      : "*",
     "grunt-contrib-requirejs" : "^0.4.4",
+    "grunt-contrib-htmlmin"   : "*",
     "matchdep": "*"
   }
 }
