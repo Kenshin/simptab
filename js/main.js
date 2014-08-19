@@ -16,7 +16,7 @@ requirejs.config({
 requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n" ], function ( $, background, date, controlbar, setting, i18n ) {
 
   // set background font
-  background.setLang( i18n.GetLang() );
+  background.SetLang( i18n.GetLang() );
 
   // set language
   i18n.Init();
