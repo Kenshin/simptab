@@ -1,5 +1,5 @@
 
-define([ "jquery", "date" ], function( $, date ) {
+define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
 
     defaultBackground = "../assets/images/background.jpg";
 
@@ -15,16 +15,32 @@ define([ "jquery", "date" ], function( $, date ) {
     }
 
     getBackgroundByAPI = function ( random ) {
+
+        var local = "",
+            url   = "";
+
+        // set local
+        if ( i18n.GetLang() == "zh_CN" ) {
+            local = "cn.";
+        }
+
+        // set url
+        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
+
+        console.log("url = " + url );
+
         $.ajax({
             type       : "GET",
             timeout    : 2000,
-            url        : "http://bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1",
+            url        : url,
             dataType   : "json",
             error      : function(  jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR)
                 console.log(textStatus)
                 console.log(errorThrown)
-                setDefaultBackground();
+                if ( $("body").css( "background-image" ) == "none" ) {
+                    setDefaultBackground();
+                }
             },
             success    : function( result ) {
                 if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
