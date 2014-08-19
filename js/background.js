@@ -1,42 +1,6 @@
 
 define([ "jquery", "date" ], function( $, date ) {
 
-    /*
-    getDefault = function () {
-        $.ajax({
-            type       : "GET",
-            timeout    : 2000,
-            url        : "http://bing.com",
-            success    : function( data ) {
-                var begin   = data.indexOf( "g_img=" ),
-                    newdata = data.substr( begin ),
-                    end     = newdata.indexOf( ".jpg" ),
-                    url     = newdata.substring( 12, end ) + ".jpg",
-                    hdurl   = getHDurl( url );
-
-                console.log("url = "   + hdurl);
-                console.log("end = "   + end);
-                console.log("begin = " + begin);
-
-                // set background image
-                $("body").css({ "background-image": "url(" + hdurl + ")" });
-
-                // transfor to datauri
-                save( hdurl );
-
-                // get background name
-                begin    = data.indexOf( 'id="sh_cp" title="' );
-                newdata  = data.substr( begin + 18 );
-                end      = newdata.indexOf( '"' );
-                var name = newdata.substring( 0, end ) + ".jpg";
-
-                // download
-                download( hdurl, name );
-            }
-        });
-    }
-    */
-
     createRandom = function() {
         var random = Math.floor( Math.random() * 20 );
         if ( random > 19 ) {
