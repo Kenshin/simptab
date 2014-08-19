@@ -45,4 +45,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n" ], 
   controlbar.Listen();
   setting.Listen();
 
+  // validation background
+  background.Valid();
+
 });

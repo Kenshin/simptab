@@ -1,6 +1,8 @@
 
 define([ "jquery", "date" ], function( $, date ) {
 
+    defaultBackground = "../assets/images/background.jpg";
+
     createRandom = function() {
         var random = Math.floor( Math.random() * 20 );
         if ( random > 19 ) {
@@ -22,6 +24,7 @@ define([ "jquery", "date" ], function( $, date ) {
                 console.log(jqXHR)
                 console.log(textStatus)
                 console.log(errorThrown)
+                setDefaultBackground();
             },
             success    : function( result ) {
                 if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
@@ -96,6 +99,16 @@ define([ "jquery", "date" ], function( $, date ) {
         img.src = url;
     }
 
+    setDefaultBackground = function() {
+        // set background image
+        setBackground( defaultBackground );
+        // set download url
+        setDownloadURL( defaultBackground, "background" );
+        // set info url
+        setInfoURL( "#", "Info" );
+
+    }
+
     setDownloadURL = function( url, name ) {
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
@@ -116,7 +129,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
         // when 'simptab-background-state' is failed set background default
         if ( localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success" ) {
-            url = "../assets/images/background.jpg";
+            url = defaultBackground;
         }
 
         $("body").css({ "background-image": "url(" + url + ")" });
@@ -191,7 +204,7 @@ define([ "jquery", "date" ], function( $, date ) {
         Get: function ( is_random ) {
 
             var random = 0,
-                url    = "../assets/images/background.jpg";
+                url    = defaultBackground;
 
             // set background refresh
             localStorage["simptab-background-refresh"] = "false";
@@ -254,11 +267,13 @@ define([ "jquery", "date" ], function( $, date ) {
                     localStorage["simptab-background-random"] = random;
 
                     // set background image
-                    setBackground( url );
+                    //setBackground( url );
                     // set download url
-                    setDownloadURL( url, "background" );
+                    //setDownloadURL( url, "background" );
                     // set info url
-                    setInfoURL( "#", "Info" );
+                    //setInfoURL( "#", "Info" );
+                    // set default background
+                    setDefaultBackground();
 
                     // get background
                     getBackgroundByAPI( random );
@@ -275,6 +290,14 @@ define([ "jquery", "date" ], function( $, date ) {
 
             // set font-family
             $( "body" ).css({ "font-family" : lang });
+        },
+
+        Valid: function() {
+            setTimeout( function() {
+                if ( $("body").css( "background-image" ) == "none" ) {
+                    setDefaultBackground();
+                }
+            }, 8 * 1000 );
         }
     }
 });
