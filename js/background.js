@@ -1,41 +1,7 @@
 
-define([ "jquery", "date" ], function( $, date ) {
+define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
 
-    /*
-    getDefault = function () {
-        $.ajax({
-            type       : "GET",
-            timeout    : 2000,
-            url        : "http://bing.com",
-            success    : function( data ) {
-                var begin   = data.indexOf( "g_img=" ),
-                    newdata = data.substr( begin ),
-                    end     = newdata.indexOf( ".jpg" ),
-                    url     = newdata.substring( 12, end ) + ".jpg",
-                    hdurl   = getHDurl( url );
-
-                console.log("url = "   + hdurl);
-                console.log("end = "   + end);
-                console.log("begin = " + begin);
-
-                // set background image
-                $("body").css({ "background-image": "url(" + hdurl + ")" });
-
-                // transfor to datauri
-                save( hdurl );
-
-                // get background name
-                begin    = data.indexOf( 'id="sh_cp" title="' );
-                newdata  = data.substr( begin + 18 );
-                end      = newdata.indexOf( '"' );
-                var name = newdata.substring( 0, end ) + ".jpg";
-
-                // download
-                download( hdurl, name );
-            }
-        });
-    }
-    */
+    defaultBackground = "../assets/images/background.jpg";
 
     createRandom = function() {
         var random = Math.floor( Math.random() * 20 );
@@ -49,16 +15,38 @@ define([ "jquery", "date" ], function( $, date ) {
     }
 
     getBackgroundByAPI = function ( random ) {
+
+        var local = "",
+            url   = "";
+
+        // set local
+        if ( i18n.GetLang() == "zh_CN" ) {
+            local = "cn.";
+        }
+
+        // set url
+        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
+
+        console.log("url = " + url );
+
         $.ajax({
             type       : "GET",
             timeout    : 2000,
-            url        : "http://bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1",
+            url        : url,
             dataType   : "json",
+            error      : function(  jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR)
+                console.log(textStatus)
+                console.log(errorThrown)
+                if ( $("body").css( "background-image" ) == "none" ) {
+                    setDefaultBackground();
+                }
+            },
             success    : function( result ) {
                 if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
                     var data = result.images[0],
                         url  = data.url,
-                        hdurl= getHDurl( url ),
+                        hdurl= getHDurl( getTrueUrl( url )),
                         name = data.copyright,
                         enddate = data.enddate,
                         info = getInfo( data.copyrightlink );
@@ -86,11 +74,23 @@ define([ "jquery", "date" ], function( $, date ) {
         });
     }
 
+    getTrueUrl = function ( url ) {
+        if ( url.indexOf( "/" ) == 0 ) {
+            return "http://www.bing.com" + url;
+        }
+        return url;
+    }
+
     getHDurl = function ( url ) {
         return url.replace( "1366x768", "1920x1080" );
     }
 
     getInfo = function ( url ) {
+        reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
+        if( !reg.test( url )) {
+            return "#";
+        }
+
         return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
     }
 
@@ -115,6 +115,16 @@ define([ "jquery", "date" ], function( $, date ) {
         img.src = url;
     }
 
+    setDefaultBackground = function() {
+        // set background image
+        setBackground( defaultBackground );
+        // set download url
+        setDownloadURL( defaultBackground, "background" );
+        // set info url
+        setInfoURL( "#", "Info" );
+
+    }
+
     setDownloadURL = function( url, name ) {
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
@@ -131,6 +141,13 @@ define([ "jquery", "date" ], function( $, date ) {
     }
 
     setBackground = function( url ) {
+        console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
+
+        // when 'simptab-background-state' is failed set background default
+        if ( localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success" ) {
+            url = defaultBackground;
+        }
+
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 
@@ -143,12 +160,29 @@ define([ "jquery", "date" ], function( $, date ) {
 
                     console.log("fileEntry.toURL() = " + fileEntry.toURL())
 
+                    fileWriter.onwritestart  = function(e) {
+                        console.log( "Write start: ", e );
+                        localStorage["simptab-background-state"] = "staring";
+                    };
+
+                    fileWriter.onprogress  = function(e) {
+                        console.log( "Write process: ", e );
+                        localStorage["simptab-background-state"] = "pending";
+                    };
+
                     fileWriter.onwriteend = function(e) {
-                        console.log('Write completed.');
+                        console.log( "Write completed: ", e );
+                        localStorage["simptab-background-state"] = "success";
+                    };
+
+                    fileWriter.onabort  = function(e) {
+                        console.log( "Write abort: ", e );
+                        localStorage["simptab-background-state"] = "failed";
                     };
 
                     fileWriter.onerror = function(e) {
-                        console.log('Write failed: ' + e.toString());
+                        console.log( "Write failed: ", e );
+                        localStorage["simptab-background-state"] = "failed";
                     };
 
                     fileWriter.write( dataURItoBlob( dataURI ));
@@ -161,6 +195,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
     errorHandler = function (e) {
         console.log(e)
+        localStorage["simptab-background-state"] = "failed";
     }
 
     dataURItoBlob = function ( dataURI ) {
@@ -185,7 +220,7 @@ define([ "jquery", "date" ], function( $, date ) {
         Get: function ( is_random ) {
 
             var random = 0,
-                url    = "../assets/images/background.jpg";
+                url    = defaultBackground;
 
             // set background refresh
             localStorage["simptab-background-refresh"] = "false";
@@ -248,16 +283,37 @@ define([ "jquery", "date" ], function( $, date ) {
                     localStorage["simptab-background-random"] = random;
 
                     // set background image
-                    setBackground( url );
+                    //setBackground( url );
                     // set download url
-                    setDownloadURL( url, "background" );
+                    //setDownloadURL( url, "background" );
                     // set info url
-                    setInfoURL( "#", "Info" );
+                    //setInfoURL( "#", "Info" );
+                    // set default background
+                    setDefaultBackground();
 
                     // get background
                     getBackgroundByAPI( random );
                 }
             });
+        },
+
+        SetLang: function( lang ) {
+
+            // check locales
+            if ( lang != "en" && lang != "zh_CN" && lang != "zh_TW" ) {
+                lang = "en";
+            }
+
+            // set font-family
+            $( "body" ).css({ "font-family" : lang });
+        },
+
+        Valid: function() {
+            setTimeout( function() {
+                if ( $("body").css( "background-image" ) == "none" ) {
+                    setDefaultBackground();
+                }
+            }, 8 * 1000 );
         }
     }
 });

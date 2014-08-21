@@ -1,6 +1,10 @@
 {
+    "locales": {
+        "message": "zh_CN"
+    },
+
     "extension_name": {
-        "message": "\u7b80 Tab"
+        "message": "\u7b80 Tab - New Tab"
     },
 
     "extension_desc": {
@@ -29,6 +33,10 @@
 
     "controlbar_setting": {
         "message": "\u8bbe\u5b9a"
+    },
+
+    "setting_width": {
+        "message": "225"
     },
 
     "setting_background_every_day": {

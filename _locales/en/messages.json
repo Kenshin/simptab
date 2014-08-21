@@ -1,10 +1,14 @@
 {
+    "locales": {
+        "message": "en"
+    },
+
     "extension_name": {
-        "message": "SimpTab"
+        "message": "SimpTab - New Tab"
     },
 
     "extension_desc": {
-        "message": "Minimalistic's chrome  new tab page extension, hope every time open, you have a good mood."
+        "message": "Minimalistic's chrome new tab page extension, hope every time open, you have a good mood."
     },
 
     "controlbar_bookmarks": {
@@ -29,6 +33,10 @@
 
     "controlbar_setting": {
         "message": "Setting"
+    },
+
+    "setting_width": {
+        "message": "270"
     },
 
     "setting_background_every_day": {

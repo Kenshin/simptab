@@ -1,0 +1,4 @@
+#ignore node_modules
+node_modules/**
+dest-extension/**
+dest-www/**

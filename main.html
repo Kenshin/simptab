@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SimpTab</title>
+    <title>SimpTab - Minimalistic New Tab Page by Chrome Extensions</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="assets/css/main.css">
@@ -12,46 +12,50 @@
     <div class="content"></div>
     <div class="sidebar">
         <ul class="controlbar">
-            <li><a class="chromelink" href="#" url="chrome://bookmarks" title="Bookmarks"><span class="icon bookmarksicon"></span></a></li>
-            <li><a class="chromelink" href="#" url="chrome://history" title="History"><span class="icon historyicon"></span></a></a></li>
-            <li><a class="chromelink" href="#" url="chrome://apps" title="Apps"><span class="icon appsicon"></span></a></a></li>
-            <li><a class="controlink" href="#" url="info" title="Info"><span class="icon infoicon"></span></a></a></li>
-            <li><a class="controlink" href="#" url="download" title="Download background"><span class="icon downloadicon"></span></a></a></li>
-            <li><a class="controlink" href="#" url="setting" title="Setting"><span class="icon settingicon"></span></a></a></li>
+            <li class="tooltip-left"><span class="tooltip">Bookmarks</span><a class="chromelink" href="#" url="chrome://bookmarks"><span class="icon bookmarksicon"></span></a></li>
+            <li class="tooltip-left"><span class="tooltip">History</span><a class="chromelink" href="#" url="chrome://history"><span class="icon historyicon"></span></a></li>
+            <li class="tooltip-left"><span class="tooltip">Apps</span><a class="chromelink" href="#" url="chrome://apps"><span class="icon appsicon"></span></a></li>
+            <li class="tooltip-left"><span class="tooltip">Info</span><a class="controlink" href="#" url="info"><span class="icon infoicon"></span></a></li>
+            <li class="tooltip-left"><span class="tooltip">Download background</span><a class="controlink" href="#" url="download"><span class="icon downloadicon"></span></a></li>
+            <li class="tooltip-left"><span class="tooltip">Setting</span><a class="controlink" href="#" url="setting"><span class="icon settingicon"></span></a></li>
         </ul>
-        <div id="time">-:-</div>
+        <div class="clock">
+            <div class="tooltip-top">
+                <span class="tooltip">&nbsp;</span>
+                <div id="time">-:-</div>
+            </div>
+        </div>
     </div>
     <div class="setting">
         <div class="changestate">
             <div class="lineradio">
-                <span class="unchecked"></span>
                 <input id="everyday" type="radio" name="changestate" value="day">
                 <label for="everyday">Change Background Every Day</label>
             </div>
-            <div class="lineradio">
-                <span class="checked"></span>
-                <input id="everytime" type="radio" name="changestate" value="time" checked="true">
+            <div class="lineradio lrselected">
+                <input id="everytime" type="radio" name="changestate" value="time">
                 <label for="everytime">Change Background Every Time</label>
             </div>
         </div>
         <div class="clockstate">
-            <div class="lineradio">
-                <span class="checked"></span>
-                <input id="clockshow" type="radio" name="clockstate" value="show" checked="true">
+            <div class="lineradio lrselected">
+                <input id="clockshow" type="radio" name="clockstate" value="show">
                 <label for="clockshow">Show Clock</label>
             </div>
             <div class="lineradio">
-                <span class="unchecked"></span>
                 <input id="clockhide" type="radio" name="clockstate" value="hide">
                 <label for="clockhide">Hide Clock</label>
             </div>
         </div>
         <div class="contact">
-            <a target="_blank" href="http://service.weibo.com/share/share.php?url=https://chrome.google.com/webstore/detail/xxxxxxx/xxxxxxx&title=SimpTab%20-%20%E7%AE%80%E7%BA%A6%E7%9A%84Chrome%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%89%A9%E5%B1%95%EF%BC%8C%E5%B8%8C%E6%9C%9B%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%EF%BC%8C%E4%BD%A0%E6%9C%89%E4%B8%AA%E5%A5%BD%E5%BF%83%E6%83%85%E3%80%82" title="Share weibo.com"><span class="icon weiboicon"></span></a>
-            <a target="_blank" href="http://about.me/kenshin" title="Contact Me"><span class="icon emailicon"></span></a>
+            <a target="_blank" href="http://service.weibo.com/share/share.php?url=http://ksria.com/simptab&title=SimpTab%20-%20%E7%AE%80%E7%BA%A6%E7%9A%84Chrome%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%89%A9%E5%B1%95%EF%BC%8C%E5%B8%8C%E6%9C%9B%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%EF%BC%8C%E4%BD%A0%E6%9C%89%E4%B8%AA%E5%A5%BD%E5%BF%83%E6%83%85%E3%80%82&pic=http://ksria.com/simptab/assets/image/introduce.png" title="Share weibo.com"><span class="icon weiboicon"></span></a>
+            <a target="_blank" href="https://twitter.com/intent/tweet?via=wanglei001&text=Minimalistic%27s%20chrome%20new%20tab%20page%20extension,%20hope%20every%20time%20open,%20you%20have%20a%20good%20mood.&url=http://ksria.com/simptab" title="Share twitter.com"><span class="icon twittericon"></span></a>
+            <a target="_blank" href="https://www.facebook.com/dialog/feed?app_id=1528743474024441&link=http://ksria.com/simptab&picture=http://i.imgur.com/9OjRMRQ.png&name=SimpTab&caption=Minimalistic New Tab Page by Chrome Extensions&description=Minimalistic's chrome new tab page extension, hope every time open, you have a good mood.&redirect_uri=http://ksria.com/simptab" title="Share facebook.com"><span class="icon facebookicon"></span></a>
+            <a target="_blank" href="https://plus.google.com/share?url=http://ksria.com/simptab" title="Share G+"><span class="icon gplusicon"></span></a>
+            <a target="_blank" href="mailto:kenshin@ksria.com" title="Contact Me"><span class="icon emailicon"></span></a>
         </div>
         <div class="footer">
-            <p><small>© 2014 ksria.com by <a href="http://k-zone.cn/zblog" target="_blank">Kenshin Wang</a></small></p>
+            <p><small>© 2014 <a target="_blank" href="http://ksria.com">ksria.com</a> by <a href="http://kenshin.wang" target="_blank">Kenshin Wang</a></small></p>
         </div>
     </div>
     <script data-main="js/main.js" src="vender/require.js"></script>

@@ -2,6 +2,7 @@
 requirejs.config({
     baseUrl: ".",
     paths: {
+      "main"       : "js/main",
       "jquery"     : "vender/jquery-2.1.1.min",
       "background" : "js/background",
       "date"       : "js/date",
@@ -14,6 +15,10 @@ requirejs.config({
 // main
 requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n" ], function ( $, background, date, controlbar, setting, i18n ) {
 
+  // set background font
+  background.SetLang( i18n.GetLang() );
+
+  // set language
   i18n.Init();
 
   // init radio input
@@ -39,5 +44,8 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n" ], 
   // listen
   controlbar.Listen();
   setting.Listen();
+
+  // validation background
+  background.Valid();
 
 });

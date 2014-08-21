@@ -1,21 +1,23 @@
 {
-    "name"           : "__MSG_extension_name__",
-    "version"        : "1.0.0",
-    "description"    : "__MSG_extension_desc__",
-    "default_locale" : "en",
-    "homepage_url"   : "https://github.com/kenshin/simptab",
+    "manifest_version": 2,
+    "name"            : "__MSG_extension_name__",
+    "short_name"      : "SimpTab",
+    "version"         : "1.0.0",
+    "default_locale"  : "en",
+    "description"     : "__MSG_extension_desc__",
+    "author"          : "Kenshin",
+    "homepage_url"    : "http://ksria.com/simptab",
     "chrome_url_overrides": {
         "newtab": "main.html"
     },
     "icons": {
-        "16" : "icon16.png",
-        "48" : "icon48.png",
-        "128": "icon128.png"
+        "16" : "assets/images/icon16.png",
+        "48" : "assets/images/icon48.png",
+        "128": "assets/images/icon128.png"
     },
     "permissions": [
         "storage",
         "*://*/bing.com*"
     ],
-    "update_url": "https://clients2.google.com/service/update2/crx",
-    "manifest_version": 2
+    "update_url": "http://ksria.com/simptab/updates.xml"
 }
