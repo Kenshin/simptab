@@ -1,9 +1,12 @@
 {
-    "name"           : "__MSG_extension_name__",
-    "version"        : "1.0.0",
-    "description"    : "__MSG_extension_desc__",
-    "default_locale" : "en",
-    "homepage_url"   : "http://ksria.com/simptab",
+    "manifest_version": 2,
+    "name"            : "__MSG_extension_name__",
+    "short_name"      : "SimpTab",
+    "version"         : "1.0.0",
+    "default_locale"  : "en",
+    "description"     : "__MSG_extension_desc__",
+    "author"          : "Kenshin",
+    "homepage_url"    : "http://ksria.com/simptab",
     "chrome_url_overrides": {
         "newtab": "main.html"
     },
@@ -16,6 +19,5 @@
         "storage",
         "*://*/bing.com*"
     ],
-    "update_url": "http://ksria.com/simptab/updates.xml",
-    "manifest_version": 2
+    "update_url": "http://ksria.com/simptab/updates.xml"
 }
