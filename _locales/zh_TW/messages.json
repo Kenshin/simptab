@@ -1,0 +1,65 @@
+{
+    "locales": {
+        "message": "zh_TW"
+    },
+
+    "extension_name": {
+        "message": "\u7c21 Tab - New Tab"
+    },
+
+    "extension_desc": {
+        "message": "\u6781\u7c21\u7684Chrome\u65b0\u6a19\u7c3d\u9801\u64f4\u5c55\uff0c\u671b\u4f60\u6bcf\u6b21\u6253\u958b\u90fd\u6709\u597d\u5fc3\u60c5\u3002"
+    },
+
+    "controlbar_bookmarks": {
+        "message": "\u66f8\u7c3d"
+    },
+
+    "controlbar_history": {
+        "message": "\u6b77\u53f2"
+    },
+
+    "controlbar_apps": {
+        "message": "\u61c9\u7528"
+    },
+
+    "controlbar_info": {
+        "message": "\u8a73\u7d30\u4fe1\u606f"
+    },
+
+    "controlbar_download": {
+        "message": "\u4e0b\u8f09\u7576\u524d\u80cc\u666f"
+    },
+
+    "controlbar_setting": {
+        "message": "\u8a2d\u5b9a"
+    },
+
+    "setting_width": {
+        "message": "225"
+    },
+
+    "setting_background_every_day": {
+        "message": "\u6bcf\u5929\u66f4\u63db\u80cc\u666f"
+    },
+
+    "setting_background_every_time": {
+        "message": "\u96a8\u6a5f\u66f4\u63db\u80cc\u666f"
+    },
+
+    "setting_show_clock": {
+        "message": "\u986f\u793a\u6642\u9418"
+    },
+
+    "setting_hide_clock": {
+        "message": "\u96b1\u85cf\u6642\u9418"
+    },
+
+    "setting_contact_weibo": {
+        "message": "\u5206\u4eab\u5230\u5fae\u535a"
+    },
+
+    "setting_contact_me": {
+        "message": "\u806f\u4fc2\u4f5c\u8005"
+    }
+}

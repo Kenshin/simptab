@@ -1,0 +1,15 @@
+{
+  "name"    : "SimpTab",
+  "version" : "1.0.0",
+  "engines" : {
+    "node"  : ">= 0.10.0"
+  },
+  "devDependencies"           : {
+    "grunt"                   : "*",
+    "grunt-contrib-clean"     : "*",
+    "grunt-contrib-copy"      : "*",
+    "grunt-contrib-requirejs" : "^0.4.4",
+    "grunt-contrib-htmlmin"   : "*",
+    "matchdep": "*"
+  }
+}

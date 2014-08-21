@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension>
+    <id>com.ksria.simptab</id>
+    <author>Kenshin Wang</author>
+    <name>极简新标签页(SimpTab)</name>
+    <version>1.0.0</version>
+    <show_icon>true</show_icon>
+    <description>
+        极简的Chrome新标签页扩展，望你每次打开都有好心情。
+    </description>
+	<background page="background.html"/>
+    <request_api_version>1</request_api_version>
+    <permissions>
+       <permission>storage</permission>
+       <permission>*://*/bing.com*</permission>
+   </permissions>
+    <update_url>
+        http://ksria.com/simptab/updates.xml
+    </update_url>
+    <manifest_version>2</manifest_version>
+    <minimum_chrome_version>22.0.0</minimum_chrome_version>
+</extension>
