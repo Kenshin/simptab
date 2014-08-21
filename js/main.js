@@ -69,6 +69,10 @@ $( document ).ready( function() {
         $(".footer .copyright span:nth-child(1)").html( t( "footer" ));
     });
 
+    $( ".btn-download" ).click( function() {
+        window.location.href = "https://chrome.google.com/webstore/detail/kbgmbmkhepchmmcnbdbclpkpegbgikjc" + "?hl=" + i18n.lng();
+    });
+
 });
 
 function getQueryString( name ) {
