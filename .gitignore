@@ -1,3 +1,4 @@
 node_modules/**
 dest-extension/**
 dest-www/**
+publish/**
