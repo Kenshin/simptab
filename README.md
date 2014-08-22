@@ -9,7 +9,7 @@ SimpTab - New Tab
 ![snapshot1](http://i.imgur.com/V5D0H9F.png)
 ![snapshot2](http://i.imgur.com/roFLvLx.png)
 ![snapshot3](http://i.imgur.com/g5K9oJI.png)
-1[snapshot3](http://i.imgur.com/QM7K1Ph.png)
+![snapshot3](http://i.imgur.com/QM7K1Ph.png)
 
 #### Version 1.0.0:
 - Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
