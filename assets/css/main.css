@@ -254,6 +254,9 @@ body {
 .footer {
     display: -webkit-box;
     -webkit-box-align: end;
+    -webkit-box-orient: vertical;
+
+    margin: 3px 0px;
 
     font-weight: normal;
     letter-spacing: 0px;
@@ -261,17 +264,22 @@ body {
     font-family: "en";
 }
 
-.footer p {
+.footer small {
+    display: block;
     width: 100%;
+}
+
+.footer small:nth-of-type(1) {
+    padding: 1px 0px 0px 0px;
     border-top: 1px solid #555;
 }
 
-.footer p a {
+.footer small a {
     color: #555;
     text-decoration: none;
 }
 
-.footer p a:hover {
+.footer small a:hover {
     background-color: rgba(0,0,0,.4);
     -webkit-transition: background-color 1s ease;
     -webkit-border-radius:3px;

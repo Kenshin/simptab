@@ -12,9 +12,6 @@ https://github.com/kenshin/simptab/issues
 联络方式：
 http://kenshin.wang | kenshin@ksria.com
 
-CHANGELOG：
-2014-08-20, Version 1.0.0
-
 ========================================================================================================================
 
 簡 Tab - 極簡的Chrome新標簽頁擴展，望妳每次打開都有好心情。 去除多余功能，只關注標簽頁呈現效果。
@@ -30,9 +27,6 @@ http://huaban.com/pins/53553/
 
 聯絡方式：
 http://kenshin.wang | kenshin@ksria.com
-
-CHANGELOG：
-2014-08-20, Version 1.0.0
 
 ========================================================================================================================
 
@@ -50,5 +44,12 @@ https://github.com/kenshin/simptab/issues
 Contact:
 http://kenshin.wang | kenshin@ksria.com
 
+========================================================================================================================
+
 CHANGELOG：
-2014-08-20, Version 1.0.0
+- 2014-08-22, Version 1.0.1
+  * Fixed issues change `SimpTab - Minimalistic New Tab Page by Chrome Extensions` to `SimpTab - New Tab` from main.html's title.
+  * Fixed issues some of the copywriting error.
+  * Add website and Rote link with main.html's footer.
+
+- 2014-08-20, Version 1.0.0
