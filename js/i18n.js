@@ -21,7 +21,10 @@ define([ "jquery" ], function( $ ) {
         $($( ".lineradio" ).find("label")[3]).text( i18n( "setting_hide_clock" ));
 
         $($(".setting .contact").find("a")[0]).attr( "title", i18n( "setting_contact_weibo" ));
-        $($(".setting .contact").find("a")[1]).attr( "title", i18n( "setting_contact_me" ));
+        $($(".setting .contact").find("a")[1]).attr( "title", i18n( "setting_contact_twitter" ));
+        $($(".setting .contact").find("a")[2]).attr( "title", i18n( "setting_contact_facebook" ));
+        $($(".setting .contact").find("a")[3]).attr( "title", i18n( "setting_contact_gplus" ));
+        $($(".setting .contact").find("a")[4]).attr( "title", i18n( "setting_contact_me" ));
     }
 
     return {
