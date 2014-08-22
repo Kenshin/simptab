@@ -1,5 +1,5 @@
 SimpTab - New Tab by Chrome Extensions
-=======https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN
+=======
 ### Minimalist Chrome new tab extension, hope to have good mood every time you open it. Removed redundant function, focused tab rendering.
 
 #### Homepage:
