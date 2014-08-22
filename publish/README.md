@@ -1,6 +1,6 @@
 简 Tab - 极简的Chrome新标签页扩展，望你每次打开都有好心情。 去除多余功能，只关注标签页呈现效果。
 
-Version 1.0.0：
+功能：
 - 自动识别语言（简体、繁体、英文）
 - 每日/随机更换背景（来自Bing.com）
 - 下载高清（HD）背景（来自Bing.com）
@@ -16,7 +16,7 @@ http://kenshin.wang | kenshin@ksria.com
 
 簡 Tab - 極簡的Chrome新標簽頁擴展，望妳每次打開都有好心情。 去除多余功能，只關注標簽頁呈現效果。
 
-Version 1.0.0：
+功能：
 - 自動識別語言（簡體、繁體、英文）
 - 每日/隨機更換背景（來自Bing.com）
 - 下載高清（HD）背景（來自Bing.com）
@@ -32,7 +32,7 @@ http://kenshin.wang | kenshin@ksria.com
 
 SimpTab - Minimalist Chrome new tab extension, hope to have good mood every time you open it. Removed redundant function, focused tab rendering.
 
-Version 1.0.0:
+Feature:
 - Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
 - Daily/randomly changing background from Bing.com.
 - Downloading (HD) background from Bing.com.
