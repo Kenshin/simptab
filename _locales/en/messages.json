@@ -56,7 +56,19 @@
     },
 
     "setting_contact_weibo": {
-        "message": "Share weibo.com"
+        "message": "Share Weibo"
+    },
+
+    "setting_contact_twitter": {
+        "message": "Share Twitter"
+    },
+
+    "setting_contact_facebook": {
+        "message": "Share Facebook"
+    },
+
+    "setting_contact_gplus": {
+        "message": "Share Google plus"
     },
 
     "setting_contact_me": {

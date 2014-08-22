@@ -56,7 +56,19 @@
     },
 
     "setting_contact_weibo": {
-        "message": "\u5206\u4eab\u5230\u5fae\u535a"
+        "message": "\u5206\u4eab\u5230 \u5fae\u535a"
+    },
+
+    "setting_contact_twitter": {
+        "message": "\u5206\u4eab\u5230 Twitter"
+    },
+
+    "setting_contact_facebook": {
+        "message": "\u5206\u4eab\u5230 Facebook"
+    },
+
+    "setting_contact_gplus": {
+        "message": "\u5206\u4eab\u5230 Google plus"
     },
 
     "setting_contact_me": {
