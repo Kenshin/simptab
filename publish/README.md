@@ -51,5 +51,6 @@ CHANGELOG：
   * Fixed issues change `SimpTab - Minimalistic New Tab Page by Chrome Extensions` to `SimpTab - New Tab` from main.html's title.
   * Fixed issues some of the copywriting error.
   * Add website and Rote link with main.html's footer.
+  * Modify sns share title multi-language.
 
 - 2014-08-20, Version 1.0.0
