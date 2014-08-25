@@ -4,6 +4,10 @@ define([ "jquery" ], function( $ ) {
     i18n = function( value ) {
         return chrome.i18n.getMessage( value );
     }
+    
+    tab = function () {
+        document.title = i18n("title");
+    }
 
     controlbar = function () {
         $($( ".controlbar" ).children()[0]).find( ".tooltip" ).text( i18n( "controlbar_bookmarks" ));
@@ -31,6 +35,7 @@ define([ "jquery" ], function( $ ) {
         Init: function () {
             controlbar();
             setting();
+            tab();
         },
 
         GetSettingWidth: function () {
