@@ -2,9 +2,13 @@
     "locales": {
         "message": "zh_CN"
     },
+    
+    "title": {
+        "message": "\u7b80 Tab - \u65b0\u5efa\u6807\u7b7e"
+    },
 
     "extension_name": {
-        "message": "\u7b80 Tab - New Tab"
+        "message": "\u7b80 Tab - \u65b0\u5efa\u6807\u7b7e"
     },
 
     "extension_desc": {

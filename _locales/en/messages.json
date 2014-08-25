@@ -2,6 +2,10 @@
     "locales": {
         "message": "en"
     },
+    
+    "title": {
+        "message": "SimpTab - New Tab"
+    },
 
     "extension_name": {
         "message": "SimpTab - New Tab"
