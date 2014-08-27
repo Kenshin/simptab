@@ -29,9 +29,20 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
                             $target.removeClass( "close" );
                         });
                     }
-
                 }
             });
+        },
+
+        AutoClick: function( idx ) {
+            if ( idx < 3 ) {
+                $( $(".chromelink")[idx] ).click();
+            }
+            else if ( idx == 5 ) {
+                $($(".controlink")[2]).click();
+            }
+            else {
+
+            }
         }
     }
 });
