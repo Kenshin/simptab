@@ -7,7 +7,10 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
 
             // listen chrome link
             $( ".chromelink" ).click( function( event ) {
-                chrome.tabs.create({ url : $( event.currentTarget ).attr( "url" ) });
+                chrome.tabs.getCurrent( function( obj ) {
+                    chrome.tabs.create({ url : $( event.currentTarget ).attr( "url" ) });
+                    chrome.tabs.remove( obj.id );
+                })
             });
 
             // listen control link
