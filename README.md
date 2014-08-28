@@ -18,12 +18,14 @@ SimpTab - New Tab by Chrome Extensions
 - View the current background of meaning.
 
 #### Shortcuts:
-- `book`: Open Chrome's `Bookmark` tab.
-- `his` : Open Chrome's `History` tab.
-- `app` : Open Chrome's `Apps` tab.
-- `info`: Open current background's infomation. ( Bing.com's knows )
-- `down`: Download current background.
-- `set` : Open `SimpTab` `Setting` dashboard tab.
+Name | Description
+------ | ------
+`book` | Open Chrome's `Bookmark` tab.
+`his ` | Open Chrome's `History` tab.
+`app ` | Open Chrome's `Apps` tab.
+`info` | Open current background's infomation. ( Bing.com's knows )
+`down` | Download current background.
+`set ` | Open `SimpTab` `Setting` dashboard tab.
 
 #### Rate:
 <https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN>
