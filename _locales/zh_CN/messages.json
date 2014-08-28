@@ -3,6 +3,10 @@
         "message": "zh_CN"
     },
 
+    "title": {
+        "message": "\u7b80 Tab - \u65b0\u6807\u7b7e\u9875"
+    },
+
     "extension_name": {
         "message": "\u7b80 Tab - New Tab"
     },

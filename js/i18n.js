@@ -27,10 +27,15 @@ define([ "jquery" ], function( $ ) {
         $($(".setting .contact").find("a")[4]).attr( "title", i18n( "setting_contact_me" ));
     }
 
+    main = function () {
+        document.title = i18n( "title" );
+    }
+
     return {
         Init: function () {
             controlbar();
             setting();
+            main();
         },
 
         GetSettingWidth: function () {

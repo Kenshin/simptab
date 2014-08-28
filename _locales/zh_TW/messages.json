@@ -3,6 +3,10 @@
         "message": "zh_TW"
     },
 
+    "title": {
+        "message": "\u7c21 Tab - \u65b0\u589e\u5206\u9801"
+    },
+
     "extension_name": {
         "message": "\u7c21 Tab - New Tab"
     },

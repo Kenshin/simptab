@@ -4,16 +4,23 @@ requirejs.config({
     paths: {
       "main"       : "js/main",
       "jquery"     : "vender/jquery-2.1.1.min",
+      "mousetrap"  : "vender/mousetrap.min",
       "background" : "js/background",
       "date"       : "js/date",
       "controlbar" : "js/controlbar",
       "setting"    : "js/setting",
       "i18n"       : "js/i18n",
+      "shortcuts"  : "js/shortcuts"
+    },
+    shim: {
+      "mousetrap"   : {
+          exports  : "Mousetrap"
+      }
     }
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n" ], function ( $, background, date, controlbar, setting, i18n ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts" ], function ( $, background, date, controlbar, setting, i18n, shortcuts ) {
 
   // set background font
   background.SetLang( i18n.GetLang() );
@@ -47,5 +54,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n" ], 
 
   // validation background
   background.Valid();
+
+  shortcuts.Init();
 
 });

@@ -12,10 +12,20 @@ SimpTab - New Tab by Chrome Extensions
 ![snapshot3](http://i.imgur.com/QM7K1Ph.png)
 
 #### Feature:
-- Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
+- Automatic recognition of languages ( Chinese simplified, Chinese traditional, English ).
 - Daily/randomly changing background from Bing.com.
 - Downloading (HD) background from Bing.com.
 - View the current background of meaning.
+
+#### Shortcuts:
+Name | Description
+------ | ------
+`book` | Open Chrome's `Bookmark` tab.
+`his ` | Open Chrome's `History` tab.
+`app ` | Open Chrome's `Apps` tab.
+`info` | Open current background's infomation. ( Bing.com's knows )
+`down` | Download current background.
+`set ` | Open `SimpTab` `Setting` dashboard tab.
 
 #### Rate:
 <https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN>
@@ -34,6 +44,11 @@ SimpTab - New Tab by Chrome Extensions
 - Background image come from `Bing.com`.
 
 #### CHANGELOG：
+- 2014-08-28, Version 1.0.2
+  * Add multi-language to main.html's title. ( Contribute by **`@airycanon`** )
+  * Open Bookmark/Apps/Histroy/Info at current tab page.
+  * Add controlbar to shortcuts.
+
 - 2014-08-22, Version 1.0.1
   * Fixed issues change `SimpTab - Minimalistic New Tab Page by Chrome Extensions` to `SimpTab - New Tab` from main.html's title.
   * Fixed issues some of the copywriting error.

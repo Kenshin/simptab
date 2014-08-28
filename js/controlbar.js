@@ -7,7 +7,10 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
 
             // listen chrome link
             $( ".chromelink" ).click( function( event ) {
-                chrome.tabs.create({ url : $( event.currentTarget ).attr( "url" ) });
+                chrome.tabs.getCurrent( function( obj ) {
+                    chrome.tabs.create({ url : $( event.currentTarget ).attr( "url" ) });
+                    chrome.tabs.remove( obj.id );
+                })
             });
 
             // listen control link
@@ -26,9 +29,17 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
                             $target.removeClass( "close" );
                         });
                     }
-
                 }
             });
+        },
+
+        AutoClick: function( idx ) {
+            if ( idx < 3 ) {
+                $( $(".chromelink")[idx] ).click();
+            }
+            else {
+                $( $(".controlbar").find( "a" )[idx] )[0].click();
+            }
         }
     }
 });
