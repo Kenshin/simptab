@@ -47,6 +47,11 @@ http://kenshin.wang | kenshin@ksria.com
 ========================================================================================================================
 
 CHANGELOG：
+- 2014-08-28, Version 1.0.2
+  * Add multi-language to main.html's title.
+  * Open Bookmark/Apps/Histroy/Info at current tab page.
+  * Add controlbar to shortcuts.
+
 - 2014-08-22, Version 1.0.1
   * Fixed issues change `SimpTab - Minimalistic New Tab Page by Chrome Extensions` to `SimpTab - New Tab` from main.html's title.
   * Fixed issues some of the copywriting error.
