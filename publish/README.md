@@ -10,6 +10,9 @@
 - 下载高清（HD）背景（来自Bing.com）
 - 查看当前背景的含义
 
+关于安全性：
+- 代码已公开 https://github.com/kenshin/simptab
+
 问题反馈：
 https://github.com/kenshin/simptab/issues
 
@@ -30,6 +33,9 @@ http://kenshin.wang | kenshin@ksria.com
 - 下載高清（HD）背景（來自Bing.com）
 - 查看當前背景的含義
 
+關於安全性：
+- 代碼已公開 https://github.com/kenshin/simptab
+
 問題反饋：
 http://huaban.com/pins/53553/
 
@@ -45,6 +51,9 @@ Feature:
 - Daily/randomly changing background from Bing.com.
 - Downloading (HD) background from Bing.com.
 - View the current background of meaning.
+
+Security:
+- Open source https://github.com/kenshin/simptab
 
 Feedback:
 https://github.com/kenshin/simptab/issues
