@@ -1,6 +1,6 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='ggcneabogpidechjfmamlkdjdljjnfgo'>
-    <updatecheck codebase='http://kenshin.github.io/simptab/crx/1.0.1/simptab.crx' version='1.0.1' />
+    <updatecheck codebase='http://kenshin.github.io/simptab/crx/1.0.2/simptab.crx' version='1.0.2' />
   </app>
 </gupdate>
