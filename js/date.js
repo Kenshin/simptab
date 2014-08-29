@@ -35,7 +35,7 @@ define([ "jquery" ], function( $ ) {
 
         Now: function () {
             var date = new Date();
-            return date.getFullYear() + format( date.getUTCMonth() + 1 ) + format( date.getUTCDate()) + date.getHours() + date.getMinutes() + date.getSeconds();
+            return date.getFullYear() + format( date.getUTCMonth() + 1 ) + format( date.getUTCDate()) + format( date.getHours()) + format( date.getMinutes()) + format( date.getSeconds());
         }
     }
 });
