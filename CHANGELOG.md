@@ -1,4 +1,11 @@
 CHANGELOG:
+- 2014-08-29, Version 1.0.3
+  * Fix Download background's duplication of name error.
+  * Fix when first running, info and download's title exist's error.
+  * Fix when background is default wallpaper, info and download's title exist's error.
+  * Fix when locale not zh-cn, change knows to search link.
+  * Fix change clock's font-family to `roboto.ttf`.
+
 - 2014-08-28, Version 1.0.2
   * Add multi-language to main.html's title.
   * Open Bookmark/Apps/Histroy/Info at current tab page.
