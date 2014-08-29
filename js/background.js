@@ -157,15 +157,15 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
             url  = "#";
             name = null;
         }
+        if ( i18n.GetLocale() != "zh_CN" ) {
+            url = url.replace( "/knows/", "/" );
+        }
         $( ".controlink[url='info']" ).attr({
             "title"    : name,
             "href"     : url
         });
         if ( url == null ) {
             $( ".controlink[url='info']" ).removAttr( "title" );
-        }
-        if ( i18n.GetLocale() != "zh_CN" ) {
-            $( ".controlink[url='info']" ).attr( "href", "#" );
         }
     }
 
