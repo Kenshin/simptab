@@ -42,7 +42,7 @@ define([ "jquery" ], function( $ ) {
             return i18n( "setting_width" );
         },
 
-        GetLang: function() {
+        GetLocale: function() {
             return i18n( "locales" );
         }
 
