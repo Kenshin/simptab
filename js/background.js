@@ -130,9 +130,9 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         // set background image
         setBackground( defaultBackground );
         // set download url
-        setDownloadURL( defaultBackground, "Wallpaper", "wallpaper" );
+        setDownloadURL( defaultBackground, null, "wallpaper" );
         // set info url
-        setInfoURL( "#", "Info" );
+        setInfoURL( "#", null );
     }
 
     setDownloadURL = function( url, name, shortname ) {
@@ -141,6 +141,9 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
             "href"     : url,
             "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
+        if ( url == null ) {
+            $( ".controlink[url='download']" ).removAttr( "title" );
+        }
     }
 
     setInfoURL = function( url, name ) {
@@ -148,6 +151,9 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
             "title"    : name,
             "href"     : url
         });
+        if ( url == null ) {
+            $( ".controlink[url='info']" ).removAttr( "title" );
+        }
     }
 
     setBackground = function( url ) {
