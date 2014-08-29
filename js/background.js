@@ -163,6 +163,9 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         if ( url == null ) {
             $( ".controlink[url='info']" ).removAttr( "title" );
         }
+        if ( i18n.GetLocale() != "zh_CN" ) {
+            $( ".controlink[url='info']" ).attr( "href", "#" );
+        }
     }
 
     setBackground = function( url ) {
