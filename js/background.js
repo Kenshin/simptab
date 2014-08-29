@@ -131,7 +131,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         // set background image
         setBackground( defaultBackground );
         // set download url
-        setDownloadURL( defaultBackground, null, "wallpaper" );
+        setDownloadURL( defaultBackground, null, "Wallpaper" );
         // set info url
         setInfoURL( "#", null );
     }
