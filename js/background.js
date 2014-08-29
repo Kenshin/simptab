@@ -140,7 +140,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         if ( isDefaultbackground() ) {
             url  = defaultBackground;
             name = null;
-            shortname = "wallpaper";
+            shortname = "Wallpaper";
         }
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
