@@ -136,6 +136,11 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
     }
 
     setDownloadURL = function( url, name, shortname ) {
+        if ( isDefaultbackground() ) {
+            url  = defaultBackground;
+            name = null;
+            shortname = "wallpaper";
+        }
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
             "href"     : url,
@@ -147,6 +152,10 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
     }
 
     setInfoURL = function( url, name ) {
+        if ( isDefaultbackground() ) {
+            url  = "#";
+            name = null;
+        }
         $( ".controlink[url='info']" ).attr({
             "title"    : name,
             "href"     : url
@@ -157,14 +166,15 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
     }
 
     setBackground = function( url ) {
-        console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
-
-        // when 'simptab-background-state' is failed set background default
-        if ( localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success" ) {
+        if ( isDefaultbackground() ) {
             url = defaultBackground;
         }
-
         $("body").css({ "background-image": "url(" + url + ")" });
+    }
+
+    isDefaultbackground = function() {
+        console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
+        return localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success"
     }
 
     saveImg2Local = function ( dataURI ) {
@@ -297,16 +307,8 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                 else {
                     // save random
                     localStorage["simptab-background-random"] = random;
-
-                    // set background image
-                    //setBackground( url );
-                    // set download url
-                    //setDownloadURL( url, "background" );
-                    // set info url
-                    //setInfoURL( "#", "Info" );
                     // set default background
                     setDefaultBackground();
-
                     // get background
                     getBackgroundByAPI( random );
                 }
