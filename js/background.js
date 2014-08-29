@@ -20,7 +20,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
             url   = "";
 
         // set local
-        if ( i18n.GetLang() == "zh_CN" ) {
+        if ( i18n.GetLocale() == "zh_CN" ) {
             local = "cn.";
         }
 
@@ -48,14 +48,14 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                         url  = data.url,
                         hdurl= getHDurl( getTrueUrl( url )),
                         name = data.copyright,
-                        enddate = data.enddate,
-                        info = getInfo( data.copyrightlink );
+                        info = getInfo( data.copyrightlink ),
+                        enddate   = data.enddate;
 
                     if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                         // set background image
                         setBackground( hdurl );
                         // set download url
-                        setDownloadURL( hdurl, name );
+                        setDownloadURL( hdurl, name, getShortName( info ));
                         // set info url
                         setInfoURL( info, name );
                     }
@@ -86,12 +86,24 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
     }
 
     getInfo = function ( url ) {
-        reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
+        var reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
         if( !reg.test( url )) {
             return "#";
         }
 
         return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
+    }
+
+    getShortName = function( shortname ) {
+
+        shortname = shortname.replace( "www.bing.com/knows", "" )
+                             .replace( "http://", "" )
+                             .replace( "https://", "" )
+                             .replace( "/search?q=", "" );
+        shortname = shortname.split( "+" )[0];
+        shortname = shortname.split( "&" )[0];
+
+        return decodeURIComponent( shortname );
     }
 
     image2URI = function ( url, enddate, name ) {
@@ -119,36 +131,54 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         // set background image
         setBackground( defaultBackground );
         // set download url
-        setDownloadURL( defaultBackground, "background" );
+        setDownloadURL( defaultBackground, null, "Wallpaper" );
         // set info url
-        setInfoURL( "#", "Info" );
-
+        setInfoURL( "#", null );
     }
 
-    setDownloadURL = function( url, name ) {
+    setDownloadURL = function( url, name, shortname ) {
+        if ( isDefaultbackground() ) {
+            url  = defaultBackground;
+            name = null;
+            shortname = "Wallpaper";
+        }
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
             "href"     : url,
-            "download" : name + ".jpg"
+            "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
+        if ( url == null ) {
+            $( ".controlink[url='download']" ).removAttr( "title" );
+        }
     }
 
     setInfoURL = function( url, name ) {
+        if ( isDefaultbackground() ) {
+            url  = "#";
+            name = null;
+        }
+        if ( i18n.GetLocale() != "zh_CN" ) {
+            url = url.replace( "/knows/", "/" );
+        }
         $( ".controlink[url='info']" ).attr({
             "title"    : name,
             "href"     : url
         });
+        if ( url == null ) {
+            $( ".controlink[url='info']" ).removAttr( "title" );
+        }
     }
 
     setBackground = function( url ) {
-        console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
-
-        // when 'simptab-background-state' is failed set background default
-        if ( localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success" ) {
+        if ( isDefaultbackground() ) {
             url = defaultBackground;
         }
-
         $("body").css({ "background-image": "url(" + url + ")" });
+    }
+
+    isDefaultbackground = function() {
+        console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
+        return localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success"
     }
 
     saveImg2Local = function ( dataURI ) {
@@ -248,7 +278,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                         // set download url
-                        setDownloadURL( data.url, data.name );
+                        setDownloadURL( data.url, data.name, getShortName( data.info ));
                         // set info url
                         setInfoURL( data.info, data.name );
 
@@ -271,7 +301,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                             // set background image
                             setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                             // set download url
-                            setDownloadURL( data.url, data.name );
+                            setDownloadURL( data.url, data.name, getShortName( data.info ));
                             // set info url
                             setInfoURL( data.info, data.name );
                         }
@@ -281,16 +311,8 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                 else {
                     // save random
                     localStorage["simptab-background-random"] = random;
-
-                    // set background image
-                    //setBackground( url );
-                    // set download url
-                    //setDownloadURL( url, "background" );
-                    // set info url
-                    //setInfoURL( "#", "Info" );
                     // set default background
                     setDefaultBackground();
-
                     // get background
                     getBackgroundByAPI( random );
                 }
