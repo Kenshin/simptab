@@ -101,6 +101,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                              .replace( "https://", "" )
                              .replace( "/search?q=", "" );
         shortname = shortname.split( "+" )[0];
+        shortname = shortname.split( "&" )[0];
 
         return decodeURIComponent( shortname );
     }
