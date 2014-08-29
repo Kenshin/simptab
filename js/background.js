@@ -20,7 +20,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
             url   = "";
 
         // set local
-        if ( i18n.GetLang() == "zh_CN" ) {
+        if ( i18n.GetLocale() == "zh_CN" ) {
             local = "cn.";
         }
 
