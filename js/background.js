@@ -48,14 +48,14 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                         url  = data.url,
                         hdurl= getHDurl( getTrueUrl( url )),
                         name = data.copyright,
-                        enddate = data.enddate,
-                        info = getInfo( data.copyrightlink );
+                        info = getInfo( data.copyrightlink ),
+                        enddate   = data.enddate;
 
                     if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                         // set background image
                         setBackground( hdurl );
                         // set download url
-                        setDownloadURL( hdurl, name );
+                        setDownloadURL( hdurl, name, getShortName( info ));
                         // set info url
                         setInfoURL( info, name );
                     }
@@ -86,12 +86,23 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
     }
 
     getInfo = function ( url ) {
-        reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
+        var reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
         if( !reg.test( url )) {
             return "#";
         }
 
         return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
+    }
+
+    getShortName = function( shortname ) {
+
+        shortname = shortname.replace( "www.bing.com/knows", "" )
+                             .replace( "http://", "" )
+                             .replace( "https://", "" )
+                             .replace( "/search?q=", "" );
+        shortname = shortname.split( "+" )[0];
+
+        return decodeURIComponent( shortname );
     }
 
     image2URI = function ( url, enddate, name ) {
@@ -119,17 +130,16 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         // set background image
         setBackground( defaultBackground );
         // set download url
-        setDownloadURL( defaultBackground, "background" );
+        setDownloadURL( defaultBackground, "Wallpaper", "wallpaper" );
         // set info url
         setInfoURL( "#", "Info" );
-
     }
 
-    setDownloadURL = function( url, name ) {
+    setDownloadURL = function( url, name, shortname ) {
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
             "href"     : url,
-            "download" : name + ".jpg"
+            "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
     }
 
@@ -248,7 +258,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                         // set download url
-                        setDownloadURL( data.url, data.name );
+                        setDownloadURL( data.url, data.name, getShortName( data.info ));
                         // set info url
                         setInfoURL( data.info, data.name );
 
@@ -271,7 +281,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                             // set background image
                             setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                             // set download url
-                            setDownloadURL( data.url, data.name );
+                            setDownloadURL( data.url, data.name, getShortName( data.info ));
                             // set info url
                             setInfoURL( data.info, data.name );
                         }
