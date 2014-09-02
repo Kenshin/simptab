@@ -2,3 +2,4 @@ node_modules/**
 dest-extension/**
 dest-www/**
 publish/**
+.DS_Store
