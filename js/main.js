@@ -6,6 +6,7 @@ requirejs.config({
       "jquery"     : "vender/jquery-2.1.1.min",
       "mousetrap"  : "vender/mousetrap.min",
       "background" : "js/background",
+      "apis"       : "js/apis",
       "date"       : "js/date",
       "controlbar" : "js/controlbar",
       "setting"    : "js/setting",

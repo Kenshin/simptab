@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
+define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
     defaultBackground = "../assets/images/background.jpg";
 
@@ -16,25 +16,9 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
 
     getBackgroundByAPI = function ( random ) {
 
-        var local = "",
-            url   = "";
-
-        // set local
-        if ( i18n.GetLocale() == "zh_CN" ) {
-            local = "cn.";
-        }
-
-        // set url
-        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
-
-        console.log("url = " + url );
-
-        $.ajax({
-            type       : "GET",
-            timeout    : 2000,
-            url        : url,
-            dataType   : "json",
-            error      : function(  jqXHR, textStatus, errorThrown ) {
+        apis.Bing(
+            random,
+            function( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR)
                 console.log(textStatus)
                 console.log(errorThrown)
@@ -42,7 +26,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                     setDefaultBackground();
                 }
             },
-            success    : function( result ) {
+            function( result) {
                 if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
                     var data = result.images[0],
                         url  = data.url,
@@ -69,9 +53,9 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                     // use local mode
                     chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
 
-                }
             }
         });
+
     }
 
     getTrueUrl = function ( url ) {
