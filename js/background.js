@@ -282,7 +282,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                         // set info url
                         setInfoURL( data.info, data.name );
 
-                        // get background
+                        // get new background
                         getBackgroundByAPI( random );
                     }
                     // random = false
