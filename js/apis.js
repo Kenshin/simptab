@@ -30,6 +30,22 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
                 }
             });
 
+        },
+
+        Unsplash: function( random, errorBack, callBack ) {
+
+            var obj       = {};
+            obj.url       = "https://unsplash.it/1920/1080/?random";
+            obj.copyright = "Unsplash-Image";
+            obj.copyrightlink = "#";
+            obj.enddate   = new Date();
+
+            var result    = {};
+            result.images = [];
+            result.images.push( obj );
+
+            callBack( result );
+
         }
     }
 });

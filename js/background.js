@@ -126,11 +126,17 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
             name = null;
             shortname = "Wallpaper";
         }
+
+        if ( shortname == "#" ) {
+            shortname = name;
+        }
+
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
-            "href"     : url,
+            "href"     : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
             "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
+
         if ( url == null ) {
             $( ".controlink[url='download']" ).removAttr( "title" );
         }
