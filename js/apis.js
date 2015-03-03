@@ -33,7 +33,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
 
     }
 
-    unsplash = function( random, errorBack, callBack ) {
+    unsplash = function( errorBack, callBack ) {
 
         console.log( "=== Unsplash.it call ===" );
 
@@ -80,7 +80,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
           else {
             odevity = Math.floor( random % 2 );
             if ( odevity == 1 ) {
-              unsplash( random, errorBack, callBack );
+              unsplash( errorBack, callBack );
             }
             else {
               wallhaven( errorBack, callBack );
