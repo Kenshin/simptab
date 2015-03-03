@@ -52,6 +52,8 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
           url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + random + ".jpg",
           result = createObj( url, "Wallhaven-Image" );
 
+      console.log( "Wall haven random: " + random );
+
       callBack( result );
 
     }
