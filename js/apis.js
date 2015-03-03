@@ -48,8 +48,15 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
 
       console.log( "=== Wallhaven.cc call ===" );
 
-      var random = Math.round(+new Date()).toString().substr(8),
-          url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + random + ".jpg",
+      var random = Math.round(+new Date()).toString().substr(8);
+
+      // when random is 6xxx recall
+      if ( random.substr( 0, 1 ) == 6 ) {
+        wallhaven( errBack, callBack );
+        return;
+      }
+
+      var url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + random + ".jpg",
           result = createObj( url, "Wallhaven-Image" );
 
       console.log( "Wall haven random: " + random );
@@ -75,19 +82,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
     return {
 
         Init: function ( random, errorBack, callBack ) {
-          var odevity = Math.floor( Math.round(+new Date()) % 2 );
-          if ( odevity == 0 ) {
-            bing( random, errorBack, callBack );
-          }
-          else {
-            odevity = Math.floor( random % 2 );
-            if ( odevity == 1 ) {
-              unsplash( errorBack, callBack );
-            }
-            else {
-              wallhaven( errorBack, callBack );
-            }
-          }
+          wallhaven( errorBack, callBack );
         }
     }
 });
