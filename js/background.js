@@ -16,7 +16,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
     getBackgroundByAPI = function ( random ) {
 
-        apis.Bing(
+        apis.Init(
             random,
             function( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR)
