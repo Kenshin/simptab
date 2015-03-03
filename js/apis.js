@@ -35,20 +35,39 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
 
     unsplash = function( random, errorBack, callBack ) {
 
-        console.log( "=== Unsplash.it call ===" )
+        console.log( "=== Unsplash.it call ===" );
 
-        var obj       = {};
-        obj.url       = "https://unsplash.it/1920/1080/?random";
-        obj.copyright = "Unsplash-Image";
-        obj.copyrightlink = "#";
-        obj.enddate   = new Date();
-
-        var result    = {};
-        result.images = [];
-        result.images.push( obj );
+        var url       = "https://unsplash.it/1920/1080/?random",
+            result    = createObj( url, "Unsplash-Image" );
 
         callBack( result );
 
+    }
+
+    wallhaven = function( errBack, callBack ) {
+
+      console.log( "=== Wallhaven.cc call ===" );
+
+      var random = Math.round(+new Date()).toString().substr(8),
+          url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + random + ".jpg",
+          result = createObj( url, "Wallhaven-Image" );
+
+      callBack( result );
+
+    }
+
+    createObj = function( url, copyright ) {
+      var obj       = {};
+      obj.url       = url;
+      obj.copyright = copyright;
+      obj.copyrightlink = "#";
+      obj.enddate   = new Date();
+
+      var result    = {};
+      result.images = [];
+      result.images.push( obj );
+
+      return result;
     }
 
     return {
@@ -64,7 +83,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
               unsplash( random, errorBack, callBack );
             }
             else {
-              // TO DO
+              wallhaven( errorBack, callBack );
             }
           }
         }
