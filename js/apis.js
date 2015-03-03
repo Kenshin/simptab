@@ -51,7 +51,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
       var random = Math.round(+new Date()).toString().substr(8);
 
       // when random is 6xxx recall
-      if ( random.substr( 0, 1 ) == 6 ) {
+      if ( random.substr( 0, 1 ) == 6 || random.substr( 0, 1 ) == 0 ) {
         wallhaven( errBack, callBack );
         return;
       }
