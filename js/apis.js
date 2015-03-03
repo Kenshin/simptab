@@ -82,7 +82,25 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
     return {
 
         Init: function ( random, errorBack, callBack ) {
+
+          // add test code
           wallhaven( errorBack, callBack );
+
+          /*
+          var odevity = Math.floor( Math.round(+new Date()) % 2 );
+          if ( odevity == 0 ) {
+            bing( random, errorBack, callBack );
+          }
+          else {
+            odevity = Math.floor( random % 2 );
+            if ( odevity == 1 ) {
+              unsplash( errorBack, callBack );
+            }
+            else {
+              wallhaven( errorBack, callBack );
+            }
+          }
+          */
         }
     }
 });
