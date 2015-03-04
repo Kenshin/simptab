@@ -53,7 +53,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
       return min + Math.round( rand * range );
     }
 
-    wallhaven = function( errBack, callBack ) {
+    wallhaven = function( errorBack, callBack ) {
 
       console.log( "=== Wallhaven.cc call ===" );
 
@@ -61,7 +61,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
           random = createRandoms( 0, max );
 
       if ( random < 0 || random > max ) {
-        wall( errorBack, callBack );
+        wallhaven( errorBack, callBack );
         return;
       }
 
