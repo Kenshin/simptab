@@ -100,6 +100,18 @@ define([ "jquery", "date" ], function( $, date ) {
                 return $( ".clockstate input[value=show]" ).attr( "checked" );
             }
 
+        },
+
+        isRandom: function() {
+          var mode      = localStorage["simptab-background-mode"];
+
+          // when undefined same as time
+          if ( mode == undefined || mode == "time" ) {
+            return true;
+          }
+          else {
+            return false;
+          }
         }
     }
 });

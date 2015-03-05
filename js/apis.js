@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n" ], function( $, i18n ) {
+define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
     bing = function ( errorBack, callBack ) {
 
@@ -12,6 +12,11 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
         // set local
         if ( i18n.GetLocale() == "zh_CN" ) {
             local = "cn.";
+        }
+
+        // check setting is random
+        if ( !setting.isRandom() ) {
+          random = 0;
         }
 
         // set url
@@ -122,6 +127,11 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
         var code = createRandom( 0, 3 );
 
         console.log( "switch code is " + code );
+
+        // check setting is random
+        if ( !setting.isRandom() ) {
+          code = 3;
+        }
 
         // add test code
         // code = 3;
