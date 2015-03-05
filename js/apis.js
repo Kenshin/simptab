@@ -1,12 +1,13 @@
 
 define([ "jquery", "i18n" ], function( $, i18n ) {
 
-    bing = function ( random, errorBack, callBack ) {
+    bing = function ( errorBack, callBack ) {
 
        console.log( "=== Bing.com call ===")
 
-        var local = "",
-            url   = "";
+        var local  = "",
+            url    = "",
+            random = createRandom( 0, 19 );
 
         // set local
         if ( i18n.GetLocale() == "zh_CN" ) {
@@ -16,7 +17,8 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
         // set url
         url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
 
-        console.log("url = " + url );
+        console.log("random = " + random );
+        console.log("url    = " + url );
 
         $.ajax({
             type       : "GET",
@@ -40,7 +42,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
       console.log( "=== Wallhaven.cc call ===" );
 
       var max    = wallhaven_ids.length,
-          random = createRandoms( 0, max );
+          random = createRandom( 0, max );
 
       if ( random < 0 || random > max ) {
         wallhaven( errorBack, callBack );
@@ -63,7 +65,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
         console.log( "=== Unsplash.it call ===" );
 
         var max  = 645,
-          random = createRandoms( 0, max );
+          random = createRandom( 0, max );
 
         if ( random < 0 || random > max ) {
           unsplashIT( errorBack, callBack );
@@ -83,7 +85,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
       console.log( "=== Unsplash.com call ===" );
 
       var max    = unsplash_ids.length,
-          random = createRandoms( 0, max );
+          random = createRandom( 0, max );
 
       if ( random < 0 || random > max ) {
         unsplash( errorBack, callBack );
@@ -101,7 +103,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
 
     }
 
-    createRandoms = function( min, max ) {
+    createRandom = function( min, max ) {
       var range = max - min,
           rand  = Math.random();
       return min + Math.round( rand * range );
@@ -123,31 +125,29 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
 
     return {
 
-        Init: function ( random, errorBack, callBack ) {
+      Init: function ( errorBack, callBack ) {
 
-          // add test code
-          //wallhaven( errorBack, callBack );
-          //unsplash( errorBack, callBack );
+        var code = createRandom( 0, 3 );
 
-          var code = createRandoms( 0, 3 );
+        console.log( "switch code is " + code );
 
-          console.log( "switch code is " + code );
+        // add test code
+        // code = 3;
 
-          switch ( code ) {
-            case 0:
-              wallhaven( errorBack, callBack );
-              break;
-            case 1:
-              unsplashCOM( errorBack, callBack );
-              break;
-            case 2:
-              unsplashIT( errorBack, callBack );
-              break;
-            default:
-              bing( random, errorBack, callBack );
-              break;
-          }
-
+        switch ( code ) {
+          case 0:
+            wallhaven( errorBack, callBack );
+            break;
+          case 1:
+            unsplashCOM( errorBack, callBack );
+            break;
+          case 2:
+            unsplashIT( errorBack, callBack );
+            break;
+          default:
+            bing( errorBack, callBack );
+            break;
         }
+      }
     }
 });

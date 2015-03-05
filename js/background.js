@@ -4,6 +4,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
     var defaultBackground = "../assets/images/background.jpg",
         background_obj    = {};
 
+    /*
     createRandom = function() {
         var random = Math.floor( Math.random() * 20 );
         if ( random > 19 ) {
@@ -14,11 +15,11 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
         }
         return random;
     }
+    */
 
-    getBackgroundByAPI = function ( random ) {
+    getBackgroundByAPI = function () {
 
         apis.Init(
-            random,
             function( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR)
                 console.log(textStatus)
@@ -251,8 +252,8 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
     return {
         Get: function ( is_random ) {
 
-            var random = 0,
-                url    = defaultBackground;
+            //var random = 0,
+            var   url    = defaultBackground;
 
             // set background refresh
             localStorage["simptab-background-refresh"] = "false";
@@ -269,6 +270,8 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
                     // random = true
                     if ( is_random ) {
+
+                        /*
                         // set random
                         if ( localStorage["simptab-background-random"] != undefined ) {
                             random = createRandom();
@@ -276,6 +279,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                         console.log("random = " + random )
                         // save random
                         localStorage["simptab-background-random"] = random;
+                        */
 
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
@@ -285,7 +289,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                         setInfoURL( data.info, data.name );
 
                         // get new background
-                        getBackgroundByAPI( random );
+                        getBackgroundByAPI();
                     }
                     // random = false
                     else {
@@ -297,7 +301,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                             // set background refresh
                             localStorage["simptab-background-refresh"] = "true";
                             // get background
-                            getBackgroundByAPI( random );
+                            getBackgroundByAPI();
                         }
                         else {
                             // set background image
@@ -312,11 +316,11 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                 }
                 else {
                     // save random
-                    localStorage["simptab-background-random"] = random;
+                    //localStorage["simptab-background-random"] = random;
                     // set default background
                     setDefaultBackground();
                     // get background
-                    getBackgroundByAPI( random );
+                    getBackgroundByAPI();
                 }
             });
         },
