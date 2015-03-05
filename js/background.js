@@ -1,7 +1,8 @@
 
 define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
-    defaultBackground = "../assets/images/background.jpg";
+    var defaultBackground = "../assets/images/background.jpg",
+        background_obj    = {};
 
     createRandom = function() {
         var random = Math.floor( Math.random() * 20 );
@@ -45,13 +46,17 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     }
 
                     // transfor to datauri
+                    // save background to chrome
                     image2URI( hdurl );
 
                     // set chrome local storage
                     // no use cache mode
                     //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
                     // use local mode
-                    chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
+                    //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
+
+                    // set cache background object
+                    background_obj = { "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info }};
 
             }
         });
@@ -133,7 +138,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
-            "href"     : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
+            "href"     : url,
             "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
 
@@ -192,7 +197,10 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
                     fileWriter.onwriteend = function(e) {
                         console.log( "Write completed: ", e );
+                        // set background state
                         localStorage["simptab-background-state"] = "success";
+                        // save background to storge
+                        saveBackgroundStorge()
                     };
 
                     fileWriter.onabort  = function(e) {
@@ -216,6 +224,10 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
     errorHandler = function (e) {
         console.log(e)
         localStorage["simptab-background-state"] = "failed";
+    }
+
+    saveBackgroundStorge = function() {
+      chrome.storage.local.set( background_obj );
     }
 
     dataURItoBlob = function ( dataURI ) {
