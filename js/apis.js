@@ -44,11 +44,6 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
       var max    = wallhaven_ids.length,
           random = createRandom( 0, max );
 
-      if ( random < 0 || random > max ) {
-        wallhaven( errorBack, callBack );
-        return;
-      }
-
       var id     = wallhaven_ids[ random ],
           url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg",
           result = createObj( url, "Wallhaven-Image" );
@@ -65,12 +60,7 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
         console.log( "=== Unsplash.it call ===" );
 
         var max  = 645,
-          random = createRandom( 0, max );
-
-        if ( random < 0 || random > max ) {
-          unsplashIT( errorBack, callBack );
-          return;
-        }
+            random = createRandom( 0, max );
 
         var url       = "https://unsplash.it/1920/1080/?image=" + random,
             result    = createObj( url, "Unsplash.it-Image" );
@@ -87,11 +77,6 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
       var max    = unsplash_ids.length,
           random = createRandom( 0, max );
 
-      if ( random < 0 || random > max ) {
-        unsplash( errorBack, callBack );
-        return;
-      }
-
       var id     = unsplash_ids[ random ],
           url    = "https://unsplash.com/photos/" + id + "/download",
           result = createObj( url, "Unsplash.com-Image" );
@@ -104,9 +89,16 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
     }
 
     createRandom = function( min, max ) {
-      var range = max - min,
-          rand  = Math.random();
-      return min + Math.round( rand * range );
+      var range  = max - min,
+          rand   = Math.random(),
+          random = min + Math.round( rand * range );
+
+      // valid random
+      if ( random < min || random > max ) {
+        createRandom( min, max );
+        return;
+      }
+      return random;
     }
 
     createObj = function( url, copyright ) {
