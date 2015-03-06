@@ -4,19 +4,6 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
     var defaultBackground = "../assets/images/background.jpg",
         background_obj    = {};
 
-    /*
-    createRandom = function() {
-        var random = Math.floor( Math.random() * 20 );
-        if ( random > 19 ) {
-            random = 19 - random;
-        }
-        if ( localStorage["simptab-background-random"] == random ) {
-            createRandom();
-        }
-        return random;
-    }
-    */
-
     getBackgroundByAPI = function () {
 
         apis.Init(
@@ -272,16 +259,6 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     // random = true
                     if ( is_random ) {
 
-                        /*
-                        // set random
-                        if ( localStorage["simptab-background-random"] != undefined ) {
-                            random = createRandom();
-                        }
-                        console.log("random = " + random )
-                        // save random
-                        localStorage["simptab-background-random"] = random;
-                        */
-
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                         // set download url
@@ -316,8 +293,6 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
                 }
                 else {
-                    // save random
-                    //localStorage["simptab-background-random"] = random;
                     // set default background
                     setDefaultBackground();
                     // get background
