@@ -114,6 +114,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
             saveImg2Local( dataURI );
 
         }
+        img.crossOrigin = "*";
         img.src = url;
     }
 

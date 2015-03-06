@@ -17,7 +17,11 @@
     },
     "permissions": [
         "storage",
-        "*://*/bing.com*"
+        "http://*.bing.com/",
+        "http://*.bing.net/",
+        "https://*.unsplash.com/",
+        "https://*.unsplash.it/",
+        "http://*.wallhaven.cc/"
     ],
     "update_url": "http://ksria.com/simptab/updates.xml"
 }

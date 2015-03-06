@@ -134,7 +134,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         }
 
         // add test code
-        // code = 3;
+        // code = 4;
 
         switch ( code ) {
           case 0:
