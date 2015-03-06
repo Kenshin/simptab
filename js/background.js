@@ -83,28 +83,6 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
         return decodeURIComponent( shortname );
     }
 
-    image2URI = function ( url, enddate, name ) {
-        var img = new Image();
-        img.onload = function() {
-
-            // set canvas
-            var canvas = document.createElement( "canvas" );
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext( "2d" );
-            ctx.drawImage( img, 0, 0 );
-
-            // get datauri
-            var dataURI = canvas.toDataURL();
-
-            // save image to local
-            saveImg2Local( dataURI );
-
-        }
-        img.crossOrigin = "*";
-        img.src = url;
-    }
-
     setDefaultBackground = function() {
         // set background image
         setBackground( defaultBackground );
@@ -163,6 +141,28 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
     isDefaultbackground = function() {
         console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
         return localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success"
+    }
+
+    image2URI = function ( url, enddate, name ) {
+        var img = new Image();
+        img.onload = function() {
+
+            // set canvas
+            var canvas = document.createElement( "canvas" );
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext( "2d" );
+            ctx.drawImage( img, 0, 0 );
+
+            // get datauri
+            var dataURI = canvas.toDataURL();
+
+            // save image to local
+            saveImg2Local( dataURI );
+
+        }
+        img.crossOrigin = "*";
+        img.src = url;
     }
 
     saveImg2Local = function ( dataURI ) {
