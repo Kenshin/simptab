@@ -15,20 +15,23 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     setDefaultBackground();
                 }
             },
-            function( result) {
+            function( result, url, hdurl, name, info, enddate, shortname ) {
                 if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
+
+                    /*
                     var data = result.images[0],
                         url  = data.url,
                         hdurl= getHDurl( getTrueUrl( url )),
                         name = data.copyright,
                         info = getInfo( data.copyrightlink ),
                         enddate   = data.enddate;
+                    */
 
                     if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                         // set background image
                         setBackground( hdurl );
                         // set download url
-                        setDownloadURL( hdurl, name, getShortName( info ));
+                        setDownloadURL( hdurl, name, shortname );
                         // set info url
                         setInfoURL( info, name );
                     }
@@ -51,6 +54,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
     }
 
+    /*
     getTrueUrl = function ( url ) {
         if ( url.indexOf( "/" ) == 0 ) {
             return "http://www.bing.com" + url;
@@ -82,6 +86,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
         return decodeURIComponent( shortname );
     }
+    */
 
     setDefaultBackground = function() {
         // set background image

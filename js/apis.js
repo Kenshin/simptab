@@ -69,10 +69,49 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
                 errorBack( jqXHR, textStatus, errorThrown );
             },
             success    : function( result ) {
-                callBack( result );
+                var data = result.images[0],
+                    url  = data.url,
+                    hdurl= getHDurl( getTrueUrl( url )),
+                    name = data.copyright,
+                    info = getInfo( data.copyrightlink ),
+                    enddate   = data.enddate,
+                    shortname = getShortName( info );
+                callBack( result, url, hdurl, name, info, enddate, shortname );
             }
         });
 
+    }
+
+    getHDurl = function ( url ) {
+        return url.replace( "1366x768", "1920x1080" );
+    }
+
+    getTrueUrl = function ( url ) {
+        if ( url.indexOf( "/" ) == 0 ) {
+            return "http://www.bing.com" + url;
+        }
+        return url;
+    }
+
+    getInfo = function ( url ) {
+        var reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
+        if( !reg.test( url )) {
+            return "#";
+        }
+
+        return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
+    }
+
+    getShortName = function( shortname ) {
+
+        shortname = shortname.replace( "www.bing.com/knows", "" )
+                             .replace( "http://", "" )
+                             .replace( "https://", "" )
+                             .replace( "/search?q=", "" );
+        shortname = shortname.split( "+" )[0];
+        shortname = shortname.split( "&" )[0];
+
+        return decodeURIComponent( shortname );
     }
 
     /*
@@ -154,7 +193,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         }
 
         // add test code
-        // code = 4;
+        code = 4;
 
         switch ( code ) {
           case 0:
