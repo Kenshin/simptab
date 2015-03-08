@@ -18,12 +18,14 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       return random;
     }
 
-    createObj = function( url, copyright ) {
+    createObj = function( url, hdurl, name, info, enddate, shortname ) {
       var obj       = {};
       obj.url       = url;
-      obj.copyright = copyright;
-      obj.copyrightlink = "#";
-      obj.enddate   = new Date();
+      obj.hdurl     = hdurl;
+      obj.name      = name;
+      obj.info      = info;
+      obj.enddate   = enddate;
+      obj.shortname = shortname;
 
       var result    = {};
       result.images = [];
@@ -76,7 +78,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
                     info = getInfo( data.copyrightlink ),
                     enddate   = data.enddate,
                     shortname = getShortName( info );
-                callBack( result, url, hdurl, name, info, enddate, shortname );
+                callBack( createObj( url, hdurl, name, info, enddate, shortname ));
             }
         });
 
@@ -129,7 +131,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
       var id     = wallhaven_ids[ random ],
           url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg",
-          result = createObj( url, "Wallhaven-Image" );
+          result = createObj( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image" );
 
       console.log( "Wall haven random: " + random );
       console.log( "Wall haven pic id: " + id );
@@ -150,7 +152,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
             random = createRandom( 0, max );
 
         var url       = "https://unsplash.it/1920/1080/?image=" + random,
-            result    = createObj( url, "Unsplash.it-Image" );
+            result    = createObj( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image" );
 
         callBack( result );
 
@@ -170,7 +172,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
       var id     = unsplash_ids[ random ],
           url    = "https://unsplash.com/photos/" + id + "/download",
-          result = createObj( url, "Unsplash.com-Image" );
+          result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com, Image" );
 
       console.log( "Unsplash random: " + random );
       console.log( "Unsplash pic id: " + id );
@@ -193,7 +195,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         }
 
         // add test code
-        code = 4;
+        // code = 0;
 
         switch ( code ) {
           case 0:

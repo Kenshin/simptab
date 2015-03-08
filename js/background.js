@@ -15,7 +15,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     setDefaultBackground();
                 }
             },
-            function( result, url, hdurl, name, info, enddate, shortname ) {
+            function( result ) {
                 if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
 
                     /*
@@ -27,18 +27,20 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                         enddate   = data.enddate;
                     */
 
+                    var data = result.images[0];
+
                     if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                         // set background image
-                        setBackground( hdurl );
+                        setBackground( data.hdurl );
                         // set download url
-                        setDownloadURL( hdurl, name, shortname );
+                        setDownloadURL( data.hdurl, data.name, data.shortname );
                         // set info url
-                        setInfoURL( info, name );
+                        setInfoURL( data.info, data.name );
                     }
 
                     // transfor to datauri
                     // save background to chrome
-                    image2URI( hdurl );
+                    image2URI( data.hdurl );
 
                     // set chrome local storage
                     // no use cache mode
@@ -47,7 +49,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
 
                     // set cache background object
-                    background_obj = { "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info }};
+                    background_obj = { "simptab-background" : { "url" : data.hdurl, "date" : data.enddate, "name" : data.name, "info" : data.info }};
 
             }
         });
