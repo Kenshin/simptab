@@ -221,8 +221,9 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     // check old data structure
                     // when result.version is undefined, it's old version, so call getBackgroundByAPI() refresh new data structure.
                     if ( data.version == undefined || data.version != "2" ) {
-                      setDefaultBackground();
-                      getBackgroundByAPI();
+                        console.error("Current data structure error.", result );
+                        setDefaultBackground();
+                        getBackgroundByAPI();
                       return;
                     }
 
