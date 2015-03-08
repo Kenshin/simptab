@@ -27,11 +27,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       obj.enddate   = enddate;
       obj.shortname = shortname;
 
-      var result    = {};
-      result.images = [];
-      result.images.push( obj );
-
-      return result;
+      return obj;
     }
 
     /*
@@ -195,7 +191,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         }
 
         // add test code
-        // code = 0;
+        // code = 4;
 
         switch ( code ) {
           case 0:

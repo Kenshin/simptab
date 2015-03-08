@@ -16,31 +16,20 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                 }
             },
             function( result ) {
-                if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
-
-                    /*
-                    var data = result.images[0],
-                        url  = data.url,
-                        hdurl= getHDurl( getTrueUrl( url )),
-                        name = data.copyright,
-                        info = getInfo( data.copyrightlink ),
-                        enddate   = data.enddate;
-                    */
-
-                    var data = result.images[0];
+                if ( result && !$.isEmptyObject( result )) {
 
                     if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                         // set background image
-                        setBackground( data.hdurl );
+                        setBackground( result.hdurl );
                         // set download url
-                        setDownloadURL( data.hdurl, data.name, data.shortname );
+                        setDownloadURL( result.hdurl, result.name, result.shortname );
                         // set info url
-                        setInfoURL( data.info, data.name );
+                        setInfoURL( result.info, result.name );
                     }
 
                     // transfor to datauri
                     // save background to chrome
-                    image2URI( data.hdurl );
+                    image2URI( result.hdurl );
 
                     // set chrome local storage
                     // no use cache mode
@@ -49,46 +38,12 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
 
                     // set cache background object
-                    background_obj = { "simptab-background" : { "url" : data.hdurl, "date" : data.enddate, "name" : data.name, "info" : data.info }};
+                    background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
 
             }
         });
 
     }
-
-    /*
-    getTrueUrl = function ( url ) {
-        if ( url.indexOf( "/" ) == 0 ) {
-            return "http://www.bing.com" + url;
-        }
-        return url;
-    }
-
-    getHDurl = function ( url ) {
-        return url.replace( "1366x768", "1920x1080" );
-    }
-
-    getInfo = function ( url ) {
-        var reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
-        if( !reg.test( url )) {
-            return "#";
-        }
-
-        return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
-    }
-
-    getShortName = function( shortname ) {
-
-        shortname = shortname.replace( "www.bing.com/knows", "" )
-                             .replace( "http://", "" )
-                             .replace( "https://", "" )
-                             .replace( "/search?q=", "" );
-        shortname = shortname.split( "+" )[0];
-        shortname = shortname.split( "&" )[0];
-
-        return decodeURIComponent( shortname );
-    }
-    */
 
     setDefaultBackground = function() {
         // set background image
