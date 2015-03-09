@@ -199,6 +199,107 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         }
     }
 
+    /*
+    * Flickr.com
+    * e.g. https://api.flickr.com/services/rest/?method=[method name]&api_key=[api key]&[key]=[value]&format=json
+    */
+    var query_host = "http://simptab.qiniudn.com/",
+        flie_name  = "flickr.api.json",
+        api_key    = "b24b3f28e764fe0b41d38b7ed4cc64d1",
+        flickr_host       = "https://api.flickr.com/services/rest/",
+        flickr_photo_api  = "flickr.photos.getSizes";
+
+    getFlickAPI = function( method, key, value ) {
+        return flickr_host + "?method=" + method + "&api_key=" + api_key + "&" + key + "=" + value + "&format=json";
+    }
+
+    getQueryCondition = function() {
+        $.ajax({
+            type       : "GET",
+            timeout    : 2000,
+            url        : query_host + flie_name + "?random=" + createRandom(0, 1000),
+            dataType   : "json",
+            error      : function( jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR)
+                console.log(textStatus)
+                console.log(errorThrown)
+            },
+            success    : function( result ) {
+                console.log(result);
+                if ( result != undefined && !$.isEmptyObject( result )) {
+                    var len    = result.apis.length,
+                        random = createRandom( 0, len - 1 ),
+                        api    = result.apis[ random ],
+                        method = api.method,
+                        key    = api.keys["key"],
+                        values = api.keys["val"];
+
+                    console.log( "api.method   = " + method );
+                    console.log( "api.keys.key = " + key );
+                    console.log( "api.keys.val = " + values );
+
+                    random = createRandom( 0, values.length - 1);
+                    var flickr_url = getFlickAPI( method, key, values[random] );
+                    console.log( "flickr_url = " + flickr_url );
+                    getFlickrPhotos( flickr_url );
+                }
+                else {
+                    // TO DO
+                }
+            }
+        });
+    }
+
+    getFlickrPhotos = function( url ) {
+        $.ajax({
+            type       : "GET",
+            timeout    : 2000,
+            url        : url,
+            dataType   : "jsonp",
+            jsonpCallback : "jsonFlickrApi",
+            error      : function( jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR)
+                console.log(textStatus)
+                console.log(errorThrown)
+            },
+            success    : function( result ) {
+                console.log(result);
+                if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
+
+                    var len    = result.photos.photo.length,
+                        random = createRandom( 0, len - 1 ),
+                        photo  = result.photos.photo[ random ];
+
+                    flickr( photo.id );
+                }
+                else {
+                    //TO DO
+                }
+            }
+        });
+    }
+
+    flickr = function( photo_id ) {
+
+        var url = getFlickAPI( flickr_photo_api, "photo_id", photo_id );
+
+        $.ajax({
+            type       : "GET",
+            timeout    : 2000,
+            url        : url,
+            dataType   : "jsonp",
+            jsonpCallback : "jsonFlickrApi",
+            error      : function( jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR)
+                console.log(textStatus)
+                console.log(errorThrown)
+            },
+            success    : function( result ) {
+                console.log(result);
+            }
+        });
+    }
+
     return {
 
       Init: function ( errorBack, callBack ) {
@@ -207,13 +308,13 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
         console.log( "switch code is " + code );
 
-        // check setting is random, when not random must call bing.com, so random is 3
+        // check setting is random, when not random must call bing.com, so random is -1
         if ( !setting.isRandom() ) {
-          code = 3;
+          code = -1;
         }
 
         // add test code
-        // code = 2;
+        code = 3;
 
         switch ( code ) {
           case 0:
@@ -224,6 +325,9 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
             break;
           case 2:
             unsplashIT( errorBack, callBack );
+            break;
+          case 3:
+            getQueryCondition();
             break;
           default:
             bing( errorBack, callBack );
