@@ -16,31 +16,31 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                 }
             },
             function( result ) {
-                if ( result && !$.isEmptyObject( result )) {
+                //if ( result && !$.isEmptyObject( result )) {
 
-                    if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
-                        // set background image
-                        setBackground( result.hdurl );
-                        // set download url
-                        setDownloadURL( result.hdurl, result.name, result.shortname );
-                        // set info url
-                        setInfoURL( result.info, result.name );
-                    }
+                if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+                    // set background image
+                    setBackground( result.hdurl );
+                    // set download url
+                    setDownloadURL( result.hdurl, result.name, result.shortname );
+                    // set info url
+                    setInfoURL( result.info, result.name );
+                }
 
-                    // transfor to datauri
-                    // save background to chrome
-                    image2URI( result.hdurl );
+                // transfor to datauri
+                // save background to chrome
+                image2URI( result.hdurl );
 
-                    // set chrome local storage
-                    // no use cache mode
-                    //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
-                    // use local mode
-                    //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
+                // set chrome local storage
+                // no use cache mode
+                //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
+                // use local mode
+                //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
 
-                    // set cache background object
-                    background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
+                // set cache background object
+                background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
 
-            }
+             //}
         });
 
     }
