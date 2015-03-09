@@ -20,6 +20,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
     createObj = function( url, hdurl, name, info, enddate, shortname ) {
       var obj       = {};
+
       obj.url       = url;
       obj.hdurl     = hdurl;
       obj.name      = name;
@@ -47,7 +48,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
             local = "cn.";
         }
 
-        // check setting is random
+        // check setting is random, when not random must call bing.com current background, so random is 0
         if ( !setting.isRandom() ) {
           random = 0;
         }
@@ -130,18 +131,22 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
       console.log( "=== Wallhaven.cc call ===" );
 
-      var max    = wallhaven_ids.length,
-          random = createRandom( 0, max );
+      try {
+        var max    = wallhaven_ids.length,
+            random = createRandom( 0, max );
 
-      var id     = wallhaven_ids[ random ],
-          url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg",
-          result = createObj( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image" );
+        var id     = wallhaven_ids[ random ],
+            url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg",
+            result = createObj( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image" );
 
-      console.log( "Wall haven random: " + random );
-      console.log( "Wall haven pic id: " + id );
+        console.log( "Wall haven random: " + random );
+        console.log( "Wall haven pic id: " + id );
 
-      callBack( result );
-
+        callBack( result );
+      }
+      catch ( error ) {
+        errorBack( null, error, error.message );
+      }
     }
 
     /*
@@ -193,13 +198,13 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
         console.log( "switch code is " + code );
 
-        // check setting is random
+        // check setting is random, when not random must call bing.com, so random is 3
         if ( !setting.isRandom() ) {
           code = 3;
         }
 
         // add test code
-        code = 4;
+        code = 0;
 
         switch ( code ) {
           case 0:
