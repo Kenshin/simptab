@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name"            : "__MSG_extension_name__",
     "short_name"      : "SimpTab",
-    "version"         : "1.0.3",
+    "version"         : "1.1.0",
     "default_locale"  : "en",
     "description"     : "__MSG_extension_desc__",
     "author"          : "Kenshin",
@@ -17,7 +17,11 @@
     },
     "permissions": [
         "storage",
-        "*://*/bing.com*"
+        "http://*.bing.com/",
+        "http://*.bing.net/",
+        "https://*.unsplash.com/",
+        "https://*.unsplash.it/",
+        "http://*.wallhaven.cc/"
     ],
     "update_url": "http://ksria.com/simptab/updates.xml"
 }

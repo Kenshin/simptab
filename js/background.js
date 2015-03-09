@@ -1,40 +1,13 @@
 
-define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
+define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
-    defaultBackground = "../assets/images/background.jpg";
+    var defaultBackground = "../assets/images/background.jpg",
+        background_obj    = {};
 
-    createRandom = function() {
-        var random = Math.floor( Math.random() * 20 );
-        if ( random > 19 ) {
-            random = 19 - random;
-        }
-        if ( localStorage["simptab-background-random"] == random ) {
-            createRandom();
-        }
-        return random;
-    }
+    getBackgroundByAPI = function () {
 
-    getBackgroundByAPI = function ( random ) {
-
-        var local = "",
-            url   = "";
-
-        // set local
-        if ( i18n.GetLocale() == "zh_CN" ) {
-            local = "cn.";
-        }
-
-        // set url
-        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
-
-        console.log("url = " + url );
-
-        $.ajax({
-            type       : "GET",
-            timeout    : 2000,
-            url        : url,
-            dataType   : "json",
-            error      : function(  jqXHR, textStatus, errorThrown ) {
+        apis.Init(
+            function( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR)
                 console.log(textStatus)
                 console.log(errorThrown)
@@ -42,89 +15,34 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                     setDefaultBackground();
                 }
             },
-            success    : function( result ) {
-                if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
-                    var data = result.images[0],
-                        url  = data.url,
-                        hdurl= getHDurl( getTrueUrl( url )),
-                        name = data.copyright,
-                        info = getInfo( data.copyrightlink ),
-                        enddate   = data.enddate;
+            function( result ) {
+                //if ( result && !$.isEmptyObject( result )) {
 
-                    if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
-                        // set background image
-                        setBackground( hdurl );
-                        // set download url
-                        setDownloadURL( hdurl, name, getShortName( info ));
-                        // set info url
-                        setInfoURL( info, name );
-                    }
-
-                    // transfor to datauri
-                    image2URI( hdurl );
-
-                    // set chrome local storage
-                    // no use cache mode
-                    //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
-                    // use local mode
-                    chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
-
+                if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+                    // set background image
+                    setBackground( result.hdurl );
+                    // set download url
+                    setDownloadURL( result.hdurl, result.name, result.shortname );
+                    // set info url
+                    setInfoURL( result.info, result.name );
                 }
-            }
+
+                // transfor to datauri
+                // save background to chrome
+                image2URI( result.hdurl );
+
+                // set chrome local storage
+                // no use cache mode
+                //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
+                // use local mode
+                //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
+
+                // set cache background object
+                background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
+
+             //}
         });
-    }
 
-    getTrueUrl = function ( url ) {
-        if ( url.indexOf( "/" ) == 0 ) {
-            return "http://www.bing.com" + url;
-        }
-        return url;
-    }
-
-    getHDurl = function ( url ) {
-        return url.replace( "1366x768", "1920x1080" );
-    }
-
-    getInfo = function ( url ) {
-        var reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
-        if( !reg.test( url )) {
-            return "#";
-        }
-
-        return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
-    }
-
-    getShortName = function( shortname ) {
-
-        shortname = shortname.replace( "www.bing.com/knows", "" )
-                             .replace( "http://", "" )
-                             .replace( "https://", "" )
-                             .replace( "/search?q=", "" );
-        shortname = shortname.split( "+" )[0];
-        shortname = shortname.split( "&" )[0];
-
-        return decodeURIComponent( shortname );
-    }
-
-    image2URI = function ( url, enddate, name ) {
-        var img = new Image();
-        img.onload = function() {
-
-            // set canvas
-            var canvas = document.createElement( "canvas" );
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext( "2d" );
-            ctx.drawImage( img, 0, 0 );
-
-            // get datauri
-            var dataURI = canvas.toDataURL();
-
-            // save image to local
-            saveImg2Local( dataURI );
-
-        }
-        img.src = url;
     }
 
     setDefaultBackground = function() {
@@ -142,11 +60,17 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
             name = null;
             shortname = "Wallpaper";
         }
+
+        if ( shortname == "#" ) {
+            shortname = name;
+        }
+
         $( ".controlink[url='download']" ).attr({
             "title"    : name,
             "href"     : url,
             "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
+
         if ( url == null ) {
             $( ".controlink[url='download']" ).removAttr( "title" );
         }
@@ -181,6 +105,28 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         return localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success"
     }
 
+    image2URI = function ( url, enddate, name ) {
+        var img = new Image();
+        img.onload = function() {
+
+            // set canvas
+            var canvas = document.createElement( "canvas" );
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext( "2d" );
+            ctx.drawImage( img, 0, 0 );
+
+            // get datauri
+            var dataURI = canvas.toDataURL();
+
+            // save image to local
+            saveImg2Local( dataURI );
+
+        }
+        img.crossOrigin = "*";
+        img.src = url;
+    }
+
     saveImg2Local = function ( dataURI ) {
         window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
         window.requestFileSystem( window.TEMPORARY , 52428800, function( fs ) {
@@ -202,7 +148,10 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
 
                     fileWriter.onwriteend = function(e) {
                         console.log( "Write completed: ", e );
+                        // set background state
                         localStorage["simptab-background-state"] = "success";
+                        // save background to storge
+                        saveBackgroundStorge()
                     };
 
                     fileWriter.onabort  = function(e) {
@@ -228,6 +177,10 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         localStorage["simptab-background-state"] = "failed";
     }
 
+    saveBackgroundStorge = function() {
+      chrome.storage.local.set( background_obj );
+    }
+
     dataURItoBlob = function ( dataURI ) {
         // convert base64 to raw binary data held in a string
         var byteString = atob( dataURI.split(',')[1] );
@@ -249,8 +202,8 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
     return {
         Get: function ( is_random ) {
 
-            var random = 0,
-                url    = defaultBackground;
+            //var random = 0,
+            var   url    = defaultBackground;
 
             // set background refresh
             localStorage["simptab-background-refresh"] = "false";
@@ -267,13 +220,6 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
 
                     // random = true
                     if ( is_random ) {
-                        // set random
-                        if ( localStorage["simptab-background-random"] != undefined ) {
-                            random = createRandom();
-                        }
-                        console.log("random = " + random )
-                        // save random
-                        localStorage["simptab-background-random"] = random;
 
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
@@ -282,8 +228,8 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                         // set info url
                         setInfoURL( data.info, data.name );
 
-                        // get background
-                        getBackgroundByAPI( random );
+                        // get new background
+                        getBackgroundByAPI();
                     }
                     // random = false
                     else {
@@ -295,7 +241,7 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
                             // set background refresh
                             localStorage["simptab-background-refresh"] = "true";
                             // get background
-                            getBackgroundByAPI( random );
+                            getBackgroundByAPI();
                         }
                         else {
                             // set background image
@@ -309,12 +255,10 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
 
                 }
                 else {
-                    // save random
-                    localStorage["simptab-background-random"] = random;
                     // set default background
                     setDefaultBackground();
                     // get background
-                    getBackgroundByAPI( random );
+                    getBackgroundByAPI();
                 }
             });
         },
