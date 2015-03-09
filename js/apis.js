@@ -150,24 +150,6 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
     }
 
     /*
-    * Unsplash.IT
-    */
-
-    unsplashIT = function( errorBack, callBack ) {
-
-        console.log( "=== Unsplash.it call ===" );
-
-        var max  = 645,
-            random = createRandom( 0, max );
-
-        var url       = "https://unsplash.it/1920/1080/?image=" + random,
-            result    = createObj( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image" );
-
-        callBack( result );
-
-    }
-
-    /*
     * Unsplash.COM
     */
 
@@ -176,18 +158,45 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
       console.log( "=== Unsplash.com call ===" );
 
-      var max    = unsplash_ids.length,
-          random = createRandom( 0, max );
+      try {
+          var max    = unsplash_ids.length,
+              random = createRandom( 0, max );
 
-      var id     = unsplash_ids[ random ],
-          url    = "https://unsplash.com/photos/" + id + "/download",
-          result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com, Image" );
+          var id     = unsplash_ids[ random ],
+              url    = "https://unsplash.com/photos/" + id + "/download",
+              result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com, Image" );
 
-      console.log( "Unsplash random: " + random );
-      console.log( "Unsplash pic id: " + id );
+          console.log( "Unsplash random: " + random );
+          console.log( "Unsplash pic id: " + id );
 
-      callBack( result );
+          callBack( result );
+      }
+      catch ( error ) {
+        errorBack( null, error, error.message );
+      }
 
+    }
+
+    /*
+    * Unsplash.IT
+    */
+
+    unsplashIT = function( errorBack, callBack ) {
+
+        console.log( "=== Unsplash.it call ===" );
+
+        try {
+          var max  = 645,
+              random = createRandom( 0, max );
+
+          var url       = "https://unsplash.it/1920/1080/?image=" + random,
+              result    = createObj( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image" );
+
+          callBack( result );
+        }
+        catch( error ) {
+          errorBack( null, error, error.message );
+        }
     }
 
     return {
@@ -204,7 +213,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         }
 
         // add test code
-        code = 0;
+        // code = 2;
 
         switch ( code ) {
           case 0:
