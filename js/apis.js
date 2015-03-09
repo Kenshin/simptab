@@ -67,14 +67,22 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
                 errorBack( jqXHR, textStatus, errorThrown );
             },
             success    : function( result ) {
-                var data = result.images[0],
-                    url  = data.url,
-                    hdurl= getHDurl( getTrueUrl( url )),
-                    name = data.copyright,
-                    info = getInfo( data.copyrightlink ),
-                    enddate   = data.enddate,
-                    shortname = getShortName( info );
-                callBack( createObj( url, hdurl, name, info, enddate, shortname ));
+
+                if ( result != undefined && !$.isEmptyObject( result )) {
+
+                  var data = result.images[0],
+                      url  = data.url,
+                      hdurl= getHDurl( getTrueUrl( url )),
+                      name = data.copyright,
+                      info = getInfo( data.copyrightlink ),
+                      enddate   = data.enddate,
+                      shortname = getShortName( info );
+                  callBack( createObj( url, hdurl, name, info, enddate, shortname ));
+
+                }
+                else {
+                  errorBack( null, null, null );
+                }
             }
         });
 
@@ -191,7 +199,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         }
 
         // add test code
-        // code = 4;
+        code = 4;
 
         switch ( code ) {
           case 0:
