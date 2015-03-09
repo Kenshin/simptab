@@ -304,17 +304,17 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
       Init: function ( errorBack, callBack ) {
 
-        var code = createRandom( 0, 3 );
+        var code = createRandom( 0, 4 );
 
         console.log( "switch code is " + code );
 
-        // check setting is random, when not random must call bing.com, so random is -1
+        // check setting is random, when not random must call bing.com, so random is 4
         if ( !setting.isRandom() ) {
-          code = -1;
+          code = 4;
         }
 
         // add test code
-        code = 3;
+        // code = 3;
 
         switch ( code ) {
           case 0:
