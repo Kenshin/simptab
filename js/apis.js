@@ -18,6 +18,12 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       return random;
     }
 
+    /*
+    * when version = undefined
+    * not property `shortname` `version`
+    * when version = 2
+    * add new property `shortname` `version`
+    */
     createObj = function( url, hdurl, name, info, enddate, shortname ) {
       var obj       = {};
 
@@ -27,6 +33,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       obj.info      = info;
       obj.enddate   = enddate;
       obj.shortname = shortname;
+      obj.version   = "2";
 
       return obj;
     }
@@ -164,7 +171,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
           var id     = unsplash_ids[ random ],
               url    = "https://unsplash.com/photos/" + id + "/download",
-              result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com, Image" );
+              result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com Image" );
 
           console.log( "Unsplash random: " + random );
           console.log( "Unsplash pic id: " + id );

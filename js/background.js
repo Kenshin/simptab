@@ -38,7 +38,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                 //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
 
                 // set cache background object
-                background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
+                background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info, "shortname" :result.shortname, "version" : result.version }};
 
              //}
         });
@@ -218,13 +218,23 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     // no use cache
                     //url    = data.background;
 
+                    // check data structure
+                    var shortname = "";
+                    if ( data.shortname == undefined ) {
+                        shortname = "Wallpaper";
+                    }
+                    else if ( data.shortname != undefined ) {
+                        shortname = data.shortname;
+                    }
+
+
                     // random = true
                     if ( is_random ) {
 
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                         // set download url
-                        setDownloadURL( data.url, data.name, getShortName( data.info ));
+                        setDownloadURL( data.url, data.name, shortname );
                         // set info url
                         setInfoURL( data.info, data.name );
 
@@ -247,7 +257,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                             // set background image
                             setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                             // set download url
-                            setDownloadURL( data.url, data.name, getShortName( data.info ));
+                            setDownloadURL( data.url, data.name, shortname );
                             // set info url
                             setInfoURL( data.info, data.name );
                         }
