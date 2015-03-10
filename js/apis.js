@@ -132,7 +132,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       console.log( "=== Wallhaven.cc call ===" );
 
       try {
-        var max    = wallhaven_ids.length,
+        var max    = wallhaven_ids.length - 1,
             random = createRandom( 0, max );
 
         var id     = wallhaven_ids[ random ],
@@ -159,7 +159,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       console.log( "=== Unsplash.com call ===" );
 
       try {
-          var max    = unsplash_ids.length,
+          var max    = unsplash_ids.length - 1,
               random = createRandom( 0, max );
 
           var id     = unsplash_ids[ random ],
