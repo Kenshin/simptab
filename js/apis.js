@@ -251,24 +251,29 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
     }
 
     getFlickrPhotos = function( url, errorBack, callBack ) {
+        $.ajax({
+            type       : "GET",
+            timeout    : 2000,
+            url        : url,
+            dataType   : "jsonp",
+            error      : function( jqXHR, textStatus, errorThrown ) {
+                errorBack( jqXHR, textStatus, errorThrown );
+            },
+            success    : function( result ) {
+                console.log(result);
+                if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
 
-        $.getJSON( url, function( result ) {
-            console.log(result);
-            if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
+                    var len    = result.photos.photo.length,
+                        random = createRandom( 0, len - 1 ),
+                        photo  = result.photos.photo[ random ];
 
-                var len    = result.photos.photo.length,
-                    random = createRandom( 0, len - 1 ),
-                    photo  = result.photos.photo[ random ];
-
-                getFlickrPhotoURL( photo.id, errorBack, callBack );
+                    getFlickrPhotoURL( photo.id, errorBack, callBack );
+                }
+                else {
+                  errorBack( null, "Get Flickr API error, url is " + url, result );
+                }
             }
-            else {
-              errorBack( null, "Get Flickr API error, url is " + url, result );
-            }
-        }).fail( function( jqXHR, textStatus, errorThrown ) {
-            errorBack( jqXHR, textStatus, errorThrown );
         });
-
     }
 
     getFlickrPhotoURL = function( photo_id, errorBack, callBack ) {
@@ -277,34 +282,41 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
         console.log( "flickr.photos.getSizes = " + url );
 
-        $.getJSON( url, function( result ) {
-            console.log(result);
-            if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
-              var source = "",
-                  info  = "";
-              $.each( result.sizes.size, function( idx, item ) {
-                if ( item.width == "1600" ) {
-                  source = item.source;
-                  info   = item.url;
-                  console.log( "source = " + source )
-                  console.log( "info   = " + info )
-                  callBack( createObj( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image" ));
-                  return;
+        $.ajax({
+            type       : "GET",
+            timeout    : 2000,
+            url        : url,
+            dataType   : "jsonp",
+            error      : function( jqXHR, textStatus, errorThrown ) {
+              errorBack( jqXHR, textStatus, errorThrown );
+            },
+            success    : function( result ) {
+                console.log(result);
+                if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
+                  var source = "",
+                      info  = "";
+                  $.each( result.sizes.size, function( idx, item ) {
+                    if ( item.width == "1600" ) {
+                      source = item.source;
+                      info   = item.url;
+                      console.log( "source = " + source )
+                      console.log( "info   = " + info )
+                      callBack( createObj( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image" ));
+                      return;
+                    }
+                  });
+
+                  // when not found any background re-call again
+                  if ( source == "" && info == "" ) {
+                    console.error( "Not found any background, Re-call again.");
+                    flickr( errorBack, callBack );
+                  }
+
                 }
-              });
-
-              // when not found any background re-call again
-              if ( source == "" && info == "" ) {
-                console.error( "Not found any background, Re-call again.");
-                flickr( errorBack, callBack );
-              }
-
+                else {
+                  errorBack( null, "Get Flickr API error, url is " + url, result );
+                }
             }
-            else {
-              errorBack( null, "Get Flickr API error, url is " + url, result );
-            }
-        }).fail( function( jqXHR, textStatus, errorThrown ) {
-            errorBack( jqXHR, textStatus, errorThrown );
         });
     }
 
