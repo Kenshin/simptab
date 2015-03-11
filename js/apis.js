@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
+define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
     /*
     * Common
@@ -31,6 +31,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
     * type include: `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com`
     *
     */
+    /*
     createObj = function( url, hdurl, name, info, enddate, shortname, type ) {
       var obj       = {};
 
@@ -45,6 +46,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
       return obj;
     }
+    */
 
     /*
     * Bing
@@ -93,7 +95,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
                       info = getInfo( data.copyrightlink ),
                       enddate   = data.enddate,
                       shortname = getShortName( info );
-                  callBack( createObj( url, hdurl, name, info, enddate, shortname, "bing.com" ));
+                  callBack( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
 
                 }
                 else {
@@ -152,7 +154,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
         var id     = wallhaven_ids[ random ],
             url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg",
-            result = createObj( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image", "wallhanve.cc" );
+            result = vo.Create( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image", "wallhanve.cc" );
 
         console.log( "Wall haven random: " + random );
         console.log( "Wall haven pic id: " + id );
@@ -179,7 +181,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
           var id     = unsplash_ids[ random ],
               url    = "https://unsplash.com/photos/" + id + "/download",
-              result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com Image", "unsplash.com" );
+              result = vo.Create( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com Image", "unsplash.com" );
 
           console.log( "Unsplash random: " + random );
           console.log( "Unsplash pic id: " + id );
@@ -205,7 +207,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
               random = createRandom( 0, max );
 
           var url       = "https://unsplash.it/1920/1080/?image=" + random,
-              result    = createObj( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
+              result    = vo.Create( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
 
           callBack( result );
         }
@@ -303,7 +305,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
                   info   = item.url;
                   console.log( "source = " + source )
                   console.log( "info   = " + info )
-                  callBack( createObj( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image", "flickr.com" ));
+                  callBack( vo.Create( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image", "flickr.com" ));
                   return;
                 }
               });

@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
+define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis, vo ) {
 
     var defaultBackground = "../assets/images/background.jpg",
         background_obj    = {};
@@ -39,9 +39,11 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
                 // when version is `1`( undefined ) data structure
                 // background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
+                // background_obj = { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info };
 
                 // when version is `2` data structure
-                background_obj = { "simptab-background" : result };
+                // background_obj = { "simptab-background" : result };
+                background_obj = result;
         });
     }
 
@@ -178,7 +180,8 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
     }
 
     saveBackgroundStorge = function() {
-      chrome.storage.local.set( background_obj );
+      //chrome.storage.local.set( background_obj );
+      vo.Set( background_obj );
     }
 
     dataURItoBlob = function ( dataURI ) {
@@ -209,7 +212,8 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
             localStorage["simptab-background-refresh"] = "false";
 
             // get simptab-background
-            chrome.storage.local.get( "simptab-background", function( result ) {
+            //chrome.storage.local.get( "simptab-background", function( result ) {
+            vo.Get( function( result ) {
                 if ( result && !$.isEmptyObject( result )) {
                     // reset-background
                     var today  = date.Today(),
@@ -220,7 +224,8 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
                     // check old data structure
                     // when result.version is undefined, it's old version, so call getBackgroundByAPI() refresh new data structure.
-                    if ( data.version == undefined || data.version != "2" ) {
+                    //if ( data.version == undefined || data.version != "2" ) {
+                    if ( !vo.Verify( data.version ) ) {
                         console.error("Current data structure error.", result );
                         setDefaultBackground();
                         getBackgroundByAPI();
