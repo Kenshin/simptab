@@ -180,7 +180,6 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
     }
 
     saveBackgroundStorge = function() {
-      //chrome.storage.local.set( background_obj );
       vo.Set( background_obj );
     }
 
@@ -212,7 +211,6 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
             localStorage["simptab-background-refresh"] = "false";
 
             // get simptab-background
-            //chrome.storage.local.get( "simptab-background", function( result ) {
             vo.Get( function( result ) {
                 if ( result && !$.isEmptyObject( result )) {
                     // reset-background
@@ -224,7 +222,6 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
 
                     // check old data structure
                     // when result.version is undefined, it's old version, so call getBackgroundByAPI() refresh new data structure.
-                    //if ( data.version == undefined || data.version != "2" ) {
                     if ( !vo.Verify( data.version ) ) {
                         console.error("Current data structure error.", result );
                         setDefaultBackground();

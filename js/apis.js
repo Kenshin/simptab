@@ -19,36 +19,6 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
     }
 
     /*
-    * when version = undefined
-    * not property `shortname` `version` `type` `enddate`
-    * url != hdurl when bing.com
-    * `date` is `enddate`
-    *
-    * when version = 2
-    * add new property `shortname` `version` `type`
-    * change `data` to `endate`
-    *
-    * type include: `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com`
-    *
-    */
-    /*
-    createObj = function( url, hdurl, name, info, enddate, shortname, type ) {
-      var obj       = {};
-
-      obj.url       = url;
-      obj.hdurl     = hdurl;
-      obj.name      = name;
-      obj.info      = info;
-      obj.enddate   = enddate;
-      obj.shortname = shortname;
-      obj.type      = type;
-      obj.version   = "2";
-
-      return obj;
-    }
-    */
-
-    /*
     * Bing
     */
 

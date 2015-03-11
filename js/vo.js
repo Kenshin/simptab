@@ -3,7 +3,6 @@ define([ "jquery" ], function( $ ) {
     /*
     * when version = undefined ( 1 )
     * property `url` `date` `name` `info`
-    * not property `shortname` `version` `type` `enddate`
     * url != hdurl when bing.com
     * `date` is `enddate`
     *
