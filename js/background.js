@@ -16,8 +16,6 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                 }
             },
             function( result ) {
-                //if ( result && !$.isEmptyObject( result )) {
-
                 if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                     // set background image
                     setBackground( result.hdurl );
@@ -38,11 +36,13 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                 //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
 
                 // set cache background object
-                background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info, "shortname" :result.shortname, "version" : result.version }};
 
-             //}
+                // when version is `1`( undefined ) data structure
+                // background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
+
+                // when version is `2` data structure
+                background_obj = { "simptab-background" : result };
         });
-
     }
 
     setDefaultBackground = function() {
@@ -218,15 +218,13 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     // no use cache
                     //url    = data.background;
 
-                    // check data structure
-                    var shortname = "";
-                    if ( data.shortname == undefined ) {
-                        shortname = "Wallpaper";
+                    // check old data structure
+                    // when result.version is undefined, it's old version, so call getBackgroundByAPI() refresh new data structure.
+                    if ( data.version == undefined || data.version != "2" ) {
+                      setDefaultBackground();
+                      getBackgroundByAPI();
+                      return;
                     }
-                    else if ( data.shortname != undefined ) {
-                        shortname = data.shortname;
-                    }
-
 
                     // random = true
                     if ( is_random ) {
@@ -234,7 +232,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                         // set download url
-                        setDownloadURL( data.url, data.name, shortname );
+                        setDownloadURL( data.hdurl, data.name, data.shortname );
                         // set info url
                         setInfoURL( data.info, data.name );
 
@@ -245,9 +243,9 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     else {
 
                         console.log("today = " + today)
-                        console.log("data  = " + data.date)
+                        console.log("data  = " + data.enddate)
 
-                        if ( today != data.date ) {
+                        if ( today != data.enddate ) {
                             // set background refresh
                             localStorage["simptab-background-refresh"] = "true";
                             // get background
@@ -257,7 +255,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                             // set background image
                             setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                             // set download url
-                            setDownloadURL( data.url, data.name, shortname );
+                            setDownloadURL( data.hdurl, data.name, data.shortname );
                             // set info url
                             setInfoURL( data.info, data.name );
                         }

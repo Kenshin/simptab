@@ -20,11 +20,18 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
     /*
     * when version = undefined
-    * not property `shortname` `version`
+    * not property `shortname` `version` `type` `enddate`
+    * url != hdurl when bing.com
+    * `date` is `enddate`
+    *
     * when version = 2
-    * add new property `shortname` `version`
+    * add new property `shortname` `version` `type`
+    * change `data` to `endate`
+    *
+    * type include: `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com`
+    *
     */
-    createObj = function( url, hdurl, name, info, enddate, shortname ) {
+    createObj = function( url, hdurl, name, info, enddate, shortname, type ) {
       var obj       = {};
 
       obj.url       = url;
@@ -33,6 +40,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       obj.info      = info;
       obj.enddate   = enddate;
       obj.shortname = shortname;
+      obj.type      = type;
       obj.version   = "2";
 
       return obj;
@@ -85,7 +93,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
                       info = getInfo( data.copyrightlink ),
                       enddate   = data.enddate,
                       shortname = getShortName( info );
-                  callBack( createObj( url, hdurl, name, info, enddate, shortname ));
+                  callBack( createObj( url, hdurl, name, info, enddate, shortname, "bing.com" ));
 
                 }
                 else {
@@ -144,7 +152,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
         var id     = wallhaven_ids[ random ],
             url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg",
-            result = createObj( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image" );
+            result = createObj( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image", "wallhanve.cc" );
 
         console.log( "Wall haven random: " + random );
         console.log( "Wall haven pic id: " + id );
@@ -171,7 +179,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
 
           var id     = unsplash_ids[ random ],
               url    = "https://unsplash.com/photos/" + id + "/download",
-              result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com Image" );
+              result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com Image", "unsplash.com" );
 
           console.log( "Unsplash random: " + random );
           console.log( "Unsplash pic id: " + id );
@@ -197,7 +205,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
               random = createRandom( 0, max );
 
           var url       = "https://unsplash.it/1920/1080/?image=" + random,
-              result    = createObj( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image" );
+              result    = createObj( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
 
           callBack( result );
         }
@@ -295,7 +303,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
                   info   = item.url;
                   console.log( "source = " + source )
                   console.log( "info   = " + info )
-                  callBack( createObj( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image" ));
+                  callBack( createObj( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image", "flickr.com" ));
                   return;
                 }
               });
