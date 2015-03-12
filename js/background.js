@@ -8,14 +8,19 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
 
         apis.Init(
             function( jqXHR, textStatus, errorThrown ) {
-                console.log( "jqXHR            = ", jqXHR)
-                console.log( "jqXHR.status     = ", jqXHR.status )
-                console.log( "jqXHR.statusText = ", jqXHR.statusText )
-                console.log( "textStatus       = ", textStatus )
-                console.log( "errorThrown      = ", errorThrown  )
+
+                if ( jqXHR != null ) {
+                    console.error( "jqXHR            = ", jqXHR)
+                    console.error( "jqXHR.status     = ", jqXHR.status )
+                    console.error( "jqXHR.statusText = ", jqXHR.statusText )
+                }
+                console.error( "textStatus       = ", textStatus )
+                console.error( "errorThrown      = ", errorThrown  )
+
                 if ( $("body").css( "background-image" ) == "none" ) {
                     setDefaultBackground();
                 }
+
             },
             function( result ) {
                 if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
