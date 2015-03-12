@@ -8,9 +8,11 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
 
         apis.Init(
             function( jqXHR, textStatus, errorThrown ) {
-                console.log(jqXHR)
-                console.log(textStatus)
-                console.log(errorThrown)
+                console.log( "jqXHR            = ", jqXHR)
+                console.log( "jqXHR.status     = ", jqXHR.status )
+                console.log( "jqXHR.statusText = ", jqXHR.statusText )
+                console.log( "textStatus       = ", textStatus )
+                console.log( "errorThrown      = ", errorThrown  )
                 if ( $("body").css( "background-image" ) == "none" ) {
                     setDefaultBackground();
                 }
