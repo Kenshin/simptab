@@ -359,7 +359,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             break;
         }
 
-        return deferred;
+        return deferred.promise();
       }
     }
 });
