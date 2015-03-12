@@ -1,6 +1,8 @@
 
 define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
+    var deferred = new $.Deferred();
+
     /*
     * Common
     */
@@ -22,7 +24,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
     * Bing
     */
 
-    bing = function ( errorBack, callBack ) {
+    bing = function () {
 
        console.log( "=== Bing.com call ===")
 
@@ -50,7 +52,29 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             type       : "GET",
             timeout    : 2000,
             url        : url,
-            dataType   : "json",
+            dataType   : "json",}).then(
+                function ( result ) {
+                    if ( result != undefined && !$.isEmptyObject( result )) {
+
+                      var data = result.images[0],
+                          url  = data.url,
+                          hdurl= getHDurl( getTrueUrl( url )),
+                          name = data.copyright,
+                          info = getInfo( data.copyrightlink ),
+                          enddate   = data.enddate,
+                          shortname = getShortName( info );
+                      deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
+                    }
+                    else {
+                      deferred.reject( null, "Bing.com API return api parse error.", result );
+                    }
+                },
+                function( jqXHR, textStatus, errorThrown ) {
+                    deferred.reject( jqXHR, textStatus, errorThrown );
+                }
+            );
+
+            /*
             error      : function( jqXHR, textStatus, errorThrown ) {
                 errorBack( jqXHR, textStatus, errorThrown );
             },
@@ -66,13 +90,13 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                       enddate   = data.enddate,
                       shortname = getShortName( info );
                   callBack( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
-
                 }
                 else {
                   errorBack( null, null, null );
                 }
             }
         });
+        */
 
     }
 
@@ -297,7 +321,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
     return {
 
-      Init: function ( errorBack, callBack ) {
+      Init: function () {
 
         var code = createRandom( 0, 4 );
 
@@ -309,7 +333,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         }
 
         // add test code
-        // code = 3;
+        code = 4;
 
         switch ( code ) {
           case 0:
@@ -325,9 +349,11 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             flickr( errorBack, callBack);
             break;
           default:
-            bing( errorBack, callBack );
+            bing();
             break;
         }
+
+        return deferred;
       }
     }
 });
