@@ -50,14 +50,6 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
                 // background_obj = { "simptab-background" : result };
                 background_obj = result;
             });
-
-        /*
-        apis.Init(
-            function( jqXHR, textStatus, errorThrown ) {
-            },
-            function( result ) {
-        });
-        */
     }
 
     setDefaultBackground = function() {

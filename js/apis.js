@@ -56,7 +56,8 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             type       : "GET",
             timeout    : 2000,
             url        : url,
-            dataType   : "json",}).then(
+            dataType   : "json",})
+            .then(
                 function ( result ) {
                     if ( result != undefined && !$.isEmptyObject( result )) {
 
@@ -73,30 +74,6 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                       deferred.reject( null, "Bing.com API return api parse error.", result );
                     }
                 }, failed );
-
-            /*
-            error      : function( jqXHR, textStatus, errorThrown ) {
-                errorBack( jqXHR, textStatus, errorThrown );
-            },
-            success    : function( result ) {
-
-                if ( result != undefined && !$.isEmptyObject( result )) {
-
-                  var data = result.images[0],
-                      url  = data.url,
-                      hdurl= getHDurl( getTrueUrl( url )),
-                      name = data.copyright,
-                      info = getInfo( data.copyrightlink ),
-                      enddate   = data.enddate,
-                      shortname = getShortName( info );
-                  callBack( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
-                }
-                else {
-                  errorBack( null, null, null );
-                }
-            }
-        });
-        */
 
     }
 
@@ -153,11 +130,9 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         console.log( "Wall haven random: " + random );
         console.log( "Wall haven pic id: " + id );
 
-        // callBack( result );
         deferred.resolve( result );
       }
       catch ( error ) {
-        // errorBack( null, error, error.message );
         deferred.reject( null, error, error.message );
       }
     }
@@ -182,11 +157,9 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
           console.log( "Unsplash random: " + random );
           console.log( "Unsplash pic id: " + id );
 
-          // callBack( result );
           deferred.resolve( result );
       }
       catch ( error ) {
-        // errorBack( null, error, error.message );
         deferred.reject( null, error, error.message );
       }
 
@@ -207,11 +180,9 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
           var url       = "https://unsplash.it/1920/1080/?image=" + random,
               result    = vo.Create( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
 
-          // callBack( result );
           deferred.resolve( result );
         }
         catch( error ) {
-          // errorBack( null, error, error.message );
           deferred.reject( null, error, error.message );
         }
     }
