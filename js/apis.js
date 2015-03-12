@@ -20,6 +20,10 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
       return random;
     }
 
+    failed = function( jqXHR, textStatus, errorThrown ) {
+        deferred.reject( jqXHR, textStatus, errorThrown );
+    }
+
     /*
     * Bing
     */
@@ -230,99 +234,117 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         return flickr_host + "?method=" + method + "&api_key=" + api_key + "&" + key + "=" + value + "&format=json&jsoncallback=?";
     }
 
-    flickr = function( errorBack, callBack ) {
+    flickr = function() {
+
         $.ajax({
             type       : "GET",
             timeout    : 2000,
             url        : query_host + flie_name + "?random=" + Math.round(+new Date()),
-            dataType   : "json",
-            error      : function( jqXHR, textStatus, errorThrown ) {
-                errorBack( jqXHR, textStatus, errorThrown );
-            },
-            success    : function( result ) {
+            dataType   : "json"})
+            .then( getFlickrURL,     failed )
+            .then( getFlickrPhotos,  failed )
+            .then( getFlickrPhotoURL,failed );
+    }
+
+    getFlickrURL = function ( result ) {
+
+        var def = $.Deferred();
+
+        console.log(result);
+        if ( result != undefined && !$.isEmptyObject( result )) {
+            var max    = result.apis.length - 1,
+                random = createRandom( 0, max ),
+                api    = result.apis[ random ],
+                method = api.method,
+                key    = api.keys["key"],
+                values = api.keys["val"];
+
+            console.log( "api.method   = " + method );
+            console.log( "api.keys.key = " + key );
+            console.log( "api.keys.val = " + values );
+
+            random = createRandom( 0, values.length - 1 );
+            // add test code
+            // random = 0;
+
+            var flickr_url = getFlickAPI( method, key, values[random] );
+            console.log( "flickr method url = " + flickr_url );
+
+            return def.resolve( flickr_url );
+        }
+        else {
+          deferred.reject( null, "Get flickr.api.json error." , error );
+        }
+
+        return def;
+
+    }
+
+
+    getFlickrPhotos = function( url ) {
+
+        console.log( "get flickr photos", url )
+
+        var def = $.Deferred();
+
+        $.getJSON( url )
+            .done(function( result ) {
                 console.log(result);
-                if ( result != undefined && !$.isEmptyObject( result )) {
-                    var max    = result.apis.length - 1,
-                        random = createRandom( 0, max ),
-                        api    = result.apis[ random ],
-                        method = api.method,
-                        key    = api.keys["key"],
-                        values = api.keys["val"];
+                if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
 
-                    console.log( "api.method   = " + method );
-                    console.log( "api.keys.key = " + key );
-                    console.log( "api.keys.val = " + values );
+                    var len    = result.photos.photo.length,
+                        random = createRandom( 0, len - 1 ),
+                        photo  = result.photos.photo[ random ];
 
-                    random = createRandom( 0, values.length - 1 );
-                    // add test code
-                    // random = 0;
-                    var flickr_url = getFlickAPI( method, key, values[random] );
-                    console.log( "flickr method url = " + flickr_url );
-                    getFlickrPhotos( flickr_url, errorBack, callBack );
+                    return def.resolve( photo.id );
                 }
                 else {
-                  errorBack( null, "Get flickr.api.json error." , error );
+                  deferred.reject( null, "Get Flickr API error, url is " + url, result );
                 }
-            }
-        });
+            })
+            .fail( failed );
+
+        return def;
     }
 
-    getFlickrPhotos = function( url, errorBack, callBack ) {
+    getFlickrPhotoURL = function( photo_id ) {
 
-        $.getJSON( url, function( result ) {
-            console.log(result);
-            if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
-
-                var len    = result.photos.photo.length,
-                    random = createRandom( 0, len - 1 ),
-                    photo  = result.photos.photo[ random ];
-
-                getFlickrPhotoURL( photo.id, errorBack, callBack );
-            }
-            else {
-              errorBack( null, "Get Flickr API error, url is " + url, result );
-            }
-        }).fail( function( jqXHR, textStatus, errorThrown ) {
-            errorBack( jqXHR, textStatus, errorThrown );
-        });
-
-    }
-
-    getFlickrPhotoURL = function( photo_id, errorBack, callBack ) {
-
-        var url = getFlickAPI( flickr_photo_api, "photo_id", photo_id );
+        var url = getFlickAPI( flickr_photo_api, "photo_id", photo_id ),
+            def = $.Deferred();
 
         console.log( "flickr.photos.getSizes = " + url );
 
-        $.getJSON( url, function( result ) {
-            console.log(result);
-            if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
-              var source = "",
-                  info  = "";
-              $.each( result.sizes.size, function( idx, item ) {
-                if ( item.width == "1600" ) {
-                  source = item.source;
-                  info   = item.url;
-                  console.log( "source = " + source )
-                  console.log( "info   = " + info )
-                  callBack( vo.Create( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image", "flickr.com" ));
-                  return;
+        $.getJSON( url)
+            .done( function( result ) {
+                console.log(result);
+                if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
+                  var source = "",
+                      info  = "";
+                  $.each( result.sizes.size, function( idx, item ) {
+                    if ( item.width == "1600" ) {
+                      source = item.source;
+                      info   = item.url;
+                      console.log( "source = " + source )
+                      console.log( "info   = " + info )
+                      deferred.resolve( vo.Create( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image", "flickr.com" ));
+                      return;
+                    }
+                  });
+
+                  // when not found any background re-call again
+                  if ( source == "" && info == "" ) {
+                    console.error( "Not found any background, Re-call again.");
+                    flickr();
+                  }
+
                 }
-              });
+                else {
+                  deferred.reject( null, "Get Flickr API error, url is " + url, result );
+                }
+            })
+            .fail( failed );
 
-              // when not found any background re-call again
-              if ( source == "" && info == "" ) {
-                console.error( "Not found any background, Re-call again.");
-                flickr( errorBack, callBack );
-              }
-
-            }
-            else {
-              errorBack( null, "Get Flickr API error, url is " + url, result );
-            }
-        }).fail( function( jqXHR, textStatus, errorThrown ) {
-            errorBack( jqXHR, textStatus, errorThrown );
-        });
+        return def;
     }
 
     return {
@@ -339,7 +361,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         }
 
         // add test code
-        code = 2;
+        code = 3;
 
         switch ( code ) {
           case 0:
@@ -352,7 +374,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             unsplashIT();
             break;
           case 3:
-            flickr( errorBack, callBack);
+            flickr();
             break;
           default:
             bing();
