@@ -6,7 +6,7 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
 
     getBackgroundByAPI = function () {
 
-        deferred = apis.Init()
+        apis.Init()
             .fail( function( jqXHR,  textStatus, errorThrown ) {
                 if ( jqXHR != null ) {
                     console.error( "jqXHR            = ", jqXHR)
