@@ -196,7 +196,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
     * Unsplash.IT
     */
 
-    unsplashIT = function( errorBack, callBack ) {
+    unsplashIT = function() {
 
         console.log( "=== Unsplash.it call ===" );
 
@@ -207,10 +207,12 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
           var url       = "https://unsplash.it/1920/1080/?image=" + random,
               result    = vo.Create( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
 
-          callBack( result );
+          // callBack( result );
+          deferred.resolve( result );
         }
         catch( error ) {
-          errorBack( null, error, error.message );
+          // errorBack( null, error, error.message );
+          deferred.reject( null, error, error.message );
         }
     }
 
@@ -337,7 +339,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         }
 
         // add test code
-        code = 1;
+        code = 2;
 
         switch ( code ) {
           case 0:
@@ -347,7 +349,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             unsplashCOM();
             break;
           case 2:
-            unsplashIT( errorBack, callBack );
+            unsplashIT();
             break;
           case 3:
             flickr( errorBack, callBack);
