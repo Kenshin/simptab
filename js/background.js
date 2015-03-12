@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
+define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis, vo ) {
 
     var defaultBackground = "../assets/images/background.jpg",
         background_obj    = {};
@@ -8,16 +8,21 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
 
         apis.Init(
             function( jqXHR, textStatus, errorThrown ) {
-                console.log(jqXHR)
-                console.log(textStatus)
-                console.log(errorThrown)
+
+                if ( jqXHR != null ) {
+                    console.error( "jqXHR            = ", jqXHR)
+                    console.error( "jqXHR.status     = ", jqXHR.status )
+                    console.error( "jqXHR.statusText = ", jqXHR.statusText )
+                }
+                console.error( "textStatus       = ", textStatus )
+                console.error( "errorThrown      = ", errorThrown  )
+
                 if ( $("body").css( "background-image" ) == "none" ) {
                     setDefaultBackground();
                 }
+
             },
             function( result ) {
-                //if ( result && !$.isEmptyObject( result )) {
-
                 if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                     // set background image
                     setBackground( result.hdurl );
@@ -38,11 +43,15 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                 //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
 
                 // set cache background object
-                background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
 
-             //}
+                // when version is `1`( undefined ) data structure
+                // background_obj = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
+                // background_obj = { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info };
+
+                // when version is `2` data structure
+                // background_obj = { "simptab-background" : result };
+                background_obj = result;
         });
-
     }
 
     setDefaultBackground = function() {
@@ -178,7 +187,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
     }
 
     saveBackgroundStorge = function() {
-      chrome.storage.local.set( background_obj );
+      vo.Set( background_obj );
     }
 
     dataURItoBlob = function ( dataURI ) {
@@ -209,7 +218,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
             localStorage["simptab-background-refresh"] = "false";
 
             // get simptab-background
-            chrome.storage.local.get( "simptab-background", function( result ) {
+            vo.Get( function( result ) {
                 if ( result && !$.isEmptyObject( result )) {
                     // reset-background
                     var today  = date.Today(),
@@ -218,13 +227,22 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     // no use cache
                     //url    = data.background;
 
+                    // check old data structure
+                    // when result.version is undefined, it's old version, so call getBackgroundByAPI() refresh new data structure.
+                    if ( !vo.Verify( data.version ) ) {
+                        console.error("Current data structure error.", result );
+                        setDefaultBackground();
+                        getBackgroundByAPI();
+                      return;
+                    }
+
                     // random = true
                     if ( is_random ) {
 
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                         // set download url
-                        setDownloadURL( data.url, data.name, getShortName( data.info ));
+                        setDownloadURL( data.hdurl, data.name, data.shortname );
                         // set info url
                         setInfoURL( data.info, data.name );
 
@@ -235,9 +253,9 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                     else {
 
                         console.log("today = " + today)
-                        console.log("data  = " + data.date)
+                        console.log("data  = " + data.enddate)
 
-                        if ( today != data.date ) {
+                        if ( today != data.enddate ) {
                             // set background refresh
                             localStorage["simptab-background-refresh"] = "true";
                             // get background
@@ -247,7 +265,7 @@ define([ "jquery", "date", "i18n", "apis" ], function( $, date, i18n, apis ) {
                             // set background image
                             setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                             // set download url
-                            setDownloadURL( data.url, data.name, getShortName( data.info ));
+                            setDownloadURL( data.hdurl, data.name, data.shortname );
                             // set info url
                             setInfoURL( data.info, data.name );
                         }

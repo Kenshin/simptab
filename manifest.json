@@ -15,13 +15,15 @@
         "48" : "assets/images/icon48.png",
         "128": "assets/images/icon128.png"
     },
+    "content_security_policy": "script-src 'self' https://*.flickr.com 'unsafe-eval'; object-src 'self'",
     "permissions": [
         "storage",
         "http://*.bing.com/",
         "http://*.bing.net/",
         "https://*.unsplash.com/",
         "https://*.unsplash.it/",
-        "http://*.wallhaven.cc/"
+        "http://*.wallhaven.cc/",
+        "https://*.staticflickr.com/"
     ],
     "update_url": "http://ksria.com/simptab/updates.xml"
 }

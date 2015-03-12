@@ -7,6 +7,7 @@ requirejs.config({
       "mousetrap"  : "vender/mousetrap.min",
       "background" : "js/background",
       "apis"       : "js/apis",
+      "vo"         : "js/vo",
       "date"       : "js/date",
       "controlbar" : "js/controlbar",
       "setting"    : "js/setting",

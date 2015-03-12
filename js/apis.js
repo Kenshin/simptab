@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
+define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
     /*
     * Common
@@ -16,19 +16,6 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         return;
       }
       return random;
-    }
-
-    createObj = function( url, hdurl, name, info, enddate, shortname ) {
-      var obj       = {};
-
-      obj.url       = url;
-      obj.hdurl     = hdurl;
-      obj.name      = name;
-      obj.info      = info;
-      obj.enddate   = enddate;
-      obj.shortname = shortname;
-
-      return obj;
     }
 
     /*
@@ -78,7 +65,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
                       info = getInfo( data.copyrightlink ),
                       enddate   = data.enddate,
                       shortname = getShortName( info );
-                  callBack( createObj( url, hdurl, name, info, enddate, shortname ));
+                  callBack( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
 
                 }
                 else {
@@ -132,12 +119,12 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       console.log( "=== Wallhaven.cc call ===" );
 
       try {
-        var max    = wallhaven_ids.length,
+        var max    = wallhaven_ids.length - 1,
             random = createRandom( 0, max );
 
         var id     = wallhaven_ids[ random ],
             url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg",
-            result = createObj( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image" );
+            result = vo.Create( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image", "wallhanve.cc" );
 
         console.log( "Wall haven random: " + random );
         console.log( "Wall haven pic id: " + id );
@@ -159,12 +146,12 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
       console.log( "=== Unsplash.com call ===" );
 
       try {
-          var max    = unsplash_ids.length,
+          var max    = unsplash_ids.length - 1,
               random = createRandom( 0, max );
 
           var id     = unsplash_ids[ random ],
               url    = "https://unsplash.com/photos/" + id + "/download",
-              result = createObj( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com, Image" );
+              result = vo.Create( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com Image", "unsplash.com" );
 
           console.log( "Unsplash random: " + random );
           console.log( "Unsplash pic id: " + id );
@@ -190,7 +177,7 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
               random = createRandom( 0, max );
 
           var url       = "https://unsplash.it/1920/1080/?image=" + random,
-              result    = createObj( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image" );
+              result    = vo.Create( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
 
           callBack( result );
         }
@@ -199,21 +186,130 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
         }
     }
 
+    /*
+    * Flickr.com
+    * e.g. https://api.flickr.com/services/rest/?method=[method name]&api_key=[api key]&[key]=[value]&format=json
+    */
+    var query_host = "http://simptab.qiniudn.com/",
+        flie_name  = "flickr.api.json",
+        api_key    = "5feac8799f0102a4c93542f7cc82f5e1",
+        flickr_host       = "https://api.flickr.com/services/rest/",
+        flickr_photo_api  = "flickr.photos.getSizes";
+
+    getFlickAPI = function( method, key, value ) {
+        return flickr_host + "?method=" + method + "&api_key=" + api_key + "&" + key + "=" + value + "&format=json&jsoncallback=?";
+    }
+
+    flickr = function( errorBack, callBack ) {
+        $.ajax({
+            type       : "GET",
+            timeout    : 2000,
+            url        : query_host + flie_name + "?random=" + Math.round(+new Date()),
+            dataType   : "json",
+            error      : function( jqXHR, textStatus, errorThrown ) {
+                errorBack( jqXHR, textStatus, errorThrown );
+            },
+            success    : function( result ) {
+                console.log(result);
+                if ( result != undefined && !$.isEmptyObject( result )) {
+                    var max    = result.apis.length - 1,
+                        random = createRandom( 0, max ),
+                        api    = result.apis[ random ],
+                        method = api.method,
+                        key    = api.keys["key"],
+                        values = api.keys["val"];
+
+                    console.log( "api.method   = " + method );
+                    console.log( "api.keys.key = " + key );
+                    console.log( "api.keys.val = " + values );
+
+                    random = createRandom( 0, values.length - 1 );
+                    // add test code
+                    // random = 0;
+                    var flickr_url = getFlickAPI( method, key, values[random] );
+                    console.log( "flickr method url = " + flickr_url );
+                    getFlickrPhotos( flickr_url, errorBack, callBack );
+                }
+                else {
+                  errorBack( null, "Get flickr.api.json error." , error );
+                }
+            }
+        });
+    }
+
+    getFlickrPhotos = function( url, errorBack, callBack ) {
+
+        $.getJSON( url, function( result ) {
+            console.log(result);
+            if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
+
+                var len    = result.photos.photo.length,
+                    random = createRandom( 0, len - 1 ),
+                    photo  = result.photos.photo[ random ];
+
+                getFlickrPhotoURL( photo.id, errorBack, callBack );
+            }
+            else {
+              errorBack( null, "Get Flickr API error, url is " + url, result );
+            }
+        }).fail( function( jqXHR, textStatus, errorThrown ) {
+            errorBack( jqXHR, textStatus, errorThrown );
+        });
+
+    }
+
+    getFlickrPhotoURL = function( photo_id, errorBack, callBack ) {
+
+        var url = getFlickAPI( flickr_photo_api, "photo_id", photo_id );
+
+        console.log( "flickr.photos.getSizes = " + url );
+
+        $.getJSON( url, function( result ) {
+            console.log(result);
+            if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
+              var source = "",
+                  info  = "";
+              $.each( result.sizes.size, function( idx, item ) {
+                if ( item.width == "1600" ) {
+                  source = item.source;
+                  info   = item.url;
+                  console.log( "source = " + source )
+                  console.log( "info   = " + info )
+                  callBack( vo.Create( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image", "flickr.com" ));
+                  return;
+                }
+              });
+
+              // when not found any background re-call again
+              if ( source == "" && info == "" ) {
+                console.error( "Not found any background, Re-call again.");
+                flickr( errorBack, callBack );
+              }
+
+            }
+            else {
+              errorBack( null, "Get Flickr API error, url is " + url, result );
+            }
+        }).fail( function( jqXHR, textStatus, errorThrown ) {
+            errorBack( jqXHR, textStatus, errorThrown );
+        });
+    }
+
     return {
 
       Init: function ( errorBack, callBack ) {
 
-        var code = createRandom( 0, 3 );
+        var code = createRandom( 0, 4 );
 
         console.log( "switch code is " + code );
 
-        // check setting is random, when not random must call bing.com, so random is 3
+        // check setting is random, when not random must call bing.com, so random is 4
         if ( !setting.isRandom() ) {
-          code = 3;
+          code = 4;
         }
 
         // add test code
-        // code = 2;
+        // code = 3;
 
         switch ( code ) {
           case 0:
@@ -224,6 +320,9 @@ define([ "jquery", "i18n", "setting" ], function( $, i18n, setting ) {
             break;
           case 2:
             unsplashIT( errorBack, callBack );
+            break;
+          case 3:
+            flickr( errorBack, callBack);
             break;
           default:
             bing( errorBack, callBack );
