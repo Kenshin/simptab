@@ -72,11 +72,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                     else {
                       deferred.reject( null, "Bing.com API return api parse error.", result );
                     }
-                },
-                function( jqXHR, textStatus, errorThrown ) {
-                    deferred.reject( jqXHR, textStatus, errorThrown );
-                }
-            );
+                }, failed );
 
             /*
             error      : function( jqXHR, textStatus, errorThrown ) {
@@ -361,7 +357,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         }
 
         // add test code
-        code = 3;
+        // code = 4;
 
         switch ( code ) {
           case 0:
