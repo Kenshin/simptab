@@ -204,7 +204,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         $.ajax({
             type       : "GET",
             timeout    : 2000,
-            url        : query_host + flie_name + "?random=" + createRandom(0, 1000),
+            url        : query_host + flie_name + "?random=" + Math.round(+new Date()),
             dataType   : "json",
             error      : function( jqXHR, textStatus, errorThrown ) {
                 errorBack( jqXHR, textStatus, errorThrown );
