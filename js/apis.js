@@ -243,7 +243,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
           deferred.reject( null, "Get flickr.api.json error." , error );
         }
 
-        return def;
+        return def.promise();
 
     }
 
@@ -271,7 +271,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             })
             .fail( failed );
 
-        return def;
+        return def.promise();
     }
 
     getFlickrPhotoURL = function( photo_id ) {
@@ -311,7 +311,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             })
             .fail( failed );
 
-        return def;
+        return def.promise();
     }
 
     return {
@@ -328,7 +328,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         }
 
         // add test code
-        // code = 4;
+        // code = 3;
 
         switch ( code ) {
           case 0:
