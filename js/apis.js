@@ -240,7 +240,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             return def.resolve( flickr_url );
         }
         else {
-          deferred.reject( null, "Get flickr.api.json error." , error );
+          deferred.reject( null, "Get flickr.api.json error." , result );
         }
 
         return def.promise();
