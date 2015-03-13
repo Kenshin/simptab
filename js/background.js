@@ -6,9 +6,8 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
 
     getBackgroundByAPI = function () {
 
-        apis.Init(
-            function( jqXHR, textStatus, errorThrown ) {
-
+        apis.Init()
+            .fail( function( jqXHR,  textStatus, errorThrown ) {
                 if ( jqXHR != null ) {
                     console.error( "jqXHR            = ", jqXHR)
                     console.error( "jqXHR.status     = ", jqXHR.status )
@@ -20,9 +19,8 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
                 if ( $("body").css( "background-image" ) == "none" ) {
                     setDefaultBackground();
                 }
-
-            },
-            function( result ) {
+            })
+            .done( function( result ) {
                 if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                     // set background image
                     setBackground( result.hdurl );
@@ -51,7 +49,7 @@ define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis
                 // when version is `2` data structure
                 // background_obj = { "simptab-background" : result };
                 background_obj = result;
-        });
+            });
     }
 
     setDefaultBackground = function() {
