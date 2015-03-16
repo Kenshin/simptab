@@ -12,7 +12,8 @@ requirejs.config({
       "controlbar" : "js/controlbar",
       "setting"    : "js/setting",
       "i18n"       : "js/i18n",
-      "shortcuts"  : "js/shortcuts"
+      "shortcuts"  : "js/shortcuts",
+      "files"       : "js/files"
     },
     shim: {
       "mousetrap"   : {
@@ -22,7 +23,13 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts" ], function ( $, background, date, controlbar, setting, i18n, shortcuts ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files ) {
+
+  // file object init
+  files.Init();
+
+  // add test
+  window.files = files;
 
   // set background font
   background.SetLang( i18n.GetLocale() );
@@ -57,6 +64,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
   // validation background
   background.Valid();
 
+  // short cuts init
   shortcuts.Init();
 
 });

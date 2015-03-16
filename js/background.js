@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo" ], function( $, date, i18n, apis, vo ) {
+define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i18n, apis, vo, files ) {
 
     var defaultBackground = "../assets/images/background.jpg",
         background_obj    = {};
