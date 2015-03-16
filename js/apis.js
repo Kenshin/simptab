@@ -314,21 +314,56 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         return def.promise();
     }
 
+    /*
+    * Google Art Project
+    */
+    var google_art_name  = "google.art.project.json",
+        suffix           = "=s1200-rw",
+        prefix           = "https://www.google.com/culturalinstitute/";
+
+    googleart = function() {
+        var url = query_host + google_art_name;
+        $.getJSON( url )
+        .done( function( result ) {
+            if ( result != undefined && $.isArray( result )) {
+
+                try {
+                    var max    = result.length - 1,
+                        random = createRandom( 0, max ),
+                        obj    = result[ random ];
+
+                    console.log( "result = ", obj )
+
+                    var hdurl = obj.image + suffix;
+                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, prefix + obj.link, new Date(), obj.title, "googleartproject.com" ));
+                }
+                catch( error ) {
+                  deferred.reject( null, error, error.message );
+                }
+            }
+            else {
+                deferred.reject( null, "Get Google Art Project error, url is " + url, result );
+            }
+        })
+        .fail( failed );
+    }
+
+
     return {
 
       Init: function () {
 
-        var code = createRandom( 0, 4 );
+        var code = createRandom( 0, 5 );
 
         console.log( "switch code is " + code );
 
         // check setting is random, when not random must call bing.com, so random is 4
         if ( !setting.isRandom() ) {
-          code = 4;
+          code = 5;
         }
 
         // add test code
-        // code = 3;
+        // code = 4;
 
         switch ( code ) {
           case 0:
@@ -342,6 +377,9 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             break;
           case 3:
             flickr();
+            break;
+          case 4:
+            googleart();
             break;
           default:
             bing();

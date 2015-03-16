@@ -10,7 +10,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `hdurl` `enddate` `shortname` `version` `type`
     * change `data` to `endate`
     *
-    * type include: `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com`
+    * type include: `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com` `googleartproject.com`
     *
     */
     var result = {};
