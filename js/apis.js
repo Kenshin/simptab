@@ -192,7 +192,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
     * e.g. https://api.flickr.com/services/rest/?method=[method name]&api_key=[api key]&[key]=[value]&format=json
     */
     var query_host = "http://simptab.qiniudn.com/",
-        flie_name  = "flickr.api.json",
+        flickr_name= "flickr.api.json",
         api_key    = "5feac8799f0102a4c93542f7cc82f5e1",
         flickr_host       = "https://api.flickr.com/services/rest/",
         flickr_photo_api  = "flickr.photos.getSizes";
@@ -206,7 +206,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         $.ajax({
             type       : "GET",
             timeout    : 2000,
-            url        : query_host + flie_name + "?random=" + Math.round(+new Date()),
+            url        : query_host + flickr_name + "?random=" + Math.round(+new Date()),
             dataType   : "json"})
             .then( getFlickrURL,     failed )
             .then( getFlickrPhotos,  failed )
