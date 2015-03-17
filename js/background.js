@@ -119,29 +119,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
     image2URI = function ( url ) {
         files.GetDataURI( url ).then( function( result ) {
             saveImg2Local( result );
-        })
-
-        /*
-        var img = new Image();
-        img.onload = function() {
-
-            // set canvas
-            var canvas = document.createElement( "canvas" );
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext( "2d" );
-            ctx.drawImage( img, 0, 0 );
-
-            // get datauri
-            var dataURI = canvas.toDataURL();
-
-            // save image to local
-            saveImg2Local( dataURI );
-
-        }
-        img.crossOrigin = "*";
-        img.src = url;
-        */
+        });
     }
 
     saveImg2Local = function ( dataURI ) {
@@ -170,84 +148,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                 console.log( "Write error: ", result );
                 localStorage["simptab-background-state"] = "failed";
             })
-
-        /*
-        window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem( window.TEMPORARY , 52428800, function( fs ) {
-
-            fs.root.getFile( "background.jpg", { create:true }, function( fileEntry ) {
-                fileEntry.createWriter(function(fileWriter) {
-
-                    console.log("fileEntry.toURL() = " + fileEntry.toURL())
-
-                    fileWriter.onwritestart  = function(e) {
-                        console.log( "Write start: ", e );
-                        localStorage["simptab-background-state"] = "staring";
-                    };
-
-                    fileWriter.onprogress  = function(e) {
-                        console.log( "Write process: ", e );
-                        localStorage["simptab-background-state"] = "pending";
-                    };
-
-                    fileWriter.onwriteend = function(e) {
-                        console.log( "Write completed: ", e );
-                        // set background state
-                        localStorage["simptab-background-state"] = "success";
-                        // save background to storge
-                        saveBackgroundStorge()
-                    };
-
-                    fileWriter.onabort  = function(e) {
-                        console.log( "Write abort: ", e );
-                        localStorage["simptab-background-state"] = "failed";
-                    };
-
-                    fileWriter.onerror = function(e) {
-                        console.log( "Write failed: ", e );
-                        localStorage["simptab-background-state"] = "failed";
-                    };
-
-                    fileWriter.write( files.DataURItoBlob( dataURI ));
-
-                }, errorHandler );
-            }, errorHandler );
-
-        }, errorHandler );
-        */
-
     }
-
-    /*
-    errorHandler = function (e) {
-        console.log(e)
-        localStorage["simptab-background-state"] = "failed";
-    }
-    */
 
     saveBackgroundStorge = function() {
       vo.Set( background_obj );
     }
-
-    /*
-    dataURItoBlob = function ( dataURI ) {
-        // convert base64 to raw binary data held in a string
-        var byteString = atob( dataURI.split(',')[1] );
-
-        // separate out the mime component
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-
-        // write the bytes of the string to an ArrayBuffer
-        var ab = new ArrayBuffer( byteString.length );
-        var ia = new Uint8Array( ab );
-        for ( var i = 0; i < byteString.length; i++ ) {
-            ia[i] = byteString.charCodeAt(i);
-        }
-
-        var blob = new Blob( [ia], { type: "image/jpg" });
-        return blob;
-    };
-    */
 
     return {
         Get: function ( is_random ) {
