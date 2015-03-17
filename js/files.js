@@ -10,10 +10,10 @@ define([ "jquery" ], function( $ ) {
         console.error( "File Operations error.", error );
     }
 
-    createFolder = function() {
+    createFavFolder = function() {
         fs.root.getDirectory( FOLDER_NAME , { create: true }, function( dirEntry ) {
-          console.log("You have just created the " + dirEntry.name + " directory.");
-        }, errorHandler);
+          console.log( "You have just created the " + dirEntry.name + " directory." );
+        }, errorHandler );
     }
 
     dataURItoBlob = function ( dataURI ) {
@@ -35,7 +35,9 @@ define([ "jquery" ], function( $ ) {
     }
 
     getDataURI = function( url ) {
-        var img = new Image();
+        var img = new Image(),
+            def = $.Deferred();
+
         img.onload = function() {
 
             // set canvas
@@ -45,14 +47,14 @@ define([ "jquery" ], function( $ ) {
             var ctx = canvas.getContext( "2d" );
             ctx.drawImage( img, 0, 0 );
 
-            // get datauri
-            dataURI = canvas.toDataURL();
-
-            console.log( "Current background dataURI is ", dataURI )
+            def.resolve( canvas.toDataURL() );
 
         }
+
         img.crossOrigin = "*";
         img.src = url;
+
+        return def.promise();
     }
 
     return {
@@ -63,43 +65,47 @@ define([ "jquery" ], function( $ ) {
             window.requestFileSystem( window.TEMPORARY , 52428800, function( fileEntry ) {
                 fs = fileEntry;
                 console.log( "File init complete.", fs )
-                createFolder();
-                getDataURI( url );
+                createFavFolder();
+                getDataURI( url ).then( function( result ) {
+                    dataURI = result;
+                    console.log( "Current background dataURI is ", dataURI )
+                });
 
             }, errorHandler );
         },
 
-        Add: function() {
+        Add: function( url, uri ) {
 
-            fs.root.getFile( FOLDER_NAME + "/background.jpg" , { create:true }, function( fileEntry ) {
-                fileEntry.createWriter(function(fileWriter) {
+            // url include: `backgroud.jpg` `favorites/xxxxx.jpg`
+            // uri is dataURI
 
-                    console.log("fileEntry.toURL() = " + fileEntry.toURL())
+            var def = $.Deferred();
 
-                    fileWriter.onwritestart  = function(e) {
-                        console.log( "Write start: ", e );
-                    };
+            fs.root.getFile( url , { create : true },
+                function( fileEntry ) {
+                    fileEntry.createWriter( function( fileWriter ) {
 
-                    fileWriter.onprogress  = function(e) {
-                        console.log( "Write process: ", e );
-                    };
+                        console.log("fileEntry.toURL() = " + fileEntry.toURL())
 
-                    fileWriter.onwriteend = function(e) {
-                        console.log( "Write completed: ", e );
-                    };
+                        fileWriter.onwritestart  = function(e) { def.notify( e ); };
+                        fileWriter.onprogress    = function(e) { def.notify( e ); };
+                        fileWriter.onwriteend    = function(e) { def.resolve( e ); };
+                        fileWriter.onabort       = function(e) { def.reject( e ); };
+                        fileWriter.onerror       = function(e) { def.reject( e ); };
 
-                    fileWriter.onabort  = function(e) {
-                        console.log( "Write abort: ", e );
-                    };
+                        fileWriter.write( dataURItoBlob( uri ));
 
-                    fileWriter.onerror = function(e) {
-                        console.log( "Write failed: ", e );
-                    };
+                    }, function( error ) {
+                        console.log( "Save background fail, error is", error )
+                        def.reject( e );
+                    });
+                },
+                function( error ) {
+                        console.log( "Get background fail, error is", error )
+                        def.reject( e );
+                });
 
-                    fileWriter.write( dataURItoBlob( dataURI ));
-
-                }, errorHandler );
-            }, errorHandler );
+            return def.promise();
         },
 
         Delete: function( file_name ) {
@@ -144,7 +150,8 @@ define([ "jquery" ], function( $ ) {
             return dataURI;
         },
 
-        DataURItoBlob: dataURItoBlob
+        DataURItoBlob : dataURItoBlob,
+        GetDataURI    : getDataURI
 
     }
 });

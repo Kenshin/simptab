@@ -116,7 +116,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         return localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success"
     }
 
-    image2URI = function ( url, enddate, name ) {
+    image2URI = function ( url ) {
+        files.GetDataURI( url ).then( function( result ) {
+            saveImg2Local( result );
+        })
+
+        /*
         var img = new Image();
         img.onload = function() {
 
@@ -136,9 +141,37 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         }
         img.crossOrigin = "*";
         img.src = url;
+        */
     }
 
     saveImg2Local = function ( dataURI ) {
+
+        files.Add( "background.jpg", dataURI )
+            .progress( function( result ) {
+                if ( result != undefined && !$.isEmptyObject( result )) {
+                    switch ( result.type ) {
+                        case "writestart":
+                            console.log( "Write start: ", result );
+                            localStorage["simptab-background-state"] = "staring";
+                            break;
+                        case "progress":
+                            console.log( "Write process: ", result );
+                            localStorage["simptab-background-state"] = "pending";
+                            break;
+                    }
+                }
+            })
+            .done( function( result ) {
+                console.log( "Write completed: ", result );
+                localStorage["simptab-background-state"] = "success";
+                saveBackgroundStorge();
+            })
+            .fail( function( result ) {
+                console.log( "Write error: ", result );
+                localStorage["simptab-background-state"] = "failed";
+            })
+
+        /*
         window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
         window.requestFileSystem( window.TEMPORARY , 52428800, function( fs ) {
 
@@ -181,12 +214,16 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
             }, errorHandler );
 
         }, errorHandler );
+        */
+
     }
 
+    /*
     errorHandler = function (e) {
         console.log(e)
         localStorage["simptab-background-state"] = "failed";
     }
+    */
 
     saveBackgroundStorge = function() {
       vo.Set( background_obj );
