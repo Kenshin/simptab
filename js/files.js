@@ -97,12 +97,12 @@ define([ "jquery" ], function( $ ) {
 
                     }, function( error ) {
                         console.log( "Save background fail, error is", error )
-                        def.reject( e );
+                        def.reject( error );
                     });
                 },
                 function( error ) {
                         console.log( "Get background fail, error is", error )
-                        def.reject( e );
+                        def.reject( error );
                 });
 
             return def.promise();
