@@ -322,6 +322,9 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         prefix           = "https://www.google.com/culturalinstitute/";
 
     googleart = function() {
+
+        console.log( "=== Googleartproject.com call ===")
+
         var url = query_host + google_art_name;
         $.getJSON( url )
         .done( function( result ) {
