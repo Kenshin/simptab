@@ -1,7 +1,7 @@
 
 define([ "jquery" ], function( $ ) {
 
-    const FOLDER_NAME = "favoites";
+    const FOLDER_NAME = "favorites";
 
     var fs = undefined;
 
@@ -22,7 +22,7 @@ define([ "jquery" ], function( $ ) {
             window.requestFileSystem( window.TEMPORARY , 52428800, function( fileEntry ) {
                 fs = fileEntry;
                 createFolder();
-                console.log( "file init complete.", fs)
+                console.log( "File init complete.", fs )
             }, errorHandler );
         },
 
@@ -30,6 +30,7 @@ define([ "jquery" ], function( $ ) {
 
             fs.root.getFile( srcEntry, {}, function( fileEntry ) {
                 fs.root.getDirectory( destDir, {}, function( dirEntry ) {
+                    console.log( "File crete successufully." )
                     fileEntry.copyTo( dirEntry );
                 }, errorHandler );
             }, errorHandler );
