@@ -23,13 +23,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files ) {
-
-  // file object init
-  files.Init();
-
-  // add test
-  window.files = files;
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts" ], function ( $, background, date, controlbar, setting, i18n, shortcuts ) {
 
   // set background font
   background.SetLang( i18n.GetLocale() );

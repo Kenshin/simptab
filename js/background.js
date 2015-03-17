@@ -100,6 +100,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         }
     }
 
+    getBackgroundURL = function() {
+        return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
+    }
+
     setBackground = function( url ) {
         if ( isDefaultbackground() ) {
             url = defaultBackground;
@@ -171,7 +175,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         localStorage["simptab-background-state"] = "failed";
                     };
 
-                    fileWriter.write( dataURItoBlob( dataURI ));
+                    fileWriter.write( files.DataURItoBlob( dataURI ));
 
                 }, errorHandler );
             }, errorHandler );
@@ -188,6 +192,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
       vo.Set( background_obj );
     }
 
+    /*
     dataURItoBlob = function ( dataURI ) {
         // convert base64 to raw binary data held in a string
         var byteString = atob( dataURI.split(',')[1] );
@@ -205,12 +210,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         var blob = new Blob( [ia], { type: "image/jpg" });
         return blob;
     };
+    */
 
     return {
         Get: function ( is_random ) {
 
             //var random = 0,
-            var   url    = defaultBackground;
+            //var   url    = defaultBackground;
 
             // set background refresh
             localStorage["simptab-background-refresh"] = "false";
@@ -231,7 +237,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         console.error("Current data structure error.", result );
                         setDefaultBackground();
                         getBackgroundByAPI();
-                      return;
+                        files.Init( getBackgroundURL() );
+                        return;
                     }
 
                     // random = true
@@ -276,6 +283,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     // get background
                     getBackgroundByAPI();
                 }
+
+                // add test code
+                window.files = files;
+                // file object init
+                files.Init( getBackgroundURL() );
+
             });
         },
 
