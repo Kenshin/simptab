@@ -74,14 +74,21 @@ define([ "jquery" ], function( $ ) {
             }, errorHandler );
         },
 
-        Add: function( url, uri ) {
+        Add: function( file_name, uri ) {
 
-            // url include: `backgroud.jpg` `favorites/xxxxx.jpg`
-            // uri is dataURI
+            // file_name include: `background.jpg` `favorites/xxxxx.jpg`
+            // uri       is dataURI
+            var path;
+            if ( file_name == "background.jpg" ) {
+                path = file_name;
+            }
+            else {
+                path = FOLDER_NAME + "/" + file_name + ".jpg";
+            }
 
             var def = $.Deferred();
 
-            fs.root.getFile( url , { create : true },
+            fs.root.getFile( path, { create : true },
                 function( fileEntry ) {
                     fileEntry.createWriter( function( fileWriter ) {
 
@@ -120,9 +127,11 @@ define([ "jquery" ], function( $ ) {
                   }
                   else if ( entry.isFile ) {
                     console.log("File: " + entry.fullPath );
-                    entry.remove(function() {
-                        console.log( "File successufully removed." );
-                    }, errorHandler );
+                    if ( file_name + ".jpg" == entry.name ) {
+                        entry.remove(function() {
+                            console.log( "File successufully removed." );
+                        }, errorHandler );
+                    }
                   }
                 }
               }, errorHandler );
