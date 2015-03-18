@@ -351,6 +351,27 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         .fail( failed );
     }
 
+    /*
+    * Favorite background
+    */
+    favorite = function() {
+        var storge = localStorage[ "simptab-favorites" ] || [];
+        var arr;
+        if ( storge.length > 0 ) {
+            arr = JSON.parse( storge );
+            var max    = arr.length - 1;
+            var random = createRandom( 0, max );
+            var obj    = JSON.parse( arr[ random ] );
+
+            console.log( "Get favorite background is ", JSON.parse( obj.result ) )
+
+            deferred.resolve( JSON.parse( obj.result ) );
+
+        }
+        else {
+            deferred.reject( null, "Current not any favorite background.", null );
+        }
+    }
 
     return {
 
@@ -362,11 +383,11 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
         // check setting is random, when not random must call bing.com, so random is 4
         if ( !setting.isRandom() ) {
-          code = 5;
+          code = 6;
         }
 
         // add test code
-        // code = 4;
+        // code = 5;
 
         switch ( code ) {
           case 0:
@@ -383,6 +404,9 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             break;
           case 4:
             googleart();
+            break;
+          case 5:
+            setTimeout( function() { favorite(); }, 2000 );
             break;
           default:
             bing();
