@@ -138,9 +138,10 @@ define([ "jquery" ], function( $ ) {
             }, errorHandler );
         },
 
-        Get: function() {
+        List: function( callback ) {
             fs.root.getDirectory( FOLDER_NAME, {}, function( dirEntry ) {
             var dirReader = dirEntry.createReader();
+            var name_arry = [];
             dirReader.readEntries(function( entries ) {
                 for( var i = 0; i < entries.length; i++ ) {
                   var entry = entries[i];
@@ -149,8 +150,10 @@ define([ "jquery" ], function( $ ) {
                   }
                   else if ( entry.isFile ) {
                     console.log("File: " + entry.fullPath );
+                    name_arry.push( entry.name.replace( ".jpg", "" ) );
                   }
                 }
+                callback( name_arry );
               }, errorHandler );
             }, errorHandler );
         },
