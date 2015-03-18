@@ -76,7 +76,7 @@ define([ "jquery" ], function( $ ) {
 
         Add: function( file_name, uri ) {
 
-            // file_name include: `background.jpg` `favorites/xxxxx.jpg`
+            // file_name include: `background.jpg` `favorites/20150318115513.jpg`
             // uri       is dataURI
             var path;
             if ( file_name == "background.jpg" ) {

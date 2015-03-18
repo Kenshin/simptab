@@ -228,6 +228,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
                 // add test code
                 window.files = files;
+                window.date  = date;
                 // file object init
                 files.Init( getBackgroundURL() );
 
