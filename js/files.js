@@ -3,8 +3,8 @@ define([ "jquery" ], function( $ ) {
 
     const FOLDER_NAME = "favorites";
 
-    var fs      = undefined,
-        dataURI = undefined;
+    var fs;
+    var dataURI;
 
     errorHandler = function( error ) {
         console.error( "File Operations error.", error );

@@ -40,6 +40,10 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
             else {
                 $( $(".controlbar").find( "a" )[idx] )[0].click();
             }
+        },
+
+        Favorite: function() {
+            $( ".controlbar" ).trigger( "favoriteClickEvent" );
         }
     }
 });

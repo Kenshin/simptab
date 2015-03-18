@@ -2,7 +2,8 @@
 define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i18n, apis, vo, files ) {
 
     var defaultBackground = "../assets/images/background.jpg",
-        background_obj    = {};
+        background_obj    = {},
+        background_vo     = {};
 
     getBackgroundByAPI = function () {
 
@@ -231,6 +232,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                 window.date  = date;
                 // file object init
                 files.Init( getBackgroundURL() );
+                background_vo = data;
 
             });
         },
@@ -252,6 +254,25 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     setDefaultBackground();
                 }
             }, 8 * 1000 );
+        },
+
+        Favorite: function() {
+            var file_name = date.Now();
+            files.Add( file_name, files.DataURI() )
+                .done( function() {
+                    background_vo.hdurl = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorite/" + file_name + ".jpg";
+                    background_vo.url   = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorite/" + file_name + ".jpg";
+                    var obj = { "file_name" : file_name, "result" : JSON.stringify( background_vo ) };
+                    var arr = [];
+                    if ( localStorage[ "simptab-favorites" ] != undefined ) {
+                        arr = JSON.parse( localStorage[ "simptab-favorites" ]);
+                    }
+                    arr.push( JSON.stringify( obj ));
+                    localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                })
+                .fail( function( error ) {
+                    console.error( "Favorite backgroud error is ", error )
+                });
         }
     }
 });
