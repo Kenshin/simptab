@@ -355,6 +355,9 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
     * Favorite background
     */
     favorite = function() {
+
+        console.log( "=== Favorite background call ===")
+
         var storge = localStorage[ "simptab-favorites" ] || [];
         var arr;
         if ( storge.length > 0 ) {
