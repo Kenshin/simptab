@@ -281,7 +281,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
                         // update hdurl url favorite
                         cur_background.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
-                        cur_background.url      = cur_background.url;
+                        cur_background.url      = cur_background.hdurl;
                         cur_background.favorite = file_name;
 
                         // update vo

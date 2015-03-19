@@ -359,6 +359,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         console.log( "=== Favorite background call ===")
 
         var storge = localStorage[ "simptab-favorites" ] || [];
+        storge     = JSON.parse( storge );
         var arr;
         if ( storge.length > 0 ) {
             arr = JSON.parse( storge );
