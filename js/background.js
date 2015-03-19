@@ -101,6 +101,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         }
     }
 
+    setFavorte = function( is_favorite ) {
+        var newclass = is_favorite ? "favoriteicon" : "unfavoriteicon";
+        $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
+    }
+
     getBackgroundURL = function() {
         return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
     }
@@ -231,9 +236,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                 background_vo = data;
                 // files object init
                 files.Init( getBackgroundURL() );
-
-                // add test code
-                window.files = files;
+                // set favorite state
+                setFavorte( data.favorite == -1 ? false : true );
 
             });
         },
@@ -257,24 +261,39 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
             }, 8 * 1000 );
         },
 
-        Favorite: function() {
-            var file_name = date.Now();
-            files.Add( file_name, files.DataURI() )
-                .done( function() {
-                    background_vo.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
-                    background_vo.url      = background_vo.url;
-                    background_vo.favorite = file_name;
-                    var obj = { "file_name" : file_name, "result" : JSON.stringify( background_vo ) };
-                    var arr = [];
-                    if ( localStorage[ "simptab-favorites" ] != undefined ) {
-                        arr = JSON.parse( localStorage[ "simptab-favorites" ]);
-                    }
-                    arr.push( JSON.stringify( obj ));
-                    localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
-                })
-                .fail( function( error ) {
-                    console.error( "Favorite backgroud error is ", error )
-                });
+        Favorite: function( is_favorite ) {
+
+            console.log("is_favorite = ", is_favorite)
+
+            if ( is_favorite ) {
+                var file_name = date.Now();
+                files.Add( file_name, files.DataURI() )
+                    .done( function() {
+
+                        background_vo.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
+                        background_vo.url      = background_vo.url;
+                        background_vo.favorite = file_name;
+
+                        var obj = { "file_name" : file_name, "result" : JSON.stringify( background_vo ) };
+                        var arr = [];
+                        if ( localStorage[ "simptab-favorites" ] != undefined ) {
+                            arr = JSON.parse( localStorage[ "simptab-favorites" ]);
+                        }
+
+                        arr.push( JSON.stringify( obj ));
+                        localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+
+                        setFavorte( true );
+                        console.log( "Favorite background add success." );
+                    })
+                    .fail( function( error ) {
+                        console.error( "Favorite backgroud error is ", error )
+                    });
+            }
+            else {
+                console.log("sadffafafafafaf", background_vo )
+            }
+
         }
     }
 });

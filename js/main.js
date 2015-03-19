@@ -61,11 +61,8 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
   // short cuts init
   shortcuts.Init();
 
-  // add test code
-  window.controlbar = controlbar;
-
-  $( ".controlbar" ).on( "favoriteClickEvent", function() {
-      background.Favorite();
+  $( ".controlbar" ).on( "favoriteClickEvent", function( event, result ) {
+      background.Favorite( result );
   })
 
 });

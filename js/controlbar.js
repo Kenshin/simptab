@@ -30,6 +30,10 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
                         });
                     }
                 }
+                else if ( url == "favorite" ) {
+                    var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
+                    $( ".controlbar" ).trigger( "favoriteClickEvent", [is_favorite] );
+                }
             });
         },
 
@@ -40,10 +44,6 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
             else {
                 $( $(".controlbar").find( "a" )[idx] )[0].click();
             }
-        },
-
-        Favorite: function() {
-            $( ".controlbar" ).trigger( "favoriteClickEvent" );
         }
     }
 });
