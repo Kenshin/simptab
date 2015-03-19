@@ -328,6 +328,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
                         setFavorte( false );
+
+                        // when delete favorite
+                        if ( arr.length == 0 ) {
+                            getBackgroundByAPI();
+                        }
+
                     }
                     , function( error ) {
                         console.error( "Delete favorite background error.", error );
