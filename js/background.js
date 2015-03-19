@@ -283,9 +283,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         cur_background.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
                         cur_background.url      = cur_background.hdurl;
                         cur_background.favorite = file_name;
-
-                        // update vo
-                        vo.Set( cur_background );
+                        cur_background.type     = "favorite";
 
                         // update local storge 'simptab-favorites'
                         var obj = { "file_name" : file_name, "result" : JSON.stringify( cur_background ) };
@@ -316,12 +314,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         var arr   = JSON.parse(localStorage[ "simptab-favorites" ]);
                         var obj   = {};
                         var index = -1;
-                        var curobj = {};
                         $.each( arr, function( idx ) {
                             obj = JSON.parse( arr[idx] );
                             if ( obj.file_name == file_name ) {
                                 index  = idx;
-                                curobj = JSON.parse( obj.result );
                                 return;
                             }
                         })
@@ -332,13 +328,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
                         // update favorite icon
                         setFavorte( false );
-
-                        // update vo
-                        curobj.favorite = -1;
-                        vo.Set( curobj );
-
-                        // when delete favorite,need re-fresh background image
-                        getBackgroundByAPI();
 
                     }
                     , function( error ) {
