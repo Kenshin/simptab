@@ -359,6 +359,10 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         console.log( "=== Favorite background call ===")
 
         var storge = localStorage[ "simptab-favorites" ] || [];
+        if ( $.isArray( storge ) && storge.length == 0 ) {
+          deferred.reject( null, "Local storge 'simptab-favorites' not exist.", null );
+          return;
+        }
         var arr    = JSON.parse( storge );
 
         if ( arr.length > 0 ) {
