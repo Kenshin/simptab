@@ -261,8 +261,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
             var file_name = date.Now();
             files.Add( file_name, files.DataURI() )
                 .done( function() {
-                    background_vo.hdurl = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
-                    background_vo.url   = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
+                    background_vo.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
+                    background_vo.url      = background_vo.url;
+                    background_vo.favorite = file_name;
                     var obj = { "file_name" : file_name, "result" : JSON.stringify( background_vo ) };
                     var arr = [];
                     if ( localStorage[ "simptab-favorites" ] != undefined ) {
