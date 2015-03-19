@@ -312,13 +312,16 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
                         console.log( "Delete favorite is ", file_name )
 
+                        // update local storge
                         var arr   = JSON.parse(localStorage[ "simptab-favorites" ]);
                         var obj   = {};
                         var index = -1;
+                        var curobj = {};
                         $.each( arr, function( idx ) {
                             obj = JSON.parse( arr[idx] );
                             if ( obj.file_name == file_name ) {
-                                index = idx;
+                                index  = idx;
+                                curobj = JSON.parse( obj.result );
                                 return;
                             }
                         })
@@ -327,12 +330,15 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         }
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
+                        // update favorite icon
                         setFavorte( false );
 
-                        // when delete favorite
-                        if ( arr.length == 0 ) {
-                            getBackgroundByAPI();
-                        }
+                        // update vo
+                        curobj.favorite = -1;
+                        vo.Set( curobj );
+
+                        // when delete favorite,need re-fresh background image
+                        getBackgroundByAPI();
 
                     }
                     , function( error ) {
