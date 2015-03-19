@@ -115,27 +115,28 @@ define([ "jquery" ], function( $ ) {
             return def.promise();
         },
 
-        Delete: function( file_name ) {
+        Delete: function( file_name, callback, errorBack ) {
 
             fs.root.getDirectory( FOLDER_NAME, {}, function( dirEntry ) {
-            var dirReader = dirEntry.createReader();
-            dirReader.readEntries(function( entries ) {
-                for( var i = 0; i < entries.length; i++ ) {
-                  var entry = entries[i];
-                  if ( entry.isDirectory ) {
-                    console.log("Directory: " + entry.fullPath );
-                  }
-                  else if ( entry.isFile ) {
-                    console.log("File: " + entry.fullPath );
-                    if ( file_name + ".jpg" == entry.name ) {
-                        entry.remove(function() {
-                            console.log( "File successufully removed." );
-                        }, errorHandler );
+                var dirReader = dirEntry.createReader();
+                dirReader.readEntries(function( entries ) {
+                    for( var i = 0; i < entries.length; i++ ) {
+                      var entry = entries[i];
+                      if ( entry.isDirectory ) {
+                        console.log("Directory: " + entry.fullPath );
+                      }
+                      else if ( entry.isFile ) {
+                        console.log("File: " + entry.fullPath );
+                        if ( file_name + ".jpg" == entry.name ) {
+                            entry.remove(function() {
+                                console.log( "File successufully removed." );
+                                callback( file_name );
+                            }, errorBack );
+                        }
+                      }
                     }
-                  }
-                }
-              }, errorHandler );
-            }, errorHandler );
+                 }, errorBack );
+            }, errorBack );
         },
 
         List: function( callback ) {

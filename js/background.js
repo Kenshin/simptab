@@ -60,6 +60,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         setDownloadURL( defaultBackground, null, "Wallpaper" );
         // set info url
         setInfoURL( "#", null );
+        // hide favorite icon
+        setFavorteState( false );
     }
 
     setDownloadURL = function( url, name, shortname ) {
@@ -106,8 +108,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
     }
 
-    getBackgroundURL = function() {
-        return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
+    setFavorteState = function( is_show ) {
+        is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
     }
 
     setBackground = function( url ) {
@@ -115,6 +117,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
             url = defaultBackground;
         }
         $("body").css({ "background-image": "url(" + url + ")" });
+    }
+
+    getBackgroundURL = function() {
+        return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
     }
 
     isDefaultbackground = function() {
@@ -237,7 +243,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                 // files object init
                 files.Init( getBackgroundURL() );
                 // set favorite state
-                setFavorte( data.favorite == -1 ? false : true );
+                // when data is undefined explain first open new tab
+                if ( data != undefined && data.favorite != undefined ) {
+                    setFavorte( data.favorite == -1 ? false : true );
+                }
 
             });
         },
@@ -291,7 +300,31 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     });
             }
             else {
-                console.log("sadffafafafafaf", background_vo )
+                files.Delete( background_vo.favorite
+                    , function( file_name ) {
+
+                        console.log( "Delete favorite is ", file_name )
+
+                        var arr   = JSON.parse(localStorage[ "simptab-favorites" ]);
+                        var obj   = {};
+                        var index = -1;
+                        $.each( arr, function( idx ) {
+                            obj = JSON.parse( arr[idx] );
+                            if ( obj.file_name == file_name ) {
+                                index = idx;
+                                return;
+                            }
+                        })
+                        if ( index != -1 ) {
+                            arr.splice( index, 1 );
+                        }
+                        localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+
+                        setFavorte( false );
+                    }
+                    , function( error ) {
+                        console.error( "Delete favorite background error.", error );
+                });
             }
 
         }
