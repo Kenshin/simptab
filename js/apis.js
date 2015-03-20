@@ -1,7 +1,7 @@
 
 define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
-    var deferred = new $.Deferred();
+    var deferred   = new $.Deferred();
 
     /*
     * Common
@@ -386,12 +386,20 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
         var code = createRandom( 0, 5 );
 
-        console.log( "switch code is " + code );
-
         // check setting is random, when not random must call bing.com, so random is 4
         if ( !setting.isRandom() ) {
           code = 6;
         }
+        else {
+            if ( localStorage[ "simptab-prv-code" ] != undefined && localStorage[ "simptab-prv-code" ] == code ) {
+                code += 1;
+                code = code > 5 ? 0 : code;
+            }
+        }
+
+        localStorage[ "simptab-prv-code" ] = code;
+
+        console.log( "switch code is " + code );
 
         // add test code
         // code = 5;
