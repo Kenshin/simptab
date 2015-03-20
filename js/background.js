@@ -297,8 +297,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     .done( function() {
 
                         // update hdurl url favorite
-                        cur_background.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
-                        cur_background.url      = cur_background.hdurl;
+                        cur_background.url      = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
                         cur_background.favorite = file_name;
 
                         // when current background is 'delete favorite', need refresh vo
@@ -362,8 +361,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
                             cur_background.favorite = -1;
-                            cur_background.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
-                            cur_background.url      = cur_background.hdurl;
+                            cur_background.url    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
                             cur_background.type     = "delete favorite";
                             vo.Set( cur_background );
                         }
