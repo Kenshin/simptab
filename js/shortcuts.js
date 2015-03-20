@@ -7,7 +7,8 @@ define([ "jquery", "mousetrap", "controlbar" ], function( $, Mousetrap, controlb
         "app",
         "info",
         "down",
-        "set"
+        "set",
+        "fav"
     ];
 
     formatShortcut = function( key ) {
