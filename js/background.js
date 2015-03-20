@@ -7,6 +7,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
     getBackgroundByAPI = function () {
 
+        // state includ: init loading staring pending success failed
+        localStorage["simptab-background-state"] = "init";
+
         apis.Init()
             .fail( function( jqXHR,  textStatus, errorThrown ) {
                 if ( jqXHR != null ) {
@@ -46,6 +49,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                 // when version is `2` data structure
                 // new_background = { "simptab-background" : result };
                 new_background = result;
+
+                localStorage["simptab-background-state"] = "loading";
 
                 // transfor to datauri
                 // save background to chrome
@@ -124,8 +129,17 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
     }
 
     isDefaultbackground = function() {
-        console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
-        return localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success"
+
+        var state = localStorage["simptab-background-state"];
+        console.log("simptab-background-state = " + state );
+
+        // when new background is writting or failed, show defautl image
+        if ( state != undefined && ( state == "writestart" || state == "pending" || state == "failed" )) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     image2URI = function ( url ) {
@@ -283,7 +297,15 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         cur_background.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + file_name + ".jpg";
                         cur_background.url      = cur_background.hdurl;
                         cur_background.favorite = file_name;
-                        cur_background.type     = "favorite";
+
+                        // when current background is 'delete favorite', need refresh vo
+                        if ( cur_background.type == "delete favorite" ) {
+                            cur_background.type = "favorite";
+                            vo.Set( cur_background );
+                        }
+                        else {
+                            cur_background.type = "favorite";
+                        }
 
                         // update local storge 'simptab-favorites'
                         var obj = { "file_name" : file_name, "result" : JSON.stringify( cur_background ) };
@@ -328,6 +350,15 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
                         // update favorite icon
                         setFavorte( false );
+
+                        // when simptab-background-state != success, need refresh vo
+                        if ( localStorage[ "simptab-background-state" ] != "success" ) {
+                            cur_background.favorite = -1;
+                            cur_background.hdurl    = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
+                            cur_background.url      = cur_background.hdurl;
+                            cur_background.type     = "delete favorite";
+                            vo.Set( cur_background );
+                        }
 
                     }
                     , function( error ) {
