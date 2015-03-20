@@ -395,9 +395,8 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                 code += 1;
                 code = code > 5 ? 0 : code;
             }
+            localStorage[ "simptab-prv-code" ] = code;
         }
-
-        localStorage[ "simptab-prv-code" ] = code;
 
         console.log( "switch code is " + code );
 
