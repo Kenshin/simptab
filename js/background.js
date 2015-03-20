@@ -120,6 +120,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
     setBackground = function( url ) {
         if ( isDefaultbackground() ) {
             url = defaultBackground;
+            setFavorteState( false );
         }
         $("body").css({ "background-image": "url(" + url + ")" });
     }
@@ -254,9 +255,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
                 // save current background object
                 cur_background = data;
+
                 // files object init
                 files.Init( getBackgroundURL() );
-                // set favorite state
+
+                // set favorite
                 // when data is undefined explain first open new tab
                 if ( data != undefined && data.favorite != undefined ) {
                     setFavorte( data.favorite == -1 ? false : true );
