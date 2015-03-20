@@ -323,6 +323,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         // set favorite icon state
                         setFavorte( true );
 
+                        // when simptab-background-state != success, need refresh vo
+                        if ( localStorage[ "simptab-background-state" ] != "success" ) {
+                            vo.Set( cur_background );
+                        }
+
                         console.log( "Favorite background add success." );
                     })
                     .fail( function( error ) {
