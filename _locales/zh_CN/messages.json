@@ -39,6 +39,10 @@
         "message": "\u8bbe\u5b9a"
     },
 
+    "controlbar_favorite": {
+        "message": "\u6536\u85cf"
+    },
+
     "setting_width": {
         "message": "225"
     },
