@@ -353,6 +353,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                             vo.Set();
                         }
 
+                        console.log( "Favorite background del success." );
+
                     }
                     , function( error ) {
                         console.error( "Delete favorite background error.", error );
