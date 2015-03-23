@@ -378,6 +378,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                 deferred.reject( null, "Current favorite data structure error.", result );
             }
             else {
+                vo.new = result;
                 deferred.resolve( result );
             }
         }

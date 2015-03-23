@@ -1,7 +1,7 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i18n, apis, vo, files ) {
+define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], function( $, date, i18n, apis, vo, files, controlbar ) {
 
-    var defaultBackground = "../assets/images/background.jpg";
+    // var defaultBackground = "../assets/images/background.jpg";
 
     getBackgroundByAPI = function () {
 
@@ -22,11 +22,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                 localStorage["simptab-background-state"] = "unsuccess";
 
                 if ( $("body").css( "background-image" ) == "none" ) {
-                    setDefaultBackground();
+                    //setDefaultBackground();
+                    controlbar.Set( true );
                 }
 
             })
             .done( function( result ) {
+                /*
                 if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
                     // set background image
                     setBackground( result.hdurl );
@@ -35,19 +37,18 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     // set info url
                     setInfoURL( result.info, result.name );
                 }
-
-                // set new backgroud data structure
-                vo.new = result;
+                */
 
                 localStorage["simptab-background-state"] = "loading";
 
                 // transfor to datauri
                 // save background to chrome
                 image2URI( result.hdurl );
-                
+
             });
     }
 
+    /*
     setDefaultBackground = function() {
         // set background image
         setBackground( defaultBackground );
@@ -58,7 +59,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         // hide favorite icon
         setFavorteState( false );
     }
+    */
 
+    /*
     setDownloadURL = function( url, name, shortname ) {
         if ( isDefaultbackground() ) {
             url  = defaultBackground;
@@ -98,15 +101,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         }
     }
 
-    setFavorte = function( is_favorite ) {
-        var newclass = is_favorite ? "favoriteicon" : "unfavoriteicon";
-        $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
-    }
-
-    setFavorteState = function( is_show ) {
-        is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
-    }
-
     setBackground = function( url ) {
         if ( isDefaultbackground() ) {
             url = defaultBackground;
@@ -115,8 +109,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 
-    getBackgroundURL = function() {
-        return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
+    setFavorteState = function( is_show ) {
+        is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
+    }
+
+    setFavorte = function( is_favorite ) {
+        var newclass = is_favorite ? "favoriteicon" : "unfavoriteicon";
+        $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
     }
 
     isDefaultbackground = function() {
@@ -131,6 +130,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         else {
             return false;
         }
+    }
+    */
+
+    getBackgroundURL = function() {
+        return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
     }
 
     image2URI = function ( url ) {
@@ -168,7 +172,15 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
     }
 
     saveBackgroundStorge = function() {
+
+        // update vo
+        vo.cur = vo.new;
         vo.Set( vo.new );
+
+        // when 'change bing.com background everyday', re-set controlbar.Set
+        if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+            controlbar.Set( false );
+        }
     }
 
     return {
@@ -187,14 +199,17 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     var today  = date.Today(),
                         data   = result["simptab-background"];
 
-                    // no use cache
-                    //url    = data.background;
+                    // save current background object
+                    vo.cur = data;
+
+                    console.log( "Current background data structure is ", vo.cur )
 
                     // check old data structure
                     // when result.version is undefined, it's old version, so call getBackgroundByAPI() refresh new data structure.
                     if ( !vo.Verify( data.version ) ) {
                         console.error("Current data structure error.", result );
-                        setDefaultBackground();
+                        //setDefaultBackground();
+                        controlbar.Set( true );
                         getBackgroundByAPI();
                         files.Init( getBackgroundURL() );
                         return;
@@ -203,12 +218,17 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     // random = true
                     if ( is_random ) {
 
+                        /*
                         // set background image
                         setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                         // set download url
                         setDownloadURL( data.hdurl, data.name, data.shortname );
                         // set info url
                         setInfoURL( data.info, data.name );
+                        */
+
+                        // set current background
+                        controlbar.Set( false );
 
                         // get new background
                         getBackgroundByAPI();
@@ -226,35 +246,44 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                             getBackgroundByAPI();
                         }
                         else {
+                            /*
                             // set background image
                             setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
                             // set download url
                             setDownloadURL( data.hdurl, data.name, data.shortname );
                             // set info url
                             setInfoURL( data.info, data.name );
+                            */
+
+                            // set current background
+                            controlbar.Set( false );
                         }
                     }
 
                 }
                 else {
+                    /*
                     // set default background
                     setDefaultBackground();
+                    */
+
+                    // set default background
+                    controlbar.Set( true );
+
                     // get background
                     getBackgroundByAPI();
                 }
 
-                // save current background object
-                //cur_background = data;
-                vo.cur = data;
-
                 // files object init
                 files.Init( getBackgroundURL() );
 
+                /*
                 // set favorite
                 // when data is undefined explain first open new tab
                 if ( data != undefined && data.favorite != undefined ) {
                     setFavorte( data.favorite == -1 ? false : true );
                 }
+                */
 
             });
         },
@@ -273,7 +302,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
         Valid: function() {
             setTimeout( function() {
                 if ( $("body").css( "background-image" ) == "none" ) {
-                    setDefaultBackground();
+                    //setDefaultBackground();
+                    controlbar.Set( true );
                 }
             }, 8 * 1000 );
         },
@@ -314,7 +344,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
                         // set favorite icon state
-                        setFavorte( true );
+                        // setFavorte( true );
+                        controlbar.SetFavorteIcon();
 
                         console.log( "Favorite background add success." );
                     })
@@ -344,15 +375,16 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                         }
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
-                        // update favorite icon
-                        setFavorte( false );
-
+                        vo.cur.favorite = -1;
+                        vo.cur.type     = "delete favorite";
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
-                            vo.cur.favorite = -1;
-                            vo.cur.type     = "delete favorite";
                             vo.Set( vo.cur );
                         }
+
+                        // update favorite icon
+                        // setFavorte( false );
+                        controlbar.SetFavorteIcon();
 
                         console.log( "Favorite background del success." );
 

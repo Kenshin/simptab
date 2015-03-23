@@ -1,6 +1,81 @@
 
-define([ "jquery", "i18n" ], function( $, i18n ) {
+define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
 
+    const default_background = "../assets/images/background.jpg";
+    const current_background = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
+
+    setInfoURL = function() {
+
+        /*
+        if ( isDefaultbackground() ) {
+            url  = "#";
+            name = null;
+        }
+        */
+
+        var info = vo.cur.info;
+        if ( i18n.GetLocale() != "zh_CN" ) {
+            info = vo.cur.info.replace( "/knows/", "/" );
+        }
+
+        $( ".controlink[url='info']" ).attr({
+            "title"    : vo.cur.name,
+            "href"     : info
+        });
+
+        /*
+        if ( info == null ) {
+            $( ".controlink[url='info']" ).removAttr( "title" );
+        }
+        */
+    }
+
+    setDownloadURL = function() {
+
+        /*
+        if ( isDefaultbackground() ) {
+            url  = defaultBackground;
+            name = null;
+            shortname = "Wallpaper";
+        }
+        */
+
+        var shortname = vo.cur.shortname;
+        if ( shortname == "#" ) {
+            shortname = vo.cur.name;
+        }
+
+        $( ".controlink[url='download']" ).attr({
+            "title"    : vo.cur.name,
+            "href"     : vo.cur.hdurl,
+            "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
+        });
+
+        /*
+        if ( url == null ) {
+            $( ".controlink[url='download']" ).removAttr( "title" );
+        }
+        */
+    }
+
+    setBackground = function( url ) {
+        /*
+        if ( isDefaultbackground() ) {
+            url = defaultBackground;
+            setFavorteState( false );
+        }
+        */
+        $("body").css({ "background-image": "url(" + url + ")" });
+    }
+
+    setFavorteState = function( is_show ) {
+        is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
+    }
+
+    setFavorteIcon = function() {
+        var newclass = vo.cur.favorite == -1 ? "unfavoriteicon" : "favoriteicon";
+        $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
+    }
 
     return {
         Listen: function () {
@@ -44,6 +119,21 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
             else {
                 $( $(".controlbar").find( "a" )[idx] )[0].click();
             }
-        }
+        },
+
+        Set: function( is_default ) {
+
+            // set default background
+            if ( is_default ) {
+                vo.cur = vo.Create( default_background, default_background, "Wallpaper", "#", new Date(), "Wallpaper", "default" );
+            }
+
+            setInfoURL();
+            setDownloadURL();
+            setBackground( is_default ? default_background: current_background );
+            setFavorteState( !is_default );
+            setFavorteIcon();
+        },
+        SetFavorteIcon: setFavorteIcon
     }
 });
