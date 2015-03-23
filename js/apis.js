@@ -369,11 +369,17 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             var max    = arr.length - 1;
             var random = createRandom( 0, max );
             var obj    = JSON.parse( arr[ random ] );
+            var result = JSON.parse( obj.result );
 
             console.log( "Get favorite background is ", JSON.parse( obj.result ) )
 
-            deferred.resolve( JSON.parse( obj.result ) );
-
+            // verify favorite data structure
+            if ( !vo.Verify( result.version )) {
+                deferred.reject( null, "Current favorite data structure error.", result );
+            }
+            else {
+                deferred.resolve( result );
+            }
         }
         else {
             deferred.reject( null, "Current not any favorite background.", null );
@@ -401,7 +407,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         console.log( "switch code is " + code );
 
         // add test code
-        code = 5;
+        // code = 5;
 
         switch ( code ) {
           case 0:
