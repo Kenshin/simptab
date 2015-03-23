@@ -85,6 +85,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         // when 'change bing.com background everyday', re-set controlbar.Set
         if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
             controlbar.Set( false );
+            files.Init( getBackgroundURL() );
         }
     }
 
@@ -172,7 +173,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         Valid: function() {
             setTimeout( function() {
                 if ( $("body").css( "background-image" ) == "none" ) {
-                    //setDefaultBackground();
                     controlbar.Set( true );
                 }
             }, 8 * 1000 );
