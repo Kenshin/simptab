@@ -1,7 +1,7 @@
 
 define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
-    var deferred = new $.Deferred();
+    var deferred   = new $.Deferred();
 
     /*
     * Common
@@ -192,7 +192,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
     * e.g. https://api.flickr.com/services/rest/?method=[method name]&api_key=[api key]&[key]=[value]&format=json
     */
     var query_host = "http://simptab.qiniudn.com/",
-        flie_name  = "flickr.api.json",
+        flickr_name= "flickr.api.json",
         api_key    = "5feac8799f0102a4c93542f7cc82f5e1",
         flickr_host       = "https://api.flickr.com/services/rest/",
         flickr_photo_api  = "flickr.photos.getSizes";
@@ -206,7 +206,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         $.ajax({
             type       : "GET",
             timeout    : 2000,
-            url        : query_host + flie_name + "?random=" + Math.round(+new Date()),
+            url        : query_host + flickr_name + "?random=" + Math.round(+new Date()),
             dataType   : "json"})
             .then( getFlickrURL,     failed )
             .then( getFlickrPhotos,  failed )
@@ -314,21 +314,94 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         return def.promise();
     }
 
+    /*
+    * Google Art Project
+    */
+    var google_art_name  = "google.art.project.json",
+        suffix           = "=s1200-rw",
+        prefix           = "https://www.google.com/culturalinstitute/";
+
+    googleart = function() {
+
+        console.log( "=== Googleartproject.com call ===")
+
+        var url = query_host + google_art_name;
+        $.getJSON( url )
+        .done( function( result ) {
+            if ( result != undefined && $.isArray( result )) {
+
+                try {
+                    var max    = result.length - 1,
+                        random = createRandom( 0, max ),
+                        obj    = result[ random ];
+
+                    console.log( "result = ", obj )
+
+                    var hdurl = obj.image + suffix;
+                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, prefix + obj.link, new Date(), obj.title, "googleartproject.com" ));
+                }
+                catch( error ) {
+                  deferred.reject( null, error, error.message );
+                }
+            }
+            else {
+                deferred.reject( null, "Get Google Art Project error, url is " + url, result );
+            }
+        })
+        .fail( failed );
+    }
+
+    /*
+    * Favorite background
+    */
+    favorite = function() {
+
+        console.log( "=== Favorite background call ===")
+
+        var storge = localStorage[ "simptab-favorites" ] || [];
+        if ( $.isArray( storge ) && storge.length == 0 ) {
+          deferred.reject( null, "Local storge 'simptab-favorites' not exist.", null );
+          return;
+        }
+        var arr    = JSON.parse( storge );
+
+        if ( arr.length > 0 ) {
+            var max    = arr.length - 1;
+            var random = createRandom( 0, max );
+            var obj    = JSON.parse( arr[ random ] );
+
+            console.log( "Get favorite background is ", JSON.parse( obj.result ) )
+
+            deferred.resolve( JSON.parse( obj.result ) );
+
+        }
+        else {
+            deferred.reject( null, "Current not any favorite background.", null );
+        }
+    }
+
     return {
 
       Init: function () {
 
-        var code = createRandom( 0, 4 );
-
-        console.log( "switch code is " + code );
+        var code = createRandom( 0, 5 );
 
         // check setting is random, when not random must call bing.com, so random is 4
         if ( !setting.isRandom() ) {
-          code = 4;
+          code = 6;
+        }
+        else {
+            if ( localStorage[ "simptab-prv-code" ] != undefined && localStorage[ "simptab-prv-code" ] == code ) {
+                code += 1;
+                code = code > 5 ? 0 : code;
+            }
+            localStorage[ "simptab-prv-code" ] = code;
         }
 
+        console.log( "switch code is " + code );
+
         // add test code
-        // code = 3;
+        // code = 5;
 
         switch ( code ) {
           case 0:
@@ -342,6 +415,12 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             break;
           case 3:
             flickr();
+            break;
+          case 4:
+            googleart();
+            break;
+          case 5:
+            setTimeout( function() { favorite(); }, 2000 );
             break;
           default:
             bing();

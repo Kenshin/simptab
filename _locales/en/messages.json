@@ -39,6 +39,10 @@
         "message": "Setting"
     },
 
+    "controlbar_favorite": {
+        "message": "Favorite"
+    },
+
     "setting_width": {
         "message": "270"
     },

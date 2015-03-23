@@ -10,14 +10,16 @@ define([ "jquery" ], function( $ ) {
     * add new property `hdurl` `enddate` `shortname` `version` `type`
     * change `data` to `endate`
     *
-    * type include: `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com`
+    * type include: `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com` `googleartproject.com`
     *
+    * when version = 2.1
+    * add new property `favorite`
     */
     var result = {};
-    const VERSION = "2";
+    const VERSION = "2.1";
 
     return {
-        Create: function( url, hdurl, name, info, enddate, shortname, type ) {
+        Create: function( url, hdurl, name, info, enddate, shortname, type, favorite ) {
 
             result.url       = url;
             result.hdurl     = hdurl;
@@ -27,6 +29,7 @@ define([ "jquery" ], function( $ ) {
             result.shortname = shortname;
             result.type      = type;
             result.version   = VERSION;
+            result.favorite  = favorite == undefined ? -1 : favorite;
 
             return result;
         },

@@ -30,6 +30,10 @@ define([ "jquery", "i18n" ], function( $, i18n ) {
                         });
                     }
                 }
+                else if ( url == "favorite" ) {
+                    var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
+                    $( ".controlbar" ).trigger( "favoriteClickEvent", [is_favorite] );
+                }
             });
         },
 

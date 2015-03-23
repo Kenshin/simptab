@@ -133,6 +133,14 @@ body {
     background-image: url("../images/download.png");
 }
 
+.favoriteicon {
+    background-image: url("../images/favorite.png");
+}
+
+.unfavoriteicon {
+    background-image: url("../images/unfavorite.png");
+}
+
 .settingicon {
     background-image: url("../images/setting.png");
 }
