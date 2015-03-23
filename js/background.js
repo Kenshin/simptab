@@ -79,11 +79,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
     saveBackgroundStorge = function() {
 
         // update vo
-        vo.cur = vo.new;
         vo.Set( vo.new );
 
         // when 'change bing.com background everyday', re-set controlbar.Set
         if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+            vo.cur = vo.new;
             controlbar.Set( false );
             files.Init( getBackgroundURL() );
         }
