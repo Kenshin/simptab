@@ -2,7 +2,8 @@
 define([ "jquery" ], function( $ ) {
 
     /*
-    * `this.val` data structure
+    *
+    * `this.cur` and `this.new` data structure
     * when version = undefined ( 1 )
     * property `url` `date` `name` `info`
     * url != hdurl when bing.com
@@ -12,10 +13,11 @@ define([ "jquery" ], function( $ ) {
     * add new property `hdurl` `enddate` `shortname` `version` `type`
     * change `data` to `endate`
     *
-    * type include: `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com` `googleartproject.com`
+    * type include: `default` `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com` `googleartproject.com`
     *
     * when version = 2.1
     * add new property `favorite`
+    *
     */
     const VERSION = "2.1";
 
