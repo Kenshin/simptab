@@ -2,8 +2,6 @@
 define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i18n, apis, vo, files ) {
 
     var defaultBackground = "../assets/images/background.jpg";
-    // var new_background    = {};
-    // var cur_background    = {};
 
     getBackgroundByAPI = function () {
 
@@ -34,21 +32,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     setInfoURL( result.info, result.name );
                 }
 
-                // set chrome local storage
-                // no use cache mode
-                //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
-                // use local mode
-                //chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
-
-                // set cache background object
-
-                // when version is `1`( undefined ) data structure
-                // new_background = { "simptab-background" : { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info }};
-                // new_background = { "url" : result.hdurl, "date" : result.enddate, "name" : result.name, "info" : result.info };
-
-                // when version is `2` data structure
-                // new_background = { "simptab-background" : result };
-                // new_background = result;
+                // set new backgroud data structure
                 vo.val            = result;
 
                 localStorage["simptab-background-state"] = "loading";

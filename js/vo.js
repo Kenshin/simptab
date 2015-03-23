@@ -1,6 +1,8 @@
 
 define([ "jquery" ], function( $ ) {
+
     /*
+    * `this.val` data structure
     * when version = undefined ( 1 )
     * property `url` `date` `name` `info`
     * url != hdurl when bing.com
@@ -55,46 +57,4 @@ define([ "jquery" ], function( $ ) {
 
     return new VO();
 
-    /*
-    var result = {};
-    const VERSION = "2.1";
-
-    return {
-        Create: function( url, hdurl, name, info, enddate, shortname, type, favorite ) {
-
-            result.url       = url;
-            result.hdurl     = hdurl;
-            result.name      = name;
-            result.info      = info;
-            result.enddate   = enddate;
-            result.shortname = shortname;
-            result.type      = type;
-            result.version   = VERSION;
-            result.favorite  = favorite == undefined ? -1 : favorite;
-
-            return result;
-        },
-
-        Value: function() {
-            return result;
-        },
-
-        Set: function( result ) {
-            chrome.storage.local.set( { "simptab-background" : result });
-        },
-
-        Get: function ( callBack ) {
-            return chrome.storage.local.get( "simptab-background", callBack );
-        },
-
-        Verify: function( version ) {
-            if ( version == undefined || version != VERSION ) {
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-    }
-    */
 });
