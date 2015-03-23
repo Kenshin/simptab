@@ -5,14 +5,6 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
     const current_background = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
 
     setInfoURL = function() {
-
-        /*
-        if ( isDefaultbackground() ) {
-            url  = "#";
-            name = null;
-        }
-        */
-
         var info = vo.cur.info;
         if ( i18n.GetLocale() != "zh_CN" ) {
             info = vo.cur.info.replace( "/knows/", "/" );
@@ -22,23 +14,9 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
             "title"    : vo.cur.name,
             "href"     : info
         });
-
-        /*
-        if ( info == null ) {
-            $( ".controlink[url='info']" ).removAttr( "title" );
-        }
-        */
     }
 
     setDownloadURL = function() {
-
-        /*
-        if ( isDefaultbackground() ) {
-            url  = defaultBackground;
-            name = null;
-            shortname = "Wallpaper";
-        }
-        */
 
         var shortname = vo.cur.shortname;
         if ( shortname == "#" ) {
@@ -51,20 +29,9 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
             "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
 
-        /*
-        if ( url == null ) {
-            $( ".controlink[url='download']" ).removAttr( "title" );
-        }
-        */
     }
 
     setBackground = function( url ) {
-        /*
-        if ( isDefaultbackground() ) {
-            url = defaultBackground;
-            setFavorteState( false );
-        }
-        */
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 

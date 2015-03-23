@@ -22,23 +22,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 localStorage["simptab-background-state"] = "unsuccess";
 
                 if ( $("body").css( "background-image" ) == "none" ) {
-                    //setDefaultBackground();
                     controlbar.Set( true );
                 }
 
             })
             .done( function( result ) {
-                /*
-                if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
-                    // set background image
-                    setBackground( result.hdurl );
-                    // set download url
-                    setDownloadURL( result.hdurl, result.name, result.shortname );
-                    // set info url
-                    setInfoURL( result.info, result.name );
-                }
-                */
 
+                // change background-state
                 localStorage["simptab-background-state"] = "loading";
 
                 // transfor to datauri
@@ -47,91 +37,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
             });
     }
-
-    /*
-    setDefaultBackground = function() {
-        // set background image
-        setBackground( defaultBackground );
-        // set download url
-        setDownloadURL( defaultBackground, null, "Wallpaper" );
-        // set info url
-        setInfoURL( "#", null );
-        // hide favorite icon
-        setFavorteState( false );
-    }
-    */
-
-    /*
-    setDownloadURL = function( url, name, shortname ) {
-        if ( isDefaultbackground() ) {
-            url  = defaultBackground;
-            name = null;
-            shortname = "Wallpaper";
-        }
-
-        if ( shortname == "#" ) {
-            shortname = name;
-        }
-
-        $( ".controlink[url='download']" ).attr({
-            "title"    : name,
-            "href"     : url,
-            "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
-        });
-
-        if ( url == null ) {
-            $( ".controlink[url='download']" ).removAttr( "title" );
-        }
-    }
-
-    setInfoURL = function( url, name ) {
-        if ( isDefaultbackground() ) {
-            url  = "#";
-            name = null;
-        }
-        if ( i18n.GetLocale() != "zh_CN" ) {
-            url = url.replace( "/knows/", "/" );
-        }
-        $( ".controlink[url='info']" ).attr({
-            "title"    : name,
-            "href"     : url
-        });
-        if ( url == null ) {
-            $( ".controlink[url='info']" ).removAttr( "title" );
-        }
-    }
-
-    setBackground = function( url ) {
-        if ( isDefaultbackground() ) {
-            url = defaultBackground;
-            setFavorteState( false );
-        }
-        $("body").css({ "background-image": "url(" + url + ")" });
-    }
-
-    setFavorteState = function( is_show ) {
-        is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
-    }
-
-    setFavorte = function( is_favorite ) {
-        var newclass = is_favorite ? "favoriteicon" : "unfavoriteicon";
-        $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
-    }
-
-    isDefaultbackground = function() {
-
-        var state = localStorage["simptab-background-state"];
-        console.log("simptab-background-state = " + state );
-
-        // when new background is writting or failed, show defautl image
-        if ( state != undefined && ( state == "writestart" || state == "pending" || state == "failed" )) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    */
 
     getBackgroundURL = function() {
         return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
@@ -186,9 +91,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
     return {
         Get: function ( is_random ) {
 
-            //var random = 0,
-            //var   url    = defaultBackground;
-
             // set background refresh
             localStorage["simptab-background-refresh"] = "false";
 
@@ -208,7 +110,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                     // when result.version is undefined, it's old version, so call getBackgroundByAPI() refresh new data structure.
                     if ( !vo.Verify( data.version ) ) {
                         console.error("Current data structure error.", result );
-                        //setDefaultBackground();
                         controlbar.Set( true );
                         getBackgroundByAPI();
                         files.Init( getBackgroundURL() );
@@ -217,15 +118,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                     // random = true
                     if ( is_random ) {
-
-                        /*
-                        // set background image
-                        setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
-                        // set download url
-                        setDownloadURL( data.hdurl, data.name, data.shortname );
-                        // set info url
-                        setInfoURL( data.info, data.name );
-                        */
 
                         // set current background
                         controlbar.Set( false );
@@ -246,15 +138,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             getBackgroundByAPI();
                         }
                         else {
-                            /*
-                            // set background image
-                            setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
-                            // set download url
-                            setDownloadURL( data.hdurl, data.name, data.shortname );
-                            // set info url
-                            setInfoURL( data.info, data.name );
-                            */
-
                             // set current background
                             controlbar.Set( false );
                         }
@@ -262,11 +145,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                 }
                 else {
-                    /*
-                    // set default background
-                    setDefaultBackground();
-                    */
-
                     // set default background
                     controlbar.Set( true );
 
@@ -276,14 +154,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                 // files object init
                 files.Init( getBackgroundURL() );
-
-                /*
-                // set favorite
-                // when data is undefined explain first open new tab
-                if ( data != undefined && data.favorite != undefined ) {
-                    setFavorte( data.favorite == -1 ? false : true );
-                }
-                */
 
             });
         },
@@ -344,7 +214,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
                         // set favorite icon state
-                        // setFavorte( true );
                         controlbar.SetFavorteIcon();
 
                         console.log( "Favorite background add success." );
@@ -383,7 +252,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         }
 
                         // update favorite icon
-                        // setFavorte( false );
                         controlbar.SetFavorteIcon();
 
                         console.log( "Favorite background del success." );
