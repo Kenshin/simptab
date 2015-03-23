@@ -5,22 +5,26 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
     getBackgroundByAPI = function () {
 
-        // state includ: init loading staring pending success failed
+        // state includ: init loading staring pending success failed unsuccess(end)
         localStorage["simptab-background-state"] = "init";
 
         apis.Init()
             .fail( function( jqXHR,  textStatus, errorThrown ) {
+
                 if ( jqXHR != null ) {
-                    console.error( "jqXHR            = ", jqXHR)
-                    console.error( "jqXHR.status     = ", jqXHR.status )
+                    console.error( "jqXHR            = ", jqXHR            )
+                    console.error( "jqXHR.status     = ", jqXHR.status     )
                     console.error( "jqXHR.statusText = ", jqXHR.statusText )
                 }
-                console.error( "textStatus       = ", textStatus )
-                console.error( "errorThrown      = ", errorThrown  )
+                console.error( "textStatus       = ", textStatus  )
+                console.error( "errorThrown      = ", errorThrown )
+
+                localStorage["simptab-background-state"] = "unsuccess";
 
                 if ( $("body").css( "background-image" ) == "none" ) {
                     setDefaultBackground();
                 }
+
             })
             .done( function( result ) {
                 if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
