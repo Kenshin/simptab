@@ -119,6 +119,7 @@ define([ "jquery" ], function( $ ) {
 
             fs.root.getDirectory( FOLDER_NAME, {}, function( dirEntry ) {
                 var dirReader = dirEntry.createReader();
+                var is_del    = false;
                 dirReader.readEntries(function( entries ) {
                     for( var i = 0; i < entries.length; i++ ) {
                       var entry = entries[i];
@@ -128,12 +129,19 @@ define([ "jquery" ], function( $ ) {
                       else if ( entry.isFile ) {
                         console.log("File: " + entry.fullPath );
                         if ( file_name + ".jpg" == entry.name ) {
-                            entry.remove(function() {
-                                console.log( "File successufully removed." );
-                                callback( file_name );
-                            }, errorBack );
+                            is_del = true;
                         }
                       }
+                    }
+                    if ( is_del ) {
+                        entry.remove(function() {
+                            console.log( "File successufully removed." );
+                            callback( file_name );
+                        }, errorBack );
+                    }
+                    else {
+                        console.error( "Not found delete favorite background, id is " + file_name );
+                        callback( file_name );
                     }
                  }, errorBack );
             }, errorBack );
