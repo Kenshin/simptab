@@ -37,13 +37,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                 }
 
                 // set new backgroud data structure
-                vo.val            = result;
+                vo.new = result;
 
                 localStorage["simptab-background-state"] = "loading";
 
                 // transfor to datauri
                 // save background to chrome
                 image2URI( result.hdurl );
+                
             });
     }
 
@@ -167,7 +168,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
     }
 
     saveBackgroundStorge = function() {
-      vo.Set();
+        vo.Set( vo.new );
     }
 
     return {
@@ -244,7 +245,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
                 // save current background object
                 //cur_background = data;
-                vo.val = data;
+                vo.cur = data;
 
                 // files object init
                 files.Init( getBackgroundURL() );
@@ -287,23 +288,23 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     .done( function() {
 
                         // update favorite
-                        vo.val.favorite = file_name;
+                        vo.cur.favorite = file_name;
 
                         // when current background is 'delete favorite', need re-set 'favorite'
-                        if ( vo.val.type == "delete favorite" ) {
-                            vo.val.type = "favorite";
+                        if ( vo.cur.type == "delete favorite" ) {
+                            vo.cur.type = "favorite";
                         }
                         else {
-                            vo.val.type = "favorite";
+                            vo.cur.type = "favorite";
                         }
 
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
-                            vo.Set();
+                            vo.Set( vo.cur );
                         }
 
                         // update local storge 'simptab-favorites'
-                        var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.val ) };
+                        var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) };
                         var arr = [];
                         if ( localStorage[ "simptab-favorites" ] != undefined ) {
                             arr = JSON.parse( localStorage[ "simptab-favorites" ]);
@@ -322,7 +323,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
                     });
             }
             else {
-                files.Delete( vo.val.favorite
+                files.Delete( vo.cur.favorite
                     , function( file_name ) {
 
                         console.log( "Delete favorite is ", file_name )
@@ -348,9 +349,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files" ], function( $, date, i
 
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
-                            vo.val.favorite = -1;
-                            vo.val.type     = "delete favorite";
-                            vo.Set();
+                            vo.cur.favorite = -1;
+                            vo.cur.type     = "delete favorite";
+                            vo.Set( vo.cur );
                         }
 
                         console.log( "Favorite background del success." );
