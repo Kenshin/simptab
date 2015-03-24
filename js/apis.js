@@ -42,7 +42,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         }
 
         // check setting is random, when not random must call bing.com current background, so random is 0
-        if ( !setting.isRandom() ) {
+        if ( !setting.IsRandom() ) {
           random = 0;
         }
 
@@ -394,7 +394,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         var code = createRandom( 0, 5 );
 
         // check setting is random, when not random must call bing.com, so random is 4
-        if ( !setting.isRandom() ) {
+        if ( !setting.IsRandom() ) {
           code = 6;
         }
         else {
