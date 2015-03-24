@@ -43,12 +43,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
     background.Get( setting.IsRandom() );
 
     // get time
-    if ( setting.Get( "clockstate" ) != undefined ) {
-        date.Show();
-    }
-    else {
-        date.Hide();
-    }
+    setting.Get( "clockstate" ) != undefined ? date.Show() : date.Hide();
 
     // listen
     controlbar.Listen();
