@@ -1,149 +1,192 @@
 
 define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], function( $, date, i18n, apis, vo, files, controlbar ) {
 
-    getBackgroundByAPI = function () {
+    getCurrentBackground = function( is_random ) {
 
-        // state includ: init loading staring pending success failed unsuccess(end)
-        localStorage["simptab-background-state"] = "init";
+        var def = $.Deferred();
 
-        apis.Init()
-            .fail( function( jqXHR,  textStatus, errorThrown ) {
+        // set background refresh
+        localStorage["simptab-background-refresh"] = "false";
 
-                if ( jqXHR != null ) {
-                    console.error( "jqXHR            = ", jqXHR            )
-                    console.error( "jqXHR.status     = ", jqXHR.status     )
-                    console.error( "jqXHR.statusText = ", jqXHR.statusText )
+        // get simptab-background
+        vo.Get( function( result ) {
+            if ( result && !$.isEmptyObject( result )) {
+
+                // save current background object
+                var data = result["simptab-background"];
+                vo.cur   = data;
+                console.log( "Current background data structure is ", vo.cur );
+
+                // check old data structure
+                if ( !vo.Verify( data.version ) ) {
+                    console.error( "Current data structure error.", result );
+                    //// set default background and call api. type 1
+                    def.resolve(1);
                 }
-                console.error( "textStatus       = ", textStatus  )
-                console.error( "errorThrown      = ", errorThrown )
-
-                localStorage["simptab-background-state"] = "unsuccess";
-
-                if ( $("body").css( "background-image" ) == "none" ) {
-                    controlbar.Set( true );
-                }
-
-            })
-            .done( function( result ) {
-
-                // change background-state
-                localStorage["simptab-background-state"] = "loading";
-
-                // save background to chrome
-                image2URI( result.hdurl );
-
-            });
-    }
-
-    image2URI = function ( url ) {
-        files.GetDataURI( url ).then( function( result ) {
-            saveImg2Local( result );
-        });
-    }
-
-    saveImg2Local = function ( dataURI ) {
-
-        files.Add( "background.jpg", dataURI )
-            .progress( function( result ) {
-                if ( result != undefined && !$.isEmptyObject( result )) {
-                    switch ( result.type ) {
-                        case "writestart":
-                            console.log( "Write start: ", result );
-                            localStorage["simptab-background-state"] = "staring";
-                            break;
-                        case "progress":
-                            console.log( "Write process: ", result );
-                            localStorage["simptab-background-state"] = "pending";
-                            break;
+                else {
+                    if ( is_random ) {
+                        //// set current backgroud and call api. type 2
+                        def.resolve(2);
+                    }
+                    else {
+                        if ( date.Today() != data.enddate ) {
+                            //// set background refresh
+                            localStorage["simptab-background-refresh"] = "true";
+                            //// only call api. type 3
+                            def.resolve(3);
+                        }
+                        else {
+                            //// set current background and not-call api. type 4
+                            def.resolve(4);
+                        }
                     }
                 }
-            })
-            .done( function( result ) {
-                console.log( "Write completed: ", result );
-                localStorage["simptab-background-state"] = "success";
-                saveBackgroundStorge();
-            })
-            .fail( function( result ) {
-                console.log( "Write error: ", result );
-                localStorage["simptab-background-state"] = "failed";
-            })
+            }
+            else {
+                //// set default background and call api. type 1
+                def.resolve(1);
+            }
+        });
+
+        return def.promise();
     }
 
-    saveBackgroundStorge = function() {
+    setCurrentBackground = function( state ) {
+        var def = $.Deferred();
 
-        // update vo
-        vo.Set( vo.new );
+        console.log( "Current state is " + state )
 
-        // when 'change bing.com background everyday', re-set controlbar.Set
-        if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
-            vo.cur = vo.new;
-            controlbar.Set( false );
+        switch ( state ) {
+            case 1:
+                controlbar.Set( true );
+                //call api
+                break;
+            case 2:
+                controlbar.Set( false );
+                //call api
+                break;
+            case 3:
+                //call api
+                break;
+            case 4:
+                controlbar.Set( false );
+                break;
         }
+
+        def.resolve( state != 4 ? true : false );
+
+        return def.promise();
+    }
+
+    getRemoteBackground = function( is_remote ) {
+        var def = $.Deferred();
+
+        if ( is_remote ) {
+
+            // state includ: init loading staring pending success failed unsuccess(end)
+            localStorage["simptab-background-state"] = "init";
+
+            apis.Init()
+                .fail( getRemoteBackgroundErr )
+                .done( function( result ) {
+
+                    // change background-state
+                    localStorage["simptab-background-state"] = "loading";
+
+                    // save background to chrome
+                    def.resolve( true, result.hdurl );
+
+                });
+
+        }
+        else {
+            def.resolve( false );
+        }
+
+        return def.promise();
+    }
+
+    getRemoteBackgroundErr = function( jqXHR,  textStatus, errorThrown ) {
+        var def = $.Deferred();
+
+        localStorage["simptab-background-state"] = "unsuccess";
+
+        def.reject( jqXHR, textStatus, errorThrown );
+
+        return def.promise();
+    }
+
+    setRemoteBackground = function( is_save, url ) {
+        var def = $.Deferred();
+
+        if ( is_save ) {
+            files.GetDataURI( url ).then( function( result ) {
+                files.Add( "background.jpg", result )
+                    .progress( function( result ) {
+                        if ( result != undefined && !$.isEmptyObject( result )) {
+                            switch ( result.type ) {
+                                case "writestart":
+                                    console.log( "Write start: ", result );
+                                    localStorage["simptab-background-state"] = "staring";
+                                    break;
+                                case "progress":
+                                    console.log( "Write process: ", result );
+                                    localStorage["simptab-background-state"] = "pending";
+                                    break;
+                            }
+                        }
+                    })
+                    .done( function( result ) {
+                        console.log( "Write completed: ", result );
+                        localStorage["simptab-background-state"] = "success";
+                        def.resolve( is_save );
+                    })
+                    .fail( function( result ) {
+                        console.log( "Write error: ", result );
+                        localStorage["simptab-background-state"] = "failed";
+                        def.reject( null, "Favorite write to local error.", result );
+                    })
+            });
+        }
+        else {
+            def.resolve( is_save );
+        }
+
+        return def.promise();
     }
 
     return {
         Get: function ( is_random ) {
 
-            // set background refresh
-            localStorage["simptab-background-refresh"] = "false";
+            getCurrentBackground( is_random )
+                .then( setCurrentBackground )
+                .then( getRemoteBackground  )
+                .then( setRemoteBackground, getRemoteBackgroundErr )
+                .then( function( is_save ) {
 
-            // get simptab-background
-            vo.Get( function( result ) {
-                if ( result && !$.isEmptyObject( result )) {
-                    // reset-background
-                    var today  = date.Today(),
-                        data   = result["simptab-background"];
+                    console.log( "===== New background get success. =====" );
 
-                    // save current background object
-                    vo.cur = data;
+                    if ( is_save ) {
+                        // sync vo
+                        vo.Set( vo.new );
 
-                    console.log( "Current background data structure is ", vo.cur )
-
-                    // check old data structure
-                    // when result.version is undefined, it's old version, so call getBackgroundByAPI() refresh new data structure.
-                    if ( !vo.Verify( data.version ) ) {
-                        console.error("Current data structure error.", result );
-                        controlbar.Set( true );
-                        getBackgroundByAPI();
-                        return;
-                    }
-
-                    // random = true
-                    if ( is_random ) {
-
-                        // set current background
-                        controlbar.Set( false );
-
-                        // get new background
-                        getBackgroundByAPI();
-                    }
-                    // random = false
-                    else {
-
-                        console.log("today = " + today)
-                        console.log("data  = " + data.enddate)
-
-                        if ( today != data.enddate ) {
-                            // set background refresh
-                            localStorage["simptab-background-refresh"] = "true";
-                            // get background
-                            getBackgroundByAPI();
-                        }
-                        else {
-                            // set current background
+                        // when 'change bing.com background everyday', re-set controlbar.Set
+                        if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+                            vo.cur = vo.new;
                             controlbar.Set( false );
                         }
                     }
-
-                }
-                else {
-                    // set default background
-                    controlbar.Set( true );
-
-                    // get background
-                    getBackgroundByAPI();
-                }
-            });
+                },
+                function( jqXHR, textStatus, errorThrown ) {
+                    console.error( "SimpTab flow error ", error )
+                    if ( jqXHR != null ) {
+                        console.error( "jqXHR            = ", jqXHR            )
+                        console.error( "jqXHR.status     = ", jqXHR.status     )
+                        console.error( "jqXHR.statusText = ", jqXHR.statusText )
+                    }
+                    console.error( "textStatus       = ", textStatus  )
+                    console.error( "errorThrown      = ", errorThrown )
+                });
         },
 
         SetLang: function( lang ) {
