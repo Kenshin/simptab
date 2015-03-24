@@ -38,9 +38,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             });
     }
 
+    /*
     getBackgroundURL = function() {
         return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
     }
+    */
 
     image2URI = function ( url ) {
         files.GetDataURI( url ).then( function( result ) {
@@ -85,7 +87,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
             vo.cur = vo.new;
             controlbar.Set( false );
-            files.Init( getBackgroundURL() );
+            //files.Init( getBackgroundURL() );
         }
     }
 
@@ -113,7 +115,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         console.error("Current data structure error.", result );
                         controlbar.Set( true );
                         getBackgroundByAPI();
-                        files.Init( getBackgroundURL() );
+                        //files.Init( getBackgroundURL() );
                         return;
                     }
 
@@ -154,7 +156,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 }
 
                 // files object init
-                files.Init( getBackgroundURL() );
+                // files.Init( getBackgroundURL() );
 
             });
         },

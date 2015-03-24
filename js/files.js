@@ -10,10 +10,10 @@ define([ "jquery" ], function( $ ) {
         console.error( "File Operations error.", error );
     }
 
-    createFavFolder = function() {
+    createFavFolder = function( errorBack ) {
         fs.root.getDirectory( FOLDER_NAME , { create: true }, function( dirEntry ) {
-          console.log( "You have just created the " + dirEntry.name + " directory." );
-        }, errorHandler );
+            console.log( "You have just created the " + dirEntry.name + " directory." );
+        }, errorBack );
     }
 
     dataURItoBlob = function ( dataURI ) {
@@ -58,20 +58,19 @@ define([ "jquery" ], function( $ ) {
     }
 
     return {
-        Init: function( url ) {
-            console.log( "Background url is ", url )
-
+        Init: function( errorBack ) {
             window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
             window.requestFileSystem( window.TEMPORARY , 52428800, function( fileEntry ) {
                 fs = fileEntry;
-                console.log( "File init complete.", fs )
-                createFavFolder();
+                console.log( "File init complete.", fs );
+                createFavFolder( errorBack );
+                /*
                 getDataURI( url ).then( function( result ) {
                     dataURI = result;
                     console.log( "Current background dataURI is ", dataURI )
                 });
-
-            }, errorHandler );
+                */
+            }, errorBack );
         },
 
         Add: function( file_name, uri ) {
@@ -171,7 +170,7 @@ define([ "jquery" ], function( $ ) {
             return dataURI;
         },
 
-        DataURItoBlob : dataURItoBlob,
+        // DataURItoBlob : dataURItoBlob,
         GetDataURI    : getDataURI
 
     }
