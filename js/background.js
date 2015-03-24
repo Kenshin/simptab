@@ -29,7 +29,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 // change background-state
                 localStorage["simptab-background-state"] = "loading";
 
-                // transfor to datauri
                 // save background to chrome
                 image2URI( result.hdurl );
 
@@ -79,7 +78,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
             vo.cur = vo.new;
             controlbar.Set( false );
-            //files.Init( getBackgroundURL() );
         }
     }
 
@@ -107,7 +105,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         console.error("Current data structure error.", result );
                         controlbar.Set( true );
                         getBackgroundByAPI();
-                        //files.Init( getBackgroundURL() );
                         return;
                     }
 
@@ -146,10 +143,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                     // get background
                     getBackgroundByAPI();
                 }
-
-                // files object init
-                // files.Init( getBackgroundURL() );
-
             });
         },
 
