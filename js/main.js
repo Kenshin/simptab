@@ -34,14 +34,6 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
   // init radio input
   setting.Init();
 
-  /*
-  // set is_random
-  var is_random = true;
-  if ( setting.Get( "changestate" ) != undefined ) {
-    is_random = false;
-  }
-  */
-
   // get background image
   background.Get( setting.IsRandom() );
 
