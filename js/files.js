@@ -4,7 +4,7 @@ define([ "jquery" ], function( $ ) {
     const FOLDER_NAME = "favorites";
 
     var fs;
-    var dataURI;
+    //var dataURI;
 
     errorHandler = function( error ) {
         console.error( "File Operations error.", error );
@@ -166,12 +166,14 @@ define([ "jquery" ], function( $ ) {
             }, errorHandler );
         },
 
+        /*
         DataURI: function() {
             return dataURI;
         },
+        */
 
         // DataURItoBlob : dataURItoBlob,
-        GetDataURI    : getDataURI
+        GetDataURI : getDataURI
 
     }
 });

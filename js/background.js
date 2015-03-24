@@ -185,44 +185,47 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             console.log("is_favorite = ", is_favorite)
 
             if ( is_favorite ) {
-                var file_name = date.Now();
-                files.Add( file_name, files.DataURI() )
-                    .done( function() {
 
-                        // update favorite
-                        vo.cur.favorite = file_name;
+                files.GetDataURI( controlbar.CurrentBackground ).then( function( dataURI ) {
+                    var file_name = date.Now();
+                    files.Add( file_name, dataURI )
+                        .done( function() {
 
-                        // when current background is 'delete favorite', need re-set 'favorite'
-                        if ( vo.cur.type == "delete favorite" ) {
-                            vo.cur.type = "favorite";
-                        }
-                        else {
-                            vo.cur.type = "favorite";
-                        }
+                            // update favorite
+                            vo.cur.favorite = file_name;
 
-                        // when simptab-background-state != success, need refresh vo
-                        if ( localStorage[ "simptab-background-state" ] != "success" ) {
-                            vo.Set( vo.cur );
-                        }
+                            // when current background is 'delete favorite', need re-set 'favorite'
+                            if ( vo.cur.type == "delete favorite" ) {
+                                vo.cur.type = "favorite";
+                            }
+                            else {
+                                vo.cur.type = "favorite";
+                            }
 
-                        // update local storge 'simptab-favorites'
-                        var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) };
-                        var arr = [];
-                        if ( localStorage[ "simptab-favorites" ] != undefined ) {
-                            arr = JSON.parse( localStorage[ "simptab-favorites" ]);
-                        }
+                            // when simptab-background-state != success, need refresh vo
+                            if ( localStorage[ "simptab-background-state" ] != "success" ) {
+                                vo.Set( vo.cur );
+                            }
 
-                        arr.push( JSON.stringify( obj ));
-                        localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                            // update local storge 'simptab-favorites'
+                            var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) };
+                            var arr = [];
+                            if ( localStorage[ "simptab-favorites" ] != undefined ) {
+                                arr = JSON.parse( localStorage[ "simptab-favorites" ]);
+                            }
 
-                        // set favorite icon state
-                        controlbar.SetFavorteIcon();
+                            arr.push( JSON.stringify( obj ));
+                            localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
-                        console.log( "Favorite background add success." );
-                    })
-                    .fail( function( error ) {
-                        console.error( "Favorite backgroud error is ", error )
-                    });
+                            // set favorite icon state
+                            controlbar.SetFavorteIcon();
+
+                            console.log( "Favorite background add success." );
+                        })
+                        .fail( function( error ) {
+                            console.error( "Favorite backgroud error is ", error )
+                        });
+                });
             }
             else {
                 files.Delete( vo.cur.favorite

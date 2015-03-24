@@ -101,6 +101,7 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
             setFavorteState( !is_default );
             setFavorteIcon();
         },
-        SetFavorteIcon: setFavorteIcon
+        SetFavorteIcon    : setFavorteIcon,
+        CurrentBackground : current_background
     }
 });
