@@ -25,43 +25,43 @@ requirejs.config({
 // main
 requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files ) {
 
-  // file system init
-  files.Init( function( error ) {
+    // file system init
+    files.Init( function( error ) {
       console.error( "File system error ", error );
-  });
+    });
 
-  // set background font
-  background.SetLang( i18n.GetLocale() );
+    // set background font
+    background.SetLang( i18n.GetLocale() );
 
-  // set language
-  i18n.Init();
+    // set language
+    i18n.Init();
 
-  // init radio input
-  setting.Init();
+    // init radio input
+    setting.Init();
 
-  // get background image
-  background.Get( setting.IsRandom() );
+    // get background image
+    background.Get( setting.IsRandom() );
 
-  // get time
-  if ( setting.Get( "clockstate" ) != undefined ) {
-    date.Show();
-  }
-  else {
-    date.Hide();
-  }
+    // get time
+    if ( setting.Get( "clockstate" ) != undefined ) {
+        date.Show();
+    }
+    else {
+        date.Hide();
+    }
 
-  // listen
-  controlbar.Listen();
-  setting.Listen();
+    // listen
+    controlbar.Listen();
+    setting.Listen();
 
-  // validation background
-  background.Valid();
+    // validation background
+    background.Valid();
 
-  // short cuts init
-  shortcuts.Init();
+    // short cuts init
+    shortcuts.Init();
 
-  $( ".controlbar" ).on( "favoriteClickEvent", function( event, result ) {
+    $( ".controlbar" ).on( "favoriteClickEvent", function( event, result ) {
       background.Favorite( result );
-  })
+    })
 
 });

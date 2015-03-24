@@ -1,8 +1,6 @@
 
 define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], function( $, date, i18n, apis, vo, files, controlbar ) {
 
-    // var defaultBackground = "../assets/images/background.jpg";
-
     getBackgroundByAPI = function () {
 
         // state includ: init loading staring pending success failed unsuccess(end)
@@ -37,12 +35,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
             });
     }
-
-    /*
-    getBackgroundURL = function() {
-        return $("body").css("background-image").replace( "url(", "" ).replace( ")", "" );
-    }
-    */
 
     image2URI = function ( url ) {
         files.GetDataURI( url ).then( function( result ) {

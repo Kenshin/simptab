@@ -4,7 +4,6 @@ define([ "jquery" ], function( $ ) {
     const FOLDER_NAME = "favorites";
 
     var fs;
-    //var dataURI;
 
     errorHandler = function( error ) {
         console.error( "File Operations error.", error );
@@ -64,19 +63,10 @@ define([ "jquery" ], function( $ ) {
                 fs = fileEntry;
                 console.log( "File init complete.", fs );
                 createFavFolder( errorBack );
-                /*
-                getDataURI( url ).then( function( result ) {
-                    dataURI = result;
-                    console.log( "Current background dataURI is ", dataURI )
-                });
-                */
             }, errorBack );
         },
 
         Add: function( file_name, uri ) {
-
-            // file_name include: `background.jpg` `favorites/20150318115513.jpg`
-            // uri       is dataURI
             var path;
             if ( file_name == "background.jpg" ) {
                 path = file_name;
@@ -166,13 +156,6 @@ define([ "jquery" ], function( $ ) {
             }, errorHandler );
         },
 
-        /*
-        DataURI: function() {
-            return dataURI;
-        },
-        */
-
-        // DataURItoBlob : dataURItoBlob,
         GetDataURI : getDataURI
 
     }
