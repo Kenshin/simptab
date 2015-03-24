@@ -83,24 +83,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
         if ( is_remote ) {
 
-            // state includ: init loading staring pending success failed unsuccess(end)
-            localStorage["simptab-background-state"] = "init";
-
             apis.Init()
                 .fail( getRemoteBackgroundErr )
                 .done( function( result ) {
-
-                    // change background-state
-                    localStorage["simptab-background-state"] = "loading";
-
-                    // save background to chrome
                     def.resolve( true, result.hdurl );
-
                 });
-
         }
         else {
-            def.resolve( false );
+            def.resolve( false, null );
         }
 
         return def.promise();
@@ -120,6 +110,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         var def = $.Deferred();
 
         if ( is_save ) {
+
+            // change background-state
+            localStorage["simptab-background-state"] = "loading";
+
             files.GetDataURI( url ).then( function( result ) {
                 files.Add( "background.jpg", result )
                     .progress( function( result ) {
@@ -157,6 +151,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
     return {
         Get: function ( is_random ) {
+
+            // state includ: init loading(image) staring(write start) pending(writting) success(write complete, end) failed(write error, end) unsuccess(end)
+            localStorage["simptab-background-state"] = "init";
 
             getCurrentBackground( is_random )
                 .then( setCurrentBackground )
