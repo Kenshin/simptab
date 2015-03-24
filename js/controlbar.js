@@ -45,7 +45,7 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
     }
 
     return {
-        Listen: function () {
+        Listen: function ( callBack ) {
 
             // listen chrome link
             $( ".chromelink" ).click( function( event ) {
@@ -74,7 +74,7 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
                 }
                 else if ( url == "favorite" ) {
                     var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
-                    $( ".controlbar" ).trigger( "favoriteClickEvent", [is_favorite] );
+                    callBack( is_favorite );
                 }
             });
         },

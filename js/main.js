@@ -27,7 +27,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
 
     // file system init
     files.Init( function( error ) {
-      console.error( "File system error ", error );
+        console.error( "File system error ", error );
     });
 
     // set background font
@@ -46,7 +46,9 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
     setting.Get( "clockstate" ) != undefined ? date.Show() : date.Hide();
 
     // listen
-    controlbar.Listen();
+    controlbar.Listen( function( result ) {
+        background.Favorite( result );
+    });
     setting.Listen();
 
     // validation background
@@ -54,9 +56,5 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
 
     // short cuts init
     shortcuts.Init();
-
-    $( ".controlbar" ).on( "favoriteClickEvent", function( event, result ) {
-      background.Favorite( result );
-    })
 
 });
