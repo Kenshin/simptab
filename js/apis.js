@@ -393,7 +393,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
       Init: function () {
 
-        var code = createRandom( 0, 5 );
+        var code = createRandom( 0, 6 );
 
         // check setting is random, when not random must call bing.com, so random is 4
         if ( !setting.IsRandom() ) {
