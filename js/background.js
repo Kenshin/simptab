@@ -86,7 +86,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             localStorage["simptab-background-state"] = "remote";
 
             apis.Init()
-                .fail( getRemoteBackgroundErr )
+                .fail( failBackground )
                 .done( function( result ) {
                     def.resolve( true, result.hdurl );
                 });
@@ -94,16 +94,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         else {
             def.resolve( false, null );
         }
-
-        return def.promise();
-    }
-
-    getRemoteBackgroundErr = function( jqXHR,  textStatus, errorThrown ) {
-        var def = $.Deferred();
-
-        localStorage["simptab-background-state"] = "remotefailed";
-
-        def.reject( jqXHR, textStatus, errorThrown );
 
         return def.promise();
     }
@@ -151,6 +141,21 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
+    failBackground = function( jqXHR, textStatus, errorThrown ) {
+        console.error( "===== New background get failed. =====" )
+
+        if ( jqXHR != null ) {
+
+            localStorage["simptab-background-state"] = "remotefailed";
+
+            console.error( "jqXHR            = ", jqXHR            )
+            console.error( "jqXHR.status     = ", jqXHR.status     )
+            console.error( "jqXHR.statusText = ", jqXHR.statusText )
+        }
+        console.error( "textStatus       = ", textStatus  )
+        console.error( "errorThrown      = ", errorThrown )
+    }
+
     return {
         Get: function ( is_random ) {
 
@@ -160,7 +165,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             getCurrentBackground( is_random )
                 .then( setCurrentBackground )
                 .then( getRemoteBackground  )
-                .then( setRemoteBackground, getRemoteBackgroundErr )
+                .then( setRemoteBackground, failBackground )
                 .then( function( is_save ) {
 
                     console.log( "===== New background get success. =====" );
@@ -189,22 +194,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         // sync vo
                         vo.Set( vo.new );
                     }
-                },
-                function( jqXHR, textStatus, errorThrown ) {
-                    console.error( "SimpTab flow error ", error )
-                    if ( jqXHR != null ) {
-                        console.error( "jqXHR            = ", jqXHR            )
-                        console.error( "jqXHR.status     = ", jqXHR.status     )
-                        console.error( "jqXHR.statusText = ", jqXHR.statusText )
-                    }
-                    console.error( "textStatus       = ", textStatus  )
-                    console.error( "errorThrown      = ", errorThrown )
-
-                    // when failed re-set 'simptab-background-state' ready
-                    // localStorage["simptab-background-state"] = "ready";
-                    // controlbar.Set( errorThrown == null ? true : false );
-
-                });
+                }, failBackground );
         },
 
         SetLang: function( lang ) {
