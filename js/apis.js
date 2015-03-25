@@ -174,7 +174,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         console.log( "=== Unsplash.it call ===" );
 
         try {
-          var max  = 645,
+          var max    = 665,
               random = createRandom( 0, max );
 
           var url       = "https://unsplash.it/1920/1080/?image=" + random,
