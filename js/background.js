@@ -152,8 +152,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
     return {
         Get: function ( is_random ) {
 
-            // state includ: init loading(image) staring(write start) pending(writting) success(write complete, end) failed(write error, end) unsuccess(end)
-            localStorage["simptab-background-state"] = "init";
+            // state includ: ready loading(image) staring(write start) pending(writting) success(write complete, end) failed(write error, end) unsuccess(end)
+            localStorage["simptab-background-state"] = "ready";
 
             getCurrentBackground( is_random )
                 .then( setCurrentBackground )
@@ -164,14 +164,28 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                     console.log( "===== New background get success. =====" );
 
                     if ( is_save ) {
-                        // sync vo
-                        vo.Set( vo.new );
-
                         // when 'change bing.com background everyday', re-set controlbar.Set
                         if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+
+                            // when local storage 'simptab-background-refresh' == "true", re-set 'simptab-background-state' is 'ready'
+                            localStorage["simptab-background-state"] = "ready";
+
+                            // seach current bing.com background is favorite?
+                            var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
+                            var bing_arr = JSON.parse( bing_fav );
+                            $.each( bing_arr, function( idx, val ) {
+                                if ( val.split(":")[0] == vo.new.enddate ) {
+                                    vo.new.favorite = val.split(":")[1];
+                                }
+                            });
+
+                            // update vo.cur
                             vo.cur = vo.new;
                             controlbar.Set( false );
                         }
+
+                        // sync vo
+                        vo.Set( vo.new );
                     }
                 },
                 function( jqXHR, textStatus, errorThrown ) {
@@ -238,9 +252,16 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             if ( localStorage[ "simptab-favorites" ] != undefined ) {
                                 arr = JSON.parse( localStorage[ "simptab-favorites" ]);
                             }
-
                             arr.push( JSON.stringify( obj ));
                             localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+
+                            // update local storge 'simptab-bing-fav'
+                            if ( vo.cur.enddate == date.Today() ) {
+                                var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
+                                var bing_arr = JSON.parse( bing_fav );
+                                bing_arr.push( vo.cur.enddate + ":" + vo.cur.favorite );
+                                localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
+                            }
 
                             // set favorite icon state
                             controlbar.SetFavorteIcon();
@@ -258,7 +279,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         console.log( "Delete favorite is ", file_name )
 
-                        // update local storge
+                        // update local storge 'simptab-favorites'
                         var arr   = JSON.parse(localStorage[ "simptab-favorites" ]);
                         var obj   = {};
                         var index = -1;
@@ -268,11 +289,21 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                                 index  = idx;
                                 return;
                             }
-                        })
+                        });
                         if ( index != -1 ) {
                             arr.splice( index, 1 );
                         }
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+
+                        // update local storge 'simptab-bing-fav'
+                        var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
+                        var bing_arr = JSON.parse( bing_fav );
+                        $.each( bing_arr, function( idx, val ) {
+                            if ( val.split(":")[1] == vo.cur.favorite ) {
+                                bing_arr.splice( idx, 1 );
+                            }
+                        });
+                        localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
 
                         vo.cur.favorite = -1;
                         vo.cur.type     = "delete favorite";
