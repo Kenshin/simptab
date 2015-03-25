@@ -248,10 +248,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                             // update local storge 'simptab-favorites'
                             var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) };
-                            var arr = [];
-                            if ( localStorage[ "simptab-favorites" ] != undefined ) {
-                                arr = JSON.parse( localStorage[ "simptab-favorites" ]);
-                            }
+                            var fav = localStorage["simptab-favorites"] || "[]";
+                            var arr = JSON.parse( fav );
                             arr.push( JSON.stringify( obj ));
                             localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
@@ -282,17 +280,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         // update local storge 'simptab-favorites'
                         var arr   = JSON.parse(localStorage[ "simptab-favorites" ]);
                         var obj   = {};
-                        var index = -1;
                         $.each( arr, function( idx ) {
                             obj = JSON.parse( arr[idx] );
                             if ( obj.file_name == file_name ) {
-                                index  = idx;
+                                arr.splice( idx, 1 );
                                 return;
                             }
                         });
-                        if ( index != -1 ) {
-                            arr.splice( index, 1 );
-                        }
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
                         // update local storge 'simptab-bing-fav'
@@ -305,8 +299,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         });
                         localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
 
+                        // update vo.cur
                         vo.cur.favorite = -1;
                         vo.cur.type     = "delete favorite";
+
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
                             vo.Set( vo.cur );
