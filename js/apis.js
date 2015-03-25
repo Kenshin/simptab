@@ -203,6 +203,8 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
     flickr = function() {
 
+        console.log( "=== Flickr.com call ===")
+
         $.ajax({
             type       : "GET",
             timeout    : 2000,
