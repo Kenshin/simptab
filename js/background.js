@@ -25,7 +25,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 }
                 else {
                     if ( is_random ) {
-                        //// set current backgroud and call api. type 2
+                        //// set current background and call api. type 2
                         def.resolve(2);
                     }
                     else {
@@ -83,6 +83,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
         if ( is_remote ) {
 
+            localStorage["simptab-background-state"] = "remote";
+
             apis.Init()
                 .fail( getRemoteBackgroundErr )
                 .done( function( result ) {
@@ -99,7 +101,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
     getRemoteBackgroundErr = function( jqXHR,  textStatus, errorThrown ) {
         var def = $.Deferred();
 
-        localStorage["simptab-background-state"] = "unsuccess";
+        localStorage["simptab-background-state"] = "remotefailed";
 
         def.reject( jqXHR, textStatus, errorThrown );
 
@@ -121,7 +123,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             switch ( result.type ) {
                                 case "writestart":
                                     console.log( "Write start: ", result );
-                                    localStorage["simptab-background-state"] = "staring";
+                                    localStorage["simptab-background-state"] = "writestart";
                                     break;
                                 case "progress":
                                     console.log( "Write process: ", result );
@@ -137,7 +139,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                     })
                     .fail( function( result ) {
                         console.log( "Write error: ", result );
-                        localStorage["simptab-background-state"] = "failed";
+                        localStorage["simptab-background-state"] = "writefailed";
                         def.reject( null, "Favorite write to local error.", result );
                     })
             });
@@ -152,7 +154,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
     return {
         Get: function ( is_random ) {
 
-            // state includ: ready loading(image) staring(write start) pending(writting) success(write complete, end) failed(write error, end) unsuccess(end)
+            // state includ: ready remote(call api) loading(image) writestart(write start) pending(writting) success(write complete, end) writefailed(write error, end) remotefailed(remote failed, end)
             localStorage["simptab-background-state"] = "ready";
 
             getCurrentBackground( is_random )
@@ -197,6 +199,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                     }
                     console.error( "textStatus       = ", textStatus  )
                     console.error( "errorThrown      = ", errorThrown )
+
+                    // when failed re-set 'simptab-background-state' ready
+                    // localStorage["simptab-background-state"] = "ready";
+                    // controlbar.Set( errorThrown == null ? true : false );
+
                 });
         },
 
@@ -267,7 +274,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             console.log( "Favorite background add success." );
                         })
                         .fail( function( error ) {
-                            console.error( "Favorite backgroud error is ", error )
+                            console.error( "Favorite background error is ", error )
                         });
                 });
             }
@@ -284,10 +291,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             obj = JSON.parse( arr[idx] );
                             if ( obj.file_name == file_name ) {
                                 arr.splice( idx, 1 );
+                                localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
                                 return;
                             }
                         });
-                        localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
                         // update local storge 'simptab-bing-fav'
                         var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
@@ -295,9 +302,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         $.each( bing_arr, function( idx, val ) {
                             if ( val.split(":")[1] == vo.cur.favorite ) {
                                 bing_arr.splice( idx, 1 );
+                                localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
                             }
                         });
-                        localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
 
                         // update vo.cur
                         vo.cur.favorite = -1;
