@@ -274,42 +274,46 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         console.log( "Delete favorite is ", file_name )
 
-                        // update local storge 'simptab-favorites'
-                        var arr   = JSON.parse(localStorage[ "simptab-favorites" ]);
-                        var obj   = {};
-                        $.each( arr, function( idx ) {
-                            obj = JSON.parse( arr[idx] );
-                            if ( obj.file_name == file_name ) {
-                                arr.splice( idx, 1 );
-                                localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
-                                return;
+                        try {
+                            // update local storge 'simptab-favorites'
+                            var arr   = JSON.parse(localStorage[ "simptab-favorites" ]);
+                            var obj   = {};
+                            $.each( arr, function( idx ) {
+                                obj = JSON.parse( arr[idx] );
+                                if ( obj.file_name == file_name ) {
+                                    arr.splice( idx, 1 );
+                                    localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                                    return;
+                                }
+                            });
+
+                            // update local storge 'simptab-bing-fav'
+                            var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
+                            var bing_arr = JSON.parse( bing_fav );
+                            $.each( bing_arr, function( idx, val ) {
+                                if ( val.split(":")[1] == vo.cur.favorite ) {
+                                    bing_arr.splice( idx, 1 );
+                                    localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
+                                }
+                            });
+
+                            // update vo.cur
+                            vo.cur.favorite = -1;
+                            vo.cur.type     = "delete favorite";
+
+                            // when simptab-background-state != success, need refresh vo
+                            if ( localStorage[ "simptab-background-state" ] != "success" ) {
+                                vo.Set( vo.cur );
                             }
-                        });
 
-                        // update local storge 'simptab-bing-fav'
-                        var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                        var bing_arr = JSON.parse( bing_fav );
-                        $.each( bing_arr, function( idx, val ) {
-                            if ( val.split(":")[1] == vo.cur.favorite ) {
-                                bing_arr.splice( idx, 1 );
-                                localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
-                            }
-                        });
+                            // update favorite icon
+                            controlbar.SetFavorteIcon();
 
-                        // update vo.cur
-                        vo.cur.favorite = -1;
-                        vo.cur.type     = "delete favorite";
-
-                        // when simptab-background-state != success, need refresh vo
-                        if ( localStorage[ "simptab-background-state" ] != "success" ) {
-                            vo.Set( vo.cur );
+                            console.log( "Delete favorite background success." );
                         }
-
-                        // update favorite icon
-                        controlbar.SetFavorteIcon();
-
-                        console.log( "Delete favorite background success." );
-
+                        catch ( error ) {
+                            console.log( "Delete favorite background error.", error )
+                        }
                     }
                     , function( error ) {
                         console.error( "Delete favorite background error.", error );
