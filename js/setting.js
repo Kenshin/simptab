@@ -102,9 +102,8 @@ define([ "jquery", "date" ], function( $, date ) {
 
         },
 
-        isRandom: function() {
-          var mode      = localStorage["simptab-background-mode"];
-
+        IsRandom: function() {
+          var mode = localStorage["simptab-background-mode"];
           // when undefined same as time
           if ( mode == undefined || mode == "time" ) {
             return true;

@@ -23,46 +23,38 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts" ], function ( $, background, date, controlbar, setting, i18n, shortcuts ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files ) {
 
-  // set background font
-  background.SetLang( i18n.GetLocale() );
+    // file system init
+    files.Init( function( error ) {
+        console.error( "File system error ", error );
+    });
 
-  // set language
-  i18n.Init();
+    // set background font
+    background.SetLang( i18n.GetLocale() );
 
-  // init radio input
-  setting.Init();
+    // set language
+    i18n.Init();
 
-  // set is_random
-  var is_random = true;
-  if ( setting.Get( "changestate" ) != undefined ) {
-    is_random = false;
-  }
+    // init radio input
+    setting.Init();
 
-  // get background image
-  background.Get( is_random );
+    // get background image
+    background.Get( setting.IsRandom() );
 
-  // get time
-  if ( setting.Get( "clockstate" ) != undefined ) {
-    date.Show();
-  }
-  else {
-    date.Hide();
-  }
+    // get time
+    setting.Get( "clockstate" ) != undefined ? date.Show() : date.Hide();
 
-  // listen
-  controlbar.Listen();
-  setting.Listen();
+    // listen
+    controlbar.Listen( function( result ) {
+        background.Favorite( result );
+    });
+    setting.Listen();
 
-  // validation background
-  background.Valid();
+    // validation background
+    background.Valid();
 
-  // short cuts init
-  shortcuts.Init();
-
-  $( ".controlbar" ).on( "favoriteClickEvent", function( event, result ) {
-      background.Favorite( result );
-  })
+    // short cuts init
+    shortcuts.Init();
 
 });

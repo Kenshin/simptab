@@ -42,7 +42,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         }
 
         // check setting is random, when not random must call bing.com current background, so random is 0
-        if ( !setting.isRandom() ) {
+        if ( !setting.IsRandom() ) {
           random = 0;
         }
 
@@ -174,7 +174,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
         console.log( "=== Unsplash.it call ===" );
 
         try {
-          var max  = 645,
+          var max    = 665,
               random = createRandom( 0, max );
 
           var url       = "https://unsplash.it/1920/1080/?image=" + random,
@@ -202,6 +202,8 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
     }
 
     flickr = function() {
+
+        console.log( "=== Flickr.com call ===")
 
         $.ajax({
             type       : "GET",
@@ -369,11 +371,18 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
             var max    = arr.length - 1;
             var random = createRandom( 0, max );
             var obj    = JSON.parse( arr[ random ] );
+            var result = JSON.parse( obj.result );
 
             console.log( "Get favorite background is ", JSON.parse( obj.result ) )
 
-            deferred.resolve( JSON.parse( obj.result ) );
-
+            // verify favorite data structure
+            if ( !vo.Verify( result.version )) {
+                deferred.reject( null, "Current favorite data structure error.", result );
+            }
+            else {
+                vo.new = result;
+                deferred.resolve( result );
+            }
         }
         else {
             deferred.reject( null, "Current not any favorite background.", null );
@@ -384,16 +393,18 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
       Init: function () {
 
-        var code = createRandom( 0, 5 );
+        const MAX_NUM = 6;
+
+        var code = createRandom( 0, MAX_NUM );
 
         // check setting is random, when not random must call bing.com, so random is 4
-        if ( !setting.isRandom() ) {
-          code = 6;
+        if ( !setting.IsRandom() ) {
+          code = MAX_NUM;
         }
         else {
             if ( localStorage[ "simptab-prv-code" ] != undefined && localStorage[ "simptab-prv-code" ] == code ) {
                 code += 1;
-                code = code > 5 ? 0 : code;
+                code = code > MAX_NUM ? 0 : code;
             }
             localStorage[ "simptab-prv-code" ] = code;
         }

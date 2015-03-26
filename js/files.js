@@ -4,16 +4,15 @@ define([ "jquery" ], function( $ ) {
     const FOLDER_NAME = "favorites";
 
     var fs;
-    var dataURI;
 
     errorHandler = function( error ) {
         console.error( "File Operations error.", error );
     }
 
-    createFavFolder = function() {
+    createFavFolder = function( errorBack ) {
         fs.root.getDirectory( FOLDER_NAME , { create: true }, function( dirEntry ) {
-          console.log( "You have just created the " + dirEntry.name + " directory." );
-        }, errorHandler );
+            console.log( "You have just created the " + dirEntry.name + " directory." );
+        }, errorBack );
     }
 
     dataURItoBlob = function ( dataURI ) {
@@ -58,35 +57,19 @@ define([ "jquery" ], function( $ ) {
     }
 
     return {
-        Init: function( url ) {
-            console.log( "Background url is ", url )
-
+        Init: function( errorBack ) {
             window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
             window.requestFileSystem( window.TEMPORARY , 52428800, function( fileEntry ) {
                 fs = fileEntry;
-                console.log( "File init complete.", fs )
-                createFavFolder();
-                getDataURI( url ).then( function( result ) {
-                    dataURI = result;
-                    console.log( "Current background dataURI is ", dataURI )
-                });
-
-            }, errorHandler );
+                console.log( "File init complete.", fs );
+                createFavFolder( errorBack );
+            }, errorBack );
         },
 
         Add: function( file_name, uri ) {
 
-            // file_name include: `background.jpg` `favorites/20150318115513.jpg`
-            // uri       is dataURI
-            var path;
-            if ( file_name == "background.jpg" ) {
-                path = file_name;
-            }
-            else {
-                path = FOLDER_NAME + "/" + file_name + ".jpg";
-            }
-
-            var def = $.Deferred();
+            var path = file_name == "background.jpg" ? file_name : FOLDER_NAME + "/" + file_name + ".jpg";
+            var def  = $.Deferred();
 
             fs.root.getFile( path, { create : true },
                 function( fileEntry ) {
@@ -119,6 +102,7 @@ define([ "jquery" ], function( $ ) {
 
             fs.root.getDirectory( FOLDER_NAME, {}, function( dirEntry ) {
                 var dirReader = dirEntry.createReader();
+                var is_del    = false;
                 dirReader.readEntries(function( entries ) {
                     for( var i = 0; i < entries.length; i++ ) {
                       var entry = entries[i];
@@ -128,12 +112,19 @@ define([ "jquery" ], function( $ ) {
                       else if ( entry.isFile ) {
                         console.log("File: " + entry.fullPath );
                         if ( file_name + ".jpg" == entry.name ) {
-                            entry.remove(function() {
-                                console.log( "File successufully removed." );
-                                callback( file_name );
-                            }, errorBack );
+                            is_del = true;
                         }
                       }
+                    }
+                    if ( is_del ) {
+                        entry.remove(function() {
+                            console.log( "File successufully removed." );
+                            callback( file_name );
+                        }, errorBack );
+                    }
+                    else {
+                        console.error( "Not found delete favorite background in filesystem, id is " + file_name );
+                        callback( file_name );
                     }
                  }, errorBack );
             }, errorBack );
@@ -159,12 +150,7 @@ define([ "jquery" ], function( $ ) {
             }, errorHandler );
         },
 
-        DataURI: function() {
-            return dataURI;
-        },
-
-        DataURItoBlob : dataURItoBlob,
-        GetDataURI    : getDataURI
+        GetDataURI : getDataURI
 
     }
 });
