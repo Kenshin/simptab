@@ -173,18 +173,25 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
         console.log( "=== Unsplash.it call ===" );
 
-        try {
-          var max    = 665,
-              random = createRandom( 0, max );
+        $.getJSON( "http://simptab.qiniudn.com/unsplash.it.max.json" ).done(function( result ) {
+          if ( result != undefined && !$.isEmptyObject( result )) {
+            try {
+              var max    = result.max,
+                  random = createRandom( 0, max );
 
-          var url       = "https://unsplash.it/1920/1080/?image=" + random,
-              result    = vo.Create( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
+              var url       = "https://unsplash.it/1920/1080/?image=" + random,
+                  result    = vo.Create( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
 
-          deferred.resolve( result );
-        }
-        catch( error ) {
-          deferred.reject( null, error, error.message );
-        }
+              deferred.resolve( result );
+            }
+            catch( error ) {
+              deferred.reject( null, error, error.message );
+            }
+          }
+          else {
+            deferred.reject( null, "Get Unsplash.it max num error.", result );
+          }
+        }).fail( failed );
     }
 
     /*
