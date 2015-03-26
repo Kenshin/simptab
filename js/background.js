@@ -276,7 +276,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         try {
                             // update local storge 'simptab-favorites'
-                            var arr   = JSON.parse(localStorage[ "simptab-favorites" ]);
+                            var favs  = localStorage[ "simptab-favorites" ] || "[]";
+                            var arr   = JSON.parse( favs );
                             var obj   = {};
                             $.each( arr, function( idx ) {
                                 obj = JSON.parse( arr[idx] );
