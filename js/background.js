@@ -180,11 +180,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             // seach current bing.com background is favorite?
                             var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
                             var bing_arr = JSON.parse( bing_fav );
-                            $.each( bing_arr, function( idx, val ) {
+                            var val      = {}
+                            for( idx in bing_arr ) {
+                                val = bing_arr[idx];
                                 if ( val.split(":")[0] == vo.new.enddate ) {
                                     vo.new.favorite = val.split(":")[1];
+                                    break;
                                 }
-                            });
+                            }
 
                             // update vo.cur
                             vo.cur = vo.new;
@@ -284,18 +287,22 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                                 if ( obj.file_name == file_name ) {
                                     arr.splice( idx, 1 );
                                     localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                                    break;
                                 }
                             }
 
                             // update local storge 'simptab-bing-fav'
                             var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
                             var bing_arr = JSON.parse( bing_fav );
-                            $.each( bing_arr, function( idx, val ) {
+                            var val      = {};
+                            for( idx in bing_arr ) {
+                                val = bing_arr[idx];
                                 if ( val.split(":")[1] == vo.cur.favorite ) {
                                     bing_arr.splice( idx, 1 );
                                     localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
+                                    break;
                                 }
-                            });
+                            }
 
                             // update vo.cur
                             vo.cur.favorite = -1;
