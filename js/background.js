@@ -279,14 +279,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             var favs  = localStorage[ "simptab-favorites" ] || "[]";
                             var arr   = JSON.parse( favs );
                             var obj   = {};
-                            $.each( arr, function( idx ) {
+                            for( idx in arr ) {
                                 obj = JSON.parse( arr[idx] );
                                 if ( obj.file_name == file_name ) {
                                     arr.splice( idx, 1 );
                                     localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
-                                    return;
                                 }
-                            });
+                            }
 
                             // update local storge 'simptab-bing-fav'
                             var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
