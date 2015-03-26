@@ -393,16 +393,18 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
       Init: function () {
 
-        var code = createRandom( 0, 6 );
+        const MAX_NUM = 6;
+
+        var code = createRandom( 0, MAX_NUM );
 
         // check setting is random, when not random must call bing.com, so random is 4
         if ( !setting.IsRandom() ) {
-          code = 6;
+          code = MAX_NUM;
         }
         else {
             if ( localStorage[ "simptab-prv-code" ] != undefined && localStorage[ "simptab-prv-code" ] == code ) {
                 code += 1;
-                code = code > 5 ? 0 : code;
+                code = code > MAX_NUM ? 0 : code;
             }
             localStorage[ "simptab-prv-code" ] = code;
         }
