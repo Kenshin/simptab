@@ -13,12 +13,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             if ( result && !$.isEmptyObject( result )) {
 
                 // save current background object
-                var data = result["simptab-background"];
-                vo.cur   = data;
+                vo.cur = result["simptab-background"];
                 console.log( "Current background data structure is ", vo.cur );
 
                 // check old data structure
-                if ( !vo.Verify( data.version ) ) {
+                if ( !vo.Verify() ) {
                     console.error( "Current data structure error.", result );
                     //// set default background and call api. type 1
                     def.resolve(1);
@@ -29,7 +28,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         def.resolve(2);
                     }
                     else {
-                        if ( date.Today() != data.enddate ) {
+                        if ( date.Today() != vo.cur.enddate ) {
                             //// set background refresh
                             localStorage["simptab-background-refresh"] = "true";
                             //// only call api. type 3

@@ -49,12 +49,20 @@ define([ "jquery" ], function( $ ) {
             return chrome.storage.local.get( "simptab-background", callBack );
     }
 
-    VO.prototype.Verify = function( version ) {
-        if ( version == undefined || version != VERSION ) {
+    VO.prototype.Verify = function() {
+        if ( this.cur.version == undefined ) {
             return false;
         }
-        else {
+        else if ( this.cur.version == "2" ) {
+            this.cur.favorite = -1;
+            this.cur.version  = VERSION;
             return true;
+        }
+        else if ( this.cur.version == VERSION ) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
