@@ -123,7 +123,7 @@ define([ "jquery" ], function( $ ) {
                         }, errorBack );
                     }
                     else {
-                        console.error( "Not found delete favorite background, id is " + file_name );
+                        console.error( "Not found delete favorite background in filesystem, id is " + file_name );
                         callback( file_name );
                     }
                  }, errorBack );
