@@ -222,7 +222,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
             if ( is_favorite ) {
 
-                files.GetDataURI( controlbar.CurrentBackground ).then( function( dataURI ) {
+                files.GetDataURI( vo.cur.hdurl ).then( function( dataURI ) {
                     var file_name = date.Now();
                     files.Add( file_name, dataURI )
                         .done( function() {
