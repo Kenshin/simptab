@@ -90,7 +90,7 @@ body {
 .controlbar a {
     margin: 10px;
     padding: 5px;
-    -webkit-border-radius:3px;
+    -webkit-border-radius:90%;
     -webkit-transition: background .3s ease;
     text-decoration: none;
     opacity: 0.3;
@@ -106,11 +106,17 @@ body {
 }
 
 .icon {
+    display: block;
+
     width: 24px;
     height: 24px;
-    display: block;
+
+    padding: 10px;
+
     background-repeat: no-repeat;
     background-position:center;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-border-radius: 90%;
 }
 
 .bookmarksicon {
