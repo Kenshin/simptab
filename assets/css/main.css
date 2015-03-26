@@ -85,19 +85,27 @@ body {
 
     list-style: none;
     font-size: 15px;
+
+    opacity: 0;
+    -webkit-transition: opacity .5s ease;
+}
+
+.controlbar:hover {
+    opacity: 1;
 }
 
 .controlbar a {
     margin: 10px;
-    padding: 5px;
+
     -webkit-border-radius:90%;
-    -webkit-transition: background .3s ease;
+    -webkit-transition: background .5s ease;
+
     text-decoration: none;
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .controlbar a:hover {
-    background: rgba(0,0,0,.4);
+    background: rgba(255, 255, 255,.4);
     opacity: 1;
 }
 
@@ -115,7 +123,8 @@ body {
 
     background-repeat: no-repeat;
     background-position:center;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, .4);
+
     -webkit-border-radius: 90%;
 }
 
