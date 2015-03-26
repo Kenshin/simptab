@@ -261,10 +261,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             // set favorite icon state
                             controlbar.SetFavorteIcon();
 
-                            console.log( "Favorite background add success." );
+                            console.log( "Add favorite background success." );
                         })
                         .fail( function( error ) {
-                            console.error( "Favorite background error is ", error )
+                            console.error( "Add favorite background error.", error )
                         });
                 });
             }
@@ -308,7 +308,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         // update favorite icon
                         controlbar.SetFavorteIcon();
 
-                        console.log( "Favorite background del success." );
+                        console.log( "Delete favorite background success." );
 
                     }
                     , function( error ) {

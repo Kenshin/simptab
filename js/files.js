@@ -67,15 +67,9 @@ define([ "jquery" ], function( $ ) {
         },
 
         Add: function( file_name, uri ) {
-            var path;
-            if ( file_name == "background.jpg" ) {
-                path = file_name;
-            }
-            else {
-                path = FOLDER_NAME + "/" + file_name + ".jpg";
-            }
 
-            var def = $.Deferred();
+            var path = file_name == "background.jpg" ? file_name : FOLDER_NAME + "/" + file_name + ".jpg";
+            var def  = $.Deferred();
 
             fs.root.getFile( path, { create : true },
                 function( fileEntry ) {
