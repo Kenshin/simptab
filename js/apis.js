@@ -292,20 +292,21 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
         $.getJSON( url)
             .done( function( result ) {
-                console.log(result);
                 if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
                   var source = "",
-                      info  = "";
-                  $.each( result.sizes.size, function( idx, item ) {
+                      info   = "",
+                      item   = {};
+                  for( idx in result.sizes.size ) {
+                    item = result.sizes.size[idx];
                     if ( item.width == "1600" ) {
                       source = item.source;
                       info   = item.url;
                       console.log( "source = " + source )
                       console.log( "info   = " + info )
                       deferred.resolve( vo.Create( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image", "flickr.com" ));
-                      return;
+                      break;
                     }
-                  });
+                  }
 
                   // when not found any background re-call again
                   if ( source == "" && info == "" ) {
