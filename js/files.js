@@ -39,19 +39,17 @@ define([ "jquery" ], function( $ ) {
 
         img.onload = function() {
 
-            // set canvas
-            var canvas = document.createElement( "canvas" );
-            canvas.width = img.width;
+            var canvas    = document.createElement( "canvas" );
+            canvas.width  = img.width;
             canvas.height = img.height;
-            var ctx = canvas.getContext( "2d" );
-            ctx.drawImage( img, 0, 0 );
+            canvas.getContext( "2d" ).drawImage( img, 0, 0 );
 
-            def.resolve( canvas.toDataURL() );
+            def.resolve( canvas.toDataURL( "image/jpeg" ));
 
         }
 
         img.crossOrigin = "*";
-        img.src = url;
+        img.src         = url;
 
         return def.promise();
     }
