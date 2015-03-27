@@ -140,6 +140,39 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
+    successBackground = function( is_save ) {
+
+        console.log( "===== New background get success. =====" );
+
+        if ( is_save ) {
+            // when 'change bing.com background everyday', re-set controlbar.Set
+            if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+
+                // when local storage 'simptab-background-refresh' == "true", re-set 'simptab-background-state' is 'ready'
+                localStorage["simptab-background-state"] = "ready";
+
+                // seach current bing.com background is favorite?
+                var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
+                var bing_arr = JSON.parse( bing_fav );
+                var val      = {}
+                for( idx in bing_arr ) {
+                    val = bing_arr[idx];
+                    if ( val.split(":")[0] == vo.new.enddate ) {
+                        vo.new.favorite = val.split(":")[1];
+                        break;
+                    }
+                }
+
+                // update vo.cur
+                vo.cur = vo.new;
+                controlbar.Set( false );
+            }
+
+            // sync vo
+            vo.Set( vo.new );
+        }
+    }
+
     failBackground = function( jqXHR, textStatus, errorThrown ) {
         console.error( "===== New background get failed. =====" )
 
@@ -165,38 +198,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 .then( setCurrentBackground )
                 .then( getRemoteBackground  )
                 .then( setRemoteBackground, failBackground )
-                .then( function( is_save ) {
-
-                    console.log( "===== New background get success. =====" );
-
-                    if ( is_save ) {
-                        // when 'change bing.com background everyday', re-set controlbar.Set
-                        if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
-
-                            // when local storage 'simptab-background-refresh' == "true", re-set 'simptab-background-state' is 'ready'
-                            localStorage["simptab-background-state"] = "ready";
-
-                            // seach current bing.com background is favorite?
-                            var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                            var bing_arr = JSON.parse( bing_fav );
-                            var val      = {}
-                            for( idx in bing_arr ) {
-                                val = bing_arr[idx];
-                                if ( val.split(":")[0] == vo.new.enddate ) {
-                                    vo.new.favorite = val.split(":")[1];
-                                    break;
-                                }
-                            }
-
-                            // update vo.cur
-                            vo.cur = vo.new;
-                            controlbar.Set( false );
-                        }
-
-                        // sync vo
-                        vo.Set( vo.new );
-                    }
-                }, failBackground );
+                .then( successBackground,   failBackground );
         },
 
         SetLang: function( lang ) {
