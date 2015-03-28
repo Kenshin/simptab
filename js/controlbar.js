@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
+define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
 
     const default_background = "../assets/images/background.jpg";
     const current_background = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
@@ -25,7 +25,6 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
 
         $( ".controlink[url='download']" ).attr({
             "title"    : vo.cur.name,
-            "href"     : vo.cur.hdurl,
             "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
 
@@ -44,6 +43,12 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
         $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
     }
 
+    setCurBackgroundURI = function() {
+        files.GetDataURI( current_background ).done( function( dataURI) {
+            files.DataURI( dataURI );
+        });
+    }
+
     return {
         Listen: function ( callBack ) {
 
@@ -59,22 +64,27 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
             $( ".controlink" ).click( function( event ) {
                 var $target =  $( event.currentTarget ),
                     url     = $target.attr( "url" );
-                if ( url == "setting" ) {
 
-                    if ( !$target.hasClass( "close" )) {
-                        $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
-                            $target.addClass( "close" );
-                        });
-                    }
-                    else {
-                        $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
-                            $target.removeClass( "close" );
-                        });
-                    }
-                }
-                else if ( url == "favorite" ) {
-                    var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
-                    callBack( is_favorite );
+                switch ( url ) {
+                    case "setting":
+                        if ( !$target.hasClass( "close" )) {
+                            $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
+                                $target.addClass( "close" );
+                            });
+                        }
+                        else {
+                            $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
+                                $target.removeClass( "close" );
+                            });
+                        }
+                        break;
+                    case "favorite":
+                        var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
+                        callBack( is_favorite );
+                        break;
+                    case "download":
+                        event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
+                        break;
                 }
             });
         },
@@ -93,6 +103,9 @@ define([ "jquery", "i18n", "vo", "date" ], function( $, i18n, vo, date ) {
             // set default background
             if ( is_default ) {
                 vo.cur = vo.Create( default_background, default_background, "Wallpaper", "#", new Date(), "Wallpaper", "default" );
+            }
+            else {
+                setCurBackgroundURI();
             }
 
             setInfoURL();

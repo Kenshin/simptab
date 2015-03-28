@@ -226,51 +226,49 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
             if ( is_favorite ) {
 
-                files.GetDataURI( vo.cur.hdurl ).then( function( dataURI ) {
-                    var file_name = date.Now();
-                    files.Add( file_name, dataURI )
-                        .done( function() {
+                var file_name = date.Now();
+                files.Add( file_name, files.DataURI() )
+                    .done( function() {
 
-                            // update favorite
-                            vo.cur.favorite = file_name;
+                        // update favorite
+                        vo.cur.favorite = file_name;
 
-                            // when current background is 'delete favorite', need re-set 'favorite'
-                            if ( vo.cur.type == "delete favorite" ) {
-                                vo.cur.type = "favorite";
-                            }
-                            else {
-                                vo.cur.type = "favorite";
-                            }
+                        // when current background is 'delete favorite', need re-set 'favorite'
+                        if ( vo.cur.type == "delete favorite" ) {
+                            vo.cur.type = "favorite";
+                        }
+                        else {
+                            vo.cur.type = "favorite";
+                        }
 
-                            // when simptab-background-state != success, need refresh vo
-                            if ( localStorage[ "simptab-background-state" ] != "success" ) {
-                                vo.Set( vo.cur );
-                            }
+                        // when simptab-background-state != success, need refresh vo
+                        if ( localStorage[ "simptab-background-state" ] != "success" ) {
+                            vo.Set( vo.cur );
+                        }
 
-                            // update local storge 'simptab-favorites'
-                            var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) };
-                            var fav = localStorage["simptab-favorites"] || "[]";
-                            var arr = JSON.parse( fav );
-                            arr.push( JSON.stringify( obj ));
-                            localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                        // update local storge 'simptab-favorites'
+                        var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) };
+                        var fav = localStorage["simptab-favorites"] || "[]";
+                        var arr = JSON.parse( fav );
+                        arr.push( JSON.stringify( obj ));
+                        localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
-                            // update local storge 'simptab-bing-fav'
-                            if ( vo.cur.enddate == date.Today() ) {
-                                var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                                var bing_arr = JSON.parse( bing_fav );
-                                bing_arr.push( vo.cur.enddate + ":" + vo.cur.favorite );
-                                localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
-                            }
+                        // update local storge 'simptab-bing-fav'
+                        if ( vo.cur.enddate == date.Today() ) {
+                            var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
+                            var bing_arr = JSON.parse( bing_fav );
+                            bing_arr.push( vo.cur.enddate + ":" + vo.cur.favorite );
+                            localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
+                        }
 
-                            // set favorite icon state
-                            controlbar.SetFavorteIcon();
+                        // set favorite icon state
+                        controlbar.SetFavorteIcon();
 
-                            console.log( "Add favorite background success." );
-                        })
-                        .fail( function( error ) {
-                            console.error( "Add favorite background error.", error )
-                        });
-                });
+                        console.log( "Add favorite background success." );
+                    })
+                    .fail( function( error ) {
+                        console.error( "Add favorite background error.", error )
+                    });
             }
             else {
                 files.Delete( vo.cur.favorite

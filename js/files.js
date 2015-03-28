@@ -3,7 +3,7 @@ define([ "jquery" ], function( $ ) {
 
     const FOLDER_NAME = "favorites";
 
-    var fs;
+    var fs, curURI;
 
     errorHandler = function( error ) {
         console.error( "File Operations error.", error );
@@ -148,7 +148,11 @@ define([ "jquery" ], function( $ ) {
             }, errorHandler );
         },
 
-        GetDataURI : getDataURI
+        DataURI: function( result ) {
+            return curURI = curURI || result;
+        },
+
+        GetDataURI : getDataURI,
 
     }
 });
