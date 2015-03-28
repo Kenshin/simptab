@@ -67,7 +67,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                           name = data.copyright,
                           info = getInfo( data.copyrightlink ),
                           enddate   = data.enddate,
-                          shortname = getShortName( info );
+                          shortname = "Bing.com Image-" + getShortName( info );
                       deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
                     }
                     else {
@@ -348,7 +348,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                     console.log( "result = ", obj )
 
                     var hdurl = obj.image + suffix;
-                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, prefix + obj.link, new Date(), obj.title, "googleartproject.com" ));
+                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, prefix + obj.link, new Date(), "GooglArtProject Image-" + obj.title, "googleartproject.com" ));
                 }
                 catch( error ) {
                   deferred.reject( null, error, error.message );
