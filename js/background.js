@@ -236,12 +236,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         vo.cur.favorite = file_name;
 
                         // when current background is 'delete favorite', need re-set 'favorite'
-                        if ( vo.cur.type == "delete favorite" ) {
+                        /*if ( vo.cur.type == "delete favorite" ) {
                             vo.cur.type = "favorite";
                         }
                         else {
                             vo.cur.type = "favorite";
-                        }
+                        }*/
 
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
@@ -307,7 +307,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                             // update vo.cur
                             vo.cur.favorite = -1;
-                            vo.cur.type     = "delete favorite";
+                            //vo.cur.type     = "delete favorite";
 
                             // when simptab-background-state != success, need refresh vo
                             if ( localStorage[ "simptab-background-state" ] != "success" ) {
