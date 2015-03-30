@@ -25,6 +25,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
         $( ".controlink[url='download']" ).attr({
             "title"    : vo.cur.name,
+            "href"     : vo.cur.hdurl,
             "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
         });
 
@@ -83,7 +84,10 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                         callBack( is_favorite );
                         break;
                     case "download":
-                        event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
+                        // hacd code
+                        if ( vo.cur.hdurl.indexOf( "unsplash.com" ) == -1 ) {
+                            event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
+                        }
                         break;
                 }
             });
