@@ -131,6 +131,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         localStorage["simptab-background-state"] = "writefailed";
                         def.reject( null, "Favorite write to local error.", result );
                     })
+            }, function( error ) {
+                def.reject( null, "Load background error.", error );
             });
         }
         else {

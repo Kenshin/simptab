@@ -37,7 +37,14 @@ define([ "jquery" ], function( $ ) {
         var img = new Image(),
             def = $.Deferred();
 
-        img.onload = function() {
+        img.onload      = onload;
+        img.onerror     = errored;
+        img.onabort     = errored;
+        img.crossOrigin = "*";
+        img.src         = url;
+
+        function onload() {
+            unbindEvent();
 
             var canvas    = document.createElement( "canvas" );
             canvas.width  = img.width;
@@ -45,11 +52,18 @@ define([ "jquery" ], function( $ ) {
             canvas.getContext( "2d" ).drawImage( img, 0, 0 );
 
             def.resolve( canvas.toDataURL( "image/jpeg" ));
+        };
 
+        function errored ( error ) {
+            unbindEvent();
+            def.reject( error );
         }
 
-        img.crossOrigin = "*";
-        img.src         = url;
+        function unbindEvent() {
+            img.onload  = null;
+            img.onerror = null;
+            img.onabort = null;
+        }
 
         return def.promise();
     }
