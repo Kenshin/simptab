@@ -21,10 +21,14 @@ define([ "jquery" ], function( $ ) {
     */
     const VERSION = "2.1";
 
-    function VO() {
+    var VO = function() {
         this.cur = {};  //current background data structure
         this.new = {};  //new background data structure
     }
+
+    VO.DEFAULT_BACKGROUND = "../assets/images/background.jpg";
+    VO.CURRENT_BACKGROUND = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
+    VO.BACKGROUND         = "background.jpg";
 
     VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, favorite ) {
 

@@ -1,5 +1,5 @@
 
-define([ "jquery" ], function( $ ) {
+define([ "jquery", "vo" ], function( $, vo ) {
 
     const FOLDER_NAME = "favorites";
 
@@ -80,7 +80,7 @@ define([ "jquery" ], function( $ ) {
 
         Add: function( file_name, uri ) {
 
-            var path = file_name == "background.jpg" ? file_name : FOLDER_NAME + "/" + file_name + ".jpg";
+            var path = file_name == vo.constructor.BACKGROUND ? file_name : FOLDER_NAME + "/" + file_name + ".jpg";
             var def  = $.Deferred();
 
             fs.root.getFile( path, { create : true },

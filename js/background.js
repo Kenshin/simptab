@@ -106,7 +106,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             localStorage["simptab-background-state"] = "loading";
 
             files.GetDataURI( url ).then( function( result ) {
-                files.Add( "background.jpg", result )
+                files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) {
                         if ( result != undefined && !$.isEmptyObject( result )) {
                             switch ( result.type ) {

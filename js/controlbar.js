@@ -1,9 +1,6 @@
 
 define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
 
-    const default_background = "../assets/images/background.jpg";
-    const current_background = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
-
     setInfoURL = function() {
         var info = vo.cur.info;
         if ( i18n.GetLocale() != "zh_CN" ) {
@@ -45,7 +42,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
     }
 
     setCurBackgroundURI = function() {
-        files.GetDataURI( current_background ).done( function( dataURI) {
+        files.GetDataURI( vo.constructor.CURRENT_BACKGROUND ).done( function( dataURI) {
             files.DataURI( dataURI );
         });
     }
@@ -106,7 +103,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
             // set default background
             if ( is_default ) {
-                vo.cur = vo.Clone( vo.Create( default_background, default_background, "Wallpaper", "#", date.Now(), "Wallpaper", "default" ));
+                vo.cur = vo.Clone( vo.Create( vo.constructor.DEFAULT_BACKGROUND, vo.constructor.DEFAULT_BACKGROUND, "Wallpaper", "#", date.Now(), "Wallpaper", "default" ));
             }
             else {
                 setCurBackgroundURI();
@@ -114,11 +111,10 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
             setInfoURL();
             setDownloadURL();
-            setBackground( is_default ? default_background: current_background );
+            setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
             setFavorteState( !is_default );
             setFavorteIcon();
         },
-        SetFavorteIcon    : setFavorteIcon,
-        CurrentBackground : current_background
+        SetFavorteIcon    : setFavorteIcon
     }
 });
