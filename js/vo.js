@@ -66,6 +66,10 @@ define([ "jquery" ], function( $ ) {
         }
     }
 
+    VO.prototype.Clone = function( value ) {
+        return $.extend( {}, value );
+    }
+
     return new VO();
 
 });

@@ -166,7 +166,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 }
 
                 // update vo.cur
-                vo.cur = vo.new;
+                vo.cur = vo.Clone( vo.new );
                 controlbar.Set( false );
             }
 
