@@ -21,10 +21,14 @@ define([ "jquery" ], function( $ ) {
     */
     const VERSION = "2.1";
 
-    function VO() {
+    var VO = function() {
         this.cur = {};  //current background data structure
         this.new = {};  //new background data structure
     }
+
+    VO.DEFAULT_BACKGROUND = "../assets/images/background.jpg";
+    VO.CURRENT_BACKGROUND = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
+    VO.BACKGROUND         = "background.jpg";
 
     VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, favorite ) {
 
@@ -49,13 +53,25 @@ define([ "jquery" ], function( $ ) {
             return chrome.storage.local.get( "simptab-background", callBack );
     }
 
-    VO.prototype.Verify = function( version ) {
-        if ( version == undefined || version != VERSION ) {
+    VO.prototype.Verify = function() {
+        if ( this.cur.version == undefined ) {
             return false;
         }
-        else {
+        else if ( this.cur.version == "2" ) {
+            this.cur.favorite = -1;
+            this.cur.version  = VERSION;
             return true;
         }
+        else if ( this.cur.version == VERSION ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    VO.prototype.Clone = function( value ) {
+        return $.extend( {}, value );
     }
 
     return new VO();

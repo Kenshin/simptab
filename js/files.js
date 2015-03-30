@@ -1,9 +1,9 @@
 
-define([ "jquery" ], function( $ ) {
+define([ "jquery", "vo" ], function( $, vo ) {
 
     const FOLDER_NAME = "favorites";
 
-    var fs;
+    var fs, curURI;
 
     errorHandler = function( error ) {
         console.error( "File Operations error.", error );
@@ -37,21 +37,33 @@ define([ "jquery" ], function( $ ) {
         var img = new Image(),
             def = $.Deferred();
 
-        img.onload = function() {
+        img.onload      = onload;
+        img.onerror     = errored;
+        img.onabort     = errored;
+        img.crossOrigin = "*";
+        img.src         = url;
 
-            // set canvas
-            var canvas = document.createElement( "canvas" );
-            canvas.width = img.width;
+        function onload() {
+            unbindEvent();
+
+            var canvas    = document.createElement( "canvas" );
+            canvas.width  = img.width;
             canvas.height = img.height;
-            var ctx = canvas.getContext( "2d" );
-            ctx.drawImage( img, 0, 0 );
+            canvas.getContext( "2d" ).drawImage( img, 0, 0 );
 
-            def.resolve( canvas.toDataURL() );
+            def.resolve( canvas.toDataURL( "image/jpeg" ));
+        };
 
+        function errored ( error ) {
+            unbindEvent();
+            def.reject( error );
         }
 
-        img.crossOrigin = "*";
-        img.src = url;
+        function unbindEvent() {
+            img.onload  = null;
+            img.onerror = null;
+            img.onabort = null;
+        }
 
         return def.promise();
     }
@@ -68,7 +80,7 @@ define([ "jquery" ], function( $ ) {
 
         Add: function( file_name, uri ) {
 
-            var path = file_name == "background.jpg" ? file_name : FOLDER_NAME + "/" + file_name + ".jpg";
+            var path = file_name == vo.constructor.BACKGROUND ? file_name : FOLDER_NAME + "/" + file_name + ".jpg";
             var def  = $.Deferred();
 
             fs.root.getFile( path, { create : true },
@@ -150,7 +162,11 @@ define([ "jquery" ], function( $ ) {
             }, errorHandler );
         },
 
-        GetDataURI : getDataURI
+        DataURI: function( result ) {
+            return curURI = curURI || result;
+        },
+
+        GetDataURI : getDataURI,
 
     }
 });

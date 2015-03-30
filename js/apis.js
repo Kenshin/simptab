@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
+define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting, vo, date ) {
 
     var deferred   = new $.Deferred();
 
@@ -67,7 +67,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                           name = data.copyright,
                           info = getInfo( data.copyrightlink ),
                           enddate   = data.enddate,
-                          shortname = getShortName( info );
+                          shortname = "Bing.com Image-" + getShortName( info );
                       deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
                     }
                     else {
@@ -125,7 +125,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
         var id     = wallhaven_ids[ random ],
             url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg",
-            result = vo.Create( url, url, "Wallhaven.cc Image", "#", new Date(), "Wallhaven.cc Image", "wallhanve.cc" );
+            result = vo.Create( url, url, "Wallhaven.cc Image", "#", date.Now(), "Wallhaven.cc Image", "wallhanve.cc" );
 
         console.log( "Wall haven random: " + random );
         console.log( "Wall haven pic id: " + id );
@@ -152,7 +152,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
           var id     = unsplash_ids[ random ],
               url    = "https://unsplash.com/photos/" + id + "/download",
-              result = vo.Create( url, url, "Unsplash.com Image", "#", new Date(), "Unsplash.com Image", "unsplash.com" );
+              result = vo.Create( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", "unsplash.com" );
 
           console.log( "Unsplash random: " + random );
           console.log( "Unsplash pic id: " + id );
@@ -173,18 +173,25 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
         console.log( "=== Unsplash.it call ===" );
 
-        try {
-          var max    = 665,
-              random = createRandom( 0, max );
+        $.getJSON( "http://simptab.qiniudn.com/unsplash.it.max.json" ).done(function( result ) {
+          if ( result != undefined && !$.isEmptyObject( result )) {
+            try {
+              var max    = result.max,
+                  random = createRandom( 0, max );
 
-          var url       = "https://unsplash.it/1920/1080/?image=" + random,
-              result    = vo.Create( url, url, "Unsplash.it Image", "#", new Date(), "Unsplash.it Image", "unsplash.it" );
+              var url       = "https://unsplash.it/1920/1080/?image=" + random,
+                  result    = vo.Create( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", "unsplash.it" );
 
-          deferred.resolve( result );
-        }
-        catch( error ) {
-          deferred.reject( null, error, error.message );
-        }
+              deferred.resolve( result );
+            }
+            catch( error ) {
+              deferred.reject( null, error, error.message );
+            }
+          }
+          else {
+            deferred.reject( null, "Get Unsplash.it max num error.", result );
+          }
+        }).fail( failed );
     }
 
     /*
@@ -285,20 +292,21 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
 
         $.getJSON( url)
             .done( function( result ) {
-                console.log(result);
                 if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
                   var source = "",
-                      info  = "";
-                  $.each( result.sizes.size, function( idx, item ) {
+                      info   = "",
+                      item   = {};
+                  for( idx in result.sizes.size ) {
+                    item = result.sizes.size[idx];
                     if ( item.width == "1600" ) {
                       source = item.source;
                       info   = item.url;
                       console.log( "source = " + source )
                       console.log( "info   = " + info )
-                      deferred.resolve( vo.Create( source, source, "Flickr.com Image", info, new Date(), "Flickr.com Image", "flickr.com" ));
-                      return;
+                      deferred.resolve( vo.Create( source, source, "Flickr.com Image", info, date.Now(), "Flickr.com Image", "flickr.com" ));
+                      break;
                     }
-                  });
+                  }
 
                   // when not found any background re-call again
                   if ( source == "" && info == "" ) {
@@ -340,7 +348,7 @@ define([ "jquery", "i18n", "setting", "vo" ], function( $, i18n, setting, vo ) {
                     console.log( "result = ", obj )
 
                     var hdurl = obj.image + suffix;
-                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, prefix + obj.link, new Date(), obj.title, "googleartproject.com" ));
+                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, prefix + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, "googleartproject.com" ));
                 }
                 catch( error ) {
                   deferred.reject( null, error, error.message );
