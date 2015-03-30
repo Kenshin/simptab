@@ -172,6 +172,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
             // sync vo
             vo.Set( vo.new );
+            console.log( "======= New Background Obj is ", vo );
         }
     }
 
@@ -234,14 +235,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         // update favorite
                         vo.cur.favorite = file_name;
-
-                        // when current background is 'delete favorite', need re-set 'favorite'
-                        /*if ( vo.cur.type == "delete favorite" ) {
-                            vo.cur.type = "favorite";
-                        }
-                        else {
-                            vo.cur.type = "favorite";
-                        }*/
 
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
@@ -307,7 +300,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                             // update vo.cur
                             vo.cur.favorite = -1;
-                            //vo.cur.type     = "delete favorite";
 
                             // when simptab-background-state != success, need refresh vo
                             if ( localStorage[ "simptab-background-state" ] != "success" ) {
