@@ -407,7 +407,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                     random = createRandom( 0, max );
                     obj    = result.photos[ random ];
 
-                    if ( obj.height < 1000 ) {
+                    while ( obj.height < 1000 ) {
                         random = createRandom( 0, max );
                         obj    = result.photos[ random ];
                     }
