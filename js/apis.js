@@ -370,6 +370,9 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
     const PX_HOME = "https://www.500px.com";
 
     f00px = function() {
+
+        console.log( "=== 500px.com call ===")
+
         get500pxURL().then( get500API, failed ).fail( failed );
     }
 
