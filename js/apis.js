@@ -412,7 +412,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                         obj    = result.photos[ random ];
                     }
 
-                    deferred.resolve( vo.Create( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px Image-" + obj.name, "500px.com" ));
+                    deferred.resolve( vo.Create( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px.com Image-" + obj.name, "500px.com" ));
 
             }
             else {
