@@ -13,7 +13,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `hdurl` `enddate` `shortname` `version` `type`
     * change `data` to `endate`
     *
-    * type include: `default` `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com` `googleartproject.com`
+    * type include: `default` `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com` `googleartproject.com` `500px.com`
     *
     * when version = 2.1
     * add new property `favorite`
