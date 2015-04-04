@@ -168,6 +168,15 @@ define([ "jquery", "date" ], function( $, date ) {
           else {
             return false;
           }
+        },
+
+        Verify: function( idx ) {
+            var arr   = JSON.parse( localStorage["simptab-background-origin"] || "[]" ),
+                value = arr && arr.length && arr[idx],
+                value = value || idx + ":" + "true";
+
+            return value.split(":")[1];
         }
+
     }
 });

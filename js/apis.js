@@ -475,10 +475,11 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
           code = MAX_NUM;
         }
         else {
-            if ( localStorage[ "simptab-prv-code" ] != undefined && localStorage[ "simptab-prv-code" ] == code ) {
-                code += 1;
-                code = code > MAX_NUM ? 0 : code;
+
+            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code ) {
+                code = createRandom( 0, MAX_NUM );
             }
+
             localStorage[ "simptab-prv-code" ] = code;
         }
 
