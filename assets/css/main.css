@@ -217,7 +217,8 @@ body {
     background-position:center;
 }
 
-.lineradio input[type=radio] {
+.lineradio input[type=radio],
+.lineradio input[type=checkbox] {
     display: none;
 }
 
