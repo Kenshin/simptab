@@ -21,6 +21,13 @@ define([ "jquery" ], function( $ ) {
         $($( ".lineradio" ).find("label")[2]).text( i18n( "setting_show_clock" ));
         $($( ".lineradio" ).find("label")[3]).text( i18n( "setting_hide_clock" ));
 
+        $($( ".lineradio" ).find("label")[4]).text( i18n( "setting_multi_origin_0" ));
+        $($( ".lineradio" ).find("label")[5]).text( i18n( "setting_multi_origin_1" ));
+        $($( ".lineradio" ).find("label")[6]).text( i18n( "setting_multi_origin_2" ));
+        $($( ".lineradio" ).find("label")[7]).text( i18n( "setting_multi_origin_3" ));
+        $($( ".lineradio" ).find("label")[8]).text( i18n( "setting_multi_origin_4" ));
+        $($( ".lineradio" ).find("label")[9]).text( i18n( "setting_multi_origin_5" ));
+
         $($(".setting .contact").find("a")[0]).attr( "title", i18n( "setting_contact_weibo" ));
         $($(".setting .contact").find("a")[1]).attr( "title", i18n( "setting_contact_twitter" ));
         $($(".setting .contact").find("a")[2]).attr( "title", i18n( "setting_contact_facebook" ));
