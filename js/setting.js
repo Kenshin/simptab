@@ -78,10 +78,10 @@ define([ "jquery", "date" ], function( $, date ) {
             arr   = localStorage["simptab-background-origin"] && JSON.parse( localStorage["simptab-background-origin"] ),
             item  = arr[index];
 
-        if ( item.split(":")[0] == index ) {
-            arr.splice( index, 1, index + ":" + value );
-        }
+        // update arr[index] to new value
+        arr.splice( index, 1, index + ":" + value );
 
+        // update local storge
         localStorage["simptab-background-origin"] = JSON.stringify( arr );
 
     }
@@ -107,10 +107,9 @@ define([ "jquery", "date" ], function( $, date ) {
             }
 
             // update originstate lineradio
-            mode      = localStorage["simptab-background-origin"] || "[]";
-            mode      = JSON.parse( mode );
+            mode      = JSON.parse( localStorage["simptab-background-origin"] || "[]" );
             $(".originstate").find("input").each( function( idx, item ) {
-                $(item).attr( "value", mode.length == 0 ? false : mode[idx].split(":")[1] );
+                $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
                 updateOriginState( $(item), "init" );
             });
 
