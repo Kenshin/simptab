@@ -1,20 +1,20 @@
 @font-face {
-    src: url("../fonts/en.otf") format( "opentype" );
-    font-family: "en";
-}
-
-@font-face {
     src: url("../fonts/clock.ttf");
     font-family: "clock";
 }
 
 @font-face {
-    src: url("../fonts/zh_CN.svg") format( "svg" );
+    src: url("../fonts/en.otf") format( "opentype" );
+    font-family: "en";
+}
+
+@font-face {
+    src: url("../fonts/zh_CN.bmp") format( "woff" );
     font-family: "zh_CN";
 }
 
 @font-face {
-    src: url("../fonts/zh_TW.otf") format( "opentype" );
+    src: url("../fonts/zh_TW.bmp") format( "woff" );
     font-family: "zh_TW";
 }
 
