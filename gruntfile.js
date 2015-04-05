@@ -12,11 +12,12 @@ module.exports = function( grunt ) {
         "eqeqeq" : true,
         "eqnull" : true,
         "sub"    : true,
-        "-W117"  : true,
         "-W004"  : true,
-        "-W116"  : true,
         "-W027"  : true,
+        "-W116"  : true,
+        "-W117"  : true,
         "-W030"  : true,
+        "-W083"  : true,
         "-W093"  : true
       },
       script: [ "gruntfile.js", "js/*.js" ]
