@@ -471,8 +471,8 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
         const SPECIAL_URL = "special.day.json";
 
-        var def  = $.Deferred();
-        var type = arguments.length > 0 ? arguments[0] : "special";
+        var def  = $.Deferred(),
+            type = arguments.length > 0 ? arguments[0] : "special";
 
         $.getJSON( query_host + SPECIAL_URL + "?random=" + Math.round(+new Date()) )
         .done( function( result ) {
