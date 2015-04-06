@@ -63,6 +63,30 @@
         "message": "\u9690\u85cf\u65f6\u949f"
     },
 
+    "setting_multi_origin_0": {
+        "message": "\u6dfb\u52a0 Wallhaven.cc"
+    },
+
+    "setting_multi_origin_1": {
+        "message": "\u6dfb\u52a0 Unsplash.com"
+    },
+
+    "setting_multi_origin_2": {
+        "message": "\u6dfb\u52a0 Unsplash.it"
+    },
+
+    "setting_multi_origin_3": {
+        "message": "\u6dfb\u52a0 Flickr.com"
+    },
+
+    "setting_multi_origin_4": {
+        "message": "\u6dfb\u52a0 Google Art"
+    },
+
+    "setting_multi_origin_5": {
+        "message": "\u6dfb\u52a0 500px.com"
+    },
+
     "setting_contact_weibo": {
         "message": "\u5206\u4eab\u5230 \u5fae\u535a"
     },
