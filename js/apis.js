@@ -462,11 +462,58 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
         }
     }
 
+    /*
+    * Special day/Holiday background
+    */
+    special = function() {
+
+        console.log( "=== Special day/Holiday background call ===")
+
+        const SPECIAL_URL = "special.day.json";
+
+        var def  = $.Deferred();
+        var type = arguments.length > 0 ? arguments[0] : "special";
+
+        $.getJSON( query_host + SPECIAL_URL + "?random=" + Math.round(+new Date()) )
+        .done( function( result ) {
+            if ( result && !$.isEmptyObject( result )) {
+                var obj = result[type],
+                    key;
+
+                if ( type == "special" ) {
+
+                    key = obj.now.length > 0 ? "now" : "old";
+
+                    var max         = obj[key].length - 1,
+                        random      = createRandom( 0, max ),
+                        special_day = obj[key][random],
+                        data, hdurl;
+
+                    data   = special_day.day;
+                    max    = data.hdurl.length - 1;
+                    random = createRandom( 0, max );
+                    hdurl  = query_host + data.key + "/" + data.hdurl[random] + ".jpg";
+
+                    deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, "special" ));
+                }
+                else {
+
+                }
+            }
+            else {
+                def.reject( null, "Not found any special day/Holiday backgroudn from " + query_host + SPECIAL_URL, null )
+            }
+        })
+        .fail( failed );
+
+        return def.promise();
+    }
+
     return {
 
       Init: function () {
 
-        const MAX_NUM = 7;
+        const MAX_NUM = 8;
 
         var code = createRandom( 0, MAX_NUM );
 
@@ -486,7 +533,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 5;
+        // code = 7;
 
         switch ( code ) {
           case 0:
@@ -509,6 +556,9 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
             break;
           case 6:
             setTimeout( function() { favorite(); }, 2000 );
+            break;
+          case 7:
+            special();
             break;
           default:
             bing();
