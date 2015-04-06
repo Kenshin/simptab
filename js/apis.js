@@ -501,7 +501,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                 }
             }
             else {
-                def.reject( null, "Not found any special day/Holiday backgroudn from " + query_host + SPECIAL_URL, null )
+                deferred.reject( null, "Not found any special day/Holiday backgroudn from " + query_host + SPECIAL_URL, null )
             }
         })
         .fail( failed );
