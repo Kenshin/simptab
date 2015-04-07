@@ -472,9 +472,6 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
         var new_holiday = date.Today(),
             old_holiday = localStorage["simptab-holiday"];
 
-        // add test code
-        new_holiday = 20150420;
-
         if ( HOLIDAY_LIST.filter(function(item){return item == new_holiday;}).length > 0 && old_holiday != new_holiday ) {
             localStorage["simptab-holiday"] = new_holiday;
             return true;
@@ -520,7 +517,6 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
                     key         = date.Today();
                     // add test code
-                    key         = 20150420;
                     data        = obj[key];
                     max         = data.hdurl.length - 1;
                     random      = createRandom( 0, max );
@@ -555,7 +551,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
         }
         // change background every time
         else {
-            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code ) {
+            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 8 ) {
                 code = createRandom( 0, MAX_NUM );
             }
             localStorage[ "simptab-prv-code" ] = code;
