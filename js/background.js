@@ -323,9 +323,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         },
 
         Upload: function( result ) {
-            for( var i = 0; i < result.length; i++ ) {
-                files.ReadAsDataURL( result[i] ).done( function( datauri ) {
+            var arr = [],
+                len = result.length;
+            for( var i = 0; i < len; i++ ) {
+                files.ReadAsDataURL( result[i], arr, i ).done( function( datauri ) {
                     console.log("sssssssssssss", datauri )
+                    if ( i == len && arr.length ) {
+                        arr.splice( 0, len );
+                    }
                 }).fail( failed );
             }
         }
