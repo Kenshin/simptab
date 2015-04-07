@@ -466,13 +466,15 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
     * Holiday background
     */
 
-    const HOLIDAY_LIST = [20150204, 20150219, 20150306, 20150321, 20150405, 20150420, 20150506, 20150521, 20150606, 20150622, 20150707, 20150723, 20150808, 20150823, 20150908, 20150923, 20151008, 20151024, 20151108, 20151122, 20151207, 20151222, 20150106, 20150120];
+    const HOLIDAY_LIST_1 = [20150204, 20150219, 20150306, 20150321, 20150405, 20150420, 20150506, 20150521, 20150606, 20150622, 20150707, 20150723, 20150808, 20150823, 20150908, 20150923, 20151008, 20151024, 20151108, 20151122, 20151207, 20151222, 20160106, 20160120, 20160201, 20160204, 20160207, 20160208, 20160222];
+    const HOLIDAY_LIST_2 = [20150501, 20150504, 20150510, 20150515, 20150519, 20150601, 20150621, 20150820];
 
     isHoliday = function() {
-        var new_holiday = date.Today(),
+        var arr         = HOLIDAY_LIST_1.concat( HOLIDAY_LIST_2 ),
+            new_holiday = date.Today(),
             old_holiday = localStorage["simptab-holiday"];
 
-        if ( HOLIDAY_LIST.filter(function(item){return item == new_holiday;}).length > 0 && old_holiday != new_holiday ) {
+        if ( arr.filter(function(item){return item == new_holiday;}).length > 0 && old_holiday != new_holiday ) {
             localStorage["simptab-holiday"] = new_holiday;
             return true;
         }
@@ -514,10 +516,9 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                     hdurl       = query_host + data.key + "/" + data.hdurl[random] + ".jpg";
                 }
                 else {
-
                     key         = date.Today();
-                    // add test code
                     data        = obj[key];
+                    if ( !data ) deferred.reject( null, "Current holiday is" + key +  ", but not any data frome " + query_host + SPECIAL_URL, null ); return;
                     max         = data.hdurl.length - 1;
                     random      = createRandom( 0, max );
                     hdurl       = query_host + type + "/" + data.hdurl[random] + ".jpg";
@@ -525,7 +526,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                 deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type ));
             }
             else {
-                deferred.reject( null, "Not found any special day/Holiday background from " + query_host + SPECIAL_URL, null )
+                deferred.reject( null, "Not found any special day/Holiday background from " + query_host + SPECIAL_URL, null );
             }
         })
         .fail( failed );
