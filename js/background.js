@@ -323,7 +323,15 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         },
 
         Upload: function( files ) {
-
+            for( var i = 0; i < files.length; i++ ) {
+                var reader = new FileReader();
+                reader.onloadend = function( result ) {
+                    if ( result.type == "loadend" ) {
+                        console.log("sssssssssssssssss", result.currentTarget.result)
+                    }
+                };
+                reader.readAsDataURL(files.item(i));
+            }
         }
     }
 });
