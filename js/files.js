@@ -166,11 +166,12 @@ define([ "jquery", "vo" ], function( $, vo ) {
             return curURI = curURI || result;
         },
 
-        ReadAsDataURL: function( file, arr, i ) {
+        ReadAsDataURL: function( file, arr, i, len ) {
             var def    = $.Deferred();
             arr.push( new FileReader() );
 
             arr[i].onloadend = function( result ) {
+                if ( i == len -1 ) arr.splice( 0, len );
                 if ( result.type == "loadend" ) {
                     def.resolve( result.currentTarget.result );
                 }

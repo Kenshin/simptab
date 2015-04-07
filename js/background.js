@@ -327,9 +327,16 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 len = result.length;
             for( var i = 0; i < len; i++ ) {
                 (function( i, name ) {
-                    files.ReadAsDataURL( result[i], arr, i ).done( function( datauri ) {
+                    files.ReadAsDataURL( result[i], arr, i, len ).done( function( datauri ) {
                         console.log( datauri, name );
-                        if ( i == len - 1 ) arr.splice( 0, len );
+                        var file_name = date.Now();
+                        files.Add( file_name, datauri )
+                            .done( function() {
+                                console.log( "Add favorite background success." );
+                            })
+                            .fail( function( error ) {
+                                console.error( "Add favorite background error.", error )
+                            });
                     }).fail( failed );
                 }).bind( null, i, result[i].name )();
             }
