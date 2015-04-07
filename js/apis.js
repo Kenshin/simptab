@@ -462,31 +462,106 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
         }
     }
 
+    /*
+    * Holiday background
+    */
+
+    const HOLIDAY_LIST_1 = [20150204, 20150219, 20150306, 20150321, 20150405, 20150420, 20150506, 20150521, 20150606, 20150622, 20150707, 20150723, 20150808, 20150820, 20150823, 20150908, 20150923, 20150927, 20151008, 20151021, 20151024, 20151108, 20151122, 20151207, 20151222, 20160106, 20160120, 20160201, 20160204, 20160207, 20160208, 20160222];
+    const HOLIDAY_LIST_2 = [20150501, 20150504, 20150510, 20150515, 20150519, 20150601, 20150621, 20150701, 20150707, 20150801, 20150910, 20151001, 20151030, 20151111, 20151126, 20151220, 20151224, 20151225];
+
+    isHoliday = function() {
+        var arr         = HOLIDAY_LIST_1.concat( HOLIDAY_LIST_2 ),
+            new_holiday = date.Today(),
+            old_holiday = localStorage["simptab-holiday"];
+
+        if ( arr.filter(function(item){return item == new_holiday;}).length > 0 && old_holiday != new_holiday ) {
+            localStorage["simptab-holiday"] = new_holiday;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    holiday = function() {
+        special( "holiday" );
+    }
+
+    /*
+    * Special day/Holiday background
+    */
+    special = function() {
+
+        console.log( "=== Special day/Holiday background call ===")
+
+        const SPECIAL_URL = "special.day.json";
+
+        var def  = $.Deferred(),
+            type = arguments.length > 0 ? arguments[0] : "special";
+
+        $.getJSON( query_host + SPECIAL_URL + "?random=" + Math.round(+new Date()) )
+        .done( function( result ) {
+            if ( result && !$.isEmptyObject( result )) {
+                var obj = result[type],
+                    key, max, random, special_day, data, hdurl;
+
+                if ( type == "special" ) {
+                    key         = obj.now.length > 0 ? "now" : "old";
+                    max         = obj[key].length - 1;
+                    random      = createRandom( 0, max );
+                    special_day = obj[key][random];
+                    data        = special_day.day;
+                    max         = data.hdurl.length - 1;
+                    random      = createRandom( 0, max );
+                    hdurl       = query_host + data.key + "/" + data.hdurl[random] + ".jpg";
+                }
+                else {
+                    key         = date.Today();
+                    data        = obj[key];
+                    if ( !data ) deferred.reject( null, "Current holiday is" + key +  ", but not any data frome " + query_host + SPECIAL_URL, null ); return;
+                    max         = data.hdurl.length - 1;
+                    random      = createRandom( 0, max );
+                    hdurl       = query_host + type + "/" + data.hdurl[random] + ".jpg";
+                }
+                deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type ));
+            }
+            else {
+                deferred.reject( null, "Not found any special day/Holiday background from " + query_host + SPECIAL_URL, null );
+            }
+        })
+        .fail( failed );
+
+        return def.promise();
+    }
+
     return {
 
       Init: function () {
 
-        const MAX_NUM = 7;
+        const MAX_NUM = 9;
 
         var code = createRandom( 0, MAX_NUM );
 
-        // check setting is random, when not random must call bing.com, so random is 4
+        // change background every day
         if ( !setting.IsRandom() ) {
           code = MAX_NUM;
         }
+        // verify today is holiday
+        else if ( isHoliday() ) {
+            code = 8;
+        }
+        // change background every time
         else {
-
-            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code ) {
+            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 8 ) {
                 code = createRandom( 0, MAX_NUM );
             }
-
             localStorage[ "simptab-prv-code" ] = code;
         }
 
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 5;
+        // code = 7;
 
         switch ( code ) {
           case 0:
@@ -509,6 +584,12 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
             break;
           case 6:
             setTimeout( function() { favorite(); }, 2000 );
+            break;
+          case 7:
+            special();
+            break;
+          case 8:
+            holiday();
             break;
           default:
             bing();
