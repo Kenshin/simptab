@@ -166,7 +166,23 @@ define([ "jquery", "vo" ], function( $, vo ) {
             return curURI = curURI || result;
         },
 
-        GetDataURI : getDataURI,
+        ReadAsDataURL: function( file ) {
+            var def    = $.Deferred(),
+                reader = new FileReader();
 
+            reader.onloadend = function( result ) {
+                if ( result.type == "loadend" ) {
+                    def.resolve( result.currentTarget.result );
+                }
+                else {
+                    def.reject( result );
+                }
+            };
+
+            reader.readAsDataURL(file);
+            return def.promise();
+        },
+
+        GetDataURI : getDataURI
     }
 });
