@@ -333,7 +333,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             arr.splice( 0, len );
                         }
                     }).fail( failed );
-                })(i);
+                }).bind( null, i )();
             }
         }
     }
