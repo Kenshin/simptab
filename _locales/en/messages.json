@@ -35,6 +35,10 @@
         "message": "Download background"
     },
 
+    "controlbar_upload": {
+        "message": "Upload background"
+    },
+
     "controlbar_setting": {
         "message": "Setting"
     },

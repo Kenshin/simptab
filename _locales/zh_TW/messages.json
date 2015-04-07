@@ -35,6 +35,10 @@
         "message": "\u4e0b\u8f09\u7576\u524d\u80cc\u666f"
     },
 
+    "controlbar_upload": {
+        "message": "\u4e0a\u50b3\u80cc\u666f"
+    },
+
     "controlbar_setting": {
         "message": "\u8a2d\u5b9a"
     },

@@ -148,6 +148,10 @@ body {
     background-image: url("../images/download.png");
 }
 
+.uploadicon {
+    background-image: url("../images/upload.png");
+}
+
 .favoriteicon {
     background-image: url("../images/favorite.png");
 }
