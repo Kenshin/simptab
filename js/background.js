@@ -326,14 +326,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             var arr = [],
                 len = result.length;
             for( var i = 0; i < len; i++ ) {
-                (function(i) {
+                (function( i, name ) {
                     files.ReadAsDataURL( result[i], arr, i ).done( function( datauri ) {
-                        console.log("sssssssssssss", datauri, i )
-                        if ( i == len - 1 ) {
-                            arr.splice( 0, len );
-                        }
+                        console.log( datauri, name );
+                        if ( i == len - 1 ) arr.splice( 0, len );
                     }).fail( failed );
-                }).bind( null, i )();
+                }).bind( null, i, result[i].name )();
             }
         }
     }
