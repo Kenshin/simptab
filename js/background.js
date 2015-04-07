@@ -320,6 +320,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 });
             }
 
+        },
+
+        Upload: function( files ) {
+
         }
     }
 });
