@@ -477,7 +477,6 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
         if ( HOLIDAY_LIST.filter(function(item){return item == new_holiday;}).length > 0 && old_holiday != new_holiday ) {
             localStorage["simptab-holiday"] = new_holiday;
-            localStorage["simptab-background-refresh"] = "true";
             return true;
         }
         else {
@@ -530,7 +529,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                 deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type ));
             }
             else {
-                deferred.reject( null, "Not found any special day/Holiday backgroudn from " + query_host + SPECIAL_URL, null )
+                deferred.reject( null, "Not found any special day/Holiday background from " + query_host + SPECIAL_URL, null )
             }
         })
         .fail( failed );
@@ -546,19 +545,19 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
         var code = createRandom( 0, MAX_NUM );
 
-        if ( isHoliday() ) {
-            code = 8;
-        }
-        // check setting is random, when not random must call bing.com, so random is 4
-        else if ( !setting.IsRandom() ) {
+        // change background every day
+        if ( !setting.IsRandom() ) {
           code = MAX_NUM;
         }
+        // verify today is holiday
+        else if ( isHoliday() ) {
+            code = 8;
+        }
+        // change background every time
         else {
-
             while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code ) {
                 code = createRandom( 0, MAX_NUM );
             }
-
             localStorage[ "simptab-prv-code" ] = code;
         }
 
