@@ -273,9 +273,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         try {
                             // update local storge 'simptab-favorites'
-                            var favs  = localStorage[ "simptab-favorites" ] || "[]";
-                            var arr   = JSON.parse( favs );
-                            var obj   = {};
+                            var arr   = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" ),
+                                obj   = {};
                             for( idx in arr ) {
                                 obj = JSON.parse( arr[idx] );
                                 if ( obj.file_name == file_name ) {
@@ -286,9 +285,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             }
 
                             // update local storge 'simptab-bing-fav'
-                            var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                            var bing_arr = JSON.parse( bing_fav );
-                            var val      = {};
+                            var bing_arr = JSON.parse( localStorage[ "simptab-bing-fav" ] || "[]" ),
+                                val      = {};
                             for( idx in bing_arr ) {
                                 val = bing_arr[idx];
                                 if ( val.split(":")[1] == vo.cur.favorite ) {
