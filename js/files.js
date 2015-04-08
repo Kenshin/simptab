@@ -113,8 +113,9 @@ define([ "jquery", "vo" ], function( $, vo ) {
         Delete: function( file_name, callback, errorBack ) {
 
             fs.root.getDirectory( FOLDER_NAME, {}, function( dirEntry ) {
-                var dirReader = dirEntry.createReader();
-                var is_del    = false;
+                var dirReader = dirEntry.createReader(),
+                    is_del    = false,
+                    del_entry;
                 dirReader.readEntries(function( entries ) {
                     for( var i = 0; i < entries.length; i++ ) {
                       var entry = entries[i];
@@ -124,12 +125,14 @@ define([ "jquery", "vo" ], function( $, vo ) {
                       else if ( entry.isFile ) {
                         console.log("File: " + entry.fullPath );
                         if ( file_name + ".jpg" == entry.name ) {
-                            is_del = true;
+                            is_del    = true;
+                            del_entry = entry;
+                            break;
                         }
                       }
                     }
                     if ( is_del ) {
-                        entry.remove(function() {
+                        del_entry.remove(function() {
                             console.log( "File successufully removed." );
                             callback( file_name );
                         }, errorBack );
