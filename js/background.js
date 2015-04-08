@@ -329,7 +329,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 (function( i, name ) {
                     files.ReadAsDataURL( result[i], arr, i, len ).done( function( datauri ) {
                         console.log( datauri, name );
-                        var file_name = date.Now();
+                        var file_name = Math.round(+new Date());
                         files.Add( file_name, datauri )
                             .done( function() {
                                 console.log( "Add favorite background success." );
