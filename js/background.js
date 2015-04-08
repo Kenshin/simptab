@@ -242,9 +242,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         }
 
                         // update local storge 'simptab-favorites'
-                        var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) };
-                        var fav = localStorage["simptab-favorites"] || "[]";
-                        var arr = JSON.parse( fav );
+                        var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) },
+                            arr = JSON.parse( localStorage["simptab-favorites"] || "[]" );
                         arr.push( JSON.stringify( obj ));
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
 
