@@ -235,6 +235,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         // update favorite
                         vo.cur.favorite = file_name;
+                        // when vo.type is 'upload', need update hdurl and url
+                        if ( vo.cur.type == "upload" ) {
+                            var new_url_arr = vo.cur.hdurl.split("/");
+                            new_url_arr.pop();
+                            new_url_arr.push( file_name + ".jpg" );
+                            vo.cur.hdurl = new_url_arr.join("/");
+                            vo.cur.url   = vo.cur.hdurl;
+                        }
 
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
@@ -333,7 +341,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         .done( function( result, hdurl ) {
 
                             // create upload vo
-                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "favorite", file_name ]);
+                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", file_name ]);
                             console.log("Upload favorite background success.", upload_vo.new )
 
                             // update local storge 'simptab-favorites'
