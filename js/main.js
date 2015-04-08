@@ -47,7 +47,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
 
     // listen
     controlbar.Listen( function( result ) {
-        if ( typeof result === "boolen" ) background.Favorite( result );
+        if ( typeof result === "boolean" )     background.Favorite( result );
         else if ( typeof result === "object" ) background.Upload( result );
     });
     setting.Listen();
