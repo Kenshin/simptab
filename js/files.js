@@ -91,7 +91,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
 
                         fileWriter.onwritestart  = function(e) { def.notify( e ); };
                         fileWriter.onprogress    = function(e) { def.notify( e ); };
-                        fileWriter.onwriteend    = function(e) { def.resolve( e ); };
+                        fileWriter.onwriteend    = function(e) { def.resolve( e, fileEntry.toURL() ); };
                         fileWriter.onabort       = function(e) { def.reject( e ); };
                         fileWriter.onerror       = function(e) { def.reject( e ); };
 

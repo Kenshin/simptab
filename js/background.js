@@ -328,15 +328,26 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             for( var i = 0; i < len; i++ ) {
                 (function( i, name ) {
                     files.ReadAsDataURL( result[i], arr, i, len ).done( function( datauri ) {
-                        console.log( datauri, name );
-                        var file_name = Math.round(+new Date());
+
+                        var file_name = Math.round(+new Date()),
+                            upload_vo = {new:{}};
+
                         files.Add( file_name, datauri )
-                            .done( function() {
-                                console.log( "Add favorite background success." );
-                            })
-                            .fail( function( error ) {
-                                console.error( "Add favorite background error.", error )
-                            });
+                        .done( function( result, hdurl ) {
+
+                            // create upload vo
+                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "favorite", file_name ]);
+                            console.log("Upload favorite background success.", upload_vo.new )
+
+                            // update local storge 'simptab-favorites'
+                            var obj = { "file_name" : file_name, "result" : JSON.stringify( upload_vo.new ) };
+                            var arr = JSON.parse( localStorage["simptab-favorites"] || "[]" );
+                            arr.push( JSON.stringify( obj ));
+                            localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                        })
+                        .fail( function( error ) {
+                            console.error( "Upload favorite background error.", error )
+                        });
                     }).fail( failed );
                 }).bind( null, i, result[i].name )();
             }
