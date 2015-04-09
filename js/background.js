@@ -316,7 +316,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         .fail( function( error ) {
                             console.error( "Upload favorite background error.", error )
                         });
-                    }).fail( failed );
+                    }).fail( function( error ) {
+                        console.error("Upload favorite background error.", error );
+                    });
                 }).bind( null, i, filelist[i].name )();
             }
         }
