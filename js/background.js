@@ -154,6 +154,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 localStorage["simptab-background-state"] = "ready";
 
                 // seach current bing.com background is favorite?
+                vo.new.favorite = files.FindFavBing( files.FavBingVO(), vo.new.enddate );
+                /*
                 var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
                 var bing_arr = JSON.parse( bing_fav );
                 var val      = {}
@@ -164,6 +166,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         break;
                     }
                 }
+                */
 
                 // update vo.cur
                 vo.cur = vo.Clone( vo.new );
@@ -253,10 +256,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         // update local storge 'simptab-bing-fav'
                         if ( vo.cur.enddate == date.Today() ) {
+                            files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
+                            /*
                             var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
                             var bing_arr = JSON.parse( bing_fav );
                             bing_arr.push( vo.cur.enddate + ":" + vo.cur.favorite );
                             localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
+                            */
                         }
 
                         // set favorite icon state
@@ -279,6 +285,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             files.DeleteFavorite( files.FavoriteVO(), file_name );
 
                             // update local storge 'simptab-bing-fav'
+                            files.DeleteFavBing( files.FavBingVO(), vo.cur.favorite );
+                            /*
                             var bing_arr = JSON.parse( localStorage[ "simptab-bing-fav" ] || "[]" ),
                                 val      = {};
                             for( idx in bing_arr ) {
@@ -289,6 +297,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                                     break;
                                 }
                             }
+                            */
 
                             // update vo.cur
                             vo.cur.favorite = -1;

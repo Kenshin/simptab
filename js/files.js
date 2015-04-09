@@ -179,7 +179,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
             }, errorHandler );
         },
 
-        GetDataURI : function() {
+        GetDataURI: function() {
             var def = $.Deferred();
 
             arguments.constructor.prototype.push = Array.prototype.push;
@@ -200,14 +200,14 @@ define([ "jquery", "vo" ], function( $, vo ) {
             return curURI = curURI || result;
         },
 
-        VerifyUploadFile : function( arr ) {
+        VerifyUploadFile: function( arr ) {
             if ( !arr.filter ) arr.constructor.prototype.filter = Array.prototype.filter;
             return arr.filter(function( item ) {
                 return item.type.split("/")[0] === "image";
             });
         },
 
-        FavoriteVO : function() {
+        FavoriteVO: function() {
             return JSON.parse( localStorage["simptab-favorites"] || "[]" );
         },
 
@@ -227,6 +227,38 @@ define([ "jquery", "vo" ], function( $, vo ) {
                     break;
                 }
             }
+        },
+
+        FavBingVO: function() {
+            return JSON.parse( localStorage[ "simptab-bing-fav" ] || "[]" );
+        },
+
+        AddFavBing: function( fav_bing, result ) {
+            fav_bing.push( result );
+            localStorage[ "simptab-bing-fav" ] = JSON.stringify( fav_bing );
+        },
+
+        DeleteFavBing: function( fav_bing, result ) {
+            var val  = {};
+            for( idx in fav_bing ) {
+                val = fav_bing[idx];
+                if ( val.split(":")[1] == result ) {
+                    fav_bing.splice( idx, 1 );
+                    localStorage[ "simptab-bing-fav" ] = JSON.stringify( fav_bing );
+                    break;
+                }
+            }
+        },
+
+        FindFavBing: function( fav_bing, result ) {
+            var val = {};
+            for( idx in fav_bing ) {
+                val = fav_bing[idx];
+                if ( val.split(":")[0] == result ) {
+                    return val.split(":")[1];
+                }
+            }
+            return -1;
         }
     }
 });
