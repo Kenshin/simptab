@@ -5,22 +5,22 @@ define([ "jquery", "vo" ], function( $, vo ) {
 
     var fs, curURI;
 
-    errorHandler = function( error ) {
+    function errorHandler( error ) {
         console.error( "File Operations error.", error );
     }
 
-    createFavFolder = function( errorBack ) {
+    function createFavFolder( errorBack ) {
         fs.root.getDirectory( FOLDER_NAME , { create: true }, function( dirEntry ) {
             console.log( "You have just created the " + dirEntry.name + " directory." );
         }, errorBack );
     }
 
-    dataURItoBlob = function ( dataURI ) {
+    function dataURItoBlob( dataURI ) {
         // convert base64 to raw binary data held in a string
         var byteString = atob( dataURI.split(',')[1] );
 
         // separate out the mime component
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
         // write the bytes of the string to an ArrayBuffer
         var ab = new ArrayBuffer( byteString.length );
@@ -33,7 +33,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
         return blob;
     }
 
-    getDataURI = function( url , def ) {
+    function getDataURI( url , def ) {
         var img = new Image();
 
         img.onload      = onload;
@@ -67,7 +67,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
         return def.promise();
     }
 
-    readAsDataURL = function( file, arr, i, len, def ) {
+    function readAsDataURL( file, arr, i, len, def ) {
         arr.push( new FileReader() );
         arr[i].onloadend = function( result ) {
             if ( i == len -1 ) arr.splice( 0, len );

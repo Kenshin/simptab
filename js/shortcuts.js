@@ -12,7 +12,7 @@ define([ "jquery", "mousetrap", "controlbar" ], function( $, Mousetrap, controlb
         "fav"
     ];
 
-    formatShortcut = function( key ) {
+    function formatShortcut( key ) {
 
         var formatter = "",
             arr       = new Array( key.length );
@@ -31,7 +31,7 @@ define([ "jquery", "mousetrap", "controlbar" ], function( $, Mousetrap, controlb
         return formatter;
     }
 
-    listenControl = function () {
+    function listenControl() {
 
         $.each( CONTROL_KEY_MAP, function( idx, shortcut ) {
             var new_key = formatShortcut( shortcut );

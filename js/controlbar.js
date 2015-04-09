@@ -1,7 +1,7 @@
 
 define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
 
-    setInfoURL = function() {
+    function setInfoURL() {
         var info = vo.cur.info;
         if ( i18n.GetLocale() != "zh_CN" ) {
             info = vo.cur.info.replace( "/knows/", "/" );
@@ -13,7 +13,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
         });
     }
 
-    setDownloadURL = function() {
+    function setDownloadURL() {
 
         var shortname = vo.cur.shortname;
         if ( shortname == "#" ) {
@@ -28,20 +28,20 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
     }
 
-    setBackground = function( url ) {
+    function setBackground( url ) {
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 
-    setFavorteState = function( is_show ) {
+    function setFavorteState( is_show ) {
         is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
     }
 
-    setFavorteIcon = function() {
+    function setFavorteIcon() {
         var newclass = vo.cur.favorite == -1 ? "unfavoriteicon" : "favoriteicon";
         $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
     }
 
-    setCurBackgroundURI = function() {
+    function setCurBackgroundURI() {
         files.GetDataURI( vo.constructor.CURRENT_BACKGROUND ).done( function( dataURI) {
             files.DataURI( dataURI );
         });
