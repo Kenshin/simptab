@@ -33,9 +33,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         return blob;
     }
 
-    getDataURI = function( url ) {
-        var img = new Image(),
-            def = $.Deferred();
+    getDataURI = function( url , def ) {
+        var img = new Image();
 
         img.onload      = onload;
         img.onerror     = errored;
@@ -65,6 +64,21 @@ define([ "jquery", "vo" ], function( $, vo ) {
             img.onabort = null;
         }
 
+        return def.promise();
+    }
+
+    readAsDataURL = function( file, arr, i, len, def ) {
+        arr.push( new FileReader() );
+        arr[i].onloadend = function( result ) {
+            if ( i == len -1 ) arr.splice( 0, len );
+            if ( result.type == "loadend" ) {
+                def.resolve( result.currentTarget.result );
+            }
+            else {
+                def.reject( result );
+            }
+        };
+        arr[i].readAsDataURL( file );
         return def.promise();
     }
 
@@ -165,26 +179,25 @@ define([ "jquery", "vo" ], function( $, vo ) {
             }, errorHandler );
         },
 
-        DataURI: function( result ) {
-            return curURI = curURI || result;
+        GetDataURI : function() {
+            var def = $.Deferred();
+
+            arguments.constructor.prototype.push = Array.prototype.push;
+            arguments.push( def );
+
+            if ( arguments && arguments.length == 2 && typeof arguments[0] === "string" ) {
+                getDataURI.apply( this, arguments );
+            }
+            else if ( arguments && arguments.length == 5 && typeof arguments[0] === "object" ) {
+                readAsDataURL.apply( this, arguments );
+            }
+            delete arguments.constructor.prototype.push;
+
+            return def.promise();
         },
 
-        ReadAsDataURL: function( file, arr, i, len ) {
-            var def    = $.Deferred();
-            arr.push( new FileReader() );
-
-            arr[i].onloadend = function( result ) {
-                if ( i == len -1 ) arr.splice( 0, len );
-                if ( result.type == "loadend" ) {
-                    def.resolve( result.currentTarget.result );
-                }
-                else {
-                    def.reject( result );
-                }
-            };
-
-            arr[i].readAsDataURL(file);
-            return def.promise();
+        DataURI: function( result ) {
+            return curURI = curURI || result;
         },
 
         VerifyUploadFile : function( arr ) {
@@ -214,8 +227,6 @@ define([ "jquery", "vo" ], function( $, vo ) {
                     break;
                 }
             }
-        },
-
-        GetDataURI : getDataURI
+        }
     }
 });

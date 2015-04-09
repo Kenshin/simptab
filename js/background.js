@@ -321,7 +321,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 len      = filelist.length;
             for( var i = 0; i < len; i++ ) {
                 (function( i, name ) {
-                    files.ReadAsDataURL( filelist[i], arr, i, len ).done( function( datauri ) {
+                    files.GetDataURI( filelist[i], arr, i, len ).done( function( datauri ) {
 
                         var file_name = Math.round(+new Date()),
                             upload_vo = {new:{}};
