@@ -155,18 +155,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                 // seach current bing.com background is favorite?
                 vo.new.favorite = files.FindFavBing( files.FavBingVO(), vo.new.enddate );
-                /*
-                var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                var bing_arr = JSON.parse( bing_fav );
-                var val      = {}
-                for( idx in bing_arr ) {
-                    val = bing_arr[idx];
-                    if ( val.split(":")[0] == vo.new.enddate ) {
-                        vo.new.favorite = val.split(":")[1];
-                        break;
-                    }
-                }
-                */
 
                 // update vo.cur
                 vo.cur = vo.Clone( vo.new );
@@ -257,12 +245,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         // update local storge 'simptab-bing-fav'
                         if ( vo.cur.enddate == date.Today() ) {
                             files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
-                            /*
-                            var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                            var bing_arr = JSON.parse( bing_fav );
-                            bing_arr.push( vo.cur.enddate + ":" + vo.cur.favorite );
-                            localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
-                            */
                         }
 
                         // set favorite icon state
@@ -286,18 +268,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                             // update local storge 'simptab-bing-fav'
                             files.DeleteFavBing( files.FavBingVO(), vo.cur.favorite );
-                            /*
-                            var bing_arr = JSON.parse( localStorage[ "simptab-bing-fav" ] || "[]" ),
-                                val      = {};
-                            for( idx in bing_arr ) {
-                                val = bing_arr[idx];
-                                if ( val.split(":")[1] == vo.cur.favorite ) {
-                                    bing_arr.splice( idx, 1 );
-                                    localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
-                                    break;
-                                }
-                            }
-                            */
 
                             // update vo.cur
                             vo.cur.favorite = -1;
