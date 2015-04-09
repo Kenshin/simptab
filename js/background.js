@@ -316,12 +316,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         },
 
         Upload: function( result ) {
-            var arr = [],
-                len = result.length;
+            var filelist = files.VerifyUploadFile( result ),
+                arr      = [],
+                len      = filelist.length;
             for( var i = 0; i < len; i++ ) {
-                if ( result[i].type.split("/")[0] != "image" ) break;
                 (function( i, name ) {
-                    files.ReadAsDataURL( result[i], arr, i, len ).done( function( datauri ) {
+                    files.ReadAsDataURL( filelist[i], arr, i, len ).done( function( datauri ) {
 
                         var file_name = Math.round(+new Date()),
                             upload_vo = {new:{}};
@@ -341,7 +341,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             console.error( "Upload favorite background error.", error )
                         });
                     }).fail( failed );
-                }).bind( null, i, result[i].name )();
+                }).bind( null, i, filelist[i].name )();
             }
         }
     }

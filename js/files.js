@@ -187,6 +187,13 @@ define([ "jquery", "vo" ], function( $, vo ) {
             return def.promise();
         },
 
+        VerifyUploadFile : function( arr ) {
+            if ( !arr.filter ) arr.constructor.prototype.filter = Array.prototype.filter;
+            return arr.filter(function( item ) {
+                return item.type.split("/")[0] === "image";
+            });
+        },
+
         FavoriteVO : function() {
             return JSON.parse( localStorage["simptab-favorites"] || "[]" );
         },
