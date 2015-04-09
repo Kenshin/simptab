@@ -7,6 +7,7 @@ define([ "jquery", "mousetrap", "controlbar" ], function( $, Mousetrap, controlb
         "app",
         "info",
         "down",
+        "up",
         "set",
         "fav"
     ];
