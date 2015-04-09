@@ -1,7 +1,7 @@
 
 define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], function( $, date, i18n, apis, vo, files, controlbar ) {
 
-    getCurrentBackground = function( is_random ) {
+    function getCurrentBackground( is_random ) {
 
         var def = $.Deferred();
 
@@ -50,7 +50,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
-    setCurrentBackground = function( state ) {
+    function setCurrentBackground( state ) {
         var def = $.Deferred();
 
         console.log( "Current state is " + state )
@@ -77,7 +77,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
-    getRemoteBackground = function( is_remote ) {
+    function getRemoteBackground( is_remote ) {
         var def = $.Deferred();
 
         if ( is_remote ) {
@@ -97,7 +97,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
-    setRemoteBackground = function( is_save, url ) {
+    function setRemoteBackground( is_save, url ) {
         var def = $.Deferred();
 
         if ( is_save ) {
@@ -142,7 +142,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
-    successBackground = function( is_save ) {
+    function successBackground( is_save ) {
 
         console.log( "===== New background get success. =====" );
 
@@ -167,7 +167,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         }
     }
 
-    failBackground = function( jqXHR, textStatus, errorThrown ) {
+    function failBackground( jqXHR, textStatus, errorThrown ) {
         console.error( "===== New background get failed. =====" )
 
         if ( jqXHR != null ) {
@@ -183,7 +183,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
     }
 
     return {
-        Get: function ( is_random ) {
+        Get: function( is_random ) {
 
             // state includ: ready remote(call api) loading(image) writestart(write start) pending(writting) success(write complete, end) writefailed(write error, end) remotefailed(remote failed, end)
             localStorage["simptab-background-state"] = "ready";
