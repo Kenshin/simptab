@@ -237,10 +237,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         vo.cur.favorite = file_name;
                         // when vo.type is 'upload', need update hdurl and url
                         if ( vo.cur.type == "upload" ) {
-                            var new_url_arr = vo.cur.hdurl.split("/");
-                            new_url_arr.pop();
-                            new_url_arr.push( file_name + ".jpg" );
-                            vo.cur.hdurl = new_url_arr.join("/");
+                            var new_url  = vo.cur.hdurl;
+                            new_url      = new_url.substring( new_url.lastIndexOf("/") + 1, new_url.lastIndexOf(".jpg") );
+                            vo.cur.hdurl = vo.cur.hdurl.replace( new_url, file_name );
                             vo.cur.url   = vo.cur.hdurl;
                         }
 
