@@ -319,6 +319,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
             var arr = [],
                 len = result.length;
             for( var i = 0; i < len; i++ ) {
+                if ( result[i].type.split("/")[0] != "image" ) break;
                 (function( i, name ) {
                     files.ReadAsDataURL( result[i], arr, i, len ).done( function( datauri ) {
 
