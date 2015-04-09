@@ -187,6 +187,28 @@ define([ "jquery", "vo" ], function( $, vo ) {
             return def.promise();
         },
 
+        FavoriteVO : function() {
+            return JSON.parse( localStorage["simptab-favorites"] || "[]" );
+        },
+
+        AddFavorite: function( favorite_vo, file_name, result ) {
+            var obj = { "file_name" : file_name, "result" : JSON.stringify( result ) };
+            favorite_vo.push( JSON.stringify( obj ));
+            localStorage[ "simptab-favorites" ] = JSON.stringify( favorite_vo );
+        },
+
+        DeleteFavorite: function( favorite_vo, file_name ) {
+            var obj   = {};
+            for( idx in favorite_vo ) {
+                obj = JSON.parse( favorite_vo[idx] );
+                if ( obj.file_name == file_name ) {
+                    favorite_vo.splice( idx, 1 );
+                    localStorage[ "simptab-favorites" ] = JSON.stringify( favorite_vo );
+                    break;
+                }
+            }
+        },
+
         GetDataURI : getDataURI
     }
 });

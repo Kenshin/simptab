@@ -250,10 +250,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         }
 
                         // update local storge 'simptab-favorites'
+                        files.AddFavorite( files.FavoriteVO(), file_name, vo.cur );
+                        /*
                         var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) },
                             arr = JSON.parse( localStorage["simptab-favorites"] || "[]" );
                         arr.push( JSON.stringify( obj ));
                         localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                        */
 
                         // update local storge 'simptab-bing-fav'
                         if ( vo.cur.enddate == date.Today() ) {
@@ -280,6 +283,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         try {
                             // update local storge 'simptab-favorites'
+                            files.DeleteFavorite( files.FavoriteVO(), file_name );
+                            /*
                             var arr   = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" ),
                                 obj   = {};
                             for( idx in arr ) {
@@ -290,6 +295,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                                     break;
                                 }
                             }
+                            */
 
                             // update local storge 'simptab-bing-fav'
                             var bing_arr = JSON.parse( localStorage[ "simptab-bing-fav" ] || "[]" ),
@@ -342,13 +348,19 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                             // create upload vo
                             vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", file_name ]);
+
+                            // update local storge 'simptab-favorites'
+                            files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
+
                             console.log("Upload favorite background success.", upload_vo.new )
 
+                            /*
                             // update local storge 'simptab-favorites'
                             var obj = { "file_name" : file_name, "result" : JSON.stringify( upload_vo.new ) };
                             var arr = JSON.parse( localStorage["simptab-favorites"] || "[]" );
                             arr.push( JSON.stringify( obj ));
                             localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                            */
                         })
                         .fail( function( error ) {
                             console.error( "Upload favorite background error.", error )
