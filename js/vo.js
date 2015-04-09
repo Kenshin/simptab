@@ -13,7 +13,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `hdurl` `enddate` `shortname` `version` `type`
     * change `data` to `endate`
     *
-    * type include: `default` `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com` `googleartproject.com` `500px.com` `special`
+    * type include: `default` `bing.com` `wallhaven.cc` `unsplash.it` `unsplash.com` `flickr.com` `googleartproject.com` `500px.com` `special` `upload`
     *
     * when version = 2.1
     * add new property `favorite`
@@ -21,7 +21,7 @@ define([ "jquery" ], function( $ ) {
     */
     const VERSION = "2.1";
 
-    var VO = function() {
+    function VO() {
         this.cur = {};  //current background data structure
         this.new = {};  //new background data structure
     }

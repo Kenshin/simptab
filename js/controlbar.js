@@ -86,6 +86,18 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                             event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
                         }
                         break;
+                    case "upload":
+                        var input  = document.createElement("input"),
+                            $input = $(input);
+
+                        $input.attr({ type : "file", multiple : "true" });
+                        $input.one( "change", function(event){
+                            callBack( event.currentTarget.files );
+                            input  = null;
+                            $input = null;
+                        });
+                        $input.trigger("click");
+                        break;
                 }
             });
         },

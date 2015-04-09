@@ -33,9 +33,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         return blob;
     }
 
-    getDataURI = function( url ) {
-        var img = new Image(),
-            def = $.Deferred();
+    getDataURI = function( url , def ) {
+        var img = new Image();
 
         img.onload      = onload;
         img.onerror     = errored;
@@ -68,6 +67,21 @@ define([ "jquery", "vo" ], function( $, vo ) {
         return def.promise();
     }
 
+    readAsDataURL = function( file, arr, i, len, def ) {
+        arr.push( new FileReader() );
+        arr[i].onloadend = function( result ) {
+            if ( i == len -1 ) arr.splice( 0, len );
+            if ( result.type == "loadend" ) {
+                def.resolve( result.currentTarget.result );
+            }
+            else {
+                def.reject( result );
+            }
+        };
+        arr[i].readAsDataURL( file );
+        return def.promise();
+    }
+
     return {
         Init: function( errorBack ) {
             window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -91,7 +105,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
 
                         fileWriter.onwritestart  = function(e) { def.notify( e ); };
                         fileWriter.onprogress    = function(e) { def.notify( e ); };
-                        fileWriter.onwriteend    = function(e) { def.resolve( e ); };
+                        fileWriter.onwriteend    = function(e) { def.resolve( e, fileEntry.toURL() ); };
                         fileWriter.onabort       = function(e) { def.reject( e ); };
                         fileWriter.onerror       = function(e) { def.reject( e ); };
 
@@ -113,8 +127,9 @@ define([ "jquery", "vo" ], function( $, vo ) {
         Delete: function( file_name, callback, errorBack ) {
 
             fs.root.getDirectory( FOLDER_NAME, {}, function( dirEntry ) {
-                var dirReader = dirEntry.createReader();
-                var is_del    = false;
+                var dirReader = dirEntry.createReader(),
+                    is_del    = false,
+                    del_entry;
                 dirReader.readEntries(function( entries ) {
                     for( var i = 0; i < entries.length; i++ ) {
                       var entry = entries[i];
@@ -124,12 +139,14 @@ define([ "jquery", "vo" ], function( $, vo ) {
                       else if ( entry.isFile ) {
                         console.log("File: " + entry.fullPath );
                         if ( file_name + ".jpg" == entry.name ) {
-                            is_del = true;
+                            is_del    = true;
+                            del_entry = entry;
+                            break;
                         }
                       }
                     }
                     if ( is_del ) {
-                        entry.remove(function() {
+                        del_entry.remove(function() {
                             console.log( "File successufully removed." );
                             callback( file_name );
                         }, errorBack );
@@ -162,11 +179,86 @@ define([ "jquery", "vo" ], function( $, vo ) {
             }, errorHandler );
         },
 
+        GetDataURI: function() {
+            var def = $.Deferred();
+
+            arguments.constructor.prototype.push = Array.prototype.push;
+            arguments.push( def );
+
+            if ( arguments && arguments.length == 2 && typeof arguments[0] === "string" ) {
+                getDataURI.apply( this, arguments );
+            }
+            else if ( arguments && arguments.length == 5 && typeof arguments[0] === "object" ) {
+                readAsDataURL.apply( this, arguments );
+            }
+            delete arguments.constructor.prototype.push;
+
+            return def.promise();
+        },
+
         DataURI: function( result ) {
             return curURI = curURI || result;
         },
 
-        GetDataURI : getDataURI,
+        VerifyUploadFile: function( arr ) {
+            if ( !arr.filter ) arr.constructor.prototype.filter = Array.prototype.filter;
+            return arr.filter(function( item ) {
+                return item.type.split("/")[0] === "image";
+            });
+        },
 
+        FavoriteVO: function() {
+            return JSON.parse( localStorage["simptab-favorites"] || "[]" );
+        },
+
+        AddFavorite: function( favorite_vo, file_name, result ) {
+            var obj = { "file_name" : file_name, "result" : JSON.stringify( result ) };
+            favorite_vo.push( JSON.stringify( obj ));
+            localStorage[ "simptab-favorites" ] = JSON.stringify( favorite_vo );
+        },
+
+        DeleteFavorite: function( favorite_vo, file_name ) {
+            var obj   = {};
+            for( idx in favorite_vo ) {
+                obj = JSON.parse( favorite_vo[idx] );
+                if ( obj.file_name == file_name ) {
+                    favorite_vo.splice( idx, 1 );
+                    localStorage[ "simptab-favorites" ] = JSON.stringify( favorite_vo );
+                    break;
+                }
+            }
+        },
+
+        FavBingVO: function() {
+            return JSON.parse( localStorage[ "simptab-bing-fav" ] || "[]" );
+        },
+
+        AddFavBing: function( fav_bing, result ) {
+            fav_bing.push( result );
+            localStorage[ "simptab-bing-fav" ] = JSON.stringify( fav_bing );
+        },
+
+        DeleteFavBing: function( fav_bing, result ) {
+            var val  = {};
+            for( idx in fav_bing ) {
+                val = fav_bing[idx];
+                if ( val.split(":")[1] == result ) {
+                    fav_bing.splice( idx, 1 );
+                    localStorage[ "simptab-bing-fav" ] = JSON.stringify( fav_bing );
+                    break;
+                }
+            }
+        },
+
+        FindFavBing: function( fav_bing, result ) {
+            var val = {};
+            for( idx in fav_bing ) {
+                val = fav_bing[idx];
+                if ( val.split(":")[0] == result ) {
+                    return val.split(":")[1];
+                }
+            }
+            return -1;
+        }
     }
 });

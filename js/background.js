@@ -154,16 +154,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 localStorage["simptab-background-state"] = "ready";
 
                 // seach current bing.com background is favorite?
-                var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                var bing_arr = JSON.parse( bing_fav );
-                var val      = {}
-                for( idx in bing_arr ) {
-                    val = bing_arr[idx];
-                    if ( val.split(":")[0] == vo.new.enddate ) {
-                        vo.new.favorite = val.split(":")[1];
-                        break;
-                    }
-                }
+                vo.new.favorite = files.FindFavBing( files.FavBingVO(), vo.new.enddate );
 
                 // update vo.cur
                 vo.cur = vo.Clone( vo.new );
@@ -235,6 +226,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         // update favorite
                         vo.cur.favorite = file_name;
+                        // when vo.type is 'upload', need update hdurl and url
+                        if ( vo.cur.type == "upload" ) {
+                            var new_url  = vo.cur.hdurl;
+                            new_url      = new_url.substring( new_url.lastIndexOf("/") + 1, new_url.lastIndexOf(".jpg") );
+                            vo.cur.hdurl = vo.cur.hdurl.replace( new_url, file_name );
+                            vo.cur.url   = vo.cur.hdurl;
+                        }
 
                         // when simptab-background-state != success, need refresh vo
                         if ( localStorage[ "simptab-background-state" ] != "success" ) {
@@ -242,19 +240,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         }
 
                         // update local storge 'simptab-favorites'
-                        var obj = { "file_name" : file_name, "result" : JSON.stringify( vo.cur ) };
-                        var fav = localStorage["simptab-favorites"] || "[]";
-                        var arr = JSON.parse( fav );
-                        arr.push( JSON.stringify( obj ));
-                        localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
+                        files.AddFavorite( files.FavoriteVO(), file_name, vo.cur );
 
                         // update local storge 'simptab-bing-fav'
-                        if ( vo.cur.enddate == date.Today() ) {
-                            var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                            var bing_arr = JSON.parse( bing_fav );
-                            bing_arr.push( vo.cur.enddate + ":" + vo.cur.favorite );
-                            localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
-                        }
+                        if ( vo.cur.type == "bing.com" ) files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
 
                         // set favorite icon state
                         controlbar.SetFavorteIcon();
@@ -273,30 +262,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
                         try {
                             // update local storge 'simptab-favorites'
-                            var favs  = localStorage[ "simptab-favorites" ] || "[]";
-                            var arr   = JSON.parse( favs );
-                            var obj   = {};
-                            for( idx in arr ) {
-                                obj = JSON.parse( arr[idx] );
-                                if ( obj.file_name == file_name ) {
-                                    arr.splice( idx, 1 );
-                                    localStorage[ "simptab-favorites" ] = JSON.stringify( arr );
-                                    break;
-                                }
-                            }
+                            files.DeleteFavorite( files.FavoriteVO(), file_name );
 
                             // update local storge 'simptab-bing-fav'
-                            var bing_fav = localStorage[ "simptab-bing-fav" ] || "[]";
-                            var bing_arr = JSON.parse( bing_fav );
-                            var val      = {};
-                            for( idx in bing_arr ) {
-                                val = bing_arr[idx];
-                                if ( val.split(":")[1] == vo.cur.favorite ) {
-                                    bing_arr.splice( idx, 1 );
-                                    localStorage[ "simptab-bing-fav" ] = JSON.stringify( bing_arr );
-                                    break;
-                                }
-                            }
+                            if ( vo.cur.type == "bing.com" ) files.DeleteFavBing( files.FavBingVO(), vo.cur.favorite );
 
                             // update vo.cur
                             vo.cur.favorite = -1;
@@ -320,6 +289,36 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 });
             }
 
+        },
+
+        Upload: function( result ) {
+            var filelist = files.VerifyUploadFile( result ),
+                arr      = [],
+                len      = filelist.length;
+            for( var i = 0; i < len; i++ ) {
+                (function( i, name ) {
+                    files.GetDataURI( filelist[i], arr, i, len ).done( function( datauri ) {
+
+                        var file_name = Math.round(+new Date()),
+                            upload_vo = {new:{}};
+
+                        files.Add( file_name, datauri )
+                        .done( function( result, hdurl ) {
+
+                            // create upload vo
+                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", file_name ]);
+
+                            // update local storge 'simptab-favorites'
+                            files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
+
+                            console.log("Upload favorite background success.", upload_vo.new )
+                        })
+                        .fail( function( error ) {
+                            console.error( "Upload favorite background error.", error )
+                        });
+                    }).fail( failed );
+                }).bind( null, i, filelist[i].name )();
+            }
         }
     }
 });
