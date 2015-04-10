@@ -169,6 +169,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         }
     }
 
+    /*
     function failBackground( jqXHR, textStatus, errorThrown ) {
         console.error( "===== New background get failed. =====" );
 
@@ -182,6 +183,20 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         }
         console.error( "textStatus       = ", textStatus  );
         console.error( "errorThrown      = ", errorThrown );
+    }
+    */
+
+    function failBackground( error ) {
+        try {
+            throw error;
+        }
+        catch( error ) {
+            console.group( "===== SimpTab failed. ====="             );
+            console.error( "error.method_name = ", error.method_name );
+            console.error( "error.message     = ", error.message     );
+            console.error( "error.data        = ", error.data        );
+            console.groupEnd();
+        }
     }
 
     return {

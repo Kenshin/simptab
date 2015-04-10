@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting, vo, date ) {
+define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n, setting, vo, date, SimpError ) {
 
     "use strict";
 
@@ -24,7 +24,8 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
     }
 
     function failed( jqXHR, textStatus, errorThrown ) {
-        deferred.reject( jqXHR, textStatus, errorThrown );
+        // deferred.reject( jqXHR, textStatus, errorThrown );
+        deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus:textStatus, errorThrown:errorThrown } ));
     }
 
     /*
@@ -60,24 +61,22 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
             timeout    : 2000,
             url        : url,
             dataType   : "json",})
-            .then(
-                function ( result ) {
-                    if ( result != undefined && !$.isEmptyObject( result )) {
+            .then( function ( result ) {
+                if ( result != undefined && !$.isEmptyObject( result )) {
 
-                      var data = result.images[0],
-                          url  = data.url,
-                          hdurl= getHDurl( getTrueUrl( url )),
-                          name = data.copyright,
-                          info = getInfo( data.copyrightlink ),
-                          enddate   = data.enddate,
-                          shortname = "Bing.com Image-" + getShortName( info );
-                      deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
-                    }
-                    else {
-                      deferred.reject( null, "Bing.com API return api parse error.", result );
-                    }
-                }, failed );
-
+                  var data = result.images[0],
+                      url  = data.url,
+                      hdurl= getHDurl( getTrueUrl( url )),
+                      name = data.copyright,
+                      info = getInfo( data.copyrightlink ),
+                      enddate   = data.enddate,
+                      shortname = "Bing.com Image-" + getShortName( info );
+                  deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
+                }
+                else {
+                  deferred.reject( new SimpError( "apis.bing()", "Bing.com API return api parse error.", result ));
+                }
+            }, failed );
     }
 
     function getHDurl( url ) {
@@ -553,7 +552,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 7;
+        // code = 9;
 
         switch ( code ) {
           case 0:

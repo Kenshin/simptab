@@ -13,7 +13,8 @@ requirejs.config({
       "setting"    : "js/setting",
       "i18n"       : "js/i18n",
       "shortcuts"  : "js/shortcuts",
-      "files"       : "js/files"
+      "files"      : "js/files",
+      "error"      : "js/error"
     },
     shim: {
       "mousetrap"   : {
