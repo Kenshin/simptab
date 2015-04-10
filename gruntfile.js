@@ -6,6 +6,23 @@ module.exports = function( grunt ) {
 
     pkg        : grunt.file.readJSON( "package.json" ),
 
+    jshint: {
+      options: {
+
+      },
+      script: [ "gruntfile.js", "js/*.js" ]
+    },
+
+    watch: {
+      scripts: {
+        files: [ "js/*.js" ],
+        tasks: [ "jshint"  ],
+        options: {
+          reload: true,
+        }
+      }
+    },
+
     clean: {
       publish: [ "dest-extension" ]
     },
@@ -66,6 +83,7 @@ module.exports = function( grunt ) {
     use matchdep each grunt-* with grunt.loadNpmTasks method */
   require( "matchdep" ).filterDev( "grunt-*" ).forEach( grunt.loadNpmTasks );
 
-  grunt.registerTask( "default", [ "clean", "copy", "htmlmin", "requirejs" ]);
+  grunt.registerTask( "dev", [ "watch" ]);
+  grunt.registerTask( "publish", [ "clean", "copy", "htmlmin", "requirejs" ]);
 
 };
