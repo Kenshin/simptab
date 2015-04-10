@@ -141,17 +141,15 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
 
         chrome.omnibox.onInputEntered.addListener( function( command ) {
             console.log( "SimpTab command is " + command );
-            var idx = keys.short.indexOf( command.trim().toLowerCase() );
-            if ( idx > -1 ) {
-                verifyCurrentTab( function() {
+            verifyCurrentTab( function() {
+                var idx = keys.short.indexOf( command.trim().toLowerCase() );
+                if ( idx > -1 ) {
                     controlbar.AutoClick( idx );
-                });
-            }
-            else if ( command.indexOf( prefix ) != -1 ) {
-                verifyCurrentTab( function() {
+                }
+                else if ( command.indexOf( prefix ) != -1 && command.trim().toLowerCase() === "site" ) {
                     chrome.tabs.update( curtab.id, { url : command.replace( prefix, "" ) } );
-                });
-            }
+                }
+            });
         });
     }
 
