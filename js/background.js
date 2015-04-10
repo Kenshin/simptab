@@ -1,6 +1,8 @@
 
 define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], function( $, date, i18n, apis, vo, files, controlbar ) {
 
+    "use strict";
+
     function getCurrentBackground( is_random ) {
 
         var def = $.Deferred();

@@ -1,6 +1,8 @@
 
 define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
 
+    "use strict";
+
     function setInfoURL() {
         var info = vo.cur.info;
         if ( i18n.GetLocale() != "zh_CN" ) {

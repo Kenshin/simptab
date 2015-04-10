@@ -1,6 +1,8 @@
 
 define([ "jquery" ], function( $ ) {
 
+    "use strict";
+
     function i18n( value ) {
         return chrome.i18n.getMessage( value );
     }

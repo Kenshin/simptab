@@ -1,9 +1,10 @@
 
 define([ "jquery", "vo" ], function( $, vo ) {
 
-    const FOLDER_NAME = "favorites";
+    "use strict";
 
-    var fs, curURI;
+    var FOLDER_NAME = "favorites",
+        fs, curURI;
 
     function errorHandler( error ) {
         console.error( "File Operations error.", error );
@@ -218,7 +219,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         DeleteFavorite: function( favorite_vo, file_name ) {
-            var obj   = {};
+            var obj = {},
+                idx;
             for( idx in favorite_vo ) {
                 obj = JSON.parse( favorite_vo[idx] );
                 if ( obj.file_name == file_name ) {
@@ -239,7 +241,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         DeleteFavBing: function( fav_bing, result ) {
-            var val  = {};
+            var val = {},
+                idx;
             for( idx in fav_bing ) {
                 val = fav_bing[idx];
                 if ( val.split(":")[1] == result ) {
@@ -251,7 +254,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         FindFavBing: function( fav_bing, result ) {
-            var val = {};
+            var val = {},
+                idx;
             for( idx in fav_bing ) {
                 val = fav_bing[idx];
                 if ( val.split(":")[0] == result ) {

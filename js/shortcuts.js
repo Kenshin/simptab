@@ -1,6 +1,8 @@
 
 define([ "jquery", "mousetrap", "controlbar" ], function( $, Mousetrap, controlbar ) {
 
+    "use strict";
+
     var CONTROL_KEY_MAP = [
         "book",
         "his",

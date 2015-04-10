@@ -1,6 +1,8 @@
 
 define([ "jquery" ], function( $ ) {
 
+    "use strict";
+
     /*
     *
     * `this.cur` and `this.new` data structure
@@ -19,7 +21,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `favorite`
     *
     */
-    const VERSION = "2.1";
+    var VERSION = "2.1";
 
     function VO() {
         this.cur = {};  //current background data structure

@@ -1,6 +1,8 @@
 
 define([ "jquery", "date" ], function( $, date ) {
 
+    "use strict";
+
     function initLR() {
         $( ".lineradio" ).each( function( index, item ) {
             if ( $( item ).hasClass("lrselected") ) {

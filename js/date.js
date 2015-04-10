@@ -1,6 +1,8 @@
 
 define([ "jquery" ], function( $ ) {
 
+    "use strict";
+
     function format( value ) {
         if ( value < 10 ) {
             return "0" + value;
