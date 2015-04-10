@@ -71,6 +71,14 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         return formatter;
     }
 
+    function verifyCurrentTab( callback ) {
+        chrome.tabs.query({ active: true, lastFocusedWindow: true }, function( tabs ) {
+            if ( tabs && tabs.length && curtab.id === tabs[0].id ) {
+                callback();
+            }
+        });
+    }
+
     function listenCurrentTab() {
         chrome.tabs.getCurrent( function( tab ) {
             curtab = tab;
@@ -92,11 +100,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
     function listenCommand() {
         chrome.commands.onCommand.addListener( function( command ) {
             console.log( 'Command:', command );
-            chrome.tabs.query({ active: true, lastFocusedWindow: true }, function( tabs ) {
-                if ( tabs && tabs.length && curtab.id === tabs[0].id ) {
-                    var idx = keys.long.indexOf( command );
-                    controlbar.AutoClick( idx );
-                }
+            verifyCurrentTab( function() {
+                var idx = keys.long.indexOf( command );
+                controlbar.AutoClick( idx );
             });
         });
     }
@@ -137,13 +143,13 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
             console.log( "SimpTab command is " + command );
             var idx = keys.short.indexOf( command.trim().toLowerCase() );
             if ( idx > -1 ) {
-                controlbar.AutoClick( idx );
+                verifyCurrentTab( function() {
+                    controlbar.AutoClick( idx );
+                });
             }
             else if ( command.indexOf( prefix ) != -1 ) {
-                chrome.tabs.query({ active: true, lastFocusedWindow: true }, function( tabs ) {
-                    if ( tabs && tabs.length && curtab.id === tabs[0].id ) {
-                        chrome.tabs.update( curtab.id, { url : command.replace( prefix, "" ) } );
-                    }
+                verifyCurrentTab( function() {
+                    chrome.tabs.update( curtab.id, { url : command.replace( prefix, "" ) } );
                 });
             }
         });
