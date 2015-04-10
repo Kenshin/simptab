@@ -1,5 +1,7 @@
 
-define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
+define([ "jquery" ], function( $ ) {
+
+	"use strict";
 
 	function SimpError( method_name, message, data ) {
 		Error.apply( this, arguments );
