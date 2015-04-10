@@ -294,9 +294,8 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                 if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
                   var source = "",
                       info   = "",
-                      item   = {},
-                      idx;
-                  for( idx in result.sizes.size ) {
+                      item   = {};
+                  for( var idx = 0, len = result.sizes.size.length; idx < len; idx++ ) {
                     item = result.sizes.size[idx];
                     if ( item.width == "1600" ) {
                       source = item.source;

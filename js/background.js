@@ -295,9 +295,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
         Upload: function( result ) {
             var filelist = files.VerifyUploadFile( result ),
-                arr      = [],
-                len      = filelist.length;
-            for( var i = 0; i < len; i++ ) {
+                arr      = [];
+            for( var i = 0, len = filelist.length; i < len; i++ ) {
                 (function( i, name ) {
                     files.GetDataURI( filelist[i], arr, i, len ).done( function( datauri ) {
 

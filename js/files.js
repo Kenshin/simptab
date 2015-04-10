@@ -132,7 +132,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
                     is_del    = false,
                     del_entry;
                 dirReader.readEntries(function( entries ) {
-                    for( var i = 0; i < entries.length; i++ ) {
+                    for( var i = 0, len = entries.length; i < len; i++ ) {
                       var entry = entries[i];
                       if ( entry.isDirectory ) {
                         console.log("Directory: " + entry.fullPath );
@@ -165,7 +165,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
             var dirReader = dirEntry.createReader();
             var name_arry = [];
             dirReader.readEntries(function( entries ) {
-                for( var i = 0; i < entries.length; i++ ) {
+                for( var i = 0, len = entries.length; i < len; i++ ) {
                   var entry = entries[i];
                   if ( entry.isDirectory ) {
                     console.log("Directory: " + entry.fullPath );
@@ -219,9 +219,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         DeleteFavorite: function( favorite_vo, file_name ) {
-            var obj = {},
-                idx;
-            for( idx in favorite_vo ) {
+            var obj = {};
+            for( var idx = 0, len = favorite_vo.length; idx < len; idx++ ) {
                 obj = JSON.parse( favorite_vo[idx] );
                 if ( obj.file_name == file_name ) {
                     favorite_vo.splice( idx, 1 );
@@ -241,9 +240,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         DeleteFavBing: function( fav_bing, result ) {
-            var val = {},
-                idx;
-            for( idx in fav_bing ) {
+            var val = {};
+            for( var idx = 0, len = fav_bing.length; idx < len; idx++ ) {
                 val = fav_bing[idx];
                 if ( val.split(":")[1] == result ) {
                     fav_bing.splice( idx, 1 );
@@ -254,9 +252,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         FindFavBing: function( fav_bing, result ) {
-            var val = {},
-                idx;
-            for( idx in fav_bing ) {
+            var val = {};
+            for( var idx = 0, len = fav_bing.length; idx < len; idx++ ) {
                 val = fav_bing[idx];
                 if ( val.split(":")[0] == result ) {
                     return val.split(":")[1];
