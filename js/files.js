@@ -52,7 +52,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
             canvas.getContext( "2d" ).drawImage( img, 0, 0 );
 
             def.resolve( canvas.toDataURL( "image/jpeg" ));
-        };
+        }
 
         function errored ( error ) {
             unbindEvent();
@@ -102,7 +102,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
                 function( fileEntry ) {
                     fileEntry.createWriter( function( fileWriter ) {
 
-                        console.log("fileEntry.toURL() = " + fileEntry.toURL())
+                        console.log("fileEntry.toURL() = " + fileEntry.toURL());
 
                         fileWriter.onwritestart  = function(e) { def.notify( e ); };
                         fileWriter.onprogress    = function(e) { def.notify( e ); };
@@ -113,12 +113,12 @@ define([ "jquery", "vo" ], function( $, vo ) {
                         fileWriter.write( dataURItoBlob( uri ));
 
                     }, function( error ) {
-                        console.log( "Save background fail, error is", error )
+                        console.log( "Save background fail, error is", error );
                         def.reject( error );
                     });
                 },
                 function( error ) {
-                        console.log( "Get background fail, error is", error )
+                        console.log( "Get background fail, error is", error );
                         def.reject( error );
                 });
 
@@ -261,5 +261,5 @@ define([ "jquery", "vo" ], function( $, vo ) {
             }
             return -1;
         }
-    }
+    };
 });

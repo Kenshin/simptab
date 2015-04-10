@@ -179,5 +179,5 @@ define([ "jquery", "date" ], function( $, date ) {
             return value.split(":")[1];
         }
 
-    }
+    };
 });

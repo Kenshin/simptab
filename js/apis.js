@@ -33,7 +33,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
     function bing() {
 
-       console.log( "=== Bing.com call ===")
+       console.log( "=== Bing.com call ===");
 
         var local  = "",
             url    = "",
@@ -210,7 +210,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
     function flickr() {
 
-        console.log( "=== Flickr.com call ===")
+        console.log( "=== Flickr.com call ===");
 
         $.ajax({
             type       : "GET",
@@ -258,7 +258,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
     function getFlickrPhotos( url ) {
 
-        console.log( "get flickr photos", url )
+        console.log( "get flickr photos", url );
 
         var def = $.Deferred();
 
@@ -300,8 +300,8 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                     if ( item.width == "1600" ) {
                       source = item.source;
                       info   = item.url;
-                      console.log( "source = " + source )
-                      console.log( "info   = " + info )
+                      console.log( "source = " + source );
+                      console.log( "info   = " + info );
                       deferred.resolve( vo.Create( source, source, "Flickr.com Image", info, date.Now(), "Flickr.com Image", "flickr.com" ));
                       break;
                     }
@@ -328,7 +328,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
     */
     function googleart() {
 
-        console.log( "=== Googleartproject.com call ===")
+        console.log( "=== Googleartproject.com call ===");
 
         var GOOGLE_ART_NAME  = "google.art.project.json",
             GOOGLE_ART_SUFFIX= "=s1200-rw",
@@ -344,7 +344,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                         random = createRandom( 0, max ),
                         obj    = result[ random ];
 
-                    console.log( "result = ", obj )
+                    console.log( "result = ", obj );
 
                     var hdurl = obj.image + GOOGLE_ART_SUFFIX;
                     deferred.resolve( vo.Create( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, "googleartproject.com" ));
@@ -369,7 +369,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
         PX_HOME = "https://www.500px.com";
 
     function f00px() {
-        console.log( "=== 500px.com call ===")
+        console.log( "=== 500px.com call ===");
         get500pxURL().then( get500API, failed ).fail( failed );
     }
 
@@ -387,10 +387,10 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                         obj.args.map( function( item ) {
                             param.push( item.key + "=" + item.val );
                         });
-                        def.resolve( PX_URL + obj.method + param.join("&") )
+                        def.resolve( PX_URL + obj.method + param.join("&") );
                 }
                 else {
-                    def.reject( null, "Not found any item from " + SIMP_API_HOST + PX_API, null )
+                    def.reject( null, "Not found any item from " + SIMP_API_HOST + PX_API, null );
                 }
             })
             .fail( failed );
@@ -416,7 +416,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
             }
             else {
-                def.reject( null, "Not found any item from " + url, null )
+                def.reject( null, "Not found any item from " + url, null );
             }
         }, failed );
 
@@ -428,7 +428,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
     */
     function favorite() {
 
-        console.log( "=== Favorite background call ===")
+        console.log( "=== Favorite background call ===");
 
         try {
             var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
@@ -442,7 +442,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
             var obj    = JSON.parse( arr[ random ] );
             var result = JSON.parse( obj.result );
 
-            console.log( "Get favorite background is ", JSON.parse( obj.result ) )
+            console.log( "Get favorite background is ", JSON.parse( obj.result ) );
 
             // verify favorite data structure
             if ( !vo.Verify( result.version )) {
@@ -486,7 +486,7 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
     */
      function special() {
 
-        console.log( "=== Special day/Holiday background call ===")
+        console.log( "=== Special day/Holiday background call ===");
 
         var SPECIAL_URL = "special.day.json",
             def         = $.Deferred(),
@@ -590,5 +590,5 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
         return deferred.promise();
       }
-    }
+    };
 });

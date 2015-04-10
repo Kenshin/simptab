@@ -57,5 +57,5 @@ define([ "jquery" ], function( $ ) {
             return i18n( "locales" );
         }
 
-    }
+    };
 });

@@ -49,5 +49,5 @@ define([ "jquery", "mousetrap", "controlbar" ], function( $, Mousetrap, controlb
         Init: function () {
             listenControl();
         }
-    }
+    };
 });

@@ -55,7 +55,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
     function setCurrentBackground( state ) {
         var def = $.Deferred();
 
-        console.log( "Current state is " + state )
+        console.log( "Current state is " + state );
 
         switch ( state ) {
             case 1:
@@ -132,7 +132,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         console.log( "Write error: ", result );
                         localStorage["simptab-background-state"] = "writefailed";
                         def.reject( null, "Favorite write to local error.", result );
-                    })
+                    });
             }, function( error ) {
                 def.reject( null, "Load background error.", error );
             });
@@ -170,18 +170,18 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
     }
 
     function failBackground( jqXHR, textStatus, errorThrown ) {
-        console.error( "===== New background get failed. =====" )
+        console.error( "===== New background get failed. =====" );
 
         if ( jqXHR != null ) {
 
             localStorage["simptab-background-state"] = "remotefailed";
 
-            console.error( "jqXHR            = ", jqXHR            )
-            console.error( "jqXHR.status     = ", jqXHR.status     )
-            console.error( "jqXHR.statusText = ", jqXHR.statusText )
+            console.error( "jqXHR            = ", jqXHR            );
+            console.error( "jqXHR.status     = ", jqXHR.status     );
+            console.error( "jqXHR.statusText = ", jqXHR.statusText );
         }
-        console.error( "textStatus       = ", textStatus  )
-        console.error( "errorThrown      = ", errorThrown )
+        console.error( "textStatus       = ", textStatus  );
+        console.error( "errorThrown      = ", errorThrown );
     }
 
     return {
@@ -218,7 +218,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
         Favorite: function( is_favorite ) {
 
-            console.log("is_favorite = ", is_favorite)
+            console.log("is_favorite = ", is_favorite);
 
             if ( is_favorite ) {
 
@@ -253,14 +253,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         console.log( "Add favorite background success." );
                     })
                     .fail( function( error ) {
-                        console.error( "Add favorite background error.", error )
+                        console.error( "Add favorite background error.", error );
                     });
             }
             else {
-                files.Delete( vo.cur.favorite
-                    , function( file_name ) {
+                files.Delete( vo.cur.favorite,
+                    function( file_name ) {
 
-                        console.log( "Delete favorite is ", file_name )
+                        console.log( "Delete favorite is ", file_name );
 
                         try {
                             // update local storge 'simptab-favorites'
@@ -283,12 +283,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             console.log( "Delete favorite background success." );
                         }
                         catch ( error ) {
-                            console.log( "Delete favorite background error.", error )
+                            console.log( "Delete favorite background error.", error );
                         }
-                    }
-                    , function( error ) {
+                    },
+                    function( error ) {
                         console.error( "Delete favorite background error.", error );
-                });
+                    }
+                );
             }
 
         },
@@ -312,10 +313,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             // update local storge 'simptab-favorites'
                             files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
 
-                            console.log("Upload favorite background success.", upload_vo.new )
+                            console.log("Upload favorite background success.", upload_vo.new );
                         })
                         .fail( function( error ) {
-                            console.error( "Upload favorite background error.", error )
+                            console.error( "Upload favorite background error.", error );
                         });
                     }).fail( function( error ) {
                         console.error("Upload favorite background error.", error );
@@ -323,5 +324,5 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                 }).bind( null, i, filelist[i].name )();
             }
         }
-    }
+    };
 });

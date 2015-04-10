@@ -57,7 +57,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                 chrome.tabs.getCurrent( function( obj ) {
                     chrome.tabs.create({ url : $( event.currentTarget ).attr( "url" ) });
                     chrome.tabs.remove( obj.id );
-                })
+                });
             });
 
             // listen control link
@@ -130,5 +130,5 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
             setFavorteIcon();
         },
         SetFavorteIcon    : setFavorteIcon
-    }
+    };
 });
