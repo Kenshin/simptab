@@ -431,14 +431,13 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
 
         console.log( "=== Favorite background call ===")
 
-        var storge = localStorage[ "simptab-favorites" ] || [];
-        if ( $.isArray( storge ) && storge.length == 0 ) {
-          deferred.reject( null, "Local storge 'simptab-favorites' not exist.", null );
-          return;
-        }
-        var arr    = JSON.parse( storge );
+        try {
+            var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
+            if ( !Array.isArray( arr ) || arr.length == 0 ) {
+                deferred.reject( null, "Local storge 'simptab-favorites' not exist.", null );
+                return;
+            }
 
-        if ( arr.length > 0 ) {
             var max    = arr.length - 1;
             var random = createRandom( 0, max );
             var obj    = JSON.parse( arr[ random ] );
@@ -455,8 +454,8 @@ define([ "jquery", "i18n", "setting", "vo", "date" ], function( $, i18n, setting
                 deferred.resolve( result );
             }
         }
-        else {
-            deferred.reject( null, "Current not any favorite background.", null );
+        catch( error ) {
+            deferred.reject( null, error, error.message );
         }
     }
 
