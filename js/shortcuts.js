@@ -125,7 +125,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                 var sites = topsites.sites(),
                     site;
                 for( var i = 0, len = sites.length; i < len; i++ ) {
-                    site = sites[i];
+                    site       = sites[i];
+                    site.title = site.url == site.title ? "No Title" : site.title;
                     suggestResult.push({ content : prefix + site.url, description : site.title });
                 }
             }
@@ -146,7 +147,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                 if ( idx > -1 ) {
                     controlbar.AutoClick( idx );
                 }
-                else if ( command.indexOf( prefix ) != -1 && command.trim().toLowerCase() === "site" ) {
+                else if ( command.indexOf( prefix ) != -1 ) {
                     chrome.tabs.update( curtab.id, { url : command.replace( prefix, "" ) } );
                 }
             });
