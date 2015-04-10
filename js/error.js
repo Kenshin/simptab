@@ -16,5 +16,3 @@ define([ "jquery" ], function( $ ) {
 	return SimpError;
 
 });
-
-
