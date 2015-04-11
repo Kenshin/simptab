@@ -187,7 +187,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
           }
           else {
-            //deferred.reject( null, "Get Unsplash.it max num error.", result );
             deferred.reject( new SimpError( "apis.unsplashIT()", "Get Unsplash.it max num error.", result ));
           }
         }).fail( failed );
@@ -197,7 +196,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     * Flickr.com
     * e.g. https://api.flickr.com/services/rest/?method=[method name]&api_key=[api key]&[key]=[value]&format=json
     */
-    var FLICKR_NAME= "flickr.api.json",
+    var FLICKR_NAME       = "flickr.api.json",
         FLICKR_API_KEY    = "5feac8799f0102a4c93542f7cc82f5e1",
         FLICKR_HOST       = "https://api.flickr.com/services/rest/",
         FLICKR_PHOTO_API  = "flickr.photos.getSizes";
@@ -221,10 +220,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     function getFlickrURL( result ) {
-
         var def = $.Deferred();
 
-        console.log(result);
         if ( result != undefined && !$.isEmptyObject( result )) {
             var max    = result.apis.length - 1,
                 random = createRandom( 0, max ),
@@ -238,8 +235,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             console.log( "api.keys.val = " + values );
 
             random = createRandom( 0, values.length - 1 );
-            // add test code
-            // random = 0;
 
             var flickr_url = getFlickAPI( method, key, values[random] );
             console.log( "flickr method url = " + flickr_url );
@@ -247,11 +242,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             return def.resolve( flickr_url );
         }
         else {
-          deferred.reject( null, "Get flickr.api.json error." , result );
+            deferred.reject( new SimpError( "apis.getFlickrURL()", "Get flickr.api.json error.", result ));
         }
 
         return def.promise();
-
     }
 
     function getFlickrPhotos( url ) {
@@ -272,7 +266,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     return def.resolve( photo.id );
                 }
                 else {
-                  deferred.reject( null, "Get Flickr API error, url is " + url, result );
+                  deferred.reject( new SimpError( "apis.getFlickrPhotos()", "Get Flickr API error, url is " + url, result ));
                 }
             })
             .fail( failed );
@@ -310,10 +304,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     console.error( "Not found any background, Re-call again.");
                     flickr();
                   }
-
                 }
                 else {
-                  deferred.reject( null, "Get Flickr API error, url is " + url, result );
+                  deferred.reject( new SimpError( "apis.getFlickrPhotoURL()", "Get Flickr API error, url is " + url, result ));
                 }
             })
             .fail( failed );
@@ -551,7 +544,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        code = 2;
+        code = 3;
 
         switch ( code ) {
           case 0:
