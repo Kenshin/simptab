@@ -3,15 +3,23 @@ define([ "jquery" ], function( $ ) {
 
 	"use strict";
 
+    function __extend( Child, Parent ) {
+        function F(){}
+        F.prototype = Parent.prototype;
+        Child.prototype = new F();
+        Child.prototype.constructor = Child;
+    }
+
 	function SimpError( method_name, message, data ) {
+
 		Error.apply( this, arguments );
+
+        __extend( SimpError, Error );
 
 		this.method_name = method_name;
 		this.message     = message;
 		this.data         = data;
 	}
-
-	SimpError.prototype = Error.prototype;
 
 	return SimpError;
 
