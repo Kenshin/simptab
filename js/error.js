@@ -11,7 +11,7 @@ define([ "jquery" ], function( $ ) {
     }
 
     function __copy( d, b ) {
-        for (var p in d) if (d.hasOwnProperty(p)) if ( d[p] ) b[p] = d[p];
+        for (var p in d) if (d.hasOwnProperty(p)) if ( d[p] ) b.constructor.prototype[p] = d[p];
     }
 
 	function SimpError( method_name, message, data ) {
@@ -24,6 +24,8 @@ define([ "jquery" ], function( $ ) {
 		this.message     = message;
 		this.data        = data;
 	}
+
+    SimpError.prototype.name = "SimpError";
 
     SimpError.Clone = function( simperr, error ) {
         __copy( simperr, error );

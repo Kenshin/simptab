@@ -193,6 +193,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         catch( error ) {
             console.group( "===== SimpTab failed. ====="             );
             console.error( "error             = ", error             );
+            console.error( "error.name        = ", error.name        );
             console.error( "error.method_name = ", error.method_name );
             console.error( "error.message     = ", error.message     );
             console.error( "error.data        = ", error.data        );
