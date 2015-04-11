@@ -381,7 +381,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                         def.resolve( PX_URL + obj.method + param.join("&") );
                 }
                 else {
-                    def.reject( null, "Not found any item from " + SIMP_API_HOST + PX_API, null );
+                    deferred.reject( new SimpError( "apis.get500pxURL()", "Not found any item from " + SIMP_API_HOST + PX_API, result ));
                 }
             })
             .fail( failed );
@@ -404,10 +404,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     }
 
                     deferred.resolve( vo.Create( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px.com Image-" + obj.name, "500px.com" ));
-
             }
             else {
-                def.reject( null, "Not found any item from " + url, null );
+                deferred.reject( new SimpError( "apis.get500API()", "Not found any item from " + url, result ));
             }
         }, failed );
 
@@ -544,7 +543,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        code = 4;
+        code = 5;
 
         switch ( code ) {
           case 0:
