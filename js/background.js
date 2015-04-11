@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], function( $, date, i18n, apis, vo, files, controlbar ) {
+define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError ) {
 
     "use strict";
 
@@ -131,10 +131,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                     .fail( function( result ) {
                         console.log( "Write error: ", result );
                         localStorage["simptab-background-state"] = "writefailed";
-                        def.reject( null, "Favorite write to local error.", result );
+                        def.reject( new SimpError( "background.setRemoteBackground()::files.Add()", "Favorite write to local error.", result ));
                     });
             }, function( error ) {
-                def.reject( null, "Load background error.", error );
+                def.reject( new SimpError( "background.setRemoteBackground()::files.GetDataURI()", "Load background error.", error ));
             });
         }
         else {
