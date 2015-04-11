@@ -30,7 +30,7 @@ define([ "jquery" ], function( $ ) {
     SimpError.Clone = function( simperr, error ) {
         __copy( simperr, error );
         return error;
-    }
+    };
 
 	return SimpError;
 
