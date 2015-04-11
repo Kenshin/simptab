@@ -423,7 +423,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         try {
             var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
-                deferred.reject( null, "Local storge 'simptab-favorites' not exist.", null );
+                deferred.reject( new SimpError( "apis.favorite()", "Local storge 'simptab-favorites' not exist.", null ));
                 return;
             }
 
@@ -435,8 +435,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
 
             // verify favorite data structure
-            if ( !vo.Verify( result.version )) {
-                deferred.reject( null, "Current favorite data structure error.", result );
+            if ( !vo.Verify()) {
+                deferred.reject( new SimpError( "apis.favorite()", "Current favorite data structure error.", result ));
             }
             else {
                 vo.new = result;
@@ -444,7 +444,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
         }
         catch( error ) {
-            deferred.reject( null, error, error.message );
+            deferred.reject( SimpError.Clone( new SimpError( "apis.favorite()", null , "Get favorite backgrond error." ), error ));
         }
     }
 
@@ -543,7 +543,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        code = 5;
+        code = 6;
 
         switch ( code ) {
           case 0:
