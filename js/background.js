@@ -169,23 +169,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         }
     }
 
-    /*
-    function failBackground( jqXHR, textStatus, errorThrown ) {
-        console.error( "===== New background get failed. =====" );
-
-        if ( jqXHR != null ) {
-
-            localStorage["simptab-background-state"] = "remotefailed";
-
-            console.error( "jqXHR            = ", jqXHR            );
-            console.error( "jqXHR.status     = ", jqXHR.status     );
-            console.error( "jqXHR.statusText = ", jqXHR.statusText );
-        }
-        console.error( "textStatus       = ", textStatus  );
-        console.error( "errorThrown      = ", errorThrown );
-    }
-    */
-
     function failBackground( error ) {
         try {
             throw error;

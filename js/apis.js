@@ -24,7 +24,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     function failed( jqXHR, textStatus, errorThrown ) {
-        // deferred.reject( jqXHR, textStatus, errorThrown );
         deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus:textStatus, errorThrown:errorThrown } ));
     }
 
