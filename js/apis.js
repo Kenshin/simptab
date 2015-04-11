@@ -160,9 +160,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           deferred.resolve( result );
       }
       catch ( error ) {
-        deferred.reject( null, error, error.message );
+        deferred.reject( SimpError.Clone( new SimpError( "apis.unsplashCOM()", null , "Parse unsplash.com error, url is " + url ), error ));
       }
-
     }
 
     /*
@@ -173,23 +172,23 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         console.log( "=== Unsplash.it call ===" );
 
-        $.getJSON( "http://simptab.qiniudn.com/unsplash.it.max.json" ).done(function( result ) {
+        var UNSPLSH_NAME = "unsplash.it.max.json";
+
+        $.getJSON( SIMP_API_HOST + UNSPLSH_NAME ).done(function( result ) {
           if ( result != undefined && !$.isEmptyObject( result )) {
             try {
               var max    = result.max,
-                  random = createRandom( 0, max );
-
-              var url       = "https://unsplash.it/1920/1080/?image=" + random,
-                  result    = vo.Create( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", "unsplash.it" );
-
-              deferred.resolve( result );
+                  random = createRandom( 0, max ),
+                  url    = "https://unsplash.it/1920/1080/?image=" + random;
+              deferred.resolve( vo.Create( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", "unsplash.it" ) );
             }
             catch( error ) {
-              deferred.reject( null, error, error.message );
+              deferred.reject( SimpError.Clone( new SimpError( "apis.unsplashIT()", null , "Parse unsplash.it error, url is " + url ), error ));
             }
           }
           else {
-            deferred.reject( null, "Get Unsplash.it max num error.", result );
+            //deferred.reject( null, "Get Unsplash.it max num error.", result );
+            deferred.reject( new SimpError( "apis.unsplashIT()", "Get Unsplash.it max num error.", result ));
           }
         }).fail( failed );
     }
@@ -552,7 +551,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        code = 0;
+        code = 2;
 
         switch ( code ) {
           case 0:
