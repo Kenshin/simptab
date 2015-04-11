@@ -134,7 +134,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         deferred.resolve( result );
       }
       catch ( error ) {
-        deferred.reject( null, error, error.message );
+        deferred.reject( SimpError.Clone( new SimpError( "apis.wallhaven()", null , "Parse wallhaven error, url is " + url ), error ));
       }
     }
 
@@ -552,7 +552,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 9;
+        code = 0;
 
         switch ( code ) {
           case 0:
