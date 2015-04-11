@@ -321,10 +321,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         console.log( "=== Googleartproject.com call ===");
 
-        var GOOGLE_ART_NAME  = "google.art.project.json",
-            GOOGLE_ART_SUFFIX= "=s1200-rw",
-            GOOGLE_ART_PREFIX= "https://www.google.com/culturalinstitute/";
-        var url = SIMP_API_HOST + GOOGLE_ART_NAME;
+        var GOOGLE_ART_NAME   = "google.art.project.json",
+            GOOGLE_ART_SUFFIX = "=s1200-rw",
+            GOOGLE_ART_PREFIX = "https://www.google.com/culturalinstitute/",
+            url               = SIMP_API_HOST + GOOGLE_ART_NAME;
 
         $.getJSON( url )
         .done( function( result ) {
@@ -345,7 +345,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
             }
             else {
-                deferred.reject( null, "Get Google Art Project error, url is " + url, result );
+                deferred.reject( new SimpError( "apis.googleart()", "Get Google Art Project error, url is " + url, result ));
             }
         })
         .fail( failed );
@@ -544,7 +544,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        code = 3;
+        code = 4;
 
         switch ( code ) {
           case 0:
