@@ -485,31 +485,38 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         $.getJSON( SIMP_API_HOST + SPECIAL_URL + "?random=" + Math.round(+new Date()) )
         .done( function( result ) {
             if ( result && !$.isEmptyObject( result )) {
-                var obj = result[type],
-                    key, max, random, special_day, data, hdurl;
 
-                if ( type == "special" ) {
-                    key         = obj.now.length > 0 ? "now" : "old";
-                    max         = obj[key].length - 1;
-                    random      = createRandom( 0, max );
-                    special_day = obj[key][random];
-                    data        = special_day.day;
-                    max         = data.hdurl.length - 1;
-                    random      = createRandom( 0, max );
-                    hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
+                try {
+                    var obj = result[type],
+                        key, max, random, special_day, data, hdurl;
+
+                    if ( type == "special" ) {
+                        key         = obj.now.length > 0 ? "now" : "old";
+                        max         = obj[key].length - 1;
+                        random      = createRandom( 0, max );
+                        special_day = obj[key][random];
+                        data        = special_day.day;
+                        max         = data.hdurl.length - 1;
+                        random      = createRandom( 0, max );
+                        hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
+                    }
+                    else {
+                        key         = date.Today();
+                        data        = obj[key];
+                        //if ( !data ) deferred.reject( null, "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, null ); return;
+                        if ( !data ) deferred.reject( new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result )); return;
+                        max         = data.hdurl.length - 1;
+                        random      = createRandom( 0, max );
+                        hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
+                    }
+                    deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type ));
                 }
-                else {
-                    key         = date.Today();
-                    data        = obj[key];
-                    if ( !data ) deferred.reject( null, "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, null ); return;
-                    max         = data.hdurl.length - 1;
-                    random      = createRandom( 0, max );
-                    hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
+                catch( error ) {
+                    deferred.reject( SimpError.Clone( new SimpError( "apis.special()", null , "Get special backgrond error." ), error ));
                 }
-                deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type ));
             }
             else {
-                deferred.reject( null, "Not found any special day/Holiday background from " + SIMP_API_HOST + SPECIAL_URL, null );
+                deferred.reject( new SimpError( "apis.special()", "Not found any special day/Holiday background from " + SIMP_API_HOST + SPECIAL_URL, result ));
             }
         })
         .fail( failed );
@@ -543,7 +550,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        code = 6;
+        code = 7;
 
         switch ( code ) {
           case 0:
