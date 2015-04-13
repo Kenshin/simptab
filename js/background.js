@@ -1,7 +1,9 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], function( $, date, i18n, apis, vo, files, controlbar ) {
+define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError ) {
 
-    getCurrentBackground = function( is_random ) {
+    "use strict";
+
+    function getCurrentBackground( is_random ) {
 
         var def = $.Deferred();
 
@@ -50,10 +52,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
-    setCurrentBackground = function( state ) {
+    function setCurrentBackground( state ) {
         var def = $.Deferred();
 
-        console.log( "Current state is " + state )
+        console.log( "Current state is " + state );
 
         switch ( state ) {
             case 1:
@@ -77,7 +79,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
-    getRemoteBackground = function( is_remote ) {
+    function getRemoteBackground( is_remote ) {
         var def = $.Deferred();
 
         if ( is_remote ) {
@@ -97,7 +99,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
-    setRemoteBackground = function( is_save, url ) {
+    function setRemoteBackground( is_save, url ) {
         var def = $.Deferred();
 
         if ( is_save ) {
@@ -129,10 +131,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                     .fail( function( result ) {
                         console.log( "Write error: ", result );
                         localStorage["simptab-background-state"] = "writefailed";
-                        def.reject( null, "Favorite write to local error.", result );
-                    })
+                        def.reject( new SimpError( "background.setRemoteBackground()::files.Add()", "Favorite write to local error.", result ));
+                    });
             }, function( error ) {
-                def.reject( null, "Load background error.", error );
+                def.reject( new SimpError( "background.setRemoteBackground()::files.GetDataURI()", "Load background error.", error ));
             });
         }
         else {
@@ -142,7 +144,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         return def.promise();
     }
 
-    successBackground = function( is_save ) {
+    function successBackground( is_save ) {
 
         console.log( "===== New background get success. =====" );
 
@@ -167,23 +169,24 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         }
     }
 
-    failBackground = function( jqXHR, textStatus, errorThrown ) {
-        console.error( "===== New background get failed. =====" )
-
-        if ( jqXHR != null ) {
-
-            localStorage["simptab-background-state"] = "remotefailed";
-
-            console.error( "jqXHR            = ", jqXHR            )
-            console.error( "jqXHR.status     = ", jqXHR.status     )
-            console.error( "jqXHR.statusText = ", jqXHR.statusText )
+    function failBackground( error ) {
+        try {
+            throw error;
         }
-        console.error( "textStatus       = ", textStatus  )
-        console.error( "errorThrown      = ", errorThrown )
+        catch( error ) {
+            console.group( "===== SimpTab failed. ====="             );
+            console.error( "error             = ", error             );
+            console.error( "error.stack       = ", error.stack       );
+            console.error( "error.name        = ", error.name        );
+            console.error( "error.method_name = ", error.method_name );
+            console.error( "error.message     = ", error.message     );
+            console.error( "error.data        = ", error.data        );
+            console.groupEnd();
+        }
     }
 
     return {
-        Get: function ( is_random ) {
+        Get: function( is_random ) {
 
             // state includ: ready remote(call api) loading(image) writestart(write start) pending(writting) success(write complete, end) writefailed(write error, end) remotefailed(remote failed, end)
             localStorage["simptab-background-state"] = "ready";
@@ -216,7 +219,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
 
         Favorite: function( is_favorite ) {
 
-            console.log("is_favorite = ", is_favorite)
+            console.log("is_favorite = ", is_favorite);
 
             if ( is_favorite ) {
 
@@ -251,14 +254,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                         console.log( "Add favorite background success." );
                     })
                     .fail( function( error ) {
-                        console.error( "Add favorite background error.", error )
+                        console.error( "Add favorite background error.", error );
                     });
             }
             else {
-                files.Delete( vo.cur.favorite
-                    , function( file_name ) {
+                files.Delete( vo.cur.favorite,
+                    function( file_name ) {
 
-                        console.log( "Delete favorite is ", file_name )
+                        console.log( "Delete favorite is ", file_name );
 
                         try {
                             // update local storge 'simptab-favorites'
@@ -281,12 +284,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             console.log( "Delete favorite background success." );
                         }
                         catch ( error ) {
-                            console.log( "Delete favorite background error.", error )
+                            console.log( "Delete favorite background error.", error );
                         }
-                    }
-                    , function( error ) {
+                    },
+                    function( error ) {
                         console.error( "Delete favorite background error.", error );
-                });
+                    }
+                );
             }
 
         },
@@ -294,9 +298,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
         Upload: function( result ) {
             var filelist = files.VerifyUploadFile( result ),
                 arr      = [],
-                len      = filelist.length;
-            for( var i = 0; i < len; i++ ) {
-                (function( i, name ) {
+                adapter  = function( i, name ) {
                     files.GetDataURI( filelist[i], arr, i, len ).done( function( datauri ) {
 
                         var file_name = Math.round(+new Date()),
@@ -311,14 +313,18 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar" ], functi
                             // update local storge 'simptab-favorites'
                             files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
 
-                            console.log("Upload favorite background success.", upload_vo.new )
+                            console.log("Upload favorite background success.", upload_vo.new );
                         })
                         .fail( function( error ) {
-                            console.error( "Upload favorite background error.", error )
+                            console.error( "Upload favorite background error.", error );
                         });
-                    }).fail( failed );
-                }).bind( null, i, filelist[i].name )();
+                    }).fail( function( error ) {
+                        console.error("Upload favorite background error.", error );
+                    });
+            };
+            for( var i = 0, len = filelist.length; i < len; i++ ) {
+                adapter.bind( null, i, filelist[i].name )();
             }
         }
-    }
+    };
 });

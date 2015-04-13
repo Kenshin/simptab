@@ -1,11 +1,13 @@
 
 define([ "jquery" ], function( $ ) {
 
-    i18n = function( value ) {
+    "use strict";
+
+    function i18n( value ) {
         return chrome.i18n.getMessage( value );
     }
 
-    controlbar = function () {
+    function controlbar() {
         $($( ".controlbar" ).children()[0]).find( ".tooltip" ).text( i18n( "controlbar_bookmarks" ));
         $($( ".controlbar" ).children()[1]).find( ".tooltip" ).text( i18n( "controlbar_history" ));
         $($( ".controlbar" ).children()[2]).find( ".tooltip" ).text( i18n( "controlbar_apps" ));
@@ -16,7 +18,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".controlbar" ).children()[7]).find( ".tooltip" ).text( i18n( "controlbar_favorite" ));
     }
 
-    setting = function () {
+    function setting() {
         $($( ".lineradio" ).find("label")[0]).text( i18n( "setting_background_every_day" ));
         $($( ".lineradio" ).find("label")[1]).text( i18n( "setting_background_every_time" ));
         $($( ".lineradio" ).find("label")[2]).text( i18n( "setting_show_clock" ));
@@ -36,7 +38,7 @@ define([ "jquery" ], function( $ ) {
         $($(".setting .contact").find("a")[4]).attr( "title", i18n( "setting_contact_me" ));
     }
 
-    main = function () {
+    function main() {
         document.title = i18n( "title" );
     }
 
@@ -55,5 +57,5 @@ define([ "jquery" ], function( $ ) {
             return i18n( "locales" );
         }
 
-    }
+    };
 });

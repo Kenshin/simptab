@@ -1,7 +1,9 @@
 
 define([ "jquery" ], function( $ ) {
 
-    format = function ( value ) {
+    "use strict";
+
+    function format( value ) {
         if ( value < 10 ) {
             return "0" + value;
         }
@@ -37,5 +39,5 @@ define([ "jquery" ], function( $ ) {
             var date = new Date();
             return date.getFullYear() + format( date.getUTCMonth() + 1 ) + format( date.getUTCDate()) + format( date.getHours()) + format( date.getMinutes()) + format( date.getSeconds());
         }
-    }
+    };
 });

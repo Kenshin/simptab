@@ -1,7 +1,9 @@
 
 define([ "jquery", "date" ], function( $, date ) {
 
-    initLR = function () {
+    "use strict";
+
+    function initLR() {
         $( ".lineradio" ).each( function( index, item ) {
             if ( $( item ).hasClass("lrselected") ) {
                 $( item ).prepend( '<span class="checked"></span>' );
@@ -13,12 +15,12 @@ define([ "jquery", "date" ], function( $, date ) {
         });
     }
 
-    updateLR = function( $target ) {
+    function updateLR( $target ) {
         updateLrIcon( $target );
         updateLrState( $target );
     }
 
-    updateLrIcon = function( $target ) {
+    function updateLrIcon( $target ) {
         var $current = $target.parent(),
             $prev    = $current.prev(),
             $next    = $current.next();
@@ -35,7 +37,7 @@ define([ "jquery", "date" ], function( $, date ) {
         $current.find( "input" ).attr( "checked", true    );
     }
 
-    updateLrState = function( $target ) {
+    function updateLrState( $target ) {
         var $current = $target.parent(),
             $prev    = $current.prev(),
             $next    = $current.next();
@@ -49,7 +51,7 @@ define([ "jquery", "date" ], function( $, date ) {
         $current.attr( "class", "lineradio lrselected" );
     }
 
-    updateOriginState = function( $target, type ) {
+    function updateOriginState( $target, type ) {
         var $prev   = $($target.prev()),
             $parent = $($target.parent()),
             value   = $target.attr("value"),
@@ -72,7 +74,7 @@ define([ "jquery", "date" ], function( $, date ) {
         $parent.attr( "class", divel    );
     }
 
-    updateLocalStorge = function( $target ) {
+    function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
             value = $target.attr("value"),
             arr   = localStorage["simptab-background-origin"] && JSON.parse( localStorage["simptab-background-origin"] ),
@@ -177,5 +179,5 @@ define([ "jquery", "date" ], function( $, date ) {
             return value.split(":")[1];
         }
 
-    }
+    };
 });

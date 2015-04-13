@@ -1,26 +1,27 @@
 
 define([ "jquery", "vo" ], function( $, vo ) {
 
-    const FOLDER_NAME = "favorites";
+    "use strict";
 
-    var fs, curURI;
+    var FOLDER_NAME = "favorites",
+        fs, curURI;
 
-    errorHandler = function( error ) {
+    function errorHandler( error ) {
         console.error( "File Operations error.", error );
     }
 
-    createFavFolder = function( errorBack ) {
+    function createFavFolder( errorBack ) {
         fs.root.getDirectory( FOLDER_NAME , { create: true }, function( dirEntry ) {
             console.log( "You have just created the " + dirEntry.name + " directory." );
         }, errorBack );
     }
 
-    dataURItoBlob = function ( dataURI ) {
+    function dataURItoBlob( dataURI ) {
         // convert base64 to raw binary data held in a string
         var byteString = atob( dataURI.split(',')[1] );
 
         // separate out the mime component
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
         // write the bytes of the string to an ArrayBuffer
         var ab = new ArrayBuffer( byteString.length );
@@ -33,7 +34,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
         return blob;
     }
 
-    getDataURI = function( url , def ) {
+    function getDataURI( url , def ) {
         var img = new Image();
 
         img.onload      = onload;
@@ -51,7 +52,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
             canvas.getContext( "2d" ).drawImage( img, 0, 0 );
 
             def.resolve( canvas.toDataURL( "image/jpeg" ));
-        };
+        }
 
         function errored ( error ) {
             unbindEvent();
@@ -67,7 +68,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
         return def.promise();
     }
 
-    readAsDataURL = function( file, arr, i, len, def ) {
+    function readAsDataURL( file, arr, i, len, def ) {
         arr.push( new FileReader() );
         arr[i].onloadend = function( result ) {
             if ( i == len -1 ) arr.splice( 0, len );
@@ -101,7 +102,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
                 function( fileEntry ) {
                     fileEntry.createWriter( function( fileWriter ) {
 
-                        console.log("fileEntry.toURL() = " + fileEntry.toURL())
+                        console.log("fileEntry.toURL() = " + fileEntry.toURL());
 
                         fileWriter.onwritestart  = function(e) { def.notify( e ); };
                         fileWriter.onprogress    = function(e) { def.notify( e ); };
@@ -112,12 +113,12 @@ define([ "jquery", "vo" ], function( $, vo ) {
                         fileWriter.write( dataURItoBlob( uri ));
 
                     }, function( error ) {
-                        console.log( "Save background fail, error is", error )
+                        console.log( "Save background fail, error is", error );
                         def.reject( error );
                     });
                 },
                 function( error ) {
-                        console.log( "Get background fail, error is", error )
+                        console.log( "Get background fail, error is", error );
                         def.reject( error );
                 });
 
@@ -131,7 +132,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
                     is_del    = false,
                     del_entry;
                 dirReader.readEntries(function( entries ) {
-                    for( var i = 0; i < entries.length; i++ ) {
+                    for( var i = 0, len = entries.length; i < len; i++ ) {
                       var entry = entries[i];
                       if ( entry.isDirectory ) {
                         console.log("Directory: " + entry.fullPath );
@@ -164,7 +165,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
             var dirReader = dirEntry.createReader();
             var name_arry = [];
             dirReader.readEntries(function( entries ) {
-                for( var i = 0; i < entries.length; i++ ) {
+                for( var i = 0, len = entries.length; i < len; i++ ) {
                   var entry = entries[i];
                   if ( entry.isDirectory ) {
                     console.log("Directory: " + entry.fullPath );
@@ -218,8 +219,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         DeleteFavorite: function( favorite_vo, file_name ) {
-            var obj   = {};
-            for( idx in favorite_vo ) {
+            var obj = {};
+            for( var idx = 0, len = favorite_vo.length; idx < len; idx++ ) {
                 obj = JSON.parse( favorite_vo[idx] );
                 if ( obj.file_name == file_name ) {
                     favorite_vo.splice( idx, 1 );
@@ -239,8 +240,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         DeleteFavBing: function( fav_bing, result ) {
-            var val  = {};
-            for( idx in fav_bing ) {
+            var val = {};
+            for( var idx = 0, len = fav_bing.length; idx < len; idx++ ) {
                 val = fav_bing[idx];
                 if ( val.split(":")[1] == result ) {
                     fav_bing.splice( idx, 1 );
@@ -252,7 +253,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
 
         FindFavBing: function( fav_bing, result ) {
             var val = {};
-            for( idx in fav_bing ) {
+            for( var idx = 0, len = fav_bing.length; idx < len; idx++ ) {
                 val = fav_bing[idx];
                 if ( val.split(":")[0] == result ) {
                     return val.split(":")[1];
@@ -260,5 +261,5 @@ define([ "jquery", "vo" ], function( $, vo ) {
             }
             return -1;
         }
-    }
+    };
 });

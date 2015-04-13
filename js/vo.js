@@ -1,6 +1,8 @@
 
 define([ "jquery" ], function( $ ) {
 
+    "use strict";
+
     /*
     *
     * `this.cur` and `this.new` data structure
@@ -19,7 +21,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `favorite`
     *
     */
-    const VERSION = "2.1";
+    var VERSION = "2.1";
 
     function VO() {
         this.cur = {};  //current background data structure
@@ -43,15 +45,15 @@ define([ "jquery" ], function( $ ) {
             this.new.favorite  = favorite == undefined ? -1 : favorite;
 
             return this.new;
-    }
+    };
 
     VO.prototype.Set = function( result ) {
             chrome.storage.local.set( { "simptab-background" : result });
-    }
+    };
 
     VO.prototype.Get = function ( callBack ) {
             return chrome.storage.local.get( "simptab-background", callBack );
-    }
+    };
 
     VO.prototype.Verify = function() {
         if ( this.cur.version == undefined ) {
@@ -68,11 +70,11 @@ define([ "jquery" ], function( $ ) {
         else {
             return false;
         }
-    }
+    };
 
     VO.prototype.Clone = function( value ) {
         return $.extend( {}, value );
-    }
+    };
 
     return new VO();
 
