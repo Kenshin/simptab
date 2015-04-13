@@ -297,9 +297,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" 
 
         Upload: function( result ) {
             var filelist = files.VerifyUploadFile( result ),
-                arr      = [];
-            for( var i = 0, len = filelist.length; i < len; i++ ) {
-                (function( i, name ) {
+                arr      = [],
+                adapter  = function( i, name ) {
                     files.GetDataURI( filelist[i], arr, i, len ).done( function( datauri ) {
 
                         var file_name = Math.round(+new Date()),
@@ -322,7 +321,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" 
                     }).fail( function( error ) {
                         console.error("Upload favorite background error.", error );
                     });
-                }).bind( null, i, filelist[i].name )();
+            };
+            for( var i = 0, len = filelist.length; i < len; i++ ) {
+                adapter.bind( null, i, filelist[i].name )();
             }
         }
     };

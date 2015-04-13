@@ -15,9 +15,7 @@ module.exports = function( grunt ) {
         "-W004"  : true,
         "-W027"  : true,
         "-W116"  : true,
-        "-W117"  : true,
         "-W030"  : true,
-        "-W083"  : true,
         "-W093"  : true
       },
       script: [ "gruntfile.js", "js/*.js" ]
