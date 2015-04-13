@@ -14,15 +14,16 @@ define([ "jquery" ], function( $ ) {
         for (var p in d) if (d.hasOwnProperty(p)) if ( d[p] ) b.constructor.prototype[p] = d[p];
     }
 
+	__extend( SimpError, Error );
+
 	function SimpError( method_name, message, data ) {
 
-		Error.apply( this, arguments );
-
-        __extend( SimpError, Error );
+		var err = Error.call( this, arguments[1] );
 
 		this.method_name = method_name;
 		this.message     = message;
 		this.data        = data;
+		this.stack       = err.stack;
 	}
 
     SimpError.prototype.name = "SimpError";
