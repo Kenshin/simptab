@@ -362,3 +362,53 @@ body {
     -webkit-transition: opacity 2s ease;
     opacity: 0.8;
 }
+
+
+/*
+* bottom
+*/
+.bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+
+    width: 100%;
+    height: 100px;
+
+    z-index: 1000;
+}
+
+.topsites {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+
+    list-style: none;
+}
+
+.topsites a {
+    padding: 10px;
+
+    text-decoration: none;
+    color: #fff;
+
+    max-width: 100px;
+
+    /*overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;*/
+
+    opacity: 0.4;
+
+    -webkit-transition: background .5s ease;
+    -webkit-border-radius: 5px;
+}
+
+.topsites a:hover {
+    background: rgba(255, 255, 255,.4);
+    opacity: 1;
+}
