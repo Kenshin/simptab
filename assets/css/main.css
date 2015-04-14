@@ -383,6 +383,10 @@ body {
 
     opacity: 0;
     -webkit-transition: opacity 2s ease;
+
+    font-size: 12px;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    font-weight: 100;
 }
 
 .bottom:hover {
@@ -410,7 +414,7 @@ body {
 .topsites a {
     display:block;
 
-    max-width: 90px;
+    max-width: 80px;
 
     overflow: hidden;
     text-overflow: ellipsis;
