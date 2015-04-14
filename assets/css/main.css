@@ -63,7 +63,6 @@ body {
     opacity: 0;
 
     box-shadow: -5px 0 4px rgba(0,0,0,.2);
-    box-shadow: -5px 0 4px rgba(0,0,0,.2);
 }
 
 .setting div {
@@ -381,19 +380,37 @@ body {
     height: 100px;
 
     z-index: 1000;
+
+    opacity: 0;
+    -webkit-transition: opacity 2s ease;
+}
+
+.bottom:hover {
+    opacity: 0.8;
 }
 
 .topsites {
     display: -webkit-box;
+    -webkit-box-align: center;
     -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+
+    padding: 0px;
 
     list-style: none;
+
+    background-color: #555;
+    -webkit-border-radius: 5px;
+}
+
+.topsites li {
+    margin: 5px;
 }
 
 .topsites a {
     display:block;
 
-    max-width: 100px;
+    max-width: 90px;
 
     overflow: hidden;
     text-overflow: ellipsis;
