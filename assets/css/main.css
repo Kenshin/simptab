@@ -391,16 +391,18 @@ body {
 }
 
 .topsites a {
+    display:block;
+
+    max-width: 100px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     padding: 10px;
 
     text-decoration: none;
     color: #fff;
-
-    max-width: 100px;
-
-    /*overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;*/
 
     opacity: 0.4;
 
