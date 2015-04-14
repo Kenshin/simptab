@@ -16,7 +16,7 @@ define([ "jquery" ], function( $ ) {
 
             item += $item[0].outerHTML;
         }
-        $(".topsites").append( item );
+        $(".topsites").html( item );
     }
 
     return {
