@@ -3,7 +3,7 @@ define([ "jquery" ], function( $ ) {
 
     function topSitesRender( sites ) {
         console.log( "Topsites", sites );
-        var $item = $('<li><a href="#" class="siteurl"><span class="sitetitle"></span></a></li>' ),
+        var $item = $( '<li><a href="#"><span>Site 001</span></a></li>' ),
             $a    = $( $item.find("a")    ),
             $span = $( $item.find("span") ),
             len   = sites && sites.length > 10 ? 10 : sites.length,
