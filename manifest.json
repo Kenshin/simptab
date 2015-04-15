@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name"            : "__MSG_extension_name__",
     "short_name"      : "SimpTab",
-    "version"         : "1.2.0",
+    "version"         : "1.3.0",
     "default_locale"  : "en",
     "description"     : "__MSG_extension_desc__",
     "author"          : "Kenshin",
@@ -17,6 +17,7 @@
     },
     "content_security_policy": "script-src 'self' https://*.flickr.com 'unsafe-eval'; object-src 'self'",
     "permissions": [
+        "topSites",
         "storage",
         "http://*.bing.com/",
         "http://*.bing.net/",

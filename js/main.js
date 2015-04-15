@@ -14,7 +14,8 @@ requirejs.config({
       "i18n"       : "js/i18n",
       "shortcuts"  : "js/shortcuts",
       "files"      : "js/files",
-      "error"      : "js/error"
+      "error"      : "js/error",
+      "topsites"   : "js/topsites"
     },
     shim: {
       "mousetrap"   : {
@@ -24,7 +25,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files, topsites ) {
 
     // file system init
     files.Init( function( error ) {
@@ -58,5 +59,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
 
     // short cuts init
     shortcuts.Init();
+
+    topsites.Init();
 
 });

@@ -63,7 +63,6 @@ body {
     opacity: 0;
 
     box-shadow: -5px 0 4px rgba(0,0,0,.2);
-    box-shadow: -5px 0 4px rgba(0,0,0,.2);
 }
 
 .setting div {
@@ -361,4 +360,78 @@ body {
     -webkit-transform: scale(1);
     -webkit-transition: opacity 2s ease;
     opacity: 0.8;
+}
+
+
+/*
+* bottom
+*/
+.bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    opacity: 0;
+    -webkit-transition: opacity 2s ease;
+
+    font-size: 12px;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    font-weight: 100;
+}
+
+.bottom:hover {
+    opacity: 0.8;
+}
+
+.topsites {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+
+    padding: 0px;
+
+    list-style: none;
+
+    background-color: #555;
+    -webkit-border-radius: 5px;
+}
+
+.topsites li {
+    margin: 5px;
+}
+
+.topsites a {
+    display:block;
+
+    max-width: 75px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    padding: 8px;
+
+    text-decoration: none;
+    color: #fff;
+
+    opacity: 0.4;
+
+    -webkit-transition: background .5s ease;
+    -webkit-border-radius: 5px;
+}
+
+.topsites a:hover {
+    background: rgba(255, 255, 255,.4);
+    opacity: 1;
 }
