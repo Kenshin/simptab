@@ -3,20 +3,26 @@ define([ "jquery" ], function( $ ) {
 
     function topSitesRender( sites ) {
         console.log( "Topsites", sites );
-        var $item = $( '<li><a href="#"><span>Site 001</span></a></li>' ),
-            $a    = $( $item.find("a")    ),
-            $span = $( $item.find("span") ),
-            len   = sites && sites.length > 10 ? 10 : sites.length,
-            item  = "", site;
-        for( var i = 0; i < len; i++ ) {
-            site = sites[i];
+        if ( sites && !$.isEmptyObject( sites ) ) {
+            var $item = $( '<li><a href="#"><span>Site 001</span></a></li>' ),
+                $a    = $( $item.find("a")    ),
+                $span = $( $item.find("span") ),
+                max   = 10,
+                len   = sites && sites.length > max ? max : sites.length,
+                item  = "", site;
+            for( var i = 0; i < len; i++ ) {
+                site = sites[i];
 
-            $a.attr( "href", site.url );
-            $span.text( site.title );
+                $a.attr( "href", site.url );
+                $span.text( site.title );
 
-            item += $item[0].outerHTML;
+                item += $item[0].outerHTML;
+            }
+            $( ".topsites" ).html( item );
         }
-        $(".topsites").html( item );
+        else {
+            $( ".topsites" ).hide();
+        }
     }
 
     return {
