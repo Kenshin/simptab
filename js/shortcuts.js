@@ -54,13 +54,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
     function listenCommand() {
         chrome.commands.onCommand.addListener( function( command ) {
             console.log( 'Command:', command );
-            var idx = -1;
-            switch ( command ) {
-                case "info":     idx = 3; break;
-                case "download": idx = 4; break;
-                case "upload":   idx = 5; break;
-                case "favorite": idx = 7; break;
-            }
+            var shorts = getKey( "long" ),
+                idx    = shorts.indexOf( command );
             controlbar.AutoClick( idx );
         });
     }
