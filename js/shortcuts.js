@@ -105,7 +105,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                 }
             }
             else if ( command.trim() === "site" ) {
-                console.log( topsites.sites() )
                 var sites = topsites.sites(),
                     site;
                 for( var i = 0, len = sites.length; i < len; i++ ) {
