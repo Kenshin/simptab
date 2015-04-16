@@ -26,6 +26,7 @@
         "http://*.wallhaven.cc/",
         "https://*.staticflickr.com/"
     ],
+    "omnibox": { "keyword" : "s" },
     "commands": {
       "info"    : { "suggested_key": { "default": "Alt+I" }, "description": "__MSG_controlbar_info__"     },
       "download": { "suggested_key": { "default": "Alt+D" }, "description": "__MSG_controlbar_download__" },
