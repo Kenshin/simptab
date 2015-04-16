@@ -61,7 +61,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
     function listenOminbox() {
 
-        chrome.omnibox.setDefaultSuggestion({ description : "输入空格显示全部的命令列表，目前支持的关键字包括：book, his, app, info, down, up, set, fav" });
+        chrome.omnibox.setDefaultSuggestion({ description : "输入空格显示全部的命令列表，目前支持的关键字仅包括：book, his, app, info, down, up, set, fav" });
 
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
             console.log( "SimpTab command is " + command );
