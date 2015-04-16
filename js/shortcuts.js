@@ -117,9 +117,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
             if ( idx > -1 ) {
                 controlbar.AutoClick( idx );
             }
-            else {
-                // TO DO
-            }
         });
     }
 
