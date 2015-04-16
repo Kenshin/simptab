@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, controlbar, i18n ) {
+define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $, Mousetrap, controlbar, i18n, topsites ) {
 
     "use strict";
 
@@ -92,6 +92,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
     function listenOminbox() {
 
+        var prefix = "site:";
+
         chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ") });
 
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
@@ -100,6 +102,15 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
             if ( command.trim() === "" ) {
                 for( var i = 0, len = keys.CONTROL_KEY_MAP.length; i < len; i++ ) {
                     suggestResult.push({ content : keys.short[i], description : i18n.GetControlbarLang( keys.long[i] ) });
+                }
+            }
+            else if ( command.trim() === "site" ) {
+                console.log( topsites.sites() )
+                var sites = topsites.sites(),
+                    site;
+                for( var i = 0, len = sites.length; i < len; i++ ) {
+                    site = sites[i];
+                    suggestResult.push({ content : prefix + site.url, description : site.title });
                 }
             }
             else if ( keys.short.indexOf( command ) !== -1 ) {
@@ -117,6 +128,11 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
             var idx = keys.short.indexOf( command.trim().toLowerCase() );
             if ( idx > -1 ) {
                 controlbar.AutoClick( idx );
+            }
+            else if ( command.indexOf( prefix ) != -1 ) {
+                chrome.tabs.getCurrent( function( obj ) {
+                    chrome.tabs.update( obj.id, { url : command.replace( prefix, "" ) } );
+                });
             }
         });
     }

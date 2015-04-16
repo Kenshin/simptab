@@ -57,9 +57,9 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
     // validation background
     background.Valid();
 
+    topsites.Init();
+
     // short cuts init
     shortcuts.Init();
-
-    topsites.Init();
 
 });
