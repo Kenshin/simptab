@@ -5,9 +5,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
     var keys = (function() {
 
-        function Keys(){}
+        var CONTROL_KEY_MAP, getKey;
 
-        Keys.prototype.CONTROL_KEY_MAP = [
+        CONTROL_KEY_MAP = [
             { short: "book", long: "bookmarks"},
             { short: "his",  long: "history"  },
             { short: "app",  long: "apps"     },
@@ -18,14 +18,34 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
             { short: "fav",  long: "favorite" }
         ];
 
-        function getKey( type ) {
-            return Keys.prototype.CONTROL_KEY_MAP.map( function( item, idx ) {
+        getKey = function( type ) {
+            return CONTROL_KEY_MAP.map( function( item, idx ) {
                 return type == "short" ? item.short : item.long;
             });
         }
 
-        Keys.prototype.short = getKey( "short" );
-        Keys.prototype.long  = getKey( "long"  );
+        function Keys(){}
+
+        Object.defineProperties( Keys.prototype, {
+            "CONTROL_KEY_MAP" : {
+                value        : CONTROL_KEY_MAP,
+                enumerable   : true,
+                configurable : true,
+                writable     : false
+            },
+            "short" : {
+                value        : getKey( "short" ),
+                enumerable   : true,
+                configurable : true,
+                writable     : false
+            },
+            "long" : {
+                value        : getKey( "long" ),
+                enumerable   : true,
+                configurable : true,
+                writable     : false
+            }
+        });
 
         return new Keys();
 
