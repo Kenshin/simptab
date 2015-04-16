@@ -95,7 +95,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
         chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ") });
 
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
-            var suggestResult = [];
+            var suggestResult = [],
+                command       = command.toLowerCase();
             if ( command.trim() === "" ) {
                 for( var i = 0, len = keys.CONTROL_KEY_MAP.length; i < len; i++ ) {
                     suggestResult.push({ content : keys.short[i], description : i18n.GetControlbarLang( keys.long[i] ) });
@@ -113,7 +114,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
         chrome.omnibox.onInputEntered.addListener( function( command ) {
             console.log( "SimpTab command is " + command );
-            var idx = keys.short.indexOf( command.trim() );
+            var idx = keys.short.indexOf( command.trim().toLowerCase() );
             if ( idx > -1 ) {
                 controlbar.AutoClick( idx );
             }
