@@ -31,43 +31,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
     })();
 
-    /*
-    var keys = {
-        CONTROL_KEY_MAP : [
-            { short: "book", long: "bookmarks"},
-            { short: "his",  long: "history"  },
-            { short: "app",  long: "apps"     },
-            { short: "info", long: "info"     },
-            { short: "down", long: "download" },
-            { short: "up",   long: "upload"   },
-            { short: "set",  long: "setting"  },
-            { short: "fav",  long: "favorite" }
-        ],
-        getKey : function( type ) {
-            return keys.CONTROL_KEY_MAP.map( function( item, idx ) {
-                return type == "short" ? item.short : item.long;
-            });
-        }
-    }
-
-    var CONTROL_KEY_MAP = [
-        { short: "book", long: "bookmarks"},
-        { short: "his",  long: "history"  },
-        { short: "app",  long: "apps"     },
-        { short: "info", long: "info"     },
-        { short: "down", long: "download" },
-        { short: "up",   long: "upload"   },
-        { short: "set",  long: "setting"  },
-        { short: "fav",  long: "favorite" }
-    ];
-
-    function getKey( type ) {
-        return CONTROL_KEY_MAP.map( function( item, idx ) {
-            return type == "short" ? item.short : item.long;
-        });
-    }
-    */
-
     function formatShortcut( key ) {
 
         var formatter = "",
