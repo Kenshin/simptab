@@ -3,6 +3,53 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
     "use strict";
 
+    var keys = (function() {
+
+        function Keys(){}
+
+        Keys.prototype.CONTROL_KEY_MAP = [
+            { short: "book", long: "bookmarks"},
+            { short: "his",  long: "history"  },
+            { short: "app",  long: "apps"     },
+            { short: "info", long: "info"     },
+            { short: "down", long: "download" },
+            { short: "up",   long: "upload"   },
+            { short: "set",  long: "setting"  },
+            { short: "fav",  long: "favorite" }
+        ];
+
+        function getKey( type ) {
+            return Keys.prototype.CONTROL_KEY_MAP.map( function( item, idx ) {
+                return type == "short" ? item.short : item.long;
+            });
+        }
+
+        Keys.prototype.short = getKey( "short" );
+        Keys.prototype.long  = getKey( "long"  );
+
+        return new Keys();
+
+    })();
+
+    /*
+    var keys = {
+        CONTROL_KEY_MAP : [
+            { short: "book", long: "bookmarks"},
+            { short: "his",  long: "history"  },
+            { short: "app",  long: "apps"     },
+            { short: "info", long: "info"     },
+            { short: "down", long: "download" },
+            { short: "up",   long: "upload"   },
+            { short: "set",  long: "setting"  },
+            { short: "fav",  long: "favorite" }
+        ],
+        getKey : function( type ) {
+            return keys.CONTROL_KEY_MAP.map( function( item, idx ) {
+                return type == "short" ? item.short : item.long;
+            });
+        }
+    }
+
     var CONTROL_KEY_MAP = [
         { short: "book", long: "bookmarks"},
         { short: "his",  long: "history"  },
@@ -19,6 +66,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
             return type == "short" ? item.short : item.long;
         });
     }
+    */
 
     function formatShortcut( key ) {
 
@@ -41,7 +89,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
     function listenControl() {
 
-        $.each( CONTROL_KEY_MAP, function( idx, shortcut ) {
+        $.each( keys.CONTROL_KEY_MAP, function( idx, shortcut ) {
             var new_key = formatShortcut( shortcut.short );
             Mousetrap.bind( new_key , function() {
                 console.log("click = " + shortcut.short.replace( / /g, "" ) );
@@ -54,25 +102,22 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
     function listenCommand() {
         chrome.commands.onCommand.addListener( function( command ) {
             console.log( 'Command:', command );
-            var shorts = getKey( "long" ),
-                idx    = shorts.indexOf( command );
+            var idx = keys.long.indexOf( command );
             controlbar.AutoClick( idx );
         });
     }
 
     function listenOminbox() {
 
-        chrome.omnibox.setDefaultSuggestion({ description : "输入空格显示全部的命令列表，目前支持的关键字仅包括：" + getKey("short").join(", ") });
+        chrome.omnibox.setDefaultSuggestion({ description : "输入空格显示全部的命令列表，目前支持的关键字仅包括：" + keys.short.join(", ") });
 
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
             console.log( "SimpTab command is " + command );
 
-            var suggestResult = [],
-                shorts        = getKey( "short" ),
-                longs         = getKey( "long" );
+            var suggestResult = [];
             if ( command.trim() === "" ) {
-                for( var i = 0, len = CONTROL_KEY_MAP.length; i < len; i++ ) {
-                    suggestResult.push({ content : shorts[i], description : i18n.GetControlbarLang( longs[i] ) });
+                for( var i = 0, len = keys.CONTROL_KEY_MAP.length; i < len; i++ ) {
+                    suggestResult.push({ content : keys.short[i], description : i18n.GetControlbarLang( keys.long[i] ) });
                 }
                 suggest( suggestResult );
             }
@@ -80,8 +125,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
         chrome.omnibox.onInputEntered.addListener( function( command ) {
             console.log( "SimpTab command is " + command );
-            var short = getKey( "short" ),
-                idx   = short.indexOf( command );
+            var idx = keys.short.indexOf( command );
             if ( idx > -1 ) {
                 controlbar.AutoClick( idx );
             }
