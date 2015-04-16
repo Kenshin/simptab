@@ -95,20 +95,25 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
         chrome.omnibox.setDefaultSuggestion({ description : "输入空格显示全部的命令列表，目前支持的关键字仅包括：" + keys.short.join(", ") });
 
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
-            console.log( "SimpTab command is " + command );
-
             var suggestResult = [];
             if ( command.trim() === "" ) {
                 for( var i = 0, len = keys.CONTROL_KEY_MAP.length; i < len; i++ ) {
                     suggestResult.push({ content : keys.short[i], description : i18n.GetControlbarLang( keys.long[i] ) });
                 }
-                suggest( suggestResult );
             }
-          });
+            else if ( keys.short.indexOf( command ) !== -1 ) {
+                var idx = keys.short.indexOf( command );
+                suggestResult.push({ content : " " + command, description : i18n.GetControlbarLang( keys.long[idx] ) });
+            }
+            else if ( keys.short.indexOf( command ) === -1 ) {
+                suggestResult.push({ content : " " + command, description : "不支持当前关键字：" + command });
+            }
+            suggest( suggestResult );
+        });
 
         chrome.omnibox.onInputEntered.addListener( function( command ) {
             console.log( "SimpTab command is " + command );
-            var idx = keys.short.indexOf( command );
+            var idx = keys.short.indexOf( command.trim() );
             if ( idx > -1 ) {
                 controlbar.AutoClick( idx );
             }
