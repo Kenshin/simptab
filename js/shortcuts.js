@@ -22,7 +22,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
             return CONTROL_KEY_MAP.map( function( item, idx ) {
                 return type == "short" ? item.short : item.long;
             });
-        }
+        };
 
         function Keys(){}
 
