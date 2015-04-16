@@ -92,7 +92,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
 
     function listenOminbox() {
 
-        chrome.omnibox.setDefaultSuggestion({ description : "输入空格显示全部的命令列表，目前支持的关键字仅包括：" + keys.short.join(", ") });
+        chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ") });
 
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
             var suggestResult = [];
@@ -106,7 +106,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n" ], function( $, Mousetrap, 
                 suggestResult.push({ content : " " + command, description : i18n.GetControlbarLang( keys.long[idx] ) });
             }
             else if ( keys.short.indexOf( command ) === -1 ) {
-                suggestResult.push({ content : " " + command, description : "不支持当前关键字：" + command });
+                suggestResult.push({ content : " " + command, description : i18n.GetLang( "shortcuts_fail_key" ) + command });
             }
             suggest( suggestResult );
         });

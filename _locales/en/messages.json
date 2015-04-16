@@ -109,5 +109,13 @@
 
     "setting_contact_me": {
         "message": "Contact Me"
+    },
+
+    "shortcuts_default": {
+        "message": "Entering a space displays a list of all commands and keywords only currently supported include: "
+    },
+
+    "shortcuts_fail_key": {
+        "message": "Does not support the keyword: "
     }
 }

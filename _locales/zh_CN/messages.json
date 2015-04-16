@@ -109,5 +109,13 @@
 
     "setting_contact_me": {
         "message": "\u8054\u7cfb\u4f5c\u8005"
+    },
+
+    "shortcuts_default": {
+        "message": "\u8f93\u5165\u7a7a\u683c\u663e\u793a\u5168\u90e8\u7684\u547d\u4ee4\u5217\u8868\uff0c\u76ee\u524d\u652f\u6301\u7684\u5173\u952e\u5b57\u4ec5\u5305\u62ec\uff1a"
+    },
+
+    "shortcuts_fail_key": {
+        "message": "\u4e0d\u652f\u6301\u5f53\u524d\u5173\u952e\u5b57\uff1a"
     }
 }
