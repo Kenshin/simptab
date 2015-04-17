@@ -92,7 +92,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
     function listenCommand() {
         chrome.commands.onCommand.addListener( function( command ) {
             console.log( 'Command:', command );
-            chrome.tabs.query({ active: true, currentWindow: true }, function( tabs ) {
+            chrome.tabs.query({ active: true, lastFocusedWindow: true }, function( tabs ) {
                 if ( tabs && tabs.length && curtab.id === tabs[0].id ) {
                     var idx = keys.long.indexOf( command );
                     controlbar.AutoClick( idx );
@@ -140,7 +140,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                 controlbar.AutoClick( idx );
             }
             else if ( command.indexOf( prefix ) != -1 ) {
-                chrome.tabs.query({ active: true, currentWindow: true }, function( tabs ) {
+                chrome.tabs.query({ active: true, lastFocusedWindow: true }, function( tabs ) {
                     if ( tabs && tabs.length && curtab.id === tabs[0].id ) {
                         chrome.tabs.update( curtab.id, { url : command.replace( prefix, "" ) } );
                     }
