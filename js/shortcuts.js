@@ -14,13 +14,15 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
             { short: "app",  long: "apps"     },
             { short: "info", long: "info"     },
             { short: "down", long: "download" },
-            { short: "up",   long: "upload"   },
+            { short: "up",   long: "upload", hiden: true },
             { short: "set",  long: "setting"  },
             { short: "fav",  long: "favorite" }
         ];
 
         getKey = function( type ) {
-            return CONTROL_KEY_MAP.map( function( item, idx ) {
+            return CONTROL_KEY_MAP.filter( function( item ) {
+                return !item.hiden;
+            }).map( function( item, idx ) {
                 return type == "short" ? item.short : item.long;
             });
         };
