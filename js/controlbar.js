@@ -54,9 +54,8 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
             // listen chrome link
             $( ".chromelink" ).click( function( event ) {
-                chrome.tabs.getCurrent( function( obj ) {
-                    chrome.tabs.create({ url : $( event.currentTarget ).attr( "url" ) });
-                    chrome.tabs.remove( obj.id );
+                chrome.tabs.getCurrent( function( tab ) {
+                    chrome.tabs.update( tab.id, { url : $( event.currentTarget ).attr( "url" ) });
                 });
             });
 
