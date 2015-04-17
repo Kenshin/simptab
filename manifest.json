@@ -28,10 +28,10 @@
     ],
     "omnibox": { "keyword" : "s" },
     "commands": {
-      "info"    : { "suggested_key": { "default": "Alt+I" }, "description": "__MSG_controlbar_info__",     "global" : true },
-      "download": { "suggested_key": { "default": "Alt+D" }, "description": "__MSG_controlbar_download__", "global" : true },
-      "upload"  : { "suggested_key": { "default": "Alt+U" }, "description": "__MSG_controlbar_upload__",   "global" : true },
-      "favorite": { "suggested_key": { "default": "Alt+F" }, "description": "__MSG_controlbar_favorite__", "global" : true }
+      "info"    : { "suggested_key": { "default": "Alt+I" }, "description": "__MSG_controlbar_info__"     },
+      "download": { "suggested_key": { "default": "Alt+D" }, "description": "__MSG_controlbar_download__" },
+      "upload"  : { "suggested_key": { "default": "Alt+U" }, "description": "__MSG_controlbar_upload__"   },
+      "favorite": { "suggested_key": { "default": "Alt+F" }, "description": "__MSG_controlbar_favorite__" }
     },
     "update_url": "http://ksria.com/simptab/updates.xml"
 }
