@@ -132,8 +132,12 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                     suggestResult.push({ content : prefix + site.url, description : site.title });
                 }
             }
-            else if ( keys.short.indexOf( command ) !== -1 ) {
+            else if ( keys.short.indexOf( command ) !== -1 || keys.long.indexOf( command ) !== -1 ) {
                 var idx = keys.short.indexOf( command );
+                if ( idx == -1 ) {
+                    idx     = keys.long.indexOf( command );
+                    command = keys.short[idx];
+                }
                 suggestResult.push({ content : " " + command, description : i18n.GetControlbarLang( keys.long[idx] ) });
             }
             else if ( keys.short.indexOf( command ) === -1 ) {
