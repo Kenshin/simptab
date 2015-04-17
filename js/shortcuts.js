@@ -3,7 +3,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
 
     "use strict";
 
-    var keys = (function() {
+    var curtab,
+        keys = (function() {
 
         var CONTROL_KEY_MAP, getKey;
 
@@ -70,6 +71,12 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         return formatter;
     }
 
+    function listenCurrentTab() {
+        chrome.tabs.getCurrent( function( tab ) {
+            curtab = tab;
+        });
+    }
+
     function listenControl() {
 
         $.each( keys.CONTROL_KEY_MAP, function( idx, shortcut ) {
@@ -85,8 +92,12 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
     function listenCommand() {
         chrome.commands.onCommand.addListener( function( command ) {
             console.log( 'Command:', command );
-            var idx = keys.long.indexOf( command );
-            controlbar.AutoClick( idx );
+            chrome.tabs.query({ active: true, currentWindow: true }, function( tabs ) {
+                if ( tabs && tabs.length && curtab.id === tabs[0].id ) {
+                    var idx = keys.long.indexOf( command );
+                    controlbar.AutoClick( idx );
+                }
+            });
         });
     }
 
@@ -129,8 +140,10 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                 controlbar.AutoClick( idx );
             }
             else if ( command.indexOf( prefix ) != -1 ) {
-                chrome.tabs.getCurrent( function( obj ) {
-                    chrome.tabs.update( obj.id, { url : command.replace( prefix, "" ) } );
+                chrome.tabs.query({ active: true, currentWindow: true }, function( tabs ) {
+                    if ( tabs && tabs.length && curtab.id === tabs[0].id ) {
+                        chrome.tabs.update( curtab.id, { url : command.replace( prefix, "" ) } );
+                    }
                 });
             }
         });
@@ -138,6 +151,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
 
     return {
         Init: function () {
+            listenCurrentTab();
             listenControl();
             listenCommand();
             listenOminbox();
