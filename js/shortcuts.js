@@ -119,7 +119,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
             var suggestResult = [],
                 command       = command.toLowerCase();
             if ( command.trim() === "" ) {
-                for( var i = 0, len = keys.CONTROL_KEY_MAP.length; i < len; i++ ) {
+                for( var i = 0, len = keys.short.length; i < len; i++ ) {
                     suggestResult.push({ content : keys.short[i], description : i18n.GetControlbarLang( keys.long[i] ) });
                 }
             }
