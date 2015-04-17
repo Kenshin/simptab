@@ -94,7 +94,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
 
         var prefix = "site:";
 
-        chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ") });
+        chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ") + ", site" });
 
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
             var suggestResult = [],
