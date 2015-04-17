@@ -20,10 +20,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         ];
 
         getKey = function( type ) {
-            return CONTROL_KEY_MAP.filter( function( item ) {
-                return !item.hiden;
-            }).map( function( item, idx ) {
-                return type == "short" ? item.short : item.long;
+            return CONTROL_KEY_MAP.map( function( item, idx ) {
+                if ( !item.hiden ) return type == "short" ? item.short : item.long;
             });
         };
 
@@ -113,14 +111,14 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
 
         var prefix = "site:";
 
-        chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ") + ", site" });
+        chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ").replace( ", ,", "," ) + ", site" });
 
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
             var suggestResult = [],
                 command       = command.toLowerCase();
             if ( command.trim() === "" ) {
                 for( var i = 0, len = keys.short.length; i < len; i++ ) {
-                    suggestResult.push({ content : keys.short[i], description : i18n.GetControlbarLang( keys.long[i] ) });
+                    if ( keys.short[i] ) suggestResult.push({ content : keys.short[i], description : i18n.GetControlbarLang( keys.long[i] ) });
                 }
             }
             else if ( command.trim() === "site" ) {
