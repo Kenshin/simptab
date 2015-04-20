@@ -54,9 +54,8 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
             // listen chrome link
             $( ".chromelink" ).click( function( event ) {
-                chrome.tabs.getCurrent( function( obj ) {
-                    chrome.tabs.create({ url : $( event.currentTarget ).attr( "url" ) });
-                    chrome.tabs.remove( obj.id );
+                chrome.tabs.getCurrent( function( tab ) {
+                    chrome.tabs.update( tab.id, { url : $( event.currentTarget ).attr( "url" ) });
                 });
             });
 
@@ -109,7 +108,13 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                 $( $(".chromelink")[idx] ).click();
             }
             else {
-                $( $(".controlbar").find( "a" )[idx] )[0].click();
+                var target    = $( $(".controlbar").find( "a" )[idx] )[0],
+                    $favorite = $( ".controlink[url='favorite']" ),
+                    $hidden   = $favorite.has(":hidden");
+                // hacke code
+                if ( target !== $favorite[0] || ( target === $favorite[0] && $hidden && $hidden.length === 0 )) {
+                    target.click();
+                }
             }
         },
 

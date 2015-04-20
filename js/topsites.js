@@ -1,6 +1,8 @@
 
 define([ "jquery" ], function( $ ) {
 
+    var topsites = [];
+
     function topSitesRender( sites ) {
         console.log( "Topsites", sites );
         if ( sites && !$.isEmptyObject( sites ) ) {
@@ -12,6 +14,7 @@ define([ "jquery" ], function( $ ) {
                 item  = "", site;
             for( var i = 0; i < len; i++ ) {
                 site = sites[i];
+                topsites.push( site );
 
                 $a.attr( "href", site.url );
                 $span.text( site.title );
@@ -28,6 +31,9 @@ define([ "jquery" ], function( $ ) {
     return {
         Init: function() {
             chrome.topSites.get( topSitesRender );
+        },
+        sites: function() {
+            return topsites;
         }
     };
 
