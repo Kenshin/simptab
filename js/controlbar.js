@@ -108,7 +108,13 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                 $( $(".chromelink")[idx] ).click();
             }
             else {
-                $( $(".controlbar").find( "a" )[idx] )[0].click();
+                var target    = $( $(".controlbar").find( "a" )[idx] )[0],
+                    $favorite = $( ".controlink[url='favorite']" ),
+                    $hidden   = $favorite.has(":hidden");
+                // hacke code
+                if ( target !== $favorite[0] || ( target === $favorite[0] && $hidden && $hidden.length === 0 )) {
+                    target.click();
+                }
             }
         },
 
