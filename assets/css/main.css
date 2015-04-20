@@ -362,7 +362,6 @@ body {
     opacity: 0.8;
 }
 
-
 /*
 * bottom
 */
@@ -436,6 +435,10 @@ body {
     opacity: 1;
 }
 
+/*
+* notify
+*/
+
 .notify {
     position: fixed;
     right: 0;
@@ -443,8 +446,44 @@ body {
     width: 400px;
 
     display: -webkit-box;
-    -webkit-box-align: center;
+    -webkit-box-align: end;
     -webkit-box-orient: vertical;
     -webkit-box-pack: start;
 
+    margin: 15px;
+
+    font-size: 12px;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    font-weight: normal;
+
+    text-transform: none;
+    color: #fff;
+}
+
+.notify .box {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: start;
+    -webkit-box-align: start;
+
+    background: #555;
+    -webkit-border-radius: 5px;
+
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 350px;
+    max-width: 400px;
+}
+
+.notify .box div {
+    padding: 3px;
+}
+
+.notify .close {
+    position: fixed;
+}
+
+.notify .version .title {
+    font-weight: bolder;
+    font-size: 13px;
 }
