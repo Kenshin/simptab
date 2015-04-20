@@ -435,3 +435,16 @@ body {
     background: rgba(255, 255, 255,.4);
     opacity: 1;
 }
+
+.notify {
+    position: fixed;
+    right: 0;
+    height: 100%;
+    width: 400px;
+
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: start;
+
+}
