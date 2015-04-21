@@ -42,7 +42,7 @@ define([ "jquery" ], function( $ ) {
         </div>',
         closeHandle = function() {
             console.log( this );
-            $container.undelegate( ".notifygp .close", "click", closeHandle );
+            $container.undelegate( ".close", "click", closeHandle );
             $(this).parent().remove();
         },
         render = function() {
@@ -67,7 +67,7 @@ define([ "jquery" ], function( $ ) {
 
     Notify.prototype.Render  = function () {
 
-        if ( arguments.length === 1 && typeof arguments[0] === "object" && arguments[0].length === 4 ) {
+        if ( arguments.length === 1 && typeof arguments[0] === "object" ) {
             options = arguments[0];
             render.bind( this )();
         }
