@@ -42,7 +42,7 @@ define([ "jquery" ], function( $ ) {
         </div>',
         closeHandle = function() {
             console.log( this );
-            $container.undelegate( ".close", "click", closeHandle );
+            $container.undelegate( ".notifygp .close", "click", closeHandle );
             $(this).parent().remove();
         },
         render = function() {
