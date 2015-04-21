@@ -33,12 +33,18 @@ define([ "jquery" ], function( $ ) {
             type    : MESSAGE,
             version : VERSION
         },
+        $container = $( ".notifygp" ),
         TMPL = '\
         <div class="notify">\
             <a href="#" class="close"><span></span></a>\
             <div class="title">SimpTab has update.</div>\
             <div class="content">New version changlog here.</div>\
         </div>',
+        closeHandle = function() {
+            console.log( this );
+            $container.undelegate( ".close", "click", closeHandle );
+            $(this).parent().remove();
+        },
         render = function() {
             var $tmpl    = $( TMPL ),
                 $title   = $tmpl.find(".title"),
@@ -47,9 +53,9 @@ define([ "jquery" ], function( $ ) {
 
             this.title   ? $title.text( this.title )     : $title.hide();
             this.content ? $content.text( this.content ) : $content.hide();
-            if ( !this.closed ) $close.hide();
+            this.closed  ? $container.delegate( ".close", "click", closeHandle ) :  $close.hide();
 
-            $( ".message" ).append( $tmpl[0].outerHTML );
+            $container.append( $tmpl[0].outerHTML );
         };
 
     function Notify() {}
