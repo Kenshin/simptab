@@ -23,6 +23,7 @@ define([ "jquery" ], function( $ ) {
     *
     */
     var VERSION = "1.0",
+        num     = 0,
         MESSAGE = 0,
         WARNING = 1,
         ERROR   = 2,
@@ -40,20 +41,22 @@ define([ "jquery" ], function( $ ) {
             <div class="title">SimpTab has update.</div>\
             <div class="content">New version changlog here.</div>\
         </div>',
-        closeHandle = function() {
-            $container.undelegate( ".close", "click", closeHandle );
+        closeHandle = function( event ) {
+            $container.undelegate( event.data + " .close", "click", closeHandle );
             $(this).parent().remove();
         },
         render = function() {
             var $tmpl    = $( TMPL ),
                 $title   = $tmpl.find(".title"),
                 $content = $tmpl.find(".content"),
-                $close   = $tmpl.find(".close");
+                $close   = $tmpl.find(".close"),
+                item     = "notify-item-" + num++;
 
             this.title   ? $title.text( this.title )     : $title.hide();
             this.content ? $content.text( this.content ) : $content.hide();
-            this.closed  ? $container.delegate( ".close", "click", closeHandle ) :  $close.hide();
+            this.closed  ? $container.delegate( "." + item + " .close", "click", item, closeHandle ) :  $close.hide();
 
+            $tmpl.addClass( item );
             $container.append( $tmpl[0].outerHTML );
         };
 
