@@ -15,7 +15,8 @@ requirejs.config({
       "shortcuts"  : "js/shortcuts",
       "files"      : "js/files",
       "error"      : "js/error",
-      "topsites"   : "js/topsites"
+      "topsites"   : "js/topsites",
+      "notify"     : "js/notify"
     },
     shim: {
       "mousetrap"   : {
@@ -25,7 +26,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files, topsites ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "notify" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files, topsites, Notify ) {
 
     // file system init
     files.Init( function( error ) {
@@ -61,5 +62,10 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
 
     // short cuts init
     shortcuts.Init();
+
+    new Notify().Render( 0, "asdfasdf", "asdfasdfadfasdfadf", true );
+    new Notify().Render( "asdfasdfadfasdfadf" );
+    new Notify().Render( 0, "asdfasdfadfasdfadf" );
+    new Notify().Render( 0, "asdfasdf", "asdfasdfadfasdfadf" );
 
 });
