@@ -41,7 +41,6 @@ define([ "jquery" ], function( $ ) {
             <div class="content">New version changlog here.</div>\
         </div>',
         closeHandle = function() {
-            console.log( this );
             $container.undelegate( ".close", "click", closeHandle );
             $(this).parent().remove();
         },
@@ -67,9 +66,16 @@ define([ "jquery" ], function( $ ) {
 
     Notify.prototype.Render  = function () {
 
+        var self = this;
+
         if ( arguments.length === 1 && typeof arguments[0] === "object" ) {
             options = arguments[0];
-            render.bind( this )();
+
+            Object.keys( options ).forEach( function( item ) {
+                self[item] = options[item];
+            });
+
+            render.bind( self )();
         }
         else if ( typeof arguments[0] !== "object" && arguments.length < 5 ) {
             switch ( arguments.length ) {
