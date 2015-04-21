@@ -4,12 +4,27 @@ define([ "jquery" ], function( $ ) {
     "use strict";
 
     /*
+    * Value:
+    * - title   ( string, optional, if value is "" not show.)
+    * - content ( string, required)
+    * - closed  ( boolean, optional, if value is "" not show.)
+    *           ( when value is true, notify box show always, when value is false notify hidden after 1 minute. )
+    * - type    ( int, MESSAGE/WARING/ERROR)
+    *           ( optional, default is MESSAGE )
     *
+    * Param:
+    * - string：
+    *   - 1：content
+    *   - 2：type content
+    *   - 3：type title content
+    *   - 4：type title content closed
+    * - object
+    *   - { type: xxx, title: xxx, content: xxx, close: true/false   }
     *
     */
     var VERSION = "1.0",
         MESSAGE = 0,
-        WARING  = 1,
+        WARNING = 1,
         ERROR   = 2,
         options = {
             title   : "",
