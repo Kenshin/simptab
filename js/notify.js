@@ -98,7 +98,7 @@ define([ "jquery" ], function( $ ) {
                     this.closed  = arguments[3];
                     break;
             }
-            render.bind( this )();
+            render.bind( self )();
         }
         else {
             console.error( "Arguments not empty." );
