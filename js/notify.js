@@ -58,7 +58,7 @@ define([ "jquery" ], function( $ ) {
             this.closed  ? $container.delegate( "." + item + " .close", "click", item, closeHandle ) :  $close.hide();
 
             $tmpl.addClass( item );
-            $container.append( $tmpl[0].outerHTML );
+            $container.append( $tmpl );
         };
 
     function Notify() {}
