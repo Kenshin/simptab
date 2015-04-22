@@ -42,8 +42,9 @@ define([ "jquery" ], function( $ ) {
             <div class="content">New version changlog here.</div>\
         </div>',
         closeHandle = function( event ) {
+            var self = $(this).parent();
             $container.undelegate( "." + event.data + " .close", "click", closeHandle );
-            $(this).parent().remove();
+            self.hide( 500, function() { self.remove(); });
         },
         render = function() {
             var $tmpl    = $( TMPL ),
