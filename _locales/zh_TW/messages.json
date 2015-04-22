@@ -117,5 +117,13 @@
 
     "shortcuts_fail_key": {
         "message": "\u4e0d\u652f\u6301\u7576\u524d\u95dc\u9375\u5b57\uff1a"
+    },
+
+    "version_title": {
+        "message": "\u7c21 Tab\u5df2\u7d93\u66f4\u65b0"
+    },
+
+    "version_content": {
+        "message": "\u7576\u524d\u7248\u672c #1\uff0c\u65b0\u589e\u529f\u80fd #2\u8acb\u770b\u9019\u88e1#3\u3002"
     }
 }
