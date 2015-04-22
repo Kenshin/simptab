@@ -42,7 +42,7 @@ define([ "jquery" ], function( $ ) {
             <div class="content">New version changlog here.</div>\
         </div>',
         closeHandle = function( event ) {
-            $container.undelegate( event.data + " .close", "click", closeHandle );
+            $container.undelegate( "." + event.data + " .close", "click", closeHandle );
             $(this).parent().remove();
         },
         render = function() {
