@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError ) {
+define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error", "notify" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError, Notify ) {
 
     "use strict";
 
@@ -317,6 +317,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" 
                         })
                         .fail( function( error ) {
                             console.error( "Upload favorite background error.", error );
+                        })
+                        .always( function() {
+                            if ( i === filelist.length - 1 ) {
+                                new Notify().Render( i18n.GetLang( "notify_upload" ) );
+                            }
                         });
                     }).fail( function( error ) {
                         console.error("Upload favorite background error.", error );

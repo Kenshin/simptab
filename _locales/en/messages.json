@@ -125,5 +125,9 @@
 
     "version_content": {
         "message": "Current version is #1, new version changlog #2here#3."
+    },
+
+    "notify_upload": {
+        "message": "Background upload complete."
     }
 }
