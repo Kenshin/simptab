@@ -69,7 +69,7 @@ define([ "jquery" ], function( $ ) {
                 item     = "notify-item-" + num++;
 
             this.title   ? $title.text( this.title )     : $title.hide();
-            this.content ? $content.text( this.content ) : $content.hide();
+            this.content ? $content.html( this.content ) : $content.hide();
             if ( this.closed ) {
                 $container.delegate( "." + item + " .close", "click", item, closeHandle );
             }
