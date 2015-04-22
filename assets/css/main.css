@@ -473,12 +473,14 @@ body {
     margin-bottom: 10px;
     width: 350px;
     max-width: 400px;
-
-    box-shadow: 2px 2px 1px rgba(0,0,0,.6);
 }
 
 .notify div {
     padding: 3px;
+}
+
+.notify div a {
+    color: #fff;
 }
 
 .notify .close {
