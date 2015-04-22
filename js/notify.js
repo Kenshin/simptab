@@ -34,8 +34,9 @@ define([ "jquery" ], function( $ ) {
             type    : MESSAGE,
             version : VERSION
         },
+        timer      = {},
         $container = $( ".notifygp" ),
-        TMPL = '\
+        TMPL       = '\
         <div class="notify">\
             <a href="#" class="close"><span></span></a>\
             <div class="title">SimpTab has update.</div>\
@@ -43,8 +44,15 @@ define([ "jquery" ], function( $ ) {
         </div>',
         closeHandle = function( event ) {
             $container.undelegate( "." + event.data + " .close", "click", closeHandle );
-            var self = $(this).parent();
-            self.hide( 500, function() { self.remove(); });
+            hidden( $(this).parent() );
+        },
+        delay = function( item ) {
+            clearTimeout( timer[item] );
+            delete timer[item];
+            hidden( this );
+        },
+        hidden = function( target ) {
+            target.hide( 500, function() { target.remove(); });
         },
         render = function() {
             var $tmpl    = $( TMPL ),
@@ -55,7 +63,13 @@ define([ "jquery" ], function( $ ) {
 
             this.title   ? $title.text( this.title )     : $title.hide();
             this.content ? $content.text( this.content ) : $content.hide();
-            this.closed  ? $container.delegate( "." + item + " .close", "click", item, closeHandle ) :  $close.hide();
+            if ( this.closed ) {
+                $container.delegate( "." + item + " .close", "click", item, closeHandle );
+            }
+            else {
+                $close.hide();
+                timer[item] = setTimeout( delay.bind( $tmpl, item ), 1000 * 5 );
+            }
 
             $tmpl.addClass( item );
             $container.append( $tmpl );
@@ -105,7 +119,7 @@ define([ "jquery" ], function( $ ) {
             render.bind( self )();
         }
         else {
-            console.error( "Arguments not empty." );
+            console.error( "Arguments error", arguments );
         }
     };
 
