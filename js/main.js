@@ -63,13 +63,4 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
     // short cuts init
     shortcuts.Init();
 
-    window.Notify = Notify;
-    /*
-    new Notify().Render( 0, "SimpTab has update.", "New version changlog here.", true );
-    new Notify().Render( { title: "SimpTab has update.", content: "New version changlog here.", type: 0, closed: true } );
-    new Notify().Render( "asdfasdfadfasdfadf" );
-    new Notify().Render( 0, "asdfasdfadfasdfadf" );
-    new Notify().Render( 0, "asdfasdf", "asdfasdfadfasdfadf" );
-    */
-
 });

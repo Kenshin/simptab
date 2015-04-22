@@ -21,6 +21,13 @@ define([ "jquery" ], function( $ ) {
     * - object
     *   - { type: xxx, title: xxx, content: xxx, close: true/false   }
     *
+    * Example:
+    * new Notify().Render( "Test" );
+    * new Notify().Render( 0, "Test 2" );
+    * new Notify().Render( 0, "Test title", "Test 3" );
+    * new Notify().Render( 0, "SimpTab has update.", "New version changlog here.", true );
+    * new Notify().Render( { title: "SimpTab has update.", content: "New version changlog here.", type: 0, closed: true } );
+    *
     */
     var VERSION = "1.0",
         num     = 0,
@@ -68,7 +75,7 @@ define([ "jquery" ], function( $ ) {
             }
             else {
                 $close.hide();
-                timer[item] = setTimeout( delay.bind( $tmpl, item ), 1000 * 5 );
+                timer[item] = setTimeout( delay.bind( $tmpl, item ), 1000 * 10 );
             }
 
             $tmpl.addClass( item );
