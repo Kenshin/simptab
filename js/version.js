@@ -11,7 +11,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
             if ( !curversion || version !== curversion ) {
                 new Notify().Render( 0, i18n.GetLang( 'version_title' ), i18n.GetLang( 'version_content' ).replace( '#1', version ).replace( '#2', '<a href="http://ksria.com/simptab/CHANGELOG.md">' ).replace( '#3', '</a>' ), true );
-                //localStorage["simptab-version"] = version;
+                localStorage["simptab-version"] = version;
             }
         }
     };
