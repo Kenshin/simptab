@@ -103,7 +103,7 @@ define([ "jquery" ], function( $ ) {
 
             render.bind( self )();
         }
-        else if ( typeof arguments[0] !== "object" && arguments.length < 5 ) {
+        else if ( typeof arguments[0] !== "object" && arguments.length > 0 && arguments.length < 5 ) {
             switch ( arguments.length ) {
                 case 1:
                     this.content = arguments[0];
