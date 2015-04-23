@@ -362,7 +362,6 @@ body {
     opacity: 0.8;
 }
 
-
 /*
 * bottom
 */
@@ -434,4 +433,73 @@ body {
 .topsites a:hover {
     background: rgba(255, 255, 255,.4);
     opacity: 1;
+}
+
+/*
+* notify
+*/
+
+.notifygp {
+    position: fixed;
+    right: 0;
+    height: 100%;
+    width: 400px;
+
+    display: -webkit-box;
+    -webkit-box-align: end;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: start;
+
+    margin: 15px;
+
+    font-size: 12px;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    font-weight: normal;
+
+    text-transform: none;
+    color: #fff;
+
+    z-index: -1;
+}
+
+.notify {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: start;
+    -webkit-box-align: start;
+
+    background: #555;
+    -webkit-border-radius: 5px;
+
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 350px;
+    max-width: 400px;
+
+    opacity: .9;
+}
+
+.notify div {
+    padding: 3px;
+}
+
+.notify div a {
+    color: #fff;
+}
+
+.notify .close {
+    position: absolute;
+    right: 10px;
+}
+
+.notify .close span {
+    display: block;
+    background-image: url("../images/close.png");
+    width: 16px;
+    height: 16px;
+}
+
+.notify .title {
+    font-weight: bolder;
+    font-size: 13px;
 }

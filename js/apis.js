@@ -502,7 +502,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     else {
                         key         = date.Today();
                         data        = obj[key];
-                        if ( !data ) deferred.reject( new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result )); return;
+                        if ( !data ) {
+                            deferred.reject( new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result ));
+                            return;
+                        }
                         max         = data.hdurl.length - 1;
                         random      = createRandom( 0, max );
                         hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";

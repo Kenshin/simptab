@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError ) {
+define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error", "notify" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError, Notify ) {
 
     "use strict";
 
@@ -251,6 +251,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" 
                         // set favorite icon state
                         controlbar.SetFavorteIcon();
 
+                        new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
+
                         console.log( "Add favorite background success." );
                     })
                     .fail( function( error ) {
@@ -280,6 +282,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" 
 
                             // update favorite icon
                             controlbar.SetFavorteIcon();
+
+                            new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
                             console.log( "Delete favorite background success." );
                         }
@@ -316,7 +320,13 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error" 
                             console.log("Upload favorite background success.", upload_vo.new );
                         })
                         .fail( function( error ) {
+                            new Notify().Render( i18n.GetLang( "notify_upload_fail" ) );
                             console.error( "Upload favorite background error.", error );
+                        })
+                        .always( function() {
+                            if ( i === filelist.length - 1 ) {
+                                new Notify().Render( i18n.GetLang( "notify_upload_complete" ) );
+                            }
                         });
                     }).fail( function( error ) {
                         console.error("Upload favorite background error.", error );

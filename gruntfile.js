@@ -8,15 +8,16 @@ module.exports = function( grunt ) {
 
     jshint: {
       options: {
-        "node"   : true,
-        "eqeqeq" : true,
-        "eqnull" : true,
-        "sub"    : true,
-        "-W004"  : true,
-        "-W027"  : true,
-        "-W116"  : true,
-        "-W030"  : true,
-        "-W093"  : true
+        "node"     : true,
+        "eqeqeq"   : true,
+        "eqnull"   : true,
+        "sub"      : true,
+        "multistr" : true,
+        "-W004"    : true,
+        "-W027"    : true,
+        "-W116"    : true,
+        "-W030"    : true,
+        "-W093"    : true
       },
       script: [ "gruntfile.js", "js/*.js" ]
     },

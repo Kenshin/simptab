@@ -117,5 +117,25 @@
 
     "shortcuts_fail_key": {
         "message": "Does not support the keyword: "
+    },
+
+    "version_title": {
+        "message": "SimpTab has update"
+    },
+
+    "version_content": {
+        "message": "Current version is #1, new version changlog #2here#3."
+    },
+
+    "notify_upload_complete": {
+        "message": "Background upload complete."
+    },
+
+    "notify_favorite_add": {
+        "message": "Background favorite add complete."
+    },
+
+    "notify_favorite_del": {
+        "message": "Background favorite delete complete."
     }
 }
