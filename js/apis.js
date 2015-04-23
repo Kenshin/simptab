@@ -451,7 +451,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     * Holiday background
     */
     function isHoliday() {
-        var HOLIDAY_LIST_1 = [20150204, 20150219, 20150306, 20150321, 20150405, 20150420, 20150423, 20150506, 20150521, 20150606, 20150622, 20150707, 20150723, 20150808, 20150820, 20150823, 20150908, 20150923, 20150927, 20151008, 20151021, 20151024, 20151108, 20151122, 20151207, 20151222, 20160106, 20160120, 20160201, 20160204, 20160207, 20160208, 20160222];
+        var HOLIDAY_LIST_1 = [20150204, 20150219, 20150306, 20150321, 20150405, 20150420, 20150506, 20150521, 20150606, 20150622, 20150707, 20150723, 20150808, 20150820, 20150823, 20150908, 20150923, 20150927, 20151008, 20151021, 20151024, 20151108, 20151122, 20151207, 20151222, 20160106, 20160120, 20160201, 20160204, 20160207, 20160208, 20160222];
         var HOLIDAY_LIST_2 = [20150501, 20150504, 20150510, 20150515, 20150519, 20150601, 20150621, 20150701, 20150707, 20150801, 20150910, 20151001, 20151030, 20151111, 20151126, 20151220, 20151224, 20151225];
         var arr         = HOLIDAY_LIST_1.concat( HOLIDAY_LIST_2 ),
             new_holiday = date.Today(),
@@ -502,7 +502,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     else {
                         key         = date.Today();
                         data        = obj[key];
-                        if ( !data ) deferred.reject( new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result )); return;
+                        if ( !data ) {
+                            deferred.reject( new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result ));
+                            return;
+                        }
                         max         = data.hdurl.length - 1;
                         random      = createRandom( 0, max );
                         hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
