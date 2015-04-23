@@ -412,6 +412,33 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         return def.promise();
     }
 
+    function desktoppr() {
+        var def = $.Deferred(),
+            max    = 4586,
+            random = createRandom( 0, 4586 ),
+            url    = "https://api.desktoppr.co/1/wallpapers?page=" + random;
+
+        $.getJSON( url ).then( function( result ) {
+            if ( result && !$.isEmptyObject( result ) && result.response && result.response.length > 0 ) {
+                var response = result.response,
+                    max      = response.length,
+                    random   = createRandom( 0, max ),
+                    obj      = response[ random ];
+
+                    while ( obj.height < 1000 ) {
+                        random = createRandom( 0, max );
+                        obj    = response[ random ];
+                    }
+                    deferred.resolve( vo.Create( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", "desktoppr.co" ));
+            }
+            else {
+                deferred.reject( new SimpError( "apis.desktoppr()", "Not found any item from " + url, result ));
+            }
+        }, failed );
+
+        return def.promise();
+    }
+
     /*
     * Favorite background
     */
@@ -529,7 +556,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       Init: function () {
 
-        var MAX_NUM = 9,
+        var MAX_NUM = 10,
             code    = createRandom( 0, MAX_NUM );
 
         // change background every day
@@ -551,7 +578,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 8;
+        code = 9;
 
         switch ( code ) {
           case 0:
@@ -580,6 +607,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             break;
           case 8:
             holiday();
+            break;
+          case 9:
+            desktoppr();
             break;
           default:
             bing();
