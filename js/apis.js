@@ -578,7 +578,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        code = 9;
+        //code = 9;
 
         switch ( code ) {
           case 0:
