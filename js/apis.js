@@ -412,7 +412,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         return def.promise();
     }
 
+    /*
+    * Desktoppr.co background
+    */
     function desktoppr() {
+
+        console.log( "=== Desktoppr.co call ===");
+
         var def = $.Deferred(),
             max    = 4586,
             random = createRandom( 0, 4586 ),
@@ -578,7 +584,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        //code = 9;
+        // code = 9;
 
         switch ( code ) {
           case 0:
