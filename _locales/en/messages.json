@@ -131,7 +131,11 @@
         "message": "Background upload complete."
     },
 
-    "notify_upload_fail": {
-        "message": "Background upload fail."
+    "notify_favorite_add": {
+        "message": "Background favorite add complete."
+    },
+
+    "notify_favorite_del": {
+        "message": "Background favorite delete complete."
     }
 }

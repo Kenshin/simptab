@@ -251,6 +251,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                         // set favorite icon state
                         controlbar.SetFavorteIcon();
 
+                        new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
+
                         console.log( "Add favorite background success." );
                     })
                     .fail( function( error ) {
@@ -280,6 +282,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                             // update favorite icon
                             controlbar.SetFavorteIcon();
+
+                            new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
                             console.log( "Delete favorite background success." );
                         }

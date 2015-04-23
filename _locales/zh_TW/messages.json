@@ -131,7 +131,11 @@
         "message": "\u80cc\u666f\u4e0a\u50b3\u5b8c\u7562\u3002"
     },
 
-    "notify_upload_fail": {
-        "message": "\u80cc\u666f\u4e0a\u50b3\u5931\u6557\u3002"
+    "notify_favorite_add": {
+        "message": "\u80cc\u666f\u6536\u85cf\u6210\u529f\u3002"
+    },
+
+    "notify_favorite_del": {
+        "message": "\u80cc\u666f\u53d6\u6d88\u6536\u85cf\u6210\u529f\u3002"
     }
 }

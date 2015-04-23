@@ -133,5 +133,13 @@
 
     "notify_upload_fail": {
         "message": "\u80cc\u666f\u4e0a\u4f20\u5931\u8d25\u3002"
+    },
+
+    "notify_favorite_add": {
+        "message": "\u80cc\u666f\u6536\u85cf\u6210\u529f\u3002"
+    },
+
+    "notify_favorite_del": {
+        "message": "\u80cc\u666f\u53d6\u6d88\u6536\u85cf\u6210\u529f\u3002"
     }
 }
