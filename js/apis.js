@@ -419,9 +419,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         console.log( "=== Desktoppr.co call ===");
 
-        var def = $.Deferred(),
+        var def    = $.Deferred(),
             max    = 4586,
-            random = createRandom( 0, 4586 ),
+            random = createRandom( 0, max ),
             url    = "https://api.desktoppr.co/1/wallpapers?page=" + random;
 
         $.getJSON( url ).then( function( result ) {
