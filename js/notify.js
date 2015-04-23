@@ -59,8 +59,10 @@ define([ "jquery" ], function( $ ) {
             hidden( this );
         },
         hidden = function( target ) {
-            target.hide( 500, function() { target.remove(); });
-            target.parent().css( "z-index", -1 );
+            target.hide( 500, function() {
+                target.remove();
+                if ($container.children().length === 0 ) $container.css( "z-index", -1 );
+            });
         },
         render = function() {
             var $tmpl    = $( TMPL ),
