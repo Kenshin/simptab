@@ -76,7 +76,7 @@ define([ "jquery" ], function( $ ) {
             }
             else {
                 $close.hide();
-                timer[item] = setTimeout( delay.bind( $tmpl, item ), 1000 * 10 );
+                timer[item] = setTimeout( delay.bind( $tmpl, item ), 1000 * 5 );
             }
 
             $tmpl.addClass( item );
