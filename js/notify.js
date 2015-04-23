@@ -60,6 +60,7 @@ define([ "jquery" ], function( $ ) {
         },
         hidden = function( target ) {
             target.hide( 500, function() { target.remove(); });
+            target.parent().css( "z-index", -1 );
         },
         render = function() {
             var $tmpl    = $( TMPL ),
@@ -79,7 +80,7 @@ define([ "jquery" ], function( $ ) {
             }
 
             $tmpl.addClass( item );
-            $container.append( $tmpl );
+            $container.append( $tmpl ).css( "z-index", 100 );
         };
 
     function Notify() {}

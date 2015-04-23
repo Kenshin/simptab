@@ -458,6 +458,8 @@ body {
 
     text-transform: none;
     color: #fff;
+
+    z-index: -1;
 }
 
 .notify {
@@ -473,6 +475,8 @@ body {
     margin-bottom: 10px;
     width: 350px;
     max-width: 400px;
+
+    opacity: .9;
 }
 
 .notify div {
