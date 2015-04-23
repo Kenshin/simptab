@@ -606,7 +606,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             f00px();
             break;
           case 6:
-            setTimeout( function() { favorite(); }, 2000 );
+            setTimeout( favorite, 2000 );
             break;
           case 7:
             special();
