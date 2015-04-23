@@ -316,11 +316,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                             console.log("Upload favorite background success.", upload_vo.new );
                         })
                         .fail( function( error ) {
+                            new Notify().Render( i18n.GetLang( "notify_upload_fail" ) );
                             console.error( "Upload favorite background error.", error );
                         })
                         .always( function() {
                             if ( i === filelist.length - 1 ) {
-                                new Notify().Render( i18n.GetLang( "notify_upload" ) );
+                                new Notify().Render( i18n.GetLang( "notify_upload_complete" ) );
                             }
                         });
                     }).fail( function( error ) {

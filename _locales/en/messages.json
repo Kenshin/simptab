@@ -127,7 +127,11 @@
         "message": "Current version is #1, new version changlog #2here#3."
     },
 
-    "notify_upload": {
+    "notify_upload_complete": {
         "message": "Background upload complete."
+    },
+
+    "notify_upload_fail": {
+        "message": "Background upload fail."
     }
 }
