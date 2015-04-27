@@ -24,7 +24,8 @@
         "https://*.unsplash.com/",
         "https://*.unsplash.it/",
         "http://*.wallhaven.cc/",
-        "https://*.staticflickr.com/"
+        "https://*.staticflickr.com/",
+        "http://*.desktopprassets.com/"
     ],
     "omnibox": { "keyword" : "s" },
     "commands": {

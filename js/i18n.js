@@ -30,6 +30,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".lineradio" ).find("label")[7]).text( i18n( "setting_multi_origin_3" ));
         $($( ".lineradio" ).find("label")[8]).text( i18n( "setting_multi_origin_4" ));
         $($( ".lineradio" ).find("label")[9]).text( i18n( "setting_multi_origin_5" ));
+        $($( ".lineradio" ).find("label")[10]).text( i18n( "setting_multi_origin_6" ));
 
         $($(".setting .contact").find("a")[0]).attr( "title", i18n( "setting_contact_weibo" ));
         $($(".setting .contact").find("a")[1]).attr( "title", i18n( "setting_contact_twitter" ));
