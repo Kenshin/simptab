@@ -50,7 +50,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
 
         // set url
-        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
+        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=2332&n=1";
 
         console.log("random = " + random );
         console.log("url    = " + url );
@@ -61,7 +61,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             url        : url,
             dataType   : "json",})
             .then( function ( result ) {
-                if ( result != undefined && !$.isEmptyObject( result )) {
+                if ( result && !$.isEmptyObject( result )) {
 
                   var data = result.images[0],
                       url  = data.url,
