@@ -44,10 +44,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             local = "cn.";
         }
 
-        // check setting is random, when not random must call bing.com current background, so random is 0
-        if ( !setting.IsRandom() ) {
-          random = 0;
-        }
+        // when arguments[0] is true, set random = 0
+        if ( arguments && arguments.length === 1 && arguments[0] ) random = 0;
 
         // set url
         url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
@@ -563,11 +561,18 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
       Init: function () {
 
         var MAX_NUM = 10,
-            code    = createRandom( 0, MAX_NUM );
+            code    = createRandom( 0, MAX_NUM ),
+            today   = false;
 
-        // change background every day
+        // verify background every day
         if ( !setting.IsRandom() ) {
-            code = MAX_NUM;
+            code  = MAX_NUM;
+            today = true;
+        }
+        // verify today is new day
+        else if ( date.IsNewDay( date.Today(), true )) {
+            code  = MAX_NUM;
+            today = true;
         }
         // verify today is holiday
         else if ( isHoliday() ) {
@@ -618,7 +623,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             desktoppr();
             break;
           default:
-            bing();
+            bing( today );
             break;
         }
 

@@ -26,8 +26,16 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 }
                 else {
                     if ( is_random ) {
-                        //// set current background and call api. type 2
-                        def.resolve(2);
+                        if ( date.IsNewDay( date.Today() ) ) {
+                            //// set background refresh
+                            localStorage["simptab-background-refresh"] = "true";
+                            //// only call api. type 3
+                            def.resolve(3);
+                        }
+                        else {
+                            //// set current background and call api. type 2
+                            def.resolve(2);
+                        }
                     }
                     else {
                         if ( date.Today() != vo.cur.enddate ) {
