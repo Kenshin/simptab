@@ -27,6 +27,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 else {
                     if ( is_random ) {
                         if ( date.IsNewDay( date.Today() ) ) {
+                            //// set call special count, max count is '11111', length is 5
+                            localStorage["simptab-special-day-count"] = 1;
                             //// set background refresh
                             localStorage["simptab-background-refresh"] = "true";
                             //// only call api. type 3

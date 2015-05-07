@@ -529,6 +529,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                         max         = data.hdurl.length - 1;
                         random      = createRandom( 0, max );
                         hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
+
+                        localStorage["simptab-special-day-count"] += 1;
                     }
                     else {
                         key         = date.Today();
@@ -580,7 +582,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         // change background every time
         else {
-            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 8 ) {
+            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 8 || ( localStorage["simptab-special-day-count"].length === 5 && code == 7 )) {
                 code = createRandom( 0, MAX_NUM );
             }
             localStorage[ "simptab-prv-code" ] = code;
@@ -589,7 +591,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 9;
+        // code = 7;
 
         switch ( code ) {
           case 0:
