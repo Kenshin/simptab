@@ -566,11 +566,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             code    = createRandom( 0, MAX_NUM ),
             today   = false;
 
-        /*if ( !setting.IsRandom() ) {
-            code  = MAX_NUM;
-            today = true;
-        }
-        else */
         // verify background every day
         // verify today is new day
         if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {

@@ -36,32 +36,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     else if ( is_random ) {
                         //// set current background and call api. type 2
                         def.resolve(2);
-                        /*if ( date.IsNewDay( date.Today() ) ) {
-                            //// set call special count, max count is '11111', length is 5
-                            localStorage["simptab-special-day-count"] = 1;
-                            //// set background refresh
-                            localStorage["simptab-background-refresh"] = "true";
-                            //// only call api. type 3
-                            def.resolve(3);
-                        }
-                        else {
-                            //// set current background and call api. type 2
-                            def.resolve(2);
-                        }*/
                     }
                     else {
                         //// set current background and not-call api. type 4
                         def.resolve(4);
-                        /*if ( date.Today() != vo.cur.enddate ) {
-                            //// set background refresh
-                            localStorage["simptab-background-refresh"] = "true";
-                            //// only call api. type 3
-                            def.resolve(3);
-                        }
-                        else {
-                            //// set current background and not-call api. type 4
-                            def.resolve(4);
-                        }*/
                     }
                 }
             }
