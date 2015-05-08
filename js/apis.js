@@ -578,11 +578,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         // verify today is holiday
         else if ( isHoliday() ) {
-            code = 8;
+            code = 9;
         }
         // change background every time
         else {
-            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 8 || ( localStorage["simptab-special-day-count"] && localStorage["simptab-special-day-count"].length === 5 && code == 7 )) {
+            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 9 || ( localStorage["simptab-special-day-count"] && localStorage["simptab-special-day-count"].length === 5 && code == 8 )) {
                 code = createRandom( 0, MAX_NUM );
             }
             localStorage[ "simptab-prv-code" ] = code;
@@ -613,16 +613,16 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             f00px();
             break;
           case 6:
-            setTimeout( favorite, 2000 );
+            desktoppr();
             break;
           case 7:
-            special();
+            setTimeout( favorite, 2000 );
             break;
           case 8:
-            holiday();
+            special();
             break;
           case 9:
-            desktoppr();
+            holiday();
             break;
           default:
             bing( today );
