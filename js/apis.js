@@ -566,13 +566,14 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             code    = createRandom( 0, MAX_NUM ),
             today   = false;
 
-        // verify background every day
-        if ( !setting.IsRandom() ) {
+        /*if ( !setting.IsRandom() ) {
             code  = MAX_NUM;
             today = true;
         }
+        else */
+        // verify background every day
         // verify today is new day
-        else if ( date.IsNewDay( date.Today(), true )) {
+        if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {
             code  = MAX_NUM;
             today = true;
         }
@@ -582,7 +583,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         // change background every time
         else {
-            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 9 || ( localStorage["simptab-special-day-count"] && localStorage["simptab-special-day-count"].length === 5 && code == 8 )) {
+            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 9 || ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 8 )) {
                 code = createRandom( 0, MAX_NUM );
             }
             localStorage[ "simptab-prv-code" ] = code;
