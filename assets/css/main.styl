@@ -316,6 +316,10 @@ hr
     width: 100%
 
     .copyright
+        adapter-display( flex )
+        all-browser "flex-flow",       row wrap,     false
+        all-browser "justify-content", center,       false
+
         padding: 0px 0px 10px 0px
 
     a
@@ -334,12 +338,13 @@ hr
 
     // first child
     ul
-        adapter-display()
-        all-browser "box-orient", horizontal, false
-        all-browser "box-sizing", border-box, false
-        all-browser "box-pack",   center,     false
+        adapter-display( flex )
+        all-browser "flex-flow",       row wrap,     false
+        all-browser "justify-content", center,       false
 
         list-style: none
+
+        padding: 0
 
         li
             adapter-display()
