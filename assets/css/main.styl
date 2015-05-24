@@ -15,7 +15,7 @@ adapter-display( type = box )
     display: display-group( vendor, type )
 
 division()
-    margin: 0 0 53px 0;
+    margin: 0 0 53px 0
 
 main-width = 960px
 
@@ -254,9 +254,8 @@ hr
 */
 
 .main
-    display:           flex
-    -webkit-flex-flow: row wrap
-
+    adapter-display( flex )
+    all-browser "flex-flow",       row wrap,     false
     all-browser "justify-content", space-around, false
 
     padding: 0 147px
