@@ -32,17 +32,6 @@ font-color = #B3B3B3
     src: url( ../font/zh-tw.ttf )
     font-family: zh-tw
 
-/*
-@media all and (max-width: 1174px)
-    .header div, .title
-        zoom: 0.5
-
-@media all and (max-width: 892px)
-    .footer ul li
-        all-browser "box-align", center, false
-        text-align: center
-*/
-
 html
     width  : 100%
     height : 100%
@@ -418,3 +407,13 @@ body
 
                             span[class^="linkin"]:hover
                                 background: url( ../image/linkin-hover-icon.png ) no-repeat
+
+@media all and (max-width: 1174px)
+    .header div, .title
+        zoom: 0.5
+
+@media all and (max-width: 892px)
+    .footer ul li
+        adapter-display( flex )
+        all-browser "flex-flow",   column nowrap, false
+        all-browser "align-items", center,        false
