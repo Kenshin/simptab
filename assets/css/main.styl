@@ -209,9 +209,8 @@ body
     division()
 
     .feature
-        adapter-display()
-        all-browser "box-orient", vertical,   false
-        all-browser "box-flex",   1,          false
+        adapter-display( flex )
+        all-browser "flex-flow",  column nowrap, false
 
         width: 191px
 
@@ -221,7 +220,7 @@ body
             padding-bottom: 6px
 
         .icon
-            adapter-display()
+            adapter-display(flex)
 
             width: 128px
             height: @width
