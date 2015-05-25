@@ -32,6 +32,7 @@ font-color = #B3B3B3
     src: url( ../font/zh-tw.ttf )
     font-family: zh-tw
 
+/*
 @media all and (max-width: 1174px)
     .header div, .title
         zoom: 0.5
@@ -40,6 +41,7 @@ font-color = #B3B3B3
     .footer ul li
         all-browser "box-align", center, false
         text-align: center
+*/
 
 html
     width  : 100%
@@ -251,7 +253,8 @@ body
             background: url( ../image/shortcuts.png ) no-repeat
 
 .footer
-    all-browser "box-orient", vertical, false
+    adapter-display( flex )
+    all-browser "flex-flow", column nowrap, false
 
     background-color: #333
     color: #fff
@@ -292,39 +295,31 @@ body
         padding: 0
 
         li
-            adapter-display()
-            all-browser "box-flex",   1,        false
-            all-browser "box-orient", vertical, false
+            adapter-display( flex )
+            all-browser "flex-flow",       column wrap, false
+            all-browser "justify-content", flex-start,  false
 
             width: ( main-width / 2 )
             padding: 5px
 
             div
-                all-browser "box-pack", start, false
-                all-browser "box-flex", 1,     false
+                adapter-display( flex )
+                all-browser "flex-flow",   column nowrap, false
+                all-browser "align-items", flex-start,    false
 
             // support
             &:nth-child(1)
-                div
-                    adapter-display()
-                    all-browser "box-orient", vertical, false
-                    all-browser "box-flex",   1,        false
-                    all-browser "box-align",  start,    false
-
-                    div:nth-of-type(2)
-                        adapter-display()
-                        all-browser "box-orient", horizontal, false
-                        all-browser "box-flex",   1,          false
 
                     // share
                     nav
-                        adapter-display()
-                        all-browser "box-orient", horizontal, false
+                        adapter-display( flex )
+                        all-browser "flex-flow",   row nowrap,     false
+                        all-browser "justify-content", flex-start, false
 
                         padding: 1px 0px
 
                         a
-                            adapter-display()
+                            adapter-display( flex )
                             padding: 0px 7px 0px 0px
 
                             background-color: rgba(0, 0, 0, 0)
@@ -367,20 +362,27 @@ body
                     background: url( ../image/photo.jpg ) no-repeat
 
                 div
+                    adapter-display( flex )
+                    all-browser "flex-flow",       row nowrap, false
+                    all-browser "justify-content", flex-start, false
+                    all-browser "align-items",     center,     false
+
                     div
-                        adapter-display()
-                        all-browser "box-orient", vertical, false
-                        all-browser "box-align",  start,    false
+                        adapter-display( flex )
+                        all-browser "flex-flow",   column nowrap, false
+                        all-browser "align-items", flex-start,    false
 
                         padding: 0px 5px
 
                         nav
-                            adapter-display()
+                            adapter-display( flex )
 
                             padding: 1px 0px
 
                             a
-                                adapter-display()
+                                adapter-display( flex )
+                                all-browser "flex-flow", row, nowrap, false
+
                                 padding: 0px 7px 0px 0px
 
                                 background-color: rgba( 0, 0, 0, 0 )
