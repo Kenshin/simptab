@@ -18,6 +18,7 @@ division()
     margin: 0 0 53px 0
 
 main-width = 960px
+font-color = #B3B3B3
 
 @font-face
     src: url( ../font/en.otf )
@@ -60,9 +61,9 @@ body
     background: url( ../image/bg.png ) repeat
 
     div
-        adapter-display()
-        all-browser "box-pack",  center, false
-        all-browser "box-align", center, false
+        adapter-display( flex )
+        all-browser "justify-content",  center, false
+        all-browser "align-items",      center, false
 
 .top
 
@@ -119,17 +120,15 @@ body
         background: url( ../image/chrome.png ) no-repeat
 
 .download
-    adapter-display()
-    all-browser "box-align", end, false
+    adapter-display( flex )
+    all-browser "justify-content", center,   false
+    all-browser "align-items",     flex-end, false
 
     division()
 
-    div
-        all-browser "box-align", end, false
-
 .btn-download
-    adapter-display()
-    all-browser : "box-align", center, false
+    adapter-display( flex )
+    all-browser : "justify-content", center, false
 
     padding: 15px 15px 10px 15px
 
@@ -152,9 +151,9 @@ body
         background: url( ../image/webstore.png ) no-repeat
 
     nav
-        adapter-display()
-        all-browser "box-orient", vertical, false
-        all-browser "box-align",  end,      false
+        adapter-display( flex )
+        all-browser "flex-direction", column,   false
+        all-browser "align-items",    flex-end, false
 
         line-height: 0.5
 
@@ -192,7 +191,6 @@ body
     division()
     adapter-display( flex )
     all-browser "justify-content",  center, false
-
 
     background-color: #1DBA90
 
