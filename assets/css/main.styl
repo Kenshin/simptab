@@ -71,9 +71,9 @@ body
     padding: 0 15%
 
     nav
-        adapter-display()
-        all-browser "box-orient", horizontal
-        all-browser "box-pack",   end, false
+        adapter-display( flex )
+        all-browser "flex-flow",        row nowrap, false
+        all-browser "justify-content ", flex-end,   false
 
         width : 100%
 
