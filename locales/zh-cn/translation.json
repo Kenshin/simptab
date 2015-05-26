@@ -1,5 +1,6 @@
 {
-    "title"   : "&nbsp;&nbsp;简&nbsp;Tab - 极简的Chrome新标签页扩展",
+    "title"   : "&nbsp;&nbsp;简&nbsp;Tab",
+    "desc"    : "极简的Chrome新标签页扩展",
     "download": "立即下载",
     "or"      : "&nbsp;或者",
     "offline" : "离线下载",

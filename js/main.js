@@ -48,7 +48,8 @@ $( document ).ready( function() {
     // i18n init
     i18n.init( options, function( t ) {
 
-        $(".title h1 div").html( t( "title" ));
+        $($(".title div")[0]).html( t( "title" ));
+        $($(".title div")[1]).html( t( "desc" ));
         $(".download .btn-download h3").html( t( "download" ));
         $(".download .smaller").html( t( "or" ));
         $(".download .btn-offline-download").html( t( "offline" ));
