@@ -111,7 +111,7 @@ body
     all-browser "justify-content", center,   false
     all-browser "align-items",     flex-end, false
 
-    division()
+    margin: 0 0 28px 0
 
 .btn-download
     adapter-display( flex )
@@ -196,7 +196,7 @@ body
 
     padding: 0 147px
 
-    division()
+    margin: 0 0 28px 0
 
     .feature
         adapter-display( flex )
@@ -204,7 +204,11 @@ body
 
         width: 191px
 
-        padding: 0 50px 53px 50px
+        padding: 25px 25px 25px 25px
+        margin:  25px 25px 25px 25px
+
+        background-color: #eff0f2
+        all-browser "border-radius", 8px
 
         div
             padding-bottom: 6px
@@ -220,7 +224,14 @@ body
             color: #B3B3B3
 
         .content
-            color: #B3B3B3
+            color: #fff
+            background-color: #1dba90
+            all-browser "border-radius", 3px
+
+            padding: 8px 20px
+
+            font-size: 15px
+            font-weight: bold
 
         &:nth-child(1) .icon
             background: url( ../image/multi-language.png ) no-repeat
