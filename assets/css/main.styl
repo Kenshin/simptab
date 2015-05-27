@@ -11,6 +11,7 @@ display-group( value, type )
   value + prefix + type
 
 adapter-display( type = box )
+  display: type
   for vendor in vendors
     display: display-group( vendor, type )
 
@@ -46,8 +47,8 @@ body
 
     div
         adapter-display( flex )
-        all-browser "justify-content",  center, false
-        all-browser "align-items",      center, false
+        all-browser "justify-content",  center
+        all-browser "align-items",      center
 
 .top
 
@@ -58,8 +59,8 @@ body
 
     nav
         adapter-display( flex )
-        all-browser "flex-flow",        row nowrap, false
-        all-browser "justify-content ", flex-end,   false
+        all-browser "flex-flow",        row nowrap
+        all-browser "justify-content ", flex-end
 
         width : 100%
 
@@ -91,8 +92,8 @@ body
 
 .header
     adapter-display( flex )
-    all-browser "flex-flow",       row wrap, false
-    all-browser "justify-content", center,   false
+    all-browser "flex-flow",       row wrap
+    all-browser "justify-content", center
 
     background-color: #1DBA90
     color: #fff
@@ -103,11 +104,11 @@ body
 
     .introduce
         adapter-display( flex )
-        all-browser "flex-flow",       column nowrap, false
-        all-browser "justify-content", center,        false
+        all-browser "flex-flow",       column nowrap
+        all-browser "justify-content", center
 
         .title
-            all-browser "flex-flow", column nowrap, false
+            all-browser "flex-flow", column nowrap
 
             margin-bottom: 15px
 
@@ -119,12 +120,12 @@ body
 
         .download
             adapter-display( flex )
-            all-browser "justify-content", center,   false
-            all-browser "flex-flow",       column nowrap, false
+            all-browser "justify-content", center
+            all-browser "flex-flow",       column nowrap
 
         .btn-download
             adapter-display( flex )
-            all-browser : "justify-content", center, false
+            all-browser : "justify-content", center
 
             padding: 15px 15px 10px 15px
             margin-bottom: 15px
@@ -150,8 +151,8 @@ body
 
             nav
                 adapter-display( flex )
-                all-browser "flex-direction", column,   false
-                all-browser "align-items",    flex-end, false
+                all-browser "flex-direction", column
+                all-browser "align-items",    flex-end
 
                 line-height: 0.5
 
@@ -194,8 +195,8 @@ body
 
 .main
     adapter-display( flex )
-    all-browser "flex-flow",       row wrap,     false
-    all-browser "justify-content", center, false
+    all-browser "flex-flow",       row wrap
+    all-browser "justify-content", center
 
     padding: 0 147px
 
@@ -203,7 +204,7 @@ body
 
     .feature
         adapter-display( flex )
-        all-browser "flex-flow",  column nowrap, false
+        all-browser "flex-flow",  column nowrap
 
         width: 191px
 
@@ -256,7 +257,7 @@ body
 
 .footer
     adapter-display( flex )
-    all-browser "flex-flow", column nowrap, false
+    all-browser "flex-flow", column nowrap
 
     background-color: #333
     color: #fff
@@ -267,8 +268,8 @@ body
 
     .copyright
         adapter-display( flex )
-        all-browser "flex-flow",       row wrap,     false
-        all-browser "justify-content", center,       false
+        all-browser "flex-flow",       row wrap
+        all-browser "justify-content", center
 
         padding: 0px 0px 10px 0px
 
@@ -289,8 +290,8 @@ body
     // first child
     ul
         adapter-display( flex )
-        all-browser "flex-flow",       row wrap,     false
-        all-browser "justify-content", center,       false
+        all-browser "flex-flow",       row wrap
+        all-browser "justify-content", center
 
         list-style: none
 
@@ -298,15 +299,15 @@ body
 
         li
             adapter-display( flex )
-            all-browser "flex-flow",       column wrap, false
-            all-browser "align-items", center,  false
+            all-browser "flex-flow",       column wrap
+            all-browser "align-items", center
 
             width: ( 960px / 2 )
             padding: 5px
 
             div
-                all-browser "flex-flow",   column nowrap, false
-                all-browser "align-items", flex-start,    false
+                all-browser "flex-flow",   column nowrap
+                all-browser "align-items", flex-start
 
             // support
             &:nth-child(1) div
@@ -314,8 +315,8 @@ body
                     // share
                     nav
                         adapter-display( flex )
-                        all-browser "flex-flow",   row nowrap,     false
-                        all-browser "justify-content", flex-start, false
+                        all-browser "flex-flow",   row nowrap
+                        all-browser "justify-content", flex-start
 
                         padding: 1px 0px
 
@@ -364,14 +365,14 @@ body
 
                 div
                     adapter-display( flex )
-                    all-browser "flex-flow",       row nowrap, false
-                    all-browser "justify-content", flex-start, false
-                    all-browser "align-items",     center,     false
+                    all-browser "flex-flow",       row nowrap
+                    all-browser "justify-content", flex-start
+                    all-browser "align-items",     center
 
                     div
                         adapter-display( flex )
-                        all-browser "flex-flow",   column nowrap, false
-                        all-browser "align-items", flex-start,    false
+                        all-browser "flex-flow",   column nowrap
+                        all-browser "align-items", flex-start
 
                         padding: 0px 5px
 
@@ -382,7 +383,7 @@ body
 
                             a
                                 adapter-display( flex )
-                                all-browser "flex-flow", row, nowrap, false
+                                all-browser "flex-flow", row, nowrap
 
                                 padding: 0px 7px 0px 0px
 
@@ -445,5 +446,5 @@ body
 
 @media all and (max-width: 979px)
     .footer ul li div
-        all-browser "flex-flow",   column nowrap, false
-        all-browser "align-items", center,        false
+        all-browser "flex-flow",   column nowrap
+        all-browser "align-items", center
