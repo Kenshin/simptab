@@ -17,8 +17,6 @@ adapter-display( type = box )
 division()
     margin: 0 0 53px 0
 
-main-width = 960px
-
 @font-face
     src: url( ../font/en.otf )
     font-family: en
@@ -300,18 +298,17 @@ body
         li
             adapter-display( flex )
             all-browser "flex-flow",       column wrap, false
-            all-browser "justify-content", flex-start,  false
+            all-browser "align-items", center,  false
 
-            width: ( main-width / 2 )
+            width: ( 960px / 2 )
             padding: 5px
 
             div
-                adapter-display( flex )
                 all-browser "flex-flow",   column nowrap, false
                 all-browser "align-items", flex-start,    false
 
             // support
-            &:nth-child(1)
+            &:nth-child(1) div
 
                     // share
                     nav
@@ -352,7 +349,7 @@ body
                                 background: url( ../image/gplus-share-icon.png ) no-repeat
 
             // author
-            &:nth-child(2)
+            &:nth-child(2) div
 
                 .photo
                     display: block
@@ -445,6 +442,7 @@ body
                 &:nth-child(2)
                     font-size: 30px
 
-    .footer ul li
+@media all and (max-width: 979px)
+    .footer ul li div
         all-browser "flex-flow",   column nowrap, false
         all-browser "align-items", center,        false
