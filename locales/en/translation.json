@@ -1,5 +1,6 @@
 {
-    "title"   : "SimpTab - Minimalistic New Tab Page",
+    "title"   : "SimpTab - New Tab",
+    "desc"    : "Minimalistic New Tab Page",
     "download": "DOWNLOAD",
     "or"      : "&nbsp;or",
     "offline" : "offline Download",

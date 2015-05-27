@@ -1,5 +1,6 @@
 {
-    "title"   : "&nbsp;&nbsp;簡&nbsp;Tab - 極簡的Chrome新標簽頁擴展",
+    "title"   : "&nbsp;&nbsp;簡&nbsp;Tab",
+    "desc"    : "極簡的Chrome新標簽頁擴展",
     "download": "立即下載",
     "or"      : "&nbsp;或者",
     "offline" : "離線下載",
