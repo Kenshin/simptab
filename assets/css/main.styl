@@ -101,6 +101,8 @@ body
 
     font-weight: bold
 
+    padding: 0 10px
+
     .introduce
         adapter-display( flex )
         all-browser "flex-flow",       column nowrap, false
@@ -108,6 +110,8 @@ body
 
         .title
             all-browser "flex-flow", column nowrap, false
+
+            margin-bottom: 15px
 
             div
                 &:nth-child(1)
@@ -422,27 +426,25 @@ body
                             span[class^="linkin"]:hover
                                 background: url( ../image/linkin-hover-icon.png ) no-repeat
 
-@media all and (max-width: 1280px)
+@media all and (max-width: 1380px)
     .header .banner
         zoom: 0.8
 
-@media all and (max-width: 1174px)
+@media all and (max-width: 701px)
     .header
 
         .banner
             zoom: 0.5
 
         .download
-            zomm: 0.8
+            zoom: 0.8
 
-        .title div
+        .introduce .title div
                 &:nth-child(1)
-                    font-size: 20px
+                    font-size: 40px
                 &:nth-child(2)
-                    font-size: 10px
+                    font-size: 30px
 
-@media all and (max-width: 892px)
     .footer ul li
-        adapter-display( flex )
         all-browser "flex-flow",   column nowrap, false
         all-browser "align-items", center,        false
