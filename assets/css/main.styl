@@ -428,6 +428,7 @@ body
 @media (max-width: 1213px)
     .main
         padding: 0
+        zoom: 0.7
 
 @media (max-width: 718px)
     .header
@@ -440,8 +441,34 @@ body
             zoom: 0.5
 
     .main
-        zoom: 0.8
+        zoom: 0.6
 
+@media (max-width: 640px)
+    .main
+        zoom: 0.5
+
+@media (max-width: 480px)
+    .header
+        .title
+            zoom: 0.5
+        .banner
+            zoom: 0.3
+    .main
+        zoom: 0.4
+    .footer
+        zoom: 0.6
+
+@media (max-width: 414px)
+    .main
+        zoom: 0.4
+    .footer
+        zoom: 0.6
+
+@media (max-width: 320px)
+    .header .title
+        zoom: 0.4
+    .main
+        zoom: 0.3
 
 @media (max-width: 979px)
     .footer ul li div
