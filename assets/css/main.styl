@@ -414,26 +414,18 @@ body
                             span[class^="linkin"]:hover
                                 background: url( ../image/linkin-hover-icon.png ) no-repeat
 
-@media all and (max-width: 1386px)
-    .header .banner
-        zoom: 0.8
 
-@media all and (max-width: 701px)
+
+@media (max-width: 1385px)
     .header
-
         .banner
-            zoom: 0.5
-
-        .download
             zoom: 0.8
+        .title
+            zoom: 0.9
+        .download
+            zoom: 0.9
 
-        .introduce .title div
-                &:nth-child(1)
-                    font-size: 40px
-                &:nth-child(2)
-                    font-size: 30px
-
-@media all and (max-width: 979px)
+@media (max-width: 979px)
     .footer ul li div
         all-browser "flex-flow",   column nowrap
         all-browser "align-items", center
