@@ -58,7 +58,7 @@ $( document ).ready( function() {
             $( item ).find( ".desc" ).html( t( "desc" + (++idx) ));
         });
 
-        $( ".feature .content").html( t( "learn" ));
+        $( ".feature .learnmore").html( t( "learn" ));
 
         $(".footer li:nth-child(1) h2").html( t( "support" ));
         $(".footer li:nth-child(1) div p:nth-of-type(1)").html( t( "feedback" ));
