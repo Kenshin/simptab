@@ -56,6 +56,7 @@ $( document ).ready( function() {
 
         $.each( $(".feature"), function( idx, item ) {
             $( item ).find( ".desc" ).html( t( "desc" + (++idx) ));
+            $( item ).find( ".content" ).attr( "data-tooltip", t( "feature" + (idx) ));
         });
 
         $( ".feature .learnmore").html( t( "learn" ));
