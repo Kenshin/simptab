@@ -444,6 +444,34 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     /*
+    * Visual Hunt
+    */
+    function visualhunt() {
+
+        console.log( "=== visualhunt.com call ===");
+
+        var VISUALHUNT_NAME = "visualhunt.json",
+            VISUALHUNT_HOST = "http://visualhunt.com";
+
+        $.getJSON( SIMP_API_HOST + VISUALHUNT_NAME ).done(function( result ) {
+          if ( result != undefined && !$.isEmptyObject( result )) {
+            try {
+              var max    = result.length,
+                  random = createRandom( 0, max ),
+                  obj    = result[ random ];
+              deferred.resolve( vo.Create( obj.url, obj.url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", "visualhunt.com" ) );
+            }
+            catch( error ) {
+              deferred.reject( SimpError.Clone( new SimpError( "apis.visualhunt()", null , "Parse visualhunt.com error, url is " + obj.url ), error ));
+            }
+          }
+          else {
+            deferred.reject( new SimpError( "apis.visualhunt()", "Get Visualhunt.com json error.", result ));
+          }
+        }).fail( failed );
+    }
+
+    /*
     * Favorite background
     */
     function favorite() {
@@ -562,7 +590,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       Init: function () {
 
-        var MAX_NUM = 10,
+        var MAX_NUM = 11,
             code    = createRandom( 0, MAX_NUM ),
             today   = false;
 
@@ -574,11 +602,14 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         // verify today is holiday
         else if ( isHoliday() ) {
-            code = 9;
+            code = 10;
         }
         // change background every time
         else {
-            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 9 || ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 8 )) {
+            while ( setting.Verify( code ) == "false" ||
+                    localStorage[ "simptab-prv-code" ] == code ||
+                    code == 10 ||
+                    ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
                 code = createRandom( 0, MAX_NUM );
             }
             localStorage[ "simptab-prv-code" ] = code;
@@ -612,12 +643,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             desktoppr();
             break;
           case 7:
-            setTimeout( favorite, 2000 );
+            visualhunt();
             break;
           case 8:
-            special();
+            setTimeout( favorite, 2000 );
             break;
           case 9:
+            special();
+            break;
+          case 10:
             holiday();
             break;
           default:
