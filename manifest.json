@@ -26,7 +26,8 @@
         "http://*.wallhaven.cc/",
         "https://*.staticflickr.com/",
         "http://*.desktopprassets.com/",
-        "http://*.visualhunt.com/"
+        "http://*.visualhunt.com/",
+        "https://*.500px.org/"
     ],
     "omnibox": { "keyword" : "s" },
     "commands": {
