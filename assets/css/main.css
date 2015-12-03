@@ -42,7 +42,20 @@ body {
 }
 
 .content {
+    display: -webkit-box;
+
 	-webkit-box-flex: 1;
+    -webkit-box-align: end;
+    -webkit-box-orient: horizontal;
+
+    padding-left: 5px;
+    padding-bottom: 5px;
+
+}
+
+.progress {
+    width: 20px;
+    height:20px;
 }
 
 .sidebar {
