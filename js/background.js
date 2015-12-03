@@ -84,7 +84,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
         if ( is_remote ) {
 
-            //localStorage["simptab-background-state"] = "remote";
             progress.Set( "remote" );
 
             apis.Init()
@@ -106,7 +105,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
         if ( is_save ) {
 
             // change background-state
-            //localStorage["simptab-background-state"] = "loading";
             progress.Set( "loading" );
 
             files.GetDataURI( url ).then( function( result ) {
@@ -116,12 +114,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                             switch ( result.type ) {
                                 case "writestart":
                                     console.log( "Write start: ", result );
-                                    //localStorage["simptab-background-state"] = "writestart";
                                     progress.Set( "writestart" );
                                     break;
                                 case "progress":
                                     console.log( "Write progress: ", result, ( result.loaded / result.total ) * 10 );
-                                    //localStorage["simptab-background-state"] = "pending";
                                     progress.Set( "pending", ( result.loaded / result.total ) * 10 );
                                     break;
                             }
@@ -129,13 +125,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     })
                     .done( function( result ) {
                         console.log( "Write completed: ", result );
-                        //localStorage["simptab-background-state"] = "success";
                         progress.Set( "success" );
                         def.resolve( is_save );
                     })
                     .fail( function( result ) {
                         console.log( "Write error: ", result );
-                        //localStorage["simptab-background-state"] = "writefailed";
                         progress.Set( "writefailed" );
                         def.reject( new SimpError( "background.setRemoteBackground()::files.Add()", "Favorite write to local error.", result ));
                     });
@@ -159,7 +153,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
 
                 // when local storage 'simptab-background-refresh' == "true", re-set 'simptab-background-state' is 'ready'
-                //localStorage["simptab-background-state"] = "ready";
                 progress.Set( "ready" );
 
                 // seach current bing.com background is favorite?
@@ -199,7 +192,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
     return {
         Get: function( is_random ) {
 
-            //localStorage["simptab-background-state"] = "ready";
             progress.Set( "ready" );
 
             getCurrentBackground( is_random )
