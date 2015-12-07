@@ -298,6 +298,43 @@ body
         &:nth-child(6) .icon
             background: url( ../image/shortcuts.png ) no-repeat
 
+.middle
+    margin-bottom 25px
+    padding 0 147px
+
+    all-browser "flex-flow", row nowrap
+
+    a
+        adapter-display( flex )
+        all-browser "flex-flow", row nowrap
+        all-browser "justify-content", center
+
+        width 210px
+
+        color #fff
+        background-color #7C4DFF
+        all-browser "border-radius", 5px
+
+        padding 8px 30px
+        margin 0 30px 30px 30px
+
+        font-size 20px
+        text-decoration: none
+
+        div
+            padding-left 5px
+
+        span
+            width 32px
+            height @width
+
+        &:nth-child(1) span
+            background url( ../image/learn-more-feature-icon.png ) no-repeat
+
+        &:nth-child(2) span
+            background url( ../image/github-icon.png ) no-repeat
+
+
 .footer
     all-browser "flex-flow", column nowrap
 
