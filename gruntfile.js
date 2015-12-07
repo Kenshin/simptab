@@ -39,7 +39,7 @@ module.exports = function( grunt ) {
     connect: {
       server: {
         options: {
-          port: 80,
+          port: 8888,
           hostname: "localhost",
           open: true,
           middleware: function( connect, options ) {

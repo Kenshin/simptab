@@ -61,6 +61,9 @@ $( document ).ready( function() {
 
         $( ".feature .learnmore").html( t( "learn" ));
 
+        $( ".middle a:nth-child(1) div").html( t( "middle1" ));
+        $( ".middle a:nth-child(2) div").html( t( "middle2" ));
+
         $(".footer li:nth-child(1) h2").html( t( "support" ));
         $(".footer li:nth-child(1) div p:nth-of-type(1)").html( t( "feedback" ));
         $(".footer li:nth-child(1) div p:nth-of-type(2) span:nth-of-type(1)").html( t( "contact" ));

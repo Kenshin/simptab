@@ -165,6 +165,7 @@ body
             &:hover
                 text-decoration: none
                 background-position: 0 -15px
+                background-color rgba(124, 77, 255, 0.89)
 
                 all-browser "transition", background-position 0.1s linear
                 all-browser "box-shadow", 0 1px 5px rgba(0, 0, 0, 0)
@@ -308,18 +309,30 @@ body
         adapter-display( flex )
         all-browser "flex-flow", row nowrap
         all-browser "justify-content", center
+        all-browser "align-items", center
 
         width 210px
 
-        color #fff
-        background-color #7C4DFF
+        text-decoration none
+
         all-browser "border-radius", 5px
 
         padding 8px 30px
-        margin 0 30px 30px 30px
+        margin 0 60px 30px 60px
 
-        font-size 20px
-        text-decoration: none
+        color #fff
+        background-color #7C4DFF
+        font-size 22px
+        text-decoration none
+        font-weight bold
+
+        &:hover
+            background-color transparent
+            border 1px solid transparent
+            all-browser "border-color" #7C4DFF
+            color #7C4DFF
+
+            margin 0 59px 28px 59px
 
         div
             padding-left 5px
