@@ -29,8 +29,9 @@ Name | Description
 `app ` | Open Chrome's `Apps` tab.
 `info` | Open current background's infomation.
 `down` | Download current background.
-`fav`  | Favorite current background.
 `set ` | Open `SimpTab` `Setting` dashboard tab.
+`fav`  | Favorite current background.
+`site` | Show top sites.(only omnibox)
 
 #### Rate:
 <https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN>
