@@ -80,6 +80,11 @@ $( document ).ready( function() {
         window.location.href = "https://chrome.google.com/webstore/detail/kbgmbmkhepchmmcnbdbclpkpegbgikjc" + "?hl=" + i18n.lng();
     });
 
+    $( ".middle a:nth-child(1)" ).click( function() {
+        var lng = i18n.lng();
+        window.location.href = "https://github.com/kenshin/simptab/blob/master/README." + ( lng === "en" ? lng : lng.split("-")[1] ) + ".md";
+    });
+
 });
 
 function getQueryString( name ) {
