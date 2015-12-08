@@ -58,6 +58,7 @@ Name | Description
   * Add Download new background progress.
   * Add Favorite/Upload background notification.
   * Support omnibox shortcuts.
+  * Fix same version 1.0.3 bugs.
 
 - 2014-08-29, Version 1.0.3
   * Fix Download background's duplication of name error.
