@@ -21,7 +21,7 @@ SimpTab - New Tab by Chrome Extensions
 - 繁體中文 <https://github.com/Kenshin/simptab/blob/master/README.tw.md>
 - English <https://github.com/Kenshin/simptab/blob/master/README.en.md>
 
-#### Shortcuts:
+#### Shortcuts && omnibox:
 Name | Description
 ------ | ------
 `book` | Open Chrome's `Bookmark` tab.
@@ -29,6 +29,7 @@ Name | Description
 `app ` | Open Chrome's `Apps` tab.
 `info` | Open current background's infomation. ( Bing.com's knows )
 `down` | Download current background.
+`fav`  | Favorite current background.
 `set ` | Open `SimpTab` `Setting` dashboard tab.
 
 #### Rate:
@@ -53,6 +54,7 @@ Name | Description
   * Add multi background origin: <bing.com> <wallhaven.cc> <unsplash.com> <flickr.com> <googleartproject.com> <500px.com> <desktoppr.co> <visualhunt.com> and special day/holiday.
   * Add update multi customer background.
   * Add fovorite background.
+  * Add top sites.
   * Support omnibox shortcuts.
 
 - 2014-08-29, Version 1.0.3
