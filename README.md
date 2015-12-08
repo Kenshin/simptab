@@ -7,15 +7,19 @@ SimpTab - New Tab by Chrome Extensions
 
 #### Snapshot:
 ![snapshot1](http://i.imgur.com/V5D0H9F.png)
-![snapshot2](http://i.imgur.com/roFLvLx.png)
-![snapshot3](http://i.imgur.com/g5K9oJI.png)
-![snapshot3](http://i.imgur.com/QM7K1Ph.png)
+
+![snapshot2](http://i.imgur.com/05wwDBA.png)
+
+![snapshot3](http://i.imgur.com/nC0qJmT.png)
+
+![snapshot4](http://i.imgur.com/4CpxyxS.png)
+
+![snapshot5](http://i.imgur.com/d05cX9k.png)
 
 #### Feature:
-- Automatic recognition of languages ( Chinese simplified, Chinese traditional, English ).
-- Daily/randomly changing background from Bing.com.
-- Downloading (HD) background from Bing.com.
-- View the current background of meaning.
+- 简体中文 <https://github.com/Kenshin/simptab/blob/master/README.cn.md>
+- 繁體中文 <https://github.com/Kenshin/simptab/blob/master/README.tw.md>
+- English <https://github.com/Kenshin/simptab/blob/master/README.en.md>
 
 #### Shortcuts:
 Name | Description
@@ -44,6 +48,13 @@ Name | Description
 - Background image come from `Bing.com`.
 
 #### CHANGELOG：
+- 2015-12-11, Version 1.4.0
+  * Rework source.
+  * Add multi background origin: <bing.com> <wallhaven.cc> <unsplash.com> <flickr.com> <googleartproject.com> <500px.com> <desktoppr.co> <visualhunt.com> and special day/holiday.
+  * Add update multi customer background.
+  * Add fovorite background.
+  * Support omnibox shortcuts.
+
 - 2014-08-29, Version 1.0.3
   * Fix Download background's duplication of name error.
   * Fix when first running, info and download's title exist's error.
