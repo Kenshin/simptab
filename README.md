@@ -5,6 +5,9 @@ SimpTab - New Tab by Chrome Extensions
 #### Homepage:
 <http://ksria.com/simptab>
 
+#### Feature:
+* [简体中文](https://github.com/Kenshin/simptab/blob/master/README.cn.md) | [繁體中文](https://github.com/Kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/Kenshin/simptab/blob/master/README.en.md)
+
 #### Snapshot:
 ![snapshot1](http://i.imgur.com/V5D0H9F.png)
 
@@ -15,11 +18,6 @@ SimpTab - New Tab by Chrome Extensions
 ![snapshot4](http://i.imgur.com/4CpxyxS.png)
 
 ![snapshot5](http://i.imgur.com/d05cX9k.png)
-
-#### Feature:
-- 简体中文 <https://github.com/Kenshin/simptab/blob/master/README.cn.md>
-- 繁體中文 <https://github.com/Kenshin/simptab/blob/master/README.tw.md>
-- English <https://github.com/Kenshin/simptab/blob/master/README.en.md>
 
 #### Shortcuts && omnibox:
 Name | Description
