@@ -27,7 +27,7 @@ Name | Description
 `book` | Open Chrome's `Bookmark` tab.
 `his ` | Open Chrome's `History` tab.
 `app ` | Open Chrome's `Apps` tab.
-`info` | Open current background's infomation. ( Bing.com's knows )
+`info` | Open current background's infomation.
 `down` | Download current background.
 `fav`  | Favorite current background.
 `set ` | Open `SimpTab` `Setting` dashboard tab.
@@ -55,6 +55,8 @@ Name | Description
   * Add update multi customer background.
   * Add fovorite background.
   * Add top sites.
+  * Add Download new background progress.
+  * Add Favorite/Upload background notification.
   * Support omnibox shortcuts.
 
 - 2014-08-29, Version 1.0.3
