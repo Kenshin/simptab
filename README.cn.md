@@ -2,7 +2,7 @@
   ![feature](http://i.imgur.com/nbw5Ycg.png)
 - 每日/随机更换背景。（注意：每日更换的背景只来自Bing.com）  
   ![feature](http://i.imgur.com/JnwGMjw.png)
-- 可显示的背景源，包括：bing.com wallhaven.cc unsplash.com flickr.com googleartproject.com 500px.com desktoppr.co visualhunt.com  
+- 可显示的背景源，包括：<http://bing.com> <http://wallhaven.cc> <http://unsplash.com> <http://flickr.com> <http://googleartproject.com> <http://500px.com> <http://desktoppr.co> <http://visualhunt.com
   ![feature](http://i.imgur.com/G2TNahV.png)
 - 可显示特殊日子，如：二十四节气、节假日、某些特定节日（母亲节、儿童节、某些电影等）  
 - 自定义/上传背景。  
