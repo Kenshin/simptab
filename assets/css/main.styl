@@ -303,7 +303,7 @@ body
     margin-bottom 25px
     padding 0 147px
 
-    all-browser "flex-flow", row nowrap
+    all-browser "flex-flow", row wrap
 
     a
         adapter-display( flex )
@@ -530,6 +530,22 @@ body
         padding: 0
         zoom: 0.7
 
+@media (max-width: 1024px)
+    .middle
+        zoom 0.9
+
+@media (max-width: 945px)
+    .middle
+        zoom 0.8
+
+@media (max-width: 840px)
+    .middle
+        zoom 0.7
+
+@media (max-width: 735px)
+    .middle
+        zoom 0.6
+
 @media (max-width: 718px)
     .header
         all-browser "flex-flow", column nowrap
@@ -563,12 +579,24 @@ body
         zoom: 0.3
     .footer
         zoom: 0.6
+    .middle a div
+        width: 300px
+
+@media (max-width: 360px)
+    .middle a div
+        width: 280px
+
+@media (max-width: 375px)
+    .middle a div
+        width: 290px
 
 @media (max-width: 320px)
     .header .title
         zoom: 0.4
     .main
         zoom: 0.3
+    .middle a div
+        width: 250px
 
 @media (max-width: 979px)
     .footer ul li div
