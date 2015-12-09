@@ -1,4 +1,16 @@
-CHANGELOG:
+#### CHANGELOG:
+- 2015-12-11, Version 1.4.0
+  * Feature: [简体中文](https://github.com/Kenshin/simptab/blob/master/README.cn.md) | [繁體中文](https://github.com/Kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/Kenshin/simptab/blob/master/README.en.md)
+  * Rework source.
+  * Add multi background origin: [bing.com](http://bing.com) | [wallhaven.cc](http://wallhaven.cc) | [unsplash.com](http://unsplash.com) | [flickr.com](http://flickr.com) | [googleartproject.com](http://googleartproject.com) | [500px.com](http://500px.com) | [desktoppr.co](http://desktoppr.co) | [visualhunt.com](http://visualhunt.com) and special day/holiday.
+  * Add update multi customer background.
+  * Add fovorite background.
+  * Add top sites.
+  * Add Download new background progress.
+  * Add Favorite/Upload background notification.
+  * Support omnibox shortcuts.
+  * Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/Kenshin/simptab/issues/7)
+
 - 2014-08-29, Version 1.0.3
   * Fix Download background's duplication of name error.
   * Fix when first running, info and download's title exist's error.
