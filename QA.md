@@ -13,7 +13,7 @@
 > 这两种日期是内部进行更换，暂时不支持手动取消。
 
 **Q:** 目前都包含哪些背景源？
-> bing.com, wallhaven.cc, unsplash.com, flickr.com, googleartproject.com, 500px.com, desktoppr.co, visualhunt.com
+> [bing.com](http://bing.com) | [wallhaven.cc](http://wallhaven.cc) | [unsplash.com](http://unsplash.com) | [flickr.com](http://flickr.com) | [googleartproject.com](http://googleartproject.com) | [500px.com](http://500px.com) | [desktoppr.co](http://desktoppr.co) | [visualhunt.com](http://visualhunt.com)
 
 **Q:** 为什么有的背景源加载较慢？
 > 由于国内的网络环境比较复杂，所以，并不是每个背景源都能访问到，所以最好手动在浏览器里面确认上述背景源是否可以打开。  
