@@ -8,6 +8,9 @@ SimpTab - New Tab by Chrome Extensions
 #### Feature:
 * [简体中文](https://github.com/Kenshin/simptab/blob/master/README.cn.md) | [繁體中文](https://github.com/Kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/Kenshin/simptab/blob/master/README.en.md)
 
+#### QA:
+<https://github.com/Kenshin/simptab/blob/master/QA.md>
+
 #### Snapshot:
 ![snapshot1](http://i.imgur.com/V5D0H9F.png)
 
