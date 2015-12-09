@@ -1,6 +1,6 @@
 #### CHANGELOG:
 - 2015-12-11, Version 1.4.0
-  * Feature: [简体中文](https://github.com/Kenshin/simptab/blob/master/README.cn.md) | [繁體中文](https://github.com/Kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/Kenshin/simptab/blob/master/README.en.md)
+  * Feature: [Chinese Simplified](https://github.com/Kenshin/simptab/blob/master/README.cn.md) | [Traditional Chinese](https://github.com/Kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/Kenshin/simptab/blob/master/README.en.md)
   * Rework source.
   * Add multi background origin: [bing.com](http://bing.com) | [wallhaven.cc](http://wallhaven.cc) | [unsplash.com](http://unsplash.com) | [flickr.com](http://flickr.com) | [googleartproject.com](http://googleartproject.com) | [500px.com](http://500px.com) | [desktoppr.co](http://desktoppr.co) | [visualhunt.com](http://visualhunt.com) and special day/holiday.
   * Add update multi customer background.
