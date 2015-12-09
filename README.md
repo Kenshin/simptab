@@ -53,7 +53,7 @@ Name | Description
 #### CHANGELOG：
 - 2015-12-11, Version 1.4.0
   * Rework source.
-  * Add multi background origin: bing.com, wallhaven.cc, unsplash.com, flickr.com, googleartproject.com, 500px.com, desktoppr.co, visualhunt.com and special day/holiday.
+  * Add multi background origin: [bing.com](http://bing.com) | [wallhaven.cc](http://wallhaven.cc) | [unsplash.com](http://unsplash.com) | [flickr.com](http://flickr.com) | [googleartproject.com](http://googleartproject.com) | [500px.com](http://500px.com) | [desktoppr.co](http://desktoppr.co) | [visualhunt.com](http://visualhunt.com) and special day/holiday.
   * Add update multi customer background.
   * Add fovorite background.
   * Add top sites.
