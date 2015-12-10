@@ -44,10 +44,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             local = "cn.";
         }
 
-        // check setting is random, when not random must call bing.com current background, so random is 0
-        if ( !setting.IsRandom() ) {
-          random = 0;
-        }
+        // when arguments[0] is true, set random = 0
+        if ( arguments && arguments.length === 1 && arguments[0] ) random = 0;
 
         // set url
         url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
@@ -61,7 +59,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             url        : url,
             dataType   : "json",})
             .then( function ( result ) {
-                if ( result != undefined && !$.isEmptyObject( result )) {
+                if ( result && !$.isEmptyObject( result )) {
 
                   var data = result.images[0],
                       url  = data.url,
@@ -446,6 +444,34 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     /*
+    * Visual Hunt
+    */
+    function visualhunt() {
+
+        console.log( "=== visualhunt.com call ===");
+
+        var VISUALHUNT_NAME = "visualhunt.json",
+            VISUALHUNT_HOST = "http://visualhunt.com";
+
+        $.getJSON( SIMP_API_HOST + VISUALHUNT_NAME ).done(function( result ) {
+          if ( result != undefined && !$.isEmptyObject( result )) {
+            try {
+              var max    = result.length,
+                  random = createRandom( 0, max ),
+                  obj    = result[ random ];
+              deferred.resolve( vo.Create( obj.url, obj.url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", "visualhunt.com" ) );
+            }
+            catch( error ) {
+              deferred.reject( SimpError.Clone( new SimpError( "apis.visualhunt()", null , "Parse visualhunt.com error, url is " + obj.url ), error ));
+            }
+          }
+          else {
+            deferred.reject( new SimpError( "apis.visualhunt()", "Get Visualhunt.com json error.", result ));
+          }
+        }).fail( failed );
+    }
+
+    /*
     * Favorite background
     */
     function favorite() {
@@ -484,8 +510,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     * Holiday background
     */
     function isHoliday() {
-        var HOLIDAY_LIST_1 = [20150204, 20150219, 20150306, 20150321, 20150405, 20150420, 20150506, 20150521, 20150606, 20150622, 20150707, 20150723, 20150808, 20150820, 20150823, 20150908, 20150923, 20150927, 20151008, 20151021, 20151024, 20151108, 20151122, 20151207, 20151222, 20160106, 20160120, 20160201, 20160204, 20160207, 20160208, 20160222];
-        var HOLIDAY_LIST_2 = [20150501, 20150504, 20150510, 20150515, 20150519, 20150601, 20150621, 20150701, 20150707, 20150801, 20150910, 20151001, 20151030, 20151111, 20151126, 20151220, 20151224, 20151225];
+        var HOLIDAY_LIST_1 = [20151207, 20151222, 20160106, 20160120, 20160201, 20160204, 20160207, 20160208, 20160219, 20160222, 20160305, 20160320, 20160404, 20160419, 20160505, 20160520, 20160605, 20160621, 20160707, 20160722, 20160807, 20160823, 20160907, 20160922, 20161008, 20161023, 20161107, 20161122, 20161207, 20161221, 20170105, 20170120];
+        var HOLIDAY_LIST_2 = [20151224, 20151225];
         var arr         = HOLIDAY_LIST_1.concat( HOLIDAY_LIST_2 ),
             new_holiday = date.Today(),
             old_holiday = localStorage["simptab-holiday"];
@@ -531,6 +557,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                         max         = data.hdurl.length - 1;
                         random      = createRandom( 0, max );
                         hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
+
+                        !localStorage["simptab-special-day-count"] ? localStorage["simptab-special-day-count"] = 1 : localStorage["simptab-special-day-count"] += 1;
                     }
                     else {
                         key         = date.Today();
@@ -562,20 +590,26 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       Init: function () {
 
-        var MAX_NUM = 10,
-            code    = createRandom( 0, MAX_NUM );
+        var MAX_NUM = 11,
+            code    = createRandom( 0, MAX_NUM ),
+            today   = false;
 
-        // change background every day
-        if ( !setting.IsRandom() ) {
-            code = MAX_NUM;
+        // verify background every day
+        // verify today is new day
+        if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {
+            code  = MAX_NUM;
+            today = true;
         }
         // verify today is holiday
         else if ( isHoliday() ) {
-            code = 8;
+            code = 10;
         }
         // change background every time
         else {
-            while ( setting.Verify( code ) == "false" || localStorage[ "simptab-prv-code" ] == code || code == 8 ) {
+            while ( setting.Verify( code ) == "false" ||
+                    localStorage[ "simptab-prv-code" ] == code ||
+                    code == 10 ||
+                    ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
                 code = createRandom( 0, MAX_NUM );
             }
             localStorage[ "simptab-prv-code" ] = code;
@@ -584,7 +618,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 9;
+        // code = 7;
 
         switch ( code ) {
           case 0:
@@ -606,19 +640,22 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             f00px();
             break;
           case 6:
-            setTimeout( favorite, 2000 );
-            break;
-          case 7:
-            special();
-            break;
-          case 8:
-            holiday();
-            break;
-          case 9:
             desktoppr();
             break;
+          case 7:
+            visualhunt();
+            break;
+          case 8:
+            setTimeout( favorite, 2000 );
+            break;
+          case 9:
+            special();
+            break;
+          case 10:
+            holiday();
+            break;
           default:
-            bing();
+            bing( today );
             break;
         }
 

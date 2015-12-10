@@ -64,7 +64,7 @@ module.exports = function( grunt ) {
           baseUrl        : ".",
           mainConfigFile : "./js/main.js",
           name           : "main",
-          include        : [ "jquery", "mousetrap", "background", "date", "controlbar", "setting", "i18n" ],
+          include        : [ "jquery", "mousetrap", "progressbar", "background", "date", "controlbar", "setting", "i18n", "progress" ],
           out            : "./dest-extension/js/main.js",
           keepBuildDir   : true,
           optimize       : "uglify2",

@@ -32,12 +32,18 @@ define([ "jquery" ], function( $ ) {
 
         Today: function () {
             var date = new Date();
-            return date.getFullYear() + format( date.getUTCMonth() + 1 ) + format( date.getUTCDate());
+            return date.getFullYear() + "" + format( date.getUTCMonth() + 1 ) + "" + format( date.getUTCDate());
         },
 
         Now: function () {
             var date = new Date();
-            return date.getFullYear() + format( date.getUTCMonth() + 1 ) + format( date.getUTCDate()) + format( date.getHours()) + format( date.getMinutes()) + format( date.getSeconds());
+            return date.getFullYear() + "" + format( date.getUTCMonth() + 1 ) + "" + format( date.getUTCDate()) + "" + format( date.getHours()) + "" + format( date.getMinutes()) + "" + format( date.getSeconds());
+        },
+
+        IsNewDay: function( newday, isupdate ) {
+            var today = localStorage["simptab-today"];
+            if( isupdate ) localStorage["simptab-today"] = newday;
+            return today && today === newday ? false : true;
         }
     };
 });
