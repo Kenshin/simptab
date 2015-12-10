@@ -1,7 +1,9 @@
 
 define([ "jquery", "date" ], function( $, date ) {
 
-    initLR = function () {
+    "use strict";
+
+    function initLR() {
         $( ".lineradio" ).each( function( index, item ) {
             if ( $( item ).hasClass("lrselected") ) {
                 $( item ).prepend( '<span class="checked"></span>' );
@@ -13,12 +15,12 @@ define([ "jquery", "date" ], function( $, date ) {
         });
     }
 
-    updateLR = function( $target ) {
+    function updateLR( $target ) {
         updateLrIcon( $target );
         updateLrState( $target );
     }
 
-    updateLrIcon = function( $target ) {
+    function updateLrIcon( $target ) {
         var $current = $target.parent(),
             $prev    = $current.prev(),
             $next    = $current.next();
@@ -35,7 +37,7 @@ define([ "jquery", "date" ], function( $, date ) {
         $current.find( "input" ).attr( "checked", true    );
     }
 
-    updateLrState = function( $target ) {
+    function updateLrState( $target ) {
         var $current = $target.parent(),
             $prev    = $current.prev(),
             $next    = $current.next();
@@ -47,6 +49,43 @@ define([ "jquery", "date" ], function( $, date ) {
             $next.attr( "class", "lineradio" );
         }
         $current.attr( "class", "lineradio lrselected" );
+    }
+
+    function updateOriginState( $target, type ) {
+        var $prev   = $($target.prev()),
+            $parent = $($target.parent()),
+            value   = $target.attr("value"),
+            checked = "checked",
+            inputel = "true",
+            divel   = "lineradio lrselected";
+
+        if ( type == "init" ) {
+            value = value == "true" ? "false" : "true";
+        }
+
+        if ( value == "true" ) {
+            checked = "unchecked";
+            inputel = "false";
+            divel   = "lineradio";
+        }
+
+        $target.attr( "value", inputel  );
+        $prev.attr(   "class", checked  );
+        $parent.attr( "class", divel    );
+    }
+
+    function updateLocalStorge( $target ) {
+        var index = $target.attr("name"),
+            value = $target.attr("value"),
+            arr   = localStorage["simptab-background-origin"] && JSON.parse( localStorage["simptab-background-origin"] ),
+            item  = arr[index];
+
+        // update arr[index] to new value
+        arr.splice( index, 1, index + ":" + value );
+
+        // update local storge
+        localStorage["simptab-background-origin"] = JSON.stringify( arr );
+
     }
 
     return {
@@ -68,6 +107,19 @@ define([ "jquery", "date" ], function( $, date ) {
             if ( mode != undefined ) {
                 updateLR( checked );
             }
+
+            // update originstate lineradio
+            mode      = JSON.parse( localStorage["simptab-background-origin"] || "[]" );
+            $(".originstate").find("input").each( function( idx, item ) {
+                $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
+                updateOriginState( $(item), "init" );
+            });
+
+            // set simptab-background-origin defalut value
+            if ( mode.length == 0 ) {
+               localStorage["simptab-background-origin"] = JSON.stringify(["0:false","1:false","2:false","3:false","4:false","5:false","6:false","7:false"]);
+            }
+
         },
 
         Listen: function () {
@@ -89,6 +141,12 @@ define([ "jquery", "date" ], function( $, date ) {
                     date.Hide();
                 }
             });
+
+            $( ".originstate input" ).click( function( event ) {
+                updateOriginState( $( event.currentTarget ), "update" );
+                updateLocalStorge( $( event.currentTarget ));
+            });
+
         },
 
         Get: function ( state ) {
@@ -100,6 +158,26 @@ define([ "jquery", "date" ], function( $, date ) {
                 return $( ".clockstate input[value=show]" ).attr( "checked" );
             }
 
+        },
+
+        IsRandom: function() {
+          var mode = localStorage["simptab-background-mode"];
+          // when undefined same as time
+          if ( mode == undefined || mode == "time" ) {
+            return true;
+          }
+          else {
+            return false;
+          }
+        },
+
+        Verify: function( idx ) {
+            var arr   = JSON.parse( localStorage["simptab-background-origin"] || "[]" ),
+                value = arr && arr.length && arr[idx],
+                value = value || idx + ":" + "true";
+
+            return value.split(":")[1];
         }
-    }
+
+    };
 });

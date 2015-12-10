@@ -1,322 +1,204 @@
 
-define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
+define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error", "notify", "progress" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError, Notify, progress ) {
 
-    defaultBackground = "../assets/images/background.jpg";
+    "use strict";
 
-    createRandom = function() {
-        var random = Math.floor( Math.random() * 20 );
-        if ( random > 19 ) {
-            random = 19 - random;
-        }
-        if ( localStorage["simptab-background-random"] == random ) {
-            createRandom();
-        }
-        return random;
-    }
+    function getCurrentBackground( is_random ) {
 
-    getBackgroundByAPI = function ( random ) {
+        var def = $.Deferred();
 
-        var local = "",
-            url   = "";
+        // set background refresh
+        localStorage["simptab-background-refresh"] = "false";
 
-        // set local
-        if ( i18n.GetLocale() == "zh_CN" ) {
-            local = "cn.";
-        }
+        // get simptab-background
+        vo.Get( function( result ) {
+            if ( result && !$.isEmptyObject( result )) {
 
-        // set url
-        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
+                // save current background object
+                vo.cur = result["simptab-background"];
+                console.log( "Current background data structure is ", vo.cur );
 
-        console.log("url = " + url );
-
-        $.ajax({
-            type       : "GET",
-            timeout    : 2000,
-            url        : url,
-            dataType   : "json",
-            error      : function(  jqXHR, textStatus, errorThrown ) {
-                console.log(jqXHR)
-                console.log(textStatus)
-                console.log(errorThrown)
-                if ( $("body").css( "background-image" ) == "none" ) {
-                    setDefaultBackground();
-                }
-            },
-            success    : function( result ) {
-                if ( result && !$.isEmptyObject( result ) && !$.isEmptyObject( result.images[0] )) {
-                    var data = result.images[0],
-                        url  = data.url,
-                        hdurl= getHDurl( getTrueUrl( url )),
-                        name = data.copyright,
-                        info = getInfo( data.copyrightlink ),
-                        enddate   = data.enddate;
-
-                    if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
-                        // set background image
-                        setBackground( hdurl );
-                        // set download url
-                        setDownloadURL( hdurl, name, getShortName( info ));
-                        // set info url
-                        setInfoURL( info, name );
-                    }
-
-                    // transfor to datauri
-                    image2URI( hdurl );
-
-                    // set chrome local storage
-                    // no use cache mode
-                    //chrome.storage.local.set({ "simptab-background" : { "background" : dataURI, "url" : url, "date" : enddate, "name" : name } });
-                    // use local mode
-                    chrome.storage.local.set({ "simptab-background" : { "url" : hdurl, "date" : enddate, "name" : name, "info" : info } });
-
-                }
-            }
-        });
-    }
-
-    getTrueUrl = function ( url ) {
-        if ( url.indexOf( "/" ) == 0 ) {
-            return "http://www.bing.com" + url;
-        }
-        return url;
-    }
-
-    getHDurl = function ( url ) {
-        return url.replace( "1366x768", "1920x1080" );
-    }
-
-    getInfo = function ( url ) {
-        var reg = /http:\/\/[A-Za-z0-9\.-]{3,}\.[A-Za-z]{3}/;
-        if( !reg.test( url )) {
-            return "#";
-        }
-
-        return url.replace( "&mkt=zh-cn", "" ).replace( "&form=hpcapt", "" ).replace( "www.bing.com", "www.bing.com/knows" );
-    }
-
-    getShortName = function( shortname ) {
-
-        shortname = shortname.replace( "www.bing.com/knows", "" )
-                             .replace( "http://", "" )
-                             .replace( "https://", "" )
-                             .replace( "/search?q=", "" );
-        shortname = shortname.split( "+" )[0];
-        shortname = shortname.split( "&" )[0];
-
-        return decodeURIComponent( shortname );
-    }
-
-    image2URI = function ( url, enddate, name ) {
-        var img = new Image();
-        img.onload = function() {
-
-            // set canvas
-            var canvas = document.createElement( "canvas" );
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext( "2d" );
-            ctx.drawImage( img, 0, 0 );
-
-            // get datauri
-            var dataURI = canvas.toDataURL();
-
-            // save image to local
-            saveImg2Local( dataURI );
-
-        }
-        img.src = url;
-    }
-
-    setDefaultBackground = function() {
-        // set background image
-        setBackground( defaultBackground );
-        // set download url
-        setDownloadURL( defaultBackground, null, "Wallpaper" );
-        // set info url
-        setInfoURL( "#", null );
-    }
-
-    setDownloadURL = function( url, name, shortname ) {
-        if ( isDefaultbackground() ) {
-            url  = defaultBackground;
-            name = null;
-            shortname = "Wallpaper";
-        }
-        $( ".controlink[url='download']" ).attr({
-            "title"    : name,
-            "href"     : url,
-            "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
-        });
-        if ( url == null ) {
-            $( ".controlink[url='download']" ).removAttr( "title" );
-        }
-    }
-
-    setInfoURL = function( url, name ) {
-        if ( isDefaultbackground() ) {
-            url  = "#";
-            name = null;
-        }
-        if ( i18n.GetLocale() != "zh_CN" ) {
-            url = url.replace( "/knows/", "/" );
-        }
-        $( ".controlink[url='info']" ).attr({
-            "title"    : name,
-            "href"     : url
-        });
-        if ( url == null ) {
-            $( ".controlink[url='info']" ).removAttr( "title" );
-        }
-    }
-
-    setBackground = function( url ) {
-        if ( isDefaultbackground() ) {
-            url = defaultBackground;
-        }
-        $("body").css({ "background-image": "url(" + url + ")" });
-    }
-
-    isDefaultbackground = function() {
-        console.log("simptab-background-state = " + localStorage["simptab-background-state"]);
-        return localStorage["simptab-background-state"] != undefined && localStorage["simptab-background-state"] != "success"
-    }
-
-    saveImg2Local = function ( dataURI ) {
-        window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem( window.TEMPORARY , 52428800, function( fs ) {
-
-            fs.root.getFile( "background.jpg", { create:true }, function( fileEntry ) {
-                fileEntry.createWriter(function(fileWriter) {
-
-                    console.log("fileEntry.toURL() = " + fileEntry.toURL())
-
-                    fileWriter.onwritestart  = function(e) {
-                        console.log( "Write start: ", e );
-                        localStorage["simptab-background-state"] = "staring";
-                    };
-
-                    fileWriter.onprogress  = function(e) {
-                        console.log( "Write process: ", e );
-                        localStorage["simptab-background-state"] = "pending";
-                    };
-
-                    fileWriter.onwriteend = function(e) {
-                        console.log( "Write completed: ", e );
-                        localStorage["simptab-background-state"] = "success";
-                    };
-
-                    fileWriter.onabort  = function(e) {
-                        console.log( "Write abort: ", e );
-                        localStorage["simptab-background-state"] = "failed";
-                    };
-
-                    fileWriter.onerror = function(e) {
-                        console.log( "Write failed: ", e );
-                        localStorage["simptab-background-state"] = "failed";
-                    };
-
-                    fileWriter.write( dataURItoBlob( dataURI ));
-
-                }, errorHandler );
-            }, errorHandler );
-
-        }, errorHandler );
-    }
-
-    errorHandler = function (e) {
-        console.log(e)
-        localStorage["simptab-background-state"] = "failed";
-    }
-
-    dataURItoBlob = function ( dataURI ) {
-        // convert base64 to raw binary data held in a string
-        var byteString = atob( dataURI.split(',')[1] );
-
-        // separate out the mime component
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-
-        // write the bytes of the string to an ArrayBuffer
-        var ab = new ArrayBuffer( byteString.length );
-        var ia = new Uint8Array( ab );
-        for ( var i = 0; i < byteString.length; i++ ) {
-            ia[i] = byteString.charCodeAt(i);
-        }
-
-        var blob = new Blob( [ia], { type: "image/jpg" });
-        return blob;
-    };
-
-    return {
-        Get: function ( is_random ) {
-
-            var random = 0,
-                url    = defaultBackground;
-
-            // set background refresh
-            localStorage["simptab-background-refresh"] = "false";
-
-            // get simptab-background
-            chrome.storage.local.get( "simptab-background", function( result ) {
-                if ( result && !$.isEmptyObject( result )) {
-                    // reset-background
-                    var today  = date.Today(),
-                        data   = result["simptab-background"];
-
-                    // no use cache
-                    //url    = data.background;
-
-                    // random = true
-                    if ( is_random ) {
-                        // set random
-                        if ( localStorage["simptab-background-random"] != undefined ) {
-                            random = createRandom();
-                        }
-                        console.log("random = " + random )
-                        // save random
-                        localStorage["simptab-background-random"] = random;
-
-                        // set background image
-                        setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
-                        // set download url
-                        setDownloadURL( data.url, data.name, getShortName( data.info ));
-                        // set info url
-                        setInfoURL( data.info, data.name );
-
-                        // get background
-                        getBackgroundByAPI( random );
-                    }
-                    // random = false
-                    else {
-
-                        console.log("today = " + today)
-                        console.log("data  = " + data.date)
-
-                        if ( today != data.date ) {
-                            // set background refresh
-                            localStorage["simptab-background-refresh"] = "true";
-                            // get background
-                            getBackgroundByAPI( random );
-                        }
-                        else {
-                            // set background image
-                            setBackground( "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg" );
-                            // set download url
-                            setDownloadURL( data.url, data.name, getShortName( data.info ));
-                            // set info url
-                            setInfoURL( data.info, data.name );
-                        }
-                    }
-
+                // check old data structure
+                if ( !vo.Verify() ) {
+                    console.error( "Current data structure error.", result );
+                    //// set default background and call api. type 1
+                    def.resolve(1);
                 }
                 else {
-                    // save random
-                    localStorage["simptab-background-random"] = random;
-                    // set default background
-                    setDefaultBackground();
-                    // get background
-                    getBackgroundByAPI( random );
+                    if ( date.IsNewDay( date.Today() ) || ( !is_random && date.Today() != vo.cur.enddate ) ) {
+                        //// set call special count, max count is '11111', length is 5
+                        localStorage["simptab-special-day-count"] = 1;
+                        //// set background refresh
+                        localStorage["simptab-background-refresh"] = "true";
+                        //// only call api. type 3
+                        def.resolve(3);
+                    }
+                    else if ( is_random ) {
+                        //// set current background and call api. type 2
+                        def.resolve(2);
+                    }
+                    else {
+                        //// set current background and not-call api. type 4
+                        def.resolve(4);
+                    }
                 }
+            }
+            else {
+                //// set default background and call api. type 1
+                def.resolve(1);
+            }
+        });
+
+        return def.promise();
+    }
+
+    function setCurrentBackground( state ) {
+        var def = $.Deferred();
+
+        console.log( "Current state is " + state );
+
+        switch ( state ) {
+            case 1:
+                controlbar.Set( true );
+                //call api
+                break;
+            case 2:
+                controlbar.Set( false );
+                //call api
+                break;
+            case 3:
+                //call api
+                break;
+            case 4:
+                controlbar.Set( false );
+                break;
+        }
+
+        def.resolve( state != 4 ? true : false );
+
+        return def.promise();
+    }
+
+    function getRemoteBackground( is_remote ) {
+        var def = $.Deferred();
+
+        if ( is_remote ) {
+
+            progress.Set( "remote" );
+
+            apis.Init()
+                .fail( failBackground )
+                .done( function( result ) {
+                    def.resolve( true, result.hdurl );
+                });
+        }
+        else {
+            def.resolve( false, null );
+        }
+
+        return def.promise();
+    }
+
+    function setRemoteBackground( is_save, url ) {
+        var def = $.Deferred();
+
+        if ( is_save ) {
+
+            // change background-state
+            progress.Set( "loading" );
+
+            files.GetDataURI( url ).then( function( result ) {
+                files.Add( vo.constructor.BACKGROUND, result )
+                    .progress( function( result ) {
+                        if ( result != undefined && !$.isEmptyObject( result )) {
+                            switch ( result.type ) {
+                                case "writestart":
+                                    console.log( "Write start: ", result );
+                                    progress.Set( "writestart" );
+                                    break;
+                                case "progress":
+                                    console.log( "Write progress: ", result, ( result.loaded / result.total ) * 10 );
+                                    progress.Set( "pending", ( result.loaded / result.total ) * 10 );
+                                    break;
+                            }
+                        }
+                    })
+                    .done( function( result ) {
+                        console.log( "Write completed: ", result );
+                        progress.Set( "success" );
+                        def.resolve( is_save );
+                    })
+                    .fail( function( result ) {
+                        console.log( "Write error: ", result );
+                        progress.Set( "writefailed" );
+                        def.reject( new SimpError( "background.setRemoteBackground()::files.Add()", "Favorite write to local error.", result ));
+                    });
+            }, function( error ) {
+                def.reject( new SimpError( "background.setRemoteBackground()::files.GetDataURI()", "Load background error.", error ));
             });
+        }
+        else {
+            def.resolve( is_save );
+        }
+
+        return def.promise();
+    }
+
+    function successBackground( is_save ) {
+
+        console.log( "===== New background get success. =====" );
+
+        if ( is_save ) {
+            // when 'change bing.com background everyday', re-set controlbar.Set
+            if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+
+                // when local storage 'simptab-background-refresh' == "true", re-set 'simptab-background-state' is 'ready'
+                progress.Set( "ready" );
+
+                // seach current bing.com background is favorite?
+                vo.new.favorite = files.FindFavBing( files.FavBingVO(), vo.new.enddate );
+
+                // update vo.cur
+                vo.cur = vo.Clone( vo.new );
+                controlbar.Set( false );
+            }
+
+            // sync vo
+            vo.Set( vo.new );
+            console.log( "======= New Background Obj is ", vo );
+        }
+    }
+
+    function failBackground( error ) {
+
+        // re-set (hide) progress bar
+        progress.Set( "remotefailed" );
+
+        try {
+            throw error;
+        }
+        catch( error ) {
+            console.group( "===== SimpTab failed. ====="             );
+            console.error( "error             = ", error             );
+            console.error( "error.stack       = ", error.stack       );
+            console.error( "error.name        = ", error.name        );
+            console.error( "error.method_name = ", error.method_name );
+            console.error( "error.message     = ", error.message     );
+            console.error( "error.data        = ", error.data        );
+            console.groupEnd();
+        }
+    }
+
+    return {
+        Get: function( is_random ) {
+
+            progress.Set( "ready" );
+
+            getCurrentBackground( is_random )
+                .then( setCurrentBackground )
+                .then( getRemoteBackground  )
+                .then( setRemoteBackground, failBackground )
+                .then( successBackground,   failBackground );
         },
 
         SetLang: function( lang ) {
@@ -333,9 +215,129 @@ define([ "jquery", "date", "i18n" ], function( $, date, i18n ) {
         Valid: function() {
             setTimeout( function() {
                 if ( $("body").css( "background-image" ) == "none" ) {
-                    setDefaultBackground();
+                    controlbar.Set( true );
                 }
             }, 8 * 1000 );
+        },
+
+        Favorite: function( is_favorite ) {
+
+            console.log("is_favorite = ", is_favorite);
+
+            if ( is_favorite ) {
+
+                var file_name = date.Now();
+                files.Add( file_name, files.DataURI() )
+                    .done( function() {
+
+                        // update favorite
+                        vo.cur.favorite = file_name;
+                        // when vo.type is 'upload', need update hdurl and url
+                        if ( vo.cur.type == "upload" ) {
+                            var new_url  = vo.cur.hdurl;
+                            new_url      = new_url.substring( new_url.lastIndexOf("/") + 1, new_url.lastIndexOf(".jpg") );
+                            vo.cur.hdurl = vo.cur.hdurl.replace( new_url, file_name );
+                            vo.cur.url   = vo.cur.hdurl;
+                        }
+
+                        // when simptab-background-state != success, need refresh vo
+                        if ( localStorage[ "simptab-background-state" ] != "success" ) {
+                            vo.Set( vo.cur );
+                        }
+
+                        // update local storge 'simptab-favorites'
+                        files.AddFavorite( files.FavoriteVO(), file_name, vo.cur );
+
+                        // update local storge 'simptab-bing-fav'
+                        if ( vo.cur.type == "bing.com" ) files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
+
+                        // set favorite icon state
+                        controlbar.SetFavorteIcon();
+
+                        new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
+
+                        console.log( "Add favorite background success." );
+                    })
+                    .fail( function( error ) {
+                        console.error( "Add favorite background error.", error );
+                    });
+            }
+            else {
+                files.Delete( vo.cur.favorite,
+                    function( file_name ) {
+
+                        console.log( "Delete favorite is ", file_name );
+
+                        try {
+                            // update local storge 'simptab-favorites'
+                            files.DeleteFavorite( files.FavoriteVO(), file_name );
+
+                            // update local storge 'simptab-bing-fav'
+                            if ( vo.cur.type == "bing.com" ) files.DeleteFavBing( files.FavBingVO(), vo.cur.favorite );
+
+                            // update vo.cur
+                            vo.cur.favorite = -1;
+
+                            // when simptab-background-state != success, need refresh vo
+                            if ( localStorage[ "simptab-background-state" ] != "success" ) {
+                                vo.Set( vo.cur );
+                            }
+
+                            // update favorite icon
+                            controlbar.SetFavorteIcon();
+
+                            new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
+
+                            console.log( "Delete favorite background success." );
+                        }
+                        catch ( error ) {
+                            console.log( "Delete favorite background error.", error );
+                        }
+                    },
+                    function( error ) {
+                        console.error( "Delete favorite background error.", error );
+                    }
+                );
+            }
+
+        },
+
+        Upload: function( result ) {
+            var filelist = files.VerifyUploadFile( result ),
+                arr      = [],
+                adapter  = function( i, name ) {
+                    files.GetDataURI( filelist[i], arr, i, len ).done( function( datauri ) {
+
+                        var file_name = Math.round(+new Date()),
+                            upload_vo = {new:{}};
+
+                        files.Add( file_name, datauri )
+                        .done( function( result, hdurl ) {
+
+                            // create upload vo
+                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", file_name ]);
+
+                            // update local storge 'simptab-favorites'
+                            files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
+
+                            console.log("Upload favorite background success.", upload_vo.new );
+                        })
+                        .fail( function( error ) {
+                            new Notify().Render( i18n.GetLang( "notify_upload_fail" ) );
+                            console.error( "Upload favorite background error.", error );
+                        })
+                        .always( function() {
+                            if ( i === filelist.length - 1 ) {
+                                new Notify().Render( i18n.GetLang( "notify_upload_complete" ) );
+                            }
+                        });
+                    }).fail( function( error ) {
+                        console.error("Upload favorite background error.", error );
+                    });
+            };
+            for( var i = 0, len = filelist.length; i < len; i++ ) {
+                adapter.bind( null, i, filelist[i].name )();
+            }
         }
-    }
+    };
 });

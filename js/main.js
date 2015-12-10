@@ -5,56 +5,72 @@ requirejs.config({
       "main"       : "js/main",
       "jquery"     : "vender/jquery-2.1.1.min",
       "mousetrap"  : "vender/mousetrap.min",
+      "progressbar": "vender/progressbar.min",
       "background" : "js/background",
+      "apis"       : "js/apis",
+      "vo"         : "js/vo",
       "date"       : "js/date",
       "controlbar" : "js/controlbar",
       "setting"    : "js/setting",
       "i18n"       : "js/i18n",
-      "shortcuts"  : "js/shortcuts"
+      "shortcuts"  : "js/shortcuts",
+      "files"      : "js/files",
+      "error"      : "js/error",
+      "topsites"   : "js/topsites",
+      "notify"     : "js/notify",
+      "version"    : "js/version",
+      "progress"   : "js/progress"
     },
     shim: {
       "mousetrap"   : {
           exports  : "Mousetrap"
+      },
+       "progressbar"   : {
+          exports  : "ProgressBar"
       }
     }
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts" ], function ( $, background, date, controlbar, setting, i18n, shortcuts ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress ) {
 
-  // set background font
-  background.SetLang( i18n.GetLocale() );
+    progress.Init();
 
-  // set language
-  i18n.Init();
+    // file system init
+    files.Init( function( error ) {
+        console.error( "File system error ", error );
+    });
 
-  // init radio input
-  setting.Init();
+    // set background font
+    background.SetLang( i18n.GetLocale() );
 
-  // set is_random
-  var is_random = true;
-  if ( setting.Get( "changestate" ) != undefined ) {
-    is_random = false;
-  }
+    // set language
+    i18n.Init();
 
-  // get background image
-  background.Get( is_random );
+    // init radio input
+    setting.Init();
 
-  // get time
-  if ( setting.Get( "clockstate" ) != undefined ) {
-    date.Show();
-  }
-  else {
-    date.Hide();
-  }
+    // get background image
+    background.Get( setting.IsRandom() );
 
-  // listen
-  controlbar.Listen();
-  setting.Listen();
+    // get time
+    setting.Get( "clockstate" ) != undefined ? date.Show() : date.Hide();
 
-  // validation background
-  background.Valid();
+    // listen
+    controlbar.Listen( function( result ) {
+        if ( typeof result === "boolean" )     background.Favorite( result );
+        else if ( typeof result === "object" ) background.Upload( result );
+    });
+    setting.Listen();
 
-  shortcuts.Init();
+    // validation background
+    background.Valid();
+
+    topsites.Init();
+
+    // short cuts init
+    shortcuts.Init();
+
+    version.Init();
 
 });
