@@ -22,7 +22,10 @@ SimpTab - New Tab by Chrome Extensions
 
 ![snapshot5](http://i.imgur.com/d05cX9k.png)
 
-#### Shortcuts && omnibox:
+#### Omnibox keyword:
+`st`
+
+#### Shortcuts && Omnibox:
 Name | Description
 ------ | ------
 `book` | Open Chrome's `Bookmark` tab.
