@@ -29,12 +29,12 @@
         "http://*.visualhunt.com/",
         "https://*.500px.org/"
     ],
-    "omnibox": { "keyword" : "s" },
+    "omnibox": { "keyword" : "st" },
     "commands": {
       "download": { "suggested_key": { "default": "Alt+Shift+1" }, "description": "__MSG_controlbar_download__" },
       "favorite": { "suggested_key": { "default": "Alt+Shift+2" }, "description": "__MSG_controlbar_favorite__" },
       "info"    : { "suggested_key": { "default": "Alt+Shift+3" }, "description": "__MSG_controlbar_info__"     },
       "upload"  : { "suggested_key": { "default": "Alt+Shift+4" }, "description": "__MSG_controlbar_upload__"   }
     },
-    "update_url": "https://clients2.google.com/service/update2/crx"
+    "update_url": "http://ksria.com/simptab/updates.xml"
 }
