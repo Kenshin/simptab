@@ -562,7 +562,14 @@ body {
     width: 100px;
     height:100px;
 
-    margin: 20px;
+    padding: 20px;
+}
+
+.senior-group a:hover {
+    background-color: #fff;
+    -webkit-transition: background-color .5s ease;
+
+    border-radius: 10px;
 }
 
 .senior-group span {
