@@ -1,6 +1,10 @@
 
 define([ "jquery" ], function( $ ) {
 
+    /* simple topsite example
+    <li><a href="#"><span>Site 001</span></a></li>
+    */
+
     var tp,
         topsites = [],
         MAX      = 10,
