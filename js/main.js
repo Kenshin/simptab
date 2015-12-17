@@ -17,7 +17,6 @@ requirejs.config({
       "files"      : "js/files",
       "error"      : "js/error",
       "topsites"   : "js/topsites",
-      "seniorts"   : "js/seniorts",
       "notify"     : "js/notify",
       "version"    : "js/version",
       "progress"   : "js/progress"
@@ -33,7 +32,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "seniorts", "version", "progress" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files, topsites, seniorts, version, progress ) {
+requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress ) {
 
     progress.Init();
 
@@ -68,7 +67,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
     background.Valid();
 
     topsites.Init();
-    seniorts.Init();
+    //seniorts.Init();
 
     // short cuts init
     shortcuts.Init();
