@@ -22,6 +22,7 @@ define([ "jquery" ], function( $ ) {
         topsites = [],
         MAX      = 9,
         TYPE     = "simple",
+        $bottom = $( ".bottom" ),
         topSitesRender = function ( sites ) {
             console.log( "Topsites", sites );
             if ( sites && !$.isEmptyObject( sites ) ) {
@@ -36,9 +37,6 @@ define([ "jquery" ], function( $ ) {
                     // crete topsites render, include: simple and senior
                     tp.Render( site );
                 }
-
-                // generate topsites html
-                tp.Generate();
             }
             else {
                 $( ".topsites" ).hide();
@@ -53,12 +51,38 @@ define([ "jquery" ], function( $ ) {
         arr    = tld.split(".");
         tld    = arr.length > 1 ? arr[ arr.length - 2 ] : tld;
         return tld && tld.length > 0 ? tld[0] : "empty";
+    },
+    mouseOverHandler = function() {
+
+        var data    = $bottom.data( "type" );
+
+        console.log("adfafdasdfffffffffffffff", tp.type, data )
+
+        // simple
+        if ( tp.type == TYPE && tp.type != data ) {
+            $bottom.html( '<ul class="topsites">' + tp.simple.html + '</ul>' );
+        }
+        // senior
+        else if ( tp.type != TYPE && tp.type != data ) {
+            tp.senior.On();
+            $bottom.html( '<div class="senior-mask"><div class="senior-group">' + tp.senior.html + '</div></div>' );
+        }
+
+        // re-set data
+        if ( tp.type != data ) $bottom.data( "type", tp.type );
+    },
+    mouseLeaveHandler = function() {
+        tp.senior.Off();
+        $(this).parent().fadeOut( 1000, function () {
+            $(this).css( "z-index", -1 );
+            $(this).parent().data( "type", TYPE );
+        });
     };
 
     function Topsites() {}
 
     // type include: 'simple' and 'senior'
-    Topsites.prototype.type = "simple";
+    Topsites.prototype.type = localStorage["simptab-topsites"] && localStorage["simptab-topsites"] == TYPE ? localStorage["simptab-topsites"] : "senior";
 
     Topsites.prototype.simple        = {};
     Topsites.prototype.simple.$item  = $( '<li><a href="#"><span>Site 001</span></a></li>' );
@@ -71,6 +95,12 @@ define([ "jquery" ], function( $ ) {
     Topsites.prototype.senior.$div   = $( Topsites.prototype.senior.$item.find( "div"  ));
     Topsites.prototype.senior.$span  = $( Topsites.prototype.senior.$item.find( "span" ));
     Topsites.prototype.senior.html   = "";
+    Topsites.prototype.senior.On     = function() {
+        $bottom.delegate( ".senior-group", "mouseleave", mouseLeaveHandler );
+    };
+    Topsites.prototype.senior.Off    = function() {
+        $bottom.undelegate( ".senior-group", "mouseleave", mouseLeaveHandler );
+    };
 
     Topsites.prototype.SimpleRender = function( site ) {
         this.simple.$a.attr( "href", site.url );
@@ -90,21 +120,16 @@ define([ "jquery" ], function( $ ) {
         this.SeniorRender( site );
     };
 
-    Topsites.prototype.Generate = function() {
-        if ( this.type == TYPE ) {
-            $( ".bottom" ).removeClass( "senior-mask" );
-            $( ".bottom" ).html( '<ul class="topsites">' + this.simple.html + '</ul>' );
-        }
-        else {
-            $( ".bottom" ).addClass( "senior-mask" );
-            $( ".senior-mask").html( '<div class="senior-group">' + this.senior.html + '</div>' );
-        }
-    }
-
     return {
         Init: function() {
             tp = new Topsites();
+
+            // add test code
+            window.tp = tp;
+
             chrome.topSites.get( topSitesRender );
+
+            $bottom.mouseover( mouseOverHandler );
         },
         sites: function() {
             return topsites;
