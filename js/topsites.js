@@ -3,7 +3,26 @@ define([ "jquery" ], function( $ ) {
 
     var tp,
         topsites = [],
-        MAX      = 10;
+        MAX      = 10,
+        topSitesRender = function ( sites ) {
+            console.log( "Topsites", sites );
+            if ( sites && !$.isEmptyObject( sites ) ) {
+                var len   = sites && sites.length > MAX ? MAX : sites.length,
+                    item  = "", site;
+                for( var i = 0; i < len; i++ ) {
+
+                    site = sites[i];
+                    topsites.push( site );
+                    tp.SimpleRender( site );
+                    item += tp.simple.html;
+
+                }
+                $( ".topsites" ).html( item );
+            }
+            else {
+                $( ".topsites" ).hide();
+            }
+    };
 
     function Topsites() {}
 
@@ -21,26 +40,6 @@ define([ "jquery" ], function( $ ) {
         this.simple.$a.attr( "href", site.url );
         this.simple.$span.text( site.title );
         this.simple.html = this.simple.$item[0].outerHTML;
-    }
-
-    function topSitesRender( sites ) {
-        console.log( "Topsites", sites );
-        if ( sites && !$.isEmptyObject( sites ) ) {
-            var len   = sites && sites.length > MAX ? MAX : sites.length,
-                item  = "", site;
-            for( var i = 0; i < len; i++ ) {
-
-                site = sites[i];
-                topsites.push( site );
-                tp.SimpleRender( site );
-                item += tp.simple.html;
-
-            }
-            $( ".topsites" ).html( item );
-        }
-        else {
-            $( ".topsites" ).hide();
-        }
     }
 
     return {
