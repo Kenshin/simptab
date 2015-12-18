@@ -84,8 +84,8 @@ define([ "jquery" ], function( $ ) {
 
     function Topsites() {}
 
-    // type include: 'normal', 'simple' and 'senior'
-    Topsites.prototype.type = !localStorage["simptab-topsites"] ? "normal": localStorage["simptab-topsites"];
+    // type include: 'normal', 'simple'(default) and 'senior'
+    Topsites.prototype.type = !localStorage["simptab-topsites"] ? "simple": localStorage["simptab-topsites"];
 
     Topsites.prototype.simple        = {};
     Topsites.prototype.simple.$item  = $( '<li><a href="#"><span>Site 001</span></a></li>' );

@@ -134,7 +134,7 @@ define([ "jquery", "date" ], function( $, date ) {
             }
 
             // update topsites lineradio
-            mode      = !localStorage["simptab-topsites"] ? "normal" : localStorage["simptab-topsites"];
+            mode      = !localStorage["simptab-topsites"] ? "simple" : localStorage["simptab-topsites"];
             $(".tsstate").find("input").each( function( idx, item ) {
                 updateTsState( mode, $(item) );
             });
