@@ -76,7 +76,7 @@ define([ "jquery" ], function( $ ) {
     },
     mouseLeaveHandler = function() {
         tp.senior.Off();
-        $(this).parent().fadeOut( 1000, function () {
+        $(this).parent().fadeOut( 500, function () {
             $(this).removeAttr( "style" ).removeClass( "senior-show" ).addClass( "senior-hide" );
             addRootEvent();
         });
