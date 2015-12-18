@@ -56,7 +56,7 @@ define([ "jquery" ], function( $ ) {
     },
     mouseOverHandler = function() {
 
-        console.log("adfafdasdfffffffffffffff", tp.type )
+        console.log( "bottom mouse over", tp.type )
 
         if ( tp.type == TYPE ) {
 
@@ -68,25 +68,6 @@ define([ "jquery" ], function( $ ) {
                 tp.senior.On();
             }
         }
-
-        /*
-        var data    = $bottom.data( "type" );
-
-        console.log("adfafdasdfffffffffffffff", tp.type, data )
-
-        // simple
-        if ( tp.type == TYPE && tp.type != data ) {
-            $bottom.html( '<ul class="topsites">' + tp.simple.html + '</ul>' );
-        }
-        // senior
-        else if ( tp.type != TYPE && tp.type != data ) {
-            tp.senior.On();
-            $bottom.html( '<div class="senior-mask senior-open"><div class="senior-group">' + tp.senior.html + '</div></div>' );
-        }
-
-        // re-set data
-        if ( tp.type != data ) $bottom.data( "type", tp.type );
-        */
     },
     mouseLeaveHandler = function() {
         tp.senior.Off();

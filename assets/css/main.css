@@ -585,6 +585,7 @@ body {
 .senior-hide {
     display: none;
 }
+
 .senior-show {
     -webkit-animation: 1s open;
 }
@@ -598,8 +599,6 @@ body {
     from { opacity: 0 }
     to   { opacity: 1 }
 }
-
-
 
 .senior-group div {
     width: 60px;
