@@ -1,4 +1,8 @@
 #### CHANGELOG:
+- Version 1.4.1
+  * Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
+  * Fix 'simple' mode topsites hover display speed.
+
 - 2015-12-10, Version 1.4.0
   * Feature: [Chinese Simplified](https://github.com/Kenshin/simptab/blob/master/README.cn.md) | [Traditional Chinese](https://github.com/Kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/Kenshin/simptab/blob/master/README.en.md)
   * Rework source.
