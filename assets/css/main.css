@@ -582,6 +582,22 @@ body {
     border-radius: 10px;
 }
 
+.senior-open {
+    -webkit-animation: 1s open;
+}
+
+@-webkit-keyframes open {
+    from { opacity: 0; z-index: 2000;}
+    to   { opacity: 1 }
+}
+
+@-webkit-keyframes close {
+    from { opacity: 0 }
+    to   { opacity: 1 }
+}
+
+
+
 .senior-group div {
     width: 60px;
     color: #8b8986;

@@ -65,7 +65,7 @@ define([ "jquery" ], function( $ ) {
         // senior
         else if ( tp.type != TYPE && tp.type != data ) {
             tp.senior.On();
-            $bottom.html( '<div class="senior-mask"><div class="senior-group">' + tp.senior.html + '</div></div>' );
+            $bottom.html( '<div class="senior-mask senior-open"><div class="senior-group">' + tp.senior.html + '</div></div>' );
         }
 
         // re-set data
