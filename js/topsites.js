@@ -23,6 +23,12 @@ define([ "jquery" ], function( $ ) {
         MAX       = 9,
         TYPE      = "simple",
         $bottom   = $( ".bottom" ),
+        addBottomEvent = function() {
+            $bottom.on( "mouseover", mouseOverHandler  );
+        },
+        delBottomEvent = function() {
+            $bottom.off( "mouseover", mouseOverHandler );
+        },
         topSitesRender = function ( sites ) {
             console.log( "Topsites", sites );
             if ( sites && !$.isEmptyObject( sites ) ) {
@@ -55,11 +61,10 @@ define([ "jquery" ], function( $ ) {
         return tld && tld.length > 0 ? tld[0] : "empty";
     },
     mouseOverHandler = function() {
-
         console.log( "bottom mouse over", tp.type )
-
+        delBottomEvent();
         if ( tp.type == TYPE ) {
-
+            // NO TO-DO
         }
         else {
             var $topsites = $bottom.children();
@@ -73,6 +78,7 @@ define([ "jquery" ], function( $ ) {
         tp.senior.Off();
         $(this).parent().fadeOut( 1000, function () {
             $(this).removeAttr( "style" ).removeClass( "senior-show" ).addClass( "senior-hide" );
+            addBottomEvent();
         });
     };
 
@@ -120,9 +126,11 @@ define([ "jquery" ], function( $ ) {
 
     Topsites.prototype.Generate = function() {
         if ( this.type == TYPE ) {
+            delBottomEvent();
             $bottom.html( '<ul class="topsites">' + tp.simple.html + '</ul>' );
         }
         else {
+            addBottomEvent();
             $bottom.html( '<div class="senior-mask senior-hide"><div class="senior-group">' + tp.senior.html + '</div></div>' );
         }
     }
@@ -135,8 +143,6 @@ define([ "jquery" ], function( $ ) {
             window.tp = tp;
 
             chrome.topSites.get( topSitesRender );
-
-            $bottom.on( "mouseover", mouseOverHandler );
         },
         sites: function() {
             return topsites;
