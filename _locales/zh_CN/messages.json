@@ -99,6 +99,18 @@
         "message": "\u6dfb\u52a0 visualhunt.com"
     },
 
+    "setting_ts_state_normal": {
+        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9690\u85cf\u6a21\u5f0f\uff09"
+    },
+
+    "setting_ts_state_simple": {
+        "message": "\u5e38\u7528\u7f51\u5740\uff08\u7b80\u5355\u6a21\u5f0f\uff09"
+    },
+
+    "setting_ts_state_senior": {
+        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9ad8\u7ea7\u6a21\u5f0f\uff09"
+    },
+
     "setting_contact_weibo": {
         "message": "\u5206\u4eab\u5230 \u5fae\u535a"
     },

@@ -99,6 +99,18 @@
         "message": "Add visualhunt.com"
     },
 
+    "setting_ts_state_normal": {
+        "message": "Hidden Topsites"
+    },
+
+    "setting_ts_state_simple": {
+        "message": "Simple Topsites"
+    },
+
+    "setting_ts_state_senior": {
+        "message": "Senior Topsites"
+    },
+
     "setting_contact_weibo": {
         "message": "Share Weibo"
     },
