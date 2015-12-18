@@ -141,7 +141,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
         },
 
-        Listen: function () {
+        Listen: function ( callback ) {
 
             // background state
             $( ".changestate input" ).click( function( event ) {
@@ -172,7 +172,7 @@ define([ "jquery", "date" ], function( $, date ) {
             // topsites state
             $( ".tsstate input" ).click( function( event ) {
                 var mode    = $(event.currentTarget).attr( "value" );
-                localStorage["simptab-topsites"] = mode;
+                callback( "topsites", mode );
                 $(".tsstate").find("input").each( function( idx, item ) {
                     updateTsState( mode, $(item) );
                 });

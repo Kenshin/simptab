@@ -84,8 +84,8 @@ define([ "jquery" ], function( $ ) {
 
     function Topsites() {}
 
-    // type include: 'simple' and 'senior'
-    Topsites.prototype.type = localStorage["simptab-topsites"] && localStorage["simptab-topsites"] == TYPE ? localStorage["simptab-topsites"] : "senior";
+    // type include: 'normal', 'simple' and 'senior'
+    Topsites.prototype.type = !localStorage["simptab-topsites"] ? "normal": localStorage["simptab-topsites"];
 
     Topsites.prototype.simple        = {};
     Topsites.prototype.simple.$item  = $( '<li><a href="#"><span>Site 001</span></a></li>' );
@@ -125,27 +125,34 @@ define([ "jquery" ], function( $ ) {
     };
 
     Topsites.prototype.Generate = function() {
-        if ( this.type == TYPE ) {
-            delRootEvent();
-            $root.html( '<ul class="topsites">' + tp.simple.html + '</ul>' );
-        }
-        else {
-            addRootEvent();
-            $root.html( '<div class="senior-mask senior-hide"><div class="senior-group">' + tp.senior.html + '</div></div>' );
+        switch ( this.type) {
+            case "simple":
+                delRootEvent();
+                $root.html( '<ul class="topsites">' + tp.simple.html + '</ul>' );
+                break;
+            case "senior":
+                addRootEvent();
+                $root.html( '<div class="senior-mask senior-hide"><div class="senior-group">' + tp.senior.html + '</div></div>' );
+                break;
+            default:
+                delRootEvent();
+                $root.empty();
+                break;
         }
     }
 
     return {
         Init: function() {
             tp = new Topsites();
-
-            // add test code
-            window.tp = tp;
-
             chrome.topSites.get( topSitesRender );
         },
         sites: function() {
             return topsites;
+        },
+        Refresh: function( result ) {
+            localStorage["simptab-topsites"] = result;
+            tp.type = result;
+            tp.Generate();
         }
     };
 

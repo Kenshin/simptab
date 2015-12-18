@@ -61,7 +61,9 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
         if ( typeof result === "boolean" )     background.Favorite( result );
         else if ( typeof result === "object" ) background.Upload( result );
     });
-    setting.Listen();
+    setting.Listen( function( type, result ) {
+        if ( type == "topsites" ) topsites.Refresh( result );
+    });
 
     // validation background
     background.Valid();
