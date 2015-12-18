@@ -19,10 +19,10 @@ define([ "jquery" ], function( $ ) {
     */
 
     var tp,
-        topsites = [],
-        MAX      = 9,
-        TYPE     = "simple",
-        $bottom = $( ".bottom" ),
+        topsites  = [],
+        MAX       = 9,
+        TYPE      = "simple",
+        $bottom   = $( ".bottom" ),
         topSitesRender = function ( sites ) {
             console.log( "Topsites", sites );
             if ( sites && !$.isEmptyObject( sites ) ) {
@@ -37,6 +37,8 @@ define([ "jquery" ], function( $ ) {
                     // crete topsites render, include: simple and senior
                     tp.Render( site );
                 }
+                // generate topsits
+                tp.Generate();
             }
             else {
                 $( ".topsites" ).hide();
@@ -54,6 +56,20 @@ define([ "jquery" ], function( $ ) {
     },
     mouseOverHandler = function() {
 
+        console.log("adfafdasdfffffffffffffff", tp.type )
+
+        if ( tp.type == TYPE ) {
+
+        }
+        else {
+            var $topsites = $bottom.children();
+            if ( !$topsites.hasClass( "senior-show" )) {
+                $topsites.removeClass( "senior-hide" ).addClass( "senior-show" );
+                tp.senior.On();
+            }
+        }
+
+        /*
         var data    = $bottom.data( "type" );
 
         console.log("adfafdasdfffffffffffffff", tp.type, data )
@@ -70,12 +86,12 @@ define([ "jquery" ], function( $ ) {
 
         // re-set data
         if ( tp.type != data ) $bottom.data( "type", tp.type );
+        */
     },
     mouseLeaveHandler = function() {
         tp.senior.Off();
         $(this).parent().fadeOut( 1000, function () {
-            $(this).css( "z-index", -1 );
-            $(this).parent().data( "type", TYPE );
+            $(this).removeAttr( "style" ).removeClass( "senior-show" ).addClass( "senior-hide" );
         });
     };
 
@@ -95,6 +111,7 @@ define([ "jquery" ], function( $ ) {
     Topsites.prototype.senior.$div   = $( Topsites.prototype.senior.$item.find( "div"  ));
     Topsites.prototype.senior.$span  = $( Topsites.prototype.senior.$item.find( "span" ));
     Topsites.prototype.senior.html   = "";
+
     Topsites.prototype.senior.On     = function() {
         $bottom.delegate( ".senior-group", "mouseleave", mouseLeaveHandler );
     };
@@ -120,6 +137,15 @@ define([ "jquery" ], function( $ ) {
         this.SeniorRender( site );
     };
 
+    Topsites.prototype.Generate = function() {
+        if ( this.type == TYPE ) {
+            $bottom.html( '<ul class="topsites">' + tp.simple.html + '</ul>' );
+        }
+        else {
+            $bottom.html( '<div class="senior-mask senior-hide"><div class="senior-group">' + tp.senior.html + '</div></div>' );
+        }
+    }
+
     return {
         Init: function() {
             tp = new Topsites();
@@ -129,7 +155,7 @@ define([ "jquery" ], function( $ ) {
 
             chrome.topSites.get( topSitesRender );
 
-            $bottom.mouseover( mouseOverHandler );
+            $bottom.on( "mouseover", mouseOverHandler );
         },
         sites: function() {
             return topsites;

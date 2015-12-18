@@ -582,7 +582,10 @@ body {
     border-radius: 10px;
 }
 
-.senior-open {
+.senior-hide {
+    display: none;
+}
+.senior-show {
     -webkit-animation: 1s open;
 }
 
