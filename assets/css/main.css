@@ -90,6 +90,7 @@ body {
 * control
 */
 .controlbar {
+    position: relative;
     display: -webkit-box;
     -webkit-box-pack: end;
     -webkit-box-align: end;
@@ -97,6 +98,8 @@ body {
 
     list-style: none;
     font-size: 15px;
+
+    z-index: 1000;
 
     opacity: 0;
     -webkit-transition: opacity .5s ease;
@@ -381,7 +384,7 @@ body {
 
 .notifygp {
     position: fixed;
-    right: 0;
+    right: 45px;
     height: 100%;
     width: 400px;
 
