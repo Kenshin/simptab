@@ -557,7 +557,8 @@ body {
 
     white-space: nowrap;
 
-    background-color: rgba( 255,255,255,.8 );
+    background-color: rgba( 255, 255, 255,.8 );
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(128, 128, 128, 0.8);
 
     border-radius: 10px;
 }
@@ -576,7 +577,7 @@ body {
 }
 
 .senior-group a:hover {
-    background-color: #D5D5D5;
+    background-color: #CCCCCC;
     -webkit-transition: background-color .5s ease;
 
     border-radius: 10px;
