@@ -558,7 +558,7 @@ body {
     white-space: nowrap;
 
     background-color: rgba( 255, 255, 255,.8 );
-    -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.8);
 
     border-radius: 10px;
 }
