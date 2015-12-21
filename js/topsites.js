@@ -76,7 +76,7 @@ define([ "jquery" ], function( $ ) {
     },
     mouseLeaveHandler = function() {
         tp.senior.Off();
-        $(this).parent().fadeOut( 500, function () {
+        $( ".seniorgp" ).fadeOut( 500, function () {
             $(this).removeAttr( "style" ).removeClass( "senior-show" ).addClass( "senior-hide" );
             addRootEvent();
         });
@@ -100,10 +100,12 @@ define([ "jquery" ], function( $ ) {
     Topsites.prototype.senior.html   = "";
 
     Topsites.prototype.senior.On     = function() {
-        $root.delegate( ".senior", "mouseleave", mouseLeaveHandler );
+        $root.delegate( ".seniorgp", "click",      mouseLeaveHandler );
+        $root.delegate( ".senior",   "mouseleave", mouseLeaveHandler );
     };
     Topsites.prototype.senior.Off    = function() {
-        $root.undelegate( ".senior", "mouseleave", mouseLeaveHandler );
+        $root.undelegate( ".seniorgp", "click",      mouseLeaveHandler );
+        $root.undelegate( ".senior",   "mouseleave", mouseLeaveHandler );
     };
 
     Topsites.prototype.SimpleRender = function( site ) {
