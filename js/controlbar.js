@@ -66,19 +66,28 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
                 switch ( url ) {
                     case "setting":
-                        // 116-simptab-optimize-layout
                         var width = i18n.GetSettingWidth();
                         if ( !$target.hasClass( "close" )) {
                             $( ".setting" ).animate({ width: width, opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
                             });
-                            $( ".bottom, .seniorgp" ).animate({ width: $(".bottom").width() - width }, 500 );
+                            $( ".bottom, .seniorgp" ).animate({ width: $(".bottom").width() - width }, 500 ); // 116-simptab-optimize-layout
+                            // 116-simptab-optimize-layout
+                            $( ".content, .sidebar, .controlbar, .bottom" ).on( "click", function( event ) {
+                                var cls = $( event.target ).attr("class"),
+                                    arr = cls && cls.split(" ");
+                                if ( arr.length < 2 ) {
+                                    console.log("asdfasdf", event.currentTarget )
+                                    $( ".controlink .settingicon" ).trigger( "click" );
+                                }
+                            });
                         }
                         else {
                             $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                                 $target.removeClass( "close" );
                             });
-                            $( ".bottom, .seniorgp" ).animate({ width: "100%" }, 500 );
+                            $( ".bottom, .seniorgp" ).animate({ width: "100%" }, 500 );    // 116-simptab-optimize-layout
+                            $( ".content, .sidebar, .controlbar, .bottom" ).off( "click"); // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":
