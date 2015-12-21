@@ -72,8 +72,8 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                             });
                             $( ".bottom, .seniorgp" ).animate({ width: $(".bottom").width() - width }, 500 ); // 116-simptab-optimize-layout
                             // 116-simptab-optimize-layout
-                            var selector = ".content, .sidebar, .controlbar, .bottom"
-                            $( ".content, .sidebar, .controlbar, .bottom" ).on( "click", function( event ) {
+                            var selector = ".content, .sidebar, .controlbar, .bottom";
+                            $( ".content, .sidebar, .controlbar" ).on( "click", function( event ) {
                                 var cls     = $( event.target ).attr("class");
                                 if ( selector.indexOf( cls ) != -1 ) {
                                     $( selector ).off( "click" );
