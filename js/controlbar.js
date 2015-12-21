@@ -66,6 +66,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
                 switch ( url ) {
                     case "setting":
+                        // 116-simptab-optimize-layout
                         var width = i18n.GetSettingWidth();
                         if ( !$target.hasClass( "close" )) {
                             $( ".setting" ).animate({ width: width, opacity : 0.8 }, 500, function() {

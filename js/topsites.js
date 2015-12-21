@@ -100,11 +100,11 @@ define([ "jquery" ], function( $ ) {
     Topsites.prototype.senior.html   = "";
 
     Topsites.prototype.senior.On     = function() {
-        $root.delegate( ".seniorgp", "click",      mouseLeaveHandler );
+        $root.delegate( ".seniorgp", "click",      mouseLeaveHandler );  // 116-simptab-optimize-layout
         $root.delegate( ".senior",   "mouseleave", mouseLeaveHandler );
     };
     Topsites.prototype.senior.Off    = function() {
-        $root.undelegate( ".seniorgp", "click",      mouseLeaveHandler );
+        $root.undelegate( ".seniorgp", "click",      mouseLeaveHandler ); // 116-simptab-optimize-layout
         $root.undelegate( ".senior",   "mouseleave", mouseLeaveHandler );
     };
 
@@ -135,6 +135,7 @@ define([ "jquery" ], function( $ ) {
             case "senior":
                 addRootEvent();
                 $root.html( '<div class="seniorgp senior-hide"><div class="senior">' + tp.senior.html + '</div></div>' );
+                $( ".seniorgp" ).width( $root.width() ); // 116-simptab-optimize-layout
                 break;
             default:
                 delRootEvent();
