@@ -8,8 +8,8 @@ define([ "jquery" ], function( $ ) {
     */
 
     /* senior topsites example
-    <div class="senior-mask">
-        <div class="senior-group">
+    <div class="seniorgp">
+        <div class="senior">
             <a href="javascript:void(0);"><span class="senior-ts-icon-b"></span><div>百度</div></a>
             <a href="javascript:void(0);"><span class="senior-ts-icon-g"></span><div>Google</div></a>
             <a href="javascript:void(0);"><span class="senior-ts-icon-c"></span><div>Cnbeta.com</div></a>
@@ -100,10 +100,10 @@ define([ "jquery" ], function( $ ) {
     Topsites.prototype.senior.html   = "";
 
     Topsites.prototype.senior.On     = function() {
-        $root.delegate( ".senior-group", "mouseleave", mouseLeaveHandler );
+        $root.delegate( ".senior", "mouseleave", mouseLeaveHandler );
     };
     Topsites.prototype.senior.Off    = function() {
-        $root.undelegate( ".senior-group", "mouseleave", mouseLeaveHandler );
+        $root.undelegate( ".senior", "mouseleave", mouseLeaveHandler );
     };
 
     Topsites.prototype.SimpleRender = function( site ) {
@@ -132,7 +132,7 @@ define([ "jquery" ], function( $ ) {
                 break;
             case "senior":
                 addRootEvent();
-                $root.html( '<div class="senior-mask senior-hide"><div class="senior-group">' + tp.senior.html + '</div></div>' );
+                $root.html( '<div class="seniorgp senior-hide"><div class="senior">' + tp.senior.html + '</div></div>' );
                 break;
             default:
                 delRootEvent();

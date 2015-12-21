@@ -461,8 +461,6 @@ body {
     width: 100%;
     min-height: 100px;
 
-    z-index: 1000;
-
     font-size: 12px;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
     font-weight: 100;
@@ -527,7 +525,7 @@ body {
     height: 200px;
 }
 
-.senior-mask {
+.seniorgp {
     position: fixed;
     display: -webkit-box;
     -webkit-box-pack: center;
@@ -547,7 +545,7 @@ body {
     z-index: 2000;
 }
 
-.senior-group {
+.senior {
     display: -webkit-flex;
     -webkit-flex-flow: row wrap;
 
@@ -563,7 +561,7 @@ body {
     border-radius: 10px;
 }
 
-.senior-group a {
+.senior a {
     display: -webkit-box;
     -webkit-box-orient:vertical;
     -webkit-box-align: center;
@@ -576,7 +574,7 @@ body {
     padding: 20px;
 }
 
-.senior-group a:hover {
+.senior a:hover {
     background-color: #CCCCCC;
     -webkit-transition: background-color .5s ease;
 
@@ -596,7 +594,7 @@ body {
     to   { opacity: 1 }
 }
 
-.senior-group div {
+.senior div {
     width: 60px;
     color: #8b8986;
 
@@ -606,7 +604,7 @@ body {
     white-space: nowrap;
 }
 
-.senior-group span {
+.senior span {
     display: block;
 
     width: 60px;
