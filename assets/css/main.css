@@ -476,7 +476,7 @@ body {
 
     list-style: none;
 
-    background-color: #555;
+    background-color: #222;
     -webkit-border-radius: 5px;
 
     opacity: 0;
@@ -512,7 +512,7 @@ body {
 }
 
 .topsites a:hover {
-    background: rgba(255, 255, 255,.4);
+    background: rgba(139, 137, 134,.4);
     opacity: 1;
 }
 
