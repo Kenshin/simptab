@@ -23,6 +23,7 @@ define([ "jquery" ], function( $ ) {
         MAX      = 9,
         TYPE     = "simple",
         $root    = $( ".bottom" ),
+        atag     = document.createElement('a')
         addRootEvent = function() {
             $root.on( "mouseover", mouseOverHandler  );
         },
@@ -51,11 +52,10 @@ define([ "jquery" ], function( $ ) {
             }
     },
     getTLD = function ( url ) {
-        var a   = document.createElement('a'),
-            tld = "",
+        var tld = "",
             arr = [];
-        a.href = url;
-        tld    = a.hostname;
+        atag.href = url;
+        tld    = atag.hostname;
         arr    = tld.split(".");
         tld    = arr.length > 1 ? arr[ arr.length - 2 ] : tld;
         return tld && tld.length > 0 ? tld[0] : "empty";
