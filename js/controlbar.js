@@ -1,4 +1,3 @@
-
 define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
 
     "use strict";
@@ -68,16 +67,16 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                     case "setting":
                         var width = i18n.GetSettingWidth();
                         if ( !$target.hasClass( "close" )) {
-                            $( ".setting" ).animate({ width: width, opacity : 0.8 }, 500, function() {
+                            $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
                             });
                             $( ".bottom, .seniorgp" ).animate({ width: $(".bottom").width() - width }, 500 ); // 116-simptab-optimize-layout
                             // 116-simptab-optimize-layout
+                            var selector = ".content, .sidebar, .controlbar, .bottom"
                             $( ".content, .sidebar, .controlbar, .bottom" ).on( "click", function( event ) {
-                                var cls = $( event.target ).attr("class"),
-                                    arr = cls && cls.split(" ");
-                                if ( arr.length < 2 ) {
-                                    console.log("asdfasdf", event.currentTarget )
+                                var cls     = $( event.target ).attr("class");
+                                if ( selector.indexOf( cls ) != -1 ) {
+                                    $( selector ).off( "click" );
                                     $( ".controlink .settingicon" ).trigger( "click" );
                                 }
                             });
@@ -87,7 +86,6 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                                 $target.removeClass( "close" );
                             });
                             $( ".bottom, .seniorgp" ).animate({ width: "100%" }, 500 );    // 116-simptab-optimize-layout
-                            $( ".content, .sidebar, .controlbar, .bottom" ).off( "click"); // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":
@@ -95,7 +93,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                         callBack( is_favorite );
                         break;
                     case "download":
-                        // hacd code
+                        // hack code
                         if ( vo.cur.hdurl.indexOf( "unsplash.com" ) == -1 ) {
                             event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
                         }
@@ -124,7 +122,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                 var target    = $( $(".controlbar").find( "a" )[idx] )[0],
                     $favorite = $( ".controlink[url='favorite']" ),
                     $hidden   = $favorite.has(":hidden");
-                // hacke code
+                // hack code
                 if ( target !== $favorite[0] || ( target === $favorite[0] && $hidden && $hidden.length === 0 )) {
                     target.click();
                 }
