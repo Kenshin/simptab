@@ -66,15 +66,18 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
                 switch ( url ) {
                     case "setting":
+                        var width = i18n.GetSettingWidth();
                         if ( !$target.hasClass( "close" )) {
-                            $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
+                            $( ".setting" ).animate({ width: width, opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
                             });
+                            $( ".bottom, .senior-mask" ).animate({ width: $(".bottom").width() - width , opacity : 0.8 }, 500 );
                         }
                         else {
                             $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                                 $target.removeClass( "close" );
                             });
+                            $( ".bottom, .senior-mask" ).animate({ width: "100%" , opacity : 0.8 }, 500 );
                         }
                         break;
                     case "favorite":
