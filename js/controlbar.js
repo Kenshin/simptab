@@ -70,7 +70,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                             $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
                             });
-                            $( ".bottom, .seniorgp" ).animate({ width: $(".bottom").width() - width }, 500 ); // 116-simptab-optimize-layout
+                            //$( ".bottom, .seniorgp" ).animate({ width: $(".bottom").width() - width }, 500 ); // 116-simptab-optimize-layout
                             // 116-simptab-optimize-layout
                             var selector = ".content, .sidebar, .controlbar";
                             $( selector ).on( "click", function( event ) {
@@ -85,7 +85,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                             $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                                 $target.removeClass( "close" );
                             });
-                            $( ".bottom, .seniorgp" ).animate({ width: "100%" }, 500 );    // 116-simptab-optimize-layout
+                            //$( ".bottom, .seniorgp" ).animate({ width: "100%" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":
