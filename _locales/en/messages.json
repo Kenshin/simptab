@@ -99,6 +99,10 @@
         "message": "Add visualhunt.com"
     },
 
+    "setting_multi_origin_8": {
+        "message": "Add NASA.gov"
+    },
+
     "setting_ts_state_normal": {
         "message": "Hidden Topsites"
     },
