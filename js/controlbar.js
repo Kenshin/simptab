@@ -1,4 +1,3 @@
-
 define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
 
     "use strict";
@@ -67,14 +66,30 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                 switch ( url ) {
                     case "setting":
                         if ( !$target.hasClass( "close" )) {
-                            $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
+                            var width = parseInt( i18n.GetSettingWidth() );
+
+                            $( ".setting" ).animate({ "width": width, opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
+                            });
+
+                            $( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
+
+                            // 116-simptab-optimize-layout
+                            var selector = ".content, .sidebar, .controlbar";
+                            $( selector ).on( "click", function( event ) {
+                                var cls  = $( event.target ).attr( "class" );
+                                if ( selector.indexOf( cls ) != -1 ) {
+                                    $( selector ).off( "click" );
+                                    $( ".controlink .settingicon" ).trigger( "click" );
+                                }
+
                             });
                         }
                         else {
                             $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                                 $target.removeClass( "close" );
                             });
+                            $( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":
@@ -82,7 +97,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                         callBack( is_favorite );
                         break;
                     case "download":
-                        // hacd code
+                        // hack code
                         if ( vo.cur.hdurl.indexOf( "unsplash.com" ) == -1 ) {
                             event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
                         }
@@ -111,7 +126,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                 var target    = $( $(".controlbar").find( "a" )[idx] )[0],
                     $favorite = $( ".controlink[url='favorite']" ),
                     $hidden   = $favorite.has(":hidden");
-                // hacke code
+                // hack code
                 if ( target !== $favorite[0] || ( target === $favorite[0] && $hidden && $hidden.length === 0 )) {
                     target.click();
                 }

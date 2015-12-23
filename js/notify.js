@@ -61,7 +61,7 @@ define([ "jquery" ], function( $ ) {
         hidden = function( target ) {
             target.hide( 500, function() {
                 target.remove();
-                if ($container.children().length === 0 ) $container.css( "z-index", -1 );
+                if ($container.children().length === 0 ) $container.css( "z-index", 0 );
             });
         },
         render = function() {

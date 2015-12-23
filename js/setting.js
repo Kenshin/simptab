@@ -74,6 +74,19 @@ define([ "jquery", "date" ], function( $, date ) {
         $parent.attr( "class", divel    );
     }
 
+    function updateTsState( mode, $target ) {
+        if ( $target.val() == mode ) {
+            $target.attr( "checked", "checked"      );
+            $target.prev().attr( "class", "checked" );
+            $target.parent().addClass( "lrselected" );
+        }
+        else {
+            $target.attr( "checked", false             );
+            $target.prev().attr( "class", "unchecked"  );
+            $target.parent().removeClass( "lrselected" );
+        }
+    }
+
     function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
             value = $target.attr("value"),
@@ -120,15 +133,23 @@ define([ "jquery", "date" ], function( $, date ) {
                localStorage["simptab-background-origin"] = JSON.stringify(["0:false","1:false","2:false","3:false","4:false","5:false","6:false","7:false"]);
             }
 
+            // update topsites lineradio
+            mode      = !localStorage["simptab-topsites"] ? "simple" : localStorage["simptab-topsites"];
+            $(".tsstate").find("input").each( function( idx, item ) {
+                updateTsState( mode, $(item) );
+            });
+
         },
 
-        Listen: function () {
+        Listen: function ( callback ) {
 
+            // background state
             $( ".changestate input" ).click( function( event ) {
                 localStorage["simptab-background-mode"] = $(event.currentTarget).attr( "value" );
                 updateLR( $( event.currentTarget ));
             });
 
+            // clock state
             $( ".clockstate input" ).click( function( event ) {
 
                 localStorage["simptab-background-clock"] = $(event.currentTarget).attr( "value" );
@@ -142,9 +163,19 @@ define([ "jquery", "date" ], function( $, date ) {
                 }
             });
 
+            // background origin state
             $( ".originstate input" ).click( function( event ) {
                 updateOriginState( $( event.currentTarget ), "update" );
                 updateLocalStorge( $( event.currentTarget ));
+            });
+
+            // topsites state
+            $( ".tsstate input" ).click( function( event ) {
+                var mode    = $(event.currentTarget).attr( "value" );
+                callback( "topsites", mode );
+                $(".tsstate").find("input").each( function( idx, item ) {
+                    updateTsState( mode, $(item) );
+                });
             });
 
         },
