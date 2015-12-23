@@ -65,12 +65,15 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
                 switch ( url ) {
                     case "setting":
-                        var width = parseInt(i18n.GetSettingWidth());
                         if ( !$target.hasClass( "close" )) {
-                            $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
+                            var width = parseInt( i18n.GetSettingWidth() );
+
+                            $( ".setting" ).animate({ "width": width, opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
                             });
+
                             $( ".seniorgp" ).animate({ right: parseInt($(".seniorgp").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
+
                             // 116-simptab-optimize-layout
                             var selector = ".content, .sidebar, .controlbar";
                             $( selector ).on( "click", function( event ) {
@@ -79,6 +82,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                                     $( selector ).off( "click" );
                                     $( ".controlink .settingicon" ).trigger( "click" );
                                 }
+
                             });
                         }
                         else {
