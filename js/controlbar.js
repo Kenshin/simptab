@@ -75,7 +75,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                             $( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
                             // 116-simptab-optimize-layout
-                            var selector = ".content, .sidebar, .controlbar";
+                            var selector = ".content, .sidebar, .controlbar, .clock";
                             $( selector ).on( "click", function( event ) {
                                 var cls  = $( event.target ).attr( "class" );
                                 if ( selector.indexOf( cls ) != -1 ) {
