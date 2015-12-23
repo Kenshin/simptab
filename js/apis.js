@@ -93,9 +93,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         type       : "GET",
         timeout    : 2000,
         url        : "http://www.bing.com/gallery/home/imagedetails/" + id,
-        dataType   : "json",})
+        dataType   : "json"})
         .then( function ( result ) {
           if ( result != undefined && !$.isEmptyObject( result )) {
+            console.log("Bing.com random image is ", result )
             if ( result.wallpaper ) {
               var prefix = "http://az608707.vo.msecnd.net/files/";
               deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", "bing.com" ));
@@ -103,6 +104,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             else {
               randomBing();
             }
+          }
+          else {
+            randomBing();
           }
         })
         .fail( failed );
