@@ -451,16 +451,16 @@ body {
 */
 .bottom {
     position: fixed;
-    left: 0;
-    bottom: 0;
-    margin: 0;
+    left    : 0;
+    right   : 65px;
+    bottom  : 0;
+    margin  : 0;
 
     display: -webkit-box;
     -webkit-box-align: center;
     -webkit-box-orient: horizontal;
     -webkit-box-pack: center;
 
-    width: 100%;
     min-height: 100px;
 
     font-size: 12px;
@@ -469,6 +469,9 @@ body {
 }
 
 .topsites {
+    position: relative;
+    left: 33px;
+
     display: -webkit-box;
     -webkit-box-align: center;
     -webkit-box-orient: horizontal;

@@ -72,7 +72,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                                 $target.addClass( "close" );
                             });
 
-                            $( ".seniorgp" ).animate({ right: parseInt($(".seniorgp").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
+                            $( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
                             // 116-simptab-optimize-layout
                             var selector = ".content, .sidebar, .controlbar";
@@ -89,7 +89,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                             $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                                 $target.removeClass( "close" );
                             });
-                            $( ".seniorgp" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
+                            $( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":
