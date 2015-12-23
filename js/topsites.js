@@ -79,6 +79,7 @@ define([ "jquery" ], function( $ ) {
         $( ".seniorgp" ).fadeOut( 500, function () {
             $(this).removeAttr( "style" ).removeClass( "senior-show" ).addClass( "senior-hide" );
             addRootEvent();
+            offestPosition();
         });
     },
     offestPosition = function() {
