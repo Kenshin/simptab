@@ -518,7 +518,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             url        : rss,
             dataType   : "xml" })
         .then( function ( result ) {
-          if ( result && !$.isArray( result )) {
+          if ( result && !$.isEmptyObject( result )) {
             try {
               var items  = $( result ).find( "item" ),
                   max    = items.length,
