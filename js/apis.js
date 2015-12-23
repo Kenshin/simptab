@@ -50,7 +50,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             type       : "GET",
             timeout    : 2000,
             url        : url,
-            dataType   : "json",})
+            dataType   : "json"})
             .then( function ( result ) {
                 if ( result && !$.isEmptyObject( result )) {
 
@@ -507,6 +507,38 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }).fail( failed );
     }
 
+    function nasa() {
+
+      console.log( "=== nasa.gov call ===");
+
+      var rss = "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss";
+      $.ajax({
+            type       : "GET",
+            timeout    : 2000*10,
+            url        : rss,
+            dataType   : "xml" })
+        .then( function ( result ) {
+          if ( result && !$.isArray( result )) {
+            try {
+              var items  = $( result ).find( "item" ),
+                  max    = items.length,
+                  random = createRandom( 0, max ),
+                  $item  = $( items[random] ),
+                  url    = $item.find( "enclosure" ).attr( "url" ),
+                  name   = $item.find( "title" ).text(),
+                  info   = $item.find( "link" ).text();
+              deferred.resolve( vo.Create( url, url, "NASA.gov Image - " + name, info, date.Now(), "NASA.gov Image", "nasa.gov" ) );
+            }
+            catch ( error ) {
+              deferred.reject( SimpError.Clone( new SimpError( "apis.nasa()", null , "Parse lg_image_of_the_day.rss error." ), error ));
+            }
+          }
+          else {
+            deferred.reject( new SimpError( "apis.nasa()", "nasa rss parse error.", result ));
+          }
+        }, failed );
+    }
+
     /*
     * Favorite background
     */
@@ -626,7 +658,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       Init: function () {
 
-        var MAX_NUM = 11,
+        var MAX_NUM = 12,
             code    = createRandom( 0, MAX_NUM ),
             today   = false;
 
@@ -638,14 +670,14 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         // verify today is holiday
         else if ( isHoliday() ) {
-            code = 10;
+            code = 11;
         }
         // change background every time
         else {
             while ( setting.Verify( code ) == "false" ||
                     localStorage[ "simptab-prv-code" ] == code ||
-                    code == 10 ||
-                    ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
+                    code == 11 ||
+                    ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 10 )) {
                 code = createRandom( 0, MAX_NUM );
             }
             localStorage[ "simptab-prv-code" ] = code;
@@ -654,7 +686,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 11;
+        // code = 8;
 
         switch ( code ) {
           case 0:
@@ -682,12 +714,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             visualhunt();
             break;
           case 8:
-            setTimeout( favorite, 2000 );
+            nasa();
             break;
           case 9:
-            special();
+            setTimeout( favorite, 2000 );
             break;
           case 10:
+            special();
+            break;
+          case 11:
             holiday();
             break;
           default:

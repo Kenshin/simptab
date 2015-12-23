@@ -28,7 +28,8 @@
         "http://*.desktopprassets.com/",
         "http://*.visualhunt.com/",
         "https://*.500px.org/",
-        "http://*.vo.msecnd.net/"
+        "http://*.vo.msecnd.net/",
+        "http://*.nasa.gov/"
     ],
     "omnibox": { "keyword" : "st" },
     "commands": {
