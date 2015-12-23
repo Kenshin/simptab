@@ -11,18 +11,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     */
 
     function createRandom( min, max ) {
-      /*
-      var range  = max - min,
-          rand   = Math.random(),
-          random = min + Math.round( rand * range );
-
-      // valid random
-      if ( random < min || random > max ) {
-        createRandom( min, max );
-        return;
-      }
-      return random;
-      */
       return Math.floor( Math.random() * ( max - min + 1 ) + min );
     }
 
