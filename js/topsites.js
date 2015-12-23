@@ -80,6 +80,11 @@ define([ "jquery" ], function( $ ) {
             $(this).removeAttr( "style" ).removeClass( "senior-show" ).addClass( "senior-hide" );
             addRootEvent();
         });
+    },
+    offestPosition = function() {
+        var right = parseInt($( ".seniorgp" ).css( "right" )),
+            width = $( ".setting"  ).width();
+        $( ".seniorgp" ).css( "right", right + width );
     };
 
     function Topsites() {}
@@ -135,13 +140,14 @@ define([ "jquery" ], function( $ ) {
             case "senior":
                 addRootEvent();
                 $root.html( '<div class="seniorgp senior-hide"><div class="senior">' + tp.senior.html + '</div></div>' );
-                //$( ".seniorgp" ).width( $root.width() ); // 116-simptab-optimize-layout
                 break;
             default:
                 delRootEvent();
                 $root.empty();
                 break;
         }
+        // 116-simptab-optimize-layout
+        offestPosition();
     }
 
     return {
