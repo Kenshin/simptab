@@ -6,8 +6,15 @@ define([ "jquery", "date" ], function( $, date ) {
     var setting = (function () {
 
             // [ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]
-            var origins   = [],
-                lsorigins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
+            try {
+                var origins   = [],
+                    err       = false,
+                    lsorigins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
+            }
+            catch ( error ) {
+                err       = true;
+                lsorigins = origins;
+            }
 
             function Setting() {
                 $( ".originstate" ).children().each( function( idx ) {
@@ -20,10 +27,17 @@ define([ "jquery", "date" ], function( $, date ) {
 
             Setting.prototype.Correction = function() {
                 var len = lsorigins.length;
-                if ( origins.length != len ) {
+                if ( err ) {
+                    this.Save();
+                }
+                else if ( origins.length > len ) {
                     for( var i = 0; i < origins.length - len; i++ ) {
                         lsorigins.splice( lsorigins.length, 0, origins[lsorigins.length] );
                     }
+                    this.Save();
+                }
+                else if ( origins.length < len ) {
+                    lsorigins = lsorigins.slice( 0, origins.length );
                     this.Save();
                 }
             }
