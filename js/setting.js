@@ -123,13 +123,11 @@ define([ "jquery", "date" ], function( $, date ) {
         var index = $target.attr("name"),
             value = $target.attr("value"),
             item  = setting.LsOrigins[index];
-            //arr   = localStorage["simptab-background-origin"] && JSON.parse( localStorage["simptab-background-origin"] ),
 
         // update arr[index] to new value
         setting.LsOrigins.splice( index, 1, index + ":" + value );
 
         // update local storge
-        //localStorage["simptab-background-origin"] = JSON.stringify( arr );
         setting.Save();
 
     }
@@ -155,18 +153,12 @@ define([ "jquery", "date" ], function( $, date ) {
             }
 
             // update originstate lineradio
-            //mode      = JSON.parse( localStorage["simptab-background-origin"] || "[]" );
             setting.Correction();
             mode        = setting.LsOrigins;
             $(".originstate").find("input").each( function( idx, item ) {
                 $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
                 updateOriginState( $(item), "init" );
             });
-
-            // set simptab-background-origin defalut value
-            //if ( mode.length == 0 ) {
-            //   localStorage["simptab-background-origin"] = JSON.stringify([ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]);
-            //}
 
             // update topsites lineradio
             mode      = !localStorage["simptab-topsites"] ? "simple" : localStorage["simptab-topsites"];
@@ -238,9 +230,6 @@ define([ "jquery", "date" ], function( $, date ) {
         },
 
         Verify: function( idx ) {
-            //var arr   = JSON.parse( localStorage["simptab-background-origin"] || "[]" ),
-            //    value = arr && arr.length && arr[idx],
-            //    value = value || idx + ":" + "true";
             var value = setting.LsOrigins[idx],
                 value = value || idx + ":" + "true";
 
