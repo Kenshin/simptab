@@ -677,7 +677,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             while ( setting.Verify( code ) == "false" ||
                     localStorage[ "simptab-prv-code" ] == code ||
                     code == 11 ||
-                    ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 10 )) {
+                    ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
                 code = createRandom( 0, MAX_NUM );
             }
             localStorage[ "simptab-prv-code" ] = code;
@@ -717,10 +717,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             nasa();
             break;
           case 9:
-            setTimeout( favorite, 2000 );
+            special();
             break;
           case 10:
-            special();
+            setTimeout( favorite, 2000 );
             break;
           case 11:
             holiday();
