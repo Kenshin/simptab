@@ -143,6 +143,7 @@ define([ "jquery" ], function( $ ) {
             // update originstate lineradio
             setting.origins.forEach( function( item ) {
                 setting.UpdateCkState( item );
+                setting.UpdateOriginsMode( item.split(":")[0], item.split(":")[1] );
             });
 
         },
