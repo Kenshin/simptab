@@ -1,4 +1,8 @@
 #### CHANGELOG:
+- 2015-12-25, Version 1.4.2
+  * Add new background: [NASA Image Galleries](http://www.nasa.gov/multimedia/imagegallery/index.html)
+  * Add special day to Setting bar.
+
 - 2015-12-23, Version 1.4.1
   * Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
   * Fix 'simple' mode topsites hover display speed.

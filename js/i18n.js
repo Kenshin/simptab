@@ -32,10 +32,12 @@ define([ "jquery" ], function( $ ) {
         $($( ".lineradio" ).find("label")[9]).text( i18n( "setting_multi_origin_5" ));
         $($( ".lineradio" ).find("label")[10]).text( i18n( "setting_multi_origin_6" ));
         $($( ".lineradio" ).find("label")[11]).text( i18n( "setting_multi_origin_7" ));
+        $($( ".lineradio" ).find("label")[12]).text( i18n( "setting_multi_origin_8" ));
+        $($( ".lineradio" ).find("label")[13]).text( i18n( "setting_multi_origin_9" ));
 
-        $($( ".lineradio" ).find("label")[12]).text( i18n( "setting_ts_state_normal" ));
-        $($( ".lineradio" ).find("label")[13]).text( i18n( "setting_ts_state_simple" ));
-        $($( ".lineradio" ).find("label")[14]).text( i18n( "setting_ts_state_senior" ));
+        $($( ".lineradio" ).find("label")[14]).text( i18n( "setting_ts_state_normal" ));
+        $($( ".lineradio" ).find("label")[15]).text( i18n( "setting_ts_state_simple" ));
+        $($( ".lineradio" ).find("label")[16]).text( i18n( "setting_ts_state_senior" ));
 
         $($(".setting .contact").find("a")[0]).attr( "title", i18n( "setting_contact_weibo" ));
         $($(".setting .contact").find("a")[1]).attr( "title", i18n( "setting_contact_twitter" ));

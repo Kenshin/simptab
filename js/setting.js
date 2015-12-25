@@ -3,6 +3,53 @@ define([ "jquery", "date" ], function( $, date ) {
 
     "use strict";
 
+    var setting = (function () {
+
+        // [ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]
+        var defaultOrigins = (function() {
+            var origins = [];
+            $( ".originstate" ).children().each( function( idx ) {
+                origins.push( idx + ":false" );
+            });
+            return origins;
+        })();
+
+        function getCurrentOrigin() {
+            try {
+                var origins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
+            }
+            catch ( error ) {
+                origins = [];
+            }
+            return origins;
+        }
+
+        function Setting() {
+
+            this.origins = getCurrentOrigin();
+        }
+
+        Setting.prototype.Correction = function() {
+            var len     = this.origins.length;
+            if ( defaultOrigins.length > len ) {
+                for( var i = 0; i < defaultOrigins.length - len; i++ ) {
+                    this.origins.splice( this.origins.length, 0, defaultOrigins[this.origins.length] );
+                }
+                this.Save();
+            }
+            else if ( defaultOrigins.length < len ) {
+                this.origins = this.origins.slice( 0, defaultOrigins.length );
+                this.Save();
+            }
+        }
+
+        Setting.prototype.Save = function() {
+            localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
+        }
+
+        return new Setting();
+    })();
+
     function initLR() {
         $( ".lineradio" ).each( function( index, item ) {
             if ( $( item ).hasClass("lrselected") ) {
@@ -90,14 +137,13 @@ define([ "jquery", "date" ], function( $, date ) {
     function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
             value = $target.attr("value"),
-            arr   = localStorage["simptab-background-origin"] && JSON.parse( localStorage["simptab-background-origin"] ),
-            item  = arr[index];
+            item  = setting.origins[index];
 
         // update arr[index] to new value
-        arr.splice( index, 1, index + ":" + value );
+        setting.origins.splice( index, 1, index + ":" + value );
 
         // update local storge
-        localStorage["simptab-background-origin"] = JSON.stringify( arr );
+        setting.Save();
 
     }
 
@@ -122,16 +168,12 @@ define([ "jquery", "date" ], function( $, date ) {
             }
 
             // update originstate lineradio
-            mode      = JSON.parse( localStorage["simptab-background-origin"] || "[]" );
+            setting.Correction();
+            mode        = setting.origins;
             $(".originstate").find("input").each( function( idx, item ) {
                 $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
                 updateOriginState( $(item), "init" );
             });
-
-            // set simptab-background-origin defalut value
-            if ( mode.length == 0 ) {
-               localStorage["simptab-background-origin"] = JSON.stringify(["0:false","1:false","2:false","3:false","4:false","5:false","6:false","7:false"]);
-            }
 
             // update topsites lineradio
             mode      = !localStorage["simptab-topsites"] ? "simple" : localStorage["simptab-topsites"];
@@ -203,8 +245,7 @@ define([ "jquery", "date" ], function( $, date ) {
         },
 
         Verify: function( idx ) {
-            var arr   = JSON.parse( localStorage["simptab-background-origin"] || "[]" ),
-                value = arr && arr.length && arr[idx],
+            var value = setting.origins[idx],
                 value = value || idx + ":" + "true";
 
             return value.split(":")[1];
