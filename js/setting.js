@@ -35,6 +35,10 @@ define([ "jquery", "date" ], function( $, date ) {
             this.origins = getCurrentOrigin();
 
             this.mode = {
+                "changestate" : {
+                    value : getMode( "simptab-background-mode", $( ".changestate" ).find( ".lrselected input" ).val() ),
+                    type  : "simptab-background-mode"
+                },
                 "tsstate" : {
                     value : getMode( "simptab-topsites", $( ".tsstate" ).find( ".lrselected input" ).val() ),
                     type  : "simptab-topsites"
@@ -179,15 +183,11 @@ define([ "jquery", "date" ], function( $, date ) {
             initLR();
 
             // update changestate lineradio
-            var mode      = localStorage["simptab-background-mode"],
-                checked   = $( ".changestate input[value=" +  mode + "]" );
-            if ( mode != undefined ) {
-                updateLR( checked  );
-            }
+             setting.UpdateRdState( "changestate", setting.mode["changestate"].value );
 
             // update clockstate lineradio
-            mode      = localStorage["simptab-background-clock"];
-            checked   = $( ".clockstate input[value=" +  mode + "]" );
+            var mode      = localStorage["simptab-background-clock"],
+                checked   = $( ".clockstate input[value=" +  mode + "]" );
             if ( mode != undefined ) {
                 updateLR( checked );
             }
@@ -208,9 +208,10 @@ define([ "jquery", "date" ], function( $, date ) {
         Listen: function ( callback ) {
 
             // background state
-            $( ".changestate input" ).click( function( event ) {
-                localStorage["simptab-background-mode"] = $(event.currentTarget).attr( "value" );
-                updateLR( $( event.currentTarget ));
+            setting.AddClickEvent( "changestate", function( event ) {
+                var mode    = $(event.currentTarget).attr( "value" );
+                setting.UpdateRdState( "changestate", mode );
+                setting.UpdateMode(    "changestate", mode );
             });
 
             // clock state
