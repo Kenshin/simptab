@@ -149,11 +149,10 @@ define([ "jquery" ], function( $ ) {
             // init line radio
             setting.InitRdState();
 
-            // update changestate lineradio
-            setting.UpdateRdState( "changestate", setting.mode["changestate"].value );
-
-            // update clockstate lineradio
-            setting.UpdateRdState( "clockstate",  setting.mode["clockstate"].value  );
+            // update [ changestate, clockstate, topsites ] radio button
+            Object.keys( setting.mode ).forEach( function( item ) {
+                setting.UpdateRdState( item, setting.mode[item].value );
+            });
 
             // update originstate lineradio
             setting.Correction();
@@ -162,9 +161,6 @@ define([ "jquery" ], function( $ ) {
                 $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
                 updateOriginState( $(item), "init" );
             });
-
-            // update topsites lineradio
-            setting.UpdateRdState( "tsstate", setting.mode["tsstate"].value );
 
         },
 
