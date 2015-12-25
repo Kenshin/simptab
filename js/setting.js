@@ -15,13 +15,27 @@ define([ "jquery" ], function( $ ) {
             return origins;
         })();
 
-        function getCurrentOrigin() {
+        var origins = ( function() {
             try {
                 var origins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
             }
             catch ( error ) {
-                origins = [];
+                origins = defaultOrigins;
             }
+            return origins;
+        })();
+
+        function getOrigins() {
+            var len = origins.length;
+            if ( defaultOrigins.length > len ) {
+                for( var i = 0; i < defaultOrigins.length - len; i++ ) {
+                    origins.splice( origins.length, 0, defaultOrigins[origins.length] );
+                }
+            }
+            else if ( defaultOrigins.length < len ) {
+                origins = origins.slice( 0, defaultOrigins.length );
+            }
+
             return origins;
         }
 
@@ -32,7 +46,7 @@ define([ "jquery" ], function( $ ) {
 
         function Setting() {
 
-            this.origins = getCurrentOrigin();
+            this.origins = getOrigins();
 
             this.mode = {
                 "changestate" : {
@@ -44,29 +58,11 @@ define([ "jquery" ], function( $ ) {
                     type  : "simptab-background-clock"
                 },
                 "tsstate" : {
-                    value : getMode( "simptab-topsites",          $( ".tsstate"    ).find( ".lrselected input" ).val() ),
+                    value : getMode( "simptab-topsites",         $( ".tsstate"     ).find( ".lrselected input" ).val() ),
                     type  : "simptab-topsites"
                 }
             };
 
-        }
-
-        Setting.prototype.Correction = function() {
-            var len     = this.origins.length;
-            if ( defaultOrigins.length > len ) {
-                for( var i = 0; i < defaultOrigins.length - len; i++ ) {
-                    this.origins.splice( this.origins.length, 0, defaultOrigins[this.origins.length] );
-                }
-                this.Save();
-            }
-            else if ( defaultOrigins.length < len ) {
-                this.origins = this.origins.slice( 0, defaultOrigins.length );
-                this.Save();
-            }
-        }
-
-        Setting.prototype.Save = function() {
-            localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
         }
 
         Setting.prototype.InitRdState = function() {
@@ -127,7 +123,7 @@ define([ "jquery" ], function( $ ) {
 
         Setting.prototype.UpdateOriginsMode = function( idx, value ) {
             this.origins.splice( idx, 1, idx + ":" + value );
-            this.Save();
+            localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
         }
 
         return new Setting();
@@ -145,7 +141,6 @@ define([ "jquery" ], function( $ ) {
             });
 
             // update originstate lineradio
-            setting.Correction();
             setting.origins.forEach( function( item ) {
                 setting.UpdateCkState( item );
             });
