@@ -69,6 +69,18 @@ define([ "jquery" ], function( $ ) {
             localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
         }
 
+        Setting.prototype.InitRdState = function() {
+            $( ".lineradio" ).each( function( index, item ) {
+                if ( $( item ).hasClass("lrselected") ) {
+                    $( item ).prepend( '<span class="checked"></span>' );
+                    $( item ).find( "input" ).attr( "checked", true    );
+                }
+                else {
+                    $( item ).prepend( '<span class="unchecked"></span>' );
+                }
+            });
+        }
+
         Setting.prototype.UpdateRdState = function( selector, mode ) {
             $( "." + selector ).find( "input" ).each( function( idx, item ) {
                 if ( $(item).val() == mode ) {
@@ -95,18 +107,6 @@ define([ "jquery" ], function( $ ) {
 
         return new Setting();
     })();
-
-    function initLR() {
-        $( ".lineradio" ).each( function( index, item ) {
-            if ( $( item ).hasClass("lrselected") ) {
-                $( item ).prepend( '<span class="checked"></span>' );
-                $( item ).find( "input" ).attr( "checked", true    );
-            }
-            else {
-                $( item ).prepend( '<span class="unchecked"></span>' );
-            }
-        });
-    }
 
     function updateOriginState( $target, type ) {
         var $prev   = $($target.prev()),
@@ -147,7 +147,7 @@ define([ "jquery" ], function( $ ) {
         Init: function() {
 
             // init line radio
-            initLR();
+            setting.InitRdState();
 
             // update changestate lineradio
             setting.UpdateRdState( "changestate", setting.mode["changestate"].value );
