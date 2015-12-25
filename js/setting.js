@@ -125,6 +125,11 @@ define([ "jquery" ], function( $ ) {
             $target.find("input").val( value );
         }
 
+        Setting.prototype.UpdateOriginsMode = function( idx, value ) {
+            this.origins.splice( idx, 1, idx + ":" + value );
+            this.Save();
+        }
+
         return new Setting();
     })();
 
@@ -151,7 +156,6 @@ define([ "jquery" ], function( $ ) {
         $prev.attr(   "class", checked  );
         $parent.attr( "class", divel    );
     }
-    */
 
     function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
@@ -164,6 +168,7 @@ define([ "jquery" ], function( $ ) {
         // update local storge
         setting.Save();
     }
+    */
 
     return {
         Init: function() {
@@ -193,7 +198,7 @@ define([ "jquery" ], function( $ ) {
 
         Listen: function ( callback ) {
 
-            // listen [ changestate, clockstate, topsites ] radio button
+            // listen [ changestate, clockstate, topsites ] radio button event
             Object.keys( setting.mode ).forEach( function( item ) {
                 setting.AddClickEvent( item, function( type, mode ) {
 
@@ -206,10 +211,14 @@ define([ "jquery" ], function( $ ) {
                 });
             });
 
-            // background origin state
+            // listen originstate checkbox button event
             $( ".originstate input" ).click( function( event ) {
-                updateOriginState( $( event.currentTarget ), "update" );
-                updateLocalStorge( $( event.currentTarget ));
+                //updateOriginState( $( event.currentTarget ), "update" );
+                //updateLocalStorge( $( event.currentTarget ));
+                var idx     = event.target.name,
+                    value   = event.target.value == "true" ? "false" : "true";
+                setting.UpdateCkState( idx + ":" + value );
+                setting.UpdateOriginsMode( idx, value );
             });
 
         },
