@@ -108,42 +108,6 @@ define([ "jquery" ], function( $ ) {
         });
     }
 
-    function updateLR( $target ) {
-        updateLrIcon( $target );
-        updateLrState( $target );
-    }
-
-    function updateLrIcon( $target ) {
-        var $current = $target.parent(),
-            $prev    = $current.prev(),
-            $next    = $current.next();
-
-        if ( $prev.find( "span" ).length > 0 ) {
-            $prev.find( "span"  ).attr( "class", "unchecked" );
-            $prev.find( "input" ).attr( "checked", false );
-        }
-        else {
-            $next.find( "span"  ).attr( "class", "unchecked" );
-            $next.find( "input" ).attr( "checked", false );
-        }
-        $current.find( "span"  ).attr( "class", "checked"    );
-        $current.find( "input" ).attr( "checked", true    );
-    }
-
-    function updateLrState( $target ) {
-        var $current = $target.parent(),
-            $prev    = $current.prev(),
-            $next    = $current.next();
-
-        if ( $prev.length > 0 ) {
-            $prev.attr( "class", "lineradio" );
-        }
-        else {
-            $next.attr( "class", "lineradio" );
-        }
-        $current.attr( "class", "lineradio lrselected" );
-    }
-
     function updateOriginState( $target, type ) {
         var $prev   = $($target.prev()),
             $parent = $($target.parent()),
@@ -177,7 +141,6 @@ define([ "jquery" ], function( $ ) {
 
         // update local storge
         setting.Save();
-
     }
 
     return {
