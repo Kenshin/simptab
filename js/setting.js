@@ -191,13 +191,6 @@ define([ "jquery" ], function( $ ) {
 
             // update clockstate lineradio
             setting.UpdateRdState( "clockstate",  setting.mode["clockstate"].value  );
-            /*
-            var mode      = localStorage["simptab-background-clock"],
-                checked   = $( ".clockstate input[value=" +  mode + "]" );
-            if ( mode != undefined ) {
-                updateLR( checked );
-            }
-            */
 
             // update originstate lineradio
             setting.Correction();
@@ -229,21 +222,6 @@ define([ "jquery" ], function( $ ) {
                 callback( "clock", mode );
             });
 
-            /*
-            $( ".clockstate input" ).click( function( event ) {
-
-                localStorage["simptab-background-clock"] = $(event.currentTarget).attr( "value" );
-                updateLR( $( event.currentTarget ));
-
-                if ( localStorage["simptab-background-clock"] == "show") {
-                    date.Show();
-                }
-                else {
-                    date.Hide();
-                }
-            });
-            */
-
             // background origin state
             $( ".originstate input" ).click( function( event ) {
                 updateOriginState( $( event.currentTarget ), "update" );
@@ -251,7 +229,6 @@ define([ "jquery" ], function( $ ) {
             });
 
             // topsites state
-            //$( ".tsstate input" ).click( function( event ) {
             setting.AddClickEvent( "tsstate", function( event ) {
                 var mode    = $(event.currentTarget).attr( "value" );
                 setting.UpdateRdState( "tsstate", mode );
@@ -264,17 +241,6 @@ define([ "jquery" ], function( $ ) {
         Mode: function( type ) {
             return setting.mode[type].value;
         },
-
-        /*Get: function ( state ) {
-
-            if ( state == "changestate" ) {
-                return $( ".changestate input[value=day]" ).attr( "checked" );
-            }
-            else if ( state == "clockstate" ) {
-                return $( ".clockstate input[value=show]" ).attr( "checked" );
-            }
-
-        },*/
 
         IsRandom: function() {
           var mode = localStorage["simptab-background-mode"];
