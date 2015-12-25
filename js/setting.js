@@ -5,45 +5,50 @@ define([ "jquery", "date" ], function( $, date ) {
 
     var setting = (function () {
 
-            // [ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]
-            try {
-                var origins   = [],
-                    err       = false,
-                    lsorigins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
-            }
-            catch ( error ) {
-                err       = true;
-                lsorigins = origins;
-            }
-
-            function Setting() {
+            function getDefaultOrigin() {
+                var origins = [];
                 $( ".originstate" ).children().each( function( idx ) {
                     origins.push( idx + ":false" );
                 });
+                return origins;
             }
 
-            Setting.prototype.Origins    = origins;
-            Setting.prototype.LsOrigins  = lsorigins;
+            function getCurrentOrigin() {
+                try {
+                    var origins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
+                }
+                catch ( error ) {
+                    origins = [];
+                }
+                return origins;
+            }
+
+            function Setting() {
+
+                // [ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]
+                this.origins = {
+                    default : getDefaultOrigin(),
+                    current : getCurrentOrigin(),
+                };
+            }
 
             Setting.prototype.Correction = function() {
-                var len = lsorigins.length;
-                if ( err ) {
-                    this.Save();
-                }
-                else if ( origins.length > len ) {
+                var len     = this.origins.current.length,
+                    origins = this.origins.default;
+                if ( origins.length > len ) {
                     for( var i = 0; i < origins.length - len; i++ ) {
-                        lsorigins.splice( lsorigins.length, 0, origins[lsorigins.length] );
+                        this.origins.current.splice( this.origins.current.length, 0, origins[this.origins.current.length] );
                     }
                     this.Save();
                 }
                 else if ( origins.length < len ) {
-                    lsorigins = lsorigins.slice( 0, origins.length );
+                    this.origins.current = this.origins.current.slice( 0, origins.length );
                     this.Save();
                 }
             }
 
             Setting.prototype.Save = function() {
-                localStorage["simptab-background-origin"] = JSON.stringify( lsorigins );
+                localStorage["simptab-background-origin"] = JSON.stringify( this.origins.current );
             }
 
             return new Setting();
@@ -136,10 +141,10 @@ define([ "jquery", "date" ], function( $, date ) {
     function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
             value = $target.attr("value"),
-            item  = setting.LsOrigins[index];
+            item  = setting.origins.current[index];
 
         // update arr[index] to new value
-        setting.LsOrigins.splice( index, 1, index + ":" + value );
+        setting.origins.current.splice( index, 1, index + ":" + value );
 
         // update local storge
         setting.Save();
@@ -168,7 +173,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
             // update originstate lineradio
             setting.Correction();
-            mode        = setting.LsOrigins;
+            mode        = setting.origins.current;
             $(".originstate").find("input").each( function( idx, item ) {
                 $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
                 updateOriginState( $(item), "init" );
@@ -244,7 +249,7 @@ define([ "jquery", "date" ], function( $, date ) {
         },
 
         Verify: function( idx ) {
-            var value = setting.LsOrigins[idx],
+            var value = setting.origins.current[idx],
                 value = value || idx + ":" + "true";
 
             return value.split(":")[1];
