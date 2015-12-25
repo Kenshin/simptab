@@ -1,5 +1,5 @@
 
-define([ "jquery", "date" ], function( $, date ) {
+define([ "jquery" ], function( $ ) {
 
     "use strict";
 
@@ -36,11 +36,15 @@ define([ "jquery", "date" ], function( $, date ) {
 
             this.mode = {
                 "changestate" : {
-                    value : getMode( "simptab-background-mode", $( ".changestate" ).find( ".lrselected input" ).val() ),
+                    value : getMode( "simptab-background-mode",  $( ".changestate" ).find( ".lrselected input" ).val() ),
                     type  : "simptab-background-mode"
                 },
+                "clockstate" : {
+                    value : getMode( "simptab-background-clock", $( ".clockstate"  ).find( ".lrselected input" ).val() ),
+                    type  : "simptab-background-clock"
+                },
                 "tsstate" : {
-                    value : getMode( "simptab-topsites", $( ".tsstate" ).find( ".lrselected input" ).val() ),
+                    value : getMode( "simptab-topsites",          $( ".tsstate"    ).find( ".lrselected input" ).val() ),
                     type  : "simptab-topsites"
                 }
             };
@@ -183,18 +187,21 @@ define([ "jquery", "date" ], function( $, date ) {
             initLR();
 
             // update changestate lineradio
-             setting.UpdateRdState( "changestate", setting.mode["changestate"].value );
+            setting.UpdateRdState( "changestate", setting.mode["changestate"].value );
 
             // update clockstate lineradio
+            setting.UpdateRdState( "clockstate",  setting.mode["clockstate"].value  );
+            /*
             var mode      = localStorage["simptab-background-clock"],
                 checked   = $( ".clockstate input[value=" +  mode + "]" );
             if ( mode != undefined ) {
                 updateLR( checked );
             }
+            */
 
             // update originstate lineradio
             setting.Correction();
-            mode        = setting.origins;
+            var mode = setting.origins;
             $(".originstate").find("input").each( function( idx, item ) {
                 $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
                 updateOriginState( $(item), "init" );
@@ -215,6 +222,14 @@ define([ "jquery", "date" ], function( $, date ) {
             });
 
             // clock state
+            setting.AddClickEvent( "clockstate", function( event ) {
+                var mode    = $(event.currentTarget).attr( "value" );
+                setting.UpdateRdState( "clockstate", mode );
+                setting.UpdateMode(    "clockstate", mode );
+                callback( "clock", mode );
+            });
+
+            /*
             $( ".clockstate input" ).click( function( event ) {
 
                 localStorage["simptab-background-clock"] = $(event.currentTarget).attr( "value" );
@@ -227,6 +242,7 @@ define([ "jquery", "date" ], function( $, date ) {
                     date.Hide();
                 }
             });
+            */
 
             // background origin state
             $( ".originstate input" ).click( function( event ) {
@@ -245,7 +261,11 @@ define([ "jquery", "date" ], function( $, date ) {
 
         },
 
-        Get: function ( state ) {
+        Mode: function( type ) {
+            return setting.mode[type].value;
+        },
+
+        /*Get: function ( state ) {
 
             if ( state == "changestate" ) {
                 return $( ".changestate input[value=day]" ).attr( "checked" );
@@ -254,7 +274,7 @@ define([ "jquery", "date" ], function( $, date ) {
                 return $( ".clockstate input[value=show]" ).attr( "checked" );
             }
 
-        },
+        },*/
 
         IsRandom: function() {
           var mode = localStorage["simptab-background-mode"];

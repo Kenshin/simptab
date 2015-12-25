@@ -196,6 +196,8 @@ body {
 }
 
 #time {
+    display: none;
+
     font-size: 55px;
     font-weight: 100;
 

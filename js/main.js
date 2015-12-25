@@ -54,7 +54,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
     background.Get( setting.IsRandom() );
 
     // get time
-    setting.Get( "clockstate" ) != undefined ? date.Show() : date.Hide();
+    date.Toggle( setting.Mode( "clockstate" ));
 
     // listen
     controlbar.Listen( function( result ) {
@@ -62,7 +62,8 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
         else if ( typeof result === "object" ) background.Upload( result );
     });
     setting.Listen( function( type, result ) {
-        if ( type == "topsites" ) topsites.Refresh( result );
+        if ( type == "topsites" )   topsites.Refresh( result );
+        else if ( type == "clock" ) date.Toggle( result );
     });
 
     // validation background
