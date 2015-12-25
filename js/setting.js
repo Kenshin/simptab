@@ -104,7 +104,7 @@ define([ "jquery" ], function( $ ) {
         Setting.prototype.AddClickEvent = function( selctor, callback ) {
             $( "." + selctor +  " input" ).click( function( event ) {
                 var mode = $(event.currentTarget).attr( "value" );
-                callback( mode );
+                callback( selctor, mode );
             });
         }
 
@@ -171,46 +171,16 @@ define([ "jquery" ], function( $ ) {
 
             // listen [ changestate, clockstate, topsites ] radio button
             Object.keys( setting.mode ).forEach( function( item ) {
-                setting.AddClickEvent( item, function( mode ) {
+                setting.AddClickEvent( item, function( type, mode ) {
 
-                    setting.UpdateRdState( item, mode );
-                    setting.UpdateMode(    item, mode );
+                    setting.UpdateRdState( type, mode );
+                    setting.UpdateMode(    type, mode );
 
-                    switch ( item ) {
-                        case "clockstate":
-                            callback( "clock", mode );
-                            break;
-                        case "tsstate":
-                            callback( "topsites", mode );
-                            break;
-                    }
+                    // callback only include: tsstate, clockstate
+                    callback( type, mode );
+
                 });
             });
-
-            /*
-            // background state
-            setting.AddClickEvent( "changestate", function( event ) {
-                var mode    = $(event.currentTarget).attr( "value" );
-                setting.UpdateRdState( "changestate", mode );
-                setting.UpdateMode(    "changestate", mode );
-            });
-
-            // clock state
-            setting.AddClickEvent( "clockstate", function( event ) {
-                var mode    = $(event.currentTarget).attr( "value" );
-                setting.UpdateRdState( "clockstate", mode );
-                setting.UpdateMode(    "clockstate", mode );
-                callback( "clock", mode );
-            });
-
-            // topsites state
-            setting.AddClickEvent( "tsstate", function( event ) {
-                var mode    = $(event.currentTarget).attr( "value" );
-                setting.UpdateRdState( "tsstate", mode );
-                setting.UpdateMode(    "tsstate", mode );
-                callback( "topsites", mode );
-            });
-            */
 
             // background origin state
             $( ".originstate input" ).click( function( event ) {

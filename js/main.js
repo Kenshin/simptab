@@ -62,8 +62,8 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
         else if ( typeof result === "object" ) background.Upload( result );
     });
     setting.Listen( function( type, result ) {
-        if ( type == "topsites" )   topsites.Refresh( result );
-        else if ( type == "clock" ) date.Toggle( result );
+        if ( type == "tsstate" )         topsites.Refresh( result );
+        else if ( type == "clockstate" ) date.Toggle( result );
     });
 
     // validation background
