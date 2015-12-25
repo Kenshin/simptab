@@ -202,14 +202,7 @@ define([ "jquery" ], function( $ ) {
         },
 
         IsRandom: function() {
-          var mode = localStorage["simptab-background-mode"];
-          // when undefined same as time
-          if ( mode == undefined || mode == "time" ) {
-            return true;
-          }
-          else {
-            return false;
-          }
+          return setting.mode["changestate"].value  === "time" ? true : false;
         },
 
         Verify: function( idx ) {
