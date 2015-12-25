@@ -102,7 +102,10 @@ define([ "jquery" ], function( $ ) {
         }
 
         Setting.prototype.AddClickEvent = function( selctor, callback ) {
-            $( "." + selctor +  " input" ).click( callback );
+            $( "." + selctor +  " input" ).click( function( event ) {
+                var mode = $(event.currentTarget).attr( "value" );
+                callback( mode );
+            });
         }
 
         return new Setting();
@@ -166,6 +169,25 @@ define([ "jquery" ], function( $ ) {
 
         Listen: function ( callback ) {
 
+            // listen [ changestate, clockstate, topsites ] radio button
+            Object.keys( setting.mode ).forEach( function( item ) {
+                setting.AddClickEvent( item, function( mode ) {
+
+                    setting.UpdateRdState( item, mode );
+                    setting.UpdateMode(    item, mode );
+
+                    switch ( item ) {
+                        case "clockstate":
+                            callback( "clock", mode );
+                            break;
+                        case "tsstate":
+                            callback( "topsites", mode );
+                            break;
+                    }
+                });
+            });
+
+            /*
             // background state
             setting.AddClickEvent( "changestate", function( event ) {
                 var mode    = $(event.currentTarget).attr( "value" );
@@ -181,18 +203,19 @@ define([ "jquery" ], function( $ ) {
                 callback( "clock", mode );
             });
 
-            // background origin state
-            $( ".originstate input" ).click( function( event ) {
-                updateOriginState( $( event.currentTarget ), "update" );
-                updateLocalStorge( $( event.currentTarget ));
-            });
-
             // topsites state
             setting.AddClickEvent( "tsstate", function( event ) {
                 var mode    = $(event.currentTarget).attr( "value" );
                 setting.UpdateRdState( "tsstate", mode );
                 setting.UpdateMode(    "tsstate", mode );
                 callback( "topsites", mode );
+            });
+            */
+
+            // background origin state
+            $( ".originstate input" ).click( function( event ) {
+                updateOriginState( $( event.currentTarget ), "update" );
+                updateLocalStorge( $( event.currentTarget ));
             });
 
         },
