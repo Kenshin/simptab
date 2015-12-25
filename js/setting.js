@@ -24,9 +24,19 @@ define([ "jquery", "date" ], function( $, date ) {
             return origins;
         }
 
+        function getMode( mode, value ) {
+            if ( !localStorage[mode] ) localStorage[mode] = value;
+            return localStorage[mode];
+        }
+
         function Setting() {
 
             this.origins = getCurrentOrigin();
+
+            this.mode = {
+                "tsstate" : getMode( "simptab-topsites", $( ".tsstate" ).find( ".lrselected input" ).val() )
+            };
+
         }
 
         Setting.prototype.Correction = function() {
@@ -45,6 +55,21 @@ define([ "jquery", "date" ], function( $, date ) {
 
         Setting.prototype.Save = function() {
             localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
+        }
+
+        Setting.prototype.UpdateRdState = function( selector, mode ) {
+            $( "." + selector ).find( "input" ).each( function( idx, item ) {
+                if ( $(item).val() == mode ) {
+                    $(item).attr( "checked", "checked"      );
+                    $(item).prev().attr( "class", "checked" );
+                    $(item).parent().addClass( "lrselected" );
+                }
+                else {
+                    $(item).attr( "checked", false             );
+                    $(item).prev().attr( "class", "unchecked"  );
+                    $(item).parent().removeClass( "lrselected" );
+                }
+            });
         }
 
         return new Setting();
@@ -121,6 +146,7 @@ define([ "jquery", "date" ], function( $, date ) {
         $parent.attr( "class", divel    );
     }
 
+    /*
     function updateTsState( mode, $target ) {
         if ( $target.val() == mode ) {
             $target.attr( "checked", "checked"      );
@@ -133,6 +159,7 @@ define([ "jquery", "date" ], function( $, date ) {
             $target.parent().removeClass( "lrselected" );
         }
     }
+    */
 
     function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
@@ -176,10 +203,13 @@ define([ "jquery", "date" ], function( $, date ) {
             });
 
             // update topsites lineradio
+            setting.UpdateRdState( "tsstate", setting.mode["tsstate"] );
+            /*
             mode      = !localStorage["simptab-topsites"] ? "simple" : localStorage["simptab-topsites"];
             $(".tsstate").find("input").each( function( idx, item ) {
                 updateTsState( mode, $(item) );
             });
+            */
 
         },
 
@@ -214,10 +244,13 @@ define([ "jquery", "date" ], function( $, date ) {
             // topsites state
             $( ".tsstate input" ).click( function( event ) {
                 var mode    = $(event.currentTarget).attr( "value" );
+                setting.UpdateRdState( "tsstate", mode );
                 callback( "topsites", mode );
+                /*
                 $(".tsstate").find("input").each( function( idx, item ) {
                     updateTsState( mode, $(item) );
                 });
+                */
             });
 
         },
