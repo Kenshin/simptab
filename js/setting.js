@@ -108,9 +108,27 @@ define([ "jquery" ], function( $ ) {
             });
         }
 
+        Setting.prototype.UpdateCkState = function( item ) {
+            var idx     = item.split(":")[0],
+                value   = item.split(":")[1],
+                $target = $($(".originstate").children()[idx]),
+                cls     = "lineradio",
+                checked = "unchecked";
+
+            if ( value === "true" ) {
+                cls = "lineradio lrselected";
+                checked = "checked";
+            }
+
+            $target.attr("class", cls );
+            $target.find("span").attr( "class", checked );
+            $target.find("input").val( value );
+        }
+
         return new Setting();
     })();
 
+    /*
     function updateOriginState( $target, type ) {
         var $prev   = $($target.prev()),
             $parent = $($target.parent()),
@@ -133,6 +151,7 @@ define([ "jquery" ], function( $ ) {
         $prev.attr(   "class", checked  );
         $parent.attr( "class", divel    );
     }
+    */
 
     function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
@@ -159,11 +178,16 @@ define([ "jquery" ], function( $ ) {
 
             // update originstate lineradio
             setting.Correction();
+            setting.origins.forEach( function( item ) {
+                setting.UpdateCkState( item );
+            });
+            /*
             var mode = setting.origins;
             $(".originstate").find("input").each( function( idx, item ) {
                 $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
                 updateOriginState( $(item), "init" );
             });
+            */
 
         },
 
