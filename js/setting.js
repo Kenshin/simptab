@@ -35,7 +35,10 @@ define([ "jquery", "date" ], function( $, date ) {
             this.origins = getCurrentOrigin();
 
             this.mode = {
-                "tsstate" : getMode( "simptab-topsites", $( ".tsstate" ).find( ".lrselected input" ).val() )
+                "tsstate" : {
+                    value : getMode( "simptab-topsites", $( ".tsstate" ).find( ".lrselected input" ).val() ),
+                    type  : "simptab-topsites"
+                }
             };
 
         }
@@ -71,6 +74,11 @@ define([ "jquery", "date" ], function( $, date ) {
                     $(item).parent().removeClass( "lrselected" );
                 }
             });
+        }
+
+        Setting.prototype.UpdateMode = function( type, mode ) {
+            this.mode[type].value = mode;
+            localStorage[ this.mode[type].type ] = mode;
         }
 
         return new Setting();
@@ -189,7 +197,7 @@ define([ "jquery", "date" ], function( $, date ) {
             });
 
             // update topsites lineradio
-            setting.UpdateRdState( "tsstate", setting.mode["tsstate"] );
+            setting.UpdateRdState( "tsstate", setting.mode["tsstate"].value );
 
         },
 
@@ -225,6 +233,7 @@ define([ "jquery", "date" ], function( $, date ) {
             $( ".tsstate input" ).click( function( event ) {
                 var mode    = $(event.currentTarget).attr( "value" );
                 setting.UpdateRdState( "tsstate", mode );
+                setting.UpdateMode(    "tsstate", mode );
                 callback( "topsites", mode );
             });
 
