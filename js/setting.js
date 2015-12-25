@@ -5,6 +5,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
     var setting = (function () {
 
+        // private
         // [ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]
         var defaultOrigins = (function() {
             var origins = [];
@@ -146,21 +147,6 @@ define([ "jquery", "date" ], function( $, date ) {
         $parent.attr( "class", divel    );
     }
 
-    /*
-    function updateTsState( mode, $target ) {
-        if ( $target.val() == mode ) {
-            $target.attr( "checked", "checked"      );
-            $target.prev().attr( "class", "checked" );
-            $target.parent().addClass( "lrselected" );
-        }
-        else {
-            $target.attr( "checked", false             );
-            $target.prev().attr( "class", "unchecked"  );
-            $target.parent().removeClass( "lrselected" );
-        }
-    }
-    */
-
     function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
             value = $target.attr("value"),
@@ -204,12 +190,6 @@ define([ "jquery", "date" ], function( $, date ) {
 
             // update topsites lineradio
             setting.UpdateRdState( "tsstate", setting.mode["tsstate"] );
-            /*
-            mode      = !localStorage["simptab-topsites"] ? "simple" : localStorage["simptab-topsites"];
-            $(".tsstate").find("input").each( function( idx, item ) {
-                updateTsState( mode, $(item) );
-            });
-            */
 
         },
 
@@ -246,11 +226,6 @@ define([ "jquery", "date" ], function( $, date ) {
                 var mode    = $(event.currentTarget).attr( "value" );
                 setting.UpdateRdState( "tsstate", mode );
                 callback( "topsites", mode );
-                /*
-                $(".tsstate").find("input").each( function( idx, item ) {
-                    updateTsState( mode, $(item) );
-                });
-                */
             });
 
         },
