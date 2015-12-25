@@ -5,53 +5,49 @@ define([ "jquery", "date" ], function( $, date ) {
 
     var setting = (function () {
 
-            function getDefaultOrigin() {
-                var origins = [];
-                $( ".originstate" ).children().each( function( idx ) {
-                    origins.push( idx + ":false" );
-                });
-                return origins;
-            }
+        // [ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]
+        var defaultOrigins = (function() {
+            var origins = [];
+            $( ".originstate" ).children().each( function( idx ) {
+                origins.push( idx + ":false" );
+            });
+            return origins;
+        })();
 
-            function getCurrentOrigin() {
-                try {
-                    var origins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
+        function getCurrentOrigin() {
+            try {
+                var origins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
+            }
+            catch ( error ) {
+                origins = [];
+            }
+            return origins;
+        }
+
+        function Setting() {
+
+            this.origins = getCurrentOrigin();
+        }
+
+        Setting.prototype.Correction = function() {
+            var len     = this.origins.length;
+            if ( defaultOrigins.length > len ) {
+                for( var i = 0; i < defaultOrigins.length - len; i++ ) {
+                    this.origins.splice( this.origins.length, 0, defaultOrigins[this.origins.length] );
                 }
-                catch ( error ) {
-                    origins = [];
-                }
-                return origins;
+                this.Save();
             }
-
-            function Setting() {
-
-                // [ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]
-                this.origins = {
-                    default : getDefaultOrigin(),
-                    current : getCurrentOrigin(),
-                };
+            else if ( defaultOrigins.length < len ) {
+                this.origins = this.origins.slice( 0, defaultOrigins.length );
+                this.Save();
             }
+        }
 
-            Setting.prototype.Correction = function() {
-                var len     = this.origins.current.length,
-                    origins = this.origins.default;
-                if ( origins.length > len ) {
-                    for( var i = 0; i < origins.length - len; i++ ) {
-                        this.origins.current.splice( this.origins.current.length, 0, origins[this.origins.current.length] );
-                    }
-                    this.Save();
-                }
-                else if ( origins.length < len ) {
-                    this.origins.current = this.origins.current.slice( 0, origins.length );
-                    this.Save();
-                }
-            }
+        Setting.prototype.Save = function() {
+            localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
+        }
 
-            Setting.prototype.Save = function() {
-                localStorage["simptab-background-origin"] = JSON.stringify( this.origins.current );
-            }
-
-            return new Setting();
+        return new Setting();
     })();
 
     function initLR() {
@@ -141,10 +137,10 @@ define([ "jquery", "date" ], function( $, date ) {
     function updateLocalStorge( $target ) {
         var index = $target.attr("name"),
             value = $target.attr("value"),
-            item  = setting.origins.current[index];
+            item  = setting.origins[index];
 
         // update arr[index] to new value
-        setting.origins.current.splice( index, 1, index + ":" + value );
+        setting.origins.splice( index, 1, index + ":" + value );
 
         // update local storge
         setting.Save();
@@ -173,7 +169,7 @@ define([ "jquery", "date" ], function( $, date ) {
 
             // update originstate lineradio
             setting.Correction();
-            mode        = setting.origins.current;
+            mode        = setting.origins;
             $(".originstate").find("input").each( function( idx, item ) {
                 $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
                 updateOriginState( $(item), "init" );
@@ -249,7 +245,7 @@ define([ "jquery", "date" ], function( $, date ) {
         },
 
         Verify: function( idx ) {
-            var value = setting.origins.current[idx],
+            var value = setting.origins[idx],
                 value = value || idx + ":" + "true";
 
             return value.split(":")[1];
