@@ -133,43 +133,6 @@ define([ "jquery" ], function( $ ) {
         return new Setting();
     })();
 
-    /*
-    function updateOriginState( $target, type ) {
-        var $prev   = $($target.prev()),
-            $parent = $($target.parent()),
-            value   = $target.attr("value"),
-            checked = "checked",
-            inputel = "true",
-            divel   = "lineradio lrselected";
-
-        if ( type == "init" ) {
-            value = value == "true" ? "false" : "true";
-        }
-
-        if ( value == "true" ) {
-            checked = "unchecked";
-            inputel = "false";
-            divel   = "lineradio";
-        }
-
-        $target.attr( "value", inputel  );
-        $prev.attr(   "class", checked  );
-        $parent.attr( "class", divel    );
-    }
-
-    function updateLocalStorge( $target ) {
-        var index = $target.attr("name"),
-            value = $target.attr("value"),
-            item  = setting.origins[index];
-
-        // update arr[index] to new value
-        setting.origins.splice( index, 1, index + ":" + value );
-
-        // update local storge
-        setting.Save();
-    }
-    */
-
     return {
         Init: function() {
 
@@ -186,13 +149,6 @@ define([ "jquery" ], function( $ ) {
             setting.origins.forEach( function( item ) {
                 setting.UpdateCkState( item );
             });
-            /*
-            var mode = setting.origins;
-            $(".originstate").find("input").each( function( idx, item ) {
-                $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
-                updateOriginState( $(item), "init" );
-            });
-            */
 
         },
 
@@ -213,8 +169,6 @@ define([ "jquery" ], function( $ ) {
 
             // listen originstate checkbox button event
             $( ".originstate input" ).click( function( event ) {
-                //updateOriginState( $( event.currentTarget ), "update" );
-                //updateLocalStorge( $( event.currentTarget ));
                 var idx     = event.target.name,
                     value   = event.target.value == "true" ? "false" : "true";
                 setting.UpdateCkState( idx + ":" + value );
