@@ -81,6 +81,10 @@ define([ "jquery", "date" ], function( $, date ) {
             localStorage[ this.mode[type].type ] = mode;
         }
 
+        Setting.prototype.AddClickEvent = function( selctor, callback ) {
+            $( "." + selctor +  " input" ).click( callback );
+        }
+
         return new Setting();
     })();
 
@@ -230,7 +234,8 @@ define([ "jquery", "date" ], function( $, date ) {
             });
 
             // topsites state
-            $( ".tsstate input" ).click( function( event ) {
+            //$( ".tsstate input" ).click( function( event ) {
+            setting.AddClickEvent( "tsstate", function( event ) {
                 var mode    = $(event.currentTarget).attr( "value" );
                 setting.UpdateRdState( "tsstate", mode );
                 setting.UpdateMode(    "tsstate", mode );
