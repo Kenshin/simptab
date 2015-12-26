@@ -24,7 +24,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".lineradio" ).find("label")[2]).text( i18n( "setting_show_clock" ));
         $($( ".lineradio" ).find("label")[3]).text( i18n( "setting_hide_clock" ));
 
-        $.each( $(".originstate .lineradio").find("label:first"), function( idx, item ) {
+        $.each( $(".originstate .lineradio").find("label"), function( idx, item ) {
             $(item).text( i18n( "setting_multi_origin_" + idx ));
         });
 
