@@ -80,18 +80,6 @@ define([ "jquery" ], function( $ ) {
         return new Setting();
     })();
 
-    function initRdState() {
-        $( ".lineradio" ).each( function( index, item ) {
-            if ( $( item ).hasClass("lrselected") ) {
-                $( item ).prepend( '<span class="checked"></span>' );
-                $( item ).find( "input" ).attr( "checked", true    );
-            }
-            else {
-                $( item ).prepend( '<span class="unchecked"></span>' );
-            }
-        });
-    }
-
     function updateRdState( selector, mode ) {
         $( "." + selector ).find( "input" ).each( function( idx, item ) {
             if ( $(item).val() == mode ) {
@@ -133,9 +121,6 @@ define([ "jquery" ], function( $ ) {
 
     return {
         Init: function() {
-
-            // init line radio
-            initRdState();
 
             // update [ changestate, clockstate, topsites ] radio button
             Object.keys( setting.mode ).forEach( function( item ) {
