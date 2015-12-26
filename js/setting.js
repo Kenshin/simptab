@@ -36,6 +36,8 @@ define([ "jquery" ], function( $ ) {
                 origins = origins.slice( 0, defaultOrigins.length );
             }
 
+            if ( localStorage["simptab-background-origin"] != JSON.stringify( origins )) localStorage["simptab-background-origin"] = JSON.stringify( origins );
+
             return origins;
         }
 
@@ -65,6 +67,16 @@ define([ "jquery" ], function( $ ) {
 
         }
 
+        Setting.prototype.UpdateMode = function( type, mode ) {
+            this.mode[type].value = mode;
+            localStorage[ this.mode[type].type ] = mode;
+        }
+
+        Setting.prototype.UpdateOriginsMode = function( idx, value ) {
+            this.origins.splice( idx, 1, idx + ":" + value );
+            localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
+        }
+
         Setting.prototype.InitRdState = function() {
             $( ".lineradio" ).each( function( index, item ) {
                 if ( $( item ).hasClass("lrselected") ) {
@@ -92,11 +104,6 @@ define([ "jquery" ], function( $ ) {
             });
         }
 
-        Setting.prototype.UpdateMode = function( type, mode ) {
-            this.mode[type].value = mode;
-            localStorage[ this.mode[type].type ] = mode;
-        }
-
         Setting.prototype.AddClickEvent = function( selctor, callback ) {
             $( "." + selctor +  " input" ).click( function( event ) {
                 var mode = $(event.currentTarget).attr( "value" );
@@ -121,11 +128,6 @@ define([ "jquery" ], function( $ ) {
             $target.find("input").val( value );
         }
 
-        Setting.prototype.UpdateOriginsMode = function( idx, value ) {
-            this.origins.splice( idx, 1, idx + ":" + value );
-            localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
-        }
-
         return new Setting();
     })();
 
@@ -143,7 +145,6 @@ define([ "jquery" ], function( $ ) {
             // update originstate lineradio
             setting.origins.forEach( function( item ) {
                 setting.UpdateCkState( item );
-                setting.UpdateOriginsMode( item.split(":")[0], item.split(":")[1] );
             });
 
         },
