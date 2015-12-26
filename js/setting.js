@@ -77,74 +77,74 @@ define([ "jquery" ], function( $ ) {
             localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
         }
 
-        Setting.prototype.InitRdState = function() {
-            $( ".lineradio" ).each( function( index, item ) {
-                if ( $( item ).hasClass("lrselected") ) {
-                    $( item ).prepend( '<span class="checked"></span>' );
-                    $( item ).find( "input" ).attr( "checked", true    );
-                }
-                else {
-                    $( item ).prepend( '<span class="unchecked"></span>' );
-                }
-            });
-        }
-
-        Setting.prototype.UpdateRdState = function( selector, mode ) {
-            $( "." + selector ).find( "input" ).each( function( idx, item ) {
-                if ( $(item).val() == mode ) {
-                    $(item).attr( "checked", "checked"      );
-                    $(item).prev().attr( "class", "checked" );
-                    $(item).parent().addClass( "lrselected" );
-                }
-                else {
-                    $(item).attr( "checked", false             );
-                    $(item).prev().attr( "class", "unchecked"  );
-                    $(item).parent().removeClass( "lrselected" );
-                }
-            });
-        }
-
-        Setting.prototype.AddClickEvent = function( selctor, callback ) {
-            $( "." + selctor +  " input" ).click( function( event ) {
-                var mode = $(event.currentTarget).attr( "value" );
-                callback( selctor, mode );
-            });
-        }
-
-        Setting.prototype.UpdateCkState = function( item ) {
-            var idx     = item.split(":")[0],
-                value   = item.split(":")[1],
-                $target = $($(".originstate").children()[idx]),
-                cls     = "lineradio",
-                checked = "unchecked";
-
-            if ( value === "true" ) {
-                cls = "lineradio lrselected";
-                checked = "checked";
-            }
-
-            $target.attr("class", cls );
-            $target.find("span").attr( "class", checked );
-            $target.find("input").val( value );
-        }
-
         return new Setting();
     })();
+
+    function initRdState() {
+        $( ".lineradio" ).each( function( index, item ) {
+            if ( $( item ).hasClass("lrselected") ) {
+                $( item ).prepend( '<span class="checked"></span>' );
+                $( item ).find( "input" ).attr( "checked", true    );
+            }
+            else {
+                $( item ).prepend( '<span class="unchecked"></span>' );
+            }
+        });
+    }
+
+    function updateRdState( selector, mode ) {
+        $( "." + selector ).find( "input" ).each( function( idx, item ) {
+            if ( $(item).val() == mode ) {
+                $(item).attr( "checked", "checked"      );
+                $(item).prev().attr( "class", "checked" );
+                $(item).parent().addClass( "lrselected" );
+            }
+            else {
+                $(item).attr( "checked", false             );
+                $(item).prev().attr( "class", "unchecked"  );
+                $(item).parent().removeClass( "lrselected" );
+            }
+        });
+    }
+
+    function addClickEvent( selctor, callback ) {
+        $( "." + selctor +  " input" ).click( function( event ) {
+            var mode = $(event.currentTarget).attr( "value" );
+            callback( selctor, mode );
+        });
+    }
+
+    function updateCkState( item ) {
+        var idx     = item.split(":")[0],
+            value   = item.split(":")[1],
+            $target = $($(".originstate").children()[idx]),
+            cls     = "lineradio",
+            checked = "unchecked";
+
+        if ( value === "true" ) {
+            cls     = "lineradio lrselected";
+            checked = "checked";
+        }
+
+        $target.attr("class", cls );
+        $target.find("span").attr( "class", checked );
+        $target.find("input").val( value );
+    }
 
     return {
         Init: function() {
 
             // init line radio
-            setting.InitRdState();
+            initRdState();
 
             // update [ changestate, clockstate, topsites ] radio button
             Object.keys( setting.mode ).forEach( function( item ) {
-                setting.UpdateRdState( item, setting.mode[item].value );
+                updateRdState( item, setting.mode[item].value );
             });
 
             // update originstate lineradio
             setting.origins.forEach( function( item ) {
-                setting.UpdateCkState( item );
+                updateCkState( item );
             });
 
         },
@@ -153,10 +153,10 @@ define([ "jquery" ], function( $ ) {
 
             // listen [ changestate, clockstate, topsites ] radio button event
             Object.keys( setting.mode ).forEach( function( item ) {
-                setting.AddClickEvent( item, function( type, mode ) {
+                addClickEvent( item, function( type, mode ) {
 
-                    setting.UpdateRdState( type, mode );
-                    setting.UpdateMode(    type, mode );
+                    updateRdState(      type, mode );
+                    setting.UpdateMode( type, mode );
 
                     // callback only include: tsstate, clockstate
                     callback( type, mode );
@@ -168,7 +168,7 @@ define([ "jquery" ], function( $ ) {
             $( ".originstate input" ).click( function( event ) {
                 var idx     = event.target.name,
                     value   = event.target.value == "true" ? "false" : "true";
-                setting.UpdateCkState( idx + ":" + value );
+                updateCkState( idx + ":" + value );
                 setting.UpdateOriginsMode( idx, value );
             });
 
