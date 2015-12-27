@@ -4,7 +4,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
     "use strict";
 
     function verifyURL( url ) {
-        var re = new RegExp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/);
+        var re = new RegExp(/^(https?:\/\/)/);
         return re.test( url );
     }
 
