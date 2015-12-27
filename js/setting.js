@@ -41,29 +41,49 @@ define([ "jquery" ], function( $ ) {
             return origins;
         }
 
-        function getMode( mode, value ) {
-            if ( !localStorage[mode] ) localStorage[mode] = value;
+        function getLS( mode ) {
+            if ( !localStorage[mode] ) localStorage[mode] = "";
             return localStorage[mode];
+        }
+
+        function getModes( modes ) {
+            var mode;
+            Object.keys( modes ).forEach( function( item ) {
+                mode = modes[item];
+                if ( !mode.value ||
+                     mode.vals.filter( function(element) { return mode.value == element ? true : false; }).length == 0
+                   ) {
+                    mode.value = mode.vals[mode.default];
+                    localStorage[mode.type] = mode.value;
+                }
+            });
+            return modes;
         }
 
         function Setting() {
 
             this.origins = getOrigins();
 
-            this.mode = {
+            this.mode = getModes({
                 "changestate" : {
-                    value : getMode( "simptab-background-mode",  $( ".changestate" ).find( ".lrselected input" ).val() ),
-                    type  : "simptab-background-mode"
+                    value  : getLS( "simptab-background-mode" ),
+                    type   : "simptab-background-mode",
+                    vals   : [ "day","time" ],
+                    default: 1
                 },
                 "clockstate" : {
-                    value : getMode( "simptab-background-clock", $( ".clockstate"  ).find( ".lrselected input" ).val() ),
-                    type  : "simptab-background-clock"
+                    value  : getLS( "simptab-background-clock"  ),
+                    type   : "simptab-background-clock",
+                    vals   : [ "show","hide" ],
+                    default: 0
                 },
-                "tsstate" : {
-                    value : getMode( "simptab-topsites",         $( ".tsstate"     ).find( ".lrselected input" ).val() ),
-                    type  : "simptab-topsites"
+                "tsstate"  : {
+                    value  : getLS( "simptab-topsites" ),
+                    type   : "simptab-topsites",
+                    vals   : [ "normal","simple", "senior" ],
+                    default: 1
                 }
-            };
+            });
 
         }
 
