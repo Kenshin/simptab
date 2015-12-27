@@ -8,23 +8,23 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         var details = {
             "1.0.3" : {
                 level   : 0,
-                details : '修复了一些错误；'
+                details : i18n.GetLang( "version_detail_0" )
             },
             "1.4.0" : {
                 level   : 1,
-                details : '多种背景源，二十四节气、电影海报、特殊节日，上传功能，收藏功能等；'
+                details : i18n.GetLang( "version_detail_1" )
             },
             "1.4.1" : {
                 level   : 2,
-                details : '常用网址（高级模式）；'
+                details : i18n.GetLang( "version_detail_2" )
             },
             "1.4.2" : {
                 level   : 3,
-                details : '背景源：<a href="http://www.nasa.gov/multimedia/imagegallery/index.html" target="_blank">NASA Image Galleries</a>，特别日（Special day）；'
+                details : i18n.GetLang( "version_detail_3" )
             },
             "1.4.3" : {
                 level   : 4,
-                details : '更详尽的版本提升等；'
+                details : i18n.GetLang( "version_detail_4" )
             }
         };
 
@@ -60,17 +60,16 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 newversion = manifest.version,
                 curversion = localStorage['simptab-version'];
 
-            new Notify().Render( 0,
-                                 i18n.GetLang( 'version_title' ),
-                                 i18n.GetLang( 'version_content' )
-                                    .replace( '#1', newversion )
-                                    .replace( '#2', '<a href="https://github.com/kenshin/simptab/blob/master/CHANGELOG.md" target="_blank">' )
-                                    .replace( '#3', '</a>' )
-                                    .replace( '#4', version.Details( curversion, newversion ))
-                                  , true );
 
             if ( !curversion || newversion !== curversion ) {
-                new Notify().Render( 0, i18n.GetLang( 'version_title' ), i18n.GetLang( 'version_content' ).replace( '#1', newversion ).replace( '#2', '<a href="https://github.com/kenshin/simptab/blob/master/CHANGELOG.md" target="_blank">' ).replace( '#3', '</a>' ), true );
+                new Notify().Render( 0,
+                                     i18n.GetLang( 'version_title' ),
+                                     i18n.GetLang( 'version_content' )
+                                        .replace( '#1', newversion )
+                                        .replace( '#2', '<a href="https://github.com/kenshin/simptab/blob/master/CHANGELOG.md" target="_blank">' )
+                                        .replace( '#3', '</a>' )
+                                        .replace( '#4', version.Details( curversion, newversion ))
+                                      , true );
                 localStorage["simptab-version"] = newversion;
             }
         }
