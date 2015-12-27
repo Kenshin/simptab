@@ -21,6 +21,10 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             "1.4.2" : {
                 level   : 3,
                 details : '背景源：<a href="http://www.nasa.gov/multimedia/imagegallery/index.html" target="_blank">NASA Image Galleries</a>，特别日（Special day）；'
+            },
+            "1.4.3" : {
+                level   : 4,
+                details : '更详尽的版本提升等；'
             }
         };
 
