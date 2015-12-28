@@ -28,10 +28,15 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             }
         };
 
-        function Version() {}
+        function Version() {
+            this.new = chrome.runtime.getManifest().version;
+            this.cur = localStorage['simptab-version'];
+        }
 
-        Version.prototype.Details = function( cur, news ) {
-            var str = "";
+        Version.prototype.Details = function() {
+            var str  = i18n.GetLang( "version_detail_prefix" ),
+                cur  = version.cur,
+                news = version.new;
             if ( details[cur] ) {
                 var i = details[cur].level + 1,
                     j = details[news].level;
@@ -49,27 +54,27 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             return str;
         }
 
+        Version.prototype.Save = function() {
+            localStorage["simptab-version"] = this.new;
+        }
+
         return new Version();
 
     })();
 
     return {
         Init: function() {
-            var manifest   = chrome.runtime.getManifest(),
-                newversion = manifest.version,
-                curversion = localStorage['simptab-version'];
 
-
-            if ( !curversion || newversion !== curversion ) {
+            if ( !version.cur || version.new !== version.cur ) {
                 new Notify().Render( 0,
                                      i18n.GetLang( 'version_title' ),
                                      i18n.GetLang( 'version_content' )
-                                        .replace( '#1', newversion )
+                                        .replace( '#1', version.new )
                                         .replace( '#2', '<a href="https://github.com/kenshin/simptab/blob/master/CHANGELOG.md" target="_blank">' )
                                         .replace( '#3', '</a>' )
-                                        .replace( '#4', version.Details( curversion, newversion ))
+                                        .replace( '#4', version.Details())
                                       , true );
-                localStorage["simptab-version"] = newversion;
+                version.Save();
             }
         }
     };
