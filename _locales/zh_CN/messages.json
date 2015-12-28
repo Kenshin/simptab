@@ -160,7 +160,7 @@
     },
 
     "notify_upload_fail": {
-        "message": "\u80cc\u666f\u4e0a\u4f20\u5931\u8d25\u3002"
+        "message": "\u56fe\u7247\u4e0a\u4f20\u5931\u8d25\u3002"
     },
 
     "notify_favorite_add": {
@@ -208,6 +208,6 @@
     },
 
     "permissions_failed": {
-        "message": "\u6743\u9650\u83b7\u53d6\u5931\u8d25\uff0c\u65b0\u529f\u80fd\u65e0\u6cd5\u542f\u7528\uff0c\u8bf7\u91cd\u65b0\u5b89\u88c5\u3002"
+        "message": "\u6743\u9650\u83b7\u53d6\u5931\u8d25\uff0c\u65b0\u529f\u80fd\u65e0\u6cd5\u542f\u7528\uff0c\u5efa\u8bae\u91cd\u65b0\u5b89\u88c5\u3002"
     }
 }

@@ -159,6 +159,10 @@
         "message": "Background upload complete."
     },
 
+    "notify_upload_fail": {
+        "message": "Background image upload failed."
+    },
+
     "notify_favorite_add": {
         "message": "Background favorite add complete."
     },
@@ -193,5 +197,17 @@
 
     "version_detail_4": {
         "message": "A more detailed version of the new tips, etc.;"
+    },
+
+    "permissions": {
+        "message": "New version #1 need to obtain new permissions, <a href='#' class='permissions'>please confirm</a>."
+    },
+
+    "permissions_success": {
+        "message": "New permissions are enabled successfully."
+    },
+
+    "permissions_failed": {
+        "message": "Permissions failed to get new features can not be enabled, it is recommended to re install."
     }
 }
