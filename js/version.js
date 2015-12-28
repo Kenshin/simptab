@@ -61,7 +61,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         }
 
         Version.prototype.Save = function() {
-            localStorage["simptab-version"] = "1.4.0";
+            localStorage["simptab-version"] = this.new;
         }
 
         Version.prototype.isUpdate = function() {
