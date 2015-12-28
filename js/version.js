@@ -3,8 +3,8 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
     "use strict";
 
-    return
-{        Init: function() {
+    return {
+        Init: function() {
             var manifest   = chrome.runtime.getManifest(),
                 version    = manifest.version,
                 curversion = localStorage['simptab-version'];
