@@ -29,7 +29,17 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             "1.4.3" : {
                 level   : 4,
                 details : i18n.GetLang( "version_detail_4" ),
-                permissions: [ "http://*.vo.msecnd.net/", "http://*.nasa.gov/" ]
+                permissions: [
+                    "https://*.unsplash.com/",
+                    "https://*.unsplash.it/",
+                    "http://*.wallhaven.cc/",
+                    "https://*.staticflickr.com/",
+                    "http://*.desktopprassets.com/",
+                    "http://*.visualhunt.com/",
+                    "https://*.500px.org/",
+                    "http://*.vo.msecnd.net/",
+                    "http://*.nasa.gov/"
+                ]
             }
         };
 
