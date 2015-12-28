@@ -165,5 +165,29 @@
 
     "notify_favorite_del": {
         "message": "Background favorite delete complete."
+    },
+
+    "version_detail": {
+        "message": "New version, new features;"
+    },
+
+    "version_detail_0": {
+        "message": "Fix some bugs in the previous version;"
+    },
+
+    "version_detail_1": {
+        "message": "Multiple background origin, twenty-four solar terms, movie posters, special festivals, upload function, collection function, etc.;"
+    },
+
+    "version_detail_2": {
+        "message": "Senior topsites, etc.;"
+    },
+
+    "version_detail_3": {
+        "message": "<a href='http://www.nasa.gov/multimedia/imagegallery/index.html' target='_blank'>NASA</a>background origin, Special day, etc.;"
+    },
+
+    "version_detail_4": {
+        "message": "A more detailed version of the new tips, etc.;"
     }
 }
