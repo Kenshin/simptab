@@ -55,12 +55,27 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         }
 
         Version.prototype.Save = function() {
-            localStorage["simptab-version"] = this.new;
+            localStorage["simptab-version"] = "1.0.3";
+        }
+
+        Version.prototype.Permission = function() {
+            return true;
         }
 
         return new Version();
 
     })();
+
+    function permissionClickHandle( event ) {
+        var $target = $( this ).parent().parent().find( ".close" );
+        chrome.permissions.request({
+            origins: [ "http://*.vo.msecnd.net/", "http://*.nasa.gov/" ]
+        }, function( result ) {
+            new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
+            $( ".notifygp" ).undelegate( ".permissions", "click", permissionClickHandle );
+            $target.click();
+      });
+    }
 
     return {
         Init: function() {
@@ -74,6 +89,12 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                                         .replace( '#3', '</a>' )
                                         .replace( '#4', version.Details())
                                       , true );
+
+                if ( version.Permission() ) {
+                    new Notify().Render( 0, "", i18n.GetLang( 'permissions' ).replace( '#1', version.new ), true );
+                    $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
+                }
+
                 version.Save();
             }
         }

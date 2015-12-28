@@ -16,6 +16,7 @@
         "128": "assets/images/icon128.png"
     },
     "content_security_policy": "script-src 'self' https://*.flickr.com 'unsafe-eval'; object-src 'self'",
+    "optional_permissions": [ "http://*.vo.msecnd.net/", "http://*.nasa.gov/" ],
     "permissions": [
         "topSites",
         "storage",
@@ -27,9 +28,7 @@
         "https://*.staticflickr.com/",
         "http://*.desktopprassets.com/",
         "http://*.visualhunt.com/",
-        "https://*.500px.org/",
-        "http://*.vo.msecnd.net/",
-        "http://*.nasa.gov/"
+        "https://*.500px.org/"
     ],
     "omnibox": { "keyword" : "st" },
     "commands": {
