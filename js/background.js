@@ -3,6 +3,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
     "use strict";
 
+    function verifyURL( url ) {
+        var re = new RegExp(/^(https?:\/\/)/);
+        return re.test( url );
+    }
+
     function getCurrentBackground( is_random ) {
 
         var def = $.Deferred();
@@ -89,7 +94,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             apis.Init()
                 .fail( failBackground )
                 .done( function( result ) {
-                    def.resolve( true, result.hdurl );
+                    if ( verifyURL( result.hdurl )) {
+                        def.resolve( true, result.hdurl );
+                    }
+                    else {
+                        def.reject( new SimpError( "background.getRemoteBackground()::apis.Init()", "url verify error.", result ));
+                    }
                 });
         }
         else {
