@@ -85,12 +85,12 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
             // when level >= 1, version >= 1.4.x, verity permission
             // when level >  1, version is 1.0.x, not verity permission
-            // when this.cur == undefined, first load
+            // when this.cur == undefined, first load or version is 1.0.x
             var arr = [];
             if ( !this.cur ) {
                 this.permissions = details[this.new].permissions;
             }
-            else if ( details[this.cur].level >= 1 ) {
+            else {
                 for( var i = details[this.cur].level, j = details[this.new].level ; i <= j; i++ ) {
                     $.each( details, function( idx, item ) {
                         if ( item.level == i ) arr = item.permissions;
