@@ -43,6 +43,8 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             var str  = i18n.GetLang( "version_detail_prefix" ),
                 cur  = version.cur,
                 news = version.new;
+
+            // when this.cur == undefined, first load
             if ( details[cur] ) {
                 var i = details[cur].level + 1,
                     j = details[news].level;
@@ -61,6 +63,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         }
 
         Version.prototype.Save = function() {
+            this.cur = this.new;
             localStorage["simptab-version"] = this.new;
         }
 
@@ -70,9 +73,14 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
         Version.prototype.isPermission = function() {
 
-            // when level > 1, version >= 1.4.x
+            // when level >= 1, version >= 1.4.x, verity permission
+            // when level >  1, version is 1.0.x, not verity permission
+            // when this.cur == undefined, first load
             var arr = [];
-            if ( details[this.cur].level >= 1 ) {
+            if ( !this.cur ) {
+                this.permissions = details[this.new].permissions;
+            }
+            else if ( details[this.cur].level >= 1 ) {
                 for( var i = details[this.cur].level, j = details[this.new].level ; i <= j; i++ ) {
                     $.each( details, function( idx, item ) {
                         if ( item.level == i ) arr = item.permissions;
@@ -102,9 +110,6 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         Init: function() {
 
             if ( version.isUpdate() ) {
-
-                // when cur is undefined, set cur = new
-                if ( !version.cur ) version.cur = version.new;
 
                 new Notify().Render( 0,
                                      i18n.GetLang( 'version_title' ),
