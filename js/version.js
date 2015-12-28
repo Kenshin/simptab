@@ -8,29 +8,35 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         var details = {
             "1.0.3" : {
                 level   : 0,
-                details : i18n.GetLang( "version_detail_0" )
+                details : i18n.GetLang( "version_detail_0" ),
+                permissions: []
             },
             "1.4.0" : {
                 level   : 1,
-                details : i18n.GetLang( "version_detail_1" )
+                details : i18n.GetLang( "version_detail_1" ),
+                permissions: []
             },
             "1.4.1" : {
                 level   : 2,
-                details : i18n.GetLang( "version_detail_2" )
+                details : i18n.GetLang( "version_detail_2" ),
+                permissions: []
             },
             "1.4.2" : {
                 level   : 3,
-                details : i18n.GetLang( "version_detail_3" )
+                details : i18n.GetLang( "version_detail_3" ),
+                permissions: []
             },
             "1.4.3" : {
                 level   : 4,
-                details : i18n.GetLang( "version_detail_4" )
+                details : i18n.GetLang( "version_detail_4" ),
+                permissions: [ "http://*.vo.msecnd.net/", "http://*.nasa.gov/" ]
             }
         };
 
         function Version() {
             this.new = chrome.runtime.getManifest().version;
             this.cur = localStorage['simptab-version'];
+            this.permissions = [];
         }
 
         Version.prototype.Details = function() {
@@ -55,11 +61,26 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         }
 
         Version.prototype.Save = function() {
-            localStorage["simptab-version"] = "1.0.3";
+            localStorage["simptab-version"] = "1.4.0";
         }
 
-        Version.prototype.Permission = function() {
-            return true;
+        Version.prototype.isUpdate = function() {
+            return !this.cur || this.new !== this.cur ? true : false;
+        }
+
+        Version.prototype.isPermission = function() {
+
+            // when level > 1, version >= 1.4.x
+            var arr = [];
+            if ( details[this.cur].level >= 1 ) {
+                for( var i = details[this.cur].level, j = details[this.new].level ; i <= j; i++ ) {
+                    $.each( details, function( idx, item ) {
+                        if ( item.level == i ) arr = item.permissions;
+                    });
+                    this.permissions = this.permissions.concat(arr);
+                }
+            }
+            return this.permissions.length == 0 ? false : true;
         }
 
         return new Version();
@@ -69,7 +90,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
     function permissionClickHandle( event ) {
         var $target = $( this ).parent().parent().find( ".close" );
         chrome.permissions.request({
-            origins: [ "http://*.vo.msecnd.net/", "http://*.nasa.gov/" ]
+            origins : version.permissions
         }, function( result ) {
             new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
             $( ".notifygp" ).undelegate( ".permissions", "click", permissionClickHandle );
@@ -80,7 +101,11 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
     return {
         Init: function() {
 
-            if ( !version.cur || version.new !== version.cur ) {
+            if ( version.isUpdate() ) {
+
+                // when cur is undefined, set cur = new
+                if ( !version.cur ) version.cur = version.new;
+
                 new Notify().Render( 0,
                                      i18n.GetLang( 'version_title' ),
                                      i18n.GetLang( 'version_content' )
@@ -90,7 +115,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                                         .replace( '#4', version.Details())
                                       , true );
 
-                if ( version.Permission() ) {
+                if ( version.isPermission() ) {
                     new Notify().Render( 0, "", i18n.GetLang( 'permissions' ).replace( '#1', version.new ), true );
                     $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
                 }
