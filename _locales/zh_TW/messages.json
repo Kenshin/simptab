@@ -200,7 +200,7 @@
     },
 
     "permissions": {
-        "message": "\u65b0\u7248\u672c #1 \u9700\u8981\u53d6\u5f97\u65b0\u7684\u8a31\u53ef\u6b0a\uff0c<a href='#' class='permissions'>\u8acb\u78ba\u8a8d</a>\u3002"
+        "message": "\u65b0\u7248\u672c\u9700\u8981\u53d6\u5f97\u65b0\u7684\u8a31\u53ef\u6b0a\uff0c<a href='#' class='permissions'>\u8acb\u78ba\u8a8d</a>\u3002"
     },
 
     "permissions_success": {

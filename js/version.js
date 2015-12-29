@@ -131,7 +131,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                                       , true );
 
                 if ( version.isPermission() ) {
-                    new Notify().Render( 0, "", i18n.GetLang( 'permissions' ).replace( '#1', version.new ), true );
+                    new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
                     $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
                 }
 
