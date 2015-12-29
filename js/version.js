@@ -64,21 +64,10 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 cur  = version.cur,
                 news = version.new;
 
-            // when this.cur == undefined, first load
+            // when this.cur == undefined, first load or version is 1.0.x
             if ( details[cur] ) {
                 var arr = objFilter( details[cur].level + 1, details[news].level, details, "details" );
                 arr.map( function( item ) { str += item; });
-                /*
-                var i = details[cur].level + 1,
-                    j = details[news].level;
-                for( i; i <= j; i++) {
-                    $.each( details, function( idx, item ) {
-                        if ( item.level == i ) {
-                            str += item.details;
-                        }
-                    });
-                }
-                */
             }
             else {
                 str = i18n.GetLang( "version_detail" );
@@ -103,19 +92,10 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             var arr  = [],
                 that = this;
             if ( !this.cur ) {
-                //this.permissions = details[this.new].permissions;
                 arr = objFilter( 0, details[this.new].level, details, "permissions" );
             }
             else {
                 arr  = objFilter( details[this.cur].level, details[this.new].level, details, "permissions" );
-                /*
-                for( var i = details[this.cur].level, j = details[this.new].level ; i <= j; i++ ) {
-                    $.each( details, function( idx, item ) {
-                        if ( item.level == i ) arr = item.permissions;
-                    });
-                    this.permissions = this.permissions.concat(arr);
-                }
-                */
             }
             arr.map( function( item ) { that.permissions = that.permissions.concat( item ); });
             return this.permissions.length == 0 ? false : true;
