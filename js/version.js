@@ -3,6 +3,11 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
     "use strict";
 
+    /*
+    * this.cur == undefined, first load or version is 1.0.x
+    * this.cur != undefined, version is 1.4.x
+    */
+
     var version = (function() {
 
         var details = {
@@ -64,7 +69,6 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 cur  = version.cur,
                 news = version.new;
 
-            // when this.cur == undefined, first load or version is 1.0.x
             if ( details[cur] ) {
                 var arr = objFilter( details[cur].level + 1, details[news].level, details, "details" );
                 arr.map( function( item ) { str += item; });
@@ -85,10 +89,6 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         }
 
         Version.prototype.isPermission = function() {
-
-            // when level >= 1, version >= 1.4.x, verity permission
-            // when level >  1, version is 1.0.x, not verity permission
-            // when this.cur == undefined, first load or version is 1.0.x
             var arr  = [],
                 that = this;
             if ( !this.cur ) {
