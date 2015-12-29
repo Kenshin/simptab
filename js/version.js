@@ -43,6 +43,16 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             }
         };
 
+        function objFilter( start, end, obj, conditions ) {
+            var arr = [];
+            Object.keys( obj ).map( function( item, idx ) {
+                if ( idx >= start && idx <= end ) {
+                    arr.push( obj[item][conditions] );
+                }
+            });
+            return arr;
+        }
+
         function Version() {
             this.new = chrome.runtime.getManifest().version;
             this.cur = localStorage['simptab-version'];
@@ -56,6 +66,9 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
             // when this.cur == undefined, first load
             if ( details[cur] ) {
+                var arr = objFilter( details[cur].level + 1, details[news].level, details, "details" );
+                arr.map( function( item ) { str += item; });
+                /*
                 var i = details[cur].level + 1,
                     j = details[news].level;
                 for( i; i <= j; i++) {
@@ -65,6 +78,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                         }
                     });
                 }
+                */
             }
             else {
                 str = i18n.GetLang( "version_detail" );
@@ -86,18 +100,24 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             // when level >= 1, version >= 1.4.x, verity permission
             // when level >  1, version is 1.0.x, not verity permission
             // when this.cur == undefined, first load or version is 1.0.x
-            var arr = [];
+            var arr  = [],
+                that = this;
             if ( !this.cur ) {
-                this.permissions = details[this.new].permissions;
+                //this.permissions = details[this.new].permissions;
+                arr = objFilter( 0, details[this.new].level, details, "permissions" );
             }
             else {
+                arr  = objFilter( details[this.cur].level, details[this.new].level, details, "permissions" );
+                /*
                 for( var i = details[this.cur].level, j = details[this.new].level ; i <= j; i++ ) {
                     $.each( details, function( idx, item ) {
                         if ( item.level == i ) arr = item.permissions;
                     });
                     this.permissions = this.permissions.concat(arr);
                 }
+                */
             }
+            arr.map( function( item ) { that.permissions = that.permissions.concat( item ); });
             return this.permissions.length == 0 ? false : true;
         }
 
