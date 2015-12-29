@@ -152,7 +152,7 @@
     },
 
     "version_content": {
-        "message": "The current version #1, #4 more features #2 please see here #3."
+        "message": "The current version #1, #4 More features #2 CHANGELOG #3."
     },
 
     "notify_upload_complete": {
@@ -172,15 +172,15 @@
     },
 
     "version_detail": {
-        "message": "New version, new features;"
+        "message": "New version, new features. "
     },
 
     "version_detail_prefix": {
-        "message": "new feature include: "
+        "message": "new feature: "
     },
 
     "version_detail_0": {
-        "message": "Fix some bugs in the previous version;"
+        "message": "Fix some bugs in the previous version, "
     },
 
     "version_detail_1": {
@@ -188,19 +188,19 @@
     },
 
     "version_detail_2": {
-        "message": "Senior topsites, etc.;"
+        "message": "Senior topsites, "
     },
 
     "version_detail_3": {
-        "message": "<a href='http://www.nasa.gov/multimedia/imagegallery/index.html' target='_blank'>NASA</a>background origin, Special day, etc.;"
+        "message": "<a href='http://www.nasa.gov/multimedia/imagegallery/index.html' target='_blank'>NASA</a> background origin, Special day, "
     },
 
     "version_detail_4": {
-        "message": "A more detailed version of the new tips, etc.;"
+        "message": "A more detailed version of the new tips, "
     },
 
     "permissions": {
-        "message": "New version need to obtain new permissions, <a href='#' class='permissions'>please confirm</a>."
+        "message": "New version need to obtain new permissions, <a href='#' class='permissions'>confirm</a>."
     },
 
     "permissions_success": {
