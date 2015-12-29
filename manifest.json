@@ -24,14 +24,14 @@
         "http://*.desktopprassets.com/",
         "http://*.visualhunt.com/",
         "https://*.500px.org/",
-        "http://*.vo.msecnd.net/",
         "http://*.nasa.gov/"
     ],
     "permissions": [
         "topSites",
         "storage",
         "http://*.bing.com/",
-        "http://*.bing.net/"
+        "http://*.bing.net/",
+        "http://*.vo.msecnd.net/"
     ],
     "omnibox": { "keyword" : "st" },
     "commands": {
