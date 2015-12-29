@@ -137,6 +137,20 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
                 version.Save();
             }
+            else {
+                /*
+                var that = this, arr  = objFilter( details[this.cur].level, details[this.new].level, details, "permissions" );
+                arr.map( function( item ) { that.permissions = that.permissions.concat( item ); });
+                chrome.permissions.contains({
+                    origins: version.permissions
+                }, function( result ) {
+                    if ( !result ) {
+                        new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
+                        $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
+                    }
+                });
+                */
+            }
         }
     };
 
