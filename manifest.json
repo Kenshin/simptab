@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name"            : "__MSG_extension_name__",
     "short_name"      : "SimpTab",
-    "version"         : "1.4.2",
+    "version"         : "1.4.3",
     "default_locale"  : "en",
     "description"     : "__MSG_extension_desc__",
     "author"          : "Kenshin",
@@ -16,11 +16,7 @@
         "128": "assets/images/icon128.png"
     },
     "content_security_policy": "script-src 'self' https://*.flickr.com 'unsafe-eval'; object-src 'self'",
-    "permissions": [
-        "topSites",
-        "storage",
-        "http://*.bing.com/",
-        "http://*.bing.net/",
+    "optional_permissions": [
         "https://*.unsplash.com/",
         "https://*.unsplash.it/",
         "http://*.wallhaven.cc/",
@@ -30,6 +26,12 @@
         "https://*.500px.org/",
         "http://*.vo.msecnd.net/",
         "http://*.nasa.gov/"
+    ],
+    "permissions": [
+        "topSites",
+        "storage",
+        "http://*.bing.com/",
+        "http://*.bing.net/"
     ],
     "omnibox": { "keyword" : "st" },
     "commands": {
