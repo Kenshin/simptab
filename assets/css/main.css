@@ -75,7 +75,9 @@ body {
 
     opacity: 0;
 
-    box-shadow: -5px 0 4px ;
+    box-shadow: -5px 0 4px;
+
+    overflow: auto;
 }
 
 .setting div {
@@ -211,7 +213,7 @@ body {
     display: -webkit-box;
     -webkit-box-align: center;
 
-    margin: 5px 0px;
+    margin: 5px 0px 0px 0px;
 
     font-size: 13px;
     color: #fff;
@@ -268,6 +270,8 @@ body {
     -webkit-box-flex: 1;
     -webkit-box-align: end;
     -webkit-box-sizing:border-box;
+
+    min-height: 55px;
 }
 
 .contact span {
