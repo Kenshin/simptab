@@ -49,10 +49,11 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         };
 
         function objFilter( start, end, obj, conditions ) {
-            var arr = [];
+            var arr = [], value;
             Object.keys( obj ).map( function( item, idx ) {
                 if ( idx >= start && idx <= end ) {
-                    arr.push( obj[item][conditions] );
+                    value = obj[item][conditions];
+                    Object.prototype.toString.call( value ).slice(8,-1) == "Array" ? Array.prototype.push.apply( arr, value ) : arr.push( value );
                 }
             });
             return arr;
@@ -88,22 +89,13 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             return !this.cur || this.new !== this.cur ? true : false;
         }
 
-        Version.prototype.isPermission = function() {
-            var arr  = [],
-                that = this;
-            if ( !this.cur ) {
-                arr = objFilter( 0, details[this.new].level, details, "permissions" );
-            }
-            else {
-                arr  = objFilter( details[this.cur].level, details[this.new].level, details, "permissions" );
-            }
-            arr.map( function( item ) { that.permissions = that.permissions.concat( item ); });
+        Version.prototype.isPermissions = function() {
+            this.permissions = !this.cur ? objFilter( 0, details[this.new].level, details, "permissions" ) : objFilter( details[this.cur].level, details[this.new].level, details, "permissions" );
             return this.permissions.length == 0 ? false : true;
         }
 
         Version.prototype.GetPermissions = function() {
-            var that = this, arr = objFilter( 0, details[this.new].level, details, "permissions" );
-            arr.map( function( item ) { that.permissions = that.permissions.concat( item ); });
+            this.permissions = objFilter( 0, details[this.new].level, details, "permissions" );
         }
 
         return new Version();
@@ -135,7 +127,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                                         .replace( '#4', version.Details())
                                       , true );
 
-                if ( version.isPermission() ) {
+                if ( version.isPermissions() ) {
                     new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
                     $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
                 }
