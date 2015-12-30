@@ -101,6 +101,11 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             return this.permissions.length == 0 ? false : true;
         }
 
+        Version.prototype.GetPermissions = function() {
+            var that = this, arr = objFilter( 0, details[this.new].level, details, "permissions" );
+            arr.map( function( item ) { that.permissions = that.permissions.concat( item ); });
+        }
+
         return new Version();
 
     })();
@@ -138,9 +143,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 version.Save();
             }
             else {
-                /*
-                var that = this, arr  = objFilter( details[this.cur].level, details[this.new].level, details, "permissions" );
-                arr.map( function( item ) { that.permissions = that.permissions.concat( item ); });
+                version.GetPermissions();
                 chrome.permissions.contains({
                     origins: version.permissions
                 }, function( result ) {
@@ -149,7 +152,6 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                         $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
                     }
                 });
-                */
             }
         }
     };
