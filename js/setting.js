@@ -106,11 +106,15 @@ define([ "jquery" ], function( $ ) {
                 $(item).attr( "checked", "checked"      );
                 $(item).prev().attr( "class", "checked" );
                 $(item).parent().addClass( "lrselected" );
+                $(item).parent().find("span").remove();
+                $(item).parent().prepend( '<span class="checked"></span>' );
             }
             else {
                 $(item).attr( "checked", false             );
                 $(item).prev().attr( "class", "unchecked"  );
                 $(item).parent().removeClass( "lrselected" );
+                $(item).parent().find("span").remove();
+                $(item).parent().prepend( '<span class="unchecked"></span>' );
             }
         });
     }
@@ -127,16 +131,19 @@ define([ "jquery" ], function( $ ) {
             value   = item.split(":")[1],
             $target = $($(".originstate").children()[idx]),
             cls     = "lineradio",
-            checked = "unchecked";
+            checked = "unchecked",
+            span    = '<span class="unchecked"></span>';
 
         if ( value === "true" ) {
             cls     = "lineradio lrselected";
             checked = "checked";
+            span    = '<span class="checked"></span>'
         }
 
         $target.attr("class", cls );
-        $target.find("span").attr( "class", checked );
         $target.find("input").val( value );
+        $target.find("span").remove();
+        $target.prepend( span );
     }
 
     return {
