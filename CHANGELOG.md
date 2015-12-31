@@ -2,6 +2,7 @@
 - Version 1.4.3
   * More detailed version for version feature.
   * Dynamic set permissions.
+  * Modify settin bar icon.
 
 - 2015-12-25, Version 1.4.2
   * Add new background: [NASA Image Galleries](http://www.nasa.gov/multimedia/imagegallery/index.html)
