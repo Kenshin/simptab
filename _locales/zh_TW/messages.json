@@ -59,6 +59,14 @@
         "message": "\u96a8\u6a5f\u66f4\u63db\u80cc\u666f"
     },
 
+    "setting_background_position_center": {
+        "message": "\u80cc\u666f\u5c45\u4e2d\u5c0d\u9f4a"
+    },
+
+    "setting_background_position_corner": {
+        "message": "\u80cc\u666f\u5de6\u4e0a\u89d2\u5c0d\u9f4a"
+    },
+
     "setting_show_clock": {
         "message": "\u986f\u793a\u6642\u9418"
     },

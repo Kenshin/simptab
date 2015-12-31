@@ -33,6 +33,13 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 
+    function setBackgroundPosition() {
+        var position,
+            value = localStorage["simptab-background-position"];
+        position = !value || value == "center" ? "center center" : "left top";
+        $("body").css({ "background-position": position });
+    }
+
     function setFavorteState( is_show ) {
         is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
     }
@@ -146,9 +153,11 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
             setInfoURL();
             setDownloadURL();
             setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
+            setBackgroundPosition();
             setFavorteState( !is_default );
             setFavorteIcon();
         },
-        SetFavorteIcon    : setFavorteIcon
+        SetFavorteIcon    : setFavorteIcon,
+        SetBgPosition     : setBackgroundPosition
     };
 });

@@ -32,7 +32,7 @@ body {
 
     background-color: transparent;
     background-size: cover;
-    background-position: center center;
+    /* background-position: center center; */
     background-attachment: fixed;
 
     font-weight: bold;
