@@ -34,10 +34,8 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
     }
 
     function setBackgroundPosition() {
-        var position,
-            value = localStorage["simptab-background-position"];
-        position = !value || value == "center" ? "center center" : "left top";
-        $("body").css({ "background-position": position });
+       var value = localStorage[ "simptab-background-position" ];
+       !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
     }
 
     function setFavorteState( is_show ) {
