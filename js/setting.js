@@ -75,7 +75,7 @@ define([ "jquery" ], function( $ ) {
                     value  : getLS( "simptab-background-position"  ),
                     type   : "simptab-background-position",
                     vals   : [ "center","corner" ],
-                    default: 0
+                    default: 1
                 },
                 "clockstate" : {
                     value  : getLS( "simptab-background-clock"  ),
