@@ -1,9 +1,9 @@
 #### CHANGELOG:
-- Version 1.4.3
+- 2016-01-03, Version 1.4.3
   * More detailed version for version feature.
   * Dynamic set permissions.
   * Modify settin bar icon.
-  * Add background image position checkbox.
+  * Add background position item, intelligent adjusting background position.
 
 - 2015-12-25, Version 1.4.2
   * Add new background: [NASA Image Galleries](http://www.nasa.gov/multimedia/imagegallery/index.html)
