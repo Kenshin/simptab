@@ -208,7 +208,7 @@
     },
 
     "permissions": {
-        "message": "New version need to obtain new permissions, <a href='#' class='permissions'>confirm</a>."
+        "message": "New version need to obtain new permissions, <a href='#' class='permissions'>allow</a>."
     },
 
     "permissions_success": {

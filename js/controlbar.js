@@ -3,15 +3,11 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
     "use strict";
 
     function setInfoURL() {
-        var info = vo.cur.info;
-        if ( i18n.GetLocale() != "zh_CN" ) {
-            info = vo.cur.info.replace( "/knows/", "/" );
-        }
-
-        $( ".controlink[url='info']" ).attr({
-            "title"    : vo.cur.name,
-            "href"     : info
-        });
+        var info    = vo.cur.info,
+            $target = $( ".controlink[url='info']" );
+        if ( i18n.GetLocale() != "zh_CN" ) vo.cur.info.replace( "/knows/", "/" );
+        $target.attr({ "title" : vo.cur.name, "href" : info });
+        $target.parent().find( ".tooltip" ).text( vo.cur.type == "upload" ? "Upload image" : vo.cur.type );
     }
 
     function setDownloadURL() {
@@ -102,8 +98,8 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                         callBack( is_favorite );
                         break;
                     case "download":
-                        // hack code
-                        if ( vo.cur.hdurl.indexOf( "unsplash.com" ) == -1 ) {
+                        // hack code( when 'unsplash.com' or 'nasa.gov' image download, new tab happen crash error. )
+                        if ( vo.cur.type != "unsplash.com" && vo.cur.type != "nasa.gov" ) {
                             event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
                         }
                         break;
