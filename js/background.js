@@ -94,12 +94,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             apis.Init()
                 .fail( failBackground )
                 .done( function( result ) {
-                    if ( verifyURL( result.hdurl )) {
-                        def.resolve( true, result.hdurl );
-                    }
-                    else {
-                        def.reject( new SimpError( "background.getRemoteBackground()::apis.Init()", "url verify error.", result ));
-                    }
+                    console.log( "=== Current background image url: " + result.hdurl )
+                    verifyURL( result.hdurl ) ? def.resolve( true, result.hdurl ) : def.reject( new SimpError( "background.getRemoteBackground()::apis.Init()", "url verify error.", result ));
                 });
         }
         else {
