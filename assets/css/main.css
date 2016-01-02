@@ -77,7 +77,7 @@ body {
 
     box-shadow: -5px 0 4px;
 
-    overflow: overlay;
+    /*overflow: overlay;*/
 }
 
 .setting div {
@@ -656,14 +656,14 @@ body {
     .positionstate {
         display: block;
     }
-	
+
     div[class$=state] {
         zoom: 0.9
     }
 }
 
 @media screen and (max-height:768px) {
-	
+
     div[class$=state] {
         zoom: 0.8
     }
@@ -671,8 +671,19 @@ body {
     .setting {
         overflow: overlay;
     }
-	
+
     .senior {
        zoom: 0.9
+    }
+}
+
+@media screen and (max-height:738px) {
+
+    div[class$=state] {
+        zoom: 0.6
+    }
+
+    .senior {
+       zoom: 0.6
     }
 }
