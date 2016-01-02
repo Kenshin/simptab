@@ -59,6 +59,14 @@
         "message": "Change Background Every Time"
     },
 
+    "setting_background_position_center": {
+        "message": "Background center alignment"
+    },
+
+    "setting_background_position_corner": {
+        "message": "Background cornet alignment"
+    },
+
     "setting_show_clock": {
         "message": "Show Clock"
     },
@@ -196,7 +204,7 @@
     },
 
     "version_detail_4": {
-        "message": "A more detailed version of the new tips, "
+        "message": "A more detailed version of the new tips, Intelligent adjusting background position, "
     },
 
     "permissions": {

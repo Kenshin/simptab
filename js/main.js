@@ -62,15 +62,15 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
         else if ( typeof result === "object" ) background.Upload( result );
     });
     setting.Listen( function( type, result ) {
-        if ( type == "tsstate" )         topsites.Refresh( result );
-        else if ( type == "clockstate" ) date.Toggle( result );
+        if ( type == "tsstate" )               topsites.Refresh( result );
+        else if ( type == "clockstate" )       date.Toggle( result );
+        else if ( type == "positionstate" )    controlbar.SetBgPosition();
     });
 
     // validation background
     background.Valid();
 
     topsites.Init();
-    //seniorts.Init();
 
     // short cuts init
     shortcuts.Init();

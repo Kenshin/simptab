@@ -59,6 +59,14 @@
         "message": "\u968f\u673a\u66f4\u6362\u80cc\u666f"
     },
 
+    "setting_background_position_center": {
+        "message": "\u80cc\u666f\u5c45\u4e2d\u5bf9\u9f50"
+    },
+
+    "setting_background_position_corner": {
+        "message": "\u80cc\u666f\u5de6\u4e0a\u5bf9\u9f50"
+    },
+
     "setting_show_clock": {
         "message": "\u663e\u793a\u65f6\u949f"
     },
@@ -196,7 +204,7 @@
     },
 
     "version_detail_4": {
-        "message": "\u66f4\u8be6\u7ec6\u7684\u65b0\u7248\u672c\u63d0\u793a\u529f\u80fd\u7b49\uff1b"
+        "message": "\u66f4\u8be6\u7ec6\u7684\u7248\u672c\u63d0\u793a\u529f\u80fd\uff0c\u667a\u80fd\u8c03\u6574\u80cc\u666f\u4f4d\u7f6e\u7b49\uff1b"
     },
 
     "permissions": {
