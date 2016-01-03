@@ -642,18 +642,18 @@ body {
 .senior-ts-icon-t{width:60px;height:60px;background-position:-10px -10px}.senior-ts-icon-u{width:60px;height:60px;background-position:-10px -80px}.senior-ts-icon-v{width:60px;height:60px;background-position:-10px -150px}.senior-ts-icon-w{width:60px;height:60px;background-position:-10px -220px}.senior-ts-icon-x{width:60px;height:60px;background-position:-10px -290px}.senior-ts-icon-y{width:60px;height:60px;background-position:-10px -360px}.senior-ts-icon-z{width:60px;height:60px;background-position:-10px -430px}.senior-ts-icon-0{width:60px;height:60px;background-position:-10px -500px}.senior-ts-icon-1{width:60px;height:60px;background-position:-10px -570px}.senior-ts-icon-2{width:60px;height:60px;background-position:-10px -640px}.senior-ts-icon-3{width:60px;height:60px;background-position:-10px -710px}.senior-ts-icon-4{width:60px;height:60px;background-position:-10px -780px}.senior-ts-icon-5{width:60px;height:60px;background-position:-10px -850px}.senior-ts-icon-6{width:60px;height:60px;background-position:-10px -920px}.senior-ts-icon-7{width:60px;height:60px;background-position:-10px -990px}.senior-ts-icon-8{width:60px;height:60px;background-position:-10px -1060px}.senior-ts-icon-9{width:60px;height:60px;background-position:-10px -1130px}.senior-ts-icon-empty{width:60px;height:60px;background-position:-10px -1200px}.senior-ts-icon-a{width:60px;height:60px;background-position:-10px -1270px}.senior-ts-icon-b{width:60px;height:60px;background-position:-10px -1340px}.senior-ts-icon-c{width:60px;height:60px;background-position:-10px -1410px}.senior-ts-icon-d{width:60px;height:60px;background-position:-10px -1480px}.senior-ts-icon-e{width:60px;height:60px;background-position:-10px -1550px}.senior-ts-icon-f{width:60px;height:60px;background-position:-10px -1620px}.senior-ts-icon-g{width:60px;height:60px;background-position:-10px -1690px}.senior-ts-icon-h{width:60px;height:60px;background-position:-10px -1760px}.senior-ts-icon-i{width:60px;height:60px;background-position:-10px -1830px}.senior-ts-icon-j{width:60px;height:60px;background-position:-10px -1900px}.senior-ts-icon-k{width:60px;height:60px;background-position:-10px -1970px}.senior-ts-icon-l{width:60px;height:60px;background-position:-10px -2040px}.senior-ts-icon-m{width:60px;height:60px;background-position:-10px -2110px}.senior-ts-icon-n{width:60px;height:60px;background-position:-10px -2180px}.senior-ts-icon-o{width:60px;height:60px;background-position:-10px -2250px}.senior-ts-icon-p{width:60px;height:60px;background-position:-10px -2320px}.senior-ts-icon-q{width:60px;height:60px;background-position:-10px -2390px}.senior-ts-icon-r{width:60px;height:60px;background-position:-10px -2460px}.senior-ts-icon-s{width:60px;height:60px;background-position:-10px -2530px}
 
 .bgcenter {
-  background-position: center center;
+    background-position: center center;
 }
 
 @media screen and (min-height:820px) {
 
-  body {
-      background-position: center center;
-  }
+    body {
+        background-position: center center;
+    }
 
-  .positionstate {
-      display: none;
-  }
+    .positionstate {
+        display: none;
+    }
 }
 
 @media screen and (max-height:820px) {
@@ -669,8 +669,13 @@ body {
     div[class$=state] {
         zoom: 0.9
     }
+
+    .setting:hover {
+        overflow: overlay;
+    }
 }
 
+/*
 @media screen and (max-height:768px) {
 
     div[class$=state] {
@@ -696,3 +701,4 @@ body {
        zoom: 0.6
     }
 }
+*/
