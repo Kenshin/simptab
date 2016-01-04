@@ -156,7 +156,6 @@ define([ "jquery" ], function( $ ) {
             return topsites;
         },
         Refresh: function( result ) {
-            //localStorage["simptab-topsites"] = result;
             tp.type = result;
             tp.Generate();
         }
