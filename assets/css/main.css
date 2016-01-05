@@ -68,7 +68,8 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 
-	width: 0px;
+    width: 0px;
+    height:100px;
 
     background: #fff;
     color: #555;
@@ -670,7 +671,7 @@ body {
         zoom: 0.9
     }
 
-    .setting:hover {
+    .setting {
         overflow: overlay;
     }
 }
