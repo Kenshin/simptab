@@ -155,10 +155,14 @@ define([ "jquery" ], function( $ ) {
         $target.prepend( span );
     }
 
+    function updateOriginsVisible() {
+        localStorage["simptab-background-mode"] == "day" ? $(".originstate").fadeOut() : $(".originstate").fadeIn();
+    }
+
     return {
         Init: function() {
 
-            // update [ changestate, clockstate, topsites ] radio button
+            // update [ changestate, clockstate, positionstate, topsites ] radio button
             Object.keys( setting.mode ).forEach( function( item ) {
                 updateRdState( item, setting.mode[item].value );
             });
@@ -167,6 +171,9 @@ define([ "jquery" ], function( $ ) {
             setting.origins.forEach( function( item ) {
                 updateCkState( item );
             });
+
+            // update originsstate visible
+            updateOriginsVisible();
 
         },
 
@@ -178,6 +185,7 @@ define([ "jquery" ], function( $ ) {
 
                     updateRdState(      type, mode );
                     setting.UpdateMode( type, mode );
+                    updateOriginsVisible();
 
                     // callback only include: tsstate, clockstate
                     callback( type, mode );
