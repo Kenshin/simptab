@@ -6,8 +6,8 @@
   * Add background position item, intelligent adjusting background position.
 
 - 2015-12-25, Version 1.4.2
-  * Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.htmll)
-  * Add special day to Setting bar.
+  * Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
+  * Add special day(SimpTab Images) to Setting bar.
 
 - 2015-12-23, Version 1.4.1
   * Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
