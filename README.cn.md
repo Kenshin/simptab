@@ -8,9 +8,9 @@
   ![feature](http://i.imgur.com/nbw5Ycg.png)
 - 每日/随机更换背景。（注意：每日更换的背景只来自Bing.com.）
   ![feature](http://i.imgur.com/JnwGMjw.png)
-- 多种背景源，包括：bing.com, wallhaven.cc, unsplash.com, flickr.com, googleartproject.com, 500px.com, desktoppr.co, visualhunt.com, nasa apod, simptab image
+- 多种背景源，包括：bing.com, wallhaven.cc, unsplash.com, flickr.com, googleartproject.com, 500px.com, desktoppr.co, visualhunt.com, nasa apod, simptab images.
   ![feature](http://i.imgur.com/G2TNahV.png)
-- 可显示特殊日子，如：二十四节气、节假日、某些特定节日（母亲节、儿童节等。）、电影海报等。
+- 可显示特殊日子，如：二十四节气、节假日、某些特定节日（母亲节、儿童节等）、电影海报等。
 - 上传功能。
   ![feature](http://i.imgur.com/3xZew89.png)
 - 支持 omnibox 操作。

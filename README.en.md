@@ -8,9 +8,9 @@ Features:
   ![Feature](http://i.imgur.com/nbw5Ycg.png)
 - Daily / random to replace the background. (Note: The daily changing background only from Bing.com.)
   ![Feature](http://i.imgur.com/JnwGMjw.png)
-- Multi background sources, including: bing.com, wallhaven.cc, unsplash.com, flickr.com, googleartproject.com, 500px.com, desktoppr.co, visualhunt.com, nasa apod, simptab image
+- Multi background sources, including: bing.com, wallhaven.cc, unsplash.com, flickr.com, googleartproject.com, 500px.com, desktoppr.co, visualhunt.com, nasa apod, simptab images.
   ![Feature](http://i.imgur.com/G2TNahV.png)
-- It can display a special day, such as: 24 solar terms, holidays, certain holiday (Mother's Day, Children's Day, etc.)
+- It can display a special day, such as: 24 solar terms, holidays, certain holiday (Mother's Day, Children's Day, etc.), Movie Poster etc.
 - Upload.
   ![Feature](http://i.imgur.com/3xZew89.png)
 - Support omnibox operation.
