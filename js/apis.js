@@ -511,6 +511,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       console.log( "=== nasa.gov call ===");
 
+      apod();
+
+      /*
       var rss = "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss";
       $.ajax({
             type       : "GET",
@@ -535,6 +538,42 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           }
           else {
             deferred.reject( new SimpError( "apis.nasa()", "nasa rss parse error.", result ));
+          }
+        }, failed );
+        */
+    }
+
+    function apod() {
+
+      var day = ( function() {
+        var years = [2012, 2013, 2014, 2015],
+            year  = years[ createRandom( 0, years.length - 1 )],
+            month = createRandom( 1, 12 ),
+            day   = createRandom( 1, 31 );
+            month = month < 9 ? "0" + "" + month : month;
+            day   = day   < 9 ? "0" + "" + day   : day;
+        return year + "-" + month + "-" + day;
+      })(),
+          API_KEY = "ZwPdNTaFcYqj7XIRnyKt18fUZ1vJJXsSjJtairMq",
+          url     = "https://api.nasa.gov/planetary/apod?hd=True&api_key=" + API_KEY + "&date=" + day;
+      $.ajax({
+            type       : "GET",
+            timeout    : 2000*10,
+            url        : url,
+            dataType   : "json" })
+        .then( function ( result ) {
+          if ( result && !$.isEmptyObject( result )) {
+            try {
+              var name = result.title,
+                  url  = result.hdurl;
+              deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", "nasa.gov" ) );
+            }
+            catch ( error ) {
+              deferred.reject( SimpError.Clone( new SimpError( "apis.apod()", null , "Parse nasa apod api error, url is " + url ), error ));
+            }
+          }
+          else {
+            deferred.reject( new SimpError( "apis.apod()", "nasa rss parse error.", result ));
           }
         }, failed );
     }

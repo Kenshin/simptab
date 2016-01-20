@@ -107,20 +107,23 @@ define([ "jquery" ], function( $ ) {
     })();
 
     function updateRdState( selector, mode ) {
+        var $item, $parent, $span;
         $( "." + selector ).find( "input" ).each( function( idx, item ) {
-            if ( $(item).val() == mode ) {
-                $(item).attr( "checked", "checked"      );
-                $(item).prev().attr( "class", "checked" );
-                $(item).parent().addClass( "lrselected" );
-                $(item).parent().find("span").remove();
-                $(item).parent().prepend( '<span class="checked"></span>' );
+            $item   = $(item);
+            $parent = $item.parent();
+            $span   = $parent.find("span");
+
+            if ( $item.val() == mode ) {
+                $item.attr( "checked", true     );
+                $item.prev().attr( "class", "checked" );
+                $parent.attr( "class", "lineradio lrselected" );
+                $span.length ? $($span).attr( "class", "checked" ) : $parent.prepend( '<span class="checked"></span>' );
             }
             else {
-                $(item).attr( "checked", false             );
-                $(item).prev().attr( "class", "unchecked"  );
-                $(item).parent().removeClass( "lrselected" );
-                $(item).parent().find("span").remove();
-                $(item).parent().prepend( '<span class="unchecked"></span>' );
+                $item.attr( "checked", false             );
+                $item.prev().attr( "class", "unchecked"  );
+                $parent.attr( "class", "lineradio" );
+                $span.length ? $($span).attr( "class", "unchecked" ) : $parent.prepend( '<span class="unchecked"></span>' );
             }
         });
     }
@@ -152,10 +155,14 @@ define([ "jquery" ], function( $ ) {
         $target.prepend( span );
     }
 
+    function updateOriginsVisible() {
+        localStorage["simptab-background-mode"] == "day" ? $(".originstate").fadeOut() : $(".originstate").fadeIn();
+    }
+
     return {
         Init: function() {
 
-            // update [ changestate, clockstate, topsites ] radio button
+            // update [ changestate, clockstate, positionstate, topsites ] radio button
             Object.keys( setting.mode ).forEach( function( item ) {
                 updateRdState( item, setting.mode[item].value );
             });
@@ -164,6 +171,9 @@ define([ "jquery" ], function( $ ) {
             setting.origins.forEach( function( item ) {
                 updateCkState( item );
             });
+
+            // update originsstate visible
+            updateOriginsVisible();
 
         },
 
@@ -175,6 +185,7 @@ define([ "jquery" ], function( $ ) {
 
                     updateRdState(      type, mode );
                     setting.UpdateMode( type, mode );
+                    updateOriginsVisible();
 
                     // callback only include: tsstate, clockstate
                     callback( type, mode );

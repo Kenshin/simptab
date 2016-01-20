@@ -23,7 +23,6 @@ define([ "jquery" ], function( $ ) {
         MAX      = 9,
         TYPE     = "simple",
         $root    = $( ".bottom" ),
-        atag     = document.createElement('a')
         addRootEvent = function() {
             $root.on( "mouseover", mouseOverHandler  );
         },
@@ -52,13 +51,10 @@ define([ "jquery" ], function( $ ) {
             }
     },
     getTLD = function ( url ) {
-        var tld = "",
-            arr = [];
-        atag.href = url;
-        tld    = atag.hostname;
-        arr    = tld.split(".");
-        tld    = arr.length > 1 ? arr[ arr.length - 2 ] : tld;
-        return tld && tld.length > 0 ? tld[0] : "empty";
+        var re    = /(\w+)(\.[a-zA-Z]{2,3})($|\/)/ig,
+            match = [];
+        match     = re.exec(url);
+        return match && match.length > 1 ? match[1][0] : "empty";
     },
     mouseOverHandler = function() {
         console.log( "bottom mouse over", tp.type )
@@ -160,7 +156,6 @@ define([ "jquery" ], function( $ ) {
             return topsites;
         },
         Refresh: function( result ) {
-            //localStorage["simptab-topsites"] = result;
             tp.type = result;
             tp.Generate();
         }
