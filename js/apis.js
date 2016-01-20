@@ -5,7 +5,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
     var deferred      = new $.Deferred(),
         SIMP_API_HOST = "http://simptab.qiniudn.com/",
-        originStack   = {},
         apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify ) {
 
             /*
@@ -623,14 +622,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Holiday background
     */
-    originStack[ "holiday" ] = function() {
-        originStack[ "special" ]( "holiday" );
+    apis.Stack[ apis.ORIGINS[11] ] = function() {
+        apis.Stack[ apis.ORIGINS[9] ]( "holiday" ); // call special( "holiday" );
+        return apis.defer.promise();
     }
 
     /*
     * Special day/Holiday background
     */
-     originStack[ "special" ] = function() {
+     apis.Stack[ apis.ORIGINS[9] ] = function() {
 
         console.log( "=== Special day/Holiday background call ===");
 
@@ -660,22 +660,21 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     key         = date.Today();
                     data        = obj[key];
                     if ( !data ) {
-                        new SimpError( apis.vo.origin, "Current holiday is " + key +  ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result );
-                        apis.pub( apis.constructor.LOAD );
-                        return;
+                        apis.defer.reject( new SimpError( apis.vo.origin, "Current holiday is " + key +  ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result ));
+                        return apis.defer.promise();
                     }
                     max         = data.hdurl.length - 1;
                     random      = apis.Random( 0, max );
                     hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
                 }
                 apis.Update({ origin : type });
-                deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo ));
+                apis.defer.resolve( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo );
             }
             catch( error ) {
-                SimpError.Clone( new SimpError( apis.vo.origin, "Get special backgrond error.", apis.vo ), error );
-                apis.pub( apis.constructor.LOAD );
+                apis.defer.reject( new SimpError( apis.vo.origin, "Get special backgrond error.", apis.vo ), error );
             }
           });
+          return apis.defer.promise();
     }
 
     function init() {
