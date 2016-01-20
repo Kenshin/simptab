@@ -265,7 +265,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                         new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
 
-                        console.log( "Add favorite background success.", vo.cur );
+                        console.log( "=== Add favorite background success.", vo.cur );
                     })
                     .fail( function( error ) {
                         console.error( "Add favorite background error.", error );
@@ -297,7 +297,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                             new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
-                            console.log( "Delete favorite background success.", vo.cur );
+                            console.log( "=== Delete favorite background success.", vo.cur );
                         }
                         catch ( error ) {
                             console.log( "Delete favorite background error.", error );
