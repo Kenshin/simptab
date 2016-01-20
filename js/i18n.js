@@ -19,19 +19,23 @@ define([ "jquery" ], function( $ ) {
     }
 
     function setting() {
-        $($( ".lineradio" ).find("label")[0]).text( i18n( "setting_background_every_day" ));
-        $($( ".lineradio" ).find("label")[1]).text( i18n( "setting_background_every_time" ));
-        $($( ".lineradio" ).find("label")[2]).text( i18n( "setting_show_clock" ));
-        $($( ".lineradio" ).find("label")[3]).text( i18n( "setting_hide_clock" ));
 
-        $($( ".lineradio" ).find("label")[4]).text( i18n( "setting_multi_origin_0" ));
-        $($( ".lineradio" ).find("label")[5]).text( i18n( "setting_multi_origin_1" ));
-        $($( ".lineradio" ).find("label")[6]).text( i18n( "setting_multi_origin_2" ));
-        $($( ".lineradio" ).find("label")[7]).text( i18n( "setting_multi_origin_3" ));
-        $($( ".lineradio" ).find("label")[8]).text( i18n( "setting_multi_origin_4" ));
-        $($( ".lineradio" ).find("label")[9]).text( i18n( "setting_multi_origin_5" ));
-        $($( ".lineradio" ).find("label")[10]).text( i18n( "setting_multi_origin_6" ));
-        $($( ".lineradio" ).find("label")[11]).text( i18n( "setting_multi_origin_7" ));
+        $($( ".changestate" ).find("label:first")).text( i18n( "setting_background_every_day" ));
+        $($( ".changestate" ).find("label:last" )).text( i18n( "setting_background_every_time" ));
+
+        $($( ".positionstate" ).find("label:first")).text( i18n( "setting_background_position_center" ));
+        $($( ".positionstate" ).find("label:last" )).text( i18n( "setting_background_position_corner" ));
+
+        $($( ".clockstate" ).find("label:first")).text( i18n( "setting_show_clock" ));
+        $($( ".clockstate" ).find("label:last" )).text( i18n( "setting_hide_clock" ));
+
+        $.each( $(".originstate .lineradio").find("label"), function( idx, item ) {
+            $(item).text( i18n( "setting_multi_origin_" + idx ));
+        });
+
+        $($( ".tsstate" ).find("label:eq(0)")).text( i18n( "setting_ts_state_normal" ));
+        $($( ".tsstate" ).find("label:eq(1)")).text( i18n( "setting_ts_state_simple" ));
+        $($( ".tsstate" ).find("label:eq(2)")).text( i18n( "setting_ts_state_senior" ));
 
         $($(".setting .contact").find("a")[0]).attr( "title", i18n( "setting_contact_weibo" ));
         $($(".setting .contact").find("a")[1]).attr( "title", i18n( "setting_contact_twitter" ));

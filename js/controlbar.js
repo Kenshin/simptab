@@ -1,18 +1,13 @@
-
 define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
 
     "use strict";
 
     function setInfoURL() {
-        var info = vo.cur.info;
-        if ( i18n.GetLocale() != "zh_CN" ) {
-            info = vo.cur.info.replace( "/knows/", "/" );
-        }
-
-        $( ".controlink[url='info']" ).attr({
-            "title"    : vo.cur.name,
-            "href"     : info
-        });
+        var info    = vo.cur.info,
+            $target = $( ".controlink[url='info']" );
+        if ( i18n.GetLocale() != "zh_CN" ) vo.cur.info.replace( "/knows/", "/" );
+        $target.attr({ "title" : vo.cur.name, "href" : info });
+        $target.parent().find( ".tooltip" ).text( vo.cur.type == "upload" ? "Upload image" : vo.cur.type );
     }
 
     function setDownloadURL() {
@@ -32,6 +27,11 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
     function setBackground( url ) {
         $("body").css({ "background-image": "url(" + url + ")" });
+    }
+
+    function setBackgroundPosition() {
+       var value = localStorage[ "simptab-background-position" ];
+       vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
     }
 
     function setFavorteState( is_show ) {
@@ -67,14 +67,30 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                 switch ( url ) {
                     case "setting":
                         if ( !$target.hasClass( "close" )) {
-                            $( ".setting" ).animate({ width: i18n.GetSettingWidth(), opacity : 0.8 }, 500, function() {
+                            var width = parseInt( i18n.GetSettingWidth() );
+
+                            $( ".setting" ).animate({ "width": width, opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
+                            });
+
+                            $( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
+
+                            // 116-simptab-optimize-layout
+                            var selector = ".content, .sidebar, .controlbar, .clock";
+                            $( selector ).on( "click", function( event ) {
+                                var cls  = $( event.target ).attr( "class" );
+                                if ( selector.indexOf( cls ) != -1 ) {
+                                    $( selector ).off( "click" );
+                                    $( ".controlink .settingicon" ).trigger( "click" );
+                                }
+
                             });
                         }
                         else {
                             $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                                 $target.removeClass( "close" );
                             });
+                            $( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":
@@ -82,8 +98,8 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                         callBack( is_favorite );
                         break;
                     case "download":
-                        // hacd code
-                        if ( vo.cur.hdurl.indexOf( "unsplash.com" ) == -1 ) {
+                        // hack code( when 'unsplash.com' or 'nasa.gov' image download, new tab happen crash error. )
+                        if ( vo.cur.type != "unsplash.com" && vo.cur.type != "nasa.gov" ) {
                             event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
                         }
                         break;
@@ -111,7 +127,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                 var target    = $( $(".controlbar").find( "a" )[idx] )[0],
                     $favorite = $( ".controlink[url='favorite']" ),
                     $hidden   = $favorite.has(":hidden");
-                // hacke code
+                // hack code
                 if ( target !== $favorite[0] || ( target === $favorite[0] && $hidden && $hidden.length === 0 )) {
                     target.click();
                 }
@@ -131,9 +147,11 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
             setInfoURL();
             setDownloadURL();
             setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
+            setBackgroundPosition();
             setFavorteState( !is_default );
             setFavorteIcon();
         },
-        SetFavorteIcon    : setFavorteIcon
+        SetFavorteIcon    : setFavorteIcon,
+        SetBgPosition     : setBackgroundPosition
     };
 });

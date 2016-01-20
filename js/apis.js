@@ -11,16 +11,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     */
 
     function createRandom( min, max ) {
-      var range  = max - min,
-          rand   = Math.random(),
-          random = min + Math.round( rand * range );
-
-      // valid random
-      if ( random < min || random > max ) {
-        createRandom( min, max );
-        return;
-      }
-      return random;
+      return Math.floor( Math.random() * ( max - min + 1 ) + min );
     }
 
     function failed( jqXHR, textStatus, errorThrown ) {
@@ -33,31 +24,33 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
     function bing() {
 
-       console.log( "=== Bing.com call ===");
+      console.log( "=== Bing.com call ===");
 
-        var local  = "",
-            url    = "",
-            random = createRandom( 0, 19 );
+      // when arguments[0] is true, call todayBing
+      arguments && arguments.length === 1 && arguments[0] ? todayBing() : randomBing();
+
+    }
+
+    function todayBing() {
+      console.log( "=== Bing.com today ===");
+      var local  = "",
+          url    = "";
 
         // set local
         if ( i18n.GetLocale() == "zh_CN" ) {
             local = "cn.";
         }
 
-        // when arguments[0] is true, set random = 0
-        if ( arguments && arguments.length === 1 && arguments[0] ) random = 0;
-
         // set url
-        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=" + random + "&n=1";
+        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1";
 
-        console.log("random = " + random );
         console.log("url    = " + url );
 
         $.ajax({
             type       : "GET",
             timeout    : 2000,
             url        : url,
-            dataType   : "json",})
+            dataType   : "json"})
             .then( function ( result ) {
                 if ( result && !$.isEmptyObject( result )) {
 
@@ -74,6 +67,49 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                   deferred.reject( new SimpError( "apis.bing()", "Bing.com API return api parse error.", result ));
                 }
             }, failed );
+    }
+
+    function randomBing() {
+      console.log( "=== Bing.com random ===");
+      $.getJSON( SIMP_API_HOST + "bing.gallery.json" ).done(function( result ) {
+        if ( result != undefined && !$.isEmptyObject( result )) {
+          try {
+            var images = result.imageIds,
+                random = createRandom( 0, images.length );
+                getRandomBing( images[random] );
+          }
+          catch( error ) {
+            deferred.reject( SimpError.Clone( new SimpError( "apis.randomBing()", null , "Parse bing.gallery.json error." ), error ));
+          }
+        }
+        else {
+          deferred.reject( new SimpError( "apis.randomBing()", "Get bing.gallery.json error.", result ));
+        }
+      }).fail( failed );
+    }
+
+    function getRandomBing( id ) {
+      $.ajax({
+        type       : "GET",
+        timeout    : 2000,
+        url        : "http://www.bing.com/gallery/home/imagedetails/" + id,
+        dataType   : "json"})
+        .then( function ( result ) {
+          if ( result != undefined && !$.isEmptyObject( result )) {
+            console.log("Bing.com random image is ", result )
+            if ( result.wallpaper ) {
+              var prefix = "http://az608707.vo.msecnd.net/files/";
+              deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", "bing.com" ));
+            }
+            else {
+              randomBing();
+            }
+          }
+          else {
+            randomBing();
+          }
+        })
+        .fail( failed );
     }
 
     function getHDurl( url ) {
@@ -471,6 +507,77 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }).fail( failed );
     }
 
+    function nasa() {
+
+      console.log( "=== nasa.gov call ===");
+
+      apod();
+
+      /*
+      var rss = "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss";
+      $.ajax({
+            type       : "GET",
+            timeout    : 2000*10,
+            url        : rss,
+            dataType   : "xml" })
+        .then( function ( result ) {
+          if ( result && !$.isEmptyObject( result )) {
+            try {
+              var items  = $( result ).find( "item" ),
+                  max    = items.length,
+                  random = createRandom( 0, max ),
+                  $item  = $( items[random] ),
+                  url    = $item.find( "enclosure" ).attr( "url" ),
+                  name   = $item.find( "title" ).text(),
+                  info   = $item.find( "link" ).text();
+              deferred.resolve( vo.Create( url, url, "NASA.gov Image - " + name, info, date.Now(), "NASA.gov Image", "nasa.gov" ) );
+            }
+            catch ( error ) {
+              deferred.reject( SimpError.Clone( new SimpError( "apis.nasa()", null , "Parse lg_image_of_the_day.rss error." ), error ));
+            }
+          }
+          else {
+            deferred.reject( new SimpError( "apis.nasa()", "nasa rss parse error.", result ));
+          }
+        }, failed );
+        */
+    }
+
+    function apod() {
+
+      var day = ( function() {
+        var years = [2012, 2013, 2014, 2015],
+            year  = years[ createRandom( 0, years.length - 1 )],
+            month = createRandom( 1, 12 ),
+            day   = createRandom( 1, 31 );
+            month = month < 9 ? "0" + "" + month : month;
+            day   = day   < 9 ? "0" + "" + day   : day;
+        return year + "-" + month + "-" + day;
+      })(),
+          API_KEY = "ZwPdNTaFcYqj7XIRnyKt18fUZ1vJJXsSjJtairMq",
+          url     = "https://api.nasa.gov/planetary/apod?hd=True&api_key=" + API_KEY + "&date=" + day;
+      $.ajax({
+            type       : "GET",
+            timeout    : 2000*10,
+            url        : url,
+            dataType   : "json" })
+        .then( function ( result ) {
+          if ( result && !$.isEmptyObject( result )) {
+            try {
+              var name = result.title,
+                  url  = result.hdurl;
+              deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", "nasa.gov" ) );
+            }
+            catch ( error ) {
+              deferred.reject( SimpError.Clone( new SimpError( "apis.apod()", null , "Parse nasa apod api error, url is " + url ), error ));
+            }
+          }
+          else {
+            deferred.reject( new SimpError( "apis.apod()", "nasa rss parse error.", result ));
+          }
+        }, failed );
+    }
+
     /*
     * Favorite background
     */
@@ -590,7 +697,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       Init: function () {
 
-        var MAX_NUM = 11,
+        var MAX_NUM = 12,
             code    = createRandom( 0, MAX_NUM ),
             today   = false;
 
@@ -602,13 +709,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         // verify today is holiday
         else if ( isHoliday() ) {
-            code = 10;
+            code = 11;
         }
         // change background every time
         else {
             while ( setting.Verify( code ) == "false" ||
                     localStorage[ "simptab-prv-code" ] == code ||
-                    code == 10 ||
+                    code == 11 ||
                     ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
                 code = createRandom( 0, MAX_NUM );
             }
@@ -618,7 +725,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "switch code is " + code );
 
         // add test code
-        // code = 7;
+        // code = 8;
 
         switch ( code ) {
           case 0:
@@ -646,12 +753,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             visualhunt();
             break;
           case 8:
-            setTimeout( favorite, 2000 );
+            nasa();
             break;
           case 9:
             special();
             break;
           case 10:
+            setTimeout( favorite, 2000 );
+            break;
+          case 11:
             holiday();
             break;
           default:

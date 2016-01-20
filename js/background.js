@@ -3,6 +3,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
     "use strict";
 
+    function verifyURL( url ) {
+        var re = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
+        return re.test( url );
+    }
+
     function getCurrentBackground( is_random ) {
 
         var def = $.Deferred();
@@ -89,7 +94,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             apis.Init()
                 .fail( failBackground )
                 .done( function( result ) {
-                    def.resolve( true, result.hdurl );
+                    console.log( "=== Current background image url: " + result.hdurl )
+                    verifyURL( result.hdurl ) ? def.resolve( true, result.hdurl ) : def.reject( new SimpError( "background.getRemoteBackground()::apis.Init()", "url verify error.", result ));
                 });
         }
         else {
@@ -336,7 +342,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     });
             };
             for( var i = 0, len = filelist.length; i < len; i++ ) {
-                adapter.bind( null, i, filelist[i].name )();
+                adapter.bind( null, i, filelist[i].name.replace( /\.(jpg|jpge|png|gif|bmp)$/ig, "" ) )();
             }
         }
     };

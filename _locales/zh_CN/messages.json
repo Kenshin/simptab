@@ -59,6 +59,14 @@
         "message": "\u968f\u673a\u66f4\u6362\u80cc\u666f"
     },
 
+    "setting_background_position_center": {
+        "message": "\u80cc\u666f\u5c45\u4e2d\u5bf9\u9f50"
+    },
+
+    "setting_background_position_corner": {
+        "message": "\u80cc\u666f\u5de6\u4e0a\u5bf9\u9f50"
+    },
+
     "setting_show_clock": {
         "message": "\u663e\u793a\u65f6\u949f"
     },
@@ -99,6 +107,26 @@
         "message": "\u6dfb\u52a0 visualhunt.com"
     },
 
+    "setting_multi_origin_8": {
+        "message": "\u6dfb\u52a0 NASA.gov"
+    },
+
+    "setting_multi_origin_9": {
+        "message": "\u6dfb\u52a0 SimpTab images"
+    },
+
+    "setting_ts_state_normal": {
+        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9690\u85cf\u6a21\u5f0f\uff09"
+    },
+
+    "setting_ts_state_simple": {
+        "message": "\u5e38\u7528\u7f51\u5740\uff08\u7b80\u5355\u6a21\u5f0f\uff09"
+    },
+
+    "setting_ts_state_senior": {
+        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9ad8\u7ea7\u6a21\u5f0f\uff09"
+    },
+
     "setting_contact_weibo": {
         "message": "\u5206\u4eab\u5230 \u5fae\u535a"
     },
@@ -132,7 +160,7 @@
     },
 
     "version_content": {
-        "message": "\u5f53\u524d\u7248\u672c #1\uff0c\u65b0\u589e\u529f\u80fd #2\u8bf7\u770b\u8fd9\u91cc#3\u3002"
+        "message": "\u5f53\u524d\u7248\u672c #1\uff0c#4\u66f4\u591a\u529f\u80fd #2\u8bf7\u770b\u8fd9\u91cc#3\u3002"
     },
 
     "notify_upload_complete": {
@@ -140,7 +168,7 @@
     },
 
     "notify_upload_fail": {
-        "message": "\u80cc\u666f\u4e0a\u4f20\u5931\u8d25\u3002"
+        "message": "\u56fe\u7247\u4e0a\u4f20\u5931\u8d25\u3002"
     },
 
     "notify_favorite_add": {
@@ -149,5 +177,45 @@
 
     "notify_favorite_del": {
         "message": "\u80cc\u666f\u53d6\u6d88\u6536\u85cf\u6210\u529f\u3002"
+    },
+
+    "version_detail": {
+        "message": "\u5168\u65b0\u7248\u672c\uff0c\u5168\u65b0\u529f\u80fd\uff1b"
+    },
+
+    "version_detail_prefix": {
+        "message": "\u65b0\u589e "
+    },
+
+    "version_detail_0": {
+        "message": "\u4fee\u590d\u4e4b\u524d\u7248\u672c\u7684\u4e00\u4e9b\u9519\u8bef\uff1b"
+    },
+
+    "version_detail_1": {
+        "message": "\u591a\u79cd\u80cc\u666f\u6e90\uff0c\u4e8c\u5341\u56db\u8282\u6c14\u3001\u7535\u5f71\u6d77\u62a5\u3001\u7279\u6b8a\u8282\u65e5\uff0c\u4e0a\u4f20\u529f\u80fd\uff0c\u6536\u85cf\u529f\u80fd\u7b49\uff1b"
+    },
+
+    "version_detail_2": {
+        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9ad8\u7ea7\u6a21\u5f0f\uff09\u7b49\uff1b"
+    },
+
+    "version_detail_3": {
+        "message": "\u80cc\u666f\u6e90\uff1a<a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a>\uff0c\u7279\u522b\u65e5\uff08Special day\uff09\uff1b"
+    },
+
+    "version_detail_4": {
+        "message": "\u66f4\u8be6\u7ec6\u7684\u7248\u672c\u63d0\u793a\u529f\u80fd\uff0c\u667a\u80fd\u8c03\u6574\u80cc\u666f\u4f4d\u7f6e\u7b49\uff1b"
+    },
+
+    "permissions": {
+        "message": "\u65b0\u7248\u672c\u9700\u8981\u53d6\u5f97\u65b0\u7684\u6743\u9650\uff0c<a href='#' class='permissions'>\u8bf7\u786e\u8ba4</a>\u3002"
+    },
+
+    "permissions_success": {
+        "message": "\u65b0\u7684\u6743\u9650\u5df2\u7ecf\u542f\u7528\u6210\u529f\u3002"
+    },
+
+    "permissions_failed": {
+        "message": "\u6743\u9650\u83b7\u53d6\u5931\u8d25\uff0c\u65b0\u529f\u80fd\u65e0\u6cd5\u542f\u7528\uff0c\u5efa\u8bae\u91cd\u65b0\u5b89\u88c5\u3002"
     }
 }

@@ -1,179 +1,218 @@
 
-define([ "jquery", "date" ], function( $, date ) {
+define([ "jquery" ], function( $ ) {
 
     "use strict";
 
-    function initLR() {
-        $( ".lineradio" ).each( function( index, item ) {
-            if ( $( item ).hasClass("lrselected") ) {
-                $( item ).prepend( '<span class="checked"></span>' );
-                $( item ).find( "input" ).attr( "checked", true    );
+    var setting = (function () {
+
+        // private
+        // [ "0:false", "1:false", "2:false", "3:false", "4:false", "5:false", "6:false", "7:false", "8:false" ]
+        var defaultOrigins = (function() {
+            var origins = [];
+            $( ".originstate" ).children().each( function( idx ) {
+                origins.push( idx + ":false" );
+            });
+            return origins;
+        })();
+
+        var origins = ( function() {
+            try {
+                var origins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
+            }
+            catch ( error ) {
+                origins = defaultOrigins;
+            }
+            return origins;
+        })();
+
+        function getOrigins() {
+            var len = origins.length;
+            if ( defaultOrigins.length > len ) {
+                for( var i = 0; i < defaultOrigins.length - len; i++ ) {
+                    origins.splice( origins.length, 0, defaultOrigins[origins.length] );
+                }
+            }
+            else if ( defaultOrigins.length < len ) {
+                origins = origins.slice( 0, defaultOrigins.length );
+            }
+
+            if ( localStorage["simptab-background-origin"] != JSON.stringify( origins )) localStorage["simptab-background-origin"] = JSON.stringify( origins );
+
+            return origins;
+        }
+
+        function getLS( mode ) {
+            if ( !localStorage[mode] ) localStorage[mode] = "";
+            return localStorage[mode];
+        }
+
+        function getModes( modes ) {
+            var mode;
+            Object.keys( modes ).forEach( function( item ) {
+                mode = modes[item];
+                if ( !mode.value ||
+                     mode.vals.filter( function(element) { return mode.value == element ? true : false; }).length == 0
+                   ) {
+                    mode.value = mode.vals[mode.default];
+                    localStorage[mode.type] = mode.value;
+                }
+            });
+            return modes;
+        }
+
+        function Setting() {
+
+            this.origins = getOrigins();
+
+            this.mode = getModes({
+                "changestate" : {
+                    value  : getLS( "simptab-background-mode" ),
+                    type   : "simptab-background-mode",
+                    vals   : [ "day","time" ],
+                    default: 1
+                },
+                "positionstate" : {
+                    value  : getLS( "simptab-background-position"  ),
+                    type   : "simptab-background-position",
+                    vals   : [ "center","corner" ],
+                    default: 1
+                },
+                "clockstate" : {
+                    value  : getLS( "simptab-background-clock"  ),
+                    type   : "simptab-background-clock",
+                    vals   : [ "show","hide" ],
+                    default: 0
+                },
+                "tsstate"  : {
+                    value  : getLS( "simptab-topsites" ),
+                    type   : "simptab-topsites",
+                    vals   : [ "normal","simple", "senior" ],
+                    default: 1
+                }
+            });
+
+        }
+
+        Setting.prototype.UpdateMode = function( type, mode ) {
+            this.mode[type].value = mode;
+            localStorage[ this.mode[type].type ] = mode;
+        }
+
+        Setting.prototype.UpdateOriginsMode = function( idx, value ) {
+            this.origins.splice( idx, 1, idx + ":" + value );
+            localStorage["simptab-background-origin"] = JSON.stringify( this.origins );
+        }
+
+        return new Setting();
+    })();
+
+    function updateRdState( selector, mode ) {
+        var $item, $parent, $span;
+        $( "." + selector ).find( "input" ).each( function( idx, item ) {
+            $item   = $(item);
+            $parent = $item.parent();
+            $span   = $parent.find("span");
+
+            if ( $item.val() == mode ) {
+                $item.attr( "checked", true     );
+                $item.prev().attr( "class", "checked" );
+                $parent.attr( "class", "lineradio lrselected" );
+                $span.length ? $($span).attr( "class", "checked" ) : $parent.prepend( '<span class="checked"></span>' );
             }
             else {
-                $( item ).prepend( '<span class="unchecked"></span>' );
+                $item.attr( "checked", false             );
+                $item.prev().attr( "class", "unchecked"  );
+                $parent.attr( "class", "lineradio" );
+                $span.length ? $($span).attr( "class", "unchecked" ) : $parent.prepend( '<span class="unchecked"></span>' );
             }
         });
     }
 
-    function updateLR( $target ) {
-        updateLrIcon( $target );
-        updateLrState( $target );
+    function addClickEvent( selctor, callback ) {
+        $( "." + selctor +  " input" ).click( function( event ) {
+            var mode = $(event.currentTarget).attr( "value" );
+            callback( selctor, mode );
+        });
     }
 
-    function updateLrIcon( $target ) {
-        var $current = $target.parent(),
-            $prev    = $current.prev(),
-            $next    = $current.next();
+    function updateCkState( item ) {
+        var idx     = item.split(":")[0],
+            value   = item.split(":")[1],
+            $target = $($(".originstate").children()[idx]),
+            cls     = "lineradio",
+            checked = "unchecked",
+            span    = '<span class="unchecked"></span>';
 
-        if ( $prev.find( "span" ).length > 0 ) {
-            $prev.find( "span"  ).attr( "class", "unchecked" );
-            $prev.find( "input" ).attr( "checked", false );
+        if ( value === "true" ) {
+            cls     = "lineradio lrselected";
+            checked = "checked";
+            span    = '<span class="checked"></span>'
         }
-        else {
-            $next.find( "span"  ).attr( "class", "unchecked" );
-            $next.find( "input" ).attr( "checked", false );
-        }
-        $current.find( "span"  ).attr( "class", "checked"    );
-        $current.find( "input" ).attr( "checked", true    );
+
+        $target.attr("class", cls );
+        $target.find("input").val( value );
+        $target.find("span").remove();
+        $target.prepend( span );
     }
 
-    function updateLrState( $target ) {
-        var $current = $target.parent(),
-            $prev    = $current.prev(),
-            $next    = $current.next();
-
-        if ( $prev.length > 0 ) {
-            $prev.attr( "class", "lineradio" );
-        }
-        else {
-            $next.attr( "class", "lineradio" );
-        }
-        $current.attr( "class", "lineradio lrselected" );
-    }
-
-    function updateOriginState( $target, type ) {
-        var $prev   = $($target.prev()),
-            $parent = $($target.parent()),
-            value   = $target.attr("value"),
-            checked = "checked",
-            inputel = "true",
-            divel   = "lineradio lrselected";
-
-        if ( type == "init" ) {
-            value = value == "true" ? "false" : "true";
-        }
-
-        if ( value == "true" ) {
-            checked = "unchecked";
-            inputel = "false";
-            divel   = "lineradio";
-        }
-
-        $target.attr( "value", inputel  );
-        $prev.attr(   "class", checked  );
-        $parent.attr( "class", divel    );
-    }
-
-    function updateLocalStorge( $target ) {
-        var index = $target.attr("name"),
-            value = $target.attr("value"),
-            arr   = localStorage["simptab-background-origin"] && JSON.parse( localStorage["simptab-background-origin"] ),
-            item  = arr[index];
-
-        // update arr[index] to new value
-        arr.splice( index, 1, index + ":" + value );
-
-        // update local storge
-        localStorage["simptab-background-origin"] = JSON.stringify( arr );
-
+    function updateOriginsVisible() {
+        localStorage["simptab-background-mode"] == "day" ? $(".originstate").fadeOut() : $(".originstate").fadeIn();
     }
 
     return {
         Init: function() {
 
-            // init line radio
-            initLR();
-
-            // update changestate lineradio
-            var mode      = localStorage["simptab-background-mode"],
-                checked   = $( ".changestate input[value=" +  mode + "]" );
-            if ( mode != undefined ) {
-                updateLR( checked  );
-            }
-
-            // update clockstate lineradio
-            mode      = localStorage["simptab-background-clock"];
-            checked   = $( ".clockstate input[value=" +  mode + "]" );
-            if ( mode != undefined ) {
-                updateLR( checked );
-            }
+            // update [ changestate, clockstate, positionstate, topsites ] radio button
+            Object.keys( setting.mode ).forEach( function( item ) {
+                updateRdState( item, setting.mode[item].value );
+            });
 
             // update originstate lineradio
-            mode      = JSON.parse( localStorage["simptab-background-origin"] || "[]" );
-            $(".originstate").find("input").each( function( idx, item ) {
-                $(item).attr( "value", mode.length == 0 ? false : mode[idx] && mode[idx].split(":")[1] );
-                updateOriginState( $(item), "init" );
+            setting.origins.forEach( function( item ) {
+                updateCkState( item );
             });
 
-            // set simptab-background-origin defalut value
-            if ( mode.length == 0 ) {
-               localStorage["simptab-background-origin"] = JSON.stringify(["0:false","1:false","2:false","3:false","4:false","5:false","6:false","7:false"]);
-            }
+            // update originsstate visible
+            updateOriginsVisible();
 
         },
 
-        Listen: function () {
+        Listen: function ( callback ) {
 
-            $( ".changestate input" ).click( function( event ) {
-                localStorage["simptab-background-mode"] = $(event.currentTarget).attr( "value" );
-                updateLR( $( event.currentTarget ));
+            // listen [ changestate, clockstate, topsites ] radio button event
+            Object.keys( setting.mode ).forEach( function( item ) {
+                addClickEvent( item, function( type, mode ) {
+
+                    updateRdState(      type, mode );
+                    setting.UpdateMode( type, mode );
+                    updateOriginsVisible();
+
+                    // callback only include: tsstate, clockstate
+                    callback( type, mode );
+
+                });
             });
 
-            $( ".clockstate input" ).click( function( event ) {
-
-                localStorage["simptab-background-clock"] = $(event.currentTarget).attr( "value" );
-                updateLR( $( event.currentTarget ));
-
-                if ( localStorage["simptab-background-clock"] == "show") {
-                    date.Show();
-                }
-                else {
-                    date.Hide();
-                }
-            });
-
+            // listen originstate checkbox button event
             $( ".originstate input" ).click( function( event ) {
-                updateOriginState( $( event.currentTarget ), "update" );
-                updateLocalStorge( $( event.currentTarget ));
+                var idx     = event.target.name,
+                    value   = event.target.value == "true" ? "false" : "true";
+                updateCkState( idx + ":" + value );
+                setting.UpdateOriginsMode( idx, value );
             });
 
         },
 
-        Get: function ( state ) {
-
-            if ( state == "changestate" ) {
-                return $( ".changestate input[value=day]" ).attr( "checked" );
-            }
-            else if ( state == "clockstate" ) {
-                return $( ".clockstate input[value=show]" ).attr( "checked" );
-            }
-
+        Mode: function( type ) {
+            return setting.mode[type].value;
         },
 
         IsRandom: function() {
-          var mode = localStorage["simptab-background-mode"];
-          // when undefined same as time
-          if ( mode == undefined || mode == "time" ) {
-            return true;
-          }
-          else {
-            return false;
-          }
+          return setting.mode["changestate"].value  === "time" ? true : false;
         },
 
         Verify: function( idx ) {
-            var arr   = JSON.parse( localStorage["simptab-background-origin"] || "[]" ),
-                value = arr && arr.length && arr[idx],
+            var value = setting.origins[idx],
                 value = value || idx + ":" + "true";
 
             return value.split(":")[1];

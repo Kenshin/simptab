@@ -54,14 +54,18 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
     background.Get( setting.IsRandom() );
 
     // get time
-    setting.Get( "clockstate" ) != undefined ? date.Show() : date.Hide();
+    date.Toggle( setting.Mode( "clockstate" ));
 
     // listen
     controlbar.Listen( function( result ) {
         if ( typeof result === "boolean" )     background.Favorite( result );
         else if ( typeof result === "object" ) background.Upload( result );
     });
-    setting.Listen();
+    setting.Listen( function( type, result ) {
+        if ( type == "tsstate" )               topsites.Refresh( result );
+        else if ( type == "clockstate" )       date.Toggle( result );
+        else if ( type == "positionstate" )    controlbar.SetBgPosition();
+    });
 
     // validation background
     background.Valid();

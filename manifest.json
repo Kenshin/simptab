@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name"            : "__MSG_extension_name__",
     "short_name"      : "SimpTab",
-    "version"         : "1.4.0",
+    "version"         : "1.4.3",
     "default_locale"  : "en",
     "description"     : "__MSG_extension_desc__",
     "author"          : "Kenshin",
@@ -16,18 +16,22 @@
         "128": "assets/images/icon128.png"
     },
     "content_security_policy": "script-src 'self' https://*.flickr.com 'unsafe-eval'; object-src 'self'",
-    "permissions": [
-        "topSites",
-        "storage",
-        "http://*.bing.com/",
-        "http://*.bing.net/",
+    "optional_permissions": [
         "https://*.unsplash.com/",
         "https://*.unsplash.it/",
         "http://*.wallhaven.cc/",
         "https://*.staticflickr.com/",
         "http://*.desktopprassets.com/",
         "http://*.visualhunt.com/",
-        "https://*.500px.org/"
+        "https://*.500px.org/",
+        "http://*.vo.msecnd.net/",
+        "http://*.nasa.gov/"
+    ],
+    "permissions": [
+        "topSites",
+        "storage",
+        "http://*.bing.com/",
+        "http://*.bing.net/"
     ],
     "omnibox": { "keyword" : "st" },
     "commands": {
@@ -36,5 +40,5 @@
       "info"    : { "suggested_key": { "default": "Alt+Shift+3" }, "description": "__MSG_controlbar_info__"     },
       "upload"  : { "suggested_key": { "default": "Alt+Shift+4" }, "description": "__MSG_controlbar_upload__"   }
     },
-    "update_url": "https://clients2.google.com/service/update2/crx"
+    "update_url": "http://ksria.com/simptab/updates.xml"
 }
