@@ -165,20 +165,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     /*
-    * Bing
+    * Bing( today )
     */
-
-    /*
-    function bing() {
-
-      console.log( "=== Bing.com call ===");
-
-      // when arguments[0] is true, call todayBing
-      arguments && arguments.length === 1 && arguments[0] ? todayBing() : randomBing();
-
-    }
-    */
-
     function todayBing() {
         console.log( "=== Bing.com today ===");
         var local = i18n.GetLocale() == "zh_CN" ? "cn." : "";
@@ -196,30 +184,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
             }
         });
-
-        /*
-        $.ajax({
-            type       : "GET",
-            timeout    : 2000,
-            url        : url,
-            dataType   : "json"})
-            .then( function ( result ) {
-                if ( result && !$.isEmptyObject( result )) {
-
-                  var data = result.images[0],
-                      url  = data.url,
-                      hdurl= getHDurl( getTrueUrl( url )),
-                      name = data.copyright,
-                      info = getInfo( data.copyrightlink ),
-                      enddate   = data.enddate,
-                      shortname = "Bing.com Image-" + getShortName( info );
-                  deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
-                }
-                else {
-                  deferred.reject( new SimpError( "apis.bing()", "Bing.com API return api parse error.", result ));
-                }
-            }, failed );
-            */
     }
 
     function getHDurl( url ) {
@@ -254,10 +218,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         return decodeURIComponent( shortname );
     }
 
+    /*
+    * Bing( random )
+    */
     function randomBing() {
-      console.log( "=== Bing.com random ===");
-      apis.New({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
-      apis.Remote( function( result ) {
+        console.log( "=== Bing.com random ===");
+        apis.New({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
+        apis.Remote( function( result ) {
           if ( apis.VerifyObject( result )) {
             try {
               var images = result.imageIds,
@@ -268,10 +235,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               SimpError.Clone( new SimpError( "apis.randomBing()" , "Parse bing.gallery.json error.", apis.vo ), error );
               initialize( apis.GetOrigin().code );
             }
-        }/*
-         else {
-            deferred.reject( new SimpError( "apis.randomBing()", "Get bing.gallery.json error.", { result : result, apis_vo: apis.vo } ));
-        }*/
+        }
       });
     }
 
@@ -287,10 +251,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               else {
                 randomBing();
               }
-          }/*
-            else {
-              randomBing();
-          }*/
+          }
         });
     }
 
