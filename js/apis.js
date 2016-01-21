@@ -18,6 +18,64 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus:textStatus, errorThrown:errorThrown } ));
     }
 
+    var apis = ( function() {
+
+        var options = {
+            url      : "",
+            type     : "GET",
+            dataType : "json",
+            timeout  : 2000,
+            origin   : ""
+        },
+            BG_ORIGINS = [ "wallhaven", "unsplashcom", "unsplashit", "flickr", "googleartproject", "500px", "desktoppr", "visualhunt", "nasa", "simptab", "special", "favorite", "holiday", "bing", "today" ];
+
+        function APIS() {}
+
+        APIS.prototype.origins = function() {
+            var MAX_NUM = 12,
+                code    = createRandom( 0, MAX_NUM );
+
+            // verify background every day
+            // verify today is new day
+            if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {
+                //code  = MAX_NUM;
+                //today = true;
+                code = MAX_NUM + 1;
+            }
+            // verify today is holiday
+            else if ( isHoliday() ) {
+                code = 11;
+            }
+            // change background every time
+            else {
+                while ( setting.Verify( code ) == "false" ||
+                        localStorage[ "simptab-prv-code" ] == code ||
+                        code == 11 ||
+                        ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
+                    code = createRandom( 0, MAX_NUM );
+                }
+                localStorage[ "simptab-prv-code" ] = code;
+            }
+            console.log( "switch code is " + code );
+            return { code : code, origin : BG_ORIGINS[code] };
+        }
+
+        return new APIS;
+    })();
+
+    window.apis = apis;
+
+
+
+
+
+
+
+
+
+
+
+
     /*
     * Bing
     */
@@ -697,6 +755,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       Init: function () {
 
+        /*
         var MAX_NUM = 12,
             code    = createRandom( 0, MAX_NUM ),
             today   = false;
@@ -723,6 +782,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
 
         console.log( "switch code is " + code );
+        */
+
+        var code = apis.origins().code;
 
         // add test code
         // code = 8;
@@ -764,8 +826,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           case 11:
             holiday();
             break;
+          case 12:
+            bing();
+            break;
           default:
-            bing( today );
+            bing( code );
             break;
         }
 
