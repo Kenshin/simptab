@@ -744,9 +744,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
 
             var max    = arr.length - 1;
-            var random = createRandom( 0, max );
+            var random = apis.Random( 0, max );
             var obj    = JSON.parse( arr[ random ] );
             var result = JSON.parse( obj.result );
+
+            apis.New({ url : result.hdurl, method : "apis.favorite()", dataType : "filesystem" })
 
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
 
