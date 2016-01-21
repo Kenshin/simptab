@@ -18,8 +18,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus:textStatus, errorThrown:errorThrown } ));
     }
 
-    var randomBing,
+    var todayBing, randomBing,
         origins = {
+            "today"    : function() { todayBing() },
             "bing"     : function() { randomBing() },
             "favorite" : function() { setTimeout( favorite, 2000 ); }
         },
@@ -178,21 +179,24 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
     */
 
-    function todayBing() {
-      console.log( "=== Bing.com today ===");
-      var local  = "",
-          url    = "";
+    todayBing = function() {
+        console.log( "=== Bing.com today ===");
+        var local = i18n.GetLocale() == "zh_CN" ? "cn." : "";
+        apis.New({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
+        apis.Remote( function( result ) {
+            if ( apis.VerifyObject( result )) {
+                var data = result.images[0],
+                    url  = data.url,
+                    hdurl= getHDurl( getTrueUrl( url )),
+                    name = data.copyright,
+                    info = getInfo( data.copyrightlink ),
+                    enddate   = data.enddate,
+                    shortname = "Bing.com Image-" + getShortName( info );
+                deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, apis.vo.origin ));
+            }
+        });
 
-        // set local
-        if ( i18n.GetLocale() == "zh_CN" ) {
-            local = "cn.";
-        }
-
-        // set url
-        url = "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1";
-
-        console.log("url    = " + url );
-
+        /*
         $.ajax({
             type       : "GET",
             timeout    : 2000,
@@ -214,6 +218,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                   deferred.reject( new SimpError( "apis.bing()", "Bing.com API return api parse error.", result ));
                 }
             }, failed );
+            */
     }
 
     function getHDurl( url ) {
