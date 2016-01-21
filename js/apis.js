@@ -18,8 +18,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus:textStatus, errorThrown:errorThrown } ));
     }
 
-    var todayBing, randomBing,
-        origins = {
+    var origins = {
             "today"    : function() { todayBing() },
             "bing.com" : function() { randomBing() },
             "favorite" : function() { setTimeout( favorite, 2000 ); }
@@ -179,7 +178,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
     */
 
-    todayBing = function() {
+    function todayBing() {
         console.log( "=== Bing.com today ===");
         var local = i18n.GetLocale() == "zh_CN" ? "cn." : "";
         apis.New({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
@@ -254,7 +253,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         return decodeURIComponent( shortname );
     }
 
-    randomBing = function () {
+    function randomBing() {
       console.log( "=== Bing.com random ===");
       apis.New({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
       apis.Remote( function( result ) {
