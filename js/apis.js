@@ -32,10 +32,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
         function APIS() {
-            this.origin = { code : "", name : "" }
+            this.origin = { code : "", name : "" };
+            this.vo     = options;
         }
-
-        APIS.prototype.vo = options;
 
         APIS.prototype.Random = function( min, max ) {
             return Math.floor( Math.random() * ( max - min + 1 ) + min );
@@ -65,7 +64,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             console.log( "switch code is ", code, BG_ORIGINS[code] );
             this.origin.code = code;
-            this.origin.name = BG_ORIGINS[code]
+            this.origin.name = BG_ORIGINS[code];
             return this.origin;
         }
 
