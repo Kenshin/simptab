@@ -69,8 +69,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             return this.origin;
         }
 
-        APIS.prototype.Clone = function() {
-            return $.extend( {}, options );
+        APIS.prototype.New = function() {
+            var obj    = arguments && arguments.length > 0 && arguments[0],
+                new_vo = $.extend( {}, options );
+            Object.keys( obj ).forEach( function( item ) { new_vo[item] = obj[item]; });
+            this.vo = new_vo;
         }
 
         APIS.prototype.Remote = function( callBack ) {
@@ -81,7 +84,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 url        : this.vo.url,
                 dataType   : this.vo.json
             }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
-                deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : this.vo } ));
+                deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
                 initialize( me.GetOrigin().code );
             });
         }
@@ -98,9 +101,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         return new APIS;
     })();
-
-    window.apis = apis;
-
 
 
 
@@ -249,13 +249,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
     function randomBing() {
       console.log( "=== Bing.com random ===");
-
-      var obj    = apis.Clone();
-      obj.url    = SIMP_API_HOST + "bing.gallery.json";
-      obj.method = "apis.randomBing()";
-      obj.origin = apis.origin.name;
-      apis.vo    = obj;
-
+      apis.New({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()", origin : apis.origin.name });
       apis.Remote( function( result ) {
           if ( apis.VerifyObject( result )) {
             try {
@@ -274,18 +268,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     function getRandomBing( id ) {
-        var obj    = apis.Clone();
-        obj.url    = "http://www.bing.com/gallery/home/imagedetails/" + id;
-        obj.method = "apis.getRandomBing()";
-        obj.origin = apis.origin.name;
-        apis.vo    = obj;
-
+        apis.New({ url : "http://www.bing.com/gallery/home/imagedetails/" + id, method : "apis.getRandomBing()", origin : apis.origin.name });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
               console.log("Bing.com random image is ", result )
               if ( result.wallpaper ) {
                 var prefix = "http://az608707.vo.msecnd.net/files/";
-                deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", obj.origin ));
+                deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.origin.name ));
               }
               else {
                 //randomBing();
