@@ -24,6 +24,13 @@ define([ "jquery" ], function( $ ) {
 		this.message     = message;
 		this.data        = data;
 		this.stack       = err.stack;
+
+		console.group( "===== SimpTabError. ====="             );
+		console.error( "this.method_name = ", this.method_name );
+		console.error( "this.message     = ", this.message     );
+		console.error( "this.data        = ", this.data        );
+		console.error( "this.stack       = ", this.stack       );
+		console.groupEnd();
 	}
 
     SimpError.prototype.name = "SimpError";
