@@ -35,8 +35,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 origin   : "",
                 code     : 0
             },
-                BG_ORIGINS = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleartproject.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
-                MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
+            BG_ORIGINS = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleartproject.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
+            MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
             function APIS() {
                 this.vo = options;
