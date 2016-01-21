@@ -252,7 +252,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
       obj.origin = apis.origin().origin;
 
       apis.Remote.call( obj, function( result ) {
-          if ( result != undefined && !$.isEmptyObject( result )) {
+          if ( apis.VerifyObject( result )) {
             try {
               var images = result.imageIds,
                   random = apis.Random( 0, images.length );
@@ -275,7 +275,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         obj.origin = apis.origin().origin;
 
         apis.Remote.call( obj, function( result ) {
-            if ( result != undefined && !$.isEmptyObject( result )) {
+            if ( apis.VerifyObject( result )) {
               console.log("Bing.com random image is ", result )
               if ( result.wallpaper ) {
                 var prefix = "http://az608707.vo.msecnd.net/files/";
