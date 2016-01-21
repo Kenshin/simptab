@@ -26,14 +26,14 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             dataType : "json",
             timeout  : 2000,
             method   : "",
-            origin   : ""
+            origin   : "",
+            code     : 0
         },
             BG_ORIGINS = [ "wallhaven", "unsplashcom", "unsplashit", "flickr", "googleartproject", "500px", "desktoppr", "visualhunt", "nasa", "special", "favorite", "holiday", "bing", "today" ],
             MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
         function APIS() {
-            this.origin = { code : "", name : "" };
-            this.vo     = options;
+            this.vo = options;
         }
 
         APIS.prototype.Random = function( min, max ) {
@@ -63,9 +63,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 localStorage[ "simptab-prv-code" ] = code;
             }
             console.log( "switch code is ", code, BG_ORIGINS[code] );
-            this.origin.code = code;
-            this.origin.name = BG_ORIGINS[code];
-            return this.origin;
+            this.vo.code   = code;
+            this.vo.origin = BG_ORIGINS[code];
+            return { code: this.vo.code, origin: this.vo.origin };
         }
 
         APIS.prototype.New = function() {
@@ -248,7 +248,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
     function randomBing() {
       console.log( "=== Bing.com random ===");
-      apis.New({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()", origin : apis.origin.name });
+      apis.New({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
       apis.Remote( function( result ) {
           if ( apis.VerifyObject( result )) {
             try {
@@ -267,13 +267,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     function getRandomBing( id ) {
-        apis.New({ url : "http://www.bing.com/gallery/home/imagedetails/" + id, method : "apis.getRandomBing()", origin : apis.origin.name });
+        apis.New({ url : "http://www.bing.com/gallery/home/imagedetails/" + id, method : "apis.getRandomBing()" });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
-              console.log("Bing.com random image is ", result )
+              console.log("Bing.com random image is ", result, apis.vo )
               if ( result.wallpaper ) {
                 var prefix = "http://az608707.vo.msecnd.net/files/";
-                deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.origin.name ));
+                deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.name ));
               }
               else {
                 //randomBing();
