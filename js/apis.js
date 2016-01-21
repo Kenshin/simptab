@@ -31,7 +31,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             BG_ORIGINS = [ "wallhaven", "unsplashcom", "unsplashit", "flickr", "googleartproject", "500px", "desktoppr", "visualhunt", "nasa", "special", "favorite", "holiday", "bing", "today" ],
             MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
-        function APIS() {}
+        function APIS() {
+            this.origin = { code : "", name : "" }
+        }
 
         APIS.prototype.vo = options;
 
@@ -39,7 +41,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             return Math.floor( Math.random() * ( max - min + 1 ) + min );
         }
 
-        APIS.prototype.origin = function() {
+        APIS.prototype.GetOrigin = function() {
             var code    = this.Random( 0, MAX_NUM );
 
             // verify background every day
@@ -62,7 +64,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 localStorage[ "simptab-prv-code" ] = code;
             }
             console.log( "switch code is ", code, BG_ORIGINS[code] );
-            return { code : code, origin : BG_ORIGINS[code] };
+            this.origin.code = code;
+            this.origin.name = BG_ORIGINS[code]
+            return this.origin;
         }
 
         APIS.prototype.Clone = function() {
@@ -70,14 +74,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
 
         APIS.prototype.Remote = function( callBack ) {
-            APIS.prototype.vo = this;
+            var me = this;
             $.ajax({
-                type       : this.type,
-                timeout    : this.timeout,
-                url        : this.url,
-                dataType   : this.json
+                type       : this.vo.type,
+                timeout    : this.vo.timeout,
+                url        : this.vo.url,
+                dataType   : this.vo.json
             }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
-                deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : APIS.prototype.vo } ));
+                deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : this.vo } ));
+                initialize( me.GetOrigin().code );
             });
         }
 
@@ -86,7 +91,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 return true;
             }
             else {
-                // Re-call
+                initialize( this.GetOrigin().code );
+                return false;
             }
         }
 
@@ -103,12 +109,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
 
 
-    function initialize() {
-
-        var code = apis.origin().code;
+    function initialize( code ) {
 
         // add test code
-        code = 12;
+        // code = 12;
 
         switch ( code ) {
           case 0:
@@ -249,22 +253,23 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
       var obj    = apis.Clone();
       obj.url    = SIMP_API_HOST + "bing.gallery.json";
       obj.method = "apis.randomBing()";
-      obj.origin = apis.origin().origin;
+      obj.origin = apis.origin.name;
+      apis.vo    = obj;
 
-      apis.Remote.call( obj, function( result ) {
+      apis.Remote( function( result ) {
           if ( apis.VerifyObject( result )) {
             try {
               var images = result.imageIds,
                   random = apis.Random( 0, images.length );
-                  getRandomBing( images[random] );
+              getRandomBing( images[random] );
             }
             catch( error ) {
               deferred.reject( SimpError.Clone( new SimpError( "apis.randomBing()" , "Parse bing.gallery.json error.", apis.vo ), error ));
             }
-          }
-          else {
+        }/*
+         else {
             deferred.reject( new SimpError( "apis.randomBing()", "Get bing.gallery.json error.", { result : result, apis_vo: apis.vo } ));
-          }
+        }*/
       });
     }
 
@@ -272,9 +277,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var obj    = apis.Clone();
         obj.url    = "http://www.bing.com/gallery/home/imagedetails/" + id;
         obj.method = "apis.getRandomBing()";
-        obj.origin = apis.origin().origin;
+        obj.origin = apis.origin.name;
+        apis.vo    = obj;
 
-        apis.Remote.call( obj, function( result ) {
+        apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
               console.log("Bing.com random image is ", result )
               if ( result.wallpaper ) {
@@ -841,6 +847,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     return {
-      Init: initialize
+      Init: function () {
+          initialize( apis.GetOrigin().code );
+          return deferred.promise();
+      }
     };
 });
