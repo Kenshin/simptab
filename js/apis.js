@@ -21,7 +21,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     var todayBing, randomBing,
         origins = {
             "today"    : function() { todayBing() },
-            "bing"     : function() { randomBing() },
+            "bing.com" : function() { randomBing() },
             "favorite" : function() { setTimeout( favorite, 2000 ); }
         },
         apis = ( function() {
@@ -35,7 +35,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 origin   : "",
                 code     : 0
             },
-                BG_ORIGINS = [ "wallhaven", "unsplashcom", "unsplashit", "flickr", "googleartproject", "500px", "desktoppr", "visualhunt", "nasa", "special", "favorite", "holiday", "bing", "today" ],
+                BG_ORIGINS = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleartproject.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
                 MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
             function APIS() {
@@ -185,6 +185,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         apis.New({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
+                console.log("Bing.com today image is ", result, apis.vo )
                 var data = result.images[0],
                     url  = data.url,
                     hdurl= getHDurl( getTrueUrl( url )),
@@ -192,7 +193,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     info = getInfo( data.copyrightlink ),
                     enddate   = data.enddate,
                     shortname = "Bing.com Image-" + getShortName( info );
-                deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, apis.vo.origin ));
+                deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
             }
         });
 
