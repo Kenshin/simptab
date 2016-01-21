@@ -25,21 +25,26 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             type     : "GET",
             dataType : "json",
             timeout  : 2000,
+            method   : "",
             origin   : ""
         },
-            BG_ORIGINS = [ "wallhaven", "unsplashcom", "unsplashit", "flickr", "googleartproject", "500px", "desktoppr", "visualhunt", "nasa", "simptab", "special", "favorite", "holiday", "bing", "today" ];
+            BG_ORIGINS = [ "wallhaven", "unsplashcom", "unsplashit", "flickr", "googleartproject", "500px", "desktoppr", "visualhunt", "nasa", "special", "favorite", "holiday", "bing", "today" ],
+            MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
         function APIS() {}
 
-        APIS.prototype.origins = function() {
-            var MAX_NUM = 12,
-                code    = createRandom( 0, MAX_NUM );
+        APIS.prototype.vo = options;
+
+        APIS.prototype.Random = function( min, max ) {
+            return Math.floor( Math.random() * ( max - min + 1 ) + min );
+        }
+
+        APIS.prototype.origin = function() {
+            var code    = this.Random( 0, MAX_NUM );
 
             // verify background every day
             // verify today is new day
             if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {
-                //code  = MAX_NUM;
-                //today = true;
                 code = MAX_NUM + 1;
             }
             // verify today is holiday
@@ -52,12 +57,37 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                         localStorage[ "simptab-prv-code" ] == code ||
                         code == 11 ||
                         ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
-                    code = createRandom( 0, MAX_NUM );
+                    code = this.Random( 0, MAX_NUM );
                 }
                 localStorage[ "simptab-prv-code" ] = code;
             }
-            console.log( "switch code is " + code );
+            console.log( "switch code is ", code, BG_ORIGINS[code] );
             return { code : code, origin : BG_ORIGINS[code] };
+        }
+
+        APIS.prototype.Clone = function() {
+            return $.extend( {}, options );
+        }
+
+        APIS.prototype.Remote = function( callBack ) {
+            APIS.prototype.vo = this;
+            $.ajax({
+                type       : this.type,
+                timeout    : this.timeout,
+                url        : this.url,
+                dataType   : this.json
+            }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
+                deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : APIS.prototype.vo } ));
+            });
+        }
+
+        APIS.prototype.VerifyObject = function( result ) {
+            if ( result != undefined && !$.isEmptyObject( result )) {
+                return true;
+            }
+            else {
+                // Re-call
+            }
         }
 
         return new APIS;
@@ -73,13 +103,66 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
 
 
+    function initialize() {
 
+        var code = apis.origin().code;
 
+        // add test code
+        code = 12;
+
+        switch ( code ) {
+          case 0:
+            wallhaven();
+            break;
+          case 1:
+            unsplashCOM();
+            break;
+          case 2:
+            unsplashIT();
+            break;
+          case 3:
+            flickr();
+            break;
+          case 4:
+            googleart();
+            break;
+          case 5:
+            f00px();
+            break;
+          case 6:
+            desktoppr();
+            break;
+          case 7:
+            visualhunt();
+            break;
+          case 8:
+            nasa();
+            break;
+          case 9:
+            special();
+            break;
+          case 10:
+            setTimeout( favorite, 2000 );
+            break;
+          case 11:
+            holiday();
+            break;
+          case 12:
+            randomBing();
+            break;
+          default:
+            todayBing();
+            break;
+        }
+
+        return deferred.promise();
+    }
 
     /*
     * Bing
     */
 
+    /*
     function bing() {
 
       console.log( "=== Bing.com call ===");
@@ -88,6 +171,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
       arguments && arguments.length === 1 && arguments[0] ? todayBing() : randomBing();
 
     }
+    */
 
     function todayBing() {
       console.log( "=== Bing.com today ===");
@@ -127,49 +211,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }, failed );
     }
 
-    function randomBing() {
-      console.log( "=== Bing.com random ===");
-      $.getJSON( SIMP_API_HOST + "bing.gallery.json" ).done(function( result ) {
-        if ( result != undefined && !$.isEmptyObject( result )) {
-          try {
-            var images = result.imageIds,
-                random = createRandom( 0, images.length );
-                getRandomBing( images[random] );
-          }
-          catch( error ) {
-            deferred.reject( SimpError.Clone( new SimpError( "apis.randomBing()", null , "Parse bing.gallery.json error." ), error ));
-          }
-        }
-        else {
-          deferred.reject( new SimpError( "apis.randomBing()", "Get bing.gallery.json error.", result ));
-        }
-      }).fail( failed );
-    }
-
-    function getRandomBing( id ) {
-      $.ajax({
-        type       : "GET",
-        timeout    : 2000,
-        url        : "http://www.bing.com/gallery/home/imagedetails/" + id,
-        dataType   : "json"})
-        .then( function ( result ) {
-          if ( result != undefined && !$.isEmptyObject( result )) {
-            console.log("Bing.com random image is ", result )
-            if ( result.wallpaper ) {
-              var prefix = "http://az608707.vo.msecnd.net/files/";
-              deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", "bing.com" ));
-            }
-            else {
-              randomBing();
-            }
-          }
-          else {
-            randomBing();
-          }
-        })
-        .fail( failed );
-    }
-
     function getHDurl( url ) {
         return url.replace( "1366x768", "1920x1080" );
     }
@@ -200,6 +241,54 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         shortname = shortname.split( "&" )[0];
 
         return decodeURIComponent( shortname );
+    }
+
+    function randomBing() {
+      console.log( "=== Bing.com random ===");
+
+      var obj    = apis.Clone();
+      obj.url    = SIMP_API_HOST + "bing.gallery.json";
+      obj.method = "apis.randomBing()";
+      obj.origin = apis.origin().origin;
+
+      apis.Remote.call( obj, function( result ) {
+          if ( result != undefined && !$.isEmptyObject( result )) {
+            try {
+              var images = result.imageIds,
+                  random = apis.Random( 0, images.length );
+                  getRandomBing( images[random] );
+            }
+            catch( error ) {
+              deferred.reject( SimpError.Clone( new SimpError( "apis.randomBing()" , "Parse bing.gallery.json error.", apis.vo ), error ));
+            }
+          }
+          else {
+            deferred.reject( new SimpError( "apis.randomBing()", "Get bing.gallery.json error.", { result : result, apis_vo: apis.vo } ));
+          }
+      });
+    }
+
+    function getRandomBing( id ) {
+        var obj    = apis.Clone();
+        obj.url    = "http://www.bing.com/gallery/home/imagedetails/" + id;
+        obj.method = "apis.getRandomBing()";
+        obj.origin = apis.origin().origin;
+
+        apis.Remote.call( obj, function( result ) {
+            if ( result != undefined && !$.isEmptyObject( result )) {
+              console.log("Bing.com random image is ", result )
+              if ( result.wallpaper ) {
+                var prefix = "http://az608707.vo.msecnd.net/files/";
+                deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", obj.origin ));
+              }
+              else {
+                //randomBing();
+              }
+            }
+            else {
+              //randomBing();
+            }
+        });
     }
 
     /*
@@ -752,89 +841,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     return {
-
-      Init: function () {
-
-        /*
-        var MAX_NUM = 12,
-            code    = createRandom( 0, MAX_NUM ),
-            today   = false;
-
-        // verify background every day
-        // verify today is new day
-        if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {
-            code  = MAX_NUM;
-            today = true;
-        }
-        // verify today is holiday
-        else if ( isHoliday() ) {
-            code = 11;
-        }
-        // change background every time
-        else {
-            while ( setting.Verify( code ) == "false" ||
-                    localStorage[ "simptab-prv-code" ] == code ||
-                    code == 11 ||
-                    ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
-                code = createRandom( 0, MAX_NUM );
-            }
-            localStorage[ "simptab-prv-code" ] = code;
-        }
-
-        console.log( "switch code is " + code );
-        */
-
-        var code = apis.origins().code;
-
-        // add test code
-        // code = 8;
-
-        switch ( code ) {
-          case 0:
-            wallhaven();
-            break;
-          case 1:
-            unsplashCOM();
-            break;
-          case 2:
-            unsplashIT();
-            break;
-          case 3:
-            flickr();
-            break;
-          case 4:
-            googleart();
-            break;
-          case 5:
-            f00px();
-            break;
-          case 6:
-            desktoppr();
-            break;
-          case 7:
-            visualhunt();
-            break;
-          case 8:
-            nasa();
-            break;
-          case 9:
-            special();
-            break;
-          case 10:
-            setTimeout( favorite, 2000 );
-            break;
-          case 11:
-            holiday();
-            break;
-          case 12:
-            bing();
-            break;
-          default:
-            bing( code );
-            break;
-        }
-
-        return deferred.promise();
-      }
+      Init: initialize
     };
 });
