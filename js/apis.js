@@ -18,101 +18,102 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus:textStatus, errorThrown:errorThrown } ));
     }
 
-    var apis = ( function() {
-
-        var options = {
-            url      : "",
-            type     : "GET",
-            dataType : "json",
-            timeout  : 2000,
-            method   : "",
-            origin   : "",
-            code     : 0
+    var randomBing,
+        origins = {
+            "bing"     : function() { randomBing() },
+            "favorite" : function() { setTimeout( favorite, 2000 ); }
         },
-            BG_ORIGINS = [ "wallhaven", "unsplashcom", "unsplashit", "flickr", "googleartproject", "500px", "desktoppr", "visualhunt", "nasa", "special", "favorite", "holiday", "bing", "today" ],
-            MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
+        apis = ( function() {
 
-        function APIS() {
-            this.vo = options;
-        }
+            var options = {
+                url      : "",
+                type     : "GET",
+                dataType : "json",
+                timeout  : 2000,
+                method   : "",
+                origin   : "",
+                code     : 0
+            },
+                BG_ORIGINS = [ "wallhaven", "unsplashcom", "unsplashit", "flickr", "googleartproject", "500px", "desktoppr", "visualhunt", "nasa", "special", "favorite", "holiday", "bing", "today" ],
+                MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
-        APIS.prototype.Random = function( min, max ) {
-            return Math.floor( Math.random() * ( max - min + 1 ) + min );
-        }
-
-        APIS.prototype.GetOrigin = function() {
-            var code    = this.Random( 0, MAX_NUM );
-
-            // verify background every day
-            // verify today is new day
-            if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {
-                code = MAX_NUM + 1;
+            function APIS() {
+                this.vo = options;
             }
-            // verify today is holiday
-            else if ( isHoliday() ) {
-                code = 11;
+
+            APIS.prototype.Random = function( min, max ) {
+                return Math.floor( Math.random() * ( max - min + 1 ) + min );
             }
-            // change background every time
-            else {
-                while ( setting.Verify( code ) == "false" ||
-                        localStorage[ "simptab-prv-code" ] == code ||
-                        code == 11 ||
-                        ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
-                    code = this.Random( 0, MAX_NUM );
+
+            APIS.prototype.GetOrigin = function() {
+                var code    = this.Random( 0, MAX_NUM );
+
+                // verify background every day
+                // verify today is new day
+                if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {
+                    code = MAX_NUM + 1;
                 }
-                localStorage[ "simptab-prv-code" ] = code;
+                // verify today is holiday
+                else if ( isHoliday() ) {
+                    code = 11;
+                }
+                // change background every time
+                else {
+                    while ( setting.Verify( code ) == "false" ||
+                            localStorage[ "simptab-prv-code" ] == code ||
+                            code == 11 ||
+                            ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
+                        code = this.Random( 0, MAX_NUM );
+                    }
+                    localStorage[ "simptab-prv-code" ] = code;
+                }
+                console.log( "switch code is ", code, BG_ORIGINS[code] );
+                this.vo.code   = code;
+                this.vo.origin = BG_ORIGINS[code];
+                return { code: this.vo.code, origin: this.vo.origin };
             }
-            console.log( "switch code is ", code, BG_ORIGINS[code] );
-            this.vo.code   = code;
-            this.vo.origin = BG_ORIGINS[code];
-            return { code: this.vo.code, origin: this.vo.origin };
-        }
 
-        APIS.prototype.New = function() {
-            var obj    = arguments && arguments.length > 0 && arguments[0],
-                new_vo = $.extend( {}, options );
-            Object.keys( obj ).forEach( function( item ) { new_vo[item] = obj[item]; });
-            this.vo = new_vo;
-        }
-
-        APIS.prototype.Remote = function( callBack ) {
-            var me = this;
-            $.ajax({
-                type       : this.vo.type,
-                timeout    : this.vo.timeout,
-                url        : this.vo.url,
-                dataType   : this.vo.json
-            }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
-                deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
-                initialize( me.GetOrigin().code );
-            });
-        }
-
-        APIS.prototype.VerifyObject = function( result ) {
-            if ( result != undefined && !$.isEmptyObject( result )) {
-                return true;
+            APIS.prototype.New = function() {
+                var obj    = arguments && arguments.length > 0 && arguments[0],
+                    new_vo = $.extend( {}, options );
+                Object.keys( obj ).forEach( function( item ) { new_vo[item] = obj[item]; });
+                this.vo = new_vo;
             }
-            else {
-                initialize( this.GetOrigin().code );
-                return false;
-            }
-        }
 
-        return new APIS;
+            APIS.prototype.Remote = function( callBack ) {
+                var me = this;
+                $.ajax({
+                    type       : this.vo.type,
+                    timeout    : this.vo.timeout,
+                    url        : this.vo.url,
+                    dataType   : this.vo.json
+                }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
+                    deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
+                    initialize( me.GetOrigin().code );
+                });
+            }
+
+            APIS.prototype.VerifyObject = function( result ) {
+                if ( result != undefined && !$.isEmptyObject( result )) {
+                    return true;
+                }
+                else {
+                    initialize( this.GetOrigin().code );
+                    return false;
+                }
+            }
+
+            return new APIS;
     })();
-
-
-
-
-
-
-
 
     function initialize( code ) {
 
         // add test code
         // code = 12;
 
+        origins[ apis.vo.origin ]();
+
+        /*
         switch ( code ) {
           case 0:
             wallhaven();
@@ -157,6 +158,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             todayBing();
             break;
         }
+        */
 
         return deferred.promise();
     }
@@ -246,7 +248,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         return decodeURIComponent( shortname );
     }
 
-    function randomBing() {
+    randomBing = function () {
       console.log( "=== Bing.com random ===");
       apis.New({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
       apis.Remote( function( result ) {
