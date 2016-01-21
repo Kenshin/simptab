@@ -34,6 +34,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 origin   : "",
                 code     : 0
             },
+            failed_count = 0,
             BG_ORIGINS = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleartproject.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
             MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
@@ -88,8 +89,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     url        : this.vo.url,
                     dataType   : this.vo.json
                 }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
-                    deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
-                    initialize( me.GetOrigin().code );
+                    failed_count < 5 ? initialize( me.GetOrigin().code ) : deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
+                    failed_count ++;
                 });
             }
 
@@ -264,7 +265,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               getRandomBing( images[random] );
             }
             catch( error ) {
-              deferred.reject( SimpError.Clone( new SimpError( "apis.randomBing()" , "Parse bing.gallery.json error.", apis.vo ), error ));
+              SimpError.Clone( new SimpError( "apis.randomBing()" , "Parse bing.gallery.json error.", apis.vo ), error );
+              initialize( apis.GetOrigin().code );
             }
         }/*
          else {
@@ -285,10 +287,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               else {
                 randomBing();
               }
-            }
+          }/*
             else {
-              //randomBing();
-            }
+              randomBing();
+          }*/
         });
     }
 
@@ -736,7 +738,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         try {
             var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
-                deferred.reject( new SimpError( "apis.favorite()", "Local storge 'simptab-favorites' not exist.", null ));
+                new SimpError( "apis.favorite()", "Local storge 'simptab-favorites' not exist.", apis.vo );
+                initialize( apis.GetOrigin().code );
                 return;
             }
 
@@ -749,7 +752,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
             // verify favorite data structure
             if ( !vo.Verify()) {
-                deferred.reject( new SimpError( "apis.favorite()", "Current favorite data structure error.", result ));
+                new SimpError( "apis.favorite()", "Current favorite data structure error.", { result : result, apis_vo : apis.vo } );
+                initialize( apis.GetOrigin().code );
             }
             else {
                 vo.new = result;
@@ -757,7 +761,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
         }
         catch( error ) {
-            deferred.reject( SimpError.Clone( new SimpError( "apis.favorite()", null , "Get favorite backgrond error." ), error ));
+            SimpError.Clone( new SimpError( "apis.favorite()", "Get favorite backgrond error.", apis.vo ), error );
+            initialize( apis.GetOrigin().code );
         }
     }
 
