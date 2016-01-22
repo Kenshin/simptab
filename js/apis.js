@@ -19,10 +19,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     var origins = {
-            "today"    : function() { todayBing() },
-            "bing.com" : function() { randomBing() },
-            "nasa.gov" : function() { apod() },
-            "favorite" : function() { setTimeout( favorite, 2000 ); }
+            "today"          : function() { todayBing() },
+            "bing.com"       : function() { randomBing() },
+            "visualhunt.com" : function() { visualhunt() },
+            "nasa.gov"       : function() { apod() },
+            "favorite"       : function() { setTimeout( favorite, 2000 ); }
         },
         apis = ( function() {
 
@@ -613,6 +614,23 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var VISUALHUNT_NAME = "visualhunt.json",
             VISUALHUNT_HOST = "http://visualhunt.com";
 
+        apis.New({ url : SIMP_API_HOST + VISUALHUNT_NAME, method : "apis.visualhunt()" });
+        apis.Remote( function( result ) {
+            if( apis.VerifyObject( result )) {
+                try {
+                  var max    = result.length,
+                      random = apis.Random( 0, max ),
+                      obj    = result[ random ];
+                  deferred.resolve( vo.Create( obj.url, obj.url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo ));
+                }
+                catch( error ) {
+                  SimpError.Clone( new SimpError( "apis.visualhunt()", null , "Parse visualhunt.com error, url is " + obj.url ), error );
+                  origins[ apis.GetOrigin().origin ]();
+                }
+            }
+        });
+
+        /*
         $.getJSON( SIMP_API_HOST + VISUALHUNT_NAME ).done(function( result ) {
           if ( result != undefined && !$.isEmptyObject( result )) {
             try {
@@ -629,6 +647,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             deferred.reject( new SimpError( "apis.visualhunt()", "Get Visualhunt.com json error.", result ));
           }
         }).fail( failed );
+        */
     }
 
     /*
@@ -687,7 +706,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               try {
                 var name = result.title,
                     url  = result.hdurl;
-                deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin, apis.vo ) );
+                deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin, apis.vo ));
               }
               catch ( error ) {
                 SimpError.Clone( new SimpError( "apis.apod()" , "Parse nasa apod api error, url is " + url, apis.vo ), error );
