@@ -99,7 +99,8 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                         break;
                     case "download":
                         // hack code( when 'unsplash.com' or 'nasa.gov' image download, new tab happen crash error. )
-                        if ( vo.cur.type != "unsplash.com" && vo.cur.type != "nasa.gov" ) {
+                        // 138-simptab-update-vo
+                        if ( vo.cur.type != "unsplash.com" ) {
                             event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
                         }
                         break;

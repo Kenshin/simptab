@@ -189,7 +189,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                         info = getInfo( data.copyrightlink ),
                         enddate   = data.enddate,
                         shortname = "Bing.com Image-" + getShortName( info );
-                    deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
+                    deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com", apis.vo ));
                 }
                 catch ( error ) {
                     SimpError.Clone( new SimpError( "apis.todayBing()" , "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
@@ -259,7 +259,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               console.log("Bing.com random image is ", result, apis.vo )
               if ( result.wallpaper ) {
                 var prefix = "http://az608707.vo.msecnd.net/files/";
-                deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.name ));
+                deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.origin, apis.vo ));
               }
               else {
                 randomBing();
@@ -687,7 +687,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               try {
                 var name = result.title,
                     url  = result.hdurl;
-                deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin ) );
+                deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin, apis.vo ) );
               }
               catch ( error ) {
                 SimpError.Clone( new SimpError( "apis.apod()" , "Parse nasa apod api error, url is " + url, apis.vo ), error );

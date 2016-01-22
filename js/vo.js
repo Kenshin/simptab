@@ -6,6 +6,7 @@ define([ "jquery" ], function( $ ) {
     /*
     *
     * `this.cur` and `this.new` data structure
+    *
     * when version = undefined ( 1 )
     * property `url` `date` `name` `info`
     * url != hdurl when bing.com
@@ -20,8 +21,11 @@ define([ "jquery" ], function( $ ) {
     * when version = 2.1
     * add new property `favorite`
     *
+    * when version = 2.2 ( test version 138-simptab-update-vo )
+    * add new property `api.vo`
+    *
     */
-    var VERSION = "2.1";
+    var VERSION = "2.2";
 
     function VO() {
         this.cur = {};  //current background data structure
@@ -32,15 +36,16 @@ define([ "jquery" ], function( $ ) {
     VO.CURRENT_BACKGROUND = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
     VO.BACKGROUND         = "background.jpg";
 
-    VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, favorite ) {
+    VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, apis_vo, favorite ) {
 
             this.new.url       = url;
-            this.new.hdurl     = "http://res.cloudinary.com/simptab/image/fetch/" + hdurl;
+            this.new.hdurl     = hdurl.indexOf( "filesystem:" ) == -1 ? "http://res.cloudinary.com/simptab/image/fetch/" + hdurl : hdurl;   // 138-simptab-update-vo
             this.new.name      = name;
             this.new.info      = info;
             this.new.enddate   = enddate;
             this.new.shortname = shortname;
             this.new.type      = type;
+            this.new.apis_vo   = apis_vo;   // 138-simptab-update-vo
             this.new.version   = VERSION;
             this.new.favorite  = favorite == undefined ? -1 : favorite;
 
@@ -56,11 +61,34 @@ define([ "jquery" ], function( $ ) {
     };
 
     VO.prototype.Verify = function() {
+
+        var result = false;
+
+        switch ( this.cur.version ) {
+            case "2":
+                this.cur.favorite = -1;
+                this.cur.version  = VERSION;
+            case "2.1":
+                this.cur.apis_vo  = {};
+                this.cur.version  = VERSION;
+            case VERSION:
+                result            = true;
+                break;
+        }
+
+        return result;
+
+        /*
         if ( this.cur.version == undefined ) {
             return false;
         }
         else if ( this.cur.version == "2" ) {
             this.cur.favorite = -1;
+            this.cur.version  = VERSION;
+            return true;
+        }
+        else if ( this.cur.version == "2.1" ) {
+            this.cur.apis_vo  = {};
             this.cur.version  = VERSION;
             return true;
         }
@@ -70,6 +98,7 @@ define([ "jquery" ], function( $ ) {
         else {
             return false;
         }
+        */
     };
 
     VO.prototype.Clone = function( value ) {

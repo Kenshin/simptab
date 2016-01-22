@@ -321,7 +321,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                         .done( function( result, hdurl ) {
 
                             // create upload vo
-                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", file_name ]);
+                            // 138-simptab-update-vo
+                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", {}, file_name ]);
 
                             // update local storge 'simptab-favorites'
                             files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
