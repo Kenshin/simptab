@@ -665,19 +665,19 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       console.log( "=== nasa.gov call ===");
 
-      var day = ( function() {
-        var years = [2012, 2013, 2014, 2015],
-            year  = years[ apis.Random( 0, years.length - 1 )],
-            month = apis.Random( 1, 12 ),
-            day   = apis.Random( 1, 31 );
-            month = month < 9 ? "0" + "" + month : month;
-            day   = day   < 9 ? "0" + "" + day   : day;
-        return year + "-" + month + "-" + day;
-      })(),
-          API_KEY = "ZwPdNTaFcYqj7XIRnyKt18fUZ1vJJXsSjJtairMq",
-          url     = "https://api.nasa.gov/planetary/apod?hd=True&api_key=" + API_KEY + "&date=" + day;
+      var API_KEY = "ZwPdNTaFcYqj7XIRnyKt18fUZ1vJJXsSjJtairMq",
+          API     = "https://api.nasa.gov/planetary/apod?hd=True&api_key=" + API_KEY,
+          url     = ( function( url ) {
+            var years = [2012, 2013, 2014, 2015],
+                year  = years[ apis.Random( 0, years.length - 1 )],
+                month = apis.Random( 1, 12 ),
+                day   = apis.Random( 1, 31 );
+                month = month < 9 ? "0" + "" + month : month;
+                day   = day   < 9 ? "0" + "" + day   : day;
+            return  url + "&date=" + year + "-" + month + "-" + day;
+      })( API );
 
-      apis.New({ url : url, method : "apis.apod()" });
+      apis.New({ url : url, method : "apis.apod()", timeout : 2000 * 5 });
       apis.Remote( function( result ) {
           if( apis.VerifyObject( result )) {
               try {
@@ -691,28 +691,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               }
           }
       });
-      /*
-      $.ajax({
-            type       : "GET",
-            timeout    : 2000*10,
-            url        : url,
-            dataType   : "json" })
-        .then( function ( result ) {
-          if ( result && !$.isEmptyObject( result )) {
-            try {
-              var name = result.title,
-                  url  = result.hdurl;
-              deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", "nasa.gov" ) );
-            }
-            catch ( error ) {
-              deferred.reject( SimpError.Clone( new SimpError( "apis.apod()", null , "Parse nasa apod api error, url is " + url ), error ));
-            }
-          }
-          else {
-            deferred.reject( new SimpError( "apis.apod()", "nasa rss parse error.", result ));
-          }
-        }, failed );
-        */
     }
 
     /*
