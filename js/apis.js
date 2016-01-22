@@ -21,6 +21,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     var origins = {
             "today"    : function() { todayBing() },
             "bing.com" : function() { randomBing() },
+            "nasa.gov" : function() { apod() },
             "favorite" : function() { setTimeout( favorite, 2000 ); }
         },
         apis = ( function() {
@@ -68,6 +69,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     }
                     localStorage[ "simptab-prv-code" ] = code;
                 }
+
+                // add test code
+                code = 8;
+
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
                 this.vo.code   = code;
                 this.vo.origin = BG_ORIGINS[code];
@@ -89,6 +94,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     url        : this.vo.url,
                     dataType   : this.vo.json
                 }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
+                    console.error( "=== Remote background origin error ===", apis.vo, jqXHR, textStatus, errorThrown )
                     failed_count < 5 ? initialize( me.GetOrigin().code ) : deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
                     failed_count ++;
                 });
@@ -108,9 +114,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     })();
 
     function initialize( code ) {
-
-        // add test code
-        // code = 12;
 
         origins[ apis.vo.origin ]();
 
@@ -624,13 +627,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }).fail( failed );
     }
 
+    /*
     function nasa() {
 
       console.log( "=== nasa.gov call ===");
 
-      apod();
-
-      /*
       var rss = "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss";
       $.ajax({
             type       : "GET",
@@ -657,22 +658,40 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             deferred.reject( new SimpError( "apis.nasa()", "nasa rss parse error.", result ));
           }
         }, failed );
-        */
     }
+    */
 
     function apod() {
 
+      console.log( "=== nasa.gov call ===");
+
       var day = ( function() {
         var years = [2012, 2013, 2014, 2015],
-            year  = years[ createRandom( 0, years.length - 1 )],
-            month = createRandom( 1, 12 ),
-            day   = createRandom( 1, 31 );
+            year  = years[ apis.Random( 0, years.length - 1 )],
+            month = apis.Random( 1, 12 ),
+            day   = apis.Random( 1, 31 );
             month = month < 9 ? "0" + "" + month : month;
             day   = day   < 9 ? "0" + "" + day   : day;
         return year + "-" + month + "-" + day;
       })(),
           API_KEY = "ZwPdNTaFcYqj7XIRnyKt18fUZ1vJJXsSjJtairMq",
           url     = "https://api.nasa.gov/planetary/apod?hd=True&api_key=" + API_KEY + "&date=" + day;
+
+      apis.New({ url : url, method : "apis.apod()" });
+      apis.Remote( function( result ) {
+          if( apis.VerifyObject( result )) {
+              try {
+                var name = result.title,
+                    url  = result.hdurl;
+                deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin ) );
+              }
+              catch ( error ) {
+                SimpError.Clone( new SimpError( "apis.apod()" , "Parse nasa apod api error, url is " + url, apis.vo ), error );
+                initialize( apis.GetOrigin().code );
+              }
+          }
+      });
+      /*
       $.ajax({
             type       : "GET",
             timeout    : 2000*10,
@@ -693,6 +712,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             deferred.reject( new SimpError( "apis.apod()", "nasa rss parse error.", result ));
           }
         }, failed );
+        */
     }
 
     /*
