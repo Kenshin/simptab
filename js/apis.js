@@ -26,6 +26,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         },
         apis = ( function() {
 
+            /*
+            *
+            * apis.GetOrigin() update vo `code` and `origin` property.
+            * apis.New()       update vo other property.
+            *
+            */
+
             var options = {
                 url      : "",
                 type     : "GET",
@@ -40,7 +47,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
             function APIS() {
-                this.vo = options;
+                this.vo = $.extend( {}, options );
             }
 
             APIS.prototype.Random = function( min, max ) {
@@ -80,10 +87,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
 
             APIS.prototype.New = function() {
-                var obj    = arguments && arguments.length > 0 && arguments[0],
-                    new_vo = $.extend( {}, options );
-                Object.keys( obj ).forEach( function( item ) { new_vo[item] = obj[item]; });
-                this.vo = new_vo;
+                var obj = arguments && arguments.length > 0 && arguments[0],
+                    me  = this;
+                Object.keys( obj ).forEach( function( item ) { me.vo[item] = obj[item]; });
             }
 
             APIS.prototype.Remote = function( callBack ) {
