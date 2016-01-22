@@ -71,7 +71,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
 
                 // add test code
-                code = 8;
+                // code = 8;
 
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
                 this.vo.code   = code;
@@ -164,7 +164,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         */
 
-        return deferred.promise();
+        //return deferred.promise();
     }
 
     /*
