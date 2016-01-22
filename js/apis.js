@@ -624,30 +624,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                   deferred.resolve( vo.Create( obj.url, obj.url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo ));
                 }
                 catch( error ) {
-                  SimpError.Clone( new SimpError( "apis.visualhunt()", null , "Parse visualhunt.com error, url is " + obj.url ), error );
+                  SimpError.Clone( new SimpError( "apis.visualhunt()" , "Parse visualhunt.com error, url is " + obj.url, apis.vo ), error );
                   origins[ apis.GetOrigin().origin ]();
                 }
             }
         });
-
-        /*
-        $.getJSON( SIMP_API_HOST + VISUALHUNT_NAME ).done(function( result ) {
-          if ( result != undefined && !$.isEmptyObject( result )) {
-            try {
-              var max    = result.length,
-                  random = createRandom( 0, max ),
-                  obj    = result[ random ];
-              deferred.resolve( vo.Create( obj.url, obj.url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", "visualhunt.com" ) );
-            }
-            catch( error ) {
-              deferred.reject( SimpError.Clone( new SimpError( "apis.visualhunt()", null , "Parse visualhunt.com error, url is " + obj.url ), error ));
-            }
-          }
-          else {
-            deferred.reject( new SimpError( "apis.visualhunt()", "Get Visualhunt.com json error.", result ));
-          }
-        }).fail( failed );
-        */
     }
 
     /*
