@@ -35,7 +35,7 @@ define([ "jquery" ], function( $ ) {
     VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, favorite ) {
 
             this.new.url       = url;
-            this.new.hdurl     = hdurl;
+            this.new.hdurl     = "http://res.cloudinary.com/simptab/image/fetch/" + hdurl;
             this.new.name      = name;
             this.new.info      = info;
             this.new.enddate   = enddate;
