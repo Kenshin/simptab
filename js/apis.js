@@ -101,7 +101,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     dataType   : this.vo.json
                 }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
                     console.error( "=== Remote background origin error ===", apis.vo, jqXHR, textStatus, errorThrown )
-                    failed_count < 5 ? initialize( me.GetOrigin().code ) : deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
+                    failed_count < 5 ? origins[ me.GetOrigin().origin ]() : deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
                     failed_count ++;
                 });
             }
@@ -111,7 +111,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     return true;
                 }
                 else {
-                    initialize( this.GetOrigin().code );
+                    origins[ this.GetOrigin().origin ]();
                     return false;
                 }
             }
@@ -119,11 +119,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             return new APIS;
     })();
 
+    /*
     function initialize( code ) {
 
-        origins[ apis.vo.origin ]();
-
-        /*
         switch ( code ) {
           case 0:
             wallhaven();
@@ -168,10 +166,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             todayBing();
             break;
         }
-        */
 
-        //return deferred.promise();
+        return deferred.promise();
     }
+    */
 
     /*
     * Bing( today )
@@ -195,7 +193,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
                 catch ( error ) {
                     SimpError.Clone( new SimpError( "apis.todayBing()" , "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
-                    initialize( apis.GetOrigin().code );
+                    origins[ apis.GetOrigin().origin ]();
                 }
             }
         });
@@ -248,7 +246,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch( error ) {
               SimpError.Clone( new SimpError( "apis.randomBing()" , "Parse bing.gallery.json error.", apis.vo ), error );
-              initialize( apis.GetOrigin().code );
+              origins[ apis.GetOrigin().origin ]();
             }
         }
       });
@@ -693,7 +691,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               }
               catch ( error ) {
                 SimpError.Clone( new SimpError( "apis.apod()" , "Parse nasa apod api error, url is " + url, apis.vo ), error );
-                initialize( apis.GetOrigin().code );
+                origins[ apis.GetOrigin().origin ]();
               }
           }
       });
@@ -710,7 +708,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
                 new SimpError( "apis.favorite()", "Local storge 'simptab-favorites' not exist.", apis.vo );
-                initialize( apis.GetOrigin().code );
+                origins[ apis.GetOrigin().origin ]();
                 return;
             }
 
@@ -726,7 +724,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             // verify favorite data structure
             if ( !vo.Verify()) {
                 new SimpError( "apis.favorite()", "Current favorite data structure error.", { result : result, apis_vo : apis.vo } );
-                initialize( apis.GetOrigin().code );
+                origins[ apis.GetOrigin().origin ]();
             }
             else {
                 vo.new = result;
@@ -735,7 +733,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         catch( error ) {
             SimpError.Clone( new SimpError( "apis.favorite()", "Get favorite backgrond error.", apis.vo ), error );
-            initialize( apis.GetOrigin().code );
+            origins[ apis.GetOrigin().origin ]();
         }
     }
 
@@ -821,7 +819,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
     return {
       Init: function () {
-          initialize( apis.GetOrigin().code );
+          origins[ apis.GetOrigin().origin ]();
           return deferred.promise();
       }
     };
