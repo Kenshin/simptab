@@ -22,7 +22,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `favorite`
     *
     * when version = 2.2 ( test version 138-simptab-update-vo )
-    * add new property `api.vo`
+    * add new property `apis_vo`
     *
     */
     var VERSION = "2.2";
@@ -61,9 +61,7 @@ define([ "jquery" ], function( $ ) {
     };
 
     VO.prototype.Verify = function() {
-
         var result = false;
-
         switch ( this.cur.version ) {
             case "2":
                 this.cur.favorite = -1;
@@ -75,30 +73,7 @@ define([ "jquery" ], function( $ ) {
                 result            = true;
                 break;
         }
-
         return result;
-
-        /*
-        if ( this.cur.version == undefined ) {
-            return false;
-        }
-        else if ( this.cur.version == "2" ) {
-            this.cur.favorite = -1;
-            this.cur.version  = VERSION;
-            return true;
-        }
-        else if ( this.cur.version == "2.1" ) {
-            this.cur.apis_vo  = {};
-            this.cur.version  = VERSION;
-            return true;
-        }
-        else if ( this.cur.version == VERSION ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-        */
     };
 
     VO.prototype.Clone = function( value ) {
