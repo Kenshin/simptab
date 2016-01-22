@@ -174,14 +174,20 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
                 console.log("Bing.com today image is ", result, apis.vo )
-                var data = result.images[0],
-                    url  = data.url,
-                    hdurl= getHDurl( getTrueUrl( url )),
-                    name = data.copyright,
-                    info = getInfo( data.copyrightlink ),
-                    enddate   = data.enddate,
-                    shortname = "Bing.com Image-" + getShortName( info );
-                deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
+                try {
+                    var data = result.images[0],
+                        url  = data.url,
+                        hdurl= getHDurl( getTrueUrl( url )),
+                        name = data.copyright,
+                        info = getInfo( data.copyrightlink ),
+                        enddate   = data.enddate,
+                        shortname = "Bing.com Image-" + getShortName( info );
+                    deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com" ));
+                }
+                catch ( error ) {
+                    SimpError.Clone( new SimpError( "apis.todayBing()" , "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
+                    initialize( apis.GetOrigin().code );
+                }
             }
         });
     }
