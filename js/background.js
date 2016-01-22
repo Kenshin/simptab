@@ -3,10 +3,11 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
     "use strict";
 
-    function verifyURL( url ) {
+    // 138-simptab-update-vo
+    /*function verifyURL( url ) {
         var re = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
         return re.test( url );
-    }
+    }*/
 
     function getCurrentBackground( is_random ) {
 
@@ -95,7 +96,8 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 .fail( failBackground )
                 .done( function( result ) {
                     console.log( "=== Current background image url: " + result.hdurl )
-                    verifyURL( result.hdurl ) ? def.resolve( true, result.hdurl ) : def.reject( new SimpError( "background.getRemoteBackground()::apis.Init()", "url verify error.", result ));
+                    result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );  // 138-simptab-update-vo
+                    //verifyURL( result.hdurl ) ? def.resolve( true, result.hdurl ) : def.reject( new SimpError( "background.getRemoteBackground()::apis.Init()", "url verify error.", result ));  // 138-simptab-update-vo
                 });
         }
         else {

@@ -38,8 +38,20 @@ define([ "jquery" ], function( $ ) {
 
     VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, apis_vo, favorite ) {
 
+            // 138-simptab-update-vo
+            Object.defineProperty( this.new, "hdurl", {
+                enumerable  : true,
+                configurable: true,
+                set: function( value ) {
+                    var re = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
+                    hdurl  = re.test( value ) ? "http://res.cloudinary.com/simptab/image/fetch/" + value : VO.DEFAULT_BACKGROUND;
+                    return hdurl;
+                },
+                get: function() { return hdurl; }
+            });
+
             this.new.url       = url;
-            this.new.hdurl     = hdurl.indexOf( "filesystem:" ) == -1 ? "http://res.cloudinary.com/simptab/image/fetch/" + hdurl : hdurl;   // 138-simptab-update-vo
+            this.new.hdurl     = hdurl;
             this.new.name      = name;
             this.new.info      = info;
             this.new.enddate   = enddate;
