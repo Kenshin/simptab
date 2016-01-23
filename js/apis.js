@@ -21,6 +21,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     var origins = {
             "today"          : function() { todayBing() },
             "bing.com"       : function() { randomBing() },
+            "googleartproject.com"   : function() { googleart() },
             "desktoppr.co"   : function() { desktoppr() },
             "visualhunt.com" : function() { visualhunt() },
             "nasa.gov"       : function() { apod() },
@@ -81,7 +82,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
 
                 // add test code
-                // code = 6;
+                // code = 4;
 
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
@@ -488,6 +489,25 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             GOOGLE_ART_PREFIX = "https://www.google.com/culturalinstitute/",
             url               = SIMP_API_HOST + GOOGLE_ART_NAME;
 
+        apis.New({ url : url, method : "apis.googleart()", timeout: 2000 });
+        apis.Remote( function( result ) {
+            if( apis.VerifyObject( result )) {
+                try {
+                    var max    = result.length - 1,
+                        random = apis.Random( 0, max ),
+                        obj    = result[ random ],
+                        hdurl  = obj.image + GOOGLE_ART_SUFFIX;
+                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo ));
+                }
+                catch( error ) {
+                  SimpError.Clone( new SimpError( "apis.googleart()" , "Parse googleart.com error, url is " + url, apis.vo ), error );
+                  origins[ apis.GetOrigin().origin ]();
+                }
+            }
+        });
+
+
+        /*
         $.getJSON( url )
         .done( function( result ) {
             if ( result != undefined && $.isArray( result )) {
@@ -511,6 +531,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
         })
         .fail( failed );
+        */
     }
 
     /*
