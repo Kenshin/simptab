@@ -100,7 +100,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 $.ajax({
                     type       : this.vo.type,
                     timeout    : this.vo.timeout,
-                    url        : this.vo.url,
+                    url        : this.vo.url + "?random=" + Math.round(+new Date()),
                     dataType   : this.vo.json
                 }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
                     console.error( "=== Remote background origin error ===", apis.vo, jqXHR, textStatus, errorThrown )
