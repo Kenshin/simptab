@@ -99,7 +99,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
             APIS.prototype.Remote = function( callBack ) {
                 var me     = this,
-                    random = this.vo.origin != "nasa.gov" ? "?random=" + Math.round(+new Date()) : "";
+                    random = ["nasa.gov", "today"].join(",").indexOf( this.vo.origin ) == -1 ? "?random=" + Math.round(+new Date()) : "";
                 $.ajax({
                     type       : this.vo.type,
                     timeout    : this.vo.timeout,
