@@ -606,34 +606,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               }
             }
         });
-
-
-        /*
-        var def    = $.Deferred(),
-            max    = 4586,
-            random = createRandom( 0, max ),
-            url    = "https://api.desktoppr.co/1/wallpapers?page=" + random;
-
-        $.getJSON( url ).then( function( result ) {
-            if ( result && !$.isEmptyObject( result ) && result.response && result.response.length > 0 ) {
-                var response = result.response,
-                    max      = response.length,
-                    random   = createRandom( 0, max ),
-                    obj      = response[ random ];
-
-                    while ( obj.height < 1000 ) {
-                        random = createRandom( 0, max );
-                        obj    = response[ random ];
-                    }
-                    deferred.resolve( vo.Create( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", "desktoppr.co" ));
-            }
-            else {
-                deferred.reject( new SimpError( "apis.desktoppr()", "Not found any item from " + url, result ));
-            }
-        }, failed );
-
-        return def.promise();
-        */
     }
 
     /*
