@@ -82,7 +82,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
 
                 // add test code
-                // code = 4;
+                // code = 8;
 
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
@@ -98,11 +98,12 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
 
             APIS.prototype.Remote = function( callBack ) {
-                var me = this;
+                var me     = this,
+                    random = this.vo.origin != "nasa.gov" ? "?random=" + Math.round(+new Date()) : "";
                 $.ajax({
                     type       : this.vo.type,
                     timeout    : this.vo.timeout,
-                    url        : this.vo.url + "?random=" + Math.round(+new Date()),
+                    url        : this.vo.url + random,
                     dataType   : this.vo.json
                 }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
                     console.error( "=== Remote background origin error ===", apis.vo, jqXHR, textStatus, errorThrown )
@@ -505,33 +506,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
             }
         });
-
-
-        /*
-        $.getJSON( url )
-        .done( function( result ) {
-            if ( result != undefined && $.isArray( result )) {
-
-                try {
-                    var max    = result.length - 1,
-                        random = createRandom( 0, max ),
-                        obj    = result[ random ];
-
-                    console.log( "result = ", obj );
-
-                    var hdurl = obj.image + GOOGLE_ART_SUFFIX;
-                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, "googleartproject.com" ));
-                }
-                catch( error ) {
-                  deferred.reject( null, error, error.message );
-                }
-            }
-            else {
-                deferred.reject( new SimpError( "apis.googleart()", "Get Google Art Project error, url is " + url, result ));
-            }
-        })
-        .fail( failed );
-        */
     }
 
     /*
