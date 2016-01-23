@@ -612,7 +612,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "=== visualhunt.com call ===");
 
         var VISUALHUNT_NAME = "visualhunt.json",
-            VISUALHUNT_HOST = "http://visualhunt.com";
+            VISUALHUNT_HOST = "https://visualhunt.com";
 
         apis.New({ url : SIMP_API_HOST + VISUALHUNT_NAME, method : "apis.visualhunt()" });
         apis.Remote( function( result ) {
@@ -620,8 +620,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 try {
                   var max    = result.length,
                       random = apis.Random( 0, max ),
-                      obj    = result[ random ];
-                  deferred.resolve( vo.Create( obj.url, obj.url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo ));
+                      obj    = result[ random ],
+                      url    = obj.url.replace( "http://", "https://" ); // 139-simptab-visualhunt-com-cross-origin-resource-sharing-policy-no-access-control-allow-origin
+                  deferred.resolve( vo.Create( url, url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo ));
                 }
                 catch( error ) {
                   SimpError.Clone( new SimpError( "apis.visualhunt()" , "Parse visualhunt.com error, url is " + obj.url, apis.vo ), error );
