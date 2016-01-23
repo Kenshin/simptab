@@ -29,6 +29,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
             /*
             *
+            * apis.GetOrigin() and apis.New() Pairs appear.
             * apis.GetOrigin() update vo `code` and `origin` property.
             * apis.New()       update vo other property.
             *
@@ -48,7 +49,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             MAX_NUM    = BG_ORIGINS.length - 2; // excude: "today"
 
             function APIS() {
-                this.vo = $.extend( {}, options );
+                this.vo = {};
             }
 
             APIS.prototype.Random = function( min, max ) {
@@ -82,6 +83,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 // code = 8;
 
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
+                this.vo        = $.extend( {}, options );
                 this.vo.code   = code;
                 this.vo.origin = BG_ORIGINS[code];
                 return { code: this.vo.code, origin: this.vo.origin };
@@ -112,6 +114,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     return true;
                 }
                 else {
+                    new SimpError( "apis.VerifyObject()", "Current data structure error.", { result : result, apis_vo : apis.vo } );
                     origins[ this.GetOrigin().origin ]();
                     return false;
                 }
