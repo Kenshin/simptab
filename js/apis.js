@@ -21,6 +21,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     var origins = {
             "today"          : function() { todayBing() },
             "bing.com"       : function() { randomBing() },
+            "desktoppr.co"   : function() { desktoppr() },
             "visualhunt.com" : function() { visualhunt() },
             "nasa.gov"       : function() { apod() },
             "favorite"       : function() { setTimeout( favorite, 2000 ); }
@@ -80,7 +81,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
 
                 // add test code
-                // code = 8;
+                // code = 6;
 
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
@@ -581,6 +582,33 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         console.log( "=== Desktoppr.co call ===");
 
+        var max    = 4586,
+            url    = "https://api.desktoppr.co/1/wallpapers?page=" + apis.Random( 0, max );
+
+        apis.New({ url : url, method : "apis.desktoppr()", timeout: 2000 * 4 });
+        apis.Remote( function( result ) {
+            if( apis.VerifyObject( result )) {
+              if ( result.response && result.response.length > 0  ) {
+                var response = result.response,
+                    max      = response.length,
+                    random   = apis.Random( 0, max ),
+                    obj      = response[ random ];
+
+                    while ( obj.height < 1000 ) {
+                        random = apis.Random( 0, max );
+                        obj    = response[ random ];
+                    }
+                    deferred.resolve( vo.Create( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", apis.vo.origin, apis.vo ));
+              }
+              else {
+                new SimpError( "apis.desktoppr()", "Not found any item from " + url, { result : result, apis_vo : apis.vo });
+                origins[ apis.GetOrigin().origin ]();
+              }
+            }
+        });
+
+
+        /*
         var def    = $.Deferred(),
             max    = 4586,
             random = createRandom( 0, max ),
@@ -605,6 +633,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }, failed );
 
         return def.promise();
+        */
     }
 
     /*
