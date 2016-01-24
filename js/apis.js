@@ -23,6 +23,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             "bing.com"       : function() { randomBing() },
             "wallhaven.cc"   : function() { wallhaven() },
             "unsplash.com"   : function() { unsplashCOM() },
+            "unsplash.it"    : function() { unsplashIT() },
             "googleartproject.com"   : function() { googleart() },
             "desktoppr.co"   : function() { desktoppr() },
             "visualhunt.com" : function() { visualhunt() },
@@ -37,7 +38,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             * apis.New()    set vo `code` and `origin` property.
             * apis.Update() set vo other property.
             *
-            * dataType: json, xml( only nasa() ), localStorge( favorite()  )
+            * dataType: json, xml( only nasa() ), localStorge( favorite()  ), image( "wallhaven.cc", "unsplash.com", "unsplash.it" )
             */
 
             var options = {
@@ -324,13 +325,22 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Unsplash.IT
     */
-
     function unsplashIT() {
 
         console.log( "=== Unsplash.it call ===" );
 
-        var UNSPLSH_NAME = "unsplash.it.max.json";
+        try {
+          var max    = 939,
+              url    = "https://unsplash.it/1920/1080/?image=" + apis.Random( 0, max );
+          apis.Update({ url : url, method: "apis.unsplashIT()" });
+          deferred.resolve( vo.Create( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", apis.vo.origin, apis.vo ));
+        }
+        catch( error ) {
+          SimpError.Clone( new SimpError( "apis.unsplashIT()" , "Parse unsplash.it error, url is " + url, apis.vo ), error );
+          origins[ apis.New().origin ]();
+        }
 
+        /*
         $.getJSON( SIMP_API_HOST + UNSPLSH_NAME ).done(function( result ) {
           if ( result != undefined && !$.isEmptyObject( result )) {
             try {
@@ -347,6 +357,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             deferred.reject( new SimpError( "apis.unsplashIT()", "Get Unsplash.it max num error.", result ));
           }
         }).fail( failed );
+        */
     }
 
     /*
