@@ -332,7 +332,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "=== Flickr.com::getFlickrPhotos() call ===");
 
         var def = $.Deferred();
-        apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotos()", timeout: 2000 * 3 });
+        apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotos()", timeout: 2000 * 5 });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
                 try {
@@ -357,7 +357,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var def = $.Deferred(),
             url = getFlickAPI( FLICKR_PHOTO_API, "photo_id", photo_id );
 
-        apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotoURL()", timeout: 2000 * 3 });
+        apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotoURL()", timeout: 2000 * 5 });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
               try {
