@@ -88,7 +88,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
 
                 // add test code
-                code = 3;
+                // code = 3;
 
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
@@ -103,10 +103,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 Object.keys( obj ).forEach( function( item ) { me.vo[item] = obj[item]; });
             }
 
-            APIS.prototype.Remote = function( callBack, is_random ) {
+            APIS.prototype.Remote = function( callBack ) {
                 var me     = this,
-                    random = is_random ? "?random=" + Math.round(+new Date()) : "";
-                    //random = ["nasa.gov", "today"].join(",").indexOf( this.vo.origin ) == -1 ? "?random=" + Math.round(+new Date()) : "";
+                    random = arguments && arguments.length == 1 ? "?random=" + Math.round(+new Date()) : "";
                 $.ajax({
                     type       : this.vo.type,
                     timeout    : this.vo.timeout,
@@ -359,21 +358,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         console.log( "=== Flickr.com call ===");
 
-        apis.Update({ url : SIMP_API_HOST + FLICKR_NAME, method : "apis.flickr()", timeout: 2000 * 3 });
+        apis.Update({ url : SIMP_API_HOST + FLICKR_NAME, method : "apis.flickr()" });
         apis.Remote( function( result ) {
             getFlickrURL( result ).then( getFlickrPhotos ).then( getFlickrPhotoURL );
         });
-
-        /*
-        $.ajax({
-            type       : "GET",
-            timeout    : 2000,
-            url        : SIMP_API_HOST + FLICKR_NAME + "?random=" + Math.round(+new Date()),
-            dataType   : "json"})
-            .then( getFlickrURL,     failed )
-            .then( getFlickrPhotos,  failed )
-            .then( getFlickrPhotoURL,failed );
-        */
     }
 
     function getFlickrURL( result ) {
@@ -383,49 +371,21 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var def = $.Deferred();
 
         if ( apis.VerifyObject( result )) {
-            var max    = result.apis.length - 1,
-                random = apis.Random( 0, max ),
-                api    = result.apis[ random ],
-                method = api.method,
-                key    = api.keys["key"],
-                values = api.keys["val"];
-
-            console.log( "api.method   = " + method );
-            console.log( "api.keys.key = " + key );
-            console.log( "api.keys.val = " + values );
-
-            random = apis.Random( 0, values.length - 1 );
-
-            var flickr_url = getFlickAPI( method, key, values[random] );
-            console.log( "flickr method url = " + flickr_url );
-            def.resolve( flickr_url );
+            try {
+                var max    = result.apis.length - 1,
+                    random = apis.Random( 0, max ),
+                    api    = result.apis[ random ],
+                    method = api.method,
+                    key    = api.keys["key"],
+                    values = api.keys["val"];
+                random     = apis.Random( 0, values.length - 1 );
+                def.resolve( getFlickAPI( method, key, values[random] ));
+            }
+            catch ( error ) {
+                SimpError.Clone( new SimpError( "apis.getFlickrURL()" , "Parse flickr.com error, url is " + apis.vo.url, apis.vo ), error );
+                origins[ apis.New().origin ]();
+            }
         }
-
-        /*
-        if ( result != undefined && !$.isEmptyObject( result )) {
-            var max    = result.apis.length - 1,
-                random = createRandom( 0, max ),
-                api    = result.apis[ random ],
-                method = api.method,
-                key    = api.keys["key"],
-                values = api.keys["val"];
-
-            console.log( "api.method   = " + method );
-            console.log( "api.keys.key = " + key );
-            console.log( "api.keys.val = " + values );
-
-            random = createRandom( 0, values.length - 1 );
-
-            var flickr_url = getFlickAPI( method, key, values[random] );
-            console.log( "flickr method url = " + flickr_url );
-
-            return def.resolve( flickr_url );
-        }
-        else {
-            deferred.reject( new SimpError( "apis.getFlickrURL()", "Get flickr.api.json error.", result ));
-        }
-        */
-
         return def.promise();
     }
 
@@ -449,26 +409,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
             }
         }, false );
-
-        /*
-        $.getJSON( url )
-            .done(function( result ) {
-                console.log(result);
-                if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
-
-                    var len    = result.photos.photo.length,
-                        random = createRandom( 0, len - 1 ),
-                        photo  = result.photos.photo[ random ];
-
-                    return def.resolve( photo.id );
-                }
-                else {
-                  deferred.reject( new SimpError( "apis.getFlickrPhotos()", "Get Flickr API error, url is " + url, result ));
-                }
-            })
-            .fail( failed );
-        */
-
         return def.promise();
     }
 
@@ -479,23 +419,23 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var def = $.Deferred(),
             url = getFlickAPI( FLICKR_PHOTO_API, "photo_id", photo_id );
 
-        apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotos()", timeout: 2000 * 3 });
+        apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotoURL()", timeout: 2000 * 3 });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
               try {
-                  var source = "",
-                      info   = "",
-                      item   = {};
+                  var hdurl = "",
+                      info  = "",
+                      item  = {};
                   for( var idx = 0, len = result.sizes.size.length; idx < len; idx++ ) {
                     item = result.sizes.size[idx];
                     if ( item.width == "1600" ) {
-                      source = item.source;
+                      hdurl = item.source;
                       info   = item.url;
-                      deferred.resolve( vo.Create( source, source, "Flickr.com Image", info, date.Now(), "Flickr.com Image", apis.vo.origin, apis.vo ));
+                      deferred.resolve( vo.Create( hdurl, hdurl, "Flickr.com Image", info, date.Now(), "Flickr.com Image", apis.vo.origin, apis.vo ));
                       break;
                     }
                   }
-                  if ( source == "" && info == "" ) {
+                  if ( hdurl == "" && info == "" ) {
                     new SimpError( "apis.getFlickrPhotoURL()" , "Parse flickr.com error, url is " + url, apis.vo );
                     flickr();
                   }
@@ -505,42 +445,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 origins[ apis.New().origin ]();
               }
             }
-        });
-
-        /*
-        console.log( "flickr.photos.getSizes = " + url );
-
-        $.getJSON( url)
-            .done( function( result ) {
-                if ( result != undefined && !$.isEmptyObject( result ) && result.stat == "ok" ) {
-                  var source = "",
-                      info   = "",
-                      item   = {};
-                  for( var idx = 0, len = result.sizes.size.length; idx < len; idx++ ) {
-                    item = result.sizes.size[idx];
-                    if ( item.width == "1600" ) {
-                      source = item.source;
-                      info   = item.url;
-                      console.log( "source = " + source );
-                      console.log( "info   = " + info );
-                      deferred.resolve( vo.Create( source, source, "Flickr.com Image", info, date.Now(), "Flickr.com Image", "flickr.com" ));
-                      break;
-                    }
-                  }
-
-                  // when not found any background re-call again
-                  if ( source == "" && info == "" ) {
-                    console.error( "Not found any background, Re-call again.");
-                    flickr();
-                  }
-                }
-                else {
-                  deferred.reject( new SimpError( "apis.getFlickrPhotoURL()", "Get Flickr API error, url is " + url, result ));
-                }
-            })
-            .fail( failed );
-        */
-
+        }, false );
         return def.promise();
     }
 
