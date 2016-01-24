@@ -6,20 +6,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     var deferred      = new $.Deferred(),
         SIMP_API_HOST = "http://simptab.qiniudn.com/";
 
-    /*
-    * Common
-    */
-
-    /*
-    function createRandom( min, max ) {
-      return Math.floor( Math.random() * ( max - min + 1 ) + min );
-    }
-
-    function failed( jqXHR, textStatus, errorThrown ) {
-        deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus:textStatus, errorThrown:errorThrown } ));
-    }
-    */
-
     var origins = {
             "today"          : function() { todayBing() },
             "bing.com"       : function() { randomBing() },
@@ -785,52 +771,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
               }
           });
-
-        /*
-        $.getJSON( SIMP_API_HOST + SPECIAL_URL + "?random=" + Math.round(+new Date()) )
-        .done( function( result ) {
-            if ( result && !$.isEmptyObject( result )) {
-
-                try {
-                    var obj = result[type],
-                        key, max, random, special_day, data, hdurl;
-
-                    if ( type == "special" ) {
-                        key         = obj.now.length > 0 ? "now" : "old";
-                        max         = obj[key].length - 1;
-                        random      = createRandom( 0, max );
-                        special_day = obj[key][random];
-                        data        = special_day.day;
-                        max         = data.hdurl.length - 1;
-                        random      = createRandom( 0, max );
-                        hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
-
-                        !localStorage["simptab-special-day-count"] ? localStorage["simptab-special-day-count"] = 1 : localStorage["simptab-special-day-count"] += 1;
-                    }
-                    else {
-                        key         = date.Today();
-                        data        = obj[key];
-                        if ( !data ) {
-                            deferred.reject( new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result ));
-                            return;
-                        }
-                        max         = data.hdurl.length - 1;
-                        random      = createRandom( 0, max );
-                        hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
-                    }
-                    deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type ));
-                }
-                catch( error ) {
-                    deferred.reject( SimpError.Clone( new SimpError( "apis.special()", null , "Get special backgrond error." ), error ));
-                }
-            }
-            else {
-                deferred.reject( new SimpError( "apis.special()", "Not found any special day/Holiday background from " + SIMP_API_HOST + SPECIAL_URL, result ));
-            }
-        })
-        .fail( failed );
-        return def.promise();
-        */
     }
 
     return {
