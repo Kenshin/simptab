@@ -337,25 +337,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           SimpError.Clone( new SimpError( "apis.unsplashIT()" , "Parse unsplash.it error, url is " + url, apis.vo ), error );
           origins[ apis.New().origin ]();
         }
-
-        /*
-        $.getJSON( SIMP_API_HOST + UNSPLSH_NAME ).done(function( result ) {
-          if ( result != undefined && !$.isEmptyObject( result )) {
-            try {
-              var max    = result.max,
-                  random = createRandom( 0, max ),
-                  url    = "https://unsplash.it/1920/1080/?image=" + random;
-              deferred.resolve( vo.Create( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", "unsplash.it" ) );
-            }
-            catch( error ) {
-              deferred.reject( SimpError.Clone( new SimpError( "apis.unsplashIT()", null , "Parse unsplash.it error, url is " + url ), error ));
-            }
-          }
-          else {
-            deferred.reject( new SimpError( "apis.unsplashIT()", "Get Unsplash.it max num error.", result ));
-          }
-        }).fail( failed );
-        */
     }
 
     /*
