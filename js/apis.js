@@ -36,6 +36,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             * apis.New()    set vo `code` and `origin` property.
             * apis.Update() set vo other property.
             *
+            * dataType: json, xml( only nasa() ), localStorge( favorite()  )
             */
 
             var options = {
@@ -712,9 +713,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             var random = apis.Random( 0, max );
             var obj    = JSON.parse( arr[ random ] );
             var result = JSON.parse( obj.result );
-
-            apis.Update({ url : result.hdurl, method : "apis.favorite()", dataType : "filesystem" })
-
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
 
             // verify favorite data structure
@@ -723,6 +721,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 origins[ apis.New().origin ]();
             }
             else {
+                apis.Update({ url : result.hdurl, method : "apis.favorite()", dataType : "localStorge" })
                 vo.new = result;
                 deferred.resolve( result );
             }
