@@ -292,7 +292,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var max    = wallhaven_ids.length - 1,
             id     = wallhaven_ids[ apis.Random( 0, max ) ],
             url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg";
-        apis.Update({ url : url, method: "apis.wallhaven()" });
+        apis.Update({ url : url, method: "apis.wallhaven()", dataType : "image" });
         deferred.resolve( vo.Create( url, url, "Wallhaven.cc Image", "#", date.Now(), "Wallhaven.cc Image", apis.vo.origin, apis.vo ));
       }
       catch ( error ) {
@@ -313,7 +313,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           var max    = unsplash_ids.length - 1,
               id     = unsplash_ids[ apis.Random( 0, max ) ],
               url    = "https://unsplash.com/photos/" + id + "/download";
-          apis.Update({ url : url, method: "apis.unsplashCOM()" });
+          apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
           deferred.resolve( vo.Create( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo ));
       }
       catch ( error ) {
@@ -332,7 +332,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         try {
           var max    = 939,
               url    = "https://unsplash.it/1920/1080/?image=" + apis.Random( 0, max );
-          apis.Update({ url : url, method: "apis.unsplashIT()" });
+          apis.Update({ url : url, method: "apis.unsplashIT()", dataType : "image" });
           deferred.resolve( vo.Create( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", apis.vo.origin, apis.vo ));
         }
         catch( error ) {
