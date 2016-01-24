@@ -23,9 +23,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             "bing.com"       : function() { randomBing() },
             "wallhaven.cc"   : function() { wallhaven() },
             "unsplash.com"   : function() { unsplashCOM() },
+            "flickr.com"    : function() { flickr() },
             "unsplash.it"    : function() { unsplashIT() },
-            "500px.com"      : function() { f00px() },
             "googleartproject.com" : function() { googleart() },
+            "500px.com"      : function() { f00px() },
             "desktoppr.co"   : function() { desktoppr() },
             "visualhunt.com" : function() { visualhunt() },
             "nasa.gov"       : function() { apod() },
@@ -87,7 +88,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
 
                 // add test code
-                code = 5;
+                code = 3;
 
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
@@ -102,14 +103,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 Object.keys( obj ).forEach( function( item ) { me.vo[item] = obj[item]; });
             }
 
-            APIS.prototype.Remote = function( callBack ) {
+            APIS.prototype.Remote = function( callBack, is_random ) {
                 var me     = this,
-                    random = ["nasa.gov", "today"].join(",").indexOf( this.vo.origin ) == -1 ? "?random=" + Math.round(+new Date()) : "";
+                    random = is_random ? "?random=" + Math.round(+new Date()) : "";
+                    //random = ["nasa.gov", "today"].join(",").indexOf( this.vo.origin ) == -1 ? "?random=" + Math.round(+new Date()) : "";
                 $.ajax({
                     type       : this.vo.type,
                     timeout    : this.vo.timeout,
                     url        : this.vo.url + random,
-                    dataType   : this.vo.json
+                    dataType   : this.vo.dataType
                 }).then( callBack, function( jqXHR, textStatus, errorThrown ) {
                     console.error( "=== Remote background origin error ===", apis.vo, jqXHR, textStatus, errorThrown )
                     failed_count < 5 ? origins[ me.New().origin ]() : deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
@@ -357,6 +359,12 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         console.log( "=== Flickr.com call ===");
 
+        apis.Update({ url : SIMP_API_HOST + FLICKR_NAME, method : "apis.flickr()", timeout: 2000 * 3 });
+        apis.Remote( function( result ) {
+            getFlickrURL( result ).then( getFlickrPhotos ).then( getFlickrPhotoURL );
+        });
+
+        /*
         $.ajax({
             type       : "GET",
             timeout    : 2000,
@@ -365,11 +373,35 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             .then( getFlickrURL,     failed )
             .then( getFlickrPhotos,  failed )
             .then( getFlickrPhotoURL,failed );
+        */
     }
 
     function getFlickrURL( result ) {
+
+        console.log( "=== Flickr.com::getFlickrURL() call ===");
+
         var def = $.Deferred();
 
+        if ( apis.VerifyObject( result )) {
+            var max    = result.apis.length - 1,
+                random = apis.Random( 0, max ),
+                api    = result.apis[ random ],
+                method = api.method,
+                key    = api.keys["key"],
+                values = api.keys["val"];
+
+            console.log( "api.method   = " + method );
+            console.log( "api.keys.key = " + key );
+            console.log( "api.keys.val = " + values );
+
+            random = apis.Random( 0, values.length - 1 );
+
+            var flickr_url = getFlickAPI( method, key, values[random] );
+            console.log( "flickr method url = " + flickr_url );
+            def.resolve( flickr_url );
+        }
+
+        /*
         if ( result != undefined && !$.isEmptyObject( result )) {
             var max    = result.apis.length - 1,
                 random = createRandom( 0, max ),
@@ -392,16 +424,33 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         else {
             deferred.reject( new SimpError( "apis.getFlickrURL()", "Get flickr.api.json error.", result ));
         }
+        */
 
         return def.promise();
     }
 
     function getFlickrPhotos( url ) {
 
-        console.log( "get flickr photos", url );
+        console.log( "=== Flickr.com::getFlickrPhotos() call ===");
 
         var def = $.Deferred();
+        apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotos()", timeout: 2000 * 3 });
+        apis.Remote( function( result ) {
+            if ( apis.VerifyObject( result )) {
+                try {
+                    var len    = result.photos.photo.length,
+                        random = apis.Random( 0, len - 1 ),
+                        photo  = result.photos.photo[ random ];
+                    def.resolve( photo.id );
+                }
+                catch ( error ) {
+                    SimpError.Clone( new SimpError( "apis.getFlickrPhotos()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
+                    origins[ apis.New().origin ]();
+                }
+            }
+        }, false );
 
+        /*
         $.getJSON( url )
             .done(function( result ) {
                 console.log(result);
@@ -418,15 +467,47 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
             })
             .fail( failed );
+        */
 
         return def.promise();
     }
 
     function getFlickrPhotoURL( photo_id ) {
 
-        var url = getFlickAPI( FLICKR_PHOTO_API, "photo_id", photo_id ),
-            def = $.Deferred();
+        console.log( "=== Flickr.com::getFlickrPhotoURL() call ===");
 
+        var def = $.Deferred(),
+            url = getFlickAPI( FLICKR_PHOTO_API, "photo_id", photo_id );
+
+        apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotos()", timeout: 2000 * 3 });
+        apis.Remote( function( result ) {
+            if ( apis.VerifyObject( result )) {
+              try {
+                  var source = "",
+                      info   = "",
+                      item   = {};
+                  for( var idx = 0, len = result.sizes.size.length; idx < len; idx++ ) {
+                    item = result.sizes.size[idx];
+                    if ( item.width == "1600" ) {
+                      source = item.source;
+                      info   = item.url;
+                      deferred.resolve( vo.Create( source, source, "Flickr.com Image", info, date.Now(), "Flickr.com Image", apis.vo.origin, apis.vo ));
+                      break;
+                    }
+                  }
+                  if ( source == "" && info == "" ) {
+                    new SimpError( "apis.getFlickrPhotoURL()" , "Parse flickr.com error, url is " + url, apis.vo );
+                    flickr();
+                  }
+              }
+              catch ( error ) {
+                SimpError.Clone( new SimpError( "apis.getFlickrPhotoURL()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
+                origins[ apis.New().origin ]();
+              }
+            }
+        });
+
+        /*
         console.log( "flickr.photos.getSizes = " + url );
 
         $.getJSON( url)
@@ -458,6 +539,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
             })
             .fail( failed );
+        */
 
         return def.promise();
     }
