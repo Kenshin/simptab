@@ -32,9 +32,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
             /*
             *
-            * apis.GetOrigin() and apis.New() Pairs appear.
+            * apis.GetOrigin() and apis.Update() Pairs appear.
             * apis.GetOrigin() update vo `code` and `origin` property.
-            * apis.New()       update vo other property.
+            * apis.Update()       update vo other property.
             *
             */
 
@@ -92,7 +92,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 return { code: this.vo.code, origin: this.vo.origin };
             }
 
-            APIS.prototype.New = function() {
+            APIS.prototype.Update = function() {
                 var obj = arguments && arguments.length > 0 && arguments[0],
                     me  = this;
                 Object.keys( obj ).forEach( function( item ) { me.vo[item] = obj[item]; });
@@ -185,7 +185,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     function todayBing() {
         console.log( "=== Bing.com today ===");
         var local = i18n.GetLocale() == "zh_CN" ? "cn." : "";
-        apis.New({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
+        apis.Update({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
                 console.log("Bing.com today image is ", result, apis.vo )
@@ -244,7 +244,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     */
     function randomBing() {
         console.log( "=== Bing.com random ===");
-        apis.New({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
+        apis.Update({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
         apis.Remote( function( result ) {
           if ( apis.VerifyObject( result )) {
             try {
@@ -261,7 +261,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     function getRandomBing( id ) {
-        apis.New({ url : "http://www.bing.com/gallery/home/imagedetails/" + id, method : "apis.getRandomBing()" });
+        apis.Update({ url : "http://www.bing.com/gallery/home/imagedetails/" + id, method : "apis.getRandomBing()" });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
               console.log("Bing.com random image is ", result, apis.vo )
@@ -289,7 +289,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var max    = wallhaven_ids.length - 1,
             id     = wallhaven_ids[ apis.Random( 0, max ) ],
             url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg";
-        apis.New({ url : url, method: "apis.wallhaven()" });
+        apis.Update({ url : url, method: "apis.wallhaven()" });
         deferred.resolve( vo.Create( url, url, "Wallhaven.cc Image", "#", date.Now(), "Wallhaven.cc Image", apis.vo.origin, apis.vo ));
       }
       catch ( error ) {
@@ -486,7 +486,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             GOOGLE_ART_PREFIX = "https://www.google.com/culturalinstitute/",
             url               = SIMP_API_HOST + GOOGLE_ART_NAME;
 
-        apis.New({ url : url, method : "apis.googleart()", timeout: 2000 });
+        apis.Update({ url : url, method : "apis.googleart()", timeout: 2000 });
         apis.Remote( function( result ) {
             if( apis.VerifyObject( result )) {
                 try {
@@ -576,7 +576,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var max    = 4586,
             url    = "https://api.desktoppr.co/1/wallpapers?page=" + apis.Random( 0, max );
 
-        apis.New({ url : url, method : "apis.desktoppr()", timeout: 2000 * 4 });
+        apis.Update({ url : url, method : "apis.desktoppr()", timeout: 2000 * 4 });
         apis.Remote( function( result ) {
             if( apis.VerifyObject( result )) {
               if ( result.response && result.response.length > 0  ) {
@@ -609,7 +609,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var VISUALHUNT_NAME = "visualhunt.json",
             VISUALHUNT_HOST = "https://visualhunt.com";
 
-        apis.New({ url : SIMP_API_HOST + VISUALHUNT_NAME, method : "apis.visualhunt()" });
+        apis.Update({ url : SIMP_API_HOST + VISUALHUNT_NAME, method : "apis.visualhunt()" });
         apis.Remote( function( result ) {
             if( apis.VerifyObject( result )) {
                 try {
@@ -677,7 +677,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             return  url + "&date=" + year + "-" + month + "-" + day;
       })( API );
 
-      apis.New({ url : url, method : "apis.apod()", timeout : 2000 * 5 });
+      apis.Update({ url : url, method : "apis.apod()", timeout : 2000 * 5 });
       apis.Remote( function( result ) {
           if( apis.VerifyObject( result )) {
               try {
@@ -713,7 +713,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             var obj    = JSON.parse( arr[ random ] );
             var result = JSON.parse( obj.result );
 
-            apis.New({ url : result.hdurl, method : "apis.favorite()", dataType : "filesystem" })
+            apis.Update({ url : result.hdurl, method : "apis.favorite()", dataType : "filesystem" })
 
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
 
