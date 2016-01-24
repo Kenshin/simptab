@@ -10,6 +10,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     * Common
     */
 
+    /*
     function createRandom( min, max ) {
       return Math.floor( Math.random() * ( max - min + 1 ) + min );
     }
@@ -17,19 +18,21 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     function failed( jqXHR, textStatus, errorThrown ) {
         deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus:textStatus, errorThrown:errorThrown } ));
     }
+    */
 
     var origins = {
             "today"          : function() { todayBing() },
             "bing.com"       : function() { randomBing() },
             "wallhaven.cc"   : function() { wallhaven() },
             "unsplash.com"   : function() { unsplashCOM() },
-            "flickr.com"    : function() { flickr() },
+            "flickr.com"     : function() { flickr() },
             "unsplash.it"    : function() { unsplashIT() },
             "googleartproject.com" : function() { googleart() },
             "500px.com"      : function() { f00px() },
             "desktoppr.co"   : function() { desktoppr() },
             "visualhunt.com" : function() { visualhunt() },
             "nasa.gov"       : function() { apod() },
+            "special"        : function() { special() },
             "favorite"       : function() { setTimeout( favorite, 2000 ); }
         },
         apis = ( function() {
@@ -88,7 +91,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
 
                 // add test code
-                // code = 3;
+                // code = 9;
 
                 console.log( "=== Current background origin is: ", code, BG_ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
@@ -739,10 +742,51 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         console.log( "=== Special day/Holiday background call ===");
 
-        var SPECIAL_URL = "special.day.json",
-            def         = $.Deferred(),
-            type        = arguments.length > 0 ? arguments[0] : "special";
+          var SPECIAL_URL = "special.day.json",
+              def         = $.Deferred(),
+              type        = arguments.length > 0 ? arguments[0] : "special";
 
+          apis.Update({ url : SIMP_API_HOST + SPECIAL_URL, method : "apis.special()" });
+          apis.Remote( function( result ) {
+              if( apis.VerifyObject( result )) {
+                try {
+                    var obj = result[type],
+                        key, max, random, special_day, data, hdurl;
+
+                    if ( type == "special" ) {
+                        key         = obj.now.length > 0 ? "now" : "old";
+                        max         = obj[key].length - 1;
+                        random      = apis.Random( 0, max );
+                        special_day = obj[key][random];
+                        data        = special_day.day;
+                        max         = data.hdurl.length - 1;
+                        random      = apis.Random( 0, max );
+                        hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
+
+                        !localStorage["simptab-special-day-count"] ? localStorage["simptab-special-day-count"] = 1 : localStorage["simptab-special-day-count"] += 1;
+                    }
+                    else {
+                        key         = date.Today();
+                        data        = obj[key];
+                        if ( !data ) {
+                            new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result );
+                            origins[ apis.New().origin ]();
+                            return;
+                        }
+                        max         = data.hdurl.length - 1;
+                        random      = apis.Random( 0, max );
+                        hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
+                    }
+                    deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo ));
+                }
+                catch( error ) {
+                    SimpError.Clone( new SimpError( "apis.special()", "Get special backgrond error.", apis.vo ), error );
+                    origins[ apis.New().origin ]();
+                }
+              }
+          });
+
+        /*
         $.getJSON( SIMP_API_HOST + SPECIAL_URL + "?random=" + Math.round(+new Date()) )
         .done( function( result ) {
             if ( result && !$.isEmptyObject( result )) {
@@ -785,8 +829,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
         })
         .fail( failed );
-
         return def.promise();
+        */
     }
 
     return {
