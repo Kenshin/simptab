@@ -90,7 +90,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 .fail( failBackground )
                 .done( function( result ) {
                     console.log( "=== Current background image url: " + result.hdurl )
-                    console.log( "=== Current background vo object: " + vo.new       )
+                    console.log( "=== Current background vo.new   : ", vo.new        )
                     result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );  // 138-simptab-update-vo
                 });
         }
