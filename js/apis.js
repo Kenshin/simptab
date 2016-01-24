@@ -191,7 +191,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         apis.Update({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
-                console.log("Bing.com today image is ", result, apis.vo )
                 try {
                     var data = result.images[0],
                         url  = data.url,
@@ -267,7 +266,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         apis.Update({ url : "http://www.bing.com/gallery/home/imagedetails/" + id, method : "apis.getRandomBing()" });
         apis.Remote( function( result ) {
             if ( apis.VerifyObject( result )) {
-              console.log("Bing.com random image is ", result, apis.vo )
               if ( result.wallpaper ) {
                 var prefix = "http://az608707.vo.msecnd.net/files/";
                 deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.origin, apis.vo ));
