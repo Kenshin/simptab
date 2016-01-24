@@ -19,6 +19,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             "visualhunt.com" : function() { visualhunt() },
             "nasa.gov"       : function() { apod() },
             "special"        : function() { special() },
+            "holiday"        : function() { special("holiday") },
             "favorite"       : function() { setTimeout( favorite, 2000 ); }
         },
         apis = ( function() {
@@ -120,58 +121,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
             return new APIS;
     })();
-
-    /*
-    function initialize( code ) {
-
-        switch ( code ) {
-          case 0:
-            wallhaven();
-            break;
-          case 1:
-            unsplashCOM();
-            break;
-          case 2:
-            unsplashIT();
-            break;
-          case 3:
-            flickr();
-            break;
-          case 4:
-            googleart();
-            break;
-          case 5:
-            f00px();
-            break;
-          case 6:
-            desktoppr();
-            break;
-          case 7:
-            visualhunt();
-            break;
-          case 8:
-            nasa();
-            break;
-          case 9:
-            special();
-            break;
-          case 10:
-            setTimeout( favorite, 2000 );
-            break;
-          case 11:
-            holiday();
-            break;
-          case 12:
-            randomBing();
-            break;
-          default:
-            todayBing();
-            break;
-        }
-
-        return deferred.promise();
-    }
-    */
 
     /*
     * Bing( today )
@@ -702,7 +651,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     * Holiday background
     */
     function isHoliday() {
-        var HOLIDAY_LIST_1 = [20151207, 20151222, 20160106, 20160120, 20160201, 20160204, 20160207, 20160208, 20160219, 20160222, 20160305, 20160320, 20160404, 20160419, 20160505, 20160520, 20160605, 20160621, 20160707, 20160722, 20160807, 20160823, 20160907, 20160922, 20161008, 20161023, 20161107, 20161122, 20161207, 20161221, 20170105, 20170120];
+        var HOLIDAY_LIST_1 = [20151207, 20151222, 20160106, 20160120, 20160124, 20160201, 20160204, 20160207, 20160208, 20160219, 20160222, 20160305, 20160320, 20160404, 20160419, 20160505, 20160520, 20160605, 20160621, 20160707, 20160722, 20160807, 20160823, 20160907, 20160922, 20161008, 20161023, 20161107, 20161122, 20161207, 20161221, 20170105, 20170120];
         var HOLIDAY_LIST_2 = [20151224, 20151225];
         var arr         = HOLIDAY_LIST_1.concat( HOLIDAY_LIST_2 ),
             new_holiday = date.Today(),
@@ -715,10 +664,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         else {
             return false;
         }
-    }
-
-    function holiday() {
-        special( "holiday" );
     }
 
     /*
@@ -754,6 +699,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     else {
                         key         = date.Today();
                         data        = obj[key];
+                        // test code
+                        data        = obj["20160120"];
                         if ( !data ) {
                             new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result );
                             origins[ apis.New().origin ]();
@@ -763,6 +710,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                         random      = apis.Random( 0, max );
                         hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
                     }
+                    apis.Update({ origin : type });
                     deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo ));
                 }
                 catch( error ) {
