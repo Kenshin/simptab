@@ -146,7 +146,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     origins[ apis.New().origin ]();
                 }
             }
-        });
+        }, false );
     }
 
     function getHDurl( url ) {
@@ -606,7 +606,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 origins[ apis.New().origin ]();
               }
           }
-      });
+      }, false );
     }
 
     /*
