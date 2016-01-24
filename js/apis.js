@@ -90,7 +90,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 // add test code
                 // code = 3;
 
-                console.log( "switch code is ", code, BG_ORIGINS[code] );
+                console.log( "=== Current background origin is: ", code, BG_ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
                 this.vo.code   = code;
                 this.vo.origin = BG_ORIGINS[code];
