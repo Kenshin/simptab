@@ -528,28 +528,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
             }
         });
-
-        /*
-        $.getJSON( SIMP_API_HOST + PX_API + "?random=" + Math.round(+new Date()) )
-            .done( function( result ) {
-                if ( result != undefined && !$.isEmptyObject( result )) {
-                    var max    = result.apis.length - 1,
-                        random = createRandom( 0, max ),
-                        obj    = result.apis[ random ],
-                        param  = ["?consumer_key=" + PX_KEY];
-
-                        obj.args.map( function( item ) {
-                            param.push( item.key + "=" + item.val );
-                        });
-                        def.resolve( PX_URL + obj.method + param.join("&") );
-                }
-                else {
-                    deferred.reject( new SimpError( "apis.get500pxURL()", "Not found any item from " + SIMP_API_HOST + PX_API, result ));
-                }
-            })
-            .fail( failed );
-            */
-
         return def.promise();
     }
 
@@ -576,27 +554,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
             }
         });
-
-        /*
-        $.getJSON( url ).then( function( result ) {
-            if ( result != undefined && !$.isEmptyObject( result )) {
-                var max    = result.photos.length - 1,
-                    random = createRandom( 0, max ),
-                    obj    = result.photos[ random ];
-
-                    while ( obj.height < 1000 ) {
-                        random = createRandom( 0, max );
-                        obj    = result.photos[ random ];
-                    }
-
-                    deferred.resolve( vo.Create( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px.com Image-" + obj.name, "500px.com" ));
-            }
-            else {
-                deferred.reject( new SimpError( "apis.get500API()", "Not found any item from " + url, result ));
-            }
-        }, failed );
-        */
-
         return def.promise();
     }
 
