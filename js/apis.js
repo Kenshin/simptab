@@ -24,7 +24,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             "wallhaven.cc"   : function() { wallhaven() },
             "unsplash.com"   : function() { unsplashCOM() },
             "unsplash.it"    : function() { unsplashIT() },
-            "googleartproject.com"   : function() { googleart() },
+            "500px.com"      : function() { f00px() },
+            "googleartproject.com" : function() { googleart() },
             "desktoppr.co"   : function() { desktoppr() },
             "visualhunt.com" : function() { visualhunt() },
             "nasa.gov"       : function() { apod() },
@@ -86,7 +87,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
 
                 // add test code
-                // code = 8;
+                code = 5;
 
                 console.log( "switch code is ", code, BG_ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
@@ -501,12 +502,34 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
     function f00px() {
         console.log( "=== 500px.com call ===");
-        get500pxURL().then( get500API, failed ).fail( failed );
+        get500pxURL().then( get500API );
     }
 
     function get500pxURL() {
         var def = $.Deferred();
 
+        apis.Update({ url : SIMP_API_HOST + PX_API, method : "apis.get500pxURL()", timeout : 2000 * 5 });
+        apis.Remote( function( result ) {
+            if( apis.VerifyObject( result )) {
+                try {
+                    var max    = result.apis.length - 1,
+                        random = apis.Random( 0, max ),
+                        obj    = result.apis[ random ],
+                        param  = ["?consumer_key=" + PX_KEY];
+
+                    obj.args.map( function( item ) {
+                        param.push( item.key + "=" + item.val );
+                    });
+                    def.resolve( PX_URL + obj.method + param.join("&") );
+                }
+                catch ( error ) {
+                  SimpError.Clone( new SimpError( "apis.get500pxURL()" , "Parse 500px.com error, url is " + SIMP_API_HOST + PX_API, apis.vo ), error );
+                  origins[ apis.New().origin ]();
+                }
+            }
+        });
+
+        /*
         $.getJSON( SIMP_API_HOST + PX_API + "?random=" + Math.round(+new Date()) )
             .done( function( result ) {
                 if ( result != undefined && !$.isEmptyObject( result )) {
@@ -525,6 +548,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
             })
             .fail( failed );
+            */
 
         return def.promise();
     }
@@ -532,6 +556,28 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     function get500API( url ) {
         var def = $.Deferred();
 
+        apis.Update({ url : url, method : "apis.get500API()", timeout : 2000 * 5 });
+        apis.Remote( function( result ) {
+            if( apis.VerifyObject( result )) {
+                try {
+                    var max    = result.photos.length - 1,
+                        random = apis.Random( 0, max ),
+                        obj    = result.photos[ random ];
+
+                    while ( obj.height < 1000 ) {
+                        random = apis.Random( 0, max );
+                        obj    = result.photos[ random ];
+                    }
+                    deferred.resolve( vo.Create( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px.com Image-" + obj.name, apis.vo.origin, apis.vo ));
+                }
+                catch ( error ) {
+                  SimpError.Clone( new SimpError( "apis.get500API()" , "Parse 500px.com error, url is " + url, apis.vo ), error );
+                  origins[ apis.New().origin ]();
+                }
+            }
+        });
+
+        /*
         $.getJSON( url ).then( function( result ) {
             if ( result != undefined && !$.isEmptyObject( result )) {
                 var max    = result.photos.length - 1,
@@ -549,6 +595,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 deferred.reject( new SimpError( "apis.get500API()", "Not found any item from " + url, result ));
             }
         }, failed );
+        */
 
         return def.promise();
     }
