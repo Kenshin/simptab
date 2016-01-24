@@ -473,7 +473,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             GOOGLE_ART_PREFIX = "https://www.google.com/culturalinstitute/",
             url               = SIMP_API_HOST + GOOGLE_ART_NAME;
 
-        apis.Update({ url : url, method : "apis.googleart()", timeout: 2000 });
+        apis.Update({ url : url, method : "apis.googleart()" });
         apis.Remote( function( result ) {
             if( apis.VerifyObject( result )) {
                 try {
