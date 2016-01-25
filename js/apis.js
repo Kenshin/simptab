@@ -598,7 +598,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
             // verify favorite data structure
             if ( !vo.Verify()) {
-                new SimpError( "apis.favorite()", "Current favorite data structure error.", { result : result, apis_vo : apis.vo } );
+                new SimpError( "apis.favorite()", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo } );
                 originStack[ apis.New().origin ]();
             }
             else {
@@ -608,7 +608,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
         }
         catch( error ) {
-            SimpError.Clone( new SimpError( "apis.favorite()", "Get favorite backgrond error.", apis.vo ), error );
+            SimpError.Clone( new SimpError( "apis.favorite()", "Current 'simptab-favorites' data structure error.", apis.vo ), error );
             originStack[ apis.New().origin ]();
         }
     }
