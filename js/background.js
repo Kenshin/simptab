@@ -133,7 +133,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     .fail( function( result ) {
                         console.log( "Write error: ", result );
                         progress.Set( "writefailed" );
-                        def.reject( new SimpError( "background.setRemoteBackground()::files.Add()", "Favorite write to local error.", result ));
+                        def.reject( new SimpError( "background.setRemoteBackground()::files.Add()", "Background write to local error.", result ));
                     });
             }, function( error ) {
                 def.reject( new SimpError( "background.setRemoteBackground()::files.GetDataURI()", "Load background error.", error ));
