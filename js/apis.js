@@ -105,7 +105,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     me.VerifyObject( result ) && callBack( result );
                 } , function( jqXHR, textStatus, errorThrown ) {
                     console.error( "=== Remote background origin error ===", apis.vo, jqXHR, textStatus, errorThrown )
-                    failed_count < 5 ? origins[ me.New().origin ]() : deferred.reject( new SimpError( "apis", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo } ));
+                    failed_count < 5 ? origins[ me.New().origin ]() : deferred.reject( new SimpError( "apis:Remote()", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo }));
                     failed_count ++;
                 });
             }
