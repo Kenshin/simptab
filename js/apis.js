@@ -132,21 +132,19 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var local = i18n.GetLocale() == "zh_CN" ? "cn." : "";
         apis.Update({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
         apis.Remote( function( result ) {
-            if ( apis.VerifyObject( result )) {
-                try {
-                    var data = result.images[0],
-                        url  = data.url,
-                        hdurl= getHDurl( getTrueUrl( url )),
-                        name = data.copyright,
-                        info = getInfo( data.copyrightlink ),
-                        enddate   = data.enddate,
-                        shortname = "Bing.com Image-" + getShortName( info );
-                    deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com", apis.vo ));
-                }
-                catch ( error ) {
-                    SimpError.Clone( new SimpError( "apis.todayBing()" , "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
-                    origins[ apis.New().origin ]();
-                }
+            try {
+                var data = result.images[0],
+                    url  = data.url,
+                    hdurl= getHDurl( getTrueUrl( url )),
+                    name = data.copyright,
+                    info = getInfo( data.copyrightlink ),
+                    enddate   = data.enddate,
+                    shortname = "Bing.com Image-" + getShortName( info );
+                deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com", apis.vo ));
+            }
+            catch ( error ) {
+                SimpError.Clone( new SimpError( "apis.todayBing()" , "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
+                origins[ apis.New().origin ]();
             }
         }, false );
     }
@@ -190,7 +188,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "=== Bing.com random ===");
         apis.Update({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
         apis.Remote( function( result ) {
-          if ( apis.VerifyObject( result )) {
             try {
               var images = result.imageIds,
                   random = apis.Random( 0, images.length );
@@ -200,21 +197,18 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               SimpError.Clone( new SimpError( "apis.randomBing()" , "Parse bing.gallery.json error.", apis.vo ), error );
               origins[ apis.New().origin ]();
             }
-        }
       });
     }
 
     function getRandomBing( id ) {
         apis.Update({ url : "http://www.bing.com/gallery/home/imagedetails/" + id, method : "apis.getRandomBing()" });
         apis.Remote( function( result ) {
-            if ( apis.VerifyObject( result )) {
-              if ( result.wallpaper ) {
-                var prefix = "http://az608707.vo.msecnd.net/files/";
-                deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.origin, apis.vo ));
-              }
-              else {
-                randomBing();
-              }
+          if ( result.wallpaper ) {
+            var prefix = "http://az608707.vo.msecnd.net/files/";
+            deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.origin, apis.vo ));
+          }
+          else {
+            randomBing();
           }
         });
     }
@@ -309,22 +303,19 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         console.log( "=== Flickr.com::getFlickrURL() call ===");
 
         var def = $.Deferred();
-
-        if ( apis.VerifyObject( result )) {
-            try {
-                var max    = result.apis.length - 1,
-                    random = apis.Random( 0, max ),
-                    api    = result.apis[ random ],
-                    method = api.method,
-                    key    = api.keys["key"],
-                    values = api.keys["val"];
-                random     = apis.Random( 0, values.length - 1 );
-                def.resolve( getFlickAPI( method, key, values[random] ));
-            }
-            catch ( error ) {
-                SimpError.Clone( new SimpError( "apis.getFlickrURL()" , "Parse flickr.com error, url is " + apis.vo.url, apis.vo ), error );
-                origins[ apis.New().origin ]();
-            }
+        try {
+            var max    = result.apis.length - 1,
+                random = apis.Random( 0, max ),
+                api    = result.apis[ random ],
+                method = api.method,
+                key    = api.keys["key"],
+                values = api.keys["val"];
+            random     = apis.Random( 0, values.length - 1 );
+            def.resolve( getFlickAPI( method, key, values[random] ));
+        }
+        catch ( error ) {
+            SimpError.Clone( new SimpError( "apis.getFlickrURL()" , "Parse flickr.com error, url is " + apis.vo.url, apis.vo ), error );
+            origins[ apis.New().origin ]();
         }
         return def.promise();
     }
@@ -336,17 +327,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         var def = $.Deferred();
         apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotos()", timeout: 2000 * 5 });
         apis.Remote( function( result ) {
-            if ( apis.VerifyObject( result )) {
-                try {
-                    var len    = result.photos.photo.length,
-                        random = apis.Random( 0, len - 1 ),
-                        photo  = result.photos.photo[ random ];
-                    def.resolve( photo.id );
-                }
-                catch ( error ) {
-                    SimpError.Clone( new SimpError( "apis.getFlickrPhotos()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
-                    origins[ apis.New().origin ]();
-                }
+            try {
+                var len    = result.photos.photo.length,
+                    random = apis.Random( 0, len - 1 ),
+                    photo  = result.photos.photo[ random ];
+                def.resolve( photo.id );
+            }
+            catch ( error ) {
+                SimpError.Clone( new SimpError( "apis.getFlickrPhotos()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
+                origins[ apis.New().origin ]();
             }
         }, false );
         return def.promise();
@@ -361,30 +350,28 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         apis.Update({ url : url, method : "apis.flickr()::getFlickrPhotoURL()", timeout: 2000 * 5 });
         apis.Remote( function( result ) {
-            if ( apis.VerifyObject( result )) {
-              try {
-                  var hdurl = "",
-                      info  = "",
-                      item  = {};
-                  for( var idx = 0, len = result.sizes.size.length; idx < len; idx++ ) {
-                    item = result.sizes.size[idx];
-                    if ( item.width == "1600" ) {
-                      hdurl = item.source;
-                      info   = item.url;
-                      deferred.resolve( vo.Create( hdurl, hdurl, "Flickr.com Image", info, date.Now(), "Flickr.com Image", apis.vo.origin, apis.vo ));
-                      break;
-                    }
-                  }
-                  if ( hdurl == "" && info == "" ) {
-                    new SimpError( "apis.getFlickrPhotoURL()" , "Parse flickr.com error, url is " + url, apis.vo );
-                    flickr();
-                  }
+          try {
+              var hdurl = "",
+                  info  = "",
+                  item  = {};
+              for( var idx = 0, len = result.sizes.size.length; idx < len; idx++ ) {
+                item = result.sizes.size[idx];
+                if ( item.width == "1600" ) {
+                  hdurl = item.source;
+                  info   = item.url;
+                  deferred.resolve( vo.Create( hdurl, hdurl, "Flickr.com Image", info, date.Now(), "Flickr.com Image", apis.vo.origin, apis.vo ));
+                  break;
+                }
               }
-              catch ( error ) {
-                SimpError.Clone( new SimpError( "apis.getFlickrPhotoURL()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
-                origins[ apis.New().origin ]();
+              if ( hdurl == "" && info == "" ) {
+                new SimpError( "apis.getFlickrPhotoURL()" , "Parse flickr.com error, url is " + url, apis.vo );
+                flickr();
               }
-            }
+          }
+          catch ( error ) {
+            SimpError.Clone( new SimpError( "apis.getFlickrPhotoURL()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
+            origins[ apis.New().origin ]();
+          }
         }, false );
         return def.promise();
     }
@@ -401,20 +388,18 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             GOOGLE_ART_PREFIX = "https://www.google.com/culturalinstitute/",
             url               = SIMP_API_HOST + GOOGLE_ART_NAME;
 
-        apis.Update({ url : url, method : "apis.googleart()" });
+        apis.Update({ url : url, method : "apis.googleart()", timeout : 2000 * 2 });
         apis.Remote( function( result ) {
-            if( apis.VerifyObject( result )) {
-                try {
-                    var max    = result.length - 1,
-                        random = apis.Random( 0, max ),
-                        obj    = result[ random ],
-                        hdurl  = obj.image + GOOGLE_ART_SUFFIX;
-                    deferred.resolve( vo.Create( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo ));
-                }
-                catch( error ) {
-                  SimpError.Clone( new SimpError( "apis.googleart()" , "Parse googleart.com error, url is " + url, apis.vo ), error );
-                  origins[ apis.New().origin ]();
-                }
+            try {
+                var max    = result.length - 1,
+                    random = apis.Random( 0, max ),
+                    obj    = result[ random ],
+                    hdurl  = obj.image + GOOGLE_ART_SUFFIX;
+                deferred.resolve( vo.Create( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo ));
+            }
+            catch( error ) {
+              SimpError.Clone( new SimpError( "apis.googleart()" , "Parse googleart.com error, url is " + url, apis.vo ), error );
+              origins[ apis.New().origin ]();
             }
         });
     }
@@ -437,22 +422,20 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         apis.Update({ url : SIMP_API_HOST + PX_API, method : "apis.get500pxURL()", timeout : 2000 * 5 });
         apis.Remote( function( result ) {
-            if( apis.VerifyObject( result )) {
-                try {
-                    var max    = result.apis.length - 1,
-                        random = apis.Random( 0, max ),
-                        obj    = result.apis[ random ],
-                        param  = ["?consumer_key=" + PX_KEY];
+            try {
+                var max    = result.apis.length - 1,
+                    random = apis.Random( 0, max ),
+                    obj    = result.apis[ random ],
+                    param  = ["?consumer_key=" + PX_KEY];
 
-                    obj.args.map( function( item ) {
-                        param.push( item.key + "=" + item.val );
-                    });
-                    def.resolve( PX_URL + obj.method + param.join("&") );
-                }
-                catch ( error ) {
-                  SimpError.Clone( new SimpError( "apis.get500pxURL()" , "Parse 500px.com error, url is " + SIMP_API_HOST + PX_API, apis.vo ), error );
-                  origins[ apis.New().origin ]();
-                }
+                obj.args.map( function( item ) {
+                    param.push( item.key + "=" + item.val );
+                });
+                def.resolve( PX_URL + obj.method + param.join("&") );
+            }
+            catch ( error ) {
+              SimpError.Clone( new SimpError( "apis.get500pxURL()" , "Parse 500px.com error, url is " + SIMP_API_HOST + PX_API, apis.vo ), error );
+              origins[ apis.New().origin ]();
             }
         });
         return def.promise();
@@ -463,22 +446,20 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         apis.Update({ url : url, method : "apis.get500API()", timeout : 2000 * 5 });
         apis.Remote( function( result ) {
-            if( apis.VerifyObject( result )) {
-                try {
-                    var max    = result.photos.length - 1,
-                        random = apis.Random( 0, max ),
-                        obj    = result.photos[ random ];
+            try {
+                var max    = result.photos.length - 1,
+                    random = apis.Random( 0, max ),
+                    obj    = result.photos[ random ];
 
-                    while ( obj.height < 1000 ) {
-                        random = apis.Random( 0, max );
-                        obj    = result.photos[ random ];
-                    }
-                    deferred.resolve( vo.Create( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px.com Image-" + obj.name, apis.vo.origin, apis.vo ));
+                while ( obj.height < 1000 ) {
+                    random = apis.Random( 0, max );
+                    obj    = result.photos[ random ];
                 }
-                catch ( error ) {
-                  SimpError.Clone( new SimpError( "apis.get500API()" , "Parse 500px.com error, url is " + url, apis.vo ), error );
-                  origins[ apis.New().origin ]();
-                }
+                deferred.resolve( vo.Create( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px.com Image-" + obj.name, apis.vo.origin, apis.vo ));
+            }
+            catch ( error ) {
+              SimpError.Clone( new SimpError( "apis.get500API()" , "Parse 500px.com error, url is " + url, apis.vo ), error );
+              origins[ apis.New().origin ]();
             }
         });
         return def.promise();
@@ -496,24 +477,22 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         apis.Update({ url : url, method : "apis.desktoppr()", timeout: 2000 * 4 });
         apis.Remote( function( result ) {
-            if( apis.VerifyObject( result )) {
-              if ( result.response && result.response.length > 0  ) {
-                var response = result.response,
-                    max      = response.length,
-                    random   = apis.Random( 0, max ),
-                    obj      = response[ random ];
+          if ( result.response && result.response.length > 0  ) {
+            var response = result.response,
+                max      = response.length,
+                random   = apis.Random( 0, max ),
+                obj      = response[ random ];
 
-                    while ( obj.height < 1000 ) {
-                        random = apis.Random( 0, max );
-                        obj    = response[ random ];
-                    }
-                    deferred.resolve( vo.Create( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", apis.vo.origin, apis.vo ));
-              }
-              else {
-                new SimpError( "apis.desktoppr()", "Not found any item from " + url, { result : result, apis_vo : apis.vo });
-                origins[ apis.New().origin ]();
-              }
-            }
+                while ( obj.height < 1000 ) {
+                    random = apis.Random( 0, max );
+                    obj    = response[ random ];
+                }
+                deferred.resolve( vo.Create( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", apis.vo.origin, apis.vo ));
+          }
+          else {
+            new SimpError( "apis.desktoppr()", "Not found any item from " + url, { result : result, apis_vo : apis.vo });
+            origins[ apis.New().origin ]();
+          }
         });
     }
 
@@ -529,18 +508,16 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         apis.Update({ url : SIMP_API_HOST + VISUALHUNT_NAME, method : "apis.visualhunt()" });
         apis.Remote( function( result ) {
-            if( apis.VerifyObject( result )) {
-                try {
-                  var max    = result.length,
-                      random = apis.Random( 0, max ),
-                      obj    = result[ random ],
-                      url    = obj.url.replace( "http://", "https://" ); // 139-simptab-visualhunt-com-cross-origin-resource-sharing-policy-no-access-control-allow-origin
-                  deferred.resolve( vo.Create( url, url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo ));
-                }
-                catch( error ) {
-                  SimpError.Clone( new SimpError( "apis.visualhunt()" , "Parse visualhunt.com error, url is " + obj.url, apis.vo ), error );
-                  origins[ apis.New().origin ]();
-                }
+            try {
+              var max    = result.length,
+                  random = apis.Random( 0, max ),
+                  obj    = result[ random ],
+                  url    = obj.url.replace( "http://", "https://" ); // 139-simptab-visualhunt-com-cross-origin-resource-sharing-policy-no-access-control-allow-origin
+              deferred.resolve( vo.Create( url, url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo ));
+            }
+            catch( error ) {
+              SimpError.Clone( new SimpError( "apis.visualhunt()" , "Parse visualhunt.com error, url is " + obj.url, apis.vo ), error );
+              origins[ apis.New().origin ]();
             }
         });
     }
@@ -597,16 +574,14 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
       apis.Update({ url : url, method : "apis.apod()", timeout : 2000 * 5 });
       apis.Remote( function( result ) {
-          if( apis.VerifyObject( result )) {
-              try {
-                var name = result.title,
-                    url  = result.hdurl;
-                deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin, apis.vo ));
-              }
-              catch ( error ) {
-                SimpError.Clone( new SimpError( "apis.apod()" , "Parse nasa apod api error, url is " + url, apis.vo ), error );
-                origins[ apis.New().origin ]();
-              }
+          try {
+            var name = result.title,
+                url  = result.hdurl;
+            deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin, apis.vo ));
+          }
+          catch ( error ) {
+            SimpError.Clone( new SimpError( "apis.apod()" , "Parse nasa apod api error, url is " + url, apis.vo ), error );
+            origins[ apis.New().origin ]();
           }
       }, false );
     }
@@ -681,43 +656,41 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
           apis.Update({ url : SIMP_API_HOST + SPECIAL_URL, method : "apis.special()" });
           apis.Remote( function( result ) {
-              if( apis.VerifyObject( result )) {
-                try {
-                    var obj = result[type],
-                        key, max, random, special_day, data, hdurl;
+            try {
+                var obj = result[type],
+                    key, max, random, special_day, data, hdurl;
 
-                    if ( type == "special" ) {
-                        key         = obj.now.length > 0 ? "now" : "old";
-                        max         = obj[key].length - 1;
-                        random      = apis.Random( 0, max );
-                        special_day = obj[key][random];
-                        data        = special_day.day;
-                        max         = data.hdurl.length - 1;
-                        random      = apis.Random( 0, max );
-                        hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
+                if ( type == "special" ) {
+                    key         = obj.now.length > 0 ? "now" : "old";
+                    max         = obj[key].length - 1;
+                    random      = apis.Random( 0, max );
+                    special_day = obj[key][random];
+                    data        = special_day.day;
+                    max         = data.hdurl.length - 1;
+                    random      = apis.Random( 0, max );
+                    hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
 
-                        !localStorage["simptab-special-day-count"] ? localStorage["simptab-special-day-count"] = 1 : localStorage["simptab-special-day-count"] += 1;
-                    }
-                    else {
-                        key         = date.Today();
-                        data        = obj[key];
-                        if ( !data ) {
-                            new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result );
-                            origins[ apis.New().origin ]();
-                            return;
-                        }
-                        max         = data.hdurl.length - 1;
-                        random      = apis.Random( 0, max );
-                        hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
-                    }
-                    apis.Update({ origin : type });
-                    deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo ));
+                    !localStorage["simptab-special-day-count"] ? localStorage["simptab-special-day-count"] = 1 : localStorage["simptab-special-day-count"] += 1;
                 }
-                catch( error ) {
-                    SimpError.Clone( new SimpError( "apis.special()", "Get special backgrond error.", apis.vo ), error );
-                    origins[ apis.New().origin ]();
+                else {
+                    key         = date.Today();
+                    data        = obj[key];
+                    if ( !data ) {
+                        new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result );
+                        origins[ apis.New().origin ]();
+                        return;
+                    }
+                    max         = data.hdurl.length - 1;
+                    random      = apis.Random( 0, max );
+                    hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
                 }
-              }
+                apis.Update({ origin : type });
+                deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo ));
+            }
+            catch( error ) {
+                SimpError.Clone( new SimpError( "apis.special()", "Get special backgrond error.", apis.vo ), error );
+                origins[ apis.New().origin ]();
+            }
           });
     }
 
