@@ -16,20 +16,21 @@ define([ "jquery" ], function( $ ) {
 
 	__extend( SimpError, Error );
 
-	function SimpError( method_name, message, data ) {
+	function SimpError( method_name, message, data, state ) {
 
-		var err = Error.call( this, arguments[1] );
+		var err   = Error.call( this, arguments[1] ),
+			print = state && state == "error" ? console.err : console.warn;
 
 		this.method_name = method_name;
 		this.message     = message;
 		this.data        = data;
 		this.stack       = err.stack;
 
-		console.group( "===== SimpTabError. ====="             );
-		console.error( "this.method_name = ", this.method_name );
-		console.error( "this.message     = ", this.message     );
-		console.error( "this.data        = ", this.data        );
-		console.error( "this.stack       = ", this.stack       );
+		console.group();
+		print.call( console, "this.method_name = ", this.method_name );
+		print.call( console, "this.message     = ", this.message     );
+		print.call( console, "this.data        = ", this.data        );
+		print.call( console, "this.stack       = ", this.stack       );
 		console.groupEnd();
 	}
 
