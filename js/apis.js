@@ -4,29 +4,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     "use strict";
 
     var deferred      = new $.Deferred(),
-        SIMP_API_HOST = "http://simptab.qiniudn.com/";
-
-    /*
-    var origins = {
-            "today"          : function() { todayBing() },
-            "bing.com"       : function() { randomBing() },
-            "wallhaven.cc"   : function() { wallhaven() },
-            "unsplash.com"   : function() { unsplashCOM() },
-            "flickr.com"     : function() { flickr() },
-            "unsplash.it"    : function() { unsplashIT() },
-            "googleartproject.com" : function() { googleart() },
-            "500px.com"      : function() { f00px() },
-            "desktoppr.co"   : function() { desktoppr() },
-            "visualhunt.com" : function() { visualhunt() },
-            "nasa.gov"       : function() { apod() },
-            "special"        : function() { special() },
-            "holiday"        : function() { special("holiday") },
-            "favorite"       : function() { favorite(); }
-        },
-    */
-
-    var originStack = {},
-        apis        = ( function() {
+        SIMP_API_HOST = "http://simptab.qiniudn.com/",
+        originStack   = {},
+        apis          = ( function() {
 
             /*
             *
