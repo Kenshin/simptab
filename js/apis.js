@@ -6,6 +6,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     var deferred      = new $.Deferred(),
         SIMP_API_HOST = "http://simptab.qiniudn.com/";
 
+    /*
     var origins = {
             "today"          : function() { todayBing() },
             "bing.com"       : function() { randomBing() },
@@ -22,7 +23,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             "holiday"        : function() { special("holiday") },
             "favorite"       : function() { favorite(); }
         },
-        apis = ( function() {
+    */
+
+    var origins = {},
+        apis    = ( function() {
 
             /*
             *
@@ -132,7 +136,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Bing( today )
     */
-    function todayBing() {
+    origins[ "today" ] = function() {
         console.log( "=== Bing.com today ===");
         var local = i18n.GetLocale() == "zh_CN" ? "cn." : "";
         apis.Update({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
@@ -189,7 +193,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Bing( random )
     */
-    function randomBing() {
+    origins[ "bing.com" ] = function() {
         console.log( "=== Bing.com random ===");
         apis.Update({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
         apis.Remote( function( result ) {
@@ -213,7 +217,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.origin, apis.vo ));
           }
           else {
-            randomBing();
+            origins[ "bing.com" ]();
           }
         });
     }
@@ -221,7 +225,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Wall Haven
     */
-    function wallhaven() {
+    origins[ "wallhaven.cc" ] = function() {
 
       console.log( "=== Wallhaven.cc call ===" );
 
@@ -243,7 +247,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Unsplash.COM
     */
-    function unsplashCOM( errorBack, callBack ) {
+    origins[ "unsplash.com" ] = function() {
 
       console.log( "=== Unsplash.com call ===" );
 
@@ -264,7 +268,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Unsplash.IT
     */
-    function unsplashIT() {
+    origins[ "unsplash.it" ] = function() {
 
         console.log( "=== Unsplash.it call ===" );
 
@@ -293,7 +297,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         return FLICKR_HOST + "?method=" + method + "&api_key=" + FLICKR_API_KEY + "&" + key + "=" + value + "&format=json&jsoncallback=?";
     }
 
-    function flickr() {
+    origins[ "flickr.com" ] = function() {
 
         console.log( "=== Flickr.com call ===");
 
@@ -370,7 +374,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               }
               if ( hdurl == "" && info == "" ) {
                 new SimpError( "apis.getFlickrPhotoURL()" , "Parse flickr.com error, url is " + url, apis.vo );
-                flickr();
+                origins[ "flickr.com" ]();
               }
           }
           catch ( error ) {
@@ -384,7 +388,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Google Art Project
     */
-    function googleart() {
+    origins[ "googleartproject.com" ] = function() {
 
         console.log( "=== Googleartproject.com call ===");
 
@@ -417,7 +421,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         PX_URL  = "https://api.500px.com/v1",
         PX_HOME = "https://www.500px.com";
 
-    function f00px() {
+    origins[ "500px.com" ] = function() {
         console.log( "=== 500px.com call ===");
         get500pxURL().then( get500API );
     }
@@ -473,7 +477,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Desktoppr.co background
     */
-    function desktoppr() {
+    origins[ "desktoppr.co" ] = function() {
 
         console.log( "=== Desktoppr.co call ===");
 
@@ -504,7 +508,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Visual Hunt
     */
-    function visualhunt() {
+    origins[ "visualhunt.com" ] = function() {
 
         console.log( "=== visualhunt.com call ===");
 
@@ -561,7 +565,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
     */
 
-    function apod() {
+    origins[ "nasa.gov" ] = function() {
 
       console.log( "=== nasa.gov call ===");
 
@@ -594,7 +598,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Favorite background
     */
-    function favorite() {
+    origins[ "favorite" ] = function() {
 
         console.log( "=== Favorite background call ===");
 
@@ -649,9 +653,16 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     /*
+    * Holiday background
+    */
+    origins[ "holiday" ] = function() {
+        origins[ "special" ]( "holiday" );
+    }
+
+    /*
     * Special day/Holiday background
     */
-     function special() {
+     origins[ "special" ] = function() {
 
         console.log( "=== Special day/Holiday background call ===");
 
