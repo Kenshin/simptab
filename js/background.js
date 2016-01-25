@@ -176,6 +176,12 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
         // re-set (hide) progress bar
         progress.Set( "remotefailed" );
 
+        // when bing.com( today ) remote failed, set vo.new == vo.cur and refresh current backgrond
+        if ( error.data.apis_vo && error.data.apis_vo.origin == "today" && vo.cur && vo.cur.type != "default" ) {
+            vo.new = vo.Clone( vo.cur );
+            controlbar.Set( false );
+        }
+
         try {
             throw error;
         }

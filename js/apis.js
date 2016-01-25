@@ -115,8 +115,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     return true;
                 }
                 else {
-                    new SimpError( "apis.VerifyObject()", "Current data structure error.", { result : result, apis_vo : apis.vo } );
-                    origins[ this.New().origin ]();
+                    if ( apis.vo.origin == "today" && vo && vo.cur ) {
+                        deferred.reject( new SimpError( "apis", "Bing.com Today API remote error", { result : result, apis_vo : apis.vo }));
+                    }
+                    else {
+                        new SimpError( "apis.VerifyObject()", "Current data structure error.", { result : result, apis_vo : apis.vo } );
+                        origins[ this.New().origin ]();
+                    }
                     return false;
                 }
             }
