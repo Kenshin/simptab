@@ -20,7 +20,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             "nasa.gov"       : function() { apod() },
             "special"        : function() { special() },
             "holiday"        : function() { special("holiday") },
-            "favorite"       : function() { setTimeout( favorite, 2000 ); }
+            "favorite"       : function() { favorite(); }
         },
         apis = ( function() {
 
