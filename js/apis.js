@@ -50,7 +50,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
                 // verify background every day
                 // verify today is new day
-                if ( !IsRandom() || IsNewDay( Today(), true )) {
+                if ( IsNewDay( Today(), true ) || !IsRandom() ) {
                     code = MAX_NUM + 1;
                 }
                 // verify today is holiday
