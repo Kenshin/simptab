@@ -25,8 +25,9 @@ define([ "jquery" ], function( $ ) {
 		this.data        = data;
 		this.stack       = err.stack;
 
-		console.group( "===== SimpTab warning =====" );
+		console.groupCollapsed( "===== SimpTab warning =====" );
         console.warn.apply( console, arguments );
+        console.warn.call( console, this.stack );
 		console.groupEnd();
 	}
 
