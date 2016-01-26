@@ -597,19 +597,19 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 return;
             }
 
-            var max    = arr.length - 1;
-            var random = apis.Random( 0, max );
-            var obj    = JSON.parse( arr[ random ] );
-            var result = JSON.parse( obj.result );
+            var max    = arr.length - 1,
+                random = apis.Random( 0, max ),
+                obj    = JSON.parse( arr[ random ] ),
+                result = JSON.parse( obj.result );
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
 
+            apis.Update({ url : result.hdurl, method : "apis.favorite()", dataType : "localStorge" })
             // verify favorite data structure
             if ( !vo.Verify()) {
                 new SimpError( apis.vo.method, "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo } );
                 apis.pub( apis.constructor.RELOAD );
             }
             else {
-                apis.Update({ url : result.hdurl, method : "apis.favorite()", dataType : "localStorge" })
                 vo.new = result;
                 deferred.resolve( result );
             }
@@ -679,7 +679,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     key         = date.Today();
                     data        = obj[key];
                     if ( !data ) {
-                        new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data frome " + SIMP_API_HOST + SPECIAL_URL, result );
+                        new SimpError( "apis.holiday()", "Current holiday is " + key +  ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result );
                         apis.pub( apis.constructor.RELOAD );
                         return;
                     }
