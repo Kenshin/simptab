@@ -182,7 +182,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     */
     originStack[ "bing.com" ] = function() {
         console.log( "=== Bing.com random ===");
-        apis.Update({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()" });
+        apis.Update({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()", timeout: 2000 * 3 });
         apis.Remote( function( result ) {
             try {
               var images = result.imageIds,
