@@ -6,7 +6,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     var deferred      = new $.Deferred(),
         SIMP_API_HOST = "http://simptab.qiniudn.com/",
         originStack   = {},
-        apis          = (function( $, date, isHoliday, IsRandom, Verify ) {
+        apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify ) {
 
             /*
             *
@@ -50,7 +50,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
                 // verify background every day
                 // verify today is new day
-                if ( !IsRandom() || date.IsNewDay( date.Today(), true )) {
+                if ( !IsRandom() || IsNewDay( Today(), true )) {
                     code = MAX_NUM + 1;
                 }
                 // verify today is holiday
@@ -118,7 +118,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
 
             return new APIS;
-    })( jQuery, date, isHoliday, setting.IsRandom, setting.Verify );
+    })( jQuery, date.IsNewDay, date.Today, isHoliday, setting.IsRandom, setting.Verify );
 
     /*
     * Bing( today )
