@@ -27,7 +27,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 code     : 0
             },
             failed_count = 0,
-            BG_ORIGINS   = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleartproject.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
+            BG_ORIGINS   = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleart.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
             MAX_NUM      = BG_ORIGINS.length - 2, // excude: "today"
             $target      = $({}),
             RELOAD       = "reload";
@@ -375,9 +375,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Google Art Project
     */
-    originStack[ "googleartproject.com" ] = function() {
+    originStack[ "googleart.com" ] = function() {
 
-        console.log( "=== Googleartproject.com call ===");
+        console.log( "=== googleart.com call ===");
 
         var GOOGLE_ART_NAME   = "google.art.project.json",
             GOOGLE_ART_SUFFIX = "=s1200-rw",
