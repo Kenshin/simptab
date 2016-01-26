@@ -679,7 +679,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     key         = date.Today();
                     data        = obj[key];
                     if ( !data ) {
-                        new SimpError( api.vo.origin, "Current holiday is " + key +  ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result );
+                        new SimpError( apis.vo.origin, "Current holiday is " + key +  ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result );
                         apis.pub( apis.constructor.RELOAD );
                         return;
                     }
@@ -691,7 +691,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 deferred.resolve( vo.Create( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo ));
             }
             catch( error ) {
-                SimpError.Clone( new SimpError( api.vo.origin, "Get special backgrond error.", apis.vo ), error );
+                SimpError.Clone( new SimpError( apis.vo.origin, "Get special backgrond error.", apis.vo ), error );
                 apis.pub( apis.constructor.RELOAD );
             }
           });
