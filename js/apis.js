@@ -106,7 +106,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     return true;
                 }
                 else {
-                    if ( apis.vo.origin == "today" && vo && vo.cur ) {
+                    if ( apis.vo.origin == "today" ) {
                         deferred.reject( new SimpError( "apis:VerifyObject()", "Bing.com Today API remote error", { result : result, apis_vo : apis.vo }));
                     }
                     else {
