@@ -6,7 +6,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     var deferred      = new $.Deferred(),
         SIMP_API_HOST = "http://simptab.qiniudn.com/",
         originStack   = {},
-        apis          = ( function() {
+        apis          = (function( $, date, isHoliday, IsRandom, Verify ) {
 
             /*
             *
@@ -46,11 +46,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
 
             APIS.prototype.New = function() {
-                var code    = this.Random( 0, MAX_NUM );
+                var code = this.Random( 0, MAX_NUM );
 
                 // verify background every day
                 // verify today is new day
-                if ( !setting.IsRandom() || date.IsNewDay( date.Today(), true )) {
+                if ( !IsRandom() || date.IsNewDay( date.Today(), true )) {
                     code = MAX_NUM + 1;
                 }
                 // verify today is holiday
@@ -59,7 +59,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }
                 // change background every time
                 else {
-                    while ( setting.Verify( code ) == "false" ||
+                    while ( Verify( code ) == "false" ||
                             localStorage[ "simptab-prv-code" ] == code ||
                             code == 11 ||
                             ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
@@ -118,7 +118,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
 
             return new APIS;
-    })();
+    })( jQuery, date, isHoliday, setting.IsRandom, setting.Verify );
 
     /*
     * Bing( today )
@@ -624,7 +624,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     * Holiday background
     */
     function isHoliday() {
-        var HOLIDAY_LIST_1 = [20151207, 20151222, 20160106, 20160120, 20160201, 20160204, 20160207, 20160208, 20160219, 20160222, 20160305, 20160320, 20160404, 20160419, 20160505, 20160520, 20160605, 20160621, 20160707, 20160722, 20160807, 20160823, 20160907, 20160922, 20161008, 20161023, 20161107, 20161122, 20161207, 20161221, 20170105, 20170120];
+        var HOLIDAY_LIST_1 = [20151207, 20151222, 20160106, 20160120, 20160126, 20160201, 20160204, 20160207, 20160208, 20160219, 20160222, 20160305, 20160320, 20160404, 20160419, 20160505, 20160520, 20160605, 20160621, 20160707, 20160722, 20160807, 20160823, 20160907, 20160922, 20161008, 20161023, 20161107, 20161122, 20161207, 20161221, 20170105, 20170120];
         var HOLIDAY_LIST_2 = [20151224, 20151225];
         var arr         = HOLIDAY_LIST_1.concat( HOLIDAY_LIST_2 ),
             new_holiday = date.Today(),
