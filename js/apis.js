@@ -136,7 +136,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     info = getInfo( data.copyrightlink ),
                     enddate   = data.enddate,
                     shortname = "Bing.com Image-" + getShortName( info );
-                deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, "bing.com", apis.vo ));
+                deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, apis.vo.origin, apis.vo ));
             }
             catch ( error ) {
                 SimpError.Clone( new SimpError( apis.vo.method, "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
