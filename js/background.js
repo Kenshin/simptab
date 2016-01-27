@@ -257,7 +257,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                         files.AddFavorite( files.FavoriteVO(), file_name, vo.cur );
 
                         // update local storge 'simptab-bing-fav'
-                        if ( vo.cur.type == "bing.com" ) files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
+                        vo.cur.type == "today" && files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
 
                         // set favorite icon state
                         controlbar.SetFavorteIcon();
@@ -281,7 +281,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                             files.DeleteFavorite( files.FavoriteVO(), file_name );
 
                             // update local storge 'simptab-bing-fav'
-                            if ( vo.cur.type == "bing.com" ) files.DeleteFavBing( files.FavBingVO(), vo.cur.favorite );
+                            vo.cur.type == "today" && files.DeleteFavBing( files.FavBingVO(), vo.cur.favorite );
 
                             // update vo.cur
                             vo.cur.favorite = -1;
