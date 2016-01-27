@@ -40,7 +40,6 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                     "http://*.wallhaven.cc/",
                     "https://*.staticflickr.com/",
                     "http://*.desktopprassets.com/",
-                    "http://*.visualhunt.com/",
                     "https://*.500px.org/",
                     "http://*.vo.msecnd.net/",
                     "http://*.nasa.gov/"
@@ -124,6 +123,18 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
             $( ".notifygp" ).undelegate( ".permissions", "click", permissionClickHandle );
             $target.click();
+
+            var removePermis = version.RemovePermissions();
+            if ( removePermis ) {
+                var arr = [];
+                arr.push( $.trim(removePermis.join(" ")));
+                chrome.permissions.remove({
+                    origins : arr
+                }, function( result ) {
+                    console.log( "asdfasdfasdfasdsfasdf", result )
+              });
+            }
+
       });
     }
 
@@ -144,17 +155,6 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 if ( version.isPermissions() ) {
                     new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
                     $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
-                }
-
-                var removePermis = version.RemovePermissions();
-                if ( removePermis ) {
-                    var arr = [];
-                    arr.push( $.trim(removePermis.join(" ")));
-                    chrome.permissions.remove({
-                        origins : arr
-                    }, function( result ) {
-                        console.log( "asdfasdfasdfasdsfasdf", result )
-                  });
                 }
 
                 version.Save();
