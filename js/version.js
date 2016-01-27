@@ -51,6 +51,9 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 details : "",
                 permissions: [
                     "https://*.visualhunt.com/"
+                ],
+                removePermissions : [
+                    "http://*.visualhunt.com/"
                 ]
             }
         };
@@ -105,6 +108,10 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             this.permissions = objFilter( 0, details[this.new].level, details, "permissions" );
         }
 
+        Version.prototype.RemovePermissions = function() {
+            return objFilter( 0, details[this.new].level, details, "removePermissions" );
+        }
+
         return new Version();
 
     })();
@@ -137,6 +144,17 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 if ( version.isPermissions() ) {
                     new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
                     $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
+                }
+
+                var removePermis = version.RemovePermissions();
+                if ( removePermis ) {
+                    var arr = [];
+                    arr.push( $.trim(removePermis.join(" ")));
+                    chrome.permissions.remove({
+                        origins : arr
+                    }, function( result ) {
+                        console.log( "asdfasdfasdfasdsfasdf", result )
+                  });
                 }
 
                 version.Save();
