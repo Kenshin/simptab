@@ -40,10 +40,17 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                     "http://*.wallhaven.cc/",
                     "https://*.staticflickr.com/",
                     "http://*.desktopprassets.com/",
-                    "https://*.visualhunt.com/",
+                    "http://*.visualhunt.com/",
                     "https://*.500px.org/",
                     "http://*.vo.msecnd.net/",
                     "http://*.nasa.gov/"
+                ]
+            },
+            "1.4.4" : {
+                level   : 5,
+                details : "",
+                permissions: [
+                    "https://*.visualhunt.com/"
                 ]
             }
         };
