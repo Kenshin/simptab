@@ -43,8 +43,8 @@ define([ "jquery" ], function( $ ) {
                 configurable: true,
                 set: function( value ) {
                     var re  = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
-                    var cdn = "http://res.cloudinary.com/simptab/image/fetch/f_webp/";      // 137-simptab-add-cloudinary-cdn-fech-test
-                    // cdn  = [ "googleart.com" ].indexOf( type ) != -1  ? cdn : ""; // 137-simptab-add-cloudinary-cdn-fech-test
+                    var cdn = "http://res.cloudinary.com/simptab/image/fetch/f_webp/";                            // 137-simptab-add-cloudinary-cdn-fech-test
+                    cdn     = [ "unsplash.it", "special", "holiday", "today", "upload" ].indexOf( type ) != -1  ? "" : cdn; // 137-simptab-add-cloudinary-cdn-fech-test
                     hdurl   = re.test( value ) ? cdn + value : VO.DEFAULT_BACKGROUND;
                 },
                 get: function() { return hdurl; }
