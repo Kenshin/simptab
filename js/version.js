@@ -124,19 +124,22 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
             $( ".notifygp" ).undelegate( ".permissions", "click", permissionClickHandle );
             $target.click();
-
-            var removePermis = version.RemovePermissions();
-            if ( removePermis ) {
-                var arr = [];
-                arr.push( $.trim(removePermis.join(" ")));
-                chrome.permissions.remove({
-                    origins : arr
-                }, function( result ) {
-                    console.log( "asdfasdfasdfasdsfasdf", result )
-              });
-            }
-
+            removePermissions();
       });
+    }
+
+    function removePermissions() {
+        var removePermis = version.RemovePermissions();
+        if ( removePermis ) {
+            var arr = [];
+            arr.push( $.trim(removePermis.join(" ")));
+            chrome.permissions.remove({
+                origins : arr
+            }, function( result ) {
+                console.warn( "Rmove useless permissions.", arr )
+          });
+        }
+
     }
 
     return {
