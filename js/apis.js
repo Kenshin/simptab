@@ -14,7 +14,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             * apis.New()    set vo `code` and `origin` property.
             * apis.Update() set vo other property.
             *
-            * dataType: json, xml( only nasa() ), localStorge( favorite()  ), image( "wallhaven.cc", "unsplash.com", "unsplash.it" )
+            * dataType: json, xml( only nasa ), localStorge( upload  ), image( "wallhaven.cc", "unsplash.com", "unsplash.it" )
             */
 
             var options = {
@@ -592,7 +592,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         try {
             var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
-                new SimpError( apis.vo.origin, "Local storge 'simptab-favorites' not exist.", apis.vo );
+                new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo );
                 apis.pub( apis.constructor.RELOAD );
                 return;
             }
@@ -603,10 +603,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 result = JSON.parse( obj.result );
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
 
-            apis.Update({ url : result.hdurl, method : "apis.favorite()", dataType : "localStorge" })
             // verify favorite data structure
             if ( !vo.Verify()) {
-                new SimpError( apis.vo.origin, "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo } );
+                new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo } );
                 apis.pub( apis.constructor.RELOAD );
             }
             else {
@@ -615,7 +614,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
         }
         catch( error ) {
-            SimpError.Clone( new SimpError( apis.vo.origin, "Current 'simptab-favorites' data structure error.", apis.vo ), error );
+            SimpError.Clone( new SimpError( "favorite", "Current 'simptab-favorites' data structure error.", apis.vo ), error );
             apis.pub( apis.constructor.RELOAD );
         }
     }
