@@ -43,9 +43,9 @@ define([ "jquery" ], function( $ ) {
                 enumerable  : true,
                 configurable: true,
                 set: function( value ) {
-                    var cdn = "http://res.cloudinary.com/simptab/image/fetch/", // http://res.cloudinary.com/simptab/image/fetch/
-                        re  = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
-                    cdn     = [ "googleart.com" ].indexOf( type ) != -1  ? cdn : "";
+                    var re  = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
+                    var cdn = "http://res.cloudinary.com/simptab/image/fetch/";      // 137-simptab-add-cloudinary-cdn-fech-test
+                    cdn     = [ "googleart.com" ].indexOf( type ) != -1  ? cdn : ""; // 137-simptab-add-cloudinary-cdn-fech-test
                     hdurl   = re.test( value ) ? cdn + value : VO.DEFAULT_BACKGROUND;
                 },
                 get: function() { return hdurl; }
