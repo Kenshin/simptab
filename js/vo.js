@@ -21,7 +21,7 @@ define([ "jquery" ], function( $ ) {
     * when version = 2.1
     * add new property `favorite`
     *
-    * when version = 2.2 ( test version 138-simptab-update-vo )
+    * when version = 2.2
     * add new property `apis_vo`
     *
     */
@@ -38,7 +38,6 @@ define([ "jquery" ], function( $ ) {
 
     VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, apis_vo, favorite ) {
 
-            // 138-simptab-update-vo
             Object.defineProperty( this.new, "hdurl", {
                 enumerable  : true,
                 configurable: true,
@@ -58,7 +57,7 @@ define([ "jquery" ], function( $ ) {
             this.new.enddate   = enddate;
             this.new.shortname = shortname;
             this.new.type      = type;
-            this.new.apis_vo   = apis_vo;   // 138-simptab-update-vo
+            this.new.apis_vo   = apis_vo;
             this.new.version   = VERSION;
             this.new.favorite  = favorite == undefined ? -1 : favorite;
 
