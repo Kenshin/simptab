@@ -317,14 +317,15 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     files.GetDataURI( filelist[i], arr, i, len ).done( function( datauri ) {
 
                         var file_name = Math.round(+new Date()),
-                            upload_vo = {new:{}};
+                            upload_vo = {new:{}},
+                            apis_vo   = { url : "", type : "GET", dataType : "localStorge", timeout : 2000, method : "background.Upload()", origin : "favorite", code : 10 };
 
                         files.Add( file_name, datauri )
                         .done( function( result, hdurl ) {
 
                             // create upload vo
-                            // 138-simptab-update-vo
-                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", {}, file_name ]);
+                            apis_vo.url = hdurl;
+                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", apis_vo, file_name ]);
 
                             // update local storge 'simptab-favorites'
                             files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
