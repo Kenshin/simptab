@@ -40,8 +40,8 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                     "http://*.wallhaven.cc/",
                     "https://*.staticflickr.com/",
                     "http://*.desktopprassets.com/",
-                    "https://*.500px.org/",
                     "http://*.visualhunt.com/",
+                    "https://*.500px.org/",
                     "http://*.vo.msecnd.net/",
                     "http://*.nasa.gov/"
                 ]
