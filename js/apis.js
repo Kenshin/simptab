@@ -480,7 +480,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Visual Hunt
     */
-    originStack[ "visualhunt.com" ] = function() {
+    apis.Stack[ apis.ORIGINS[7] ] = function() {
 
         console.log( "=== visualhunt.com call ===");
 
@@ -494,13 +494,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                   random = apis.Random( 0, max ),
                   obj    = result[ random ],
                   url    = obj.url.replace( "http://", "https://" ); // 139-simptab-visualhunt-com-cross-origin-resource-sharing-policy-no-access-control-allow-origin
-              deferred.resolve( vo.Create( url, url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo ));
+              apis.defer.resolve( url, url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo );
             }
             catch( error ) {
-              SimpError.Clone( new SimpError( apis.vo.method , "Parse visualhunt.com error, url is " + obj.url, apis.vo ), error );
-              apis.pub( apis.constructor.LOAD );
+              apis.defer.reject( new SimpError( apis.vo.method , "Parse visualhunt.com error, url is " + obj.url, apis.vo ), error );
             }
         });
+        return apis.defer.promise();
     }
 
     /*
