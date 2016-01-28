@@ -384,7 +384,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               apis.defer.reject( new SimpError( apis.vo.method , "Parse googleart.com error, url is " + url, apis.vo ), error );
             }
         });
-        return apis.defer.promise(); 
+        return apis.defer.promise();
     }
 
     /*
@@ -395,9 +395,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         PX_URL  = "https://api.500px.com/v1",
         PX_HOME = "https://www.500px.com";
 
-    originStack[ "500px.com" ] = function() {
+    apis.Stack[ apis.ORIGINS[5] ] = function() {
         console.log( "=== 500px.com call ===");
         get500pxURL().then( get500API );
+        return apis.defer.promise();
     }
 
     function get500pxURL() {
@@ -417,8 +418,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 def.resolve( PX_URL + obj.method + param.join("&") );
             }
             catch ( error ) {
-              SimpError.Clone( new SimpError( apis.vo.method , "Parse 500px.com error, url is " + SIMP_API_HOST + PX_API, apis.vo ), error );
-              apis.pub( apis.constructor.LOAD );
+              apis.defer.reject( new SimpError( apis.vo.method , "Parse 500px.com error, url is " + SIMP_API_HOST + PX_API, apis.vo ), error );
             }
         });
         return def.promise();
@@ -438,14 +438,12 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     random = apis.Random( 0, max );
                     obj    = result.photos[ random ];
                 }
-                deferred.resolve( vo.Create( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px.com Image-" + obj.name, apis.vo.origin, apis.vo ));
+                apis.defer.resolve( obj.image_url, obj.image_url, obj.name, PX_HOME + obj.url, date.Now(), "500px.com Image-" + obj.name, apis.vo.origin, apis.vo );
             }
             catch ( error ) {
-              SimpError.Clone( new SimpError( apis.vo.method , "Parse 500px.com error, url is " + url, apis.vo ), error );
-              apis.pub( apis.constructor.LOAD );
+              apis.defer.reject( new SimpError( apis.vo.method , "Parse 500px.com error, url is " + url, apis.vo ), error );
             }
         });
-        return def.promise();
     }
 
     /*
