@@ -537,7 +537,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
     */
 
-    originStack[ "nasa.gov" ] = function() {
+    apis.Stack[ apis.ORIGINS[8] ] = function() {
 
       console.log( "=== nasa.gov call ===");
 
@@ -558,13 +558,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           try {
             var name = result.title,
                 url  = result.hdurl;
-            deferred.resolve( vo.Create( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin, apis.vo ));
+            apis.defer.resolve( url, url, "NASA.gov APOD Image - " + name, "#", date.Now(), "NASA.gov APOD Image", apis.vo.origin, apis.vo );
           }
           catch ( error ) {
-            SimpError.Clone( new SimpError( apis.vo.method , "Parse nasa apod api error, url is " + url, apis.vo ), error );
-            apis.pub( apis.constructor.LOAD );
+            apis.defer.reject( new SimpError( apis.vo.method , "Parse nasa apod api error, url is " + url, apis.vo ), error );
           }
       }, false );
+      return apis.defer.promise();
     }
 
     /*
