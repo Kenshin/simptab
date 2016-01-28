@@ -26,27 +26,21 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 origin   : "",
                 code     : 0
             },
-            failed_count = 0,
             BG_ORIGINS   = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleart.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
-            MAX_NUM      = BG_ORIGINS.length - 2, // excude: "today"
-            $target      = $({}),
-            LOAD         = "load";
+            MAX_NUM      = BG_ORIGINS.length - 2; // excude: "today"
 
             function APIS() {
-                this.vo = {};
+                this.vo    = {};
+                this.failed = 0;
             }
-
-            APIS.LOAD            = LOAD;
-            APIS.prototype.sub   = function() { $target.on.apply(      $target, arguments ); }
-            APIS.prototype.unsub = function() { $target.off.apply(     $target, arguments ); }
-            APIS.prototype.pub   = function() { $target.trigger.apply( $target, arguments ); }
 
             APIS.prototype.Random = function( min, max ) {
                 return Math.floor( Math.random() * ( max - min + 1 ) + min );
             }
 
             APIS.prototype.New = function() {
-                var code = this.Random( 0, MAX_NUM );
+                var code   = this.Random( 0, MAX_NUM );
+                this.defer = new $.Deferred();
 
                 // verify background every day
                 // verify today is new day
@@ -95,9 +89,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 }).then( function( result ) {
                     me.VerifyObject( result ) && callBack( result );
                 } , function( jqXHR, textStatus, errorThrown ) {
-                    console.error( "=== Remote background origin error ===", apis.vo, textStatus, errorThrown )
-                    failed_count < 5 ? me.pub( LOAD ) : deferred.reject( new SimpError( "apis:Remote()", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo }));
-                    failed_count ++;
+                    me.defer.reject( new SimpError( "apis:Remote()", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo }));
                 });
             }
 
@@ -106,13 +98,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     return true;
                 }
                 else {
-                    if ( apis.vo.origin == "today" ) {
-                        deferred.reject( new SimpError( "apis:VerifyObject()", "Bing.com Today API remote error", { result : result, apis_vo : apis.vo }));
-                    }
-                    else {
-                        new SimpError( "apis.VerifyObject()", "Current data structure error.", { result : result, apis_vo : apis.vo } );
-                        this.pub( LOAD );
-                    }
+                    if ( this.vo.origin == "today" ) apis.failed = MAX_NUM;
+                    this.defer.reject( new SimpError( "apis.VerifyObject()", "Current data structure error.", { result : result, apis_vo : apis.vo }));
                     return false;
                 }
             }
@@ -136,13 +123,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     info = getInfo( data.copyrightlink ),
                     enddate   = data.enddate,
                     shortname = "Bing.com Image-" + getShortName( info );
-                deferred.resolve( vo.Create( url, hdurl, name, info, enddate, shortname, apis.vo.origin, apis.vo ));
+                apis.defer.resolve( url, hdurl, name, info, enddate, shortname, apis.vo.origin, apis.vo );
             }
             catch ( error ) {
-                SimpError.Clone( new SimpError( apis.vo.method, "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
-                apis.pub( apis.constructor.LOAD );
+                apis.defer( new SimpError( apis.vo.method, "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
             }
         }, false );
+        return apis.defer.promise();
     }
 
     function getHDurl( url ) {
@@ -190,10 +177,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               getRandomBing( images[random] );
             }
             catch( error ) {
-              SimpError.Clone( new SimpError( apis.vo.method, "Parse bing.gallery.json error.", apis.vo ), error );
-              apis.pub( apis.constructor.LOAD );
+              apis.defer.reject( new SimpError( apis.vo.method, "Parse bing.gallery.json error.", apis.vo ), error );
             }
       });
+      return apis.defer.promise();
     }
 
     function getRandomBing( id ) {
@@ -201,10 +188,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         apis.Remote( function( result ) {
           if ( result.wallpaper ) {
             var prefix = "http://az608707.vo.msecnd.net/files/";
-            deferred.resolve( vo.Create( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.origin, apis.vo ));
+            apis.defer.resolve( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.origin, apis.vo );
           }
           else {
-            originStack[ "bing.com" ]();
+            originStack[ apis.vo.origin ]();
           }
         });
     }
@@ -592,9 +579,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         try {
             var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
-                new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo );
-                apis.pub( apis.constructor.LOAD );
-                return;
+                apis.defer.reject( new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo ));
+                return apis.defer.promise();
             }
 
             var max    = arr.length - 1,
@@ -605,18 +591,16 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
             // verify favorite data structure
             if ( !vo.Verify()) {
-                new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo } );
-                apis.pub( apis.constructor.LOAD );
+                apis.defer.reject( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo } );
             }
             else {
-                vo.new = result;
-                deferred.resolve( result );
+                apis.defer.resolve( result.url, result.url, result.name, result.info, result.enddate, result.shortname, result.type, result.apis_vo, result.favorite );
             }
         }
         catch( error ) {
-            SimpError.Clone( new SimpError( "favorite", "Current 'simptab-favorites' data structure error.", apis.vo ), error );
-            apis.pub( apis.constructor.LOAD );
+            apis.defer.reject( new SimpError( "favorite", "Current 'simptab-favorites' data structure error.", apis.vo ), error );
         }
+        return apis.defer.promise();
     }
 
     /*
@@ -696,13 +680,20 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           });
     }
 
-    function loadBackground() { originStack[ apis.New().origin ](); }
+    function init() {
+        originStack[ apis.New().origin ]()
+        .done( function() {
+            deferred.resolve( vo.Create.apply( vo, arguments ));
+        })
+        .fail( function( result, error ) {
+            SimpError.Clone( result, (!error ? result : error));
+            apis.failed < 8 ? init() : deferred.reject( result, error );
+            apis.failed++;
+        });
+        return deferred.promise();
+    }
 
     return {
-      Init: function () {
-          apis.sub( apis.constructor.LOAD, loadBackground );
-          apis.pub( apis.constructor.LOAD );
-          return deferred.promise();
-      }
+      Init: init
     };
 });
