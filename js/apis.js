@@ -273,7 +273,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         return FLICKR_HOST + "?method=" + method + "&api_key=" + FLICKR_API_KEY + "&" + key + "=" + value + "&format=json&jsoncallback=?";
     }
 
-    originStack[ "flickr.com" ] = function() {
+    apis.Stack[ apis.ORIGINS[3] ]  = function() {
 
         console.log( "=== Flickr.com call ===");
 
@@ -281,6 +281,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         apis.Remote( function( result ) {
             getFlickrURL( result ).then( getFlickrPhotos ).then( getFlickrPhotoURL );
         });
+        return apis.defer.promise();
     }
 
     function getFlickrURL( result ) {
@@ -299,8 +300,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             def.resolve( getFlickAPI( method, key, values[random] ));
         }
         catch ( error ) {
-            SimpError.Clone( new SimpError( "apis.getFlickrURL()" , "Parse flickr.com error, url is " + apis.vo.url, apis.vo ), error );
-            apis.pub( apis.constructor.LOAD );
+            apis.defer.reject( new SimpError( "apis.getFlickrURL()" , "Parse flickr.com error, url is " + apis.vo.url, apis.vo ), error );
         }
         return def.promise();
     }
@@ -319,8 +319,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 def.resolve( photo.id );
             }
             catch ( error ) {
-                SimpError.Clone( new SimpError( "apis.getFlickrPhotos()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
-                apis.pub( apis.constructor.LOAD );
+                apis.defer.reject( new SimpError( "apis.getFlickrPhotos()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
             }
         }, false );
         return def.promise();
@@ -344,18 +343,17 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 if ( item.width == "1600" ) {
                   hdurl = item.source;
                   info   = item.url;
-                  deferred.resolve( vo.Create( hdurl, hdurl, "Flickr.com Image", info, date.Now(), "Flickr.com Image", apis.vo.origin, apis.vo ));
+                  apis.defer.resolve( hdurl, hdurl, "Flickr.com Image", info, date.Now(), "Flickr.com Image", apis.vo.origin, apis.vo );
                   break;
                 }
               }
               if ( hdurl == "" && info == "" ) {
                 new SimpError( apis.vo.method , "Parse flickr.com error, url is " + url, apis.vo );
-                originStack[ "flickr.com" ]();
+                apis.Stack[ apis.ORIGINS[3] ]();
               }
           }
           catch ( error ) {
-            SimpError.Clone( new SimpError( apis.vo.method , "Parse flickr.com error, url is " + url, apis.vo ), error );
-            apis.pub( apis.constructor.LOAD );
+            apis.defer.reject( new SimpError( apis.vo.method , "Parse flickr.com error, url is " + url, apis.vo ), error );
           }
         }, false );
         return def.promise();
