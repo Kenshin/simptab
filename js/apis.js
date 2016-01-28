@@ -449,7 +449,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Desktoppr.co background
     */
-    originStack[ "desktoppr.co" ] = function() {
+    apis.Stack[ apis.ORIGINS[6] ] = function() {
 
         console.log( "=== Desktoppr.co call ===");
 
@@ -458,23 +458,23 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
         apis.Update({ url : url, method : "apis.desktoppr()", timeout: 2000 * 4 });
         apis.Remote( function( result ) {
-          if ( result.response && result.response.length > 0  ) {
-            var response = result.response,
-                max      = response.length,
-                random   = apis.Random( 0, max ),
-                obj      = response[ random ];
+            try {
+              var response = result.response,
+                  max      = response.length,
+                  random   = apis.Random( 0, max ),
+                  obj      = response[ random ];
 
-                while ( obj.height < 1000 ) {
-                    random = apis.Random( 0, max );
-                    obj    = response[ random ];
-                }
-                deferred.resolve( vo.Create( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", apis.vo.origin, apis.vo ));
-          }
-          else {
-            new SimpError( apis.vo.method, "Not found any item from " + url, { result : result, apis_vo : apis.vo });
-            apis.pub( apis.constructor.LOAD );
-          }
+                  while ( obj.height < 1000 ) {
+                      random = apis.Random( 0, max );
+                      obj    = response[ random ];
+                  }
+                  apis.defer.resolve( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", apis.vo.origin, apis.vo );
+            }
+            catch ( error ) {
+                apis.defer.reject( new SimpError( apis.vo.method , "Parse Desktoppr.co error, url is " + url, apis.vo ), error );
+            }
         });
+        return apis.defer.promise();
     }
 
     /*
