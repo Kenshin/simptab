@@ -362,7 +362,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Google Art Project
     */
-    originStack[ "googleart.com" ] = function() {
+    apis.Stack[ apis.ORIGINS[4] ] = function() {
 
         console.log( "=== googleart.com call ===");
 
@@ -378,13 +378,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     random = apis.Random( 0, max ),
                     obj    = result[ random ],
                     hdurl  = obj.image + GOOGLE_ART_SUFFIX;
-                deferred.resolve( vo.Create( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo ));
+                apis.defer.resolve( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo );
             }
             catch( error ) {
-              SimpError.Clone( new SimpError( apis.vo.method , "Parse googleart.com error, url is " + url, apis.vo ), error );
-              apis.pub( apis.constructor.LOAD );
+              apis.defer.reject( new SimpError( apis.vo.method , "Parse googleart.com error, url is " + url, apis.vo ), error );
             }
         });
+        return apis.defer.promise(); 
     }
 
     /*
