@@ -25,27 +25,29 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 method   : "",
                 origin   : "",
                 code     : 0
-            },
-            BG_ORIGINS   = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleart.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
-            MAX_NUM      = BG_ORIGINS.length - 2; // excude: "today"
+            };
 
             function APIS() {
-                this.vo    = {};
+                this.vo     = {};
                 this.failed = 0;
             }
+
+            APIS.prototype.Stack       = {};
+            APIS.prototype.ORIGINS     = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleart.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
+            APIS.prototype.ORIGINS_MAX = APIS.prototype.ORIGINS.length - 2; // excude: "today"
 
             APIS.prototype.Random = function( min, max ) {
                 return Math.floor( Math.random() * ( max - min + 1 ) + min );
             }
 
             APIS.prototype.New = function() {
-                var code   = this.Random( 0, MAX_NUM );
+                var code   = this.Random( 0, this.ORIGINS_MAX );
                 this.defer = new $.Deferred();
 
                 // verify background every day
                 // verify today is new day
                 if ( IsNewDay( Today(), true ) || !IsRandom() ) {
-                    code = MAX_NUM + 1;
+                    code = this.ORIGINS_MAX + 1;
                 }
                 // verify today is holiday
                 else if ( isHoliday() ) {
@@ -57,7 +59,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                             localStorage[ "simptab-prv-code" ] == code ||
                             code == 11 ||
                             ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
-                        code = this.Random( 0, MAX_NUM );
+                        code = this.Random( 0, this.ORIGINS_MAX );
                     }
                     localStorage[ "simptab-prv-code" ] = code;
                 }
@@ -65,10 +67,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 // add test code
                 // code = 9;
 
-                console.log( "=== Current background origin is: ", code, BG_ORIGINS[code] );
+                console.log( "=== Current background origin is: ", code, this.ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
                 this.vo.code   = code;
-                this.vo.origin = BG_ORIGINS[code];
+                this.vo.origin = this.ORIGINS[code];
                 return { code: this.vo.code, origin: this.vo.origin };
             }
 
@@ -98,7 +100,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     return true;
                 }
                 else {
-                    if ( this.vo.origin == "today" ) apis.failed = MAX_NUM;
+                    if ( this.vo.origin == "today" ) apis.failed = this.ORIGINS_MAX;
                     this.defer.reject( new SimpError( "apis.VerifyObject()", "Current data structure error.", { result : result, apis_vo : apis.vo }));
                     return false;
                 }
@@ -110,7 +112,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Bing( today )
     */
-    originStack[ "today" ] = function() {
+    apis.Stack[ apis.ORIGINS[13] ] = function() {
         console.log( "=== Bing.com today ===");
         var local = i18n.GetLocale() == "zh_CN" ? "cn." : "";
         apis.Update({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
@@ -167,7 +169,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Bing( random )
     */
-    originStack[ "bing.com" ] = function() {
+    apis.Stack[ apis.ORIGINS[12] ] = function() {
         console.log( "=== Bing.com random ===");
         apis.Update({ url : SIMP_API_HOST + "bing.gallery.json", method : "apis.randomBing()", timeout: 2000 * 3 });
         apis.Remote( function( result ) {
@@ -572,7 +574,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Favorite background
     */
-    originStack[ "favorite" ] = function() {
+    apis.Stack[ apis.ORIGINS[10] ] = function() {
 
         console.log( "=== Favorite background call ===");
 
@@ -681,7 +683,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     }
 
     function init() {
-        originStack[ apis.New().origin ]()
+        apis.Stack[ apis.New().origin ]()
         .done( function() {
             deferred.resolve( vo.Create.apply( vo, arguments ));
         })
