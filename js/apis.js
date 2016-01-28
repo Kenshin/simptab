@@ -193,7 +193,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             apis.defer.resolve( prefix + result.wpFullFilename, prefix + result.wpFullFilename, result.title, result.infoUrl, date.Now(), "Bing.com Image", apis.vo.origin, apis.vo );
           }
           else {
-            originStack[ apis.vo.origin ]();
+            apis.Stack[ apis.vo.origin ]();
           }
         });
     }
@@ -201,7 +201,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     /*
     * Wall Haven
     */
-    originStack[ "wallhaven.cc" ] = function() {
+    apis.Stack[ apis.ORIGINS[0] ] = function() {
 
       console.log( "=== Wallhaven.cc call ===" );
 
@@ -212,18 +212,18 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             id     = wallhaven_ids[ apis.Random( 0, max ) ],
             url    = "http://alpha.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".jpg";
         apis.Update({ url : url, method: "apis.wallhaven()", dataType : "image" });
-        deferred.resolve( vo.Create( url, url, "Wallhaven.cc Image", "#", date.Now(), "Wallhaven.cc Image", apis.vo.origin, apis.vo ));
+        apis.defer.resolve( url, url, "Wallhaven.cc Image", "#", date.Now(), "Wallhaven.cc Image", apis.vo.origin, apis.vo );
       }
       catch ( error ) {
-        SimpError.Clone( new SimpError( apis.vo.origin, "Parse wallhaven error, url is " + url, apis.vo ), error );
-        apis.pub( apis.constructor.LOAD );
+        apis.defer.reject( new SimpError( apis.vo.origin, "Parse wallhaven error, url is " + url, apis.vo ), error );
       }
+      return apis.defer.promise();
     }
 
     /*
     * Unsplash.COM
     */
-    originStack[ "unsplash.com" ] = function() {
+    apis.Stack[ apis.ORIGINS[1] ] = function() {
 
       console.log( "=== Unsplash.com call ===" );
 
@@ -233,18 +233,18 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               id     = unsplash_ids[ apis.Random( 0, max ) ],
               url    = "https://unsplash.com/photos/" + id + "/download";
           apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
-          deferred.resolve( vo.Create( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo ));
+          apis.defer.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
       }
       catch ( error ) {
-        SimpError.Clone( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
-        apis.pub( apis.constructor.LOAD );
+        apis.defer.reject( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
       }
+      return apis.defer.promise();
     }
 
     /*
     * Unsplash.IT
     */
-    originStack[ "unsplash.it" ] = function() {
+    apis.Stack[ apis.ORIGINS[2] ] = function() {
 
         console.log( "=== Unsplash.it call ===" );
 
@@ -252,12 +252,12 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           var max    = 939,
               url    = "https://unsplash.it/1920/1080/?image=" + apis.Random( 0, max );
           apis.Update({ url : url, method: "apis.unsplashIT()", dataType : "image" });
-          deferred.resolve( vo.Create( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", apis.vo.origin, apis.vo ));
+          apis.defer.resolve( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", apis.vo.origin, apis.vo );
         }
         catch( error ) {
-          SimpError.Clone( new SimpError( apis.vo.origin , "Parse unsplash.it error, url is " + url, apis.vo ), error );
-          apis.pub( apis.constructor.LOAD );
+          apis.defer.reject( new SimpError( apis.vo.origin , "Parse unsplash.it error, url is " + url, apis.vo ), error );
         }
+        return apis.defer.promise();
     }
 
     /*
