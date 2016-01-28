@@ -689,7 +689,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         })
         .fail( function( result, error ) {
             SimpError.Clone( result, (!error ? result : error));
-            apis.failed < 8 ? init() : deferred.reject( result, error );
+            apis.failed < apis.ORIGINS_MAX - 5 ? init() : deferred.reject( result, error );
             apis.failed++;
         });
         return deferred.promise();
