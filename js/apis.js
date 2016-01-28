@@ -30,13 +30,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             BG_ORIGINS   = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleart.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
             MAX_NUM      = BG_ORIGINS.length - 2, // excude: "today"
             $target      = $({}),
-            RELOAD       = "reload";
+            LOAD         = "load";
 
             function APIS() {
                 this.vo = {};
             }
 
-            APIS.RELOAD          = RELOAD;
+            APIS.LOAD            = LOAD;
             APIS.prototype.sub   = function() { $target.on.apply(      $target, arguments ); }
             APIS.prototype.unsub = function() { $target.off.apply(     $target, arguments ); }
             APIS.prototype.pub   = function() { $target.trigger.apply( $target, arguments ); }
@@ -96,7 +96,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     me.VerifyObject( result ) && callBack( result );
                 } , function( jqXHR, textStatus, errorThrown ) {
                     console.error( "=== Remote background origin error ===", apis.vo, textStatus, errorThrown )
-                    failed_count < 5 ? me.pub( RELOAD ) : deferred.reject( new SimpError( "apis:Remote()", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo }));
+                    failed_count < 5 ? me.pub( LOAD ) : deferred.reject( new SimpError( "apis:Remote()", "Call remote api error.", { jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown, apis_vo : me.vo }));
                     failed_count ++;
                 });
             }
@@ -111,7 +111,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     }
                     else {
                         new SimpError( "apis.VerifyObject()", "Current data structure error.", { result : result, apis_vo : apis.vo } );
-                        this.pub( RELOAD );
+                        this.pub( LOAD );
                     }
                     return false;
                 }
@@ -140,7 +140,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch ( error ) {
                 SimpError.Clone( new SimpError( apis.vo.method, "Parse bing.com/HPImageArchive.aspx error.", apis.vo ), error );
-                apis.pub( apis.constructor.RELOAD );
+                apis.pub( apis.constructor.LOAD );
             }
         }, false );
     }
@@ -191,7 +191,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch( error ) {
               SimpError.Clone( new SimpError( apis.vo.method, "Parse bing.gallery.json error.", apis.vo ), error );
-              apis.pub( apis.constructor.RELOAD );
+              apis.pub( apis.constructor.LOAD );
             }
       });
     }
@@ -227,7 +227,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
       }
       catch ( error ) {
         SimpError.Clone( new SimpError( apis.vo.origin, "Parse wallhaven error, url is " + url, apis.vo ), error );
-        apis.pub( apis.constructor.RELOAD );
+        apis.pub( apis.constructor.LOAD );
       }
     }
 
@@ -248,7 +248,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
       }
       catch ( error ) {
         SimpError.Clone( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
-        apis.pub( apis.constructor.RELOAD );
+        apis.pub( apis.constructor.LOAD );
       }
     }
 
@@ -267,7 +267,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         catch( error ) {
           SimpError.Clone( new SimpError( apis.vo.origin , "Parse unsplash.it error, url is " + url, apis.vo ), error );
-          apis.pub( apis.constructor.RELOAD );
+          apis.pub( apis.constructor.LOAD );
         }
     }
 
@@ -311,7 +311,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         catch ( error ) {
             SimpError.Clone( new SimpError( "apis.getFlickrURL()" , "Parse flickr.com error, url is " + apis.vo.url, apis.vo ), error );
-            apis.pub( apis.constructor.RELOAD );
+            apis.pub( apis.constructor.LOAD );
         }
         return def.promise();
     }
@@ -331,7 +331,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch ( error ) {
                 SimpError.Clone( new SimpError( "apis.getFlickrPhotos()" , "Parse flickr.com error, url is " + url, apis.vo ), error );
-                apis.pub( apis.constructor.RELOAD );
+                apis.pub( apis.constructor.LOAD );
             }
         }, false );
         return def.promise();
@@ -366,7 +366,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           }
           catch ( error ) {
             SimpError.Clone( new SimpError( apis.vo.method , "Parse flickr.com error, url is " + url, apis.vo ), error );
-            apis.pub( apis.constructor.RELOAD );
+            apis.pub( apis.constructor.LOAD );
           }
         }, false );
         return def.promise();
@@ -395,7 +395,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch( error ) {
               SimpError.Clone( new SimpError( apis.vo.method , "Parse googleart.com error, url is " + url, apis.vo ), error );
-              apis.pub( apis.constructor.RELOAD );
+              apis.pub( apis.constructor.LOAD );
             }
         });
     }
@@ -431,7 +431,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch ( error ) {
               SimpError.Clone( new SimpError( apis.vo.method , "Parse 500px.com error, url is " + SIMP_API_HOST + PX_API, apis.vo ), error );
-              apis.pub( apis.constructor.RELOAD );
+              apis.pub( apis.constructor.LOAD );
             }
         });
         return def.promise();
@@ -455,7 +455,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch ( error ) {
               SimpError.Clone( new SimpError( apis.vo.method , "Parse 500px.com error, url is " + url, apis.vo ), error );
-              apis.pub( apis.constructor.RELOAD );
+              apis.pub( apis.constructor.LOAD );
             }
         });
         return def.promise();
@@ -487,7 +487,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           }
           else {
             new SimpError( apis.vo.method, "Not found any item from " + url, { result : result, apis_vo : apis.vo });
-            apis.pub( apis.constructor.RELOAD );
+            apis.pub( apis.constructor.LOAD );
           }
         });
     }
@@ -513,7 +513,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch( error ) {
               SimpError.Clone( new SimpError( apis.vo.method , "Parse visualhunt.com error, url is " + obj.url, apis.vo ), error );
-              apis.pub( apis.constructor.RELOAD );
+              apis.pub( apis.constructor.LOAD );
             }
         });
     }
@@ -577,7 +577,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
           }
           catch ( error ) {
             SimpError.Clone( new SimpError( apis.vo.method , "Parse nasa apod api error, url is " + url, apis.vo ), error );
-            apis.pub( apis.constructor.RELOAD );
+            apis.pub( apis.constructor.LOAD );
           }
       }, false );
     }
@@ -593,7 +593,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
                 new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo );
-                apis.pub( apis.constructor.RELOAD );
+                apis.pub( apis.constructor.LOAD );
                 return;
             }
 
@@ -606,7 +606,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             // verify favorite data structure
             if ( !vo.Verify()) {
                 new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo } );
-                apis.pub( apis.constructor.RELOAD );
+                apis.pub( apis.constructor.LOAD );
             }
             else {
                 vo.new = result;
@@ -615,7 +615,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         }
         catch( error ) {
             SimpError.Clone( new SimpError( "favorite", "Current 'simptab-favorites' data structure error.", apis.vo ), error );
-            apis.pub( apis.constructor.RELOAD );
+            apis.pub( apis.constructor.LOAD );
         }
     }
 
@@ -679,7 +679,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     data        = obj[key];
                     if ( !data ) {
                         new SimpError( apis.vo.origin, "Current holiday is " + key +  ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result );
-                        apis.pub( apis.constructor.RELOAD );
+                        apis.pub( apis.constructor.LOAD );
                         return;
                     }
                     max         = data.hdurl.length - 1;
@@ -691,17 +691,17 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             }
             catch( error ) {
                 SimpError.Clone( new SimpError( apis.vo.origin, "Get special backgrond error.", apis.vo ), error );
-                apis.pub( apis.constructor.RELOAD );
+                apis.pub( apis.constructor.LOAD );
             }
           });
     }
 
-    function reload() { originStack[ apis.New().origin ](); }
+    function loadBackground() { originStack[ apis.New().origin ](); }
 
     return {
       Init: function () {
-          apis.sub( apis.constructor.RELOAD, reload );
-          apis.pub( apis.constructor.RELOAD );
+          apis.sub( apis.constructor.LOAD, loadBackground );
+          apis.pub( apis.constructor.LOAD );
           return deferred.promise();
       }
     };
