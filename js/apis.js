@@ -17,6 +17,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             */
 
             var options = {
+                version  : 1,
                 url      : "",
                 type     : "GET",
                 dataType : "json",
