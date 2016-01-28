@@ -99,7 +99,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     return true;
                 }
                 else {
-                    if ( this.vo.origin == "today" ) apis.failed = this.ORIGINS_MAX;
                     this.defer.reject( new SimpError( "apis.VerifyObject()", "Current data structure error.", { result : result, apis_vo : apis.vo }));
                     return false;
                 }
@@ -684,6 +683,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
         })
         .fail( function( result, error ) {
             SimpError.Clone( result, (!error ? result : error));
+            if ( apis.vo.origin == "today" ) apis.failed = apis.ORIGINS_MAX;
             apis.failed < apis.ORIGINS_MAX - 5 ? init() : deferred.reject( result, error );
             apis.failed++;
         });
