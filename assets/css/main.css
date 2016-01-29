@@ -9,12 +9,12 @@
 }
 
 @font-face {
-    src: url("../fonts/zh_CN.bmp") format( "woff" );
+    src: url("../fonts/zh.bmp") format( "woff" );
     font-family: "zh_CN";
 }
 
 @font-face {
-    src: url("../fonts/zh_TW.bmp") format( "woff" );
+    src: url("../fonts/zh.bmp") format( "woff" );
     font-family: "zh_TW";
 }
 
