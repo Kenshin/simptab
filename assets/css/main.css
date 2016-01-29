@@ -259,6 +259,10 @@ body {
     padding: 5px;
 }
 
+.lineradio span {
+    cursor: pointer;
+}
+
 .lineradio .checked {
     background-image: url("../images/checked.png");
 }
