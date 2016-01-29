@@ -352,7 +352,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
         },
         Dislike: function( type ) {
             var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
-                uid         = vo.cur.url;
+                uid         = btoa( vo.cur.url );
             try {
                 type ? dislikelist.push( uid ) : dislikelist = dislikelist.filter( function( item ) { return item != uid; });
                 new Notify().Render( i18n.GetLang( "notify_dislike_" + ( type ? "add" : "del" ) ));
