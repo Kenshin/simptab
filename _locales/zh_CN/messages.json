@@ -47,6 +47,10 @@
         "message": "\u6536\u85cf"
     },
 
+    "controlbar_dislike": {
+        "message": "\u4e0d\u559c\u6b22"
+    },
+
     "setting_width": {
         "message": "225"
     },

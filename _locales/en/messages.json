@@ -47,6 +47,10 @@
         "message": "Favorite"
     },
 
+    "controlbar_dislike": {
+        "message": "Dislike"
+    },
+
     "setting_width": {
         "message": "270"
     },
