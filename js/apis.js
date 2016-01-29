@@ -496,7 +496,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
               apis.defer.resolve( url, url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo );
             }
             catch( error ) {
-              apis.defer.reject( new SimpError( apis.vo.method , "Parse visualhunt.com error, url is " + obj.url, apis.vo ), error );
+              apis.defer.reject( new SimpError( apis.vo.method , "Parse visualhunt.com error, url is " + apis.vo.url, apis.vo ), error );
             }
         });
         return apis.defer.promise();
