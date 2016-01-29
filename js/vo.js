@@ -96,6 +96,14 @@ define([ "jquery" ], function( $ ) {
         return $.extend( {}, value );
     };
 
+    VO.prototype.isDislike = function( url ) {
+        var arr = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
+            uid = btoa( url ), result;
+        arr     = arr.filter( function( item ) { return item == uid; });
+        result  = arr && arr.length > 0 ? false : true;
+        return result;
+    };
+
     return new VO();
 
 });

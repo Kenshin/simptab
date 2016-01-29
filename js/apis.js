@@ -680,7 +680,14 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     function init() {
         apis.Stack[ apis.New().origin ]()
         .done( function() {
-            deferred.resolve( vo.Create.apply( vo, arguments ));
+            var url = arguments && arguments[0];
+            if ( vo.isDislike( url )) {
+                deferred.resolve( vo.Create.apply( vo, arguments ));
+            }
+            else {
+                new SimpError( apis.vo.origin, "Current background url is dislike url =" + url, apis.vo );
+                init();
+            }
         })
         .fail( function( result, error ) {
             SimpError.Clone( result, (!error ? result : error));

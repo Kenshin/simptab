@@ -331,7 +331,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                             // update local storge 'simptab-favorites'
                             files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
 
-                            console.log("Upload favorite background success.", upload_vo.new );
+                            console.log("=== Upload favorite background success.", upload_vo.new );
                         })
                         .fail( function( error ) {
                             new Notify().Render( i18n.GetLang( "notify_upload_fail" ) );
@@ -351,7 +351,16 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             }
         },
         Dislike: function( type ) {
-            console.log("asdfasdfasdfasfdasfasdfasdf", type )
+            var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
+                uid         = vo.cur.uid;
+            try {
+                type ? dislikelist.push( uid ) : dislikelist = dislikelist.filter( function( item ) { return item != uid; });
+                console.log( "=== Current dislike object data structure is ", dislikelist, vo.cur );
+                localStorage["simptab-dislike"] = JSON.stringify( dislikelist );
+            }
+            catch ( error ) {
+                console.error( "Parse 'simptab-dislike' error.", error );
+            }
         }
     };
 });
