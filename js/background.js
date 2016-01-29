@@ -260,8 +260,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                         // update local storge 'simptab-bing-fav'
                         vo.cur.type == "today" && files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
 
-                        // set favorite icon state
+                        // set favorite / dislike icon state
                         controlbar.SetFavorteIcon();
+                        controlbar.SetDislikeState( false );
 
                         new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
 
@@ -292,8 +293,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                                 vo.Set( vo.cur );
                             }
 
-                            // update favorite icon
+                            // update favorite / dislike icon
                             controlbar.SetFavorteIcon();
+                            controlbar.SetDislikeState( true );
 
                             new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
@@ -355,6 +357,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 uid         = btoa( vo.cur.url );
             try {
                 type ? dislikelist.push( uid ) : dislikelist = dislikelist.filter( function( item ) { return item != uid; });
+                controlbar.SetFavorteState( !type );
                 new Notify().Render( i18n.GetLang( "notify_dislike_" + ( type ? "add" : "del" ) ));
                 console.log( "=== Current dislike object data structure is ", dislikelist, vo.cur );
                 localStorage["simptab-dislike"] = JSON.stringify( dislikelist );

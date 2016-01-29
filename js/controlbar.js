@@ -35,7 +35,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     }
 
     function setFavorteState( is_show ) {
-        is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
+        is_show ? $( ".controlink[url='favorite']" ).parent().show() : $( ".controlink[url='favorite']" ).parent().hide();
     }
 
     function setFavorteIcon() {
@@ -44,7 +44,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     }
 
     function setDislikeState( is_show ) {
-        is_show ? $( ".controlink[url='dislike']" ).show() : $( ".controlink[url='dislike']" ).hide();
+        is_show ? $( ".controlink[url='dislike']" ).parent().show() : $( ".controlink[url='dislike']" ).parent().hide();
     }
 
     function setDislikeIcon() {
@@ -168,7 +168,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
             setDislikeState( (!is_default && vo.cur.favorite == -1 && setting.IsRandom()) );
             setDislikeIcon();
         },
+        SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
-        SetBgPosition     : setBackgroundPosition
+        SetFavorteState   : setFavorteState,
+        SetDislikeState   : setDislikeState
     };
 });
