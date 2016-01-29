@@ -176,19 +176,19 @@
     },
 
     "notify_favorite_add": {
-        "message": "Success added to the dislike list, the new background downloaded, the current background will not be displayed."
-    },
-
-    "notify_favorite_del": {
-        "message": "Success removed to the dislike list."
-    },
-
-    "notify_dislike_add": {
         "message": "Background favorite add complete."
     },
 
-    "notify_dislike_del": {
+    "notify_favorite_del": {
         "message": "Background favorite delete complete."
+    },
+
+    "notify_dislike_add": {
+        "message": "Success added to the dislike list, the new background downloaded, the current background will not be displayed."
+    },
+
+    "notify_dislike_del": {
+        "message": "Success removed to the dislike list."
     },
 
     "version_detail": {
