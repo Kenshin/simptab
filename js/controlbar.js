@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n, vo, date, files, setting ) {
 
     "use strict";
 
@@ -165,7 +165,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
             setBackgroundPosition();
             setFavorteState( !is_default );
             setFavorteIcon();
-            setDislikeState( (!is_default && vo.cur.favorite == -1) );
+            setDislikeState( (!is_default && vo.cur.favorite == -1 && setting.IsRandom()) );
             setDislikeIcon();
         },
         SetFavorteIcon    : setFavorteIcon,
