@@ -591,7 +591,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 apis.defer.reject( new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo }));
             }
             else {
-                apis.defer.resolve( result.url, result.url, result.name, result.info, result.enddate, result.shortname, result.type, result.apis_vo, result.favorite );
+                setTimeout( function(){ apis.defer.resolve( result.url, result.url, result.name, result.info, result.enddate, result.shortname, result.type, result.apis_vo, result.favorite ); }, 1000 );
             }
         }
         catch( error ) {
