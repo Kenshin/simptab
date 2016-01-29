@@ -10,12 +10,7 @@
 
 @font-face {
     src: url("../fonts/zh.bmp") format( "woff" );
-    font-family: "zh_CN";
-}
-
-@font-face {
-    src: url("../fonts/zh.bmp") format( "woff" );
-    font-family: "zh_TW";
+    font-family: "zh";
 }
 
 html {

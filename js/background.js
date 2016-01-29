@@ -211,14 +211,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
         },
 
         SetLang: function( lang ) {
-
-            // check locales
-            if ( lang != "en" && lang != "zh_CN" && lang != "zh_TW" ) {
-                lang = "en";
-            }
-
-            // set font-family
-            $( "body" ).css({ "font-family" : lang });
+            $( "body" ).css({ "font-family" : lang.substr(0,2) });
         },
 
         Valid: function() {
