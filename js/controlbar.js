@@ -47,6 +47,11 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
         is_show ? $( ".controlink[url='dislike']" ).show() : $( ".controlink[url='dislike']" ).hide();
     }
 
+    function setDislikeIcon() {
+        var newclass = vo.isDislike( vo.cur.url ) ? "dislike" : "disliked";
+        $( ".controlink[url='dislike']" ).find("span").attr( "class", "icon " + newclass );
+    }
+
     function setCurBackgroundURI() {
         files.GetDataURI( vo.constructor.CURRENT_BACKGROUND ).done( function( dataURI) {
             files.DataURI( dataURI );
@@ -160,7 +165,8 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
             setBackgroundPosition();
             setFavorteState( !is_default );
             setFavorteIcon();
-            setDislikeState( !is_default );
+            setDislikeState( (!is_default && vo.cur.favorite == -1) );
+            setDislikeIcon();
         },
         SetFavorteIcon    : setFavorteIcon,
         SetBgPosition     : setBackgroundPosition
