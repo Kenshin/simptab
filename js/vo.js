@@ -80,9 +80,9 @@ define([ "jquery" ], function( $ ) {
                 this.cur.favorite = -1;
                 this.cur.version  = VERSION;
             case "2.1":
-                this.cur.apis_vo  = {};
                 if ( this.cur.type == "googleartproject.com" ) this.cur.type = "googleart.com";
                 if ( this.cur.enddate.length == 8 && this.cur.type == "bing.com" ) this.cur.type = "today";
+                this.cur.apis_vo  = {};
                 this.cur.uid      = btoa( this.cur.url );
                 this.cur.version  = VERSION;
             case VERSION:
