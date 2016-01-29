@@ -588,7 +588,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
 
             // verify favorite data structure
             if ( !vo.Verify()) {
-                apis.defer.reject( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo } );
+                apis.defer.reject( new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo }));
             }
             else {
                 apis.defer.resolve( result.url, result.url, result.name, result.info, result.enddate, result.shortname, result.type, result.apis_vo, result.favorite );
