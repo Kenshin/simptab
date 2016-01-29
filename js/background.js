@@ -349,6 +349,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             for( var i = 0, len = filelist.length; i < len; i++ ) {
                 adapter.bind( null, i, filelist[i].name.replace( /\.(jpg|jpge|png|gif|bmp)$/ig, "" ) )();
             }
+        },
+        Dislike: function( type ) {
+            console.log("asdfasdfasdfasfdasfasdfasdf", type )
         }
     };
 });
