@@ -22,7 +22,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `favorite`
     *
     * when version = 2.2
-    * add new property `apis_vo` uid( url )
+    * add new property `apis_vo` `uid`( url )
     *
     */
     var VERSION = "2.2";
