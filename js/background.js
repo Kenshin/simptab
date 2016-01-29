@@ -3,11 +3,6 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
     "use strict";
 
-    function verifyURL( url ) {
-        var re = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
-        return re.test( url );
-    }
-
     function getCurrentBackground( is_random ) {
 
         var def = $.Deferred();
@@ -95,7 +90,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 .fail( failBackground )
                 .done( function( result ) {
                     console.log( "=== Current background image url: " + result.hdurl )
-                    verifyURL( result.hdurl ) ? def.resolve( true, result.hdurl ) : def.reject( new SimpError( "background.getRemoteBackground()::apis.Init()", "url verify error.", result ));
+                    console.log( "=== Current background vo.new   : ", vo.new        )
+                    // when result.hdurl == vo.constructor.DEFAULT_BACKGROUND, version.hdurl verify failed, re-set vo.new is vo.cur
+                    result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );
                 });
         }
         else {
@@ -137,7 +134,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     .fail( function( result ) {
                         console.log( "Write error: ", result );
                         progress.Set( "writefailed" );
-                        def.reject( new SimpError( "background.setRemoteBackground()::files.Add()", "Favorite write to local error.", result ));
+                        def.reject( new SimpError( "background.setRemoteBackground()::files.Add()", "Background write to local error.", result ));
                     });
             }, function( error ) {
                 def.reject( new SimpError( "background.setRemoteBackground()::files.GetDataURI()", "Load background error.", error ));
@@ -180,11 +177,17 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
         // re-set (hide) progress bar
         progress.Set( "remotefailed" );
 
+        // when bing.com( today ) remote failed, set vo.new == vo.cur and refresh current backgrond
+        if ( error.data.apis_vo && error.data.apis_vo.origin == "today" && vo.cur && vo.cur.type != "default" ) {
+            vo.new = vo.Clone( vo.cur );
+            controlbar.Set( false );
+        }
+
         try {
             throw error;
         }
         catch( error ) {
-            console.group( "===== SimpTab failed. ====="             );
+            console.group( "===== SimpTab failed ====="             );
             console.error( "error             = ", error             );
             console.error( "error.stack       = ", error.stack       );
             console.error( "error.name        = ", error.name        );
@@ -255,14 +258,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                         files.AddFavorite( files.FavoriteVO(), file_name, vo.cur );
 
                         // update local storge 'simptab-bing-fav'
-                        if ( vo.cur.type == "bing.com" ) files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
+                        vo.cur.type == "today" && files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
 
                         // set favorite icon state
                         controlbar.SetFavorteIcon();
 
                         new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
 
-                        console.log( "Add favorite background success." );
+                        console.log( "=== Add favorite background success.", vo.cur );
                     })
                     .fail( function( error ) {
                         console.error( "Add favorite background error.", error );
@@ -279,7 +282,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                             files.DeleteFavorite( files.FavoriteVO(), file_name );
 
                             // update local storge 'simptab-bing-fav'
-                            if ( vo.cur.type == "bing.com" ) files.DeleteFavBing( files.FavBingVO(), vo.cur.favorite );
+                            vo.cur.type == "today" && files.DeleteFavBing( files.FavBingVO(), vo.cur.favorite );
 
                             // update vo.cur
                             vo.cur.favorite = -1;
@@ -294,7 +297,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                             new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
-                            console.log( "Delete favorite background success." );
+                            console.log( "=== Delete favorite background success.", vo.cur );
                         }
                         catch ( error ) {
                             console.log( "Delete favorite background error.", error );
@@ -315,13 +318,15 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     files.GetDataURI( filelist[i], arr, i, len ).done( function( datauri ) {
 
                         var file_name = Math.round(+new Date()),
-                            upload_vo = {new:{}};
+                            upload_vo = {new:{}},
+                            apis_vo   = { url : "", type : "GET", dataType : "localStorge", timeout : 2000, method : "background.Upload()", origin : "favorite", code : 10 };
 
                         files.Add( file_name, datauri )
                         .done( function( result, hdurl ) {
 
                             // create upload vo
-                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", file_name ]);
+                            apis_vo.url = hdurl;
+                            vo.Create.apply( upload_vo, [ hdurl, hdurl, name, "#", date.Now(), name, "upload", apis_vo, file_name ]);
 
                             // update local storge 'simptab-favorites'
                             files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );

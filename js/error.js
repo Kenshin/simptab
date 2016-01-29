@@ -18,12 +18,17 @@ define([ "jquery" ], function( $ ) {
 
 	function SimpError( method_name, message, data ) {
 
-		var err = Error.call( this, arguments[1] );
+		var err   = Error.call( this, arguments[1] );
 
 		this.method_name = method_name;
 		this.message     = message;
 		this.data        = data;
 		this.stack       = err.stack;
+
+		console.groupCollapsed( "===== SimpTab warning =====" );
+        console.warn.apply( console, arguments );
+        console.warn.call( console, this.stack );
+		console.groupEnd();
 	}
 
     SimpError.prototype.name = "SimpError";

@@ -40,10 +40,19 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                     "http://*.wallhaven.cc/",
                     "https://*.staticflickr.com/",
                     "http://*.desktopprassets.com/",
-                    "http://*.visualhunt.com/",
                     "https://*.500px.org/",
                     "http://*.vo.msecnd.net/",
                     "http://*.nasa.gov/"
+                ]
+            },
+            "1.4.4" : {
+                level   : 5,
+                details : "",
+                permissions: [
+                    "https://*.visualhunt.com/"
+                ],
+                removePermissions : [
+                    "http://*.visualhunt.com/"
                 ]
             }
         };
@@ -98,6 +107,10 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             this.permissions = objFilter( 0, details[this.new].level, details, "permissions" );
         }
 
+        Version.prototype.RemovePermissions = function() {
+            return objFilter( 0, details[this.new].level, details, "removePermissions" );
+        }
+
         return new Version();
 
     })();
@@ -110,7 +123,22 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
             new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
             $( ".notifygp" ).undelegate( ".permissions", "click", permissionClickHandle );
             $target.click();
+            removePermissions();
       });
+    }
+
+    function removePermissions() {
+        var removePermis = version.RemovePermissions();
+        if ( removePermis ) {
+            var arr = [];
+            arr.push( $.trim(removePermis.join(" ")));
+            chrome.permissions.remove({
+                origins : arr
+            }, function( result ) {
+                console.warn( "Rmove useless permissions.", arr )
+          });
+        }
+
     }
 
     return {

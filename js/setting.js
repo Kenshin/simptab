@@ -201,6 +201,8 @@ define([ "jquery" ], function( $ ) {
                 setting.UpdateOriginsMode( idx, value );
             });
 
+            // listen span click event
+            $( ".lineradio" ).delegate( "span", "click",  function( event ) { $(this).next().click(); });
         },
 
         Mode: function( type ) {
