@@ -144,7 +144,15 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 console.warn( "Rmove useless permissions.", arr )
           });
         }
+    }
 
+    function containsPermissions() {
+        chrome.permissions.contains({ origins: version.permissions }, function( result ) {
+            if ( !result ) {
+                new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
+                $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
+            }
+        });
     }
 
     return {
@@ -161,30 +169,11 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                                         .replace( '#4', version.Details())
                                       , true );
 
-                if ( version.isPermissions() ) {
-                    chrome.permissions.contains({
-                        origins: version.permissions
-                    }, function( result ) {
-                          if ( result ) {
-                            console.log("asdfasfdasdfaddddddd")
-                          } else {
-                              new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
-                              $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
-                          }
-                    });
-                }
-                version.Save();
+                version.isPermissions() && containsPermissions();
             }
             else {
                 version.GetPermissions();
-                chrome.permissions.contains({
-                    origins: version.permissions
-                }, function( result ) {
-                    if ( !result ) {
-                        new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
-                        $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
-                    }
-                });
+                containsPermissions();
             }
         }
     };
