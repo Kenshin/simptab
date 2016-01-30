@@ -162,10 +162,17 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                                       , true );
 
                 if ( version.isPermissions() ) {
-                    new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
-                    $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
+                    chrome.permissions.contains({
+                        origins: version.permissions
+                    }, function( result ) {
+                          if ( result ) {
+                            console.log("asdfasfdasdfaddddddd")
+                          } else {
+                              new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
+                              $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
+                          }
+                    });
                 }
-
                 version.Save();
             }
             else {
