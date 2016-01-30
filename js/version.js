@@ -54,6 +54,12 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 removePermissions : [
                     "http://*.visualhunt.com/"
                 ]
+            },
+            "1.5.0" : {
+                level   : 6,
+                details : i18n.GetLang( "version_detail_5" ),
+                permissions: [],
+                removePermissions : []
             }
         };
 
