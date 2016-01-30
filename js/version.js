@@ -155,11 +155,17 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         });
     }
 
+    function correction() {
+        if ( version.cur && version.cur < "1.5.0" ) {
+            localStorage.removeItem( "simptab-special-day-count" );
+        }
+    }
+
     return {
         Init: function() {
 
             if ( version.isUpdate() ) {
-
+                correction();
                 new Notify().Render( 0,
                                      i18n.GetLang( 'version_title' ),
                                      i18n.GetLang( 'version_content' )
