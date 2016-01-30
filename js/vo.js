@@ -95,10 +95,17 @@ define([ "jquery" ], function( $ ) {
     };
 
     VO.prototype.isDislike = function( url ) {
-        var arr = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
-            uid = btoa( url ), result;
-        arr     = arr.filter( function( item ) { return item == uid; });
-        result  = arr && arr.length > 0 ? false : true;
+        try {
+            var result,
+                arr = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
+                uid = btoa( url );
+            arr     = arr.filter( function( item ) { return item == uid; });
+            result  = arr && arr.length > 0 ? false : true;
+        }
+        catch ( error ) {
+            console.error( "vo.isDislike(), Parse 'simptab-dislike' error.", error )
+            result = false;
+        }
         return result;
     };
 

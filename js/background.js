@@ -346,9 +346,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             }
         },
         Dislike: function( type ) {
-            var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
-                uid         = btoa( vo.cur.url );
             try {
+                var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
+                    uid         = btoa( vo.cur.url );
                 type ? dislikelist.push( uid ) : dislikelist = dislikelist.filter( function( item ) { return item != uid; });
                 controlbar.SetFavorteState( !type );
                 new Notify().Render( i18n.GetLang( "notify_dislike_" + ( type ? "add" : "del" ) ));
@@ -356,7 +356,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 localStorage["simptab-dislike"] = JSON.stringify( dislikelist );
             }
             catch ( error ) {
-                console.error( "Parse 'simptab-dislike' error.", error );
+                console.error( "background.Dislike(), Parse 'simptab-dislike' error.", error );
             }
         }
     };
