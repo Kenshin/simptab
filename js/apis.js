@@ -57,8 +57,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 else {
                     while ( Verify( code ) == "false" ||
                             localStorage[ "simptab-prv-code" ] == code ||
-                            code == 11 ||
-                            ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )) {
+                            code == 11 /*||
+                            ( localStorage[ "simptab-special-day-count" ] && localStorage[ "simptab-special-day-count" ].length === 5 && code == 9 )*/) {
                         code = this.Random( 0, this.ORIGINS_MAX );
                     }
                     localStorage[ "simptab-prv-code" ] = code;
@@ -654,7 +654,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                     random      = apis.Random( 0, max );
                     hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
 
-                    !localStorage["simptab-special-day-count"] ? localStorage["simptab-special-day-count"] = 1 : localStorage["simptab-special-day-count"] += 1;
+                    /*!localStorage["simptab-special-day-count"] ? localStorage["simptab-special-day-count"] = 1 : localStorage["simptab-special-day-count"] += 1;*/
                 }
                 else {
                     key         = date.Today();
