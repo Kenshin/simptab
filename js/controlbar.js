@@ -168,7 +168,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
             setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
             setBackgroundPosition();
             setDislikeState( (!is_default && vo.cur.favorite == -1 && setting.IsRandom()) );
-            setFavorteState( !is_default && setDislikeIcon() );
+            setFavorteState( !is_default && setDislikeIcon() && setting.IsRandom() );
             setFavorteIcon();
             setUploadState( setting.IsRandom() );
         },
