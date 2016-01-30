@@ -47,6 +47,10 @@
         "message": "Favorite"
     },
 
+    "controlbar_dislike": {
+        "message": "Dislike"
+    },
+
     "setting_width": {
         "message": "270"
     },
@@ -177,6 +181,14 @@
 
     "notify_favorite_del": {
         "message": "Background favorite delete complete."
+    },
+
+    "notify_dislike_add": {
+        "message": "Success added to the dislike list, the new background downloaded, the current background will not be displayed."
+    },
+
+    "notify_dislike_del": {
+        "message": "Success removed to the dislike list."
     },
 
     "version_detail": {

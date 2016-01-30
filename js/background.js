@@ -211,14 +211,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
         },
 
         SetLang: function( lang ) {
-
-            // check locales
-            if ( lang != "en" && lang != "zh_CN" && lang != "zh_TW" ) {
-                lang = "en";
-            }
-
-            // set font-family
-            $( "body" ).css({ "font-family" : lang });
+            $( "body" ).css({ "font-family" : lang.substr(0,2) });
         },
 
         Valid: function() {
@@ -260,8 +253,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                         // update local storge 'simptab-bing-fav'
                         vo.cur.type == "today" && files.AddFavBing( files.FavBingVO(), vo.cur.enddate + ":" + vo.cur.favorite );
 
-                        // set favorite icon state
+                        // set favorite / dislike icon state
                         controlbar.SetFavorteIcon();
+                        vo.cur.type != "upload" && controlbar.SetDislikeState( false );
 
                         new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
 
@@ -292,8 +286,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                                 vo.Set( vo.cur );
                             }
 
-                            // update favorite icon
+                            // update favorite / dislike icon
                             controlbar.SetFavorteIcon();
+                            vo.cur.type != "upload" && controlbar.SetDislikeState( true );
 
                             new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
@@ -331,7 +326,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                             // update local storge 'simptab-favorites'
                             files.AddFavorite( files.FavoriteVO(), file_name, upload_vo.new );
 
-                            console.log("Upload favorite background success.", upload_vo.new );
+                            console.log("=== Upload favorite background success.", upload_vo.new );
                         })
                         .fail( function( error ) {
                             new Notify().Render( i18n.GetLang( "notify_upload_fail" ) );
@@ -348,6 +343,20 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             };
             for( var i = 0, len = filelist.length; i < len; i++ ) {
                 adapter.bind( null, i, filelist[i].name.replace( /\.(jpg|jpge|png|gif|bmp)$/ig, "" ) )();
+            }
+        },
+        Dislike: function( type ) {
+            try {
+                var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
+                    uid         = btoa( vo.cur.url );
+                type ? dislikelist.push( uid ) : dislikelist = dislikelist.filter( function( item ) { return item != uid; });
+                controlbar.SetFavorteState( !type );
+                new Notify().Render( i18n.GetLang( "notify_dislike_" + ( type ? "add" : "del" ) ));
+                console.log( "=== Current dislike object data structure is ", dislikelist, vo.cur );
+                localStorage["simptab-dislike"] = JSON.stringify( dislikelist );
+            }
+            catch ( error ) {
+                console.error( "background.Dislike(), Parse 'simptab-dislike' error.", error );
             }
         }
     };

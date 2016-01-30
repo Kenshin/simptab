@@ -79,9 +79,9 @@ define([ "jquery" ], function( $ ) {
                 this.cur.favorite = -1;
                 this.cur.version  = VERSION;
             case "2.1":
-                this.cur.apis_vo  = {};
                 if ( this.cur.type == "googleartproject.com" ) this.cur.type = "googleart.com";
                 if ( this.cur.enddate.length == 8 && this.cur.type == "bing.com" ) this.cur.type = "today";
+                this.cur.apis_vo  = {};
                 this.cur.version  = VERSION;
             case VERSION:
                 result            = true;
@@ -92,6 +92,21 @@ define([ "jquery" ], function( $ ) {
 
     VO.prototype.Clone = function( value ) {
         return $.extend( {}, value );
+    };
+
+    VO.prototype.isDislike = function( url ) {
+        try {
+            var result,
+                arr = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
+                uid = btoa( url );
+            arr     = arr.filter( function( item ) { return item == uid; });
+            result  = arr && arr.length > 0 ? false : true;
+        }
+        catch ( error ) {
+            console.error( "vo.isDislike(), Parse 'simptab-dislike' error.", error )
+            result = false;
+        }
+        return result;
     };
 
     return new VO();

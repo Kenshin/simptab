@@ -591,7 +591,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
                 apis.defer.reject( new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo }));
             }
             else {
-                apis.defer.resolve( result.url, result.url, result.name, result.info, result.enddate, result.shortname, result.type, result.apis_vo, result.favorite );
+                setTimeout( function(){ apis.defer.resolve( result.url, result.url, result.name, result.info, result.enddate, result.shortname, result.type, result.apis_vo, result.favorite ); }, 1000 );
             }
         }
         catch( error ) {
@@ -680,7 +680,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
     function init() {
         apis.Stack[ apis.New().origin ]()
         .done( function() {
-            deferred.resolve( vo.Create.apply( vo, arguments ));
+            var url = arguments && arguments[0];
+            // when change background mode is 'day', not invoke vo.isDislike( url )
+            if ( !setting.IsRandom() || vo.isDislike( url )) {
+                deferred.resolve( vo.Create.apply( vo, arguments ));
+            }
+            else {
+                new SimpError( apis.vo.origin, "Current background url is dislike url =" + url, apis.vo );
+                init();
+            }
         })
         .fail( function( result, error ) {
             SimpError.Clone( result, (!error ? result : error));

@@ -9,13 +9,8 @@
 }
 
 @font-face {
-    src: url("../fonts/zh_CN.bmp") format( "woff" );
-    font-family: "zh_CN";
-}
-
-@font-face {
-    src: url("../fonts/zh_TW.bmp") format( "woff" );
-    font-family: "zh_TW";
+    src: url("../fonts/zh.bmp") format( "woff" );
+    font-family: "zh";
 }
 
 html {
@@ -181,6 +176,14 @@ body {
 
 .unfavoriteicon {
     background-image: url("../images/unfavorite.png");
+}
+
+.dislike {
+    background-image: url("../images/dislike.png");
+}
+
+.disliked {
+    background-image: url("../images/disliked.png");
 }
 
 .settingicon {

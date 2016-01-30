@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date, files ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n, vo, date, files, setting ) {
 
     "use strict";
 
@@ -35,12 +35,22 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
     }
 
     function setFavorteState( is_show ) {
-        is_show ? $( ".controlink[url='favorite']" ).show() : $( ".controlink[url='favorite']" ).hide();
+        is_show ? $( ".controlink[url='favorite']" ).parent().show() : $( ".controlink[url='favorite']" ).parent().hide();
     }
 
     function setFavorteIcon() {
         var newclass = vo.cur.favorite == -1 ? "unfavoriteicon" : "favoriteicon";
         $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
+    }
+
+    function setDislikeState( is_show ) {
+        is_show ? $( ".controlink[url='dislike']" ).parent().show() : $( ".controlink[url='dislike']" ).parent().hide();
+    }
+
+    function setDislikeIcon() {
+        var newclass = vo.isDislike( vo.cur.url ) ? "dislike" : "disliked";
+        $( ".controlink[url='dislike']" ).find("span").attr( "class", "icon " + newclass );
+        return newclass == "dislike" ? true : false;
     }
 
     function setCurBackgroundURI() {
@@ -95,7 +105,7 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
                         break;
                     case "favorite":
                         var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
-                        callBack( is_favorite );
+                        callBack( url, is_favorite );
                         break;
                     case "download":
                         // hack code( when 'unsplash.com' or 'nasa.gov' image download, new tab happen crash error. )
@@ -109,11 +119,17 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
 
                         $input.attr({ type : "file", multiple : "true" });
                         $input.one( "change", function(event){
-                            callBack( event.currentTarget.files );
+                            callBack( url, event.currentTarget.files );
                             input  = null;
                             $input = null;
                         });
                         $input.trigger("click");
+                        break;
+                    case "dislike":
+                        var $dislike   = $target.find( "span" ),
+                            is_dislike = $dislike.hasClass( "dislike" );
+                        is_dislike ? $dislike.removeClass( "dislike" ).addClass( "disliked" ) : $dislike.removeClass( "disliked" ).addClass( "dislike" );
+                        callBack( url, is_dislike );
                         break;
                 }
             });
@@ -126,9 +142,14 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
             else {
                 var target    = $( $(".controlbar").find( "a" )[idx] )[0],
                     $favorite = $( ".controlink[url='favorite']" ),
-                    $hidden   = $favorite.has(":hidden");
-                // hack code
-                if ( target !== $favorite[0] || ( target === $favorite[0] && $hidden && $hidden.length === 0 )) {
+                    $favhidden= $favorite.has(":hidden"),
+                    $dislike  = $( ".controlink[url='dislike']" ),
+                    $dishidden= $dislike.has(":hidden");
+                // when favorite hidden, dislike not action; when dislike hidden, favroite not action;
+                if ( (target !== $favorite[0] && target !== $dislike[0]) ||
+                     (target === $favorite[0] && $favhidden && $favhidden.length === 0 ) ||
+                     (target === $dislike[0]  && $dishidden && $dishidden.length === 0 )
+                 ) {
                     target.click();
                 }
             }
@@ -148,10 +169,13 @@ define([ "jquery", "i18n", "vo", "date", "files" ], function( $, i18n, vo, date,
             setDownloadURL();
             setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
             setBackgroundPosition();
-            setFavorteState( !is_default );
+            setDislikeState( (!is_default && vo.cur.favorite == -1 && setting.IsRandom()) );
+            setFavorteState( !is_default && setDislikeIcon() );
             setFavorteIcon();
         },
+        SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
-        SetBgPosition     : setBackgroundPosition
+        SetFavorteState   : setFavorteState,
+        SetDislikeState   : setDislikeState
     };
 });
