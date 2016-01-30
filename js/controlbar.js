@@ -34,6 +34,10 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
        vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
     }
 
+    function setUploadState( is_show ) {
+        is_show ? $( ".controlink[url='upload']" ).parent().show() : $( ".controlink[url='upload']" ).parent().hide();
+    }
+
     function setFavorteState( is_show ) {
         is_show ? $( ".controlink[url='favorite']" ).parent().show() : $( ".controlink[url='favorite']" ).parent().hide();
     }
@@ -172,6 +176,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
             setDislikeState( (!is_default && vo.cur.favorite == -1 && setting.IsRandom()) );
             setFavorteState( !is_default && setDislikeIcon() );
             setFavorteIcon();
+            setUploadState( setting.IsRandom() );
         },
         SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
