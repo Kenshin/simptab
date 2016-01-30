@@ -157,6 +157,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
     function correction() {
         if ( version.cur && version.cur < "1.5.0" ) {
+            console.log("asdfasdfasdfadfffffffffffffff")
             localStorage.removeItem( "simptab-special-day-count" );
         }
     }
