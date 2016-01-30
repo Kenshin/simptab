@@ -144,18 +144,12 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                 $( $(".chromelink")[idx] ).click();
             }
             else {
-                var target    = $( $(".controlbar").find( "a" )[idx] )[0],
-                    $favorite = $( ".controlink[url='favorite']" ),
-                    $favhidden= $favorite.has(":hidden"),
-                    $dislike  = $( ".controlink[url='dislike']" ),
-                    $dishidden= $dislike.has(":hidden");
-                // when favorite hidden, dislike not action; when dislike hidden, favroite not action;
-                if ( (target !== $favorite[0] && target !== $dislike[0]) ||
-                     (target === $favorite[0] && $favhidden && $favhidden.length === 0 ) ||
-                     (target === $dislike[0]  && $dishidden && $dishidden.length === 0 )
-                 ) {
-                    target.click();
-                }
+                var $target = $( $(".controlbar").find( "a" )[idx] ),
+                    type    = $target.attr("url"),
+                    hidden  = $target.parent().has(":hidden"),
+                    hidden  = hidden && hidden.length > 0 ? true : false,
+                    arr     = [ "upload", "favorite", "dislike" ];
+                arr.indexOf( type ) == -1 || !hidden && $target[0].click();
             }
         },
 
