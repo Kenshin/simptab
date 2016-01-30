@@ -170,6 +170,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                                       , true );
 
                 version.isPermissions() && containsPermissions();
+                version.Save();
             }
             else {
                 version.GetPermissions();
