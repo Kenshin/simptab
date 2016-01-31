@@ -51,6 +51,10 @@
         "message": "Dislike"
     },
 
+    "controlbar_pin": {
+        "message": "Pin"
+    },
+
     "setting_width": {
         "message": "270"
     },

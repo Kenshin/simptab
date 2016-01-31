@@ -51,6 +51,10 @@
         "message": "\u4e0d\u559c\u6b61"
     },
 
+    "controlbar_pin": {
+        "message": "\u56fa\u5b9a"
+    },
+
     "setting_width": {
         "message": "225"
     },

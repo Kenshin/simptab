@@ -17,6 +17,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".controlbar" ).children()[6]).find( ".tooltip" ).text( i18n( "controlbar_setting" ));
         $($( ".controlbar" ).children()[7]).find( ".tooltip" ).text( i18n( "controlbar_favorite" ));
         $($( ".controlbar" ).children()[8]).find( ".tooltip" ).text( i18n( "controlbar_dislike" ));
+        $($( ".controlbar" ).children()[9]).find( ".tooltip" ).text( i18n( "controlbar_pin" ));
     }
 
     function setting() {
