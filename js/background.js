@@ -363,7 +363,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 localStorage.removeItem( "simptab-pin" );
             }
             else {
-                var obj = { limit: localStorage[ "simptab-limit" ], time: date.Now() };
+                var obj = { time: new Date().getTime() };
                 localStorage[ "simptab-pin" ] = JSON.stringify( obj );
             }
         }
