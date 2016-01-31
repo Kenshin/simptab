@@ -135,6 +135,12 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         is_dislike ? $dislike.removeClass( "dislike" ).addClass( "disliked" ) : $dislike.removeClass( "disliked" ).addClass( "dislike" );
                         callBack( url, is_dislike );
                         break;
+                    case "pin":
+                        var $pin      = $target.find( "span" ),
+                            is_pinned = $pin.hasClass( "pinned" );
+                        is_pinned ? $pin.removeClass( "pinned" ).addClass( "pin" ) : $pin.removeClass( "pin" ).addClass( "pinned" );
+                        callBack( url, is_pinned );
+                        break;
                 }
             });
         },

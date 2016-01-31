@@ -356,6 +356,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             catch ( error ) {
                 console.error( "background.Dislike(), Parse 'simptab-dislike' error.", error );
             }
+        },
+        Pin: function( is_pinned ) {
+            console.log("adsfasfdasdfadfasfdas", is_pinned)
         }
     };
 });
