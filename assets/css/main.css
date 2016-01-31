@@ -186,6 +186,14 @@ body {
     background-image: url("../images/disliked.png");
 }
 
+.pin {
+    background-image: url("../images/pin.png");
+}
+
+.pinned {
+    background-image: url("../images/pinned.png");
+}
+
 .settingicon {
     background-image: url("../images/setting.png");
 }
