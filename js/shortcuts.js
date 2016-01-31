@@ -17,7 +17,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
             { short: "up",   long: "upload", hiden: true },
             { short: "set",  long: "setting"  },
             { short: "fav",  long: "favorite" },
-            { short: "un",   long: "dislike"  }
+            { short: "un",   long: "dislike"  },
+            { short: "pin",  long: "pin"      }
         ];
 
         getKey = function( type ) {
