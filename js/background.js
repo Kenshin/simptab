@@ -358,7 +358,14 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             }
         },
         Pin: function( is_pinned ) {
-            console.log("adsfasfdasdfadfasfdas", is_pinned)
+            console.log("Current background is pinned?", is_pinned)
+            if ( is_pinned ) {
+                localStorage.removeItem( "simptab-pin" );
+            }
+            else {
+                var obj = { limit: localStorage[ "simptab-limit" ], time: date.Now() };
+                localStorage[ "simptab-pin" ] = JSON.stringify( obj );
+            }
         }
     };
 });
