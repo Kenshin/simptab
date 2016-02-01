@@ -31,7 +31,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                         //// only call api. type 3
                         def.resolve(3);
                     }
-                    else if ( is_random ) {
+                    else if ( is_random && isPinTimeout() ) {
                         //// set current background and call api. type 2
                         def.resolve(2);
                     }
@@ -165,7 +165,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             }
 
             // sync vo
-            vo.Set( vo.new );
+            isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
             console.log( "======= New Background Obj is ", vo );
         }
     }
@@ -194,6 +194,26 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             console.error( "error.data        = ", error.data        );
             console.groupEnd();
         }
+    }
+
+    function isPinTimeout() {
+        var limit  = localStorage[ "simptab-limit" ],
+            pin    = vo.cur.pin,
+            diff   = date.TimeDiff( pin ),
+            result = pin == -1 || diff > limit ? true : false;
+        return result;
+    }
+
+    function writePinBackground() {
+        files.Add( vo.constructor.BACKGROUND, files.DataURI() )
+            .progress( function( result ) { console.log( "Write process:", result ); })
+            .fail(     function( result ) { console.log( "Write error: ", result );  })
+            .done( function( result ) {
+                console.log( "Write completed: ", result );
+                vo.new = vo.Clone( vo.cur );
+                vo.Set( vo.new );
+                console.log( "======= Current background dispin success.", vo )
+            });
     }
 
     return {
@@ -358,13 +378,16 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             }
         },
         Pin: function( is_pinned ) {
-            console.log("Current background is pinned?", is_pinned)
+            console.log("Current background is pinned? ", is_pinned)
             if ( is_pinned ) {
-                localStorage.removeItem( "simptab-pin" );
+                vo.cur.pin = -1;
+                vo.new     = vo.Clone( vo.cur )
+                vo.Set( vo.new );
+                console.log( "======= Current background dispin success.", vo )
             }
             else {
-                var obj = { time: new Date().getTime() };
-                localStorage[ "simptab-pin" ] = JSON.stringify( obj );
+                vo.cur.pin = new Date().getTime();
+                localStorage[ "simptab-background-state" ] == "success" ? writePinBackground() : vo.Set( vo.cur );
             }
         }
     };
