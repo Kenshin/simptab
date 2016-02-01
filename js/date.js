@@ -45,6 +45,12 @@ define([ "jquery" ], function( $ ) {
             var today = localStorage["simptab-today"];
             if( isupdate ) localStorage["simptab-today"] = newday;
             return today && today === newday ? false : true;
+        },
+
+        TimeDiff: function( d1 ) {
+            var d2 = new Date().getTime();
+            d1     = d1 ? d1 : new Date().getTime();
+            return ( d2 - d1 ) / ( 1000 * 60 );
         }
     };
 });
