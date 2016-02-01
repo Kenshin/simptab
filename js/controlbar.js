@@ -57,6 +57,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
         return newclass == "dislike" ? true : false;
     }
 
+    function setPinState( is_show ) {
+        is_show ? $( ".controlink[url='pin']" ).parent().show() : $( ".controlink[url='pin']" ).parent().hide();
+    }
+
+    function setPinIcon() {
+        $( ".controlink[url='pin']" ).find("span").attr( "class", "icon " + (vo.cur.pin == -1 ? "pin" : "pinned") );
+    }
+
     function setCurBackgroundURI() {
         files.GetDataURI( vo.constructor.CURRENT_BACKGROUND ).done( function( dataURI) {
             files.DataURI( dataURI );
@@ -173,10 +181,12 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
             setDownloadURL();
             setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
             setBackgroundPosition();
+            setUploadState( setting.IsRandom() );
             setDislikeState( (!is_default && vo.cur.favorite == -1 && setting.IsRandom()) );
             setFavorteState( !is_default && setDislikeIcon() && setting.IsRandom() );
             setFavorteIcon();
-            setUploadState( setting.IsRandom() );
+            setPinState( (!is_default && setting.IsRandom()) );
+            setPinIcon();
         },
         SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
