@@ -22,7 +22,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `favorite`
     *
     * when version = 2.2
-    * add new property `apis_vo`
+    * add new property `apis_vo` `pin`
     *
     */
     var VERSION = "2.2";
@@ -60,6 +60,7 @@ define([ "jquery" ], function( $ ) {
             this.new.apis_vo   = apis_vo;
             this.new.version   = VERSION;
             this.new.favorite  = favorite == undefined ? -1 : favorite;
+            this.new.pin       = -1;
 
             return this.new;
     };
@@ -82,6 +83,7 @@ define([ "jquery" ], function( $ ) {
                 if ( this.cur.type == "googleartproject.com" ) this.cur.type = "googleart.com";
                 if ( this.cur.enddate.length == 8 && this.cur.type == "bing.com" ) this.cur.type = "today";
                 this.cur.apis_vo  = {};
+                this.cur.pin      = -1;
                 this.cur.version  = VERSION;
             case VERSION:
                 result            = true;
