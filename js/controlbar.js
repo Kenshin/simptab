@@ -191,6 +191,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
         SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
         SetFavorteState   : setFavorteState,
-        SetDislikeState   : setDislikeState
+        SetDislikeState   : setDislikeState,
+        setPinIcon        : setPinIcon
     };
 });
