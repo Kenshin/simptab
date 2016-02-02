@@ -304,6 +304,10 @@ body {
     -webkit-border-radius: 3px;
 }
 
+.blockradio span {
+    display: none;
+}
+
 .lrselected {
     background: #222;
 }
