@@ -195,6 +195,14 @@
         "message": "Success removed to the dislike list."
     },
 
+    "notify_pin_add": {
+        "message": "Current background pin #1 hours."
+    },
+
+    "notify_pin_del": {
+        "message": "Has canceled the current background of the pin."
+    },
+
     "version_detail": {
         "message": "New version, new features. "
     },

@@ -195,6 +195,14 @@
         "message": "\u5df2\u6210\u529f\u79fb\u51fa\u4e0d\u559c\u6b22\u5217\u8868\u3002"
     },
 
+    "notify_pin_add": {
+        "message": "\u5f53\u524d\u80cc\u666f\u56fa\u5b9a #1 \u5c0f\u65f6\u3002"
+    },
+
+    "notify_pin_del": {
+        "message": "\u5df2\u53d6\u6d88\u5f53\u524d\u80cc\u666f\u7684\u56fa\u5b9a\u3002"
+    },
+
     "version_detail": {
         "message": "\u5168\u65b0\u7248\u672c\uff0c\u5168\u65b0\u529f\u80fd\uff1b"
     },
