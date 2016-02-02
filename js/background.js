@@ -197,7 +197,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
     }
 
     function isPinTimeout() {
-        var limit  = localStorage[ "simptab-limit" ],
+        var limit  = localStorage[ "simptab-pin" ],
             pin    = vo.cur.pin,
             diff   = date.TimeDiff( pin ),
             result = pin == -1 || diff > limit ? true : false;
