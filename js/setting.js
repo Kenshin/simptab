@@ -228,7 +228,7 @@ define([ "jquery" ], function( $ ) {
         },
 
         TogglePinState: function( state ) {
-            state ? $( ".pinstate" ).show() : $( ".pinstate" ).hide();
+            state ? $( ".pinstate" ).fadeIn() : $( ".pinstate" ).fadeOut();
         }
 
     };
