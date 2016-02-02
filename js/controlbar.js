@@ -147,6 +147,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         var $pin      = $target.find( "span" ),
                             is_pinned = $pin.hasClass( "pinned" );
                         is_pinned ? $pin.removeClass( "pinned" ).addClass( "pin" ) : $pin.removeClass( "pin" ).addClass( "pinned" );
+                        setting.TogglePinState( !is_pinned );
                         callBack( url, is_pinned );
                         break;
                 }
@@ -187,6 +188,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
             setFavorteIcon();
             setPinState( (!is_default && setting.IsRandom()) );
             setPinIcon();
+            setting.TogglePinState( vo.cur.pin == -1 ? false : true );
         },
         SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,

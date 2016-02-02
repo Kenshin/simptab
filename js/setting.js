@@ -225,6 +225,10 @@ define([ "jquery" ], function( $ ) {
                 value = value || idx + ":" + "true";
 
             return value.split(":")[1];
+        },
+
+        TogglePinState: function( state ) {
+            state ? $( ".pinstate" ).show() : $( ".pinstate" ).hide();
         }
 
     };

@@ -62,13 +62,13 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 
-    width: 225px;
+    width: 0;
     height:100%;
 
     background: #fff;
     color: #555;
 
-    opacity: 1;
+    opacity: 0;
 
     box-shadow: -5px 0 4px;
 
