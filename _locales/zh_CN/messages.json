@@ -135,6 +135,10 @@
         "message": "\u5e38\u7528\u7f51\u5740\uff08\u9ad8\u7ea7\u6a21\u5f0f\uff09"
     },
 
+    "setting_pin_tooltip": {
+        "message": "\u56fa\u5b9a #1 \u5c0f\u65f6"
+    },
+
     "setting_contact_weibo": {
         "message": "\u5206\u4eab\u5230 \u5fae\u535a"
     },

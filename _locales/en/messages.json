@@ -135,6 +135,10 @@
         "message": "Senior Topsites"
     },
 
+    "setting_pin_tooltip": {
+        "message": "Pin #1 hours"
+    },
+
     "setting_contact_weibo": {
         "message": "Share Weibo"
     },
