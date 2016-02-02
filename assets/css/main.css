@@ -62,13 +62,13 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 
-    width: 0px;
+    width: 225px;
     height:100%;
 
     background: #fff;
     color: #555;
 
-    opacity: 0;
+    opacity: 1;
 
     box-shadow: -5px 0 4px;
 
@@ -81,6 +81,7 @@ body {
 
 .setting div[class$=state] {
     padding: 26px 8px 0px 8px;
+    cursor: pointer;
 }
 
 .setting::-webkit-scrollbar {
@@ -244,7 +245,8 @@ body {
 
 }
 
-.lineradio:hover {
+.lineradio:hover,
+.blockradio:hover {
     background-color: #8b8986;
     -webkit-transition: background-color 1s ease;
 }
@@ -257,21 +259,19 @@ body {
     background-position:center;
 }
 
-.lineradio input[type=radio],
-.lineradio input[type=checkbox] {
+.lineradio  input[type=radio],
+.blockradio input[type=radio],
+.lineradio  input[type=checkbox] {
     display: none;
 }
 
-.lineradio label {
+.lineradio label,
+.blockradio label {
     display: -webkit-box;
     -webkit-box-flex: 1;
 
     cursor: pointer;
     padding: 5px;
-}
-
-.lineradio span {
-    cursor: pointer;
 }
 
 .lineradio .checked {
@@ -282,10 +282,31 @@ body {
     background-image: url("../images/unchecked.png");
 }
 
+.pinstate {
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content:space-between;
+
+    margin: 5px 0px 0px 0px;
+}
+
+.blockradio {
+    display: -webkit-flex;
+    justify-content:center;
+
+    font-size: 13px;
+    color: #fff;
+    background: #555;
+
+    width: 20px;
+
+    border: none;
+    -webkit-border-radius: 3px;
+}
+
 .lrselected {
     background: #222;
 }
-
 /*
 * contact
 */
