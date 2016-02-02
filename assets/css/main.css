@@ -246,7 +246,7 @@ body {
 }
 
 .lineradio:hover,
-.blockradio:hover {
+.boxradio:hover {
     background-color: #8b8986;
     -webkit-transition: background-color 1s ease;
 }
@@ -260,13 +260,13 @@ body {
 }
 
 .lineradio  input[type=radio],
-.blockradio input[type=radio],
+.boxradio input[type=radio],
 .lineradio  input[type=checkbox] {
     display: none;
 }
 
 .lineradio label,
-.blockradio label {
+.boxradio label {
     display: -webkit-box;
     -webkit-box-flex: 1;
 
@@ -290,7 +290,7 @@ body {
     margin: 5px 0px 0px 0px;
 }
 
-.blockradio {
+.boxradio {
     display: -webkit-flex;
     justify-content:center;
 
@@ -304,7 +304,7 @@ body {
     -webkit-border-radius: 3px;
 }
 
-.blockradio span {
+.boxradio span {
     display: none;
 }
 

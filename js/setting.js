@@ -118,7 +118,7 @@ define([ "jquery" ], function( $ ) {
             $item   = $(item);
             $parent = $item.parent();
             $span   = $parent.find("span");
-            cls     = selector != "pinstate" ? "lineradio" : "blockradio";
+            cls     = selector != "pinstate" ? "lineradio" : "boxradio";
 
             if ( $item.val() == mode ) {
                 $item.attr( "checked", true     );
