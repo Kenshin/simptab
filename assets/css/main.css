@@ -479,6 +479,7 @@ body {
 .tooltip-top:last-child:after {
     left: -59px;
 }
+
 /*
 * notify
 */
@@ -760,8 +761,17 @@ body {
     }
 
     .setting {
-        overflow: overlay;
+        overflow-x: hidden;
     }
+
+    .tooltip-top:first-child:after {
+        left: -5px;
+    }
+
+    .tooltip-top:last-child:after {
+        left: -65px;
+    }
+
 }
 
 /*
