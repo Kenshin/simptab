@@ -298,7 +298,7 @@ body {
     color: #fff;
     background: #555;
 
-    width: 20px;
+    width: 25px;
 
     border: none;
     -webkit-border-radius: 3px;
@@ -434,6 +434,7 @@ body {
     position: relative;
 	cursor: pointer;
     padding: 0;
+    text-transform: none;
 }
 
 .tooltip-top:hover:before,
@@ -462,10 +463,10 @@ body {
 .tooltip-top:after {
 	content: attr(data-tooltip);
 	position: absolute;
-	bottom: 38px;
+	bottom: 37px;
 	left: -30px;
 	padding: 10px;
-	width: 80px;
+	width: 90px;
 	color: #fff;
 	font-weight: 100;
 	font-size: 12px;
