@@ -237,7 +237,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 if ( $("body").css( "background-image" ) == "none" ) {
                     controlbar.Set( true );
                 }
-            }, 8 * 1000 );
+            }, 5 * 1000 );
         },
 
         Favorite: function( is_favorite ) {
