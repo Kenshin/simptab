@@ -113,7 +113,7 @@ define([ "jquery" ], function( $ ) {
 
     // 137-simptab-add-cloudinary-cdn-fech-test
     function createCDN( type ) {
-        var cdns = [ "simptab" ],
+        var cdns = [ "simptab", "simptab2", "simptab3", "simptab4", "simptab5" ],
             min  = 0,
             max  = cdns.length - 1,
             ran  = Math.floor( Math.random() * ( max - min + 1 ) + min ),
