@@ -273,7 +273,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                         // set favorite / dislike icon state
                         controlbar.SetFavorteIcon();
-                        vo.cur.type != "upload" && controlbar.SetDislikeState( false );
+                        vo.cur.type != "upload" && vo.cur.pin == -1 && controlbar.SetDislikeState( false );
 
                         new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
 
@@ -306,7 +306,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                             // update favorite / dislike icon
                             controlbar.SetFavorteIcon();
-                            vo.cur.type != "upload" && controlbar.SetDislikeState( true );
+                            vo.cur.type != "upload" && vo.cur.pin == -1 && controlbar.SetDislikeState( true );
 
                             new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
@@ -367,11 +367,18 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             try {
                 var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
                     uid         = btoa( vo.cur.url );
+
+                vo.cur.dislike  = type ? uid   : -1;
+                localStorage[ "simptab-background-state" ] != "success" && vo.Set( vo.cur );
+
                 type ? dislikelist.push( uid ) : dislikelist = dislikelist.filter( function( item ) { return item != uid; });
+
                 controlbar.SetFavorteState( !type );
+                controlbar.setPinState( !type );
+
                 new Notify().Render( i18n.GetLang( "notify_dislike_" + ( type ? "add" : "del" ) ));
-                console.log( "=== Current dislike object data structure is ", dislikelist, vo.cur );
                 localStorage["simptab-dislike"] = JSON.stringify( dislikelist );
+                console.log( "=== Current dislike object data structure is ", dislikelist, vo.cur );
             }
             catch ( error ) {
                 console.error( "background.Dislike(), Parse 'simptab-dislike' error.", error );
@@ -391,6 +398,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 localStorage[ "simptab-background-state" ] == "success" ? writePinBackground() : vo.Set( vo.cur );
                 new Notify().Render( i18n.GetLang( "notify_pin_add" ).replace( "#1", localStorage["simptab-pin"] / 60 ) );
             }
+            vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
         }
     };
 });

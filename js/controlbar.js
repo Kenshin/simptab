@@ -43,8 +43,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     }
 
     function setFavorteIcon() {
-        var newclass = vo.cur.favorite == -1 ? "unfavoriteicon" : "favoriteicon";
-        $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + newclass );
+        $( ".controlink[url='favorite']" ).find("span").attr( "class", "icon " + (vo.cur.favorite == -1 ? "unfavoriteicon" : "favoriteicon") );
     }
 
     function setDislikeState( is_show ) {
@@ -52,9 +51,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     }
 
     function setDislikeIcon() {
-        var newclass = vo.isDislike( vo.cur.url ) ? "dislike" : "disliked";
-        $( ".controlink[url='dislike']" ).find("span").attr( "class", "icon " + newclass );
-        return newclass == "dislike" ? true : false;
+        $( ".controlink[url='dislike']" ).find("span").attr( "class", "icon " + ( vo.cur.dislike == -1 ? "dislike" : "disliked") );
     }
 
     function setPinState( is_show ) {
@@ -171,29 +168,26 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
         Set: function( is_default ) {
 
             // set default background
-            if ( is_default ) {
-                vo.cur = vo.Clone( vo.Create( vo.constructor.DEFAULT_BACKGROUND, vo.constructor.DEFAULT_BACKGROUND, "Wallpaper", "#", date.Now(), "Wallpaper", "default", {} ));
-            }
-            else {
-                setCurBackgroundURI();
-            }
+            is_default ? vo.cur = vo.Clone( vo.Create( vo.constructor.DEFAULT_BACKGROUND, vo.constructor.DEFAULT_BACKGROUND, "Wallpaper", "#", date.Now(), "Wallpaper", "default", {} )) : setCurBackgroundURI();
 
             setInfoURL();
             setDownloadURL();
             setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
             setBackgroundPosition();
             setUploadState( setting.IsRandom() );
-            setDislikeState( (!is_default && vo.cur.favorite == -1 && setting.IsRandom()) );
-            setFavorteState( !is_default && setDislikeIcon() && setting.IsRandom() );
+            setFavorteState( !is_default && vo.cur.dislike == -1 );
             setFavorteIcon();
-            setPinState( (!is_default && setting.IsRandom()) );
+            setPinState( (!is_default && vo.cur.dislike == -1 && setting.IsRandom()) );
             setPinIcon();
-            setting.TogglePinState( vo.cur.pin == -1 ? false : true );
+            setDislikeState( !is_default && ( vo.cur.favorite == -1 && vo.cur.pin == -1 ) && setting.IsRandom() );
+            setDislikeIcon();
+            setting.TogglePinState( vo.cur.pin != -1 );
         },
         SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
         SetFavorteState   : setFavorteState,
         SetDislikeState   : setDislikeState,
-        setPinIcon        : setPinIcon
+        setPinIcon        : setPinIcon,
+        setPinState       : setPinState
     };
 });
