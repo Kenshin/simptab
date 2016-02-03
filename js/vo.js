@@ -22,7 +22,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `favorite`
     *
     * when version = 2.2
-    * add new property `apis_vo` `pin`
+    * add new property `apis_vo` `pin` `dislike`
     *
     */
     var VERSION = "2.2";
@@ -61,6 +61,7 @@ define([ "jquery" ], function( $ ) {
             this.new.version   = VERSION;
             this.new.favorite  = favorite == undefined ? -1 : favorite;
             this.new.pin       = -1;
+            this.new.dislike   = -1;
 
             return this.new;
     };
@@ -84,6 +85,7 @@ define([ "jquery" ], function( $ ) {
                 if ( this.cur.enddate.length == 8 && this.cur.type == "bing.com" ) this.cur.type = "today";
                 this.cur.apis_vo  = {};
                 this.cur.pin      = -1;
+                this.cur.dislike  = -1;
                 this.cur.version  = VERSION;
             case VERSION:
                 result            = true;
