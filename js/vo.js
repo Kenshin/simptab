@@ -43,9 +43,7 @@ define([ "jquery" ], function( $ ) {
                 configurable: true,
                 set: function( value ) {
                     var re  = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
-                    var cdn = "http://res.cloudinary.com/simptab/image/fetch/f_webp/";                            // 137-simptab-add-cloudinary-cdn-fech-test
-                    cdn     = [ "unsplash.it", "special", "holiday", "today", "upload" ].indexOf( type ) != -1  ? "" : cdn; // 137-simptab-add-cloudinary-cdn-fech-test
-                    hdurl   = re.test( value ) ? cdn + value : VO.DEFAULT_BACKGROUND;
+                    hdurl   = re.test( value ) ? createCDN( type ) + value : VO.DEFAULT_BACKGROUND;
                 },
                 get: function() { return hdurl; }
             });
@@ -112,6 +110,19 @@ define([ "jquery" ], function( $ ) {
         }
         return result;
     };
+
+    // 137-simptab-add-cloudinary-cdn-fech-test
+    function createCDN( type ) {
+        var cdns = [ "simptab" ],
+            min  = 0,
+            max  = cdns.length - 1,
+            ran  = Math.floor( Math.random() * ( max - min + 1 ) + min ),
+            cdn  = cdns[ ran ],
+            api  = "http://res.cloudinary.com/#1/image/fetch/f_webp/";
+        api      = api.replace( "#1", cdn );
+        cdn      = [ "unsplash.it", "special", "holiday", "today", "upload" ].indexOf( type ) != -1  ? "" : api;
+        return cdn;
+    }
 
     return new VO();
 
