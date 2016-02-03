@@ -373,6 +373,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                 type ? dislikelist.push( uid ) : dislikelist = dislikelist.filter( function( item ) { return item != uid; });
 
+                controlbar.setDislikeIcon();
                 controlbar.SetFavorteState( !type );
                 controlbar.setPinState( !type );
 

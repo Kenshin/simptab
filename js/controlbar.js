@@ -135,9 +135,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         $input.trigger("click");
                         break;
                     case "dislike":
-                        var $dislike   = $target.find( "span" ),
-                            is_dislike = $dislike.hasClass( "dislike" );
-                        is_dislike ? $dislike.removeClass( "dislike" ).addClass( "disliked" ) : $dislike.removeClass( "disliked" ).addClass( "dislike" );
+                        var is_dislike = $target.find( "span" ).hasClass( "dislike" );
                         callBack( url, is_dislike );
                         break;
                     case "pin":
@@ -186,6 +184,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
         SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
         SetFavorteState   : setFavorteState,
+        setDislikeIcon    : setDislikeIcon,
         SetDislikeState   : setDislikeState,
         setPinIcon        : setPinIcon,
         setPinState       : setPinState
