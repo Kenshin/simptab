@@ -163,7 +163,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                     type    = $target.attr("url"),
                     hidden  = $target.parent().has(":hidden"),
                     hidden  = hidden && hidden.length > 0 ? true : false,
-                    arr     = [ "upload", "favorite", "dislike" ];
+                    arr     = [ "upload", "favorite", "dislike", "pin" ];
                 ( arr.indexOf( type ) == -1 || !hidden ) && $target[0].click();
             }
         },
