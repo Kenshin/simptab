@@ -139,9 +139,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         callBack( url, is_dislike );
                         break;
                     case "pin":
-                        var $pin      = $target.find( "span" ),
-                            is_pinned = $pin.hasClass( "pinned" );
-                        is_pinned ? $pin.removeClass( "pinned" ).addClass( "pin" ) : $pin.removeClass( "pin" ).addClass( "pinned" );
+                        var is_pinned = $target.find( "span" ).hasClass( "pinned" );
                         setting.TogglePinState( !is_pinned );
                         callBack( url, is_pinned );
                         break;

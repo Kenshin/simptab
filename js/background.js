@@ -399,6 +399,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 localStorage[ "simptab-background-state" ] == "success" ? writePinBackground() : vo.Set( vo.cur );
                 new Notify().Render( i18n.GetLang( "notify_pin_add" ).replace( "#1", localStorage["simptab-pin"] / 60 ) );
             }
+            controlbar.setPinIcon();
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
         }
     };
