@@ -212,6 +212,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 console.log( "Write completed: ", result );
                 vo.new = vo.Clone( vo.cur );
                 vo.Set( vo.new );
+                progress.Set( "pinnedsuccess" );
                 console.log( "======= Current background dispin success.", vo )
             });
     }
