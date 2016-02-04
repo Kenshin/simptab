@@ -8,6 +8,7 @@ define([ "jquery" ], function( $ ) {
     function CDNs() {}
 
     function random( min, max ) {
+        if ( max < min ) throw new Error( "cdns.Creat(), Max must be greater than min." );
         return Math.floor( Math.random() * ( max - min + 1 ) + min );
     }
 
