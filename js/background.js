@@ -333,7 +333,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                         var file_name = Math.round(+new Date()),
                             upload_vo = {new:{}},
-                            apis_vo   = { url : "", type : "GET", dataType : "localStorge", timeout : 2000, method : "background.Upload()", origin : "favorite", code : 10 };
+                            apis_vo   = { url : "", type : "GET", dataType : "localStorage", timeout : 2000, method : "background.Upload()", origin : "favorite", code : 10 };
 
                         files.Add( file_name, datauri )
                         .done( function( result, hdurl ) {

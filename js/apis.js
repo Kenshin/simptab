@@ -13,7 +13,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
             * apis.New()    set vo `code` and `origin` property.
             * apis.Update() set vo other property.
             *
-            * dataType: json, xml( only nasa ), localStorge( upload  ), image( "wallhaven.cc", "unsplash.com", "unsplash.it" )
+            * dataType: json, xml( only nasa ), localStorage( upload  ), image( "wallhaven.cc", "unsplash.com", "unsplash.it" )
             */
 
             var options = {
