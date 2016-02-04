@@ -57,7 +57,7 @@ define([ "jquery" ], function( $ ) {
             this.new.type      = type;
             this.new.apis_vo   = apis_vo;
             this.new.version   = VERSION;
-            this.new.favorite  = favorite == undefined ? -1 : favorite;
+            this.new.favorite  = typeof favorite == "undefined" ? -1 : favorite;
             this.new.pin       = -1;
             this.new.dislike   = -1;
 

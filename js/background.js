@@ -111,7 +111,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             files.GetDataURI( url ).then( function( result ) {
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) {
-                        if ( result != undefined && !$.isEmptyObject( result )) {
+                        if ( typeof result != "undefined" && !$.isEmptyObject( result )) {
                             switch ( result.type ) {
                                 case "writestart":
                                     console.log( "Write start: ", result );
@@ -151,7 +151,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
         if ( is_save ) {
             // when 'change bing.com background everyday', re-set controlbar.Set
-            if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+            if ( localStorage["simptab-background-refresh"] == "true" ) {
 
                 // when local storage 'simptab-background-refresh' == "true", re-set 'simptab-background-state' is 'ready'
                 progress.Set( "ready" );

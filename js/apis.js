@@ -95,7 +95,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
             }
 
             APIS.prototype.VerifyObject = function( result ) {
-                if ( result != undefined && !$.isEmptyObject( result )) {
+                if ( typeof result != "undefined" && !$.isEmptyObject( result )) {
                     return true;
                 }
                 else {
