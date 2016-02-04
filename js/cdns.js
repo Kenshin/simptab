@@ -24,13 +24,13 @@ define([ "jquery" ], function( $ ) {
     CDNs.prototype.Create = function( url, type ) {
 
         var cdn = "",
-            ls  = localStorage[ "simptab-cdn" ],
+            ls  = localStorage[ "simptab-cdns" ],
             obj = JSON.parse( ls || "{}" ),
             new_cdn;
 
         $.getJSON( "http://simptab.qiniudn.com/cdns.json" + "?random=" + Math.round(+new Date()), function( result ) {
             if ( result && !$.isEmptyObject( result ) && result.version != obj.version ) {
-                localStorage[ "simptab-cdn" ] = JSON.stringify( result );
+                localStorage[ "simptab-cdns" ] = JSON.stringify( result );
             }
         });
 
