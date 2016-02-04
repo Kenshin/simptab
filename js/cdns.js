@@ -8,7 +8,7 @@ define([ "jquery" ], function( $ ) {
     function CDNs() {}
 
     function random( min, max ) {
-        if ( max < min ) throw new Error( "cdns.Creat(), Max must be greater than min." );
+        if ( max < min ) throw new Error( "cdns.New(), Max must be greater than min." );
         return Math.floor( Math.random() * ( max - min + 1 ) + min );
     }
 
@@ -22,7 +22,7 @@ define([ "jquery" ], function( $ ) {
         return cdn;
     }
 
-    CDNs.prototype.Create = function( url, type ) {
+    CDNs.prototype.New = function( url, type ) {
 
         var cdn = "",
             ls  = localStorage[ "simptab-cdns" ],

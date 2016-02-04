@@ -681,7 +681,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
             // when change background mode is 'day', not invoke vo.isDislike( url )
             if ( !setting.IsRandom() || vo.isDislike( url )) {
                 vo.Create.apply( vo, arguments );
-                vo.new.hdurl = cdns.Create( vo.new.hdurl, vo.new.type );
+                vo.new.hdurl = cdns.New( vo.new.hdurl, vo.new.type );
                 deferred.resolve( vo.new );
             }
             else {
