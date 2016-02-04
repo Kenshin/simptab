@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n, setting, vo, date, SimpError ) {
+define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function( $, i18n, setting, vo, date, SimpError, cdns ) {
 
     "use strict";
 
@@ -680,7 +680,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error" ], function( $, i18n
             var url = arguments && arguments[0];
             // when change background mode is 'day', not invoke vo.isDislike( url )
             if ( !setting.IsRandom() || vo.isDislike( url )) {
-                deferred.resolve( vo.Create.apply( vo, arguments ));
+                vo.Create.apply( vo, arguments );
+                vo.new.hdurl = cdns.New( vo.new.hdurl, vo.new.type );
+                deferred.resolve( vo.new );
             }
             else {
                 new SimpError( apis.vo.origin, "Current background url is dislike url =" + url, apis.vo );
