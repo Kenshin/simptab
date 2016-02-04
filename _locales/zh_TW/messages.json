@@ -51,6 +51,10 @@
         "message": "\u4e0d\u559c\u6b61"
     },
 
+    "controlbar_pin": {
+        "message": "\u56fa\u5b9a"
+    },
+
     "setting_width": {
         "message": "225"
     },
@@ -131,6 +135,10 @@
         "message": "\u5e38\u7528\u7db2\u5740\uff08\u9ad8\u7d1a\u6a21\u5f0f\uff09"
     },
 
+    "setting_pin_tooltip": {
+        "message": "\u56fa\u5b9a #1 \u5c0f\u6642"
+    },
+
     "setting_contact_weibo": {
         "message": "\u5206\u4eab\u5230 \u5fae\u535a"
     },
@@ -189,6 +197,14 @@
 
     "notify_dislike_del": {
         "message": "\u5df2\u6210\u529f\u79fb\u51fa\u4e0d\u559c\u6b61\u5217\u8868\u3002"
+    },
+
+    "notify_pin_add": {
+        "message": "\u7576\u524d\u80cc\u666f\u56fa\u5b9a #1 \u5c0f\u6642\u3002"
+    },
+
+    "notify_pin_del": {
+        "message": "\u5df2\u53d6\u6d88\u7576\u524d\u80cc\u666f\u7684\u56fa\u5b9a\u3002"
     },
 
     "version_detail": {

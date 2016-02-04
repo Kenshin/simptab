@@ -31,7 +31,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                         //// only call api. type 3
                         def.resolve(3);
                     }
-                    else if ( is_random ) {
+                    else if ( is_random && isPinTimeout() ) {
                         //// set current background and call api. type 2
                         def.resolve(2);
                     }
@@ -165,7 +165,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             }
 
             // sync vo
-            vo.Set( vo.new );
+            isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
             console.log( "======= New Background Obj is ", vo );
         }
     }
@@ -196,6 +196,27 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
         }
     }
 
+    function isPinTimeout() {
+        var limit  = localStorage[ "simptab-pin" ],
+            pin    = vo.cur.pin,
+            diff   = date.TimeDiff( pin ),
+            result = pin == -1 || diff > limit ? true : false;
+        return result;
+    }
+
+    function writePinBackground() {
+        files.Add( vo.constructor.BACKGROUND, files.DataURI() )
+            .progress( function( result ) { console.log( "Write process:", result ); })
+            .fail(     function( result ) { console.log( "Write error: ", result );  })
+            .done( function( result ) {
+                console.log( "Write completed: ", result );
+                vo.new = vo.Clone( vo.cur );
+                vo.Set( vo.new );
+                progress.Set( "pinnedsuccess" );
+                console.log( "======= Current background dispin success.", vo )
+            });
+    }
+
     return {
         Get: function( is_random ) {
 
@@ -217,7 +238,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 if ( $("body").css( "background-image" ) == "none" ) {
                     controlbar.Set( true );
                 }
-            }, 8 * 1000 );
+            }, 5 * 1000 );
         },
 
         Favorite: function( is_favorite ) {
@@ -253,7 +274,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                         // set favorite / dislike icon state
                         controlbar.SetFavorteIcon();
-                        vo.cur.type != "upload" && controlbar.SetDislikeState( false );
+                        vo.cur.type != "upload" && vo.cur.pin == -1 && controlbar.SetDislikeState( false );
 
                         new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
 
@@ -286,7 +307,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                             // update favorite / dislike icon
                             controlbar.SetFavorteIcon();
-                            vo.cur.type != "upload" && controlbar.SetDislikeState( true );
+                            vo.cur.type != "upload" && vo.cur.pin == -1 && controlbar.SetDislikeState( true );
 
                             new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
@@ -347,15 +368,40 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             try {
                 var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
                     uid         = btoa( vo.cur.url );
+
+                vo.cur.dislike  = type ? uid   : -1;
+                localStorage[ "simptab-background-state" ] != "success" && vo.Set( vo.cur );
+
                 type ? dislikelist.push( uid ) : dislikelist = dislikelist.filter( function( item ) { return item != uid; });
+
+                controlbar.setDislikeIcon();
                 controlbar.SetFavorteState( !type );
+                controlbar.setPinState( !type );
+
                 new Notify().Render( i18n.GetLang( "notify_dislike_" + ( type ? "add" : "del" ) ));
-                console.log( "=== Current dislike object data structure is ", dislikelist, vo.cur );
                 localStorage["simptab-dislike"] = JSON.stringify( dislikelist );
+                console.log( "=== Current dislike object data structure is ", dislikelist, vo.cur );
             }
             catch ( error ) {
                 console.error( "background.Dislike(), Parse 'simptab-dislike' error.", error );
             }
+        },
+        Pin: function( is_pinned ) {
+            console.log("Current background is pinned? ", is_pinned)
+            if ( is_pinned ) {
+                vo.cur.pin = -1;
+                vo.new     = vo.Clone( vo.cur )
+                vo.Set( vo.new );
+                new Notify().Render( i18n.GetLang( "notify_pin_del" ));
+                console.log( "======= Current background dispin success.", vo )
+            }
+            else {
+                vo.cur.pin = new Date().getTime();
+                localStorage[ "simptab-background-state" ] == "success" ? writePinBackground() : vo.Set( vo.cur );
+                new Notify().Render( i18n.GetLang( "notify_pin_add" ).replace( "#1", localStorage["simptab-pin"] / 60 ) );
+            }
+            controlbar.setPinIcon();
+            vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
         }
     };
 });

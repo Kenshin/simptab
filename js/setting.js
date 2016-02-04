@@ -88,6 +88,12 @@ define([ "jquery" ], function( $ ) {
                     type   : "simptab-topsites",
                     vals   : [ "normal","simple", "senior" ],
                     default: 1
+                },
+                "pinstate"  : {
+                    value  : getLS( "simptab-pin" ),
+                    type   : "simptab-pin",
+                    vals   : [ "30", "60", "120", "240", "480" ],
+                    default: 0
                 }
             });
 
@@ -107,22 +113,23 @@ define([ "jquery" ], function( $ ) {
     })();
 
     function updateRdState( selector, mode ) {
-        var $item, $parent, $span;
+        var $item, $parent, $span, cls;
         $( "." + selector ).find( "input" ).each( function( idx, item ) {
             $item   = $(item);
             $parent = $item.parent();
             $span   = $parent.find("span");
+            cls     = selector != "pinstate" ? "lineradio" : "boxradio";
 
             if ( $item.val() == mode ) {
                 $item.attr( "checked", true     );
                 $item.prev().attr( "class", "checked" );
-                $parent.attr( "class", "lineradio lrselected" );
+                $parent.attr( "class", cls + " lrselected" );
                 $span.length ? $($span).attr( "class", "checked" ) : $parent.prepend( '<span class="checked"></span>' );
             }
             else {
                 $item.attr( "checked", false             );
                 $item.prev().attr( "class", "unchecked"  );
-                $parent.attr( "class", "lineradio" );
+                $parent.attr( "class", cls );
                 $span.length ? $($span).attr( "class", "unchecked" ) : $parent.prepend( '<span class="unchecked"></span>' );
             }
         });
@@ -162,7 +169,7 @@ define([ "jquery" ], function( $ ) {
     return {
         Init: function() {
 
-            // update [ changestate, clockstate, positionstate, topsites ] radio button
+            // update [ changestate, clockstate, positionstate, topsites, pinstate ] radio button
             Object.keys( setting.mode ).forEach( function( item ) {
                 updateRdState( item, setting.mode[item].value );
             });
@@ -179,7 +186,7 @@ define([ "jquery" ], function( $ ) {
 
         Listen: function ( callback ) {
 
-            // listen [ changestate, clockstate, topsites ] radio button event
+            // listen [ changestate, clockstate, topsites, pinstate ] radio button event
             Object.keys( setting.mode ).forEach( function( item ) {
                 addClickEvent( item, function( type, mode ) {
 
@@ -218,6 +225,10 @@ define([ "jquery" ], function( $ ) {
                 value = value || idx + ":" + "true";
 
             return value.split(":")[1];
+        },
+
+        TogglePinState: function( state ) {
+            state ? $( ".pinstate" ).fadeIn() : $( ".pinstate" ).fadeOut();
         }
 
     };

@@ -62,7 +62,7 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 
-    width: 0px;
+    width: 0;
     height:100%;
 
     background: #fff;
@@ -81,6 +81,7 @@ body {
 
 .setting div[class$=state] {
     padding: 26px 8px 0px 8px;
+    cursor: pointer;
 }
 
 .setting::-webkit-scrollbar {
@@ -186,6 +187,14 @@ body {
     background-image: url("../images/disliked.png");
 }
 
+.pin {
+    background-image: url("../images/pin.png");
+}
+
+.pinned {
+    background-image: url("../images/pinned.png");
+}
+
 .settingicon {
     background-image: url("../images/setting.png");
 }
@@ -236,7 +245,8 @@ body {
 
 }
 
-.lineradio:hover {
+.lineradio:hover,
+.boxradio:hover {
     background-color: #8b8986;
     -webkit-transition: background-color 1s ease;
 }
@@ -249,21 +259,19 @@ body {
     background-position:center;
 }
 
-.lineradio input[type=radio],
-.lineradio input[type=checkbox] {
+.lineradio  input[type=radio],
+.boxradio input[type=radio],
+.lineradio  input[type=checkbox] {
     display: none;
 }
 
-.lineradio label {
+.lineradio label,
+.boxradio label {
     display: -webkit-box;
     -webkit-box-flex: 1;
 
     cursor: pointer;
     padding: 5px;
-}
-
-.lineradio span {
-    cursor: pointer;
 }
 
 .lineradio .checked {
@@ -274,10 +282,35 @@ body {
     background-image: url("../images/unchecked.png");
 }
 
+.pinstate {
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content:space-between;
+
+    margin: 5px 0px 0px 0px;
+}
+
+.boxradio {
+    display: -webkit-flex;
+    justify-content:center;
+
+    font-size: 13px;
+    color: #fff;
+    background: #555;
+
+    width: 25px;
+
+    border: none;
+    -webkit-border-radius: 3px;
+}
+
+.boxradio span {
+    display: none;
+}
+
 .lrselected {
     background: #222;
 }
-
 /*
 * contact
 */
@@ -383,7 +416,7 @@ body {
     -webkit-box-pack: start;
 }
 
-.tooltip-top {
+.clock-tooltip {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-box-align: center;
@@ -391,10 +424,60 @@ body {
 }
 
 .tooltip-left:hover .tooltip,
-.tooltip-top:hover  .tooltip {
+.clock-tooltip:hover  .tooltip {
     -webkit-transform: scale(1);
     -webkit-transition: opacity 2s ease;
     opacity: 0.8;
+}
+
+.tooltip-top {
+    position: relative;
+	cursor: pointer;
+    padding: 0;
+    text-transform: none;
+}
+
+.tooltip-top:hover:before,
+.tooltip-top:hover:after {
+	transition: opacity 1s ease;
+	-webkit-transition: opacity 1s ease;
+	-moz-transition: opacity 1s ease;
+	-o-transition: opacity 1s ease;
+	-ms-transition: opacity 1s ease;
+	opacity: 1;
+}
+
+.tooltip-top:before {
+	content: " ";
+	position: absolute;
+    left: 9px;
+    top: -12px;
+
+	border-top: 9px solid #222;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+
+	opacity: 0;
+}
+
+.tooltip-top:after {
+	content: attr(data-tooltip);
+	position: absolute;
+	bottom: 37px;
+	left: -30px;
+	padding: 10px;
+	width: 90px;
+	color: #fff;
+	font-weight: 100;
+	font-size: 12px;
+	text-align: center;
+	border-radius: 5px;
+	background-color: #222;
+	opacity: 0;
+}
+
+.tooltip-top:last-child:after {
+    left: -59px;
 }
 
 /*
@@ -678,8 +761,17 @@ body {
     }
 
     .setting {
-        overflow: overlay;
+        overflow-x: hidden;
     }
+
+    .tooltip-top:first-child:after {
+        left: -5px;
+    }
+
+    .tooltip-top:last-child:after {
+        left: -65px;
+    }
+
 }
 
 /*

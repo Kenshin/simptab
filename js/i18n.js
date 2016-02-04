@@ -16,7 +16,8 @@ define([ "jquery" ], function( $ ) {
         $($( ".controlbar" ).children()[5]).find( ".tooltip" ).text( i18n( "controlbar_upload" ));
         $($( ".controlbar" ).children()[6]).find( ".tooltip" ).text( i18n( "controlbar_setting" ));
         $($( ".controlbar" ).children()[7]).find( ".tooltip" ).text( i18n( "controlbar_favorite" ));
-        $($( ".controlbar" ).children()[8]).find( ".tooltip" ).text( i18n( "controlbar_dislike" ));
+        $($( ".controlbar" ).children()[8]).find( ".tooltip" ).text( i18n( "controlbar_pin" ));
+        $($( ".controlbar" ).children()[9]).find( ".tooltip" ).text( i18n( "controlbar_dislike" ));
     }
 
     function setting() {
@@ -43,6 +44,11 @@ define([ "jquery" ], function( $ ) {
         $($(".setting .contact").find("a")[2]).attr( "title", i18n( "setting_contact_facebook" ));
         $($(".setting .contact").find("a")[3]).attr( "title", i18n( "setting_contact_gplus" ));
         $($(".setting .contact").find("a")[4]).attr( "title", i18n( "setting_contact_me" ));
+
+        $.each( $(".pinstate .tooltip-top").find("input"), function( idx, item ) {
+            $(item).parent().parent().attr( "data-tooltip", i18n( "setting_pin_tooltip" ).replace( "#1", $(item).val() / 60 ) );
+        });
+
     }
 
     function main() {

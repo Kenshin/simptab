@@ -51,6 +51,10 @@
         "message": "Dislike"
     },
 
+    "controlbar_pin": {
+        "message": "Pin"
+    },
+
     "setting_width": {
         "message": "270"
     },
@@ -131,6 +135,10 @@
         "message": "Senior Topsites"
     },
 
+    "setting_pin_tooltip": {
+        "message": "Pin #1 hours"
+    },
+
     "setting_contact_weibo": {
         "message": "Share Weibo"
     },
@@ -189,6 +197,14 @@
 
     "notify_dislike_del": {
         "message": "Success removed to the dislike list."
+    },
+
+    "notify_pin_add": {
+        "message": "Current background pin #1 hours."
+    },
+
+    "notify_pin_del": {
+        "message": "Has canceled the current background of the pin."
     },
 
     "version_detail": {

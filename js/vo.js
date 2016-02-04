@@ -22,7 +22,7 @@ define([ "jquery" ], function( $ ) {
     * add new property `favorite`
     *
     * when version = 2.2
-    * add new property `apis_vo`
+    * add new property `apis_vo` `pin` `dislike`
     *
     */
     var VERSION = "2.2";
@@ -43,9 +43,7 @@ define([ "jquery" ], function( $ ) {
                 configurable: true,
                 set: function( value ) {
                     var re  = /^https?:\/\/(w{3}\.)?(\w+\.)+([a-zA-Z]{2,})(:\d{1,4})?\/?($)?|filesystem:/ig;
-                    var cdn = "http://res.cloudinary.com/simptab/image/fetch/f_webp/";                            // 137-simptab-add-cloudinary-cdn-fech-test
-                    cdn     = [ "unsplash.it", "special", "holiday", "today", "upload" ].indexOf( type ) != -1  ? "" : cdn; // 137-simptab-add-cloudinary-cdn-fech-test
-                    hdurl   = re.test( value ) ? cdn + value : VO.DEFAULT_BACKGROUND;
+                    hdurl   = re.test( value ) ? value : VO.DEFAULT_BACKGROUND;
                 },
                 get: function() { return hdurl; }
             });
@@ -60,6 +58,8 @@ define([ "jquery" ], function( $ ) {
             this.new.apis_vo   = apis_vo;
             this.new.version   = VERSION;
             this.new.favorite  = favorite == undefined ? -1 : favorite;
+            this.new.pin       = -1;
+            this.new.dislike   = -1;
 
             return this.new;
     };
@@ -82,6 +82,8 @@ define([ "jquery" ], function( $ ) {
                 if ( this.cur.type == "googleartproject.com" ) this.cur.type = "googleart.com";
                 if ( this.cur.enddate.length == 8 && this.cur.type == "bing.com" ) this.cur.type = "today";
                 this.cur.apis_vo  = {};
+                this.cur.pin      = -1;
+                this.cur.dislike  = -1;
                 this.cur.version  = VERSION;
             case VERSION:
                 result            = true;
