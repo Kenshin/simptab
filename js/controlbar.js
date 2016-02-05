@@ -175,7 +175,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
             setFavorteIcon();
             setPinState( (!is_default && vo.cur.dislike == -1 && setting.IsRandom()) );
             setPinIcon();
-            setDislikeState( !is_default && ( vo.cur.favorite == -1 && vo.cur.pin == -1 ) && setting.IsRandom() );
+            setDislikeState( !is_default && ( vo.cur.favorite == -1 && vo.cur.pin == -1 && vo.cur.type != "upload" ) && setting.IsRandom() );
             setDislikeIcon();
             setting.TogglePinState( vo.cur.pin != -1 );
         },
