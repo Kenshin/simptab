@@ -584,7 +584,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 obj    = JSON.parse( arr[ random ] ),
                 result = JSON.parse( obj.result );
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
-
             // verify favorite data structure
             if ( !vo.Verify.call( result ))  {
                 apis.defer.reject( new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo }));
