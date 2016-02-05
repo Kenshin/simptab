@@ -4,7 +4,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
     "use strict";
 
     var FOLDER_NAME = "favorites",
-        fs, curURI;
+        fs, curURI, count = 0;
 
     function errorHandler( error ) {
         console.error( "File Operations error.", error );
@@ -73,9 +73,12 @@ define([ "jquery", "vo" ], function( $, vo ) {
     function readAsDataURL( file, arr, i, len, def ) {
         arr.push( new FileReader() );
         arr[i].onloadend = function( result ) {
-            result.type == "loadend" ? def.resolve( result.currentTarget.result ) : def.reject( result );
             arr[i].onloadend = null;
-            if ( i == len - 1 ) arr = [];
+            if ( count == len - 1 ) {
+                arr   = [];
+                count = 0;
+            } else { count++; }
+            result.type == "loadend" ? def.resolve( result.currentTarget.result ) : def.reject( result );
         };
         arr[i].readAsDataURL( file );
         return def.promise();
