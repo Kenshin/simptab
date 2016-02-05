@@ -19,7 +19,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 console.log( "Current background data structure is ", vo.cur );
 
                 // check old data structure
-                if ( !vo.Verify() ) {
+                if ( !vo.Verify.call( vo.cur )) {
                     console.error( "Current data structure error.", result );
                     //// set default background and call api. type 1
                     def.resolve(1);
