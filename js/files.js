@@ -98,20 +98,32 @@ define([ "jquery", "vo" ], function( $, vo ) {
             var path = file_name == vo.constructor.BACKGROUND ? file_name : FOLDER_NAME + "/" + file_name + ".jpg";
             var def  = $.Deferred();
 
-            fs.root.getFile( path, { create : true },
-                function( fileEntry ) {
+            fs.root.getFile( path, { create : true }, function( fileEntry ) {
                     fileEntry.createWriter( function( fileWriter ) {
-
+                        function unbindEvent() {
+                            fileWriter.onwritestart = null;
+                            fileWriter.onprogress   = null;
+                            fileWriter.onwriteend   = null;
+                            fileWriter.onabort      = null;
+                            fileWriter.onerror      = null;
+                            fileWriter              = null;
+                        };
+                        function writeabortHandler(e) {
+                            def.reject( e );
+                            unbindEvent();
+                        };
+                        function sucessHandler(e) {
+                            def.resolve( e, fileEntry.toURL() );
+                            unbindEvent();
+                        };
                         console.log("fileEntry.toURL() = " + fileEntry.toURL());
 
                         fileWriter.onwritestart  = function(e) { def.notify( e ); };
                         fileWriter.onprogress    = function(e) { def.notify( e ); };
-                        fileWriter.onwriteend    = function(e) { def.resolve( e, fileEntry.toURL() ); };
-                        fileWriter.onabort       = function(e) { def.reject( e ); };
-                        fileWriter.onerror       = function(e) { def.reject( e ); };
-
+                        fileWriter.onwriteend    = sucessHandler;
+                        fileWriter.onabort       = writeabortHandler;
+                        fileWriter.onerror       = writeabortHandler;
                         fileWriter.write( dataURItoBlob( uri ));
-
                     }, function( error ) {
                         console.log( "Save background fail, error is", error );
                         def.reject( error );
