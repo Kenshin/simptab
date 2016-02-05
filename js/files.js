@@ -101,30 +101,22 @@ define([ "jquery", "vo" ], function( $, vo ) {
 
             fs.root.getFile( path, { create : true }, function( fileEntry ) {
                     fileEntry.createWriter( function( fileWriter ) {
-                        function unbindEvent() {
-                            fileWriter.onwritestart = null;
-                            fileWriter.onprogress   = null;
-                            fileWriter.onwriteend   = null;
-                            fileWriter.onabort      = null;
-                            fileWriter.onerror      = null;
-                            fileWriter              = null;
-                        };
-                        function writeabortHandler(e) {
-                            def.reject( e );
-                            unbindEvent();
-                        };
-                        function sucessHandler(e) {
-                            def.resolve( e, fileEntry.toURL() );
-                            unbindEvent();
-                        };
                         console.log("fileEntry.toURL() = " + fileEntry.toURL());
-
                         fileWriter.onwritestart  = function(e) { def.notify( e ); };
                         fileWriter.onprogress    = function(e) { def.notify( e ); };
-                        fileWriter.onwriteend    = sucessHandler;
-                        fileWriter.onabort       = writeabortHandler;
-                        fileWriter.onerror       = writeabortHandler;
+                        fileWriter.onwriteend    = unBindEvent;
+                        fileWriter.onabort       = unBindEvent;
+                        fileWriter.onerror       = unBindEvent;
                         fileWriter.write( dataURItoBlob( uri ));
+
+                        function unBindEvent(e) {
+                            fileWriter.onwritestart = null;
+                            fileWriter.onprogress   = null;
+                            fileWriter.onabort      = null;
+                            fileWriter.onerror      = null;
+                            fileWriter.onwriteend   = null;
+                            e && e.type == "writeend" ? def.resolve( e, fileEntry.toURL() ) : def.reject( e );
+                        };
                     }, function( error ) {
                         console.log( "Save background fail, error is", error );
                         def.reject( error );
