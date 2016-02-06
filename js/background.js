@@ -274,7 +274,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                         // set favorite / dislike icon state
                         controlbar.SetFavorteIcon();
-                        vo.cur.type != "upload" && vo.cur.pin == -1 && controlbar.SetDislikeState( false );
+                        vo.cur.type != "upload" && vo.cur.pin == -1 && localStorage["simptab-background-mode"] == "time" && controlbar.SetDislikeState( false );
 
                         new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
 
@@ -307,7 +307,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                             // update favorite / dislike icon
                             controlbar.SetFavorteIcon();
-                            vo.cur.type != "upload" && vo.cur.pin == -1 && controlbar.SetDislikeState( true );
+                            vo.cur.type != "upload" && vo.cur.pin == -1 && localStorage["simptab-background-mode"] == "time" && controlbar.SetDislikeState( true );
 
                             new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
