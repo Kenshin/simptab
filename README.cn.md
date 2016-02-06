@@ -3,7 +3,10 @@
 - 喜欢【美景、简约】的用户，【SimpTab】 是你不二的选择。
 - 喜欢【Momentum】的用户，【SimpTab】 会带来全新的感觉。
 
-功能：
+功能一览：
+  ![feature](http://i.imgur.com/LJ4dHILh.jpg)[http://i.imgur.com/LJ4dHIL.jpg]
+
+详细功能：
 - 自动识别语言。（简体、繁体、英文）  
   ![feature](http://i.imgur.com/nbw5Ycg.png)
 - 每日/随机更换背景。（注意：每日更换的背景只来自Bing.com.）  
