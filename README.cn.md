@@ -27,3 +27,4 @@
 - 停留功能。  
   ![feature](http://i.imgur.com/enC2bSI.png)
 - 不再显示（删除）功能。  
+![feature](http://i.imgur.com/1cdKgIo.png)
