@@ -25,6 +25,6 @@
 - 操作提示。（包括：上传、收藏。）  
   ![feature](http://i.imgur.com/TMMXFoT.png)
 - 停留功能。  
-  ![feature]http://i.imgur.com/P1jebkB.png)
+  ![feature](http://i.imgur.com/P1jebkB.png)
 - 不再显示（删除）功能。  
   ![feature](http://i.imgur.com/1cdKgIo.png)
