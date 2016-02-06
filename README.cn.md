@@ -4,7 +4,7 @@
 - 喜欢【Momentum】的用户，【SimpTab】 会带来全新的感觉。
 
 功能：
-- 自动识别语言。（简体、繁体、英文）
+- 自动识别语言。（简体、繁体、英文）  
   ![feature](http://i.imgur.com/nbw5Ycg.png)
 - 每日/随机更换背景。（注意：每日更换的背景只来自Bing.com.）  
   ![feature](http://i.imgur.com/JnwGMjw.png)
@@ -27,4 +27,3 @@
 - 停留功能。  
   ![feature](http://i.imgur.com/enC2bSI.png)
 - 不再显示（删除）功能。  
-  ![feature](http://i.imgur.com/enC2bSI.png)
