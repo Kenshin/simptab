@@ -1,4 +1,25 @@
 #### CHANGELOG:
+- 2016-02-06, Version 1.5.0
+  * Add pin feature.
+  * Add dislike feature.
+  * Add background remote cdns feature.
+  * Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/Kenshin/simptab/issues/16)
+
+- 2016-01-20, Version 1.4.3
+  * More detailed version for version feature.
+  * Dynamic set permissions.
+  * Modify settin bar icon.
+  * Add background position item, intelligent adjusting background position.
+
+- 2015-12-25, Version 1.4.2
+  * Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
+  * Add special day(SimpTab Images) to Setting bar.
+
+- 2015-12-23, Version 1.4.1
+  * Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
+  * Fix 'simple' mode topsites hover display speed.
+  * Fix notifiaction show z-index bug. [issues 8](https://github.com/Kenshin/simptab/issues/8)
+
 - 2015-12-10, Version 1.4.0
   * Feature: [Chinese Simplified](https://github.com/Kenshin/simptab/blob/master/README.cn.md) | [Traditional Chinese](https://github.com/Kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/Kenshin/simptab/blob/master/README.en.md)
   * Rework source.
