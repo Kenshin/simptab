@@ -1,4 +1,10 @@
 #### CHANGELOG:
+- 2016-02-06, Version 1.5.0
+  * Add pin feature.
+  * Add dislike feature.
+  * Add background remote cdns feature.
+  * Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/Kenshin/simptab/issues/16)
+
 - 2016-01-20, Version 1.4.3
   * More detailed version for version feature.
   * Dynamic set permissions.
