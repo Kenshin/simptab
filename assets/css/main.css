@@ -653,7 +653,8 @@ body {
 
     font-size: 15px;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
-    font-weight: 100;
+    font-weight: 400;
+    text-transform: none;
 
     z-index: 2000;
 }
