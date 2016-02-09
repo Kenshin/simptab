@@ -43,18 +43,16 @@
 `site` | 显示 `常用网址` 。（ 只针对 `omnibox` ）
 
 #### 相关链接：
-* 投票 <https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN>
-* Wiki <https://github.com/kenshin/simptab/wiki>
-* 常见问题 <https://github.com/kenshin/simptab/blob/master/QA.md>
-* 反馈 <https://github.com/kenshin/simptab/issues>
+* 如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN)
+* [Wiki](https://github.com/kenshin/simptab/wiki)
+* [常见问题](https://github.com/kenshin/simptab/blob/master/QA.md)
+* [反馈](https://github.com/kenshin/simptab/issues)
 * 联系 <http://kenshin.wang> | <kenshin@ksria.com>
 
 #### 更新日志：
 <https://github.com/kenshin/simptab/blob/master/CHANGELOG.md>
 
 #### 感谢：
-- Icon come from <http://www.easyicon.net>.
-- English font is `HapnaMono-Light`.
-- Chinest simplified font is `Source Han Sans Normal`.
-- Chinese traditional font is Microsoft Yahei.
-- Background image come from `Bing.com`.
+- 图标来自 <http://www.easyicon.net>。
+- 英文字体 `HapnaMono-Light`。
+- 简体/繁體 字体 `思源黑体 ExtraLight`。
