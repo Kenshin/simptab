@@ -42,15 +42,15 @@
 `un`   | `不再显示` （删除）功能。
 `site` | 显示 `常用网址` 。（ 只针对 `omnibox` ）
 
-#### 相关链接：
+#### 投票：
 * 如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN)
+
+#### 相关链接：
 * [Wiki](https://github.com/kenshin/simptab/wiki)
 * [常见问题](https://github.com/kenshin/simptab/blob/master/QA.md)
+* [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
 * [反馈](https://github.com/kenshin/simptab/issues)
 * 联系 <http://kenshin.wang> | <kenshin@ksria.com>
-
-#### 更新日志：
-<https://github.com/kenshin/simptab/blob/master/CHANGELOG.md>
 
 #### 感谢：
 - 图标来自 <http://www.easyicon.net>。
