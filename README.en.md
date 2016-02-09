@@ -1,10 +1,10 @@
 **SimpTab - Minimalist Chrome new tab extension**, hope to have good mood every time you open it. Removed redundant function, focused tab rendering.
 
-Features：
+#### Features：
   ![feature 1](http://i.imgur.com/LeBbWwK.jpg)
   ![feature 2](http://i.imgur.com/frAMioD.jpg)
 
-Features Details:
+#### Features Details:
 - Automatic recognition languages. ( Simplified, Traditional, English. )  
 - Daily / random to replace the background. ( Note: The daily changing background only from Bing.com. )  
 - Multi background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`  
@@ -17,3 +17,17 @@ Features Details:
 - Favorite.  
 - Pin.  
 - Dislike.  
+
+#### Shortcuts && Omnibox:
+Name | Description
+------ | ------
+`book` | Open Chrome's `Bookmark` tab.
+`his ` | Open Chrome's `History` tab.
+`app ` | Open Chrome's `Apps` tab.
+`info` | Open current background's infomation.
+`down` | Download current background.
+`set ` | Open `SimpTab` `Setting` dashboard tab.
+`fav`  | Favorite current background.
+`pin`  | Pin current background.
+`un`   | Dislike current background.
+`site` | Show top sites.(only omnibox)
