@@ -1,6 +1,8 @@
 简 Tab - 极简的Chrome新标签页扩展
 =======
 ### 望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。
+[![Version][version-badge]][version-link]
+[![Offline][offline-badge]][offline-link]
 [![Chrome webstore](http://i.imgur.com/VHT26ei.png)](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)    [![Offline donwload](http://i.imgur.com/n2GoUtn.png)](http://ksria.com/simptab/crx/1.5.0/simptab.crx)
 
 #### 主页：
@@ -50,9 +52,15 @@
 * [常见问题](https://github.com/kenshin/simptab/blob/master/QA.md)
 * [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
 * [反馈](https://github.com/kenshin/simptab/issues)
-* 联系 <http://kenshin.wang> | <kenshin@ksria.com>
+* [联系](http://kenshin.wang) | [邮件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
 
 #### 感谢：
 - 图标来自 <http://www.easyicon.net>。
 - 英文字体 `HapnaMono-Light`。
 - 简体/繁體 字体 `思源黑体 ExtraLight`。
+
+<!-- Header -->
+[version-badge]:    https://img.shields.io/badge/release_version-1.5.0-blue.svg
+[version-link]:     https://github.com/kenshin/simptab/releases
+[offline-badge]:    https://img.shields.io/badge/download-_418k_lastest_version-brightgreen.svg
+[offline-link]:     http://i.imgur.com/n2GoUtn.png)](http://ksria.com/simptab/crx/1.5.0/simptab.crx
