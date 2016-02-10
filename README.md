@@ -1,14 +1,14 @@
 简 Tab - 极简的Chrome新标签页扩展
 =======
 ### 望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。
-[![Chrome webstore](http://i.imgur.com/569unGE.png)](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)    [![Offline donwload](http://i.imgur.com/ONYMM5T.png)](http://ksria.com/simptab/crx/1.5.0/simptab.crx)
+[![Chrome webstore](http://i.imgur.com/VHT26ei.png)](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)    [![Offline donwload](http://i.imgur.com/n2GoUtn.png)](http://ksria.com/simptab/crx/1.5.0/simptab.crx)
 
 #### 主页：
 <http://ksria.com/simptab>
 
 #### 功能一栏：
-  ![feature 1](http://i.imgur.com/LeBbWwK.jpg)
-  ![feature 2](http://i.imgur.com/frAMioD.jpg)  
+  ![feature 1](http://i.imgur.com/BZGMo4p.jpg)
+  ![feature 2](http://i.imgur.com/auWFlc9.jpg)  
   [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
 
 #### 详细功能：
@@ -31,7 +31,7 @@
 #### 快捷键 & 多功能框：
 名称 | 描述
 ------ | ------
-`book` | 打开 `书签` 标签。 
+`book` | 打开 `书签` 标签。
 `his ` | 打开 `历史` 标签。
 `app ` | 打开 `应用` 标签。
 `info` | 当前背景的出处。
