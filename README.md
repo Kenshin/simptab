@@ -64,4 +64,4 @@
 [version-badge]:    https://img.shields.io/badge/release_version-1.5.0-blue.svg
 [version-link]:     https://github.com/kenshin/simptab/releases
 [offline-badge]:    https://img.shields.io/badge/download-_418k_lastest_version-brightgreen.svg
-[offline-link]:     http://i.imgur.com/n2GoUtn.png)](http://ksria.com/simptab/crx/1.5.0/simptab.crx
+[offline-link]:     http://ksria.com/simptab/crx/1.5.0/simptab.crx
