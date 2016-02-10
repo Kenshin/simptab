@@ -1,8 +1,11 @@
-简 Tab - 极简的Chrome新标签页扩展
+简 Tab
 =======
-### 望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。
+### 极简的Chrome新标签页扩展，望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。
 [![Version][version-badge]][version-link]
-[![Offline][offline-badge]][offline-link]  
+[![Offline][offline-badge]][offline-link]
+[![Gitter][gitter-badge]][gitter-link]
+[![Slack][slack-badge]][slack-link]
+[![Jianliao][jianliao-badge]][jianliao-link]  
 
 [![Chrome webstore](http://i.imgur.com/VHT26ei.png)](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)    [![Offline donwload](http://i.imgur.com/n2GoUtn.png)](http://ksria.com/simptab/crx/1.5.0/simptab.crx)
 
@@ -65,3 +68,9 @@
 [version-link]:     https://github.com/kenshin/simptab/releases
 [offline-badge]:    https://img.shields.io/badge/download-_418k_lastest_version-brightgreen.svg
 [offline-link]:     http://ksria.com/simptab/crx/1.5.0/simptab.crx
+[gitter-badge]:     https://badges.gitter.im/kenshin/simptab.svg
+[gitter-link]:      https://gitter.im/kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+[slack-badge]:      https://img.shields.io/badge/chat-slack-orange.svg
+[slack-link]:       https://simptab-crx.slack.com/
+[jianliao-badge]:   https://img.shields.io/badge/chat-jianliao-yellowgreen.svg
+[jianliao-link]:    https://guest.jianliao.com/rooms/76dce8b01v
