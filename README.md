@@ -2,7 +2,8 @@
 =======
 ### 望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。
 [![Version][version-badge]][version-link]
-[![Offline][offline-badge]][offline-link]
+[![Offline][offline-badge]][offline-link]  
+
 [![Chrome webstore](http://i.imgur.com/VHT26ei.png)](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)    [![Offline donwload](http://i.imgur.com/n2GoUtn.png)](http://ksria.com/simptab/crx/1.5.0/simptab.crx)
 
 #### 主页：
