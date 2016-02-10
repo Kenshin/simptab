@@ -2,6 +2,8 @@ SimpTab - New Tab by Chrome Extensions
 =======
 ### Minimalist Chrome new tab extension, hope to have good mood every time you open it. Removed redundant function, focused tab rendering.
 
+[![Join the chat at https://gitter.im/Kenshin/simptab](https://badges.gitter.im/Kenshin/simptab.svg)](https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 #### Homepage:
 <http://ksria.com/simptab>
 
