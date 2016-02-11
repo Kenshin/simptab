@@ -13,6 +13,9 @@
 #### 主页：
 [![Website][www-badge]][www-link]
 
+#### 截图：
+![Snapshot](http://i.imgur.com/qJ7Uwrz.jpg)
+
 #### 功能一览：
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
 ![feature 2](http://i.imgur.com/auWFlc9.jpg)
@@ -62,9 +65,10 @@
 * [联系](http://kenshin.wang) | [邮件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
 
 #### 感谢：
-- 图标来自 <http://www.easyicon.net>。
+- 图标 <http://www.easyicon.net> <https://www.iconfinder.com>。
 - 英文字体 `HapnaMono-Light`。
 - 简体/繁體 字体 `思源黑体 ExtraLight`。
+- 效果图 <http://magicmockups.com/>
 
 <!-- Link -->
 [www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg

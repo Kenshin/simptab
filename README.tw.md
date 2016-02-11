@@ -13,6 +13,9 @@
 #### 主頁：
 [![Website][www-badge]][www-link]
 
+#### 截圖：
+![Snapshot](http://i.imgur.com/qJ7Uwrz.jpg)
+
 #### 功能一覽：
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
 ![feature 2](http://i.imgur.com/auWFlc9.jpg)
@@ -62,9 +65,10 @@
 * [聯繫](http://kenshin.wang) | [郵件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
 
 #### 感謝：
-- 圖標來自 <http://www.easyicon.net>。
+- 圖標來自 <http://www.easyicon.net> <https://www.iconfinder.com>。
 - 英文字體 `HapnaMono-Light`。
 - 簡體/繁體 字體 `思源黑體 ExtraLight`。
+- 效果圖 <http://magicmockups.com/>
 
 <!-- Link -->
 [www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg

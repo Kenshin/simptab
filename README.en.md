@@ -13,11 +13,14 @@ SimpTab - Minimalist Chrome new tab extension
 #### Website:
 [![Website][www-badge]][www-link]
 
+#### Snapshot:
+![Snapshot](http://i.imgur.com/qJ7Uwrz.jpg)
+
 #### Feature:
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
 ![feature 2](http://i.imgur.com/auWFlc9.jpg)
 
-#### Other language：
+#### Other language:
 [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [简体中文](https://github.com/kenshin/simptab/blob/master/README.md)
 
 #### Features Details:
@@ -62,9 +65,10 @@ Name | Description
 * [Contact](http://kenshin.wang) | [Email](kenshin@ksria.com) | [Twitter](https://twitter.com/wanglei001)
 
 #### Thanks:
-- <http://www.easyicon.net>.
+- <http://www.easyicon.net> <https://www.iconfinder.com>.
 - `HapnaMono-Light`.
 - `Source Han Sans ExtraLight`.
+- Mockup <http://magicmockups.com/>
 
 <!-- Link -->
 [www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg
