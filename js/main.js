@@ -82,7 +82,9 @@ $( document ).ready( function() {
 
     $( ".middle a:nth-child(1)" ).click( function() {
         var lng = i18n.lng();
-        window.location.href = "https://github.com/kenshin/simptab/blob/master/README." + ( lng === "en" ? lng : lng.split("-")[1] ) + ".md";
+        lng     = lng === "en" ? lng : lng.split("-")[1];
+        lng     = lng === "cn" ? ""  : "." + lng;
+        window.location.href = "https://github.com/kenshin/simptab/blob/master/README" + lng + ".md";
     });
 
 });
