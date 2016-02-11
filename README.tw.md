@@ -70,6 +70,9 @@
 - 簡體/繁體 字體 `思源黑體 ExtraLight`。
 - 效果圖 <http://magicmockups.com/>
 
+#### 許可：
+[![license-badge]][license-link]
+
 <!-- Link -->
 [www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg
 [www-link]:         http://ksria.com/simptab
@@ -85,3 +88,5 @@
 [slack-link]:       https://simptab-crx.slack.com/
 [jianliao-badge]:   https://img.shields.io/badge/chat-jianliao-yellowgreen.svg
 [jianliao-link]:    https://guest.jianliao.com/rooms/76dce8b01v
+[license-badge]:    https://img.shields.io/github/license/mashape/apistatus.svg
+[license-link]:     https://opensource.org/licenses/MIT

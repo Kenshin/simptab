@@ -24,18 +24,18 @@ SimpTab - Minimalist Chrome new tab extension
 [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [简体中文](https://github.com/kenshin/simptab/blob/master/README.md)
 
 #### Features Details:
-- Automatic recognition languages. ( Simplified, Traditional, English. )  
-- Daily / random to replace the background. ( Note: The daily changing background only from Bing.com. )  
-- Multi background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`  
-- Twenty-four solar terms.  
-- Background loading progress. ( Lower left corner, only at load time. )  
-- Support `shortcuts` / `omnibox` operation.  
-- Notification. ( include: upload, favorite. )  
-- Top sites. ( include: simptab, senior, hidden mode. )  
-- Upload.  
-- Favorite.  
-- Pin.  
-- Dislike.  
+- Automatic recognition languages. ( Simplified, Traditional, English. )
+- Daily / random to replace the background. ( Note: The daily changing background only from Bing.com. )
+- Multi background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`
+- Twenty-four solar terms.
+- Background loading progress. ( Lower left corner, only at load time. )
+- Support `shortcuts` / `omnibox` operation.
+- Notification. ( include: upload, favorite. )
+- Top sites. ( include: simptab, senior, hidden mode. )
+- Upload.
+- Favorite.
+- Pin.
+- Dislike.
 
 #### Omnibox:
 `st`
@@ -70,6 +70,9 @@ Name | Description
 - `Source Han Sans ExtraLight`.
 - Mockup <http://magicmockups.com/>
 
+#### Licenses:
+[![license-badge]][license-link]
+
 <!-- Link -->
 [www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg
 [www-link]:         http://ksria.com/simptab
@@ -85,3 +88,5 @@ Name | Description
 [slack-link]:       https://simptab-crx.slack.com/
 [jianliao-badge]:   https://img.shields.io/badge/chat-jianliao-yellowgreen.svg
 [jianliao-link]:    https://guest.jianliao.com/rooms/76dce8b01v
+[license-badge]:    https://img.shields.io/github/license/mashape/apistatus.svg
+[license-link]:     https://opensource.org/licenses/MIT
