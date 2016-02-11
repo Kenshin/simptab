@@ -54,7 +54,7 @@
 
 #### 相关链接：
 * [Wiki](https://github.com/kenshin/simptab/wiki)
-* [常见问题](https://github.com/kenshin/simptab/blob/master/QA.md)
+* [常见问题](https://github.com/Kenshin/simptab/wiki/常见问题)
 * [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
 * [反馈](https://github.com/kenshin/simptab/issues)
 * [联系](http://kenshin.wang) | [邮件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
@@ -64,8 +64,8 @@
 - 英文字体 `HapnaMono-Light`。
 - 简体/繁體 字体 `思源黑体 ExtraLight`。
 
-<!-- Header -->
-[www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-blue.svg
+<!-- Link -->
+[www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg
 [www-link]:         http://ksria.com/simptab
 [version-badge]:    https://img.shields.io/badge/release_version-1.5.0-blue.svg
 [version-link]:     https://github.com/kenshin/simptab/releases
