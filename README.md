@@ -1,17 +1,17 @@
-简 Tab
+简 Tab - 极简的Chrome新标签页扩展
 =======
-### 极简的Chrome新标签页扩展，望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。
+### 望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。
 [![Version][version-badge]][version-link]
 [![Gitter][gitter-badge]][gitter-link]
 [![Slack][slack-badge]][slack-link]
-[![Jianliao][jianliao-badge]][jianliao-link]
+[![Jianliao][jianliao-badge]][jianliao-link]  
 [![Chrome][chrome-badge]][chrome-link]
 [![Offline][offline-badge]][offline-link]
 
 #### 主页：
 <http://ksria.com/simptab>
 
-#### 功能一栏：
+#### 功能一览：
   ![feature 1](http://i.imgur.com/BZGMo4p.jpg)
   ![feature 2](http://i.imgur.com/auWFlc9.jpg)
   [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
