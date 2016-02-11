@@ -14,9 +14,11 @@
 [![Website][www-badge]][www-link]
 
 #### 功能一览：
-  ![feature 1](http://i.imgur.com/BZGMo4p.jpg)
-  ![feature 2](http://i.imgur.com/auWFlc9.jpg)
-  [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+![feature 1](http://i.imgur.com/BZGMo4p.jpg)
+![feature 2](http://i.imgur.com/auWFlc9.jpg)
+
+#### 其它语言：
+[繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
 
 #### 详细功能：
 - 自动识别语言。（ 简体、繁体、英文 ）
