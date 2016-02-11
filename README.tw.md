@@ -52,12 +52,12 @@
 `site` | 顯示 `常用網址` 。（ 只針對 `omnibox` ）
 
 #### 投票：
-* 如果覺得不錯，請給我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN)
+* 如果覺得不錯，請給我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
 #### 相關鏈接：
-* [Wiki](https://github.com/kenshin/simptab/wiki)
-* [常見問題](https://github.com/Kenshin/simptab/wiki/常見問題)
 * [更新日誌](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
+* [Wiki](https://github.com/kenshin/simptab/wiki)
+* [常見問題](https://github.com/Kenshin/simptab/wiki/常见问题)
 * [反饋](https://github.com/kenshin/simptab/issues)
 * [聯繫](http://kenshin.wang) | [郵件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
 

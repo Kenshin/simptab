@@ -52,12 +52,12 @@ Name | Description
 `site` | Show top sites.(only omnibox)
 
 #### Vote:
-* If you feel good, please give me [Vote](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews?hl=zh-CN)
+* If you feel good, please give me [Vote](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
 #### About:
-* [Wiki](https://github.com/kenshin/simptab/wiki)
-* [FQA](https://github.com/Kenshin/simptab/wiki/常见问题)
 * [CHANGELOG](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
+* [Wiki](https://github.com/kenshin/simptab/wiki)
+* [FAQ](https://github.com/Kenshin/simptab/wiki/常见问题)
 * [Feedback](https://github.com/kenshin/simptab/issues)
 * [Contact](http://kenshin.wang) | [Email](kenshin@ksria.com) | [Twitter](https://twitter.com/wanglei001)
 
