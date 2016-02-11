@@ -14,7 +14,7 @@
 [![Website][www-badge]][www-link]
 
 #### 功能一览：
-![feature 1](http://i.imgur.com/BZGMo4p.jpg)
+![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
 ![feature 2](http://i.imgur.com/auWFlc9.jpg)
 
 #### 其它语言：
