@@ -11,7 +11,7 @@
 [![Offline][offline-badge]][offline-link]
 
 #### 主页：
-<http://ksria.com/simptab>
+![https://img.shields.io/badge/website-_simptab.ksria.com-blue.svg](http://ksria.com/simptab)
 
 #### 功能一览：
   ![feature 1](http://i.imgur.com/BZGMo4p.jpg)
