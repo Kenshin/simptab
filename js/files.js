@@ -4,7 +4,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
     "use strict";
 
     var FOLDER_NAME = "favorites",
-        fs, curURI;
+        fs, curURI, count = 0;
 
     function errorHandler( error ) {
         console.error( "File Operations error.", error );
@@ -52,6 +52,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
             canvas.getContext( "2d" ).drawImage( img, 0, 0 );
 
             def.resolve( canvas.toDataURL( "image/jpeg" ));
+            canvas = null;
+            img    = null;
         }
 
         function errored ( error ) {
@@ -71,13 +73,12 @@ define([ "jquery", "vo" ], function( $, vo ) {
     function readAsDataURL( file, arr, i, len, def ) {
         arr.push( new FileReader() );
         arr[i].onloadend = function( result ) {
-            if ( i == len -1 ) arr.splice( 0, len );
-            if ( result.type == "loadend" ) {
-                def.resolve( result.currentTarget.result );
-            }
-            else {
-                def.reject( result );
-            }
+            arr[i].onloadend = null;
+            if ( count == len - 1 ) {
+                arr   = [];
+                count = 0;
+            } else { count++; }
+            result.type == "loadend" ? def.resolve( result.currentTarget.result ) : def.reject( result );
         };
         arr[i].readAsDataURL( file );
         return def.promise();
@@ -98,20 +99,24 @@ define([ "jquery", "vo" ], function( $, vo ) {
             var path = file_name == vo.constructor.BACKGROUND ? file_name : FOLDER_NAME + "/" + file_name + ".jpg";
             var def  = $.Deferred();
 
-            fs.root.getFile( path, { create : true },
-                function( fileEntry ) {
+            fs.root.getFile( path, { create : true }, function( fileEntry ) {
                     fileEntry.createWriter( function( fileWriter ) {
-
                         console.log("fileEntry.toURL() = " + fileEntry.toURL());
-
                         fileWriter.onwritestart  = function(e) { def.notify( e ); };
                         fileWriter.onprogress    = function(e) { def.notify( e ); };
-                        fileWriter.onwriteend    = function(e) { def.resolve( e, fileEntry.toURL() ); };
-                        fileWriter.onabort       = function(e) { def.reject( e ); };
-                        fileWriter.onerror       = function(e) { def.reject( e ); };
-
+                        fileWriter.onwriteend    = unBindEvent;
+                        fileWriter.onabort       = unBindEvent;
+                        fileWriter.onerror       = unBindEvent;
                         fileWriter.write( dataURItoBlob( uri ));
 
+                        function unBindEvent(e) {
+                            fileWriter.onwritestart = null;
+                            fileWriter.onprogress   = null;
+                            fileWriter.onabort      = null;
+                            fileWriter.onerror      = null;
+                            fileWriter.onwriteend   = null;
+                            e && e.type == "writeend" ? def.resolve( e, fileEntry.toURL() ) : def.reject( e );
+                        };
                     }, function( error ) {
                         console.log( "Save background fail, error is", error );
                         def.reject( error );

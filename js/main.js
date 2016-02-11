@@ -19,7 +19,8 @@ requirejs.config({
       "topsites"   : "js/topsites",
       "notify"     : "js/notify",
       "version"    : "js/version",
-      "progress"   : "js/progress"
+      "progress"   : "js/progress",
+      "cdns"       : "js/cdns"
     },
     shim: {
       "mousetrap"   : {
@@ -57,14 +58,20 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
     date.Toggle( setting.Mode( "clockstate" ));
 
     // listen
-    controlbar.Listen( function( result ) {
-        if ( typeof result === "boolean" )     background.Favorite( result );
-        else if ( typeof result === "object" ) background.Upload( result );
+    controlbar.Listen( function( type, result ) {
+        switch ( type) {
+            case "upload"  : background.Upload( result );   break;
+            case "favorite": background.Favorite( result ); break;
+            case "dislike" : background.Dislike( result );  break;
+            case "pin"     : background.Pin( result );      break;
+        }
     });
     setting.Listen( function( type, result ) {
-        if ( type == "tsstate" )               topsites.Refresh( result );
-        else if ( type == "clockstate" )       date.Toggle( result );
-        else if ( type == "positionstate" )    controlbar.SetBgPosition();
+        switch ( type) {
+            case "tsstate"      : topsites.Refresh( result ); break;
+            case "clockstate"   : date.Toggle( result );      break;
+            case "positionstate": controlbar.SetBgPosition(); break;
+        }
     });
 
     // validation background

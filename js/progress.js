@@ -25,7 +25,7 @@ define([ "jquery", "progressbar" ], function( $, ProgressBar ) {
 
             console.log( "localStorage[simptab-background-state] = ", state )
 
-            // state includ: ready, remote(get remote url), loading(set remote url to image), writestart(write start), pending(writting), success(write complete, end), writefailed(write error, end), remotefailed(remote failed, end)
+            // state includ: ready, remote(get remote url), loading(set remote url to image), writestart(write start), pending(writting), success(write complete, end), writefailed(write error, end), remotefailed(remote failed, end), pinsuccess( pinned )
             localStorage["simptab-background-state"] = state;
 
             switch ( state ) {

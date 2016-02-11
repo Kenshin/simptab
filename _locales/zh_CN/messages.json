@@ -47,6 +47,14 @@
         "message": "\u6536\u85cf"
     },
 
+    "controlbar_dislike": {
+        "message": "\u4e0d\u559c\u6b22"
+    },
+
+    "controlbar_pin": {
+        "message": "\u56fa\u5b9a"
+    },
+
     "setting_width": {
         "message": "225"
     },
@@ -127,6 +135,10 @@
         "message": "\u5e38\u7528\u7f51\u5740\uff08\u9ad8\u7ea7\u6a21\u5f0f\uff09"
     },
 
+    "setting_pin_tooltip": {
+        "message": "\u56fa\u5b9a #1 \u5c0f\u65f6"
+    },
+
     "setting_contact_weibo": {
         "message": "\u5206\u4eab\u5230 \u5fae\u535a"
     },
@@ -179,6 +191,22 @@
         "message": "\u80cc\u666f\u53d6\u6d88\u6536\u85cf\u6210\u529f\u3002"
     },
 
+    "notify_dislike_add": {
+        "message": "\u5df2\u6210\u529f\u52a0\u5165\u4e0d\u559c\u6b22\u5217\u8868\uff0c\u65b0\u80cc\u666f\u53d6\u5f97\u540e\uff0c\u5f53\u524d\u80cc\u666f\u5c06\u4e0d\u4f1a\u518d\u663e\u793a\u3002"
+    },
+
+    "notify_dislike_del": {
+        "message": "\u5df2\u6210\u529f\u79fb\u51fa\u4e0d\u559c\u6b22\u5217\u8868\u3002"
+    },
+
+    "notify_pin_add": {
+        "message": "\u5f53\u524d\u80cc\u666f\u56fa\u5b9a #1 \u5c0f\u65f6\u3002"
+    },
+
+    "notify_pin_del": {
+        "message": "\u5df2\u53d6\u6d88\u5f53\u524d\u80cc\u666f\u7684\u56fa\u5b9a\u3002"
+    },
+
     "version_detail": {
         "message": "\u5168\u65b0\u7248\u672c\uff0c\u5168\u65b0\u529f\u80fd\uff1b"
     },
@@ -205,6 +233,10 @@
 
     "version_detail_4": {
         "message": "\u66f4\u8be6\u7ec6\u7684\u7248\u672c\u63d0\u793a\u529f\u80fd\uff0c\u667a\u80fd\u8c03\u6574\u80cc\u666f\u4f4d\u7f6e\u7b49\uff1b"
+    },
+
+    "version_detail_5": {
+        "message": "\u4e0d\u559c\u6b22\u529f\u80fd\uff0cPin\u529f\u80fd\uff0c\u4f18\u5316\u80cc\u666f\u83b7\u53d6\u901f\u5ea6\u7b49\uff1b"
     },
 
     "permissions": {

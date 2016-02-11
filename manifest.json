@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name"            : "__MSG_extension_name__",
     "short_name"      : "SimpTab",
-    "version"         : "1.4.3",
+    "version"         : "1.5.0",
     "default_locale"  : "en",
     "description"     : "__MSG_extension_desc__",
     "author"          : "Kenshin",
@@ -23,6 +23,7 @@
         "https://*.staticflickr.com/",
         "http://*.desktopprassets.com/",
         "http://*.visualhunt.com/",
+        "https://*.visualhunt.com/",
         "https://*.500px.org/",
         "http://*.vo.msecnd.net/",
         "http://*.nasa.gov/"

@@ -20,9 +20,11 @@
             <li class="tooltip-left"><span class="tooltip">Upload</span><a class="controlink" href="#" url="upload"><span class="icon uploadicon"></span></a></li>
             <li class="tooltip-left"><span class="tooltip">Setting</span><a class="controlink" href="#" url="setting"><span class="icon settingicon"></span></a></li>
             <li class="tooltip-left"><span class="tooltip">Favorite</span><a class="controlink" href="#" url="favorite"><span class="icon unfavoriteicon"></span></a></li>
+            <li class="tooltip-left"><span class="tooltip">Pin</span><a class="controlink" href="#" url="pin"><span class="icon pin"></span></a></li>
+            <li class="tooltip-left"><span class="tooltip">Dislike</span><a class="controlink" href="#" url="dislike"><span class="icon dislike"></span></a></li>
         </ul>
         <div class="clock">
-            <div class="tooltip-top">
+            <div class="clock-tooltip">
                 <span class="tooltip">&nbsp;</span>
                 <div id="time">-:-</div>
             </div>
@@ -84,6 +86,23 @@
                 <input id="stsenior" type="radio" name="tsstate" value="senior">
                 <label for="stsenior">Senior Topsites</label>
             </div>
+        </div>
+        <div class="pinstate">
+            <section class="tooltip-top">
+                <div class="boxradio"><input id="pintime1" type="radio" name="pinstate" value="30"><label for="pintime1">0.5</label></div>
+            </section>
+            <section class="tooltip-top">
+                <div class="boxradio"><input id="pintime2" type="radio" name="pinstate" value="60"><label for="pintime2">1</label></div>
+            </section>
+            <section class="tooltip-top">
+                <div class="boxradio"><input id="pintime3" type="radio" name="pinstate" value="120"><label for="pintime3">2</label></div>
+            </section>
+            <section class="tooltip-top">
+                <div class="boxradio"><input id="pintime4" type="radio" name="pinstate" value="240"><label for="pintime4">4</label></div>
+            </section>
+            <section class="tooltip-top">
+                <div class="boxradio"><input id="pintime5" type="radio" name="pinstate" value="480"><label for="pintime5">8</label></div>
+            </section>
         </div>
         <div class="contact">
             <a target="_blank" href="http://service.weibo.com/share/share.php?url=http://ksria.com/simptab&title=SimpTab%20-%20%E7%AE%80%E7%BA%A6%E7%9A%84Chrome%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%89%A9%E5%B1%95%EF%BC%8C%E5%B8%8C%E6%9C%9B%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%EF%BC%8C%E4%BD%A0%E6%9C%89%E4%B8%AA%E5%A5%BD%E5%BF%83%E6%83%85%E3%80%82&pic=http://ksria.com/simptab/assets/image/introduce.png" title="Share weibo.com"><span class="icon weiboicon"></span></a>
