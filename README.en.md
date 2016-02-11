@@ -14,7 +14,7 @@ SimpTab - Minimalist Chrome new tab extension
 [![Website][www-badge]][www-link]
 
 #### Snapshot:
-![Snapshot](http://i.imgur.com/qJ7Uwrz.jpg)
+![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
 
 #### Feature:
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  

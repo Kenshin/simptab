@@ -14,7 +14,7 @@
 [![Website][www-badge]][www-link]
 
 #### 截圖：
-![Snapshot](http://i.imgur.com/qJ7Uwrz.jpg)
+![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
 
 #### 功能一覽：
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
