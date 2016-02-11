@@ -67,7 +67,7 @@
 <!-- Link -->
 [www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg
 [www-link]:         http://ksria.com/simptab
-[version-badge]:    https://img.shields.io/badge/release_version-1.5.0-blue.svg
+[version-badge]:    https://img.shields.io/badge/lastest_version-1.5.0-blue.svg
 [version-link]:     https://github.com/kenshin/simptab/releases
 [chrome-badge]:     https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg
 [chrome-link]:      https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc
