@@ -57,7 +57,7 @@ define([ "jquery" ], function( $ ) {
             this.new.type      = type;
             this.new.apis_vo   = apis_vo;
             this.new.version   = VERSION;
-            this.new.favorite  = favorite == undefined ? -1 : favorite;
+            this.new.favorite  = typeof favorite == "undefined" ? -1 : favorite;
             this.new.pin       = -1;
             this.new.dislike   = -1;
 
@@ -74,17 +74,17 @@ define([ "jquery" ], function( $ ) {
 
     VO.prototype.Verify = function() {
         var result = false;
-        switch ( this.cur.version ) {
+        switch ( this.version ) {
             case "2":
-                this.cur.favorite = -1;
-                this.cur.version  = VERSION;
+                this.favorite = -1;
+                this.version  = VERSION;
             case "2.1":
-                if ( this.cur.type == "googleartproject.com" ) this.cur.type = "googleart.com";
-                if ( this.cur.enddate.length == 8 && this.cur.type == "bing.com" ) this.cur.type = "today";
-                this.cur.apis_vo  = {};
-                this.cur.pin      = -1;
-                this.cur.dislike  = -1;
-                this.cur.version  = VERSION;
+                if ( this.type == "googleartproject.com" ) this.type = "googleart.com";
+                if ( this.enddate.length == 8 && this.type == "bing.com" ) this.type = "today";
+                this.apis_vo  = {};
+                this.pin      = -1;
+                this.dislike  = -1;
+                this.version  = VERSION;
             case VERSION:
                 result            = true;
                 break;

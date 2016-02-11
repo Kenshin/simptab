@@ -19,7 +19,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 console.log( "Current background data structure is ", vo.cur );
 
                 // check old data structure
-                if ( !vo.Verify() ) {
+                if ( !vo.Verify.call( vo.cur )) {
                     console.error( "Current data structure error.", result );
                     //// set default background and call api. type 1
                     def.resolve(1);
@@ -111,7 +111,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             files.GetDataURI( url ).then( function( result ) {
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) {
-                        if ( result != undefined && !$.isEmptyObject( result )) {
+                        if ( typeof result != "undefined" && !$.isEmptyObject( result )) {
                             switch ( result.type ) {
                                 case "writestart":
                                     console.log( "Write start: ", result );
@@ -151,7 +151,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
         if ( is_save ) {
             // when 'change bing.com background everyday', re-set controlbar.Set
-            if ( localStorage["simptab-background-refresh"] != undefined && localStorage["simptab-background-refresh"] == "true" ) {
+            if ( localStorage["simptab-background-refresh"] == "true" ) {
 
                 // when local storage 'simptab-background-refresh' == "true", re-set 'simptab-background-state' is 'ready'
                 progress.Set( "ready" );
@@ -274,7 +274,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                         // set favorite / dislike icon state
                         controlbar.SetFavorteIcon();
-                        vo.cur.type != "upload" && vo.cur.pin == -1 && controlbar.SetDislikeState( false );
+                        vo.cur.type != "upload" && vo.cur.pin == -1 && localStorage["simptab-background-mode"] == "time" && controlbar.SetDislikeState( false );
 
                         new Notify().Render( i18n.GetLang( "notify_favorite_add" ) );
 
@@ -307,7 +307,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                             // update favorite / dislike icon
                             controlbar.SetFavorteIcon();
-                            vo.cur.type != "upload" && vo.cur.pin == -1 && controlbar.SetDislikeState( true );
+                            vo.cur.type != "upload" && vo.cur.pin == -1 && localStorage["simptab-background-mode"] == "time" && controlbar.SetDislikeState( true );
 
                             new Notify().Render( i18n.GetLang( "notify_favorite_del" ) );
 
@@ -333,7 +333,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
                         var file_name = Math.round(+new Date()),
                             upload_vo = {new:{}},
-                            apis_vo   = { url : "", type : "GET", dataType : "localStorge", timeout : 2000, method : "background.Upload()", origin : "favorite", code : 10 };
+                            apis_vo   = { url : "", type : "GET", dataType : "localStorage", timeout : 2000, method : "background.Upload()", origin : "favorite", code : 10 };
 
                         files.Add( file_name, datauri )
                         .done( function( result, hdurl ) {

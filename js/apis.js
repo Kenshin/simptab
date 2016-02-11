@@ -13,7 +13,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
             * apis.New()    set vo `code` and `origin` property.
             * apis.Update() set vo other property.
             *
-            * dataType: json, xml( only nasa ), localStorge( upload  ), image( "wallhaven.cc", "unsplash.com", "unsplash.it" )
+            * dataType: json, xml( only nasa ), localStorage( upload  ), image( "wallhaven.cc", "unsplash.com", "unsplash.it" )
             */
 
             var options = {
@@ -95,7 +95,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
             }
 
             APIS.prototype.VerifyObject = function( result ) {
-                if ( result != undefined && !$.isEmptyObject( result )) {
+                if ( typeof result != "undefined" && !$.isEmptyObject( result )) {
                     return true;
                 }
                 else {
@@ -584,9 +584,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 obj    = JSON.parse( arr[ random ] ),
                 result = JSON.parse( obj.result );
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
-
             // verify favorite data structure
-            if ( !vo.Verify()) {
+            if ( !vo.Verify.call( result ))  {
                 apis.defer.reject( new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo }));
             }
             else {

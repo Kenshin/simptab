@@ -81,7 +81,6 @@ body {
 
 .setting div[class$=state] {
     padding: 26px 8px 0px 8px;
-    cursor: pointer;
 }
 
 .setting::-webkit-scrollbar {
@@ -243,6 +242,7 @@ body {
     border: none;
     -webkit-border-radius: 3px;
 
+    cursor: pointer;
 }
 
 .lineradio:hover,
@@ -260,7 +260,7 @@ body {
 }
 
 .lineradio  input[type=radio],
-.boxradio input[type=radio],
+.boxradio   input[type=radio],
 .lineradio  input[type=checkbox] {
     display: none;
 }
@@ -402,8 +402,7 @@ body {
     -webkit-transform: scale(0);
     opacity: 0;
 
-    cursor: default;
-
+    /*cursor: default;*/
 }
 
 .tooltip:hover {
@@ -432,7 +431,7 @@ body {
 
 .tooltip-top {
     position: relative;
-	cursor: pointer;
+	/*cursor: pointer;*/
     padding: 0;
     text-transform: none;
 }
@@ -474,10 +473,11 @@ body {
 	border-radius: 5px;
 	background-color: #222;
 	opacity: 0;
+    pointer-events: none;
 }
 
 .tooltip-top:last-child:after {
-    left: -59px;
+    left: -63px;
 }
 
 /*
@@ -653,7 +653,8 @@ body {
 
     font-size: 15px;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
-    font-weight: 100;
+    font-weight: 400;
+    text-transform: none;
 
     z-index: 2000;
 }

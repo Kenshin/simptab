@@ -1,4 +1,10 @@
 #### CHANGELOG:
+- 2016-02-06, Version 1.5.0
+  * Add pin feature.
+  * Add dislike feature.
+  * Add background remote cdns feature.
+  * Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
+
 - 2016-01-20, Version 1.4.3
   * More detailed version for version feature.
   * Dynamic set permissions.
@@ -12,19 +18,19 @@
 - 2015-12-23, Version 1.4.1
   * Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
   * Fix 'simple' mode topsites hover display speed.
-  * Fix notifiaction show z-index bug. [issues 8](https://github.com/Kenshin/simptab/issues/8)
+  * Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
 
 - 2015-12-10, Version 1.4.0
-  * Feature: [Chinese Simplified](https://github.com/Kenshin/simptab/blob/master/README.cn.md) | [Traditional Chinese](https://github.com/Kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/Kenshin/simptab/blob/master/README.en.md)
+  * Feature: [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
   * Rework source.
-  * Add multi background origin: [bing.com](http://bing.com) | [wallhaven.cc](http://wallhaven.cc) | [unsplash.com](http://unsplash.com) | [flickr.com](http://flickr.com) | [googleartproject.com](http://googleartproject.com) | [500px.com](http://500px.com) | [desktoppr.co](http://desktoppr.co) | [visualhunt.com](http://visualhunt.com) and special day/holiday.
+  * Add multi background origin: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
   * Add update multi customer background.
   * Add fovorite background.
   * Add top sites.
   * Add Download new background progress.
   * Add Favorite/Upload background notification.
   * Support omnibox shortcuts.
-  * Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/Kenshin/simptab/issues/7)
+  * Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
 
 - 2014-08-29, Version 1.0.3
   * Fix Download background's duplication of name error.
