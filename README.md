@@ -11,7 +11,7 @@
 [![Offline][offline-badge]][offline-link]
 
 #### 主页：
-![https://img.shields.io/badge/website-_simptab.ksria.com-blue.svg](http://ksria.com/simptab)
+[![Website][www-badge]][www-link]
 
 #### 功能一览：
   ![feature 1](http://i.imgur.com/BZGMo4p.jpg)
@@ -65,6 +65,8 @@
 - 简体/繁體 字体 `思源黑体 ExtraLight`。
 
 <!-- Header -->
+[www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-blue.svg
+[www-link]:         http://ksria.com/simptab
 [version-badge]:    https://img.shields.io/badge/release_version-1.5.0-blue.svg
 [version-link]:     https://github.com/kenshin/simptab/releases
 [chrome-badge]:     https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg
