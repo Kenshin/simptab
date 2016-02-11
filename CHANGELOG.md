@@ -1,5 +1,5 @@
 #### CHANGELOG:
-- 2016-02-06, Version 1.5.0
+- 2016-02-11, Version 1.5.0
   * Add pin feature.
   * Add dislike feature.
   * Add background remote cdns feature.
