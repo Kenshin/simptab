@@ -1,0 +1,22 @@
+// adapter all browser css propery
+vendors = -webkit -moz -o -ms
+prefix  = "-"
+all-browser( prop, arguments, ppro = true )
+  if ppro
+    { prop }: arguments
+  for vendor in vendors
+     { vendor }-{ prop }: arguments
+
+display-group( value, type )
+  value + prefix + type
+
+adapter-display( type = box )
+  display: type
+  for vendor in vendors
+    display: display-group( vendor, type )
+
+@font-face
+	font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif
+
+header
+	border-bottom: solid 1px #f1f1f1
