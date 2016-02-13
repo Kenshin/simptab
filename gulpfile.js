@@ -5,12 +5,12 @@ var gulp   = require( 'gulp' ),
 	stylish= require( 'jshint-stylish'),
 	stylus = require( 'gulp-stylus' ),
 	watch  = require( 'gulp-watch'  ),
-	watchP = require( 'gulp-watch-path'),
-	combiner = require('stream-combiner2'),
-	changes, combined, colors,
+	combin = require('stream-combiner2'),
+	combined, colors,
 	paths  = {
 		src  : 'js/',
 		js   : 'js/gallery.js',
+		csssrc: 'assets/css/',
 		styl : 'assets/css/gallery.styl',
 		dest : 'dest-www/'
 	};
@@ -36,28 +36,35 @@ gulp.task( 'jshint', function() {
 		.pipe( jshint.reporter( stylish ))
 });
 
-gulp.task( 'watch', function() {
+gulp.task( 'watchjs', function() {
 	gulp.watch( paths.js, function( event ) {
-		changes = watchP( event, paths.src, paths.dest );
+		print.log( print.colors.green( event.type ) + ' ' + event.path );
 
-		print.log( print.colors.green( event.type ) + ' ' + changes.srcPath );
-        print.log( 'Dest ' + changes.distPath );
-
-		combined = combiner.obj([
-	        gulp.src( changes.srcPath ),
+		combined = combin.obj([
+	        gulp.src( event.path ),
 			jshint(),
 	        jshint.reporter( stylish )
 		]);
 		combined.on( 'error', function( err ) {
 			colors = print.colors;
 			console.log('\n')
-		    print.log(colors.red('Error!'))
-		    print.log('fileName: ' + colors.red(err.fileName))
-		    print.log('lineNumber: ' + colors.red(err.lineNumber))
-		    print.log('message: ' + err.message)
-		    print.log('plugin: ' + colors.yellow(err.plugin))
+		    print.log( colors.red('Error!'))
+		    print.log( 'fileName: '   + colors.red(err.fileName))
+		    print.log( 'lineNumber: ' + colors.red(err.lineNumber))
+		    print.log( 'message: '    + err.message)
+		    print.log( 'plugin: '     + colors.yellow(err.plugin))
 		});
 	});
 });
 
-gulp.task( 'default', [ 'jshint', 'watch' ] );
+gulp.task( 'watchstyl', function() {
+	gulp.watch( paths.styl, function( event ) {
+		print.log( print.colors.green( event.type ) + ' ' + event.path );
+
+        gulp.src( event.path )
+        .pipe( stylus() )
+        .pipe( gulp.dest( paths.csssrc ) )
+	});
+});
+
+gulp.task( 'default', [ 'jshint', 'watchjs', 'stylus', 'watchstyl' ] );
