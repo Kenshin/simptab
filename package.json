@@ -23,6 +23,7 @@
     "gulp-watch": "^4.3.5",
     "gulp-watch-path": "^0.1.0",
     "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
     "matchdep": "*",
     "stream-combiner2": "^1.1.1"
   }
