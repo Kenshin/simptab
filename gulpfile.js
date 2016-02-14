@@ -1,12 +1,15 @@
 var gulp   = require( 'gulp' ),
     print  = require( 'gulp-util'   ),
-    uglify = require( 'gulp-uglify' ),
     jshint = require( 'gulp-jshint' ),
     stylish= require( 'jshint-stylish'),
     stylus = require( 'gulp-stylus' ),
     watch  = require( 'gulp-watch'  ),
     connect= require( 'gulp-connect'),
     open   = require( 'gulp-open'   ),
+    clean  = require( 'gulp-clean'  ),
+    htmlmin= require( 'gulp-htmlmin'),
+    uglify = require( 'gulp-uglify' ),
+    minicss= require( 'gulp-minify-css'),
     combin = require('stream-combiner2'),
     combined, colors,
     paths  = {
@@ -15,8 +18,11 @@ var gulp   = require( 'gulp' ),
         index: 'index.html',
         html : '*.html',
         js   : 'js/*.js',
+        styl : 'assets/css/*.styl',
+        local: 'locales/',
         csssrc: 'assets/css/',
-        styl : 'assets/css/*.styl'
+        font : 'assets/font/',
+        image: 'assets/image/'
     };
 
 gulp.task( 'server', function() {
@@ -26,19 +32,17 @@ gulp.task( 'server', function() {
     })
 });
 
+gulp.task( 'deploy', function() {
+    connect.server({
+        root: paths.dest,
+        port: 8888,
+        livereload: true
+    })
+});
+
 gulp.task( 'open', function() {
     gulp.src( paths.index ).pipe( open({ uri: 'http://localhost:8888' }));
 });
-
-/*
-gulp.task( 'js', function() {
-    gulp.src( paths.js )
-        .pipe( jshint() )
-        .pipe( jshint.reporter( stylish ))
-        .pipe( uglify() )
-        .pipe( gulp.dest( paths.dest + 'js' ) );
-});
-*/
 
 gulp.task( 'watchhtml', function() {
     gulp.watch( paths.html, function() {
@@ -92,3 +96,36 @@ gulp.task( 'watchstyl', function() {
 });
 
 gulp.task( 'default', [ 'server', 'watchhtml', 'jshint', 'watchjs', 'stylus', 'watchstyl', 'open' ] );
+
+gulp.task( 'clean', function() {
+    return gulp.src( paths.dest ).pipe( clean() );
+})
+
+gulp.task( 'html', function() {
+    gulp.src( paths.html ).pipe( htmlmin({collapseWhitespace: true}) ).pipe( gulp.dest( paths.dest ) );
+});
+
+gulp.task( 'css', function() {
+    gulp.src( paths.styl )
+    .pipe( stylus()  )
+    .pipe( minicss() )
+    .pipe( gulp.dest( paths.dest + paths.csssrc ) );
+});
+
+gulp.task( 'copy', function() {
+    gulp.src( paths.image + '*.*'    ).pipe( gulp.dest( paths.dest + paths.image ));
+    gulp.src( paths.font  + '*.*'    ).pipe( gulp.dest( paths.dest + paths.font  ));
+    gulp.src( paths.local + '**/*.*' ).pipe( gulp.dest( paths.dest + paths.local ));
+});
+
+gulp.task( 'js', function() {
+    gulp.src( paths.js )
+        .pipe( jshint() )
+        .pipe( jshint.reporter( stylish ))
+        .pipe( uglify() )
+        .pipe( gulp.dest( paths.dest + 'js' ) );
+});
+
+gulp.task( 'publish', [ 'clean' ], function() {
+    gulp.start( 'html', 'css', 'js', 'copy', 'deploy', 'open' );
+});
