@@ -10,13 +10,12 @@ var gulp   = require( 'gulp' ),
     combined, colors,
     paths  = {
         src  : 'js/',
+        dest : 'dest-www/',
         html : '*.html',
-        js   : 'js/gallery.js',
+        js   : 'js/*.js',
         csssrc: 'assets/css/',
-        styl : 'assets/css/gallery.styl',
-        dest : 'dest-www/'
+        styl : 'assets/css/*.styl'
     };
-
 
 gulp.task( 'server', function() {
     connect.server({
