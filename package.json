@@ -26,5 +26,8 @@
     "jshint-stylish": "^2.1.0",
     "matchdep": "*",
     "stream-combiner2": "^1.1.1"
+  },
+  "dependencies": {
+    "gulp-open": "^1.0.0"
   }
 }

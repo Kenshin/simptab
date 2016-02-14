@@ -6,11 +6,13 @@ var gulp   = require( 'gulp' ),
     stylus = require( 'gulp-stylus' ),
     watch  = require( 'gulp-watch'  ),
     connect= require( 'gulp-connect'),
+    open   = require( 'gulp-open'   ),
     combin = require('stream-combiner2'),
     combined, colors,
     paths  = {
         src  : 'js/',
         dest : 'dest-www/',
+        index: 'index.html',
         html : '*.html',
         js   : 'js/*.js',
         csssrc: 'assets/css/',
@@ -22,6 +24,10 @@ gulp.task( 'server', function() {
         port: 8888,
         livereload: true
     })
+});
+
+gulp.task( 'open', function() {
+    gulp.src( paths.index ).pipe( open({ uri: 'http://localhost:8888' }));
 });
 
 /*
@@ -85,4 +91,4 @@ gulp.task( 'watchstyl', function() {
     });
 });
 
-gulp.task( 'default', [ 'server', 'watchhtml', 'jshint', 'watchjs', 'stylus', 'watchstyl' ] );
+gulp.task( 'default', [ 'server', 'watchhtml', 'jshint', 'watchjs', 'stylus', 'watchstyl', 'open' ] );
