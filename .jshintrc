@@ -1,0 +1,11 @@
+{
+    "strict": "global",
+    "globals": {
+        "$"        : false,
+        "navigator": false,
+        "window"   : false,
+        "document" : false,
+        "unescape" : false,
+        "i18n"     : false
+    }
+}
