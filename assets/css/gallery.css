@@ -59,6 +59,7 @@ header div {
   -o-align-items: flex-end;
   -ms-align-items: flex-end;
   width: 100%;
+  max-width: 1116px;
   border-bottom: solid 1px #f1f1f1;
 }
 header div nav {
@@ -117,11 +118,12 @@ header div nav span {
   -moz-flex-flow: row wrap;
   -o-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -o-justify-content: space-between;
-  -ms-justify-content: space-between;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  max-width: 1116px;
   min-height: 500px;
 }
 .gallery div {
