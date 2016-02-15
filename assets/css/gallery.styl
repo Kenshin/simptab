@@ -15,8 +15,76 @@ adapter-display( type = box )
   for vendor in vendors
     display: display-group( vendor, type )
 
-@font-face
-	font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif
+html
+    adapter-display flex
+    all-browser "justify-content", center
+
+    padding 0px
+    margin  0px
+    width   100%
+    height  100%
+
+    font-family "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif
+
+body
+    padding 0px
+    margin  0px
+    background #fff
+
+    min-width 768px
 
 header
-	border-bottom: solid 1px #f1f1f1
+    adapter-display flex
+    all-browser "justify-content", flex-start
+    all-browser "align-items",     center
+
+    padding 76px 20px 20px 20px
+
+    div
+        adapter-display flex
+        all-browser "flex-flow", row nowrap
+
+
+        width 100%
+        border-bottom solid 1px #f1f1f1
+
+.gallery
+    adapter-display flex
+    all-browser "flex-flow", row wrap
+    all-browser "justify-content", space-between
+
+    min-height 500px
+
+    div
+      padding 20px
+
+      div
+          padding 0
+
+          font-size 12px
+          text-align center
+
+      img
+          padding 5px
+          background #fff
+          border solid 1px #bbb
+
+footer
+    adapter-display flex
+    all-browser "justify-content", flex-start
+    all-browser "align-items",     center
+
+    padding 76px 20px 20px 20px
+
+    div
+        width 100%
+        font-size 15px
+
+        &:first-child
+          border-top solid 1px #f1f1f1
+
+        div
+            font-size 11px
+
+            a
+              color #999
