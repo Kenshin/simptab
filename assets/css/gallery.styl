@@ -40,13 +40,50 @@ header
 
     padding 76px 20px 20px 20px
 
+    h1
+        margin 20px 0
+
     div
         adapter-display flex
         all-browser "flex-flow", row nowrap
+        all-browser "align-items", flex-end
 
 
         width 100%
         border-bottom solid 1px #f1f1f1
+
+        nav
+          adapter-display flex
+          all-browser "flex-flow", row nowrap
+
+          margin 15px 0
+
+          a
+              margin 5px 3px
+
+              opacity 0.3
+
+              &:hover
+                  opacity 1
+                  all-browser "transition", opacity 1s ease
+
+              &:nth-child(1) span
+                  background: url( ../image/gallery-icon24-home.png ) no-repeat
+              &:nth-child(2) span
+                  background: url( ../image/gallery-icon24-github.png ) no-repeat
+              &:nth-child(3) span
+                  background: url( ../image/gallery-icon24-weibo.png ) no-repeat
+              &:nth-child(4) span
+                  background: url( ../image/gallery-icon24-twitter.png ) no-repeat
+              &:nth-child(5) span
+                  background: url( ../image/gallery-icon24-facebook.png ) no-repeat
+
+          span
+              display block
+              width  24px
+              height 24px
+
+
 
 .gallery
     adapter-display flex
