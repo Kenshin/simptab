@@ -15,7 +15,6 @@ var gulp   = require( 'gulp' ),
     paths  = {
         src  : 'js/',
         dest : 'dest-www/',
-        index: 'index.html',
         html : '*.html',
         js   : 'js/*.js',
         styl : 'assets/css/*.styl',
@@ -41,7 +40,7 @@ gulp.task( 'deploy', function() {
 });
 
 gulp.task( 'open', function() {
-    gulp.src( paths.index ).pipe( open({ uri: 'http://localhost:8888' }));
+    gulp.src( __filename ).pipe( open({ uri: 'http://localhost:8888' }));
 });
 
 gulp.task( 'watchhtml', function() {
