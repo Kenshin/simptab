@@ -75,7 +75,7 @@ module.exports = function( grunt ) {
       publish: {
         files: [{
             expand: true,
-            src: [ "assets/**","!assets/**/*.styl", "locales/**", "js/**", "vender/**", "favicon.ico" ],
+            src: [ "assets/**","!assets/**/*.styl", "locales/**", "js/**", "favicon.ico" ],
             dest: "dest-www"
           }]
       }
@@ -114,6 +114,6 @@ module.exports = function( grunt ) {
 
   grunt.registerTask( "default", [ "jshint", "stylus", "connect", "watch" ]);
 
-  grunt.registerTask( "publish", [ "clean", "copy", "htmlmin", "uglify" ]);
+  grunt.registerTask( "publish", [ "clean", "copy", "htmlmin", "uglify", "connect", "watch" ]);
 
 };
