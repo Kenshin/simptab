@@ -1,5 +1,6 @@
 var gulp   = require( 'gulp' ),
     print  = require( 'gulp-util'   ),
+    notify = require( 'gulp-notify' ),
     jshint = require( 'gulp-jshint' ),
     stylish= require( 'jshint-stylish'),
     stylus = require( 'gulp-stylus' ),
@@ -10,8 +11,16 @@ var gulp   = require( 'gulp' ),
     htmlmin= require( 'gulp-htmlmin'),
     uglify = require( 'gulp-uglify' ),
     minicss= require( 'gulp-minify-css'),
-    combin = require('stream-combiner2'),
-    combined, colors,
+    colors = print.colors,
+    lint   = function( filepaths ) {
+        return gulp.src( filepaths )
+                   .pipe( jshint() )
+                   .pipe( jshint.reporter( stylish ))
+                   .pipe( notify({ title: 'Jshint Error', message: function ( file ) {
+                     if (file.jshint.success) return false;
+                     return file.relative + " ( " + file.jshint.results.length + " errors )";
+                   }, sound: 'Frog' }));
+    },
     paths  = {
         src  : 'js/',
         dest : 'dest-www/',
@@ -25,14 +34,14 @@ var gulp   = require( 'gulp' ),
         image: 'assets/image/'
     };
 
-gulp.task( 'server', function() {
+gulp.task( 'srv:develop', function() {
     connect.server({
         port: 8888,
         livereload: true
     })
 });
 
-gulp.task( 'deploy', function() {
+gulp.task( 'srv:deploy', function() {
     connect.server({
         root: paths.dest,
         port: 8888,
@@ -50,44 +59,24 @@ gulp.task( 'watchhtml', function() {
     });
 });
 
-gulp.task( 'jshint', function() {
-    gulp.src( paths.js )
-        .pipe( jshint() )
-        .pipe( jshint.reporter( stylish ))
-});
+gulp.task( 'jshint', function() { lint( paths.js ); });
 
 gulp.task( 'watchjs', function() {
     gulp.watch( paths.js, function( event ) {
-        print.log( print.colors.green( event.type ) + ' ' + event.path );
-
-        combined = combin.obj([
-            gulp.src( event.path ),
-            jshint(),
-            jshint.reporter( stylish ),
-            connect.reload()
-        ]);
-        combined.on( 'error', function( err ) {
-            colors = print.colors;
-            console.log('\n')
-            print.log( colors.red('Error!'))
-            print.log( 'fileName: '   + colors.red(err.fileName))
-            print.log( 'lineNumber: ' + colors.red(err.lineNumber))
-            print.log( 'message: '    + err.message)
-            print.log( 'plugin: '     + colors.yellow(err.plugin))
-        });
+        print.log( colors.bgYellow( 'Watch file: ' ) + event.path + ' ' + print.colors.green( event.type ));
+        lint( event.path ).pipe( connect.reload() );
     });
 });
 
 gulp.task( 'stylus', function() {
     gulp.src( paths.styl )
         .pipe( stylus() )
-        .pipe( gulp.dest( paths.dest + 'assets/css' ) )
+        .pipe( gulp.dest( paths.dest + 'assets/css' ) );
 });
 
 gulp.task( 'watchstyl', function() {
     gulp.watch( paths.styl, function( event ) {
-        print.log( print.colors.green( event.type ) + ' ' + event.path );
-
+        print.log( colors.bgYellow( 'Watch file: ' ) + event.path + ' ' + print.colors.green( event.type ));
         gulp.src( event.path )
         .pipe( stylus() )
         .pipe( gulp.dest( paths.csssrc ) )
@@ -95,7 +84,7 @@ gulp.task( 'watchstyl', function() {
     });
 });
 
-gulp.task( 'default', [ 'server', 'watchhtml', 'jshint', 'watchjs', 'stylus', 'watchstyl', 'open' ] );
+gulp.task( 'default', [ 'srv:develop', 'watchhtml', 'jshint', 'watchjs', 'stylus', 'watchstyl', 'open' ] );
 
 gulp.task( 'clean', function() {
     return gulp.src( paths.dest ).pipe( clean() );
@@ -128,5 +117,5 @@ gulp.task( 'js', function() {
 });
 
 gulp.task( 'publish', [ 'clean' ], function() {
-    gulp.start( 'html', 'css', 'js', 'copy', 'deploy', 'open' );
+    gulp.start( 'html', 'css', 'js', 'copy', 'srv:deploy', 'open' );
 });
