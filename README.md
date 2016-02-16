@@ -57,6 +57,9 @@
 #### 投票：
 * 如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
+#### 照片集：
+* <http://ksria.com/simptab/gallery.html>
+
 #### 相关链接：
 * [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
 * [Wiki](https://github.com/kenshin/simptab/wiki)
