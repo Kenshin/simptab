@@ -1,7 +1,11 @@
 "use strict";
 $( document ).ready( function() {
-	$( ".fancybox" ).fancybox({
-		openEffect	: 'none',
-		closeEffect	: 'none'
-	});
+    $(".fancybox").fancybox({
+        helpers : {
+            thumbs  : {
+                width   : 50,
+                height  : 50
+            }
+        }
+    });
 });
