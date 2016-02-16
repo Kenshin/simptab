@@ -169,3 +169,46 @@ footer div div {
 footer div div a {
   color: #999;
 }
+@media (max-width: 1115px) {
+  .gallery div {
+    zoom: 0.9;
+  }
+}
+@media (max-width: 1004px) {
+  .gallery div {
+    zoom: 0.8;
+  }
+}
+@media (max-width: 893px) {
+  .gallery div {
+    zoom: 0.7;
+  }
+}
+@media (max-width: 782px) {
+  .gallery div {
+    zoom: 0.5;
+  }
+}
+@media (max-width: 447px) {
+  header {
+    min-width: 266px;
+  }
+  header h1 {
+    margin: 0;
+  }
+  header div {
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    -o-align-items: flex-start;
+    -ms-align-items: flex-start;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -o-flex-direction: column;
+    -ms-flex-direction: column;
+  }
+  header div nav {
+    margin: 0;
+  }
+}
