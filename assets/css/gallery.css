@@ -19,7 +19,6 @@ body {
   padding: 0px;
   margin: 0px;
   background: #fff;
-  min-width: 768px;
 }
 header {
   display: flex;
@@ -124,7 +123,6 @@ header div nav span {
   -o-justify-content: flex-start;
   -ms-justify-content: flex-start;
   max-width: 1116px;
-  min-height: 500px;
 }
 .gallery div {
   padding: 20px;
