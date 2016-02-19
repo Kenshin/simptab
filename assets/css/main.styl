@@ -2,18 +2,22 @@
 vendors = -webkit -moz -o -ms
 prefix  = "-"
 all-browser( prop, arguments, ppro = true )
-  if ppro
-    { prop }: arguments
   for vendor in vendors
      { vendor }-{ prop }: arguments
+  if ppro
+    { prop }: arguments
 
 display-group( value, type )
   value + prefix + type
 
 adapter-display( type = box )
+  /*
   display: type
   for vendor in vendors
     display: display-group( vendor, type )
+  */
+  display: -webkit + prefix + type
+  display: type
 
 division()
     margin: 0 0 53px 0
