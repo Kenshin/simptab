@@ -28,7 +28,11 @@ var gulp   = require( 'gulp' ),
                    .pipe( plumber())
                    .pipe( stylus() )
                    .pipe( csslint())
-                   .pipe( csslint.reporter());
+                   .pipe( csslint.reporter())
+                   .pipe( notify({ title: 'CSSLint Error', message: function ( file ) {
+                     if (file.csslint.success) return false;
+                     return file.relative + " ( " + file.csslint.results.length + " errors )";
+                   }, sound: 'Frog' }));
     },
     paths  = {
         src  : 'js/',
