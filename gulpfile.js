@@ -72,30 +72,6 @@ gulp.task( 'stylus', function() {
     stylcss( paths.styl ).pipe( gulp.dest( paths.dest + 'assets/css' ) );
 });
 
-/*
-gulp.task( 'watchhtml', function() {
-    gulp.watch( paths.html, function() {
-        gulp.src( paths.html ).pipe( connect.reload() );
-    });
-});
-
-gulp.task( 'watchjs', function() {
-    gulp.watch( paths.js, function( event ) {
-        print.log( colors.bgYellow( 'Watch file: ' ) + event.path + ' ' + print.colors.green( event.type ));
-        lint( event.path ).pipe( connect.reload() );
-    });
-});
-
-gulp.task( 'watchstyl', function() {
-    gulp.watch( paths.styl, function( event ) {
-        print.log( colors.bgYellow( 'Watch file: ' ) + event.path + ' ' + print.colors.green( event.type ));
-        stylcss( event.path )
-        .pipe( gulp.dest( paths.csssrc ) )
-        .pipe( connect.reload() );
-    });
-});
-*/
-
 gulp.task( 'watch', function() {
     gulp.watch( [ paths.html, paths.js, paths.styl ] , function( event ) {
         print.log( colors.bgYellow( 'Watch file: ' ) + event.path + ' ' + print.colors.green( event.type ));
