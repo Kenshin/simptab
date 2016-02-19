@@ -5,7 +5,7 @@ var gulp   = require( 'gulp' ),
     jshint = require( 'gulp-jshint' ),
     stylish= require( 'jshint-stylish'),
     stylus = require( 'gulp-stylus' ),
-    csslint= require('gulp-csslint' ),
+    csslint= require( 'gulp-csslint'),
     watch  = require( 'gulp-watch'  ),
     connect= require( 'gulp-connect'),
     open   = require( 'gulp-open'   ),
@@ -30,7 +30,7 @@ var gulp   = require( 'gulp' ),
         return gulp.src( filepaths )
                    .pipe( plumber())
                    .pipe( stylus() )
-                   .pipe( csslint())
+                   .pipe( csslint({ 'qualified-headings': false, 'unique-headings': false }))
                    .pipe( csslint.reporter())
                    .pipe( notify({ title: 'CSSLint Error', message: function ( file ) {
                         return message( file.csslint, file );
