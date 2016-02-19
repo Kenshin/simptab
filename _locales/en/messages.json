@@ -44,7 +44,7 @@
     },
 
     "controlbar_favorite": {
-        "message": "Favorite"
+        "message": "Like"
     },
 
     "controlbar_dislike": {
@@ -60,19 +60,19 @@
     },
 
     "setting_background_every_day": {
-        "message": "Change Background Every Day"
+        "message": "Change background daily"
     },
 
     "setting_background_every_time": {
-        "message": "Change Background Every Time"
+        "message": "Change background randomly"
     },
 
     "setting_background_position_center": {
-        "message": "Background center alignment"
+        "message": "Align to the center"
     },
 
     "setting_background_position_corner": {
-        "message": "Background cornet alignment"
+        "message": "Align to the top-left corner"
     },
 
     "setting_show_clock": {
@@ -124,35 +124,35 @@
     },
 
     "setting_ts_state_normal": {
-        "message": "Hidden Topsites"
+        "message": "Hide Top Sites"
     },
 
     "setting_ts_state_simple": {
-        "message": "Simple Topsites"
+        "message": "Show Top Sites at the bottom"
     },
 
     "setting_ts_state_senior": {
-        "message": "Senior Topsites"
+        "message": "Show Top Sites in the center"
     },
 
     "setting_pin_tooltip": {
-        "message": "Pin #1 hours"
+        "message": "Pin for #1 hours"
     },
 
     "setting_contact_weibo": {
-        "message": "Share Weibo"
+        "message": "Share on Weibo"
     },
 
     "setting_contact_twitter": {
-        "message": "Share Twitter"
+        "message": "Share on Twitter"
     },
 
     "setting_contact_facebook": {
-        "message": "Share Facebook"
+        "message": "Share on Facebook"
     },
 
     "setting_contact_gplus": {
-        "message": "Share Google plus"
+        "message": "Share on Google Plus"
     },
 
     "setting_contact_me": {
@@ -160,51 +160,51 @@
     },
 
     "shortcuts_default": {
-        "message": "Entering a space displays a list of all commands and keywords only currently supported include: "
+        "message": "Press Space key to show a list of commands and keywords. Supported keywords: "
     },
 
     "shortcuts_fail_key": {
-        "message": "Does not support the keyword: "
+        "message": "Not supported keywords: "
     },
 
     "version_title": {
-        "message": "SimpTab has update"
+        "message": "SimpTab is updated"
     },
 
     "version_content": {
-        "message": "The current version #1, #4 More features #2 CHANGELOG #3."
+        "message": "Current version: #1. #4To learn more, please visit #2CHANGELOG#3."
     },
 
     "notify_upload_complete": {
-        "message": "Background upload complete."
+        "message": "Background image uploaded successfully."
     },
 
     "notify_upload_fail": {
-        "message": "Background image upload failed."
+        "message": "Error occured during the upload."
     },
 
     "notify_favorite_add": {
-        "message": "Background favorite add complete."
+        "message": "Added to the Likes list."
     },
 
     "notify_favorite_del": {
-        "message": "Background favorite delete complete."
+        "message": "Removed from the Likes list."
     },
 
     "notify_dislike_add": {
-        "message": "Success added to the dislike list, the new background downloaded, the current background will not be displayed."
+        "message": "Added to the Dislikes list. This background will not be shown when a new one is loaded."
     },
 
     "notify_dislike_del": {
-        "message": "Success removed to the dislike list."
+        "message": "Removed from the Dislikes list."
     },
 
     "notify_pin_add": {
-        "message": "Current background pin #1 hours."
+        "message": "Pinned the current background for #1 hour(s)."
     },
 
     "notify_pin_del": {
-        "message": "Has canceled the current background of the pin."
+        "message": "Background pinning is cancelled."
     },
 
     "version_detail": {
@@ -212,42 +212,42 @@
     },
 
     "version_detail_prefix": {
-        "message": "new feature: "
+        "message": "New features: "
     },
 
     "version_detail_0": {
-        "message": "Fix some bugs in the previous version, "
+        "message": "Fixed some bugs in the previous version, "
     },
 
     "version_detail_1": {
-        "message": "Multiple background origin, twenty-four solar terms, movie posters, special festivals, upload function, collection function, "
+        "message": "Multiple background origin: Chinese solar terms, movie posters, holidays and festivals; Uploads; Likes;"
     },
 
     "version_detail_2": {
-        "message": "Senior topsites, "
+        "message": "Centered Top Sites list "
     },
 
     "version_detail_3": {
-        "message": "<a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a> background origin, Special day, "
+        "message": "Pictures from <a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a>, Special day, "
     },
 
     "version_detail_4": {
-        "message": "A more detailed version of the new tips, Intelligent adjusting background position, "
+        "message": "Notify for new versions available, Auto-adjustments for background position, "
     },
 
     "version_detail_4": {
-        "message": "Dislike feature, Pin feature, optimize the new background download speed, "
+        "message": "Dislikes; Background pinning; Faster download speed, "
     },
 
     "permissions": {
-        "message": "New version need to obtain new permissions, <a href='#' class='permissions'>allow</a>."
+        "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
 
     "permissions_success": {
-        "message": "New permissions are enabled successfully."
+        "message": "All permissions are granted."
     },
 
     "permissions_failed": {
-        "message": "Permissions failed to get new features can not be enabled, it is recommended to re install."
+        "message": "Failed to gain permissions. Some features may not be available. You are recommended to re-install this extension."
     }
 }
