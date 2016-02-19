@@ -1,5 +1,6 @@
 html {
   display: -webkit-flex;
+  display: flex;
   -webkit-justify-content: center;
   -moz-justify-content: center;
   -o-justify-content: center;
@@ -18,6 +19,7 @@ body {
 }
 header {
   display: -webkit-flex;
+  display: flex;
   -webkit-justify-content: flex-start;
   -moz-justify-content: flex-start;
   -o-justify-content: flex-start;
@@ -35,6 +37,7 @@ header h1 {
 }
 header div {
   display: -webkit-flex;
+  display: flex;
   -webkit-flex-flow: row nowrap;
   -moz-flex-flow: row nowrap;
   -o-flex-flow: row nowrap;
@@ -51,6 +54,7 @@ header div {
 }
 header div nav {
   display: -webkit-flex;
+  display: flex;
   -webkit-flex-flow: row nowrap;
   -moz-flex-flow: row nowrap;
   -o-flex-flow: row nowrap;
@@ -92,6 +96,7 @@ header div nav span {
 }
 .gallery {
   display: -webkit-flex;
+  display: flex;
   -webkit-flex-flow: row wrap;
   -moz-flex-flow: row wrap;
   -o-flex-flow: row wrap;
@@ -119,6 +124,7 @@ header div nav span {
 }
 footer {
   display: -webkit-flex;
+  display: flex;
   -webkit-justify-content: flex-start;
   -moz-justify-content: flex-start;
   -o-justify-content: flex-start;
