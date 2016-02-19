@@ -23,6 +23,13 @@ var gulp   = require( 'gulp' ),
                      return file.relative + " ( " + file.jshint.results.length + " errors )";
                    }, sound: 'Frog' }));
     },
+    stylcss= function ( filepaths ) {
+        return gulp.src( filepaths )
+                   .pipe( plumber())
+                   .pipe( stylus() )
+                   .pipe( csslint())
+                   .pipe( csslint.reporter());
+    },
     paths  = {
         src  : 'js/',
         dest : 'dest-www/',
@@ -71,22 +78,13 @@ gulp.task( 'watchjs', function() {
 });
 
 gulp.task( 'stylus', function() {
-    gulp.src( paths.styl )
-        .pipe( plumber())
-        .pipe( stylus() )
-        .pipe( csslint())
-        .pipe( csslint.reporter())
-        .pipe( gulp.dest( paths.dest + 'assets/css' ) );
+    stylcss( paths.styl ).pipe( gulp.dest( paths.dest + 'assets/css' ) );
 });
 
 gulp.task( 'watchstyl', function() {
     gulp.watch( paths.styl, function( event ) {
         print.log( colors.bgYellow( 'Watch file: ' ) + event.path + ' ' + print.colors.green( event.type ));
-        gulp.src( event.path )
-        .pipe( plumber())
-        .pipe( stylus() )
-        .pipe( csslint())
-        .pipe( csslint.reporter())
+        stylcss( event.path )
         .pipe( gulp.dest( paths.csssrc ) )
         .pipe( connect.reload() );
     });
