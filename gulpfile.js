@@ -30,7 +30,7 @@ var gulp   = require( 'gulp' ),
         return gulp.src( filepaths )
                    .pipe( plumber())
                    .pipe( stylus() )
-                   .pipe( csslint({ 'qualified-headings': false, 'unique-headings': false }))
+                   .pipe( csslint())
                    .pipe( csslint.reporter())
                    .pipe( notify({ title: 'CSSLint Error', message: function ( file ) {
                         return message( file.csslint, file );
