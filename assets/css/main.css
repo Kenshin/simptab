@@ -223,7 +223,8 @@ body div {
 .header .introduce .btn-download:hover {
   text-decoration: none;
   background-position: 0 -15px;
-  background-color: rgba(124,77,255,0.89);
+  background: #7c4dff;
+  background: rgba(124,77,255,0.89);
   -webkit-transition: background-position 0.1s linear;
   -moz-transition: background-position 0.1s linear;
   -o-transition: background-position 0.1s linear;
@@ -250,7 +251,8 @@ body div {
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
-  background-color: rgba(0,0,0,0.4);
+  background: #000;
+  background: rgba(0,0,0,0.4);
   color: #fff;
 }
 .header .introduce .smaller {
@@ -582,7 +584,8 @@ body div {
   display: -webkit-flex;
   display: flex;
   padding: 0 7px 0 0;
-  background-color: rgba(0,0,0,0);
+  background: #000;
+  background: rgba(0,0,0,0);
 }
 .footer ul li:nth-child(1) div nav a span {
   display: block;
@@ -675,7 +678,8 @@ body div {
   -ms-flex-flow: row;
   flex-flow: row;
   padding: 0 7px 0 0;
-  background-color: rgba(0,0,0,0);
+  background: #000;
+  background: rgba(0,0,0,0);
 }
 .footer ul li:nth-child(2) div div div nav span[class$="-icon"] {
 /*adapter-display( inline-box )*/
