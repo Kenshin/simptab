@@ -100,11 +100,12 @@ gulp.task( 'clean', function() {
 })
 
 gulp.task( 'html', function() {
-    gulp.src( paths.html ).pipe( htmlmin({collapseWhitespace: true}) ).pipe( gulp.dest( paths.dest ) );
+    gulp.src( paths.html ).pipe( plumber() ).pipe( htmlmin({collapseWhitespace: true}) ).pipe( gulp.dest( paths.dest ) );
 });
 
 gulp.task( 'css', function() {
     gulp.src( paths.styl )
+    .pipe( plumber())
     .pipe( stylus()  )
     .pipe( minicss() )
     .pipe( gulp.dest( paths.dest + paths.csssrc ) );
@@ -119,6 +120,7 @@ gulp.task( 'copy', function() {
 
 gulp.task( 'js', function() {
     gulp.src( paths.js )
+        .pipe( plumber())
         .pipe( jshint() )
         .pipe( jshint.reporter( stylish ))
         .pipe( uglify() )
