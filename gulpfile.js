@@ -14,13 +14,16 @@ var gulp   = require( 'gulp' ),
     uglify = require( 'gulp-uglify' ),
     minicss= require( 'gulp-minify-css'),
     colors = print.colors,
+    message= function( type, file ) {
+         if (type.success) return false;
+         return file.relative + " ( " + type.results.length + " errors )";
+    },
     lint   = function( filepaths ) {
         return gulp.src( filepaths )
                    .pipe( jshint() )
                    .pipe( jshint.reporter( stylish ))
                    .pipe( notify({ title: 'Jshint Error', message: function ( file ) {
-                     if (file.jshint.success) return false;
-                     return file.relative + " ( " + file.jshint.results.length + " errors )";
+                        return message( file.jshint, file );
                    }, sound: 'Frog' }));
     },
     stylcss= function ( filepaths ) {
@@ -30,8 +33,7 @@ var gulp   = require( 'gulp' ),
                    .pipe( csslint())
                    .pipe( csslint.reporter())
                    .pipe( notify({ title: 'CSSLint Error', message: function ( file ) {
-                     if (file.csslint.success) return false;
-                     return file.relative + " ( " + file.csslint.results.length + " errors )";
+                        return message( file.csslint, file );
                    }, sound: 'Frog' }));
     },
     paths  = {
