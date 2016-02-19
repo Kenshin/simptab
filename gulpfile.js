@@ -71,7 +71,7 @@ gulp.task( 'open', function() {
 gulp.task( 'jshint', function() { lint( paths.js ); });
 
 gulp.task( 'stylus', function() {
-    stylcss( paths.styl ).pipe( gulp.dest( paths.dest + 'assets/css' ) );
+    stylcss( paths.styl ).pipe( gulp.dest( paths.csssrc ) );
 });
 
 gulp.task( 'watch', function() {
