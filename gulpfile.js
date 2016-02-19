@@ -1,9 +1,11 @@
 var gulp   = require( 'gulp' ),
     print  = require( 'gulp-util'   ),
     notify = require( 'gulp-notify' ),
+    plumber= require( 'gulp-plumber'),
     jshint = require( 'gulp-jshint' ),
     stylish= require( 'jshint-stylish'),
     stylus = require( 'gulp-stylus' ),
+    csslint= require('gulp-csslint' ),
     watch  = require( 'gulp-watch'  ),
     connect= require( 'gulp-connect'),
     open   = require( 'gulp-open'   ),
@@ -70,7 +72,10 @@ gulp.task( 'watchjs', function() {
 
 gulp.task( 'stylus', function() {
     gulp.src( paths.styl )
+        .pipe( plumber())
         .pipe( stylus() )
+        .pipe( csslint())
+        .pipe( csslint.reporter())
         .pipe( gulp.dest( paths.dest + 'assets/css' ) );
 });
 
@@ -78,7 +83,10 @@ gulp.task( 'watchstyl', function() {
     gulp.watch( paths.styl, function( event ) {
         print.log( colors.bgYellow( 'Watch file: ' ) + event.path + ' ' + print.colors.green( event.type ));
         gulp.src( event.path )
+        .pipe( plumber())
         .pipe( stylus() )
+        .pipe( csslint())
+        .pipe( csslint.reporter())
         .pipe( gulp.dest( paths.csssrc ) )
         .pipe( connect.reload() );
     });
