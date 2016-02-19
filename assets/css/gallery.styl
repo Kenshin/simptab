@@ -2,33 +2,31 @@
 vendors = -webkit -moz -o -ms
 prefix  = "-"
 all-browser( prop, arguments, ppro = true )
-  if ppro
-    { prop }: arguments
   for vendor in vendors
      { vendor }-{ prop }: arguments
+  if ppro
+     { prop }: arguments
 
 display-group( value, type )
   value + prefix + type
 
 adapter-display( type = box )
-  display: type
-  for vendor in vendors
-    display: display-group( vendor, type )
+  display: -webkit + prefix + type
 
 html
     adapter-display flex
     all-browser "justify-content", center
 
-    padding 0px
-    margin  0px
+    padding 0
+    margin  0
     width   100%
     height  100%
 
     font-family "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif
 
 body
-    padding 0px
-    margin  0px
+    padding 0
+    margin  0
     background #fff
 
 header
