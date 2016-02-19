@@ -112,10 +112,10 @@ gulp.task( 'css', function() {
 });
 
 gulp.task( 'copy', function() {
-    gulp.src( paths.icon             ).pipe( gulp.dest( paths.dest               ));
-    gulp.src( paths.image + '*.*'    ).pipe( gulp.dest( paths.dest + paths.image ));
-    gulp.src( paths.font  + '*.*'    ).pipe( gulp.dest( paths.dest + paths.font  ));
-    gulp.src( paths.local + '**/*.*' ).pipe( gulp.dest( paths.dest + paths.local ));
+    gulp.src( paths.icon           ).pipe( gulp.dest( paths.dest               ));
+    gulp.src( paths.image + '*'    ).pipe( gulp.dest( paths.dest + paths.image ));
+    gulp.src( paths.font  + '*'    ).pipe( gulp.dest( paths.dest + paths.font  ));
+    gulp.src( paths.local + '**/*' ).pipe( gulp.dest( paths.dest + paths.local ));
 });
 
 gulp.task( 'js', function() {
