@@ -70,7 +70,7 @@ gulp.task( 'open', function() {
 
 gulp.task( 'jshint', function() { lint( paths.js ); });
 
-gulp.task( 'stylus', function() {
+gulp.task( 'csslint', function() {
     stylcss( paths.styl ).pipe( gulp.dest( paths.csssrc ) );
 });
 
@@ -93,7 +93,7 @@ gulp.task( 'watch', function() {
     });
 });
 
-gulp.task( 'default', [ 'srv:develop', 'jshint', 'stylus', 'watch', 'open' ] );
+gulp.task( 'default', [ 'srv:develop', 'jshint', 'csslint', 'watch', 'open' ] );
 
 gulp.task( 'clean', function() {
     return gulp.src( paths.dest ).pipe( clean() );
