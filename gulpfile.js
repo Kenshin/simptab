@@ -13,6 +13,7 @@ var gulp   = require( 'gulp' ),
     htmlmin= require( 'gulp-htmlmin'),
     uglify = require( 'gulp-uglify' ),
     minicss= require( 'gulp-minify-css'),
+    runsyn = require( 'run-sequence'),
     colors = print.colors,
     message= function( type, file ) {
          if (type.success) return false;
@@ -97,7 +98,15 @@ gulp.task( 'default', [ 'srv:develop', 'jshint', 'csslint', 'watch', 'open' ] );
 
 gulp.task( 'clean', function() {
     return gulp.src( paths.dest ).pipe( clean() );
-})
+});
+
+gulp.task( 'copy', function( cb ) {
+    gulp.src( paths.icon           ).pipe( gulp.dest( paths.dest               ));
+    gulp.src( paths.image + '*'    ).pipe( gulp.dest( paths.dest + paths.image ));
+    gulp.src( paths.font  + '*'    ).pipe( gulp.dest( paths.dest + paths.font  ));
+    gulp.src( paths.local + '**/*' ).pipe( gulp.dest( paths.dest + paths.local ));
+    cb();
+});
 
 gulp.task( 'html', function() {
     gulp.src( paths.html ).pipe( plumber() ).pipe( htmlmin({collapseWhitespace: true}) ).pipe( gulp.dest( paths.dest ) );
@@ -105,17 +114,10 @@ gulp.task( 'html', function() {
 
 gulp.task( 'css', function() {
     gulp.src( paths.styl )
-    .pipe( plumber())
+    .pipe( plumber() )
     .pipe( stylus()  )
     .pipe( minicss() )
     .pipe( gulp.dest( paths.dest + paths.csssrc ) );
-});
-
-gulp.task( 'copy', function() {
-    gulp.src( paths.icon           ).pipe( gulp.dest( paths.dest               ));
-    gulp.src( paths.image + '*'    ).pipe( gulp.dest( paths.dest + paths.image ));
-    gulp.src( paths.font  + '*'    ).pipe( gulp.dest( paths.dest + paths.font  ));
-    gulp.src( paths.local + '**/*' ).pipe( gulp.dest( paths.dest + paths.local ));
 });
 
 gulp.task( 'js', function() {
@@ -129,4 +131,15 @@ gulp.task( 'js', function() {
 
 gulp.task( 'publish', [ 'clean' ], function() {
     gulp.start( 'html', 'css', 'js', 'copy', 'srv:deploy', 'open' );
+});
+
+gulp.task( 'delopy', function( cb ) {
+    runsyn(
+        'clean',
+        'copy',
+        [ 'html', 'css', 'js' ],
+        'srv:deploy',
+        'open',
+        cb
+    )
 });
