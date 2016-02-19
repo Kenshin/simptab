@@ -85,13 +85,7 @@ body div {
   display: flex;
 }
 .top nav a span {
-/*
-  display: type
-  for vendor in vendors
-    display: display-group( vendor, type )
-  */
-  display: -webkit-inline-box;
-  display: "inline-box";
+/*adapter-display( inline-box )*/
   width: 40px;
   height: 30px;
 }
@@ -684,13 +678,7 @@ body div {
   background-color: rgba(0,0,0,0);
 }
 .footer ul li:nth-child(2) div div div nav span[class$="-icon"] {
-/*
-  display: type
-  for vendor in vendors
-    display: display-group( vendor, type )
-  */
-  display: -webkit-inline-box;
-  display: "inline-box";
+/*adapter-display( inline-box )*/
   width: 24px;
   height: 24px;
   opacity: 0.2;
