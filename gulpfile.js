@@ -7,8 +7,7 @@ var gulp   = require( 'gulp' ),
     stylus = require( 'gulp-stylus' ),
     csslint= require( 'gulp-csslint'),
     watch  = require( 'gulp-watch'  ),
-    connect= require( 'gulp-connect'),
-    open   = require( 'gulp-open'   ),
+    server = require( 'browser-sync').create(),
     clean  = require( 'gulp-clean'  ),
     htmlmin= require( 'gulp-htmlmin'),
     uglify = require( 'gulp-uglify' ),
@@ -40,6 +39,7 @@ var gulp   = require( 'gulp' ),
     paths  = {
         src  : 'js/',
         dest : 'dest-www/',
+        port : 8888,
         html : '*.html',
         js   : 'js/*.js',
         styl : 'assets/css/*.styl',
@@ -51,22 +51,17 @@ var gulp   = require( 'gulp' ),
     };
 
 gulp.task( 'srv:develop', function() {
-    connect.server({
-        port: 8888,
-        livereload: true
-    })
+    server.init({
+        server: { baseDir: './' },
+        port: paths.port
+    });
 });
 
 gulp.task( 'srv:deploy', function() {
-    connect.server({
-        root: paths.dest,
-        port: 8888,
-        livereload: true
-    })
-});
-
-gulp.task( 'open', function() {
-    gulp.src( __filename ).pipe( open({ uri: 'http://localhost:8888' }));
+    server.init({
+        server: { baseDir: paths.dest },
+        port: paths.port
+    });
 });
 
 gulp.task( 'jshint', function() { lint( paths.js ); });
@@ -83,18 +78,18 @@ gulp.task( 'watch', function() {
             rehtml = /\.html/g,
             path   = event.path;
         if ( rejs.test( path )) {
-            lint( path ).pipe( connect.reload() );
+            lint( path ).pipe( server.stream() );
         }
         else if ( restyl.test( path )) {
-            stylcss( path ).pipe( gulp.dest( paths.csssrc ) ).pipe( connect.reload() );
+            stylcss( path ).pipe( gulp.dest( paths.csssrc ) ).pipe( server.stream() );
         }
         else if ( rehtml.test( path )) {
-            gulp.src( path ).pipe( connect.reload() );
+            gulp.src( path ).pipe( server.stream() );
         }
     });
 });
 
-gulp.task( 'default', [ 'srv:develop', 'jshint', 'csslint', 'watch', 'open' ] );
+gulp.task( 'default', [ 'jshint', 'csslint', 'watch', 'srv:develop' ] );
 
 gulp.task( 'clean', function() {
     return gulp.src( paths.dest ).pipe( clean() );
@@ -130,16 +125,15 @@ gulp.task( 'js', function() {
 });
 
 gulp.task( 'publish', [ 'clean' ], function() {
-    gulp.start( 'html', 'css', 'js', 'copy', 'srv:deploy', 'open' );
+    gulp.start( 'html', 'css', 'js', 'copy' );
 });
 
-gulp.task( 'delopy', function( cb ) {
+gulp.task( 'deploy', function( cb ) {
     runsyn(
         'clean',
         'copy',
         [ 'html', 'css', 'js' ],
         'srv:deploy',
-        'open',
         cb
     )
 });
