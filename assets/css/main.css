@@ -42,10 +42,12 @@ body div {
   -ms-align-items: center;
   align-items: center;
 }
+header {
+  background: #1dba90;
+}
 .top {
   height: 50px;
   padding: 0 10px;
-  background-color: #1dba90;
 }
 .top nav {
 /*
@@ -101,7 +103,7 @@ body div {
 .top nav a:nth-child(3) span {
   background: url("../image/en-flag.png") no-repeat;
 }
-.header {
+.describe {
   -webkit-flex-flow: row wrap;
   -moz-flex-flow: row wrap;
   -o-flex-flow: row wrap;
@@ -112,12 +114,11 @@ body div {
   -o-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  background-color: #1dba90;
   color: #fff;
   font-weight: bold;
   padding: 0 10px;
 }
-.header .introduce {
+.describe .introduce {
   -webkit-flex-flow: column nowrap;
   -moz-flex-flow: column nowrap;
   -o-flex-flow: column nowrap;
@@ -129,7 +130,7 @@ body div {
   -ms-justify-content: center;
   justify-content: center;
 }
-.header .introduce .title {
+.describe .introduce .title {
   -webkit-flex-flow: column nowrap;
   -moz-flex-flow: column nowrap;
   -o-flex-flow: column nowrap;
@@ -137,13 +138,13 @@ body div {
   flex-flow: column nowrap;
   margin-bottom: 15px;
 }
-.header .introduce .title div:nth-child(1) {
+.describe .introduce .title div:nth-child(1) {
   font-size: 50px;
 }
-.header .introduce .title div:nth-child(2) {
+.describe .introduce .title div:nth-child(2) {
   font-size: 40px;
 }
-.header .introduce .download {
+.describe .introduce .download {
   -webkit-justify-content: center;
   -moz-justify-content: center;
   -o-justify-content: center;
@@ -155,7 +156,7 @@ body div {
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
 }
-.header .introduce .btn-download {
+.describe .introduce .btn-download {
 /*
   display: type
   for vendor in vendors
@@ -186,13 +187,13 @@ body div {
   -ms-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
   box-shadow: 0 1px 5px rgba(0,0,0,0.75);
 }
-.header .introduce .btn-download span {
+.describe .introduce .btn-download span {
   display: block;
   width: 48px;
   height: 48px;
   background: url("../image/webstore.png") no-repeat;
 }
-.header .introduce .btn-download nav {
+.describe .introduce .btn-download nav {
 /*
   display: type
   for vendor in vendors
@@ -212,15 +213,15 @@ body div {
   align-items: flex-end;
   line-height: 0.5;
 }
-.header .introduce .btn-download nav h3 {
+.describe .introduce .btn-download nav h3 {
   padding: 0;
   margin: 0;
   line-height: 48px;
 }
-.header .introduce .btn-download nav div {
+.describe .introduce .btn-download nav div {
   font-size: 10px;
 }
-.header .introduce .btn-download:hover {
+.describe .introduce .btn-download:hover {
   text-decoration: none;
   background-position: 0 -15px;
   background: #7c4dff;
@@ -236,11 +237,11 @@ body div {
   -ms-box-shadow: 0 1px 5px rgba(0,0,0,0);
   box-shadow: 0 1px 5px rgba(0,0,0,0);
 }
-.header .introduce .btn-offline-download {
+.describe .introduce .btn-offline-download {
   padding: 0 2px;
   text-decoration: none;
 }
-.header .introduce .btn-offline-download:hover {
+.describe .introduce .btn-offline-download:hover {
   -webkit-transition: background-color 1s ease;
   -moz-transition: background-color 1s ease;
   -o-transition: background-color 1s ease;
@@ -255,11 +256,11 @@ body div {
   background: rgba(0,0,0,0.4);
   color: #fff;
 }
-.header .introduce .smaller {
+.describe .introduce .smaller {
   font-size: 10px;
   color: #fff;
 }
-.header .banner {
+.describe .banner {
   height: 656px;
   width: 853px;
   background: url("../image/introduce.jpg") no-repeat;
@@ -719,13 +720,13 @@ body div {
   background: url("../image/linkin-hover-icon.png") no-repeat;
 }
 @media (max-width: 1391px) {
-  .header .banner {
+  .describe .banner {
     zoom: 0.8;
   }
-  .header .title {
+  .describe .title {
     zoom: 0.9;
   }
-  .header .download {
+  .describe .download {
     zoom: 0.9;
   }
 }
@@ -756,20 +757,20 @@ body div {
   }
 }
 @media (max-width: 718px) {
-  .header {
+  .describe {
     -webkit-flex-flow: column nowrap;
     -moz-flex-flow: column nowrap;
     -o-flex-flow: column nowrap;
     -ms-flex-flow: column nowrap;
     flex-flow: column nowrap;
   }
-  .header .banner {
+  .describe .banner {
     zoom: 0.5;
   }
-  .header .title {
+  .describe .title {
     zoom: 0.6;
   }
-  .header .download {
+  .describe .download {
     zoom: 0.5;
   }
   .main {
@@ -782,10 +783,10 @@ body div {
   }
 }
 @media (max-width: 480px) {
-  .header .title {
+  .describe .title {
     zoom: 0.5;
   }
-  .header .banner {
+  .describe .banner {
     zoom: 0.3;
   }
   .main {
@@ -817,7 +818,7 @@ body div {
   }
 }
 @media (max-width: 320px) {
-  .header .title {
+  .describe .title {
     zoom: 0.4;
   }
   .main {

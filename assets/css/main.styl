@@ -54,12 +54,13 @@ body
         all-browser "justify-content",  center
         all-browser "align-items",      center
 
+header
+    background: #1DBA90
+
 .top
 
     height: 50px
     padding: 0 10px
-
-    background-color: #1DBA90
 
     nav
         adapter-display( flex )
@@ -94,11 +95,10 @@ body
                 span
                     background: url( ../image/en-flag.png ) no-repeat
 
-.header
+.describe
     all-browser "flex-flow",       row wrap
     all-browser "justify-content", center
 
-    background-color: #1DBA90
     color: #fff
 
     font-weight: bold
@@ -523,7 +523,7 @@ body
 
 
 @media (max-width: 1391px)
-    .header
+    .describe
         .banner
             zoom: 0.8
         .title
@@ -553,7 +553,7 @@ body
         zoom 0.6
 
 @media (max-width: 718px)
-    .header
+    .describe
         all-browser "flex-flow", column nowrap
         .banner
             zoom: 0.5
@@ -570,7 +570,7 @@ body
         zoom: 0.5
 
 @media (max-width: 480px)
-    .header
+    .describe
         .title
             zoom: 0.5
         .banner
@@ -597,7 +597,7 @@ body
         width: 290px
 
 @media (max-width: 320px)
-    .header .title
+    .describe .title
         zoom: 0.4
     .main
         zoom: 0.3
