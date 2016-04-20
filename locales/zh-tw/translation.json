@@ -1,8 +1,8 @@
 {
-    "title"   : "&nbsp;&nbsp;簡&nbsp;Tab",
+    "title"   : "簡 Tab",
     "desc"    : "極簡的Chrome新標簽頁擴展",
     "download": "立即下載",
-    "or"      : "&nbsp;或者",
+    "or"      : " 或者",
     "offline" : "離線下載",
     "desc1"   : "多種背景源",
     "desc2"   : "每天/每次更新",
@@ -17,13 +17,13 @@
     "feature4": "下載喜歡的背景。",
     "feature5": "收藏喜歡的背景。",
     "feature6": "包括：全局、瀏覽器搜索欄等多種快捷鍵方式。",
-    "middle1" : "查看&nbsp;全部功能",
-    "middle2" : "查看&nbsp;Github&nbsp;项目",
+    "middle1" : "查看 全部功能",
+    "middle2" : "查看 Github项目",
     "support" : "支持",
     "feedback": "如果在使用的過程中遇到了任何問題，請反饋：",
-    "contact" : "&nbsp;或者 聯系&nbsp;",
+    "contact" : " 或者 聯系 ",
     "author"  : "作者",
     "end"     : "。",
     "job"     : "前端開發工程師/Flex架構師",
-    "footer"  : "簡&nbsp;Tab - 極簡的Chrome新標簽頁擴展，望妳每次打開都有好心情"
+    "footer"  : "簡 Tab - 極簡的Chrome新標簽頁擴展，望妳每次打開都有好心情"
 }
