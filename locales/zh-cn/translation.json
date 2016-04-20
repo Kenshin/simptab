@@ -1,8 +1,8 @@
 {
-    "title"   : "&nbsp;&nbsp;简&nbsp;Tab",
+    "title"   : "简 Tab",
     "desc"    : "极简的Chrome新标签页扩展",
     "download": "立即下载",
-    "or"      : "&nbsp;或者",
+    "or"      : " 或者",
     "offline" : "离线下载",
     "desc1"   : "多种背景源",
     "desc2"   : "每天/每次更新",
@@ -17,13 +17,13 @@
     "feature4": "下载喜欢的背景。",
     "feature5": "收藏喜欢的背景。",
     "feature6": "包括：全局、浏览器搜索栏等多种快捷键方式。",
-    "middle1" : "查看&nbsp;全部功能",
-    "middle2" : "查看&nbsp;Github&nbsp;项目",
+    "middle1" : "查看 全部功能",
+    "middle2" : "查看 Github项目",
     "support" : "支持",
     "feedback": "如果在使用的过程中遇到了任何问题，请反馈：",
-    "contact" : "&nbsp;或者 联系&nbsp;",
+    "contact" : " 或者 联系 ",
     "author"  : "作者",
     "end"     : "。",
     "job"     : "前端开发工程师/Flex架构师",
-    "footer"  : "简&nbsp;Tab - 极简的Chrome新标签页扩展，望你每次打开都有好心情"
+    "footer"  : "简 Tab - 极简的Chrome新标签页扩展，望你每次打开都有好心情"
 }
