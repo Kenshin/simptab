@@ -4,15 +4,17 @@
     },
 
     "title": {
-        "message": "SimpTab - New Tab"
+        "message": "SimpTab - Minimalistic New Tab"
     },
 
     "extension_name": {
-        "message": "SimpTab - New Tab"
+        "message": "SimpTab - Minimalistic New Tab",
+        "description": "Minimalistic's chrome new tab page extension, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
     "extension_desc": {
-        "message": "Minimalistic's chrome new tab page extension, hope every time open, you have a good mood."
+        "message": "Minimalistic's chrome new tab page extension, hope every time open, you have a good mood.",
+        "description": "Minimalistic's chrome new tab page extension, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
     "controlbar_bookmarks": {

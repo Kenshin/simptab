@@ -4,15 +4,17 @@
     },
 
     "title": {
-        "message": "\u7c21 Tab - \u65b0\u589e\u5206\u9801"
+        "message": "簡 Tab SimpTab - 新標籤頁"
     },
 
     "extension_name": {
-        "message": "\u7c21 Tab - New Tab"
+        "message": "簡 Tab - SimpTab 新標籤頁",
+        "description": "極簡的 Chrome 新標籤頁擴展, 新標籤頁, 標籤頁, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
     "extension_desc": {
-        "message": "\u6781\u7c21\u7684Chrome\u65b0\u6a19\u7c3d\u9801\u64f4\u5c55\uff0c\u671b\u4f60\u6bcf\u6b21\u6253\u958b\u90fd\u6709\u597d\u5fc3\u60c5\u3002"
+        "message": "極簡的 Chrome 新標籤頁擴展，望你每次打開都有好心情。",
+        "description": "極簡的 Chrome 新標籤頁擴展, 新標籤頁, 標籤頁, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
     "controlbar_bookmarks": {
