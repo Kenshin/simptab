@@ -2,10 +2,13 @@
 requirejs.config({
     baseUrl: ".",
     paths: {
-      "main"       : "js/main",
+
       "jquery"     : "vender/jquery-2.1.1.min",
       "mousetrap"  : "vender/mousetrap.min",
       "progressbar": "vender/progressbar.min",
+      "notify"     : "vender/notify.min",
+
+      "main"       : "js/main",
       "background" : "js/background",
       "apis"       : "js/apis",
       "vo"         : "js/vo",
@@ -17,17 +20,16 @@ requirejs.config({
       "files"      : "js/files",
       "error"      : "js/error",
       "topsites"   : "js/topsites",
-      "notify"     : "js/notify",
       "version"    : "js/version",
       "progress"   : "js/progress",
       "cdns"       : "js/cdns"
     },
     shim: {
-      "mousetrap"   : {
-          exports  : "Mousetrap"
+      "mousetrap"    : {
+          exports    : "Mousetrap"
       },
-       "progressbar"   : {
-          exports  : "ProgressBar"
+       "progressbar" : {
+          exports    : "ProgressBar"
       }
     }
 });

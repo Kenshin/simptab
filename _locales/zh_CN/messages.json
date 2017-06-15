@@ -241,8 +241,12 @@
         "message": "\u4e0d\u559c\u6b22\u529f\u80fd\uff0cPin\u529f\u80fd\uff0c\u4f18\u5316\u80cc\u666f\u83b7\u53d6\u901f\u5ea6\u7b49\uff1b"
     },
 
+    "version_detail_6": {
+        "message": "修复了一些界面与逻辑上的错误，"
+    },
+
     "permissions": {
-        "message": "\u65b0\u7248\u672c\u9700\u8981\u53d6\u5f97\u65b0\u7684\u6743\u9650\uff0c<a href='#' class='permissions'>\u8bf7\u786e\u8ba4</a>\u3002"
+        "message": "\u65b0\u7248\u672c\u9700\u8981\u53d6\u5f97\u65b0\u7684\u6743\u9650\u3002"
     },
 
     "permissions_success": {

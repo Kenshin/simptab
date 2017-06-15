@@ -60,6 +60,12 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 details : i18n.GetLang( "version_detail_5" ),
                 permissions: [],
                 removePermissions : []
+            },
+            "1.5.1" : {
+                level   : 7,
+                details : i18n.GetLang( "version_detail_6" ),
+                permissions: [],
+                removePermissions : []
             }
         };
 
@@ -122,13 +128,10 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
     })();
 
     function permissionClickHandle( event ) {
-        var $target = $( this ).parent().parent().find( ".close" );
         chrome.permissions.request({
             origins : version.permissions
         }, function( result ) {
             new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
-            $( ".notifygp" ).undelegate( ".permissions", "click", permissionClickHandle );
-            $target.click();
             removePermissions();
       });
     }
@@ -149,8 +152,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
     function containsPermissions() {
         chrome.permissions.contains({ origins: version.permissions }, function( result ) {
             if ( !result ) {
-                new Notify().Render( 0, "", i18n.GetLang( 'permissions' ), true );
-                $( ".notifygp" ).delegate( ".permissions", "click", permissionClickHandle );
+                new Notify().Render( i18n.GetLang( 'permissions' ), "确认", permissionClickHandle );
             }
         });
     }
@@ -166,14 +168,13 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
             if ( version.isUpdate() ) {
                 correction();
-                new Notify().Render( 0,
-                                     i18n.GetLang( 'version_title' ),
+                new Notify().Render( i18n.GetLang( 'version_title' ),
                                      i18n.GetLang( 'version_content' )
                                         .replace( '#1', version.new )
                                         .replace( '#2', '<a href="https://github.com/kenshin/simptab/blob/master/CHANGELOG.md" target="_blank">' )
                                         .replace( '#3', '</a>' )
                                         .replace( '#4', version.Details())
-                                      , true );
+                                    );
 
                 version.isPermissions() && containsPermissions();
                 version.Save();

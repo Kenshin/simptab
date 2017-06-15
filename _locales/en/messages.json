@@ -237,12 +237,16 @@
         "message": "A more detailed version of the new tips, Intelligent adjusting background position, "
     },
 
-    "version_detail_4": {
+    "version_detail_5": {
         "message": "Dislike feature, Pin feature, optimize the new background download speed, "
     },
 
+    "version_detail_6": {
+        "message": "Fixed same UI and logic bug,"
+    },
+
     "permissions": {
-        "message": "New version need to obtain new permissions, <a href='#' class='permissions'>allow</a>."
+        "message": "New version need to obtain new permissions."
     },
 
     "permissions_success": {
