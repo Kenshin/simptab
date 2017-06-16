@@ -396,17 +396,17 @@ body {
 /*
 * tooltip
 */
-.tooltip  {
+.tooltip {
+    padding: 3px 8px;
+
     color: #fff;
-    background: rgba(0,0,0,.4);
-    border-radius: 3px;
+    background: #616161;
 
-    padding: 2px 5px;
+    font-weight: 300;
+    line-height: 23px;
 
-    -webkit-transform: scale(0);
+    border-radius: 2px;
     opacity: 0;
-
-    /*cursor: default;*/
 }
 
 .tooltip:hover {
@@ -430,7 +430,7 @@ body {
 .clock-tooltip:hover  .tooltip {
     -webkit-transform: scale(1);
     -webkit-transition: opacity 2s ease;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .tooltip-top {
@@ -447,35 +447,29 @@ body {
     -moz-transition: opacity 1s ease;
     -o-transition: opacity 1s ease;
     -ms-transition: opacity 1s ease;
-    opacity: 1;
-}
-
-.tooltip-top:before {
-    content: " ";
-    position: absolute;
-    left: 9px;
-    top: -12px;
-
-    border-top: 9px solid #222;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-
-    opacity: 0;
+    opacity: .9;
 }
 
 .tooltip-top:after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 37px;
+
     left: -30px;
-    padding: 10px;
-    width: 90px;
+    bottom: 14px;
+
+    padding: 3px 8px;
+
+    min-width: 74px;
+
     color: #fff;
+    background-color: #616161;
+
     font-weight: 100;
     font-size: 12px;
     text-align: center;
-    border-radius: 5px;
-    background-color: #222;
+
+    border-radius: 2px;
+
     opacity: 0;
     pointer-events: none;
 }
