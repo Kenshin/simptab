@@ -1,6 +1,6 @@
 SimpTab - Minimalist Chrome new tab extension
 =======
-### hope to have good mood every time you open it. Removed redundant function, focused tab rendering.
+### Hope to improve your mood every time you open a new tab. Clear & simple, focused on beautiful background images.
 [![Version][version-badge]][version-link]
 [![Gitter][gitter-badge]][gitter-link]
 [![Slack][slack-badge]][slack-link]
@@ -16,26 +16,26 @@ SimpTab - Minimalist Chrome new tab extension
 #### Snapshot:
 ![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
 
-#### Feature:
-![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
+#### Features:
+![feature 1](http://i.imgur.com/BZGMo4p.jpg)
 ![feature 2](http://i.imgur.com/auWFlc9.jpg)
 
 #### Other language:
 [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [简体中文](https://github.com/kenshin/simptab/blob/master/README.md)
 
 #### Features Details:
-- Automatic recognition languages. ( Simplified, Traditional, English. )
-- Daily / random to replace the background. ( Note: The daily changing background only from Bing.com. )
-- Multi background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`
+- Automatically recognize the preferred language. ( Simplified & Traditional Chinese, English.
+- Change the background daily/randomly on every new tab ( Note: The daily change only works with Bing.com. )
+- Multiples background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`
 - Twenty-four solar terms.
 - Background loading progress. ( Lower left corner, only at load time. )
 - Support `shortcuts` / `omnibox` operation.
 - Notification. ( include: upload, favorite. )
-- Top sites. ( include: simptab, senior, hidden mode. )
+- Top sites. ( include: simptab, senior, hidden modes. )
 - Upload.
 - Favorite.
-- Pin.
-- Dislike.
+- Pin. ( Don't change the background for some time )
+- Dislike. ( Prevent the background from appearing again )
 
 #### Omnibox:
 `st`
@@ -55,7 +55,7 @@ Name | Description
 `site` | Show top sites.(only omnibox)
 
 #### Vote:
-* If you feel good, please give me [Vote](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
+* If you like this application, please [Rate](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) it
 
 #### About:
 * [CHANGELOG](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
@@ -66,8 +66,8 @@ Name | Description
 
 #### Thanks:
 - <http://www.easyicon.net> <https://www.iconfinder.com>.
-- `HapnaMono-Light`.
-- `Source Han Sans ExtraLight`.
+- English font `HapnaMono-Light`.
+- Chinese font `Source Han Sans ExtraLight`.
 - Mockup <http://magicmockups.com/>
 
 #### Licenses:
