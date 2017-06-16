@@ -18,43 +18,43 @@
     },
 
     "controlbar_bookmarks": {
-        "message": "\u66f8\u7c64"
+        "message": "書籤"
     },
 
     "controlbar_history": {
-        "message": "\u6b77\u53f2"
+        "message": "歷史"
     },
 
     "controlbar_apps": {
-        "message": "\u61c9\u7528"
+        "message": "應用"
     },
 
     "controlbar_info": {
-        "message": "\u8a73\u7d30\u4fe1\u606f"
+        "message": "詳細信息"
     },
 
     "controlbar_download": {
-        "message": "\u4e0b\u8f09\u7576\u524d\u80cc\u666f"
+        "message": "下載當前背景"
     },
 
     "controlbar_upload": {
-        "message": "\u4e0a\u50b3\u80cc\u666f"
+        "message": "上傳背景"
     },
 
     "controlbar_setting": {
-        "message": "\u8a2d\u5b9a"
+        "message": "設定"
     },
 
     "controlbar_favorite": {
-        "message": "\u6536\u85cf"
+        "message": "收藏"
     },
 
     "controlbar_dislike": {
-        "message": "\u4e0d\u559c\u6b61"
+        "message": "不喜歡"
     },
 
     "controlbar_pin": {
-        "message": "\u56fa\u5b9a"
+        "message": "固定"
     },
 
     "setting_width": {
@@ -62,111 +62,111 @@
     },
 
     "setting_background_every_day": {
-        "message": "\u6bcf\u5929\u66f4\u63db\u80cc\u666f"
+        "message": "每天更換背景"
     },
 
     "setting_background_every_time": {
-        "message": "\u96a8\u6a5f\u66f4\u63db\u80cc\u666f"
+        "message": "隨機更換背景"
     },
 
     "setting_background_position_center": {
-        "message": "\u80cc\u666f\u5c45\u4e2d\u5c0d\u9f4a"
+        "message": "背景居中對齊"
     },
 
     "setting_background_position_corner": {
-        "message": "\u80cc\u666f\u5de6\u4e0a\u5c0d\u9f4a"
+        "message": "背景左上對齊"
     },
 
     "setting_show_clock": {
-        "message": "\u986f\u793a\u6642\u9418"
+        "message": "顯示時鐘"
     },
 
     "setting_hide_clock": {
-        "message": "\u96b1\u85cf\u6642\u9418"
+        "message": "隱藏時鐘"
     },
 
     "setting_multi_origin_0": {
-        "message": "\u6dfb\u52a0 Wallhaven.cc"
+        "message": "添加 Wallhaven.cc"
     },
 
     "setting_multi_origin_1": {
-        "message": "\u6dfb\u52a0 Unsplash.com"
+        "message": "添加 Unsplash.com"
     },
 
     "setting_multi_origin_2": {
-        "message": "\u6dfb\u52a0 Unsplash.it"
+        "message": "添加 Unsplash.it"
     },
 
     "setting_multi_origin_3": {
-        "message": "\u6dfb\u52a0 Flickr.com"
+        "message": "添加 Flickr.com"
     },
 
     "setting_multi_origin_4": {
-        "message": "\u6dfb\u52a0 Google Art"
+        "message": "添加 Google Art"
     },
 
     "setting_multi_origin_5": {
-        "message": "\u6dfb\u52a0 500px.com"
+        "message": "添加 500px.com"
     },
 
     "setting_multi_origin_6": {
-        "message": "\u6dfb\u52a0 desktoppr.co"
+        "message": "添加 desktoppr.co"
     },
 
     "setting_multi_origin_7": {
-        "message": "\u6dfb\u52a0 visualhunt.com"
+        "message": "添加 visualhunt.com"
     },
 
     "setting_multi_origin_8": {
-        "message": "\u6dfb\u52a0 NASA.gov"
+        "message": "添加 NASA.gov"
     },
 
     "setting_multi_origin_9": {
-        "message": "\u6dfb\u52a0 SimpTab images"
+        "message": "添加 SimpTab images"
     },
 
     "setting_ts_state_normal": {
-        "message": "\u5e38\u7528\u7db2\u5740\uff08\u96b1\u85cf\u6a21\u5f0f\uff09"
+        "message": "常用網址（隱藏模式）"
     },
 
     "setting_ts_state_simple": {
-        "message": "\u5e38\u7528\u7db2\u5740\uff08\u7c21\u55ae\u6a21\u5f0f\uff09"
+        "message": "常用網址（簡單模式）"
     },
 
     "setting_ts_state_senior": {
-        "message": "\u5e38\u7528\u7db2\u5740\uff08\u9ad8\u7d1a\u6a21\u5f0f\uff09"
+        "message": "常用網址（高級模式）"
     },
 
     "setting_pin_tooltip": {
-        "message": "\u56fa\u5b9a #1 \u5c0f\u6642"
+        "message": "固定 #1 小時"
     },
 
     "setting_contact_weibo": {
-        "message": "\u5206\u4eab\u5230 \u5fae\u535a"
+        "message": "分享到 微博"
     },
 
     "setting_contact_twitter": {
-        "message": "\u5206\u4eab\u5230 Twitter"
+        "message": "分享到 Twitter"
     },
 
     "setting_contact_facebook": {
-        "message": "\u5206\u4eab\u5230 Facebook"
+        "message": "分享到 Facebook"
     },
 
     "setting_contact_gplus": {
-        "message": "\u5206\u4eab\u5230 Google plus"
+        "message": "分享到 Google plus"
     },
 
     "setting_contact_me": {
-        "message": "\u806f\u4fc2\u4f5c\u8005"
+        "message": "聯係作者"
     },
 
     "shortcuts_default": {
-        "message": "\u8f38\u5165\u7a7a\u683c\u986f\u793a\u5168\u90e8\u7684\u547d\u4ee4\u5217\u8868\uff0c\u76ee\u524d\u652f\u6301\u7684\u95dc\u9375\u5b57\u50c5\u5305\u62ec\uff1a"
+        "message": "輸入空格顯示全部的命令列表，目前支持的關鍵字僅包括："
     },
 
     "shortcuts_fail_key": {
-        "message": "\u4e0d\u652f\u6301\u7576\u524d\u95dc\u9375\u5b57\uff1a"
+        "message": "不支持當前關鍵字："
     },
 
     "version_title": {
@@ -178,35 +178,35 @@
     },
 
     "notify_upload_complete": {
-        "message": "\u80cc\u666f\u4e0a\u50b3\u5b8c\u7562\u3002"
+        "message": "背景上傳完畢。"
     },
 
     "notify_upload_fail": {
-        "message": "\u5716\u7247\u4e0a\u50b3\u5931\u6557\u3002"
+        "message": "圖片上傳失敗。"
     },
 
     "notify_favorite_add": {
-        "message": "\u80cc\u666f\u6536\u85cf\u6210\u529f\u3002"
+        "message": "背景收藏成功。"
     },
 
     "notify_favorite_del": {
-        "message": "\u80cc\u666f\u53d6\u6d88\u6536\u85cf\u6210\u529f\u3002"
+        "message": "背景取消收藏成功。"
     },
 
     "notify_dislike_add": {
-        "message": "\u5df2\u6210\u529f\u52a0\u5165\u4e0d\u559c\u6b61\u5217\u8868\uff0c\u65b0\u80cc\u666f\u53d6\u5f97\u5f8c\uff0c\u7576\u524d\u80cc\u666f\u5c07\u4e0d\u6703\u518d\u986f\u793a\u3002"
+        "message": "已成功加入不喜歡列表，新背景取得後，當前背景將不會再顯示。"
     },
 
     "notify_dislike_del": {
-        "message": "\u5df2\u6210\u529f\u79fb\u51fa\u4e0d\u559c\u6b61\u5217\u8868\u3002"
+        "message": "已成功移出不喜歡列表。"
     },
 
     "notify_pin_add": {
-        "message": "\u7576\u524d\u80cc\u666f\u56fa\u5b9a #1 \u5c0f\u6642\u3002"
+        "message": "當前背景固定 #1 小時。"
     },
 
     "notify_pin_del": {
-        "message": "\u5df2\u53d6\u6d88\u7576\u524d\u80cc\u666f\u7684\u56fa\u5b9a\u3002"
+        "message": "已取消當前背景的固定。"
     },
 
     "version_detail": {
@@ -246,14 +246,14 @@
     },
 
     "permissions": {
-        "message": "\u65b0\u7248\u672c\u9700\u8981\u53d6\u5f97\u65b0\u7684\u8a31\u53ef\u6b0a\u3002"
+        "message": "新版本需要取得新的許可權。"
     },
 
     "permissions_success": {
-        "message": "\u65b0\u7684\u8a31\u53ef\u6b0a\u5df2\u7d93\u555f\u7528\u6210\u529f\u3002"
+        "message": "新的許可權已經啟用成功。"
     },
 
     "permissions_failed": {
-        "message": "\u8a31\u53ef\u6b0a\u7372\u53d6\u5931\u6557\uff0c\u65b0\u529f\u80fd\u7121\u6cd5\u555f\u7528\uff0c\u5efa\u8b70\u91cd\u65b0\u5b89\u88dd\u3002"
+        "message": "許可權獲取失敗，新功能無法啟用，建議重新安裝。"
     }
 }
