@@ -170,11 +170,11 @@
     },
 
     "version_title": {
-        "message": "\u7b80 Tab\u5df2\u7ecf\u66f4\u65b0"
+        "message": "简 Tab 版本提示"
     },
 
     "version_content": {
-        "message": "\u5f53\u524d\u7248\u672c #1\uff0c#4\u66f4\u591a\u529f\u80fd #2\u8bf7\u770b\u8fd9\u91cc#3\u3002"
+        "message": "安装到 最新版本 #1，#4详细请看 #2更新日志#3"
     },
 
     "notify_upload_complete": {
@@ -210,39 +210,39 @@
     },
 
     "version_detail": {
-        "message": "\u5168\u65b0\u7248\u672c\uff0c\u5168\u65b0\u529f\u80fd\uff1b"
+        "message": ""
     },
 
     "version_detail_prefix": {
-        "message": "\u65b0\u589e "
+        "message": ""
     },
 
     "version_detail_0": {
-        "message": "\u4fee\u590d\u4e4b\u524d\u7248\u672c\u7684\u4e00\u4e9b\u9519\u8bef\uff1b"
+        "message": "修复之前版本的一些错误；"
     },
 
     "version_detail_1": {
-        "message": "\u591a\u79cd\u80cc\u666f\u6e90\uff0c\u4e8c\u5341\u56db\u8282\u6c14\u3001\u7535\u5f71\u6d77\u62a5\u3001\u7279\u6b8a\u8282\u65e5\uff0c\u4e0a\u4f20\u529f\u80fd\uff0c\u6536\u85cf\u529f\u80fd\u7b49\uff1b"
+        "message": "新增：多种背景源，二十四节气、电影海报、特殊节日，上传功能，收藏功能等；"
     },
 
     "version_detail_2": {
-        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9ad8\u7ea7\u6a21\u5f0f\uff09\u7b49\uff1b"
+        "message": "新增：常用网址（高级模式）等；"
     },
 
     "version_detail_3": {
-        "message": "\u80cc\u666f\u6e90\uff1a<a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a>\uff0c\u7279\u522b\u65e5\uff08Special day\uff09\uff1b"
+        "message": "新增：背景源：<a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a>，特别日（Special day）；"
     },
 
     "version_detail_4": {
-        "message": "\u66f4\u8be6\u7ec6\u7684\u7248\u672c\u63d0\u793a\u529f\u80fd\uff0c\u667a\u80fd\u8c03\u6574\u80cc\u666f\u4f4d\u7f6e\u7b49\uff1b"
+        "message": "新增：更详细的版本提示功能，智能调整背景位置等；"
     },
 
     "version_detail_5": {
-        "message": "\u4e0d\u559c\u6b22\u529f\u80fd\uff0cPin\u529f\u80fd\uff0c\u4f18\u5316\u80cc\u666f\u83b7\u53d6\u901f\u5ea6\u7b49\uff1b"
+        "message": "新增：不喜欢功能，Pin功能，优化背景获取速度等；"
     },
 
     "version_detail_6": {
-        "message": "修复了一些界面与逻辑上的错误，"
+        "message": "修复了一些界面与逻辑上的错误；"
     },
 
     "permissions": {
