@@ -218,27 +218,27 @@
     },
 
     "version_detail_0": {
-        "message": "Fix some bugs in the previous version; "
+        "message": "Fixed some bugs in the previous version; "
     },
 
     "version_detail_1": {
-        "message": "Add: Multiple background origin, twenty-four solar terms, movie posters, special festivals, upload function, collection function; "
+        "message": "Add: Multiple background origin: Chinese solar terms, movie posters, holidays and festivals; Uploads; Likes; "
     },
 
     "version_detail_2": {
-        "message": "Add: Senior topsites; "
+        "message": "Add: Centered Top Sites list; "
     },
 
     "version_detail_3": {
-        "message": "Add: new <a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a> background origin, Special day; "
+        "message": "Add: Pictures from <a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a>, Special day; "
     },
 
     "version_detail_4": {
-        "message": "Add: A more detailed version of the new tips, Intelligent adjusting background position; "
+        "message": "Add: Notify for new versions available, Auto-adjustments for background position； "
     },
 
     "version_detail_5": {
-        "message": "Add: Dislike feature, Pin feature, optimize the new background download speed; "
+        "message": "Add: Dislikes; Background pinning; Faster download speed; "
     },
 
     "version_detail_6": {
@@ -246,7 +246,7 @@
     },
 
     "permissions": {
-        "message": "New version need to obtain new permissions."
+        "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
 
     "permissions_success": {
