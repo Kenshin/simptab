@@ -6,11 +6,17 @@ html {
   -o-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
+  font: 300 16px/1.8 -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  text-rendering: optimizelegibility;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-size: 62.5%;
+  color: #333;
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
-  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
 }
 body {
   padding: 0;
@@ -34,6 +40,7 @@ header {
 }
 header h1 {
   margin: 20px 0;
+  font-size: 3rem;
 }
 header div {
   display: -webkit-flex;
@@ -60,7 +67,7 @@ header div nav {
   -o-flex-flow: row nowrap;
   -ms-flex-flow: row nowrap;
   flex-flow: row nowrap;
-  margin: 15px 0;
+  margin: 15px 0 18px 10px;
 }
 header div nav a {
   margin: 5px 3px;
