@@ -4,11 +4,11 @@
     },
 
     "title": {
-        "message": "简 Tab SimpTab - 新标签页"
+        "message": "简 Tab - 新标签页"
     },
 
     "extension_name": {
-        "message": "简 Tab - SimpTab 新标签页",
+        "message": "简 Tab (SimpTab) - 新标签页",
         "description": "极简的 Chrome 新标签页扩展, 新标签页, 标签页, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
