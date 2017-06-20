@@ -45,6 +45,7 @@ body {
     height: 100px;
     padding: 0 10px;
     background-color: #1dba90;
+    font-size: 1.2rem;
 }
 
 .top ul {
@@ -242,6 +243,7 @@ body {
     flex-flow: column nowrap;
     background-color: #333;
     color: #fff;
+    font-size: 1.2rem;
     font-weight: normal;
     width: 100%;
 }
