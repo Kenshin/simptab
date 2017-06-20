@@ -58,42 +58,34 @@ header
     background: #1DBA90
 
 .top
+    font: 300 12px/1.8 -apple-system,PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;
 
-    height: 50px
+    adapter-display( flex )
+    all-browser "justify-content ", flex-end
+
+    height: 100px
     padding: 0 10px
 
-    nav
+    ul
         adapter-display( flex )
         all-browser "flex-flow",        row nowrap
         all-browser "justify-content ", flex-end
+        list-style: none
 
-        width : 100%
+        li
+            margin: 0 20px
 
-        a[class$="flag"] span:hover
-            background-position: 0 3px
-            all-browser: "transition", background-position 0.3s linear
+            a
+                padding-bottom: 5px
+                color: #fff
+                text-decoration: none
+                text-transform: uppercase
+                transition: border-color .5s;
+                all-browser "border-bottom", 2px solid transparent
 
-        a
-            adapter-display( flex )
-
-            span
-                /*adapter-display( inline-box )*/
-
-                width : 40px
-                height: 30px
-
-            &:nth-child(1)
-                span
-                    background: url( ../image/zh-cn-flag.png ) no-repeat
-
-            &:nth-child(2)
-                padding: 0 8px
-                span
-                    background: url( ../image/zh-tw-flag.png ) no-repeat
-
-            &:nth-child(3)
-                span
-                    background: url( ../image/en-flag.png ) no-repeat
+                &:hover
+                    color: rgb(255, 255, 255)
+                    all-browser "border-bottom", 2px solid #fff
 
 .describe
     all-browser "flex-flow",       row wrap
@@ -329,6 +321,7 @@ header
         font-size 21px
         text-decoration none
         font-weight bold
+        line-height 1.5
 
         &:hover
             background-color transparent
@@ -344,13 +337,6 @@ header
         span
             width 32px
             height @width
-
-        &:nth-child(1) span
-            background url( ../image/learn-more-feature-icon.png ) no-repeat
-
-        &:nth-child(2) span
-            background url( ../image/github-icon.png ) no-repeat
-
 
 .footer
     all-browser "flex-flow", column nowrap

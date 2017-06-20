@@ -46,10 +46,23 @@ header {
   background: #1dba90;
 }
 .top {
-  height: 50px;
+  font: 300 12px/1.8 -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+/*
+  display: type
+  for vendor in vendors
+    display: display-group( vendor, type )
+  */
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content : flex-end;
+  -moz-justify-content : flex-end;
+  -o-justify-content : flex-end;
+  -ms-justify-content : flex-end;
+  justify-content : flex-end;
+  height: 100px;
   padding: 0 10px;
 }
-.top nav {
+.top ul {
 /*
   display: type
   for vendor in vendors
@@ -67,41 +80,30 @@ header {
   -o-justify-content : flex-end;
   -ms-justify-content : flex-end;
   justify-content : flex-end;
-  width: 100%;
+  list-style: none;
 }
-.top nav a[class$="flag"] span:hover {
-  background-position: 0 3px;
-  -webkit-transition: background-position 0.3s linear;
-  -moz-transition: background-position 0.3s linear;
-  -o-transition: background-position 0.3s linear;
-  -ms-transition: background-position 0.3s linear;
-  transition: background-position 0.3s linear;
+.top ul li {
+  margin: 0 20px;
 }
-.top nav a {
-/*
-  display: type
-  for vendor in vendors
-    display: display-group( vendor, type )
-  */
-  display: -webkit-flex;
-  display: flex;
+.top ul li a {
+  padding-bottom: 5px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 0.5s;
+  -webkit-border-bottom: 2px solid transparent;
+  -moz-border-bottom: 2px solid transparent;
+  -o-border-bottom: 2px solid transparent;
+  -ms-border-bottom: 2px solid transparent;
+  border-bottom: 2px solid transparent;
 }
-.top nav a span {
-/*adapter-display( inline-box )*/
-  width: 40px;
-  height: 30px;
-}
-.top nav a:nth-child(1) span {
-  background: url("../image/zh-cn-flag.png") no-repeat;
-}
-.top nav a:nth-child(2) {
-  padding: 0 8px;
-}
-.top nav a:nth-child(2) span {
-  background: url("../image/zh-tw-flag.png") no-repeat;
-}
-.top nav a:nth-child(3) span {
-  background: url("../image/en-flag.png") no-repeat;
+.top ul li a:hover {
+  color: #fff;
+  -webkit-border-bottom: 2px solid #fff;
+  -moz-border-bottom: 2px solid #fff;
+  -o-border-bottom: 2px solid #fff;
+  -ms-border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 .describe {
   -webkit-flex-flow: row wrap;
@@ -430,6 +432,7 @@ header {
   font-size: 21px;
   text-decoration: none;
   font-weight: bold;
+  line-height: 1.5;
 }
 .middle a:hover {
   background-color: transparent;
@@ -448,12 +451,6 @@ header {
 .middle a span {
   width: 32px;
   height: 32px;
-}
-.middle a:nth-child(1) span {
-  background: url("../image/learn-more-feature-icon.png") no-repeat;
-}
-.middle a:nth-child(2) span {
-  background: url("../image/github-icon.png") no-repeat;
 }
 .footer {
   -webkit-flex-flow: column nowrap;

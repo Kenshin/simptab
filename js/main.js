@@ -54,6 +54,10 @@ $( document ).ready( function() {
         $(".download .smaller").html( t( "or" ));
         $(".download .btn-offline-download").html( t( "offline" ));
 
+        $.each( $(".top ul li a"), function( idx, item ) {
+            idx <= 4 && $( item ).text( t( "nav" + (++idx) ));
+        });
+
         $.each( $(".feature"), function( idx, item ) {
             $( item ).find( ".desc" ).html( t( "desc" + (++idx) ));
             $( item ).find( ".content" ).attr( "data-tooltip", t( "feature" + (idx) ));
@@ -61,8 +65,7 @@ $( document ).ready( function() {
 
         $( ".feature .learnmore").html( t( "learn" ));
 
-        $( ".middle a:nth-child(1) div").html( t( "middle1" ));
-        $( ".middle a:nth-child(2) div").html( t( "middle2" ));
+        $( ".middle a:nth-child(1)").html( t( "middle1" ));
 
         $(".footer li:nth-child(1) h2").html( t( "support" ));
         $(".footer li:nth-child(1) div p:nth-of-type(1)").html( t( "feedback" ));
