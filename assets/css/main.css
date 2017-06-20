@@ -230,8 +230,9 @@ body {
  * setting
 */
 .lineradio {
-    display: -webkit-box;
-    -webkit-box-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     margin: 5px 0px 0px 0px;
 
@@ -267,9 +268,6 @@ body {
 
 .lineradio label,
 .boxradio label {
-    display: -webkit-box;
-    -webkit-box-flex: 1;
-
     cursor: pointer;
     padding: 5px;
 }
