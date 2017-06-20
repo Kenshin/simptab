@@ -10,7 +10,17 @@
   src: url("../font/zh-tw.bmp") format('woff');
   font-family: zh-tw;
 }
+@font-face {
+  src: 300 12px/1.8 -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font-family: normal;
+}
 html {
+  color: #333;
+  background: #fafafa;
+  text-rendering: optimizelegibility;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
   width: 100%;
   height: 100%;
 }
@@ -20,7 +30,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: en;
-  font-weight: bold;
+  font-size: 12px;
   background: url("../image/bg.png") repeat;
 }
 body div {
@@ -46,7 +56,6 @@ header {
   background: #1dba90;
 }
 .top {
-  font: 300 12px/1.8 -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 /*
   display: type
   for vendor in vendors
@@ -61,6 +70,7 @@ header {
   justify-content : flex-end;
   height: 100px;
   padding: 0 10px;
+  font-family: normal;
 }
 .top ul {
 /*
@@ -88,6 +98,7 @@ header {
 .top ul li a {
   padding-bottom: 5px;
   color: #fff;
+  font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
   transition: border-color 0.5s;
@@ -333,7 +344,6 @@ header {
   width: 100%;
   color: #fff;
   font-weight: 100;
-  font-size: 12px;
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
   text-align: center;
   -webkit-border-radius: 5px;
@@ -354,7 +364,7 @@ header {
   height: 128px;
 }
 .main .feature .desc {
-  font-size: 25px;
+  font-size: 20px;
   color: #b3b3b3;
 }
 .main .feature .learnmore {
@@ -366,8 +376,9 @@ header {
   -ms-border-radius: 3px;
   border-radius: 3px;
   padding: 8px 20px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
+  line-height: 19px;
 }
 .main .feature:nth-child(1) .icon {
   background: url("../image/multi-language.png") no-repeat;
@@ -460,6 +471,7 @@ header {
   flex-flow: column nowrap;
   background-color: #333;
   color: #fff;
+  font-family: normal;
   font-weight: normal;
   width: 100%;
 }
