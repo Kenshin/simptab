@@ -100,6 +100,7 @@ gulp.task( 'copy', function( cb ) {
     gulp.src( paths.image + '*'    ).pipe( gulp.dest( paths.dest + paths.image ));
     gulp.src( paths.font  + '*'    ).pipe( gulp.dest( paths.dest + paths.font  ));
     gulp.src( paths.local + '**/*' ).pipe( gulp.dest( paths.dest + paths.local ));
+    gulp.src( paths.csssrc + '/changelog.css' ).pipe( gulp.dest( paths.dest + paths.csssrc ));
     cb();
 });
 
