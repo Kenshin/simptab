@@ -292,6 +292,11 @@ body {
     background-image: url("../images/unchecked.png");
 }
 
+.lineradio:nth-of-type(6),
+.lineradio:nth-of-type(9) {
+    display: none!important;
+}
+
 .pinstate {
     display: -webkit-flex;
     flex-flow: row nowrap;
