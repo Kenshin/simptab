@@ -3,7 +3,7 @@ requirejs.config({
     baseUrl: ".",
     paths: {
 
-      "jquery"     : "vender/jquery-2.1.1.min",
+      "jquery"     : "vender/jquery-3.3.1.min",
       "mousetrap"  : "vender/mousetrap.min",
       "progressbar": "vender/progressbar.min",
       "notify"     : "vender/notify.min",
