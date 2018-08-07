@@ -16,6 +16,10 @@
 html {
     height: 100%;
     overflow: hidden;
+
+    text-rendering: optimizelegibility;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -221,15 +225,10 @@ body {
     font-family: "clock";
 }
 
-.clock span {
-    font-size: 12px;
-}
-
 #time {
     display: none;
 
     font-size: 55px;
-    font-weight: 100;
 
     cursor: pointer;
 }
@@ -245,6 +244,8 @@ body {
     margin: 5px 0px 0px 0px;
 
     font-size: 13px;
+    font-weight: 300;
+
     color: #fff;
     background: #555;
 
@@ -371,6 +372,8 @@ body {
 * tooltip
 */
 .tooltip {
+    font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
+
     padding: .5em 1em;
 
     color: #fff;
@@ -445,7 +448,6 @@ body {
     color: #fff;
     background-color: #616161;
 
-    font-weight: 100;
     font-size: 12px;
     text-align: center;
 
@@ -478,20 +480,20 @@ body {
 
     font-size: 12px;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
-    font-weight: 100;
 }
 
 .topsites {
     position: relative;
-    left: 33px;
 
     display: -webkit-box;
     -webkit-box-align: center;
     -webkit-box-orient: horizontal;
     -webkit-box-pack: center;
 
+    left: 33px;
     padding: 0px;
 
+    font-weight: 300;
     list-style: none;
 
     background-color: #222;
@@ -568,13 +570,14 @@ body {
 
     font-size: 15px;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
-    font-weight: 400;
     text-transform: none;
 
     z-index: 2000;
 }
 
 .senior {
+    font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
+
     position: relative;
     left: 33px;
 
@@ -585,14 +588,16 @@ body {
     max-width: 360px;
     max-height: 500px;
 
+    font-size: 13px;
+    font-weight: 300;
     white-space: nowrap;
 
     background-color: rgba( 255, 255, 255,.8 );
 
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
-    -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
 
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 .senior a {
@@ -614,7 +619,7 @@ body {
     transition: background-color .5s ease;
     -webkit-transition: background-color .5s ease;
 
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 .senior-hide {
@@ -632,12 +637,16 @@ body {
 }
 
 .senior div {
+    padding-top: 5px;
+
     width: 60px;
     color: #8b8986;
 
-    overflow: hidden;
     text-decoration: none;
     text-align: center;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
