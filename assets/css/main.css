@@ -323,50 +323,9 @@ body {
 * contact
 */
 .contact {
-    /*
-    display: -webkit-flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    margin-top: 26px;
-    margin-bottom: 8px;
-    */
-
     height: 100%;
     min-height: 55px;
 }
-
-/*
-.contact span {
-    padding: 0px 1px;
-    opacity: 0.8;
-}
-
-.contact span:hover {
-    opacity: 1;
-    -webkit-transition: opacity .3s ease;
-}
-
-.weiboicon {
-    background-image: url("../images/weibo.png");
-}
-
-.twittericon {
-    background-image: url("../images/twitter.png");
-}
-
-.facebookicon {
-    background-image: url("../images/facebook.png");
-}
-
-.gplusicon {
-    background-image: url("../images/gplus.png");
-}
-.emailicon {
-    background-image: url("../images/email.png");
-}
-*/
 
 /*
 * footer
