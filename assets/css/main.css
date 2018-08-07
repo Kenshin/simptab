@@ -496,8 +496,8 @@ body {
 
     background-color: #222;
 
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
 
     opacity: 0;
 
@@ -532,8 +532,8 @@ body {
     transition: background .5s ease;
     -webkit-transition: background .5s ease;
 
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
 .topsites a:hover {
