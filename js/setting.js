@@ -1,5 +1,5 @@
 
-define([ "jquery" ], function( $ ) {
+define([ "jquery", "waves" ], function( $, Waves ) {
 
     "use strict";
 
@@ -197,6 +197,8 @@ define([ "jquery" ], function( $ ) {
                     // callback only include: tsstate, clockstate
                     callback( type, mode );
 
+                    Waves.attach( '.lineradio', ['waves-block'] );
+
                 });
             });
 
@@ -206,6 +208,7 @@ define([ "jquery" ], function( $ ) {
                     value   = event.target.value == "true" ? "false" : "true";
                 updateCkState( idx + ":" + value );
                 setting.UpdateOriginsMode( idx, value );
+                Waves.attach( '.lineradio', ['waves-block'] );
             });
 
             // listen span click event

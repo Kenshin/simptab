@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error", "notify", "progress" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError, Notify, progress ) {
+define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError, Notify, progress, Waves ) {
 
     "use strict";
 
@@ -377,6 +377,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 controlbar.setDislikeIcon();
                 controlbar.SetFavorteState( !type );
                 controlbar.setPinState( !type );
+                Waves.attach( '.icon', ['waves-circle'] );
 
                 new Notify().Render( i18n.GetLang( "notify_dislike_" + ( type ? "add" : "del" ) ));
                 localStorage["simptab-dislike"] = JSON.stringify( dislikelist );
@@ -402,6 +403,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             }
             controlbar.setPinIcon();
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
+            Waves.attach( '.icon', ['waves-circle'] );
         }
     };
 });

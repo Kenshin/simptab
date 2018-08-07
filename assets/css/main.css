@@ -130,7 +130,7 @@ body {
 }
 
 .controlbar a:hover {
-    background: rgba(255, 255, 255,.4);
+    /*background: rgba(255, 255, 255,.4);*/
     opacity: 1;
 }
 
@@ -141,8 +141,8 @@ body {
 .icon {
     display: block;
 
-    width: 24px;
-    height: 24px;
+    width: 24px!important;
+    height: 24px!important;
 
     padding: 10px;
 
@@ -238,7 +238,7 @@ body {
  * setting
 */
 .lineradio {
-    display: flex;
+    display: flex!important;
     flex-direction: row;
     align-items: center;
 
