@@ -371,13 +371,16 @@ body {
 * tooltip
 */
 .tooltip {
-    padding: 3px 8px;
+    padding: .5em 1em;
 
     color: #fff;
-    background: #616161;
+    background: #232F34;
 
+    height: 25px;
+    line-height: 25px;
+
+    font-size: 13px;
     font-weight: 300;
-    line-height: 23px;
 
     border-radius: 2px;
     opacity: 0;
@@ -408,7 +411,7 @@ body {
     transition: opacity 2s ease;
     -webkit-transition: opacity 2s ease;
 
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .tooltip-top {
