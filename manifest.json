@@ -31,8 +31,8 @@
     "permissions": [
         "topSites",
         "storage",
-        "http://*.bing.com/",
-        "http://*.bing.net/"
+        "http://*/*",
+        "https://*/*"
     ],
     "omnibox": { "keyword" : "st" },
     "commands": {

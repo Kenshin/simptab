@@ -113,7 +113,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
     apis.Stack[ apis.ORIGINS[13] ] = function() {
         console.log( "=== Bing.com today ===");
         var local = i18n.GetLocale() == "zh_CN" ? "cn." : "";
-        apis.Update({ url : "http://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
+        apis.Update({ url : "https://" + local + "bing.com/HPImageArchive.aspx?format=js&idx=0&n=1", method : "apis.todayBing()" });
         apis.Remote( function( result ) {
             try {
                 var data = result.images[0],
