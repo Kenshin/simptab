@@ -105,6 +105,8 @@ body {
     font-size: 15px;
 
     opacity: 0;
+
+    transition: opacity .5s ease;
     -webkit-transition: opacity .5s ease;
 }
 
@@ -115,7 +117,10 @@ body {
 .controlbar a {
     margin: 10px;
 
+    border-radius:90%;
     -webkit-border-radius:90%;
+
+    transition: background .5s ease;
     -webkit-transition: background .5s ease;
 
     text-decoration: none;
@@ -143,6 +148,7 @@ body {
     background-position:center;
     background-color: rgba(255, 255, 255, .4);
 
+    border-radius: 90%;
     -webkit-border-radius: 90%;
 }
 
@@ -241,6 +247,7 @@ body {
     background: #555;
 
     border: none;
+    border-radius: 3px;
     -webkit-border-radius: 3px;
 
     cursor: pointer;
@@ -249,6 +256,8 @@ body {
 .lineradio:hover,
 .boxradio:hover {
     background-color: #8b8986;
+
+    transition: background-color 1s ease;
     -webkit-transition: background-color 1s ease;
 }
 
@@ -299,6 +308,7 @@ body {
     width: 25px;
 
     border: none;
+    border-radius: 3px;
     -webkit-border-radius: 3px;
 }
 
@@ -431,8 +441,12 @@ body {
 
 .tooltip-left:hover .tooltip,
 .clock-tooltip:hover  .tooltip {
+    transform: scale(1);
     -webkit-transform: scale(1);
+
+    transition: opacity 2s ease;
     -webkit-transition: opacity 2s ease;
+
     opacity: 0.9;
 }
 
@@ -517,9 +531,13 @@ body {
     list-style: none;
 
     background-color: #222;
+
+    border-radius: 5px;
     -webkit-border-radius: 5px;
 
     opacity: 0;
+
+    transition: opacity .5s ease;
     -webkit-transition: opacity .5s ease;
 }
 
@@ -547,7 +565,10 @@ body {
 
     opacity: 0.4;
 
+    transition: background .5s ease;
     -webkit-transition: background .5s ease;
+
+    border-radius: 5px;
     -webkit-border-radius: 5px;
 }
 
@@ -594,7 +615,7 @@ body {
     left: 33px;
 
     display: -webkit-flex;
-    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
 
     padding: 15px;
     max-width: 360px;
@@ -603,7 +624,9 @@ body {
     white-space: nowrap;
 
     background-color: rgba( 255, 255, 255,.8 );
-    -webkit-box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.8);
+
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
 
     border-radius: 10px;
 }
@@ -623,6 +646,8 @@ body {
 
 .senior a:hover {
     background-color: #CCCCCC;
+
+    transition: background-color .5s ease;
     -webkit-transition: background-color .5s ease;
 
     border-radius: 10px;
@@ -633,10 +658,11 @@ body {
 }
 
 .senior-show {
+    animation: .5s open;
     -webkit-animation: .5s open;
 }
 
-@-webkit-keyframes open {
+@keyframes open {
     from { opacity: 0 }
     to   { opacity: 1 }
 }
