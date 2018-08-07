@@ -292,9 +292,15 @@ body {
     background-image: url("../images/unchecked.png");
 }
 
-.lineradio:nth-of-type(6),
-.lineradio:nth-of-type(9) {
+.originstate .lineradio:nth-of-type(6),
+.originstate .lineradio:nth-of-type(9) {
     display: none!important;
+}
+
+.originstate .lineradio:last-child {
+    margin-top: 26px;
+    font-weight: bold;
+    background-color: #1dba90;
 }
 
 .pinstate {
