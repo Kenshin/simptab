@@ -19,6 +19,8 @@ html {
 }
 
 body {
+    font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
+
     display: -webkit-box;
 
     margin: 0px;
@@ -30,10 +32,10 @@ body {
     /* background-position: center center; */
     background-attachment: fixed;
 
-    font-weight: bold;
+    /*font-weight: bold;*/
 
     text-transform: uppercase;
-    letter-spacing: 0.2px;
+    letter-spacing: .5px;
 }
 
 .content {
