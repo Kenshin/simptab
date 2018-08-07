@@ -313,6 +313,7 @@ body {
 * contact
 */
 .contact {
+    /*
     display: -webkit-flex;
     flex-direction: row;
     justify-content: space-between;
@@ -320,11 +321,13 @@ body {
 
     margin-top: 26px;
     margin-bottom: 8px;
+    */
 
     height: 100%;
     min-height: 55px;
 }
 
+/*
 .contact span {
     padding: 0px 1px;
     opacity: 0.8;
@@ -353,6 +356,7 @@ body {
 .emailicon {
     background-image: url("../images/email.png");
 }
+*/
 
 /*
 * footer
