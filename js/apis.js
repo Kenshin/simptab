@@ -64,7 +64,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 }
 
                 // add test code
-                code = 9;
+                // code = 9;
 
                 console.log( "=== Current background origin is: ", code, this.ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
