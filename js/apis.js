@@ -225,7 +225,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
       console.log( "=== Unsplash.com call ===" );
 
-      var unsplash_ids = [ "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ];
+      var unsplash_ids = [ "collection/2463312" ];
       try {
           var max    = unsplash_ids.length - 1,
               id     = unsplash_ids[ apis.Random( 0, max ) ],
