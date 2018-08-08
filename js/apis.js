@@ -364,8 +364,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
         console.log( "=== googleart.com call ===");
 
-        var GOOGLE_ART_NAME   = "google.art.project.json",
-            GOOGLE_ART_SUFFIX = "=s1200-rw",
+        var GOOGLE_ART_NAME   = "google.art.v2.project.json",
+            GOOGLE_ART_SUFFIX = "=s1920-rw",
             GOOGLE_ART_PREFIX = "https://www.google.com/culturalinstitute/",
             url               = SIMP_API_HOST + GOOGLE_ART_NAME;
 
