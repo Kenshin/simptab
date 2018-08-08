@@ -12,16 +12,22 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
 
     function setDownloadURL() {
 
-        var shortname = vo.cur.shortname;
-        if ( shortname == "#" ) {
-            shortname = vo.cur.name;
+        if ( vo.cur.info.search( "https://unsplash.com" ) == 0 ) {
+            $( ".controlink[url='download']" ).attr({
+                "href"     : vo.cur.hdurl,
+                "target"   : "_blank",
+            }).removeAttr( "url" );
+        } else {
+            var shortname = vo.cur.shortname;
+            if ( shortname == "#" ) {
+                shortname = vo.cur.name;
+            }
+            $( ".controlink[url='download']" ).attr({
+                "title"    : vo.cur.name,
+                "href"     : vo.cur.hdurl,
+                "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
+            });
         }
-
-        $( ".controlink[url='download']" ).attr({
-            "title"    : vo.cur.name,
-            "href"     : vo.cur.hdurl,
-            "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
-        });
 
     }
 

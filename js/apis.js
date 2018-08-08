@@ -647,7 +647,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                     random  = apis.Random( 0, max );
                     data    = arr[ random ];
                     hdurl   = data.url;
-                    data.info = "unsplash.com";
+                    data.name == "" && ( data.name = data.origin );
                 } else {
                     key         = date.Today();
                     data        = obj[key];
