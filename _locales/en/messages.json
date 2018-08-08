@@ -57,6 +57,10 @@
         "message": "Pin"
     },
 
+    "controlbar_special": {
+        "message": "Collections"
+    },
+
     "setting_width": {
         "message": "270"
     },

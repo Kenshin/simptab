@@ -647,6 +647,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                     random  = apis.Random( 0, max );
                     data    = arr[ random ];
                     hdurl   = data.url;
+                    type    = i18n.GetLang( "controlbar_special" );
                     data.name == "" && ( data.name = data.origin );
                 } else {
                     key         = date.Today();

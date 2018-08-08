@@ -57,6 +57,10 @@
         "message": "固定"
     },
 
+    "controlbar_special": {
+        "message": "精選集"
+    },
+
     "setting_width": {
         "message": "225"
     },
