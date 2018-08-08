@@ -64,7 +64,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 }
 
                 // add test code
-                // code = 9;
+                code = 9;
 
                 console.log( "=== Current background origin is: ", code, this.ORIGINS[code] );
                 this.vo        = $.extend( {}, options );
@@ -631,7 +631,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
         console.log( "=== Special day/Holiday background call ===");
 
-          var SPECIAL_URL = "special.day.json",
+          var SPECIAL_URL = "special.day.v2.json",
               def         = $.Deferred(),
               type        = arguments.length > 0 ? arguments[0] : "special";
 
@@ -642,20 +642,17 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                     key, max, random, special_day, data, hdurl;
 
                 if ( type == "special" ) {
-                    key         = obj.now.length > 0 ? "now" : "old";
-                    max         = obj[key].length - 1;
-                    random      = apis.Random( 0, max );
-                    special_day = obj[key][random];
-                    data        = special_day.day;
-                    max         = data.hdurl.length - 1;
-                    random      = apis.Random( 0, max );
-                    hdurl       = SIMP_API_HOST + data.key + "/" + data.hdurl[random] + ".jpg";
-                }
-                else {
+                    var arr = result.collections;
+                    max     = arr.length - 1;
+                    random  = apis.Random( 0, max );
+                    data    = arr[ random ];
+                    hdurl   = data.url;
+                    data.info = "unsplash.com";
+                } else {
                     key         = date.Today();
                     data        = obj[key];
                     if ( !data ) {
-                        apis.defer.reject( new SimpError( apis.vo.origin, "Current holiday is " + key +  ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result ));
+                        apis.defer.reject( new SimpError( apis.vo.origin, "Current holiday is " + key + ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result ));
                         return apis.defer.promise();
                     }
                     max         = data.hdurl.length - 1;
