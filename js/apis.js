@@ -247,8 +247,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
         console.log( "=== Unsplash.it call ===" );
 
         try {
-          var max    = 939,
-              url    = "https://unsplash.it/1920/1080/?image=" + apis.Random( 0, max );
+          var url    = "https://picsum.photos/1920/1080/?random";
           apis.Update({ url : url, method: "apis.unsplashIT()", dataType : "image" });
           apis.defer.resolve( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", apis.vo.origin, apis.vo );
         }
