@@ -59,6 +59,7 @@ body {
 }
 
 .sidebar {
+    position: relative;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-box-flex: 1;
@@ -214,14 +215,17 @@ body {
 * clock
 */
 .clock {
+    position: absolute;
+
     display: -webkit-box;
     -webkit-box-flex: 1;
     -webkit-box-pack: end;
     -webkit-box-align: end;
 
-    padding: 0px 15px;
-    color: #fff;
+    right: 10px;
+    bottom: 10px;
 
+    color: #fff;
     font-family: "clock";
 }
 
