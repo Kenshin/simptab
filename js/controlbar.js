@@ -38,9 +38,12 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     function setBackgroundPosition() {
         var value = localStorage[ "simptab-background-position" ];
         if ( value == "mask" ) {
-            var url = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
+            var url       = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
+                maxHeight = 800,
+                height    = $( "body" ).height();
             $( "body" ).addClass( "bgmask" ).prepend( '<div class="img-bg"><img src="' + url + '"></div>' );
             $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+            height <= maxHeight && $( ".img-bg" ).find( "img" ).height( height - 60 );
         } else {
             $( "body" ).removeClass( "bgmask" ).find( ".img-bg" ).remove();
             $( ".bgmask-filter" ).remove();
