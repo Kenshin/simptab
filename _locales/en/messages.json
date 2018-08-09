@@ -81,6 +81,10 @@
         "message": "Align to the top-left corner"
     },
 
+    "setting_background_position_mask": {
+        "message": "Image mode"
+    },
+
     "setting_show_clock": {
         "message": "Show Clock"
     },

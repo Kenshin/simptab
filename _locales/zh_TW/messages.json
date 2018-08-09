@@ -81,6 +81,10 @@
         "message": "背景左上對齊"
     },
 
+    "setting_background_position_mask": {
+        "message": "相框布局"
+    },
+
     "setting_show_clock": {
         "message": "顯示時鐘"
     },
