@@ -191,8 +191,6 @@ define([ "jquery", "waves" ], function( $, Waves ) {
 
                 // callback only include: tsstate, clockstate
                 callback( type, mode );
-
-                Waves.attach( '.lineradio', ['waves-block'] );
             });
 
             // listen originstate checkbox button event
@@ -201,9 +199,9 @@ define([ "jquery", "waves" ], function( $, Waves ) {
                     value   = event.target.value == "true" ? "false" : "true";
                 updateCkState( idx + ":" + value );
                 setting.UpdateOriginsMode( idx, value );
-                Waves.attach( '.lineradio', ['waves-block'] );
             });
 
+            $( ".lineradio" ).on( "click", function( event ) { Waves.attach( '.lineradio', ['waves-block'] );; });
             // listen span click event
             $( ".lineradio" ).on( "click", "span", function( event ) { $(this).next().click(); });
             // hack code by label(maskralig)
