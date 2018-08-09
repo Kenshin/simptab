@@ -206,6 +206,8 @@ define([ "jquery", "waves" ], function( $, Waves ) {
 
             // listen span click event
             $( ".lineradio" ).on( "click", "span", function( event ) { $(this).next().click(); });
+            // hack code by label(maskralig)
+            $( ".lineradio" ).find( "label[for=maskralig]" ) .on( "click", function( event ) { $(this).prev().click(); });
         },
 
         Mode: function( type ) {
