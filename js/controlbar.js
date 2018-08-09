@@ -43,7 +43,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                 height    = $( "body" ).height();
             $( "body" ).addClass( "bgmask" ).prepend( '<div class="img-bg"><img src="' + url + '"></div>' );
             $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-            height <= maxHeight && $( ".img-bg" ).find( "img" ).height( height - 60 );
+            height <= maxHeight && $( ".img-bg" ).find( "img" ).height( height - 200 );
         } else {
             $( "body" ).removeClass( "bgmask" ).find( ".img-bg" ).remove();
             $( ".bgmask-filter" ).remove();
