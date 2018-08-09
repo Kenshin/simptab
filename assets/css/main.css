@@ -227,11 +227,15 @@ body {
 
     color: #fff;
     font-family: "clock";
+
+    z-index: 2;
 }
 
 #time {
     display: none;
 
+    height: 55px;
+    line-height: 55px;
     font-size: 55px;
 
     cursor: pointer;
