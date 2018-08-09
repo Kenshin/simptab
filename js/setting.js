@@ -135,13 +135,6 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         });
     }
 
-    function addClickEvent( selctor, callback ) {
-        $( "." + selctor +  " input" ).click( function( event ) {
-            var mode = $(event.currentTarget).attr( "value" );
-            callback( selctor, mode );
-        });
-    }
-
     function updateCkState( item ) {
         var idx     = item.split(":")[0],
             value   = item.split(":")[1],
@@ -187,19 +180,19 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         Listen: function ( callback ) {
 
             // listen [ changestate, clockstate, topsites, pinstate ] radio button event
-            Object.keys( setting.mode ).forEach( function( item ) {
-                addClickEvent( item, function( type, mode ) {
+            var selectors = Object.keys( setting.mode ).map( function( item ) { return "." + item + " input"; } );
+            $( selectors.join( "," ) ).click( function( event ) {
+                var type = event.target.name,
+                    mode = event.target.value;
 
-                    updateRdState(      type, mode );
-                    setting.UpdateMode( type, mode );
-                    updateOriginsVisible();
+                updateRdState(      type, mode );
+                setting.UpdateMode( type, mode );
+                updateOriginsVisible();
 
-                    // callback only include: tsstate, clockstate
-                    callback( type, mode );
+                // callback only include: tsstate, clockstate
+                callback( type, mode );
 
-                    Waves.attach( '.lineradio', ['waves-block'] );
-
-                });
+                Waves.attach( '.lineradio', ['waves-block'] );
             });
 
             // listen originstate checkbox button event
@@ -212,7 +205,7 @@ define([ "jquery", "waves" ], function( $, Waves ) {
             });
 
             // listen span click event
-            $( ".lineradio" ).delegate( "span", "click",  function( event ) { $(this).next().click(); });
+            $( ".lineradio" ).on( "click", "span", function( event ) { $(this).next().click(); });
         },
 
         Mode: function( type ) {

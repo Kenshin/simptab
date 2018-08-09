@@ -269,9 +269,12 @@ body {
 }
 
 .lineradio span {
+    display: block;
+
+    min-width: 14px;
     width: 14px;
     height: 14px;
-    display: block;
+
     background-repeat: no-repeat;
     background-position:center;
 }
@@ -284,8 +287,9 @@ body {
 
 .lineradio label,
 .boxradio label {
-    cursor: pointer;
     padding: 5px;
+    width: 100%;
+    cursor: pointer;
 }
 
 .lineradio .checked {
