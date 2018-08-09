@@ -36,8 +36,16 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     }
 
     function setBackgroundPosition() {
-       var value = localStorage[ "simptab-background-position" ];
-       vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
+        var value = localStorage[ "simptab-background-position" ];
+        if ( value == "mask" ) {
+            var url = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
+            $( "body" ).addClass( "bgmask" ).prepend( '<div class="img-bg"><img src="' + url + '"></div>' );
+            $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+        } else {
+            $( "body" ).removeClass( "bgmask" ).find( ".img-bg" ).remove();
+            $( ".bgmask-filter" ).remove();
+            vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
+        }
     }
 
     function setUploadState( is_show ) {

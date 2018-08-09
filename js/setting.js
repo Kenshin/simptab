@@ -74,7 +74,7 @@ define([ "jquery", "waves" ], function( $, Waves ) {
                 "positionstate" : {
                     value  : getLS( "simptab-background-position"  ),
                     type   : "simptab-background-position",
-                    vals   : [ "center","corner" ],
+                    vals   : [ "center", "corner", "mask" ],
                     default: 1
                 },
                 "clockstate" : {
