@@ -1,8 +1,24 @@
 {
-  "name"    : "SimpTab",
-  "version" : "1.0.3",
+  "name"    : "simptab_project_workflow",
+  "version" : "1.0.4",
+  "description": "SimpTab develop/deploy",
+  "author": "Kenshin Wang <kenshin@ksria.com>",
+  "license": "MIT",
+  "homepage": "http://ksria.com/simptab",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kenshin/simptab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kenshin/simptab/issues",
+    "email": "kenshin@ksria.com"
+  },
   "engines" : {
     "node"  : ">= 0.10.0"
+  },
+  "scripts": {
+    "publish": "grunt publish",
+    "server": "webpack-dev-server --hot --progress --colors"
   },
   "devDependencies"           : {
     "grunt"                   : "*",
