@@ -15,7 +15,8 @@
 
 #### 截图：
 ![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
-![Snapshot](https://i.imgur.com/7HuDEdph.png)
+![Snapshot](https://i.imgur.com/7HuDEdph.png)  
+![Snapshot](https://i.imgur.com/uhB78LTl.png)  
 
 #### 功能一览：
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
