@@ -34,7 +34,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
             APIS.prototype.Stack       = {};
             APIS.prototype.ORIGINS     = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleart.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
-            APIS.prototype.ORIGINS_MAX = APIS.prototype.ORIGINS.length - 3; // excude: "today", "bing.com(random)"
+            APIS.prototype.ORIGINS_MAX = APIS.prototype.ORIGINS.length - 2; // excude: "today"
 
             APIS.prototype.Random = function( min, max ) {
                 return Math.floor( Math.random() * ( max - min + 1 ) + min );
