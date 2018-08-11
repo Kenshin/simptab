@@ -1,6 +1,18 @@
-#### CHANGELOG:
-- 2018-08-12, Version 1.5.1
-  * :sparkles: 增加了 **全新的【SimpTab 精选集】**；  
+<p align="center"><img src="http://simptab.qiniudn.com/logo@192.png" /></p>
+<h1 align="center">简 Tab - 极简的 Chrome 新标签页扩展</h1>
+<p align="center">望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。</p>
+<p align="center">
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.1-blue.svg"></a>
+   <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
+   <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.1/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+</p>
+
+***
+
+2018-08-12, Version 1.5.1
+---
+  * :sparkles: 增加了 全新的 **【SimpTab 精选集】**；  
     > 类似 iOS 某些壁纸 App 的方式，通过手动采集的方式更新，每周一期。
   * :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
 
@@ -12,6 +24,8 @@
 
   * :fire: 去掉了 侧栏分享的功能；
   * :fire: 去掉了 `500px.com` `nasa.gov` （已失效，所以去除。）
+
+***
 
 - 2016-02-11, Version 1.5.0
   * Add pin feature.
