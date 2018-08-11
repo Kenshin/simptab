@@ -53,6 +53,8 @@ https://github.com/Kenshin/simptab
 - [x] :sparkles: Add background remote cdns feature.
 - [x] :bug: Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
 
+***
+
 #### 1.4.3
 
 > 2016-01-20
@@ -63,12 +65,16 @@ https://github.com/Kenshin/simptab
 
 - [x] :pencil2: Modify settin bar icon.
 
+***
+
 #### 1.4.2
 
 > 2015-12-25
 
 - [x] :sparkles: Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
 - [x] :sparkles: Add special day(SimpTab Images) to Setting bar.
+
+***
 
 #### 1.4.1
 
@@ -78,6 +84,8 @@ https://github.com/Kenshin/simptab
 
 - [x] :bug: Fix 'simple' mode topsites hover display speed.
 - [x] :bug: Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
+
+***
 
 #### 1.4.0
 
@@ -96,6 +104,8 @@ https://github.com/Kenshin/simptab
 
 - [x] :bug: Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
 
+***
+
 #### 1.0.3
 
 > 2014-08-29
@@ -106,6 +116,8 @@ https://github.com/Kenshin/simptab
 - [x] :bug: Fix when locale not zh-cn, change knows to search link.
 - [x] :bug: Fix change clock's font-family to `roboto.ttf`.
 
+***
+
 #### 1.0.2
 
 > 2014-08-28
@@ -113,6 +125,8 @@ https://github.com/Kenshin/simptab
 - [x] :sparkles: Add multi-language to main.html's title.
 - [x] :sparkles: Add open Bookmark/Apps/Histroy/Info at current tab page.
 - [x] :sparkles: Add controlbar to shortcuts.
+
+***
 
 #### 1.0.1
 
@@ -124,6 +138,8 @@ https://github.com/Kenshin/simptab
 
 - [x] :bug: Fixed issues change SimpTab - Minimalistic New Tab Page by Chrome Extensions to SimpTab - New Tab from main.html's title.
 - [x] :bug: Fixed issues some of the copywriting error.
+
+***
 
 #### 1.0.0
 
