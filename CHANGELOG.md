@@ -44,11 +44,15 @@ https://github.com/Kenshin/simptab
 
 ***
 
-- 2016-02-11, Version 1.5.0
-  * Add pin feature.
-  * Add dislike feature.
-  * Add background remote cdns feature.
-  * Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
+
+#### 1.5.0
+
+> 2016-02-11
+
+- [x] :sparkles: Add pin feature.
+- [x] :sparkles: Add dislike feature.
+- [x] :sparkles: Add background remote cdns feature.
+- [x] :bug: Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
 
 - 2016-01-20, Version 1.4.3
   * More detailed version for version feature.
