@@ -79,17 +79,22 @@ https://github.com/Kenshin/simptab
 - [x] :bug: Fix 'simple' mode topsites hover display speed.
 - [x] :bug: Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
 
-- 2015-12-10, Version 1.4.0
-  * Feature: [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
-  * Rework source.
-  * Add multi background origin: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
-  * Add update multi customer background.
-  * Add fovorite background.
-  * Add top sites.
-  * Add Download new background progress.
-  * Add Favorite/Upload background notification.
-  * Support omnibox shortcuts.
-  * Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
+#### 1.4.0
+
+> 2015-12-10
+
+- [x] :sparkles: Feature: [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+- [x] :sparkles: Add multi background origin: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
+- [x] :sparkles: Add update multi customer background.
+- [x] :sparkles: Add fovorite background.
+- [x] :sparkles: Add top sites.
+- [x] :sparkles: Add Download new background progress.
+- [x] :sparkles: Add Favorite/Upload background notification.
+- [x] :sparkles: Add Support omnibox shortcuts.
+
+- [x] :hammer: Rework source.
+
+- [x] :bug: Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
 
 - 2014-08-29, Version 1.0.3
   * Fix Download background's duplication of name error.
