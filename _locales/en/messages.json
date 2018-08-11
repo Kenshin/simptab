@@ -3,6 +3,10 @@
         "message": "en"
     },
 
+    "lang": {
+        "message": "en"
+    },
+
     "title": {
         "message": "SimpTab - Minimalistic New Tab"
     },

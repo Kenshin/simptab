@@ -3,6 +3,10 @@
         "message": "zh_TW"
     },
 
+    "lang": {
+        "message": "tw"
+    },
+
     "title": {
         "message": "簡 Tab - 新標籤頁"
     },

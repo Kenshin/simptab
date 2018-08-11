@@ -71,6 +71,10 @@ define([ "jquery" ], function( $ ) {
             return i18n( "locales" );
         },
 
+        GetShort: function() {
+            return i18n( "lang" );
+        },
+
         GetControlbarLang: function( lang ) {
             return i18n( "controlbar_" + lang );
         },
