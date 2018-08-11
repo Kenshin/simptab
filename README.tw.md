@@ -84,19 +84,5 @@ _如發現下圖顯示不全，請直接訪問 http://ojec5ddd5.bkt.clouddn.com/
 [![license-badge]][license-link]
 
 <!-- Link -->
-[www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg
-[www-link]:         http://ksria.com/simptab
-[version-badge]:    https://img.shields.io/badge/lastest_version-1.5.0-blue.svg
-[version-link]:     https://github.com/kenshin/simptab/releases
-[chrome-badge]:     https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg
-[chrome-link]:      https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc
-[offline-badge]:    https://img.shields.io/badge/download-_crx-brightgreen.svg
-[offline-link]:     http://ksria.com/simptab/crx/1.5.0/simptab.crx
-[gitter-badge]:     https://badges.gitter.im/kenshin/simptab.svg
-[gitter-link]:      https://gitter.im/kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[slack-badge]:      https://img.shields.io/badge/chat-slack-orange.svg
-[slack-link]:       https://simptab-crx.slack.com/
-[jianliao-badge]:   https://img.shields.io/badge/chat-jianliao-yellowgreen.svg
-[jianliao-link]:    https://guest.jianliao.com/rooms/76dce8b01v
 [license-badge]:    https://img.shields.io/github/license/mashape/apistatus.svg
 [license-link]:     https://opensource.org/licenses/MIT
