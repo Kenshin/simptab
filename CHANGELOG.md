@@ -25,22 +25,22 @@ https://github.com/Kenshin/simptab
 
 > 2018-08-12
 
-* :sparkles: 增加了 全新的 **【SimpTab 精选集】**；  
+- [x] :sparkles: 增加了 全新的 **【SimpTab 精选集】**；  
   > 类似 iOS 某些壁纸 App 的方式，通过手动采集的方式更新，每周一期。  
 
   ![Imgur](https://i.imgur.com/pblZLv0.png)
 
-* :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
+- [x] :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
 
-* :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格； _包括：Topsites / 侧栏 / Tooltip / Clock 等_
-* :arrow_up: 更新了 若干依赖；_包括： jQuery / Notify_
+- [x] :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格； _包括：Topsites / 侧栏 / Tooltip / Clock 等_
+- [x] :arrow_up: 更新了 若干依赖；_包括： jQuery / Notify_
 
-* :bug: 修复了 `bing.com 每日图片` 无法获取的错误； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
-* :bug: 修复了 `随机 bing.com` 的地址源失效问题；_新的地址来源于 [https://bingwallpaper.com/](https://bingwallpaper.com/)_
-* :bug: 修复了 `收藏` 后的壁纸加载慢的问题；
+- [x] :bug: 修复了 `bing.com 每日图片` 无法获取的错误； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
+- [x] :bug: 修复了 `随机 bing.com` 的地址源失效问题；_新的地址来源于 [https://bingwallpaper.com/](https://bingwallpaper.com/)_
+- [x] :bug: 修复了 `收藏` 后的壁纸加载慢的问题；
 
-* :fire: 去掉了 侧栏分享的功能；
-* :fire: 去掉了 已失效的背景源 `500px.com` `nasa.gov`；
+- [x] :fire: 去掉了 侧栏分享的功能；
+- [x] :fire: 去掉了 已失效的背景源 `500px.com` `nasa.gov`；
 
 ***
 
