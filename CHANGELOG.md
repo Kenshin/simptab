@@ -44,7 +44,6 @@ https://github.com/Kenshin/simptab
 
 ***
 
-
 #### 1.5.0
 
 > 2016-02-11
@@ -54,11 +53,16 @@ https://github.com/Kenshin/simptab
 - [x] :sparkles: Add background remote cdns feature.
 - [x] :bug: Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
 
-- 2016-01-20, Version 1.4.3
-  * More detailed version for version feature.
-  * Dynamic set permissions.
-  * Modify settin bar icon.
-  * Add background position item, intelligent adjusting background position.
+
+#### 1.4.3
+
+> 2016-01-20
+
+- [x] :sparkles: More detailed version for version feature.
+- [x] :sparkles: Dynamic set permissions.
+- [x] :sparkles: Add background position item, intelligent adjusting background position.
+
+- [x] :arrow_up: Modify settin bar icon.
 
 - 2015-12-25, Version 1.4.2
   * Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
