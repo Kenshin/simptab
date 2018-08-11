@@ -27,6 +27,8 @@ https://github.com/Kenshin/simptab
 
 * :sparkles: 增加了 全新的 **【SimpTab 精选集】**；  
   > 类似 iOS 某些壁纸 App 的方式，通过手动采集的方式更新，每周一期。
+  ![Imgur](https://i.imgur.com/pblZLv0.png)
+
 * :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
 
 * :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格；（包括：Topsites / 侧栏 / Tooltip / Clock 等）
