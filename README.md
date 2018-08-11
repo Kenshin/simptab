@@ -1,12 +1,9 @@
 <p align="center"><img src="http://simptab.qiniudn.com/logo@192.png" /></p>
-<h1 align="center">简 Tab</h1>
-<p align="center">极简的 Chrome 新标签页扩展</p>
+<h1 align="center">简 Tab - 极简的 Chrome 新标签页扩展</h1>
 <p align="center">望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。</p>
 <p align="center">
    <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.1-blue.svg"></a>
    <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
-</p>
-<p align="center">
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
    <a href="http://ksria.com/simptab/crx/1.5.1/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
 </p>
@@ -17,7 +14,8 @@
 * [Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.1/simptab.crx)
 
 #### 截图：
-![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
+![Snapshot](http://i.imgur.com/xN58aJ2l.jpg)
+![Snapshot](https://i.imgur.com/7HuDEdph.png)
 
 #### 功能一览：
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
@@ -75,6 +73,11 @@
 - 英文字体 `HapnaMono-Light`。
 - 简体/繁體 字体 `思源黑体 ExtraLight`。
 - 效果图 <http://magicmockups.com/>
+
+#### 请杯咖啡：
+如果简 Tab 可以让你的心情更加愉悦，何不请杯 ☕ :smile:  
+_如发现下图显示不全，请直接访问 http://ojec5ddd5.bkt.clouddn.com/zhifu_m2.png_  
+![支付](http://ojec5ddd5.bkt.clouddn.com/zhifu_m2.png)
 
 #### 许可：
 [![license-badge]][license-link]
