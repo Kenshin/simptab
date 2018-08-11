@@ -168,7 +168,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
             if ( version.isUpdate() ) {
                 correction();
-                var changelog = "https://github.com/kenshin/simptab/blob/master/CHANGELOG.md#" + vo.new.replace( /./ig, "" );
+                var changelog = "https://github.com/kenshin/simptab/blob/master/CHANGELOG.md#" + version.new.replace( /\./ig, "" );
                 new Notify().Render( i18n.GetLang( 'version_title' ),
                                      i18n.GetLang( 'version_content' )
                                         .replace( '#1', version.new )
