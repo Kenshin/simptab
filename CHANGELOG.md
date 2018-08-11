@@ -10,6 +10,17 @@
 
 ***
 
+下载
+---
+[Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.1/simptab.crx)
+
+详细介绍
+---
+https://github.com/Kenshin/simptab
+
+版本说明
+---
+
 #### 1.5.1
 
 > 2018-08-12
