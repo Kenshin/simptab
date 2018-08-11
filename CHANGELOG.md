@@ -10,20 +10,22 @@
 
 ***
 
-2018-08-12, Version 1.5.1
----
-  * :sparkles: 增加了 全新的 **【SimpTab 精选集】**；  
-    > 类似 iOS 某些壁纸 App 的方式，通过手动采集的方式更新，每周一期。
-  * :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
+#### 1.5.1
 
-  * :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格；（包括：Topsites / 侧栏 / Tooltip / Clock 等）
-  * :arrow_up: 更新了 若干依赖；（ jQuery / Notify ）
+> 2018-08-12
 
-  * :bug: 修复了 `bing.com 每日图片` 无法获取的错误； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
-  * :bug: 修复了 `随机 bing.com` 的地址源失效问题，新的地址来源于 [https://bingwallpaper.com/](https://bingwallpaper.com/)；
+* :sparkles: 增加了 全新的 **【SimpTab 精选集】**；  
+  > 类似 iOS 某些壁纸 App 的方式，通过手动采集的方式更新，每周一期。
+* :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
 
-  * :fire: 去掉了 侧栏分享的功能；
-  * :fire: 去掉了 `500px.com` `nasa.gov` （已失效，所以去除。）
+* :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格；（包括：Topsites / 侧栏 / Tooltip / Clock 等）
+* :arrow_up: 更新了 若干依赖；（ jQuery / Notify ）
+
+* :bug: 修复了 `bing.com 每日图片` 无法获取的错误； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
+* :bug: 修复了 `随机 bing.com` 的地址源失效问题，新的地址来源于 [https://bingwallpaper.com/](https://bingwallpaper.com/)；
+
+* :fire: 去掉了 侧栏分享的功能；
+* :fire: 去掉了 `500px.com` `nasa.gov` （已失效，所以去除。）
 
 ***
 
