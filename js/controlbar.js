@@ -38,7 +38,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     function setBackgroundPosition() {
         var value = localStorage[ "simptab-background-position" ];
         if ( value == "mask" ) {
-            var url       = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
+            var url       = vo.cur.type == "default" ? vo.cur.hdurl : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
                 maxHeight = 800,
                 height    = $( "body" ).height();
             $( "body" ).addClass( "bgmask" ).prepend( '<div class="img-bg"><img src="' + url + '"></div>' );
