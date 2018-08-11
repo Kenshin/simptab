@@ -168,10 +168,11 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
             if ( version.isUpdate() ) {
                 correction();
+                var changelog = "https://github.com/kenshin/simptab/blob/master/CHANGELOG.md#" + vo.new.replace( /./ig, "" );
                 new Notify().Render( i18n.GetLang( 'version_title' ),
                                      i18n.GetLang( 'version_content' )
                                         .replace( '#1', version.new )
-                                        .replace( '#2', '<a href="https://github.com/kenshin/simptab/blob/master/CHANGELOG.md" target="_blank">' )
+                                        .replace( '#2', '<a href="' + changelog + '" target="_blank">' )
                                         .replace( '#3', '</a>' )
                                         .replace( '#4', version.Details())
                                     );
