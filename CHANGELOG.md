@@ -61,7 +61,7 @@ https://github.com/Kenshin/simptab
 - [x] :sparkles: Dynamic set permissions.
 - [x] :sparkles: Add background position item, intelligent adjusting background position.
 
-- [x] :arrow_up: Modify settin bar icon.
+- [x] :pencil2: Modify settin bar icon.
 
 #### 1.4.2
 
@@ -96,26 +96,40 @@ https://github.com/Kenshin/simptab
 
 - [x] :bug: Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
 
-- 2014-08-29, Version 1.0.3
-  * Fix Download background's duplication of name error.
-  * Fix when first running, info and download's title exist's error.
-  * Fix when background is default wallpaper, info and download's title exist's error.
-  * Fix when locale not zh-cn, change knows to search link.
-  * Fix change clock's font-family to `roboto.ttf`.
+#### 1.0.3
 
-- 2014-08-28, Version 1.0.2
-  * Add multi-language to main.html's title.
-  * Open Bookmark/Apps/Histroy/Info at current tab page.
-  * Add controlbar to shortcuts.
+> 2014-08-29
 
-- 2014-08-22, Version 1.0.1
-  * Fixed issues change SimpTab - Minimalistic New Tab Page by Chrome Extensions to SimpTab - New Tab from main.html's title.
-  * Fixed issues some of the copywriting error.
-  * Add website and Rote link with main.html's footer.
-  * Modify sns share title multi-language.
+- [x] :bug: Fix Download background's duplication of name error.
+- [x] :bug: Fix when first running, info and download's title exist's error.
+- [x] :bug: Fix when background is default wallpaper, info and download's title exist's error.
+- [x] :bug: Fix when locale not zh-cn, change knows to search link.
+- [x] :bug: Fix change clock's font-family to `roboto.ttf`.
 
-- 2014-08-20, Version 1.0.0
-  * Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
-  * Daily/randomly changing background from Bing.com.
-  * Downloading (HD) background from Bing.com.
-  * View the current background of meaning.
+#### 1.0.2
+
+> 2014-08-28
+
+- [x] :sparkles: Add multi-language to main.html's title.
+- [x] :sparkles: Add open Bookmark/Apps/Histroy/Info at current tab page.
+- [x] :sparkles: Add controlbar to shortcuts.
+
+#### 1.0.1
+
+> 2014-08-22
+
+- [x] :sparkles: Add website and Rote link with main.html's footer.
+
+- [x] :pencil2: Modify sns share title multi-language.
+
+- [x] :bug: Fixed issues change SimpTab - Minimalistic New Tab Page by Chrome Extensions to SimpTab - New Tab from main.html's title.
+- [x] :bug: Fixed issues some of the copywriting error.
+
+#### 1.0.0
+
+> 2014-08-20
+
+- [x] :sparkles: Add Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
+- [x] :sparkles: Add Daily/randomly changing background from Bing.com.
+- [x] :sparkles: Add Downloading (HD) background from Bing.com.
+- [x] :sparkles: Add View the current background of meaning.
