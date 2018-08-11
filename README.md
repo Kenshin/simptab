@@ -14,7 +14,7 @@
 * [Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.1/simptab.crx)
 
 #### 截图：
-![Snapshot](http://i.imgur.com/xN58aJ2l.jpg)
+![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
 ![Snapshot](https://i.imgur.com/7HuDEdph.png)
 
 #### 功能一览：
