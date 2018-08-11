@@ -11,7 +11,7 @@
 ***
 
 #### Download:
-* [Chrome Webstore](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) | [Offline download](http://ksria.com/simptab/crx/1.5.1/simptab.crx)
+* [Chrome Webstore](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) | [Offline Download](http://ksria.com/simptab/crx/1.5.1/simptab.crx)
 
 #### Snapshot:
 ![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
