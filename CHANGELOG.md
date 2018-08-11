@@ -37,9 +37,10 @@ https://github.com/Kenshin/simptab
 
 * :bug: 修复了 `bing.com 每日图片` 无法获取的错误； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
 * :bug: 修复了 `随机 bing.com` 的地址源失效问题，新的地址来源于 [https://bingwallpaper.com/](https://bingwallpaper.com/)；
+* :bug: 修复了 `收藏` 后的壁纸加载慢的问题；
 
 * :fire: 去掉了 侧栏分享的功能；
-* :fire: 去掉了 `500px.com` `nasa.gov` （已失效，所以去除。）
+* :fire: 去掉了 已失效的背景源 `500px.com` `nasa.gov`；
 
 ***
 
