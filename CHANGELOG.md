@@ -32,11 +32,11 @@ https://github.com/Kenshin/simptab
 
 * :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
 
-* :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格；（包括：Topsites / 侧栏 / Tooltip / Clock 等）
-* :arrow_up: 更新了 若干依赖；（ jQuery / Notify ）
+* :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格； _包括：Topsites / 侧栏 / Tooltip / Clock 等_
+* :arrow_up: 更新了 若干依赖；_包括： jQuery / Notify_
 
 * :bug: 修复了 `bing.com 每日图片` 无法获取的错误； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
-* :bug: 修复了 `随机 bing.com` 的地址源失效问题，新的地址来源于 [https://bingwallpaper.com/](https://bingwallpaper.com/)；
+* :bug: 修复了 `随机 bing.com` 的地址源失效问题；_新的地址来源于 [https://bingwallpaper.com/](https://bingwallpaper.com/)_
 * :bug: 修复了 `收藏` 后的壁纸加载慢的问题；
 
 * :fire: 去掉了 侧栏分享的功能；
