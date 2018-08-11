@@ -1,23 +1,25 @@
-SimpTab - Minimalist Chrome new tab extension
-=======
-### Hope to improve your mood every time you open a new tab. Clear & simple, focused on beautiful background images.
-[![Version][version-badge]][version-link]
-[![Gitter][gitter-badge]][gitter-link]
-[![Slack][slack-badge]][slack-link]
-[![Jianliao][jianliao-badge]][jianliao-link]
+<p align="center"><img src="http://simptab.qiniudn.com/logo@192.png" /></p>
+<h1 align="center">SimpTab - Minimalist Chrome new tab extension</h1>
+<p align="center">Hope to improve your mood every time you open a new tab. Clear & simple, focused on beautiful background images.</p>
+<p align="center">
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.1-blue.svg"></a>
+   <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
+   <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.1/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+</p>
+
+***
 
 #### Download:
-[![Chrome][chrome-badge]][chrome-link]
-[![Offline][offline-badge]][offline-link]
-
-#### Website:
-[![Website][www-badge]][www-link]
+* [Chrome Webstore](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) | [Offline download](http://ksria.com/simptab/crx/1.5.1/simptab.crx)
 
 #### Snapshot:
 ![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
+![Snapshot](https://i.imgur.com/7HuDEdph.png)  
+![Snapshot](https://i.imgur.com/uhB78LTh.png)  
 
 #### Features:
-![feature 1](http://i.imgur.com/BZGMo4p.jpg)
+![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
 ![feature 2](http://i.imgur.com/auWFlc9.jpg)
 
 #### Other language:
@@ -26,8 +28,8 @@ SimpTab - Minimalist Chrome new tab extension
 #### Features Details:
 - Automatically recognize the preferred language. ( Simplified & Traditional Chinese, English.
 - Change the background daily/randomly on every new tab ( Note: The daily change only works with Bing.com. )
-- Multiples background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`
-- Twenty-four solar terms.
+- Multiples background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `desktoppr.co`, `visualhunt.com`, `simptab images`
+- Multiple layouts. (picture frame effect, top left aligned, center aligned)
 - Background loading progress. ( Lower left corner, only at load time. )
 - Support `shortcuts` / `omnibox` operation.
 - Notification. ( include: upload, favorite. )
