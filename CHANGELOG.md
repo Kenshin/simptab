@@ -53,7 +53,6 @@ https://github.com/Kenshin/simptab
 - [x] :sparkles: Add background remote cdns feature.
 - [x] :bug: Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
 
-
 #### 1.4.3
 
 > 2016-01-20
@@ -64,14 +63,21 @@ https://github.com/Kenshin/simptab
 
 - [x] :arrow_up: Modify settin bar icon.
 
-- 2015-12-25, Version 1.4.2
-  * Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
-  * Add special day(SimpTab Images) to Setting bar.
+#### 1.4.2
 
-- 2015-12-23, Version 1.4.1
-  * Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
-  * Fix 'simple' mode topsites hover display speed.
-  * Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
+> 2015-12-25
+
+- [x] :sparkles: Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
+- [x] :sparkles: Add special day(SimpTab Images) to Setting bar.
+
+#### 1.4.1
+
+> 2015-12-23
+
+- [x] :sparkles: Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
+
+- [x] :bug: Fix 'simple' mode topsites hover display speed.
+- [x] :bug: Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
 
 - 2015-12-10, Version 1.4.0
   * Feature: [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
