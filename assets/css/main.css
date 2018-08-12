@@ -466,14 +466,14 @@ body {
     position: absolute;
 
     left: -30px;
-    bottom: 14px;
+    bottom: 30px;
 
     padding: 3px 8px;
 
-    min-width: 74px;
+    min-width: 100px;
 
     color: #fff;
-    background-color: #616161;
+    background-color: #232F34;
 
     font-size: 12px;
     text-align: center;
