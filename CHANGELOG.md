@@ -129,9 +129,9 @@ https://github.com/Kenshin/simptab
 
 > 2014-08-28
 
-- [x] :sparkles: Add multi-language to main.html's title.
-- [x] :sparkles: Add open Bookmark/Apps/Histroy/Info at current tab page.
-- [x] :sparkles: Add controlbar to shortcuts.
+- [x] :sparkles: 增加了 `main.html's title` 的多语言；
+- [x] :sparkles: 增加了 `Bookmark/Apps/Histroy/Info` 在本页打开的功能；
+- [x] :sparkles: 增加了 `controlbar` 的快捷键方案；
 
 ***
 
@@ -139,12 +139,12 @@ https://github.com/Kenshin/simptab
 
 > 2014-08-22
 
-- [x] :sparkles: Add website and Rote link with main.html's footer.
+- [x] :sparkles: 增加了 `footer 栏` 投票的链接；
 
-- [x] :pencil2: Modify sns share title multi-language.
+- [x] :pencil2: 优化了 `分享 icon` 的多语言；
 
-- [x] :bug: Fixed issues change SimpTab - Minimalistic New Tab Page by Chrome Extensions to SimpTab - New Tab from main.html's title.
-- [x] :bug: Fixed issues some of the copywriting error.
+- [x] :bug: 修复了 main.html's title 为 `SimpTab - Minimalistic New Tab Page by Chrome Extensions`;
+- [x] :bug: 修复了 一些文案上的错误；
 
 ***
 
@@ -152,7 +152,7 @@ https://github.com/Kenshin/simptab
 
 > 2014-08-20
 
-- [x] :sparkles: Add Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
-- [x] :sparkles: Add Daily/randomly changing background from Bing.com.
-- [x] :sparkles: Add Downloading (HD) background from Bing.com.
-- [x] :sparkles: Add View the current background of meaning.
+- [x] :sparkles: 增加了 `多语言` 环境；
+- [x] :sparkles: 增加了 `每日/随机` （ 从 `bing.com` ）更换背景；
+- [x] :sparkles: 增加了 `下载背景` 功能；
+- [x] :sparkles: 增加了 `info` 功能；
