@@ -342,6 +342,10 @@ body {
     display: none;
 }
 
+.boxradio label {
+    text-align: center;
+}
+
 .lrselected {
     background: #222;
 }
