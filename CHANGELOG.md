@@ -31,6 +31,8 @@ https://github.com/Kenshin/simptab
   ![Imgur](https://i.imgur.com/pblZLv0.png)
 
 - [x] :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
+- [x] :sparkles: 增加了 全新的背景布局：`相框布局`；
+  ![Imgur](https://i.imgur.com/7HuDEdpl.png)
 
 - [x] :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格； _包括：Topsites / 侧栏 / Tooltip / Clock 等_
 - [x] :arrow_up: 更新了 若干依赖；_包括： jQuery / Notify_
@@ -48,10 +50,14 @@ https://github.com/Kenshin/simptab
 
 > 2016-02-11
 
-- [x] :sparkles: Add pin feature.
-- [x] :sparkles: Add dislike feature.
-- [x] :sparkles: Add background remote cdns feature.
-- [x] :bug: Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
+- [x] :sparkles: 增加了 `Pin` 功能；
+  > 可以固定一段时间，包括： 0.5, 1, 2, 4, 8 小时
+
+- [x] :sparkles: 增加了 `dislike` 功能；
+  > 加入后不再显示当前背景；
+
+- [x] :sparkles: 增加了 背景源的 CDN 功能；
+- [x] :bug: 修复了 `checkbox/radio` 偶尔无法点击的错误； [issues 16](https://github.com/kenshin/simptab/issues/16)
 
 ***
 
@@ -59,11 +65,11 @@ https://github.com/Kenshin/simptab
 
 > 2016-01-20
 
-- [x] :sparkles: More detailed version for version feature.
-- [x] :sparkles: Dynamic set permissions.
-- [x] :sparkles: Add background position item, intelligent adjusting background position.
+- [x] :sparkles: 增加了 版本介绍；
+- [x] :sparkles: 增加了 `动态权限设定` 功能；
+- [x] :sparkles: 增加了 `背景源的显示位置`，包括： `居中`和 `左上角` 对其；
 
-- [x] :pencil2: Modify settin bar icon.
+- [x] :pencil2: 优化了设定栏的 icon；
 
 ***
 
@@ -71,8 +77,8 @@ https://github.com/Kenshin/simptab
 
 > 2015-12-25
 
-- [x] :sparkles: Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
-- [x] :sparkles: Add special day(SimpTab Images) to Setting bar.
+- [x] :sparkles: 增加了 新的背景源： [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
+- [x] :sparkles: 增加了 新的背景源： `SimpTab Images`.
 
 ***
 
@@ -80,10 +86,10 @@ https://github.com/Kenshin/simptab
 
 > 2015-12-23
 
-- [x] :sparkles: Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
+- [x] :sparkles: 常用网址增加了全新的： `高级布局` 方式；
 
-- [x] :bug: Fix 'simple' mode topsites hover display speed.
-- [x] :bug: Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
+- [x] :bug: 调整了 `常用网址（简单布局）` 鼠标 hover 时的显示速度.
+- [x] :bug: 修复 `Notifiy` z-index 错误； [issues 8](https://github.com/kenshin/simptab/issues/8)
 
 ***
 
@@ -91,18 +97,18 @@ https://github.com/Kenshin/simptab
 
 > 2015-12-10
 
-- [x] :sparkles: Feature: [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
-- [x] :sparkles: Add multi background origin: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
-- [x] :sparkles: Add update multi customer background.
-- [x] :sparkles: Add fovorite background.
-- [x] :sparkles: Add top sites.
-- [x] :sparkles: Add Download new background progress.
-- [x] :sparkles: Add Favorite/Upload background notification.
-- [x] :sparkles: Add Support omnibox shortcuts.
+- [x] :sparkles: 增加了 多语言，包括： [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+- [x] :sparkles: 增加了 新的背景源： `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
+- [x] :sparkles: 增加了 `上传背景源` 功能；
+- [x] :sparkles: 增加了 `fovorite` 功能；
+- [x] :sparkles: 增加了 `top sites` 功能；
+- [x] :sparkles: 增加了 加载新的背景源时的进度显示；
+- [x] :sparkles: 增加了 `Favorite/Upload` 背景源的提示；
+- [x] :sparkles: 增加了 `omnibox` 快捷键；
 
-- [x] :hammer: Rework source.
+- [x] :hammer: 重构了代码；
 
-- [x] :bug: Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
+- [x] :bug: 修复了 `1.0.3` 版版的错误，包括： [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
 
 ***
 
