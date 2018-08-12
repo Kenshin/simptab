@@ -116,11 +116,12 @@ https://github.com/Kenshin/simptab
 
 > 2014-08-29
 
-- [x] :bug: Fix Download background's duplication of name error.
-- [x] :bug: Fix when first running, info and download's title exist's error.
-- [x] :bug: Fix when background is default wallpaper, info and download's title exist's error.
-- [x] :bug: Fix when locale not zh-cn, change knows to search link.
-- [x] :bug: Fix change clock's font-family to `roboto.ttf`.
+- [x] :sparkles: 增加了 `clock's font-family` to `roboto.ttf`.
+
+- [x] :bug: 修复了 下载背景时重复命名的错误；
+- [x] :bug: 修复了 第一次安装下载背景的错误；
+- [x] :bug: 修复了 默认背景下载时命名的错误；
+- [x] :bug: 修复了 非 `zh-cn` 环境下 `info 链接` 指向的错误；
 
 ***
 
