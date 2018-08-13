@@ -1,22 +1,24 @@
-SimpTab - Minimalist Chrome new tab extension
-=======
-### hope to have good mood every time you open it. Removed redundant function, focused tab rendering.
-[![Version][version-badge]][version-link]
-[![Gitter][gitter-badge]][gitter-link]
-[![Slack][slack-badge]][slack-link]
-[![Jianliao][jianliao-badge]][jianliao-link]
+<p align="center"><img src="http://simptab.qiniudn.com/logo@192.png" /></p>
+<h1 align="center">SimpTab - Minimalist Chrome new tab extension</h1>
+<p align="center">Hope to improve your mood every time you open a new tab. Clear & simple, focused on beautiful background images.</p>
+<p align="center">
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.1-blue.svg"></a>
+   <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
+   <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.1/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+</p>
+
+***
 
 #### Download:
-[![Chrome][chrome-badge]][chrome-link]
-[![Offline][offline-badge]][offline-link]
-
-#### Website:
-[![Website][www-badge]][www-link]
+* [Chrome Webstore](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) | [Offline Download](http://ksria.com/simptab/crx/1.5.1/simptab.crx)
 
 #### Snapshot:
 ![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
+![Snapshot](https://i.imgur.com/7HuDEdph.png)  
+![Snapshot](https://i.imgur.com/uhB78LTh.png)  
 
-#### Feature:
+#### Features:
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
 ![feature 2](http://i.imgur.com/auWFlc9.jpg)
 
@@ -24,18 +26,18 @@ SimpTab - Minimalist Chrome new tab extension
 [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [简体中文](https://github.com/kenshin/simptab/blob/master/README.md)
 
 #### Features Details:
-- Automatic recognition languages. ( Simplified, Traditional, English. )
-- Daily / random to replace the background. ( Note: The daily changing background only from Bing.com. )
-- Multi background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`
-- Twenty-four solar terms.
+- Automatically recognize the preferred language. ( Simplified & Traditional Chinese, English.
+- Change the background daily/randomly on every new tab ( Note: The daily change only works with Bing.com. )
+- Multiples background sources, including: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `desktoppr.co`, `visualhunt.com`, `simptab images`
+- Multiple layouts. (picture frame effect, top left aligned, center aligned)
 - Background loading progress. ( Lower left corner, only at load time. )
 - Support `shortcuts` / `omnibox` operation.
 - Notification. ( include: upload, favorite. )
-- Top sites. ( include: simptab, senior, hidden mode. )
+- Top sites. ( include: simptab, senior, hidden modes. )
 - Upload.
 - Favorite.
-- Pin.
-- Dislike.
+- Pin. ( Don't change the background for some time )
+- Dislike. ( Prevent the background from appearing again )
 
 #### Omnibox:
 `st`
@@ -55,7 +57,7 @@ Name | Description
 `site` | Show top sites.(only omnibox)
 
 #### Vote:
-* If you feel good, please give me [Vote](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
+* If you like this application, please [Rate](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) it
 
 #### About:
 * [CHANGELOG](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
@@ -66,27 +68,13 @@ Name | Description
 
 #### Thanks:
 - <http://www.easyicon.net> <https://www.iconfinder.com>.
-- `HapnaMono-Light`.
-- `Source Han Sans ExtraLight`.
+- English font `HapnaMono-Light`.
+- Chinese font `Source Han Sans ExtraLight`.
 - Mockup <http://magicmockups.com/>
 
 #### Licenses:
 [![license-badge]][license-link]
 
 <!-- Link -->
-[www-badge]:        https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg
-[www-link]:         http://ksria.com/simptab
-[version-badge]:    https://img.shields.io/badge/lastest_version-1.5.0-blue.svg
-[version-link]:     https://github.com/kenshin/simptab/releases
-[chrome-badge]:     https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg
-[chrome-link]:      https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc
-[offline-badge]:    https://img.shields.io/badge/download-_crx-brightgreen.svg
-[offline-link]:     http://ksria.com/simptab/crx/1.5.0/simptab.crx
-[gitter-badge]:     https://badges.gitter.im/kenshin/simptab.svg
-[gitter-link]:      https://gitter.im/kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[slack-badge]:      https://img.shields.io/badge/chat-slack-orange.svg
-[slack-link]:       https://simptab-crx.slack.com/
-[jianliao-badge]:   https://img.shields.io/badge/chat-jianliao-yellowgreen.svg
-[jianliao-link]:    https://guest.jianliao.com/rooms/76dce8b01v
 [license-badge]:    https://img.shields.io/github/license/mashape/apistatus.svg
 [license-link]:     https://opensource.org/licenses/MIT

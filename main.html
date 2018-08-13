@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="vender/notify/notify.min.css">
+    <link rel="stylesheet" href="vender/waves/waves.min.css">
 </head>
 <body>
     <div class="content"><div class="progress"></div></div>
@@ -34,21 +36,25 @@
         <div class="changestate">
             <div class="lineradio">
                 <input id="everyday" type="radio" name="changestate" value="day">
-                <label for="everyday">Change Background Every Day</label>
+                <label for="everyday">Change background daily</label>
             </div>
             <div class="lineradio">
                 <input id="everytime" type="radio" name="changestate" value="time">
-                <label for="everytime">Change Background Every Time</label>
+                <label for="everytime">Change background randomly</label>
             </div>
         </div>
         <div class="positionstate">
             <div class="lineradio">
                 <input id="centeralig" type="radio" name="positionstate" value="center">
-                <label for="centeralig">Background center alignment</label>
+                <label for="centeralig">Align to the center</label>
             </div>
             <div class="lineradio">
                 <input id="corneralig" type="radio" name="positionstate" value="corner">
-                <label for="corneralig">Background corner alignment</label>
+                <label for="corneralig">Align to the top-left corner</label>
+            </div>
+            <div class="lineradio">
+                <input id="maskalig" type="radio" name="positionstate" value="mask">
+                <label for="maskralig">Mask</label>
             </div>
         </div>
         <div class="clockstate">
@@ -76,15 +82,15 @@
         <div class="tsstate">
             <div class="lineradio">
                 <input id="stnormal" type="radio" name="tsstate" value="normal">
-                <label for="stnormal">Hidden Topsites</label>
+                <label for="stnormal">Hide Top Sites</label>
             </div>
             <div class="lineradio">
                 <input id="stsimple" type="radio" name="tsstate" value="simple">
-                <label for="stsimple">Simple Topsites</label>
+                <label for="stsimple">Show Top Sites at the bottom</label>
             </div>
             <div class="lineradio">
                 <input id="stsenior" type="radio" name="tsstate" value="senior">
-                <label for="stsenior">Senior Topsites</label>
+                <label for="stsenior">Show Top Sites in the center</label>
             </div>
         </div>
         <div class="pinstate">
@@ -104,33 +110,17 @@
                 <div class="boxradio"><input id="pintime5" type="radio" name="pinstate" value="480"><label for="pintime5">8</label></div>
             </section>
         </div>
-        <div class="contact">
-            <a target="_blank" href="http://service.weibo.com/share/share.php?url=http://ksria.com/simptab&title=SimpTab%20-%20%E7%AE%80%E7%BA%A6%E7%9A%84Chrome%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%89%A9%E5%B1%95%EF%BC%8C%E5%B8%8C%E6%9C%9B%E6%AF%8F%E6%AC%A1%E6%89%93%E5%BC%80%EF%BC%8C%E4%BD%A0%E6%9C%89%E4%B8%AA%E5%A5%BD%E5%BF%83%E6%83%85%E3%80%82&pic=http://ksria.com/simptab/assets/image/introduce.png" title="Share weibo.com"><span class="icon weiboicon"></span></a>
-            <a target="_blank" href="https://twitter.com/intent/tweet?via=wanglei001&text=Minimalistic%27s%20chrome%20new%20tab%20page%20extension,%20hope%20every%20time%20open,%20you%20have%20a%20good%20mood.&url=http://ksria.com/simptab" title="Share twitter.com"><span class="icon twittericon"></span></a>
-            <a target="_blank" href="https://www.facebook.com/dialog/feed?app_id=1528743474024441&link=http://ksria.com/simptab&picture=http://i.imgur.com/9OjRMRQ.png&name=SimpTab&caption=Minimalistic New Tab Page by Chrome Extensions&description=Minimalistic's chrome new tab page extension, hope every time open, you have a good mood.&redirect_uri=http://ksria.com/simptab" title="Share facebook.com"><span class="icon facebookicon"></span></a>
-            <a target="_blank" href="https://plus.google.com/share?url=http://ksria.com/simptab" title="Share G+"><span class="icon gplusicon"></span></a>
-            <a target="_blank" href="mailto:kenshin@ksria.com" title="Contact Me"><span class="icon emailicon"></span></a>
-        </div>
+        <div class="contact"></div>
         <div class="footer">
-            <small>
-                <a target="_blank" href="http://ksria.com/simptab">web site</a> and <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews">rote this extension</a>
-            </small>
-            <small>
-                © 2014 <a target="_blank" href="http://ksria.com">ksria.com</a> by <a href="http://kenshin.wang" target="_blank">Kenshin Wang</a>
-            </small>
-
+            <div>
+                <a target="_blank" href="http://ksria.com/simptab">Visit us</a> or <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc/reviews">Rate SimpTab</a>
+            </div>
+            <div>
+                © 2014 <a target="_blank" href="http://ksria.com">ksria.com</a> via <a href="http://kenshin.wang" target="_blank">Kenshin</a>
+            </div>
         </div>
     </div>
     <div class="bottom"></div>
-    <div class="notifygp">
-        <!--
-        <div class="notify">
-            <a href="#" class="close"><span></span></a>
-            <div class="title">SimpTab has update.</div>
-            <div class="content">New version changlog here.</div>
-        </div>
-        -->
-    </div>
     <script data-main="js/main.js" src="vender/require.js"></script>
-    </body>
+</body>
 </html>

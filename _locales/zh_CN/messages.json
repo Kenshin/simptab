@@ -3,56 +3,66 @@
         "message": "zh_CN"
     },
 
+    "lang": {
+        "message": "cn"
+    },
+
     "title": {
-        "message": "\u7b80 Tab - \u65b0\u6807\u7b7e\u9875"
+        "message": "简 Tab - 新标签页"
     },
 
     "extension_name": {
-        "message": "\u7b80 Tab - New Tab"
+        "message": "简 Tab (SimpTab) - 新标签页",
+        "description": "极简的 Chrome 新标签页扩展, 新标签页, 标签页, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
     "extension_desc": {
-        "message": "\u6781\u7b80\u7684Chrome\u65b0\u6807\u7b7e\u9875\u6269\u5c55\uff0c\u671b\u4f60\u6bcf\u6b21\u6253\u5f00\u90fd\u6709\u597d\u5fc3\u60c5\u3002"
+        "message": "极简的 Chrome 新标签页扩展，望你每次打开都有好心情。",
+        "description": "极简的 Chrome 新标签页扩展, 新标签页, 标签页, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
     "controlbar_bookmarks": {
-        "message": "\u4e66\u7b7e"
+        "message": "书签"
     },
 
     "controlbar_history": {
-        "message": "\u5386\u53f2"
+        "message": "历史"
     },
 
     "controlbar_apps": {
-        "message": "\u5e94\u7528"
+        "message": "应用"
     },
 
     "controlbar_info": {
-        "message": "\u8be6\u7ec6\u4fe1\u606f"
+        "message": "详细信息"
     },
 
     "controlbar_download": {
-        "message": "\u4e0b\u8f7d\u5f53\u524d\u80cc\u666f"
+        "message": "下载当前背景"
     },
 
     "controlbar_upload": {
-        "message": "\u4e0a\u4f20\u80cc\u666f"
+        "message": "上传背景"
     },
 
     "controlbar_setting": {
-        "message": "\u8bbe\u5b9a"
+        "message": "设定"
     },
 
     "controlbar_favorite": {
-        "message": "\u6536\u85cf"
+        "message": "收藏"
     },
 
     "controlbar_dislike": {
-        "message": "\u4e0d\u559c\u6b22"
+        "message": "不喜欢"
     },
 
     "controlbar_pin": {
-        "message": "\u56fa\u5b9a"
+        "message": "固定"
+    },
+
+    "controlbar_special": {
+        "message": "精选集"
     },
 
     "setting_width": {
@@ -60,194 +70,202 @@
     },
 
     "setting_background_every_day": {
-        "message": "\u6bcf\u5929\u66f4\u6362\u80cc\u666f"
+        "message": "每天更换背景"
     },
 
     "setting_background_every_time": {
-        "message": "\u968f\u673a\u66f4\u6362\u80cc\u666f"
+        "message": "随机更换背景"
     },
 
     "setting_background_position_center": {
-        "message": "\u80cc\u666f\u5c45\u4e2d\u5bf9\u9f50"
+        "message": "背景居中对齐"
     },
 
     "setting_background_position_corner": {
-        "message": "\u80cc\u666f\u5de6\u4e0a\u5bf9\u9f50"
+        "message": "背景左上对齐"
+    },
+
+    "setting_background_position_mask": {
+        "message": "相框布局"
     },
 
     "setting_show_clock": {
-        "message": "\u663e\u793a\u65f6\u949f"
+        "message": "显示时钟"
     },
 
     "setting_hide_clock": {
-        "message": "\u9690\u85cf\u65f6\u949f"
+        "message": "隐藏时钟"
     },
 
     "setting_multi_origin_0": {
-        "message": "\u6dfb\u52a0 Wallhaven.cc"
+        "message": "添加 Wallhaven.cc"
     },
 
     "setting_multi_origin_1": {
-        "message": "\u6dfb\u52a0 Unsplash.com"
+        "message": "添加 Unsplash.com"
     },
 
     "setting_multi_origin_2": {
-        "message": "\u6dfb\u52a0 Unsplash.it"
+        "message": "添加 Unsplash.it"
     },
 
     "setting_multi_origin_3": {
-        "message": "\u6dfb\u52a0 Flickr.com"
+        "message": "添加 Flickr.com"
     },
 
     "setting_multi_origin_4": {
-        "message": "\u6dfb\u52a0 Google Art"
+        "message": "添加 Google Art"
     },
 
     "setting_multi_origin_5": {
-        "message": "\u6dfb\u52a0 500px.com"
+        "message": "添加 500px.com"
     },
 
     "setting_multi_origin_6": {
-        "message": "\u6dfb\u52a0 desktoppr.co"
+        "message": "添加 desktoppr.co"
     },
 
     "setting_multi_origin_7": {
-        "message": "\u6dfb\u52a0 visualhunt.com"
+        "message": "添加 visualhunt.com"
     },
 
     "setting_multi_origin_8": {
-        "message": "\u6dfb\u52a0 NASA.gov"
+        "message": "添加 NASA.gov"
     },
 
     "setting_multi_origin_9": {
-        "message": "\u6dfb\u52a0 SimpTab images"
+        "message": "添加 SimpTab 精选集"
     },
 
     "setting_ts_state_normal": {
-        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9690\u85cf\u6a21\u5f0f\uff09"
+        "message": "常用网址（隐藏模式）"
     },
 
     "setting_ts_state_simple": {
-        "message": "\u5e38\u7528\u7f51\u5740\uff08\u7b80\u5355\u6a21\u5f0f\uff09"
+        "message": "常用网址（简单模式）"
     },
 
     "setting_ts_state_senior": {
-        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9ad8\u7ea7\u6a21\u5f0f\uff09"
+        "message": "常用网址（高级模式）"
     },
 
     "setting_pin_tooltip": {
-        "message": "\u56fa\u5b9a #1 \u5c0f\u65f6"
+        "message": "固定 #1 小时"
     },
 
     "setting_contact_weibo": {
-        "message": "\u5206\u4eab\u5230 \u5fae\u535a"
+        "message": "分享到 微博"
     },
 
     "setting_contact_twitter": {
-        "message": "\u5206\u4eab\u5230 Twitter"
+        "message": "分享到 Twitter"
     },
 
     "setting_contact_facebook": {
-        "message": "\u5206\u4eab\u5230 Facebook"
+        "message": "分享到 Facebook"
     },
 
     "setting_contact_gplus": {
-        "message": "\u5206\u4eab\u5230 Google plus"
+        "message": "分享到 Google plus"
     },
 
     "setting_contact_me": {
-        "message": "\u8054\u7cfb\u4f5c\u8005"
+        "message": "联系作者"
     },
 
     "shortcuts_default": {
-        "message": "\u8f93\u5165\u7a7a\u683c\u663e\u793a\u5168\u90e8\u7684\u547d\u4ee4\u5217\u8868\uff0c\u76ee\u524d\u652f\u6301\u7684\u5173\u952e\u5b57\u4ec5\u5305\u62ec\uff1a"
+        "message": "输入空格显示全部的命令列表，目前支持的关键字仅包括："
     },
 
     "shortcuts_fail_key": {
-        "message": "\u4e0d\u652f\u6301\u5f53\u524d\u5173\u952e\u5b57\uff1a"
+        "message": "不支持当前关键字："
     },
 
     "version_title": {
-        "message": "\u7b80 Tab\u5df2\u7ecf\u66f4\u65b0"
+        "message": "简 Tab 版本提示"
     },
 
     "version_content": {
-        "message": "\u5f53\u524d\u7248\u672c #1\uff0c#4\u66f4\u591a\u529f\u80fd #2\u8bf7\u770b\u8fd9\u91cc#3\u3002"
+        "message": "安装到 最新版本 #1，#4详细请看 #2更新日志#3"
     },
 
     "notify_upload_complete": {
-        "message": "\u80cc\u666f\u4e0a\u4f20\u5b8c\u6bd5\u3002"
+        "message": "背景上传完毕。"
     },
 
     "notify_upload_fail": {
-        "message": "\u56fe\u7247\u4e0a\u4f20\u5931\u8d25\u3002"
+        "message": "图片上传失败。"
     },
 
     "notify_favorite_add": {
-        "message": "\u80cc\u666f\u6536\u85cf\u6210\u529f\u3002"
+        "message": "背景收藏成功。"
     },
 
     "notify_favorite_del": {
-        "message": "\u80cc\u666f\u53d6\u6d88\u6536\u85cf\u6210\u529f\u3002"
+        "message": "背景取消收藏成功。"
     },
 
     "notify_dislike_add": {
-        "message": "\u5df2\u6210\u529f\u52a0\u5165\u4e0d\u559c\u6b22\u5217\u8868\uff0c\u65b0\u80cc\u666f\u53d6\u5f97\u540e\uff0c\u5f53\u524d\u80cc\u666f\u5c06\u4e0d\u4f1a\u518d\u663e\u793a\u3002"
+        "message": "已成功加入不喜欢列表，新背景取得后，当前背景将不会再显示。"
     },
 
     "notify_dislike_del": {
-        "message": "\u5df2\u6210\u529f\u79fb\u51fa\u4e0d\u559c\u6b22\u5217\u8868\u3002"
+        "message": "已成功移出不喜欢列表。"
     },
 
     "notify_pin_add": {
-        "message": "\u5f53\u524d\u80cc\u666f\u56fa\u5b9a #1 \u5c0f\u65f6\u3002"
+        "message": "当前背景固定 #1 小时。"
     },
 
     "notify_pin_del": {
-        "message": "\u5df2\u53d6\u6d88\u5f53\u524d\u80cc\u666f\u7684\u56fa\u5b9a\u3002"
+        "message": "已取消当前背景的固定。"
     },
 
     "version_detail": {
-        "message": "\u5168\u65b0\u7248\u672c\uff0c\u5168\u65b0\u529f\u80fd\uff1b"
+        "message": ""
     },
 
     "version_detail_prefix": {
-        "message": "\u65b0\u589e "
+        "message": ""
     },
 
     "version_detail_0": {
-        "message": "\u4fee\u590d\u4e4b\u524d\u7248\u672c\u7684\u4e00\u4e9b\u9519\u8bef\uff1b"
+        "message": "修复之前版本的一些错误；"
     },
 
     "version_detail_1": {
-        "message": "\u591a\u79cd\u80cc\u666f\u6e90\uff0c\u4e8c\u5341\u56db\u8282\u6c14\u3001\u7535\u5f71\u6d77\u62a5\u3001\u7279\u6b8a\u8282\u65e5\uff0c\u4e0a\u4f20\u529f\u80fd\uff0c\u6536\u85cf\u529f\u80fd\u7b49\uff1b"
+        "message": "新增：多种背景源，二十四节气、电影海报、特殊节日，上传功能，收藏功能等；"
     },
 
     "version_detail_2": {
-        "message": "\u5e38\u7528\u7f51\u5740\uff08\u9ad8\u7ea7\u6a21\u5f0f\uff09\u7b49\uff1b"
+        "message": "新增：常用网址（高级模式）等；"
     },
 
     "version_detail_3": {
-        "message": "\u80cc\u666f\u6e90\uff1a<a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a>\uff0c\u7279\u522b\u65e5\uff08Special day\uff09\uff1b"
+        "message": "新增：背景源：<a href='http://apod.nasa.gov/apod/astropix.html' target='_blank'>NASA</a>，特别日（Special day）；"
     },
 
     "version_detail_4": {
-        "message": "\u66f4\u8be6\u7ec6\u7684\u7248\u672c\u63d0\u793a\u529f\u80fd\uff0c\u667a\u80fd\u8c03\u6574\u80cc\u666f\u4f4d\u7f6e\u7b49\uff1b"
+        "message": "新增：更详细的版本提示功能，智能调整背景位置等；"
     },
 
     "version_detail_5": {
-        "message": "\u4e0d\u559c\u6b22\u529f\u80fd\uff0cPin\u529f\u80fd\uff0c\u4f18\u5316\u80cc\u666f\u83b7\u53d6\u901f\u5ea6\u7b49\uff1b"
+        "message": "新增：不喜欢功能，Pin功能，优化背景获取速度等；"
+    },
+
+    "version_detail_6": {
+        "message": "修复了一些界面与逻辑上的错误；优化了界面效果；增加了【精选集】等；"
     },
 
     "permissions": {
-        "message": "\u65b0\u7248\u672c\u9700\u8981\u53d6\u5f97\u65b0\u7684\u6743\u9650\uff0c<a href='#' class='permissions'>\u8bf7\u786e\u8ba4</a>\u3002"
+        "message": "新版本需要取得新的权限。"
     },
 
     "permissions_success": {
-        "message": "\u65b0\u7684\u6743\u9650\u5df2\u7ecf\u542f\u7528\u6210\u529f\u3002"
+        "message": "新的权限已经启用成功。"
     },
 
     "permissions_failed": {
-        "message": "\u6743\u9650\u83b7\u53d6\u5931\u8d25\uff0c\u65b0\u529f\u80fd\u65e0\u6cd5\u542f\u7528\uff0c\u5efa\u8bae\u91cd\u65b0\u5b89\u88c5\u3002"
+        "message": "权限获取失败，新功能无法启用，建议重新安装。"
     }
 }
