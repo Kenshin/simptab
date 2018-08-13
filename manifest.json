@@ -3,7 +3,7 @@
     "name"            : "__MSG_extension_name__",
     "short_name"      : "SimpTab",
     "version"         : "1.5.1",
-    "default_locale"  : "en",
+    "default_locale"  : "zh_CN",
     "description"     : "__MSG_extension_desc__",
     "author"          : "Kenshin",
     "homepage_url"    : "http://ksria.com/simptab",
