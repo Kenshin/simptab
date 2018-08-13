@@ -21,7 +21,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 url      : "",
                 type     : "GET",
                 dataType : "json",
-                timeout  : 0,      // changed 2000 → 0
+                timeout  : 2000,
                 method   : "",
                 origin   : "",
                 code     : 0
@@ -84,7 +84,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                     random = arguments && arguments.length == 1 ? "?random=" + Math.round(+new Date()) : "";
                 $.ajax({
                     type       : this.vo.type,
-                    timeout    : this.vo.timeout,
+                    timeout    : 0, // this.vo.timeout
                     url        : this.vo.url + random,
                     dataType   : this.vo.dataType
                 }).then( function( result ) {
