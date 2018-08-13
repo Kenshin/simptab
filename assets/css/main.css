@@ -89,14 +89,10 @@ header {
   list-style: none;
 }
 .top ul li {
+  display: flex;
+  justify-content: center;
   margin: 0 20px;
-}
-.top ul li a {
   padding-bottom: 5px;
-  color: #fff;
-  font-weight: 500;
-  text-decoration: none;
-  text-transform: uppercase;
   transition: border-color 0.5s;
   -webkit-border-bottom: 2px solid transparent;
   -moz-border-bottom: 2px solid transparent;
@@ -104,13 +100,23 @@ header {
   -ms-border-bottom: 2px solid transparent;
   border-bottom: 2px solid transparent;
 }
-.top ul li a:hover {
+.top ul li:hover {
   color: #fff;
   -webkit-border-bottom: 2px solid #fff;
   -moz-border-bottom: 2px solid #fff;
   -o-border-bottom: 2px solid #fff;
   -ms-border-bottom: 2px solid #fff;
   border-bottom: 2px solid #fff;
+}
+.top ul li img {
+  padding-right: 5px;
+  height: 15px;
+}
+.top ul li a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 .describe {
   -webkit-flex-flow: row wrap;

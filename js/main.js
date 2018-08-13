@@ -54,9 +54,9 @@ $( document ).ready( function() {
         $(".download .smaller").html( t( "or" ));
         $(".download .btn-offline-download").html( t( "offline" ));
 
-        $.each( $(".top ul li a"), function( idx, item ) {
-            idx <= 4 && $( item ).text( t( "nav" + (++idx) ));
-        });
+        //$.each( $(".top ul li a"), function( idx, item ) {
+        //    idx <= 4 && $( item ).text( t( "nav" + (++idx) ));
+        //});
 
         $.each( $(".feature"), function( idx, item ) {
             $( item ).find( ".desc" ).html( t( "desc" + (++idx) ));

@@ -81,20 +81,28 @@ header
         list-style: none
 
         li
+            display: flex;
+            justify-content: center;
+
             margin: 0 20px
+            padding-bottom: 5px
+
+            transition: border-color .5s
+            all-browser "border-bottom", 2px solid transparent
+
+            &:hover
+                color: rgb(255, 255, 255)
+                all-browser "border-bottom", 2px solid #fff
+
+            img
+                padding-right: 5px;
+                height: 15px;
 
             a
-                padding-bottom: 5px
                 color: #fff
                 font-weight: 500
                 text-decoration: none
                 text-transform: uppercase
-                transition: border-color .5s
-                all-browser "border-bottom", 2px solid transparent
-
-                &:hover
-                    color: rgb(255, 255, 255)
-                    all-browser "border-bottom", 2px solid #fff
 
 .describe
     all-browser "flex-flow",       row wrap
