@@ -43,7 +43,7 @@ var gulp   = require( 'gulp' ),
         html : '*.html',
         js   : 'js/*.js',
         styl : 'assets/css/*.styl',
-        icon : 'favicon.ico',
+        icon : 'assets/favicon/',
         local: 'locales/',
         csssrc: 'assets/css/',
         font : 'assets/font/',
@@ -96,7 +96,7 @@ gulp.task( 'clean', function() {
 });
 
 gulp.task( 'copy', function( cb ) {
-    gulp.src( paths.icon           ).pipe( gulp.dest( paths.dest               ));
+    gulp.src( paths.icon  + '*'    ).pipe( gulp.dest( paths.dest + paths.icon  ));
     gulp.src( paths.image + '*'    ).pipe( gulp.dest( paths.dest + paths.image ));
     gulp.src( paths.font  + '*'    ).pipe( gulp.dest( paths.dest + paths.font  ));
     gulp.src( paths.local + '**/*' ).pipe( gulp.dest( paths.dest + paths.local ));
