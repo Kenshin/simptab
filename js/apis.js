@@ -21,7 +21,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 url      : "",
                 type     : "GET",
                 dataType : "json",
-                timeout  : 2000,
+                timeout  : 0,      // changed 2000 → 0
                 method   : "",
                 origin   : "",
                 code     : 0
