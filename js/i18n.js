@@ -26,7 +26,8 @@ define([ "jquery" ], function( $ ) {
         $($( ".changestate" ).find("label:last" )).text( i18n( "setting_background_every_time" ));
 
         $($( ".positionstate" ).find("label:first")).text( i18n( "setting_background_position_center" ));
-        $($( ".positionstate" ).find("label:last" )).text( i18n( "setting_background_position_corner" ));
+        $($( ".positionstate" ).find("label" )[1]).text( i18n( "setting_background_position_corner" ));
+        $($( ".positionstate" ).find("label" )[2]).text( i18n( "setting_background_position_mask" ));
 
         $($( ".clockstate" ).find("label:first")).text( i18n( "setting_show_clock" ));
         $($( ".clockstate" ).find("label:last" )).text( i18n( "setting_hide_clock" ));
@@ -68,6 +69,10 @@ define([ "jquery" ], function( $ ) {
 
         GetLocale: function() {
             return i18n( "locales" );
+        },
+
+        GetShort: function() {
+            return i18n( "lang" );
         },
 
         GetControlbarLang: function( lang ) {

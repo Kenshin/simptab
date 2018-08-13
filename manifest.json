@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "name"            : "__MSG_extension_name__",
     "short_name"      : "SimpTab",
-    "version"         : "1.5.0",
-    "default_locale"  : "en",
+    "version"         : "1.5.1",
+    "default_locale"  : "zh_CN",
     "description"     : "__MSG_extension_desc__",
     "author"          : "Kenshin",
     "homepage_url"    : "http://ksria.com/simptab",
@@ -31,8 +31,8 @@
     "permissions": [
         "topSites",
         "storage",
-        "http://*.bing.com/",
-        "http://*.bing.net/"
+        "http://*/*",
+        "https://*/*"
     ],
     "omnibox": { "keyword" : "st" },
     "commands": {
@@ -41,5 +41,5 @@
       "info"    : { "suggested_key": { "default": "Alt+Shift+3" }, "description": "__MSG_controlbar_info__"     },
       "upload"  : { "suggested_key": { "default": "Alt+Shift+4" }, "description": "__MSG_controlbar_upload__"   }
     },
-    "update_url": "http://ksria.com/simptab/updates.xml"
+    "update_url"      : "https://clients2.google.com/service/update2/crx"
 }

@@ -1,5 +1,5 @@
 
-define([ "jquery" ], function( $ ) {
+define([ "jquery", "waves" ], function( $, Waves ) {
 
     "use strict";
 
@@ -74,7 +74,7 @@ define([ "jquery" ], function( $ ) {
                 "positionstate" : {
                     value  : getLS( "simptab-background-position"  ),
                     type   : "simptab-background-position",
-                    vals   : [ "center","corner" ],
+                    vals   : [ "center", "corner", "mask" ],
                     default: 1
                 },
                 "clockstate" : {
@@ -135,13 +135,6 @@ define([ "jquery" ], function( $ ) {
         });
     }
 
-    function addClickEvent( selctor, callback ) {
-        $( "." + selctor +  " input" ).click( function( event ) {
-            var mode = $(event.currentTarget).attr( "value" );
-            callback( selctor, mode );
-        });
-    }
-
     function updateCkState( item ) {
         var idx     = item.split(":")[0],
             value   = item.split(":")[1],
@@ -187,17 +180,17 @@ define([ "jquery" ], function( $ ) {
         Listen: function ( callback ) {
 
             // listen [ changestate, clockstate, topsites, pinstate ] radio button event
-            Object.keys( setting.mode ).forEach( function( item ) {
-                addClickEvent( item, function( type, mode ) {
+            var selectors = Object.keys( setting.mode ).map( function( item ) { return "." + item + " input"; } );
+            $( selectors.join( "," ) ).click( function( event ) {
+                var type = event.target.name,
+                    mode = event.target.value;
 
-                    updateRdState(      type, mode );
-                    setting.UpdateMode( type, mode );
-                    updateOriginsVisible();
+                updateRdState(      type, mode );
+                setting.UpdateMode( type, mode );
+                updateOriginsVisible();
 
-                    // callback only include: tsstate, clockstate
-                    callback( type, mode );
-
-                });
+                // callback only include: tsstate, clockstate
+                callback( type, mode );
             });
 
             // listen originstate checkbox button event
@@ -208,8 +201,11 @@ define([ "jquery" ], function( $ ) {
                 setting.UpdateOriginsMode( idx, value );
             });
 
+            $( ".lineradio" ).on( "click", function( event ) { Waves.attach( '.lineradio', ['waves-block'] );; });
             // listen span click event
-            $( ".lineradio" ).delegate( "span", "click",  function( event ) { $(this).next().click(); });
+            $( ".lineradio" ).on( "click", "span", function( event ) { $(this).next().click(); });
+            // hack code by label(maskralig)
+            $( ".lineradio" ).find( "label[for=maskralig]" ) .on( "click", function( event ) { $(this).prev().click(); });
         },
 
         Mode: function( type ) {

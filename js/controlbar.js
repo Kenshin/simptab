@@ -12,16 +12,22 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
 
     function setDownloadURL() {
 
-        var shortname = vo.cur.shortname;
-        if ( shortname == "#" ) {
-            shortname = vo.cur.name;
+        if ( vo.cur.info.search( "https://unsplash.com" ) == 0 ) {
+            $( ".controlink[url='download']" ).attr({
+                "href"     : vo.cur.hdurl,
+                "target"   : "_blank",
+            }).removeAttr( "url" );
+        } else {
+            var shortname = vo.cur.shortname;
+            if ( shortname == "#" ) {
+                shortname = vo.cur.name;
+            }
+            $( ".controlink[url='download']" ).attr({
+                "title"    : vo.cur.name,
+                "href"     : vo.cur.hdurl,
+                "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
+            });
         }
-
-        $( ".controlink[url='download']" ).attr({
-            "title"    : vo.cur.name,
-            "href"     : vo.cur.hdurl,
-            "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
-        });
 
     }
 
@@ -30,8 +36,19 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     }
 
     function setBackgroundPosition() {
-       var value = localStorage[ "simptab-background-position" ];
-       vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
+        var value = localStorage[ "simptab-background-position" ];
+        if ( value == "mask" ) {
+            var url       = vo.cur.type == "default" ? vo.cur.hdurl : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
+                maxHeight = 800,
+                height    = $( "body" ).height();
+            $( "body" ).addClass( "bgmask" ).prepend( '<div class="img-bg"><img src="' + url + '"></div>' );
+            $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+            height <= maxHeight && $( ".img-bg" ).find( "img" ).height( height - 300 );
+        } else {
+            $( "body" ).removeClass( "bgmask" ).find( ".img-bg" ).remove();
+            $( ".bgmask-filter" ).remove();
+            vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
+        }
     }
 
     function setUploadState( is_show ) {
