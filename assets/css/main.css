@@ -91,7 +91,7 @@ header {
 .top ul li {
   display: flex;
   justify-content: center;
-  margin: 0 20px;
+  margin: 0 10px;
   padding-bottom: 5px;
   transition: border-color 0.5s;
   -webkit-border-bottom: 2px solid transparent;
