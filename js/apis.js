@@ -5,7 +5,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
     var deferred      = new $.Deferred(),
         SIMP_API_HOST = "http://simptab.qiniudn.com/",
-        apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify ) {
+        apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify, Only ) {
 
             /*
             *
@@ -34,7 +34,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
             APIS.prototype.Stack       = {};
             APIS.prototype.ORIGINS     = [ "wallhaven.cc", "unsplash.com", "unsplash.it", "flickr.com", "googleart.com", "500px.com", "desktoppr.co", "visualhunt.com", "nasa.gov", "special", "favorite", "holiday", "bing.com", "today" ],
-            APIS.prototype.ORIGINS_MAX = APIS.prototype.ORIGINS.length - 2; // excude: "today"
+            APIS.prototype.ORIGINS_MAX = APIS.prototype.ORIGINS.length;
 
             APIS.prototype.Random = function( min, max ) {
                 return Math.floor( Math.random() * ( max - min + 1 ) + min );
@@ -44,10 +44,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 var code   = this.Random( 0, this.ORIGINS_MAX );
                 this.defer = new $.Deferred();
 
-                // verify background every day
-                // verify today is new day
-                if ( IsNewDay( Today(), true ) || !IsRandom() ) {
-                    code = this.ORIGINS_MAX + 1;
+                // verify background every day && is today is new day
+                // Verify( 13 ) == true && background every time && today is new day
+                if ( ( !IsRandom() && IsNewDay( Today(), true ) ) || 
+                     ( Verify( 13 ) == "true" && IsNewDay( Today(), true ) && IsRandom() ) ) {
+                    code = 13;
                 }
                 // verify today is holiday
                 else if ( isHoliday() ) {
@@ -55,12 +56,17 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 }
                 // change background every time
                 else {
-                    while ( Verify( code ) == "false" ||
-                            localStorage[ "simptab-prv-code" ] == code ||
+                    while ( Verify( code ) == "false"  ||
+                            //localStorage[ "simptab-prv-code" ] == code ||
                             code == 11 || code == 5 || code == 8 ) {
                         code = this.Random( 0, this.ORIGINS_MAX );
                     }
                     localStorage[ "simptab-prv-code" ] = code;
+                }
+
+                if ( code == this.ORIGINS_MAX ) {
+                    var only = Only();
+                    if ( only.result == true ) { code = only.code; }
                 }
 
                 // add test code
@@ -105,7 +111,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
             }
 
             return new APIS;
-    })( jQuery, date.IsNewDay, date.Today, isHoliday, setting.IsRandom, setting.Verify );
+    })( jQuery, date.IsNewDay, date.Today, isHoliday, setting.IsRandom, setting.Verify, setting.Only );
 
     /*
     * Bing( today )
