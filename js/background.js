@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError, Notify, progress, Waves ) {
+define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves ) {
 
     "use strict";
 
@@ -25,17 +25,19 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     def.resolve(1);
                 }
                 else {
-                    if ( date.IsNewDay( date.Today() ) || ( !is_random && date.Today() != vo.cur.enddate ) ) {
+                    if ( setting.Mode( "changestate" ) == "none" ) {
+                        def.resolve(4);
+                    } else if ( setting.Mode( "changestate" ) == "day" && !date.IsNewDay( date.Today() ) ) {
+                        def.resolve(4);
+                    } else if ( date.IsNewDay( date.Today() ) || ( !is_random && date.Today() != vo.cur.enddate ) ) {
                         //// set background refresh
                         localStorage["simptab-background-refresh"] = "true";
                         //// only call api. type 3
                         def.resolve(3);
-                    }
-                    else if ( is_random && isPinTimeout() ) {
+                    } else if ( is_random && isPinTimeout() ) {
                         //// set current background and call api. type 2
                         def.resolve(2);
-                    }
-                    else {
+                    } else {
                         //// set current background and not-call api. type 4
                         def.resolve(4);
                     }
@@ -404,6 +406,9 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             controlbar.setPinIcon();
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
             Waves.attach( '.icon', ['waves-circle'] );
+        },
+        UpdaeteBg: function( type ) {
+            type == "none" && writePinBackground();
         }
     };
 });
