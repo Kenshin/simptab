@@ -58,16 +58,12 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 else {
                     while ( Verify( code ) == "false"  ||
                             //localStorage[ "simptab-prv-code" ] == code ||
-                            code == 11 || code == 5 || code == 8 ) {
+                            code == 11 || code == 5 || code == 8 || code == 13 ) {
                         code = this.Random( 0, this.ORIGINS_MAX );
                     }
                     localStorage[ "simptab-prv-code" ] = code;
                 }
-
-                if ( code == this.ORIGINS_MAX ) {
-                    var only = Only();
-                    if ( only.result == true ) { code = only.code; }
-                }
+                code == this.ORIGINS_MAX && ( code = Only() );
 
                 // add test code
                 // code = 9;

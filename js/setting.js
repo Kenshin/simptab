@@ -224,14 +224,13 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         },
 
         Only: function() {
-            var idx = 0, code = -1;
-            setting.origins.forEach( function( origin ) {
-                if ( origin.endsWith( "true" )) {
-                    idx++;
+            var code = 14;
+            setting.origins.forEach( function( origin, index ) {
+                if ( origin.endsWith( "true" ) && index != 13 ) {
                     code = origin.split(":")[0];
                 }
-            })
-            return { result: idx == 1 ? true : false, code: code };
+            });
+            return code;
        },
 
         TogglePinState: function( state ) {
