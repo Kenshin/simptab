@@ -46,7 +46,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
                 // verify background every day && is today is new day
                 // Verify( 13 ) == true && background every time && today is new day
-                if ( ( !IsRandom() && IsNewDay( Today(), true ) ) || 
+                if ( ( IsNewDay( Today(), true ) && !IsRandom() ) || 
                      ( Verify( 13 ) == "true" && IsNewDay( Today(), true ) && IsRandom() ) ) {
                     code = 13;
                 }
