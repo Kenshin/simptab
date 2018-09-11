@@ -68,25 +68,25 @@ define([ "jquery", "waves" ], function( $, Waves ) {
                 "changestate" : {
                     value  : getLS( "simptab-background-mode" ),
                     type   : "simptab-background-mode",
-                    vals   : [ "day","time" ],
+                    vals   : [ "day", "time", "none" ],
                     default: 1
                 },
                 "positionstate" : {
-                    value  : getLS( "simptab-background-position"  ),
+                    value  : getLS( "simptab-background-position" ),
                     type   : "simptab-background-position",
                     vals   : [ "center", "corner", "mask" ],
                     default: 1
                 },
                 "clockstate" : {
-                    value  : getLS( "simptab-background-clock"  ),
+                    value  : getLS( "simptab-background-clock" ),
                     type   : "simptab-background-clock",
-                    vals   : [ "show","hide" ],
+                    vals   : [ "show", "hide" ],
                     default: 0
                 },
                 "tsstate"  : {
                     value  : getLS( "simptab-topsites" ),
                     type   : "simptab-topsites",
-                    vals   : [ "normal","simple", "senior" ],
+                    vals   : [ "normal", "simple", "senior" ],
                     default: 1
                 },
                 "pinstate"  : {
@@ -213,7 +213,7 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         },
 
         IsRandom: function() {
-          return setting.mode["changestate"].value  === "time" ? true : false;
+            return setting.mode["changestate"].value === "time" ? true : false;
         },
 
         Verify: function( idx ) {

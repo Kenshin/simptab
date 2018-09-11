@@ -77,6 +77,10 @@
         "message": "Change background randomly"
     },
 
+    "setting_background_forever": {
+        "message": "Not Change background"
+    },
+
     "setting_background_position_center": {
         "message": "Align to the center"
     },
