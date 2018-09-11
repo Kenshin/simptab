@@ -223,6 +223,18 @@ define([ "jquery", "waves" ], function( $, Waves ) {
             return value.split(":")[1];
         },
 
+        Only: function() {
+            console.log( setting.origins )
+            var idx = 0, code = -1;
+            setting.origins.forEach( function( origin ) {
+                if ( origin.endsWith( "true" )) {
+                    idx++;
+                    code = origin.split(":")[0];
+                }
+            })
+            return { result: idx == 1 ? true : false, code: code };
+       },
+
         TogglePinState: function( state ) {
             state ? $( ".pinstate" ).fadeIn() : $( ".pinstate" ).fadeOut();
         }
