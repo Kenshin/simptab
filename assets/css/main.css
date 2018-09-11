@@ -183,6 +183,10 @@ body {
     background-image: url("../images/upload.png");
 }
 
+.refreshicon {
+    background-image: url("../images/refresh.png");
+}
+
 .favoriteicon {
     background-image: url("../images/favorite.png");
 }

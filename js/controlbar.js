@@ -151,6 +151,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         });
                         $input.trigger("click");
                         break;
+                    case "refresh":
+                        callBack( url, "time" );
+                        break;
                     case "dislike":
                         var is_dislike = $target.find( "span" ).hasClass( "dislike" );
                         callBack( url, is_dislike );

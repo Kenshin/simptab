@@ -67,6 +67,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
             case "favorite": background.Favorite( result ); break;
             case "dislike" : background.Dislike( result );  break;
             case "pin"     : background.Pin( result );      break;
+            case "refresh" : background.UpdateBg( result ); break;
         }
     });
     setting.Listen( function( type, result ) {

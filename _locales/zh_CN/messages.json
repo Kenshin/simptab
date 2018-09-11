@@ -45,6 +45,10 @@
         "message": "上传背景"
     },
 
+    "controlbar_refresh": {
+        "message": "下一张"
+    },
+
     "controlbar_setting": {
         "message": "设定"
     },

@@ -45,6 +45,10 @@
         "message": "Upload background"
     },
 
+    "controlbar_refresh": {
+        "message": "Refresh background"
+    },
+
     "controlbar_setting": {
         "message": "Settings"
     },

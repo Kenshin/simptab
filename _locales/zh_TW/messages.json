@@ -45,6 +45,10 @@
         "message": "上傳背景"
     },
 
+    "controlbar_refresh": {
+        "message": "下一張"
+    },
+
     "controlbar_setting": {
         "message": "設定"
     },
