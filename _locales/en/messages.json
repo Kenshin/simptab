@@ -137,6 +137,18 @@
         "message": "Add SimpTab"
     },
 
+    "setting_multi_origin_10": {
+        "message": "Add Favorite"
+    },
+
+    "setting_multi_origin_12": {
+        "message": "Add Bing Random"
+    },
+
+    "setting_multi_origin_13": {
+        "message": "Add Bing Today"
+    },
+
     "setting_ts_state_normal": {
         "message": "Hide Top Sites"
     },

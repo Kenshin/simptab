@@ -137,6 +137,18 @@
         "message": "添加 SimpTab 精选集"
     },
 
+    "setting_multi_origin_10": {
+        "message": "添加 收藏夹"
+    },
+
+    "setting_multi_origin_12": {
+        "message": "添加 必应随机背景"
+    },
+
+    "setting_multi_origin_13": {
+        "message": "添加 必应每日更新"
+    },
+
     "setting_ts_state_normal": {
         "message": "常用网址（隐藏模式）"
     },
