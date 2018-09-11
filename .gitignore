@@ -2,6 +2,7 @@
 node_modules/**
 dest-extension/**
 dest-www/**
+.vscode/**
 
 # for mac
 **/.DS_Store
