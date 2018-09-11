@@ -74,7 +74,7 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
             case "tsstate"      : topsites.Refresh( result ); break;
             case "clockstate"   : date.Toggle( result );      break;
             case "positionstate": controlbar.SetBgPosition(); break;
-            case "changestate"  : background.UpdaeteBg( result ); break;
+            case "changestate"  : background.UpdateBg( result ); break;
         }
     });
 

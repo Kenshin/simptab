@@ -407,7 +407,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
             Waves.attach( '.icon', ['waves-circle'] );
         },
-        UpdaeteBg: function( type ) {
+        UpdateBg: function( type ) {
             type == "none" && writePinBackground();
         }
     };
