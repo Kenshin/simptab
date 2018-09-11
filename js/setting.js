@@ -224,7 +224,6 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         },
 
         Only: function() {
-            console.log( setting.origins )
             var idx = 0, code = -1;
             setting.origins.forEach( function( origin ) {
                 if ( origin.endsWith( "true" )) {
