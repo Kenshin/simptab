@@ -10,7 +10,8 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         var defaultOrigins = (function() {
             var origins = [];
             $( ".originstate" ).children().each( function( idx ) {
-                origins.push( idx + ":false" );
+                var suff = ( idx == 9 || idx == 10 || idx == 12 || idx == 13 ) ? ":true" : ":false";
+                origins.push( idx + suff );
             });
             return origins;
         })();
