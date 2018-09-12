@@ -370,7 +370,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                     random = apis.Random( 0, max ),
                     obj    = result[ random ],
                     hdurl  = obj.image + GOOGLE_ART_SUFFIX;
-                    dtd.resolve( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo );
+                dtd.resolve( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo );
             }
             catch( error ) {
                 dtd.reject( new SimpError( apis.vo.method , "Parse googleart.com error, url is " + url, apis.vo ), error );
