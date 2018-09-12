@@ -408,8 +408,10 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             Waves.attach( '.icon', ['waves-circle'] );
         },
         UpdateBg: function( type ) {
-            type == "none" && writePinBackground();
-            type == "time" && this.Get( true );
+            if ( type == "none" ) writePinBackground();
+            if ( type == "time" ) {
+                localStorage[ "simptab-background-state" ] != "success" ? new Notify().Render( i18n.GetLang( "notify_refresh" ) ) : this.Get( true );
+            }
         }
     };
 });

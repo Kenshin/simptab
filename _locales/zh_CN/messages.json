@@ -241,6 +241,10 @@
         "message": "已取消当前背景的固定。"
     },
 
+    "notify_refresh": {
+        "message": "新背景获取中，请稍后才能继续操作。"
+    },
+
     "version_detail": {
         "message": ""
     },
