@@ -357,7 +357,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
         console.log( "=== googleart.com call ===");
 
-        var GOOGLE_ART_NAME   = "google.art.v2.project.json",
+        var dtd               = $.Deferred(),
+            GOOGLE_ART_NAME   = "google.art.v2.project.json",
             GOOGLE_ART_SUFFIX = "=s1920-rw",
             GOOGLE_ART_PREFIX = "https://www.google.com/culturalinstitute/",
             url               = SIMP_API_HOST + GOOGLE_ART_NAME;
@@ -369,13 +370,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                     random = apis.Random( 0, max ),
                     obj    = result[ random ],
                     hdurl  = obj.image + GOOGLE_ART_SUFFIX;
-                apis.defer.resolve( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo );
+                    dtd.resolve( hdurl, hdurl, obj.title, GOOGLE_ART_PREFIX + obj.link, date.Now(), "GooglArtProject Image-" + obj.title, apis.vo.origin, apis.vo );
             }
             catch( error ) {
-              apis.defer.reject( new SimpError( apis.vo.method , "Parse googleart.com error, url is " + url, apis.vo ), error );
+                dtd.reject( new SimpError( apis.vo.method , "Parse googleart.com error, url is " + url, apis.vo ), error );
             }
         });
-        return apis.defer.promise();
+        return dtd;
     }
 
     /*
