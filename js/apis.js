@@ -622,7 +622,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
         console.log( "=== Special day/Holiday background call ===");
 
           var SPECIAL_URL = "special.day.v2.json",
-              def         = $.Deferred(),
+              dtd         = $.Deferred(),
               type        = arguments.length > 0 ? arguments[0] : "special";
 
           apis.Update({ url : SIMP_API_HOST + SPECIAL_URL, method : "apis.special()" });
@@ -643,33 +643,36 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                     key         = date.Today();
                     data        = obj[key];
                     if ( !data ) {
-                        apis.defer.reject( new SimpError( apis.vo.origin, "Current holiday is " + key + ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result ));
-                        return apis.defer.promise();
+                        dtd.reject( new SimpError( apis.vo.origin, "Current holiday is " + key + ", but not any data from " + SIMP_API_HOST + SPECIAL_URL, result ));
+                        return dtd.promise();
                     }
                     max         = data.hdurl.length - 1;
                     random      = apis.Random( 0, max );
                     hdurl       = SIMP_API_HOST + type + "/" + data.hdurl[random] + ".jpg";
                 }
                 apis.Update({ origin : type });
-                apis.defer.resolve( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo );
+                dtd.resolve( hdurl, hdurl, data.name, data.info, date.Now(), data.name, type, apis.vo );
             }
             catch( error ) {
-                apis.defer.reject( new SimpError( apis.vo.origin, "Get special backgrond error.", apis.vo ), error );
+                dtd.reject( new SimpError( apis.vo.origin, "Get special backgrond error.", apis.vo ), error );
             }
           });
-          return apis.defer.promise();
+          //return apis.defer.promise();
+          return dtd;
     }
 
     function init() {
+        var dtd = $.Deferred();
         apis.Stack[ apis.New().origin ]()
         .done( function() {
+            console.log("222222222222")
             var url = arguments && arguments[0];
             // when change background mode is 'day', not invoke vo.isDislike( url )
             if ( !setting.IsRandom() || vo.isDislike( url )) {
                 vo.Create.apply( vo, arguments );
                 vo.new.hdurl = cdns.New( vo.new.hdurl, vo.new.type );
                 vo.new.favorite != -1 && ( vo.new.hdurl = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/" + vo.new.favorite + ".jpg" );
-                deferred.resolve( vo.new );
+                dtd.resolve( vo.new );
             }
             else {
                 new SimpError( apis.vo.origin, "Current background url is dislike url =" + url, apis.vo );
@@ -679,10 +682,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
         .fail( function( result, error ) {
             SimpError.Clone( result, (!error ? result : error));
             if ( apis.vo.origin == "today" ) apis.failed = apis.ORIGINS_MAX;
-            apis.failed < apis.ORIGINS_MAX - 5 ? init() : deferred.reject( result, error );
+            apis.failed < apis.ORIGINS_MAX - 5 ? init() : dtd.reject( result, error );
             apis.failed++;
         });
-        return deferred.promise();
+        return dtd;
     }
 
     return {
