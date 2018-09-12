@@ -41,13 +41,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
             }
 
             APIS.prototype.New = function() {
-                var code   = this.Random( 0, this.ORIGINS_MAX );
-                this.defer = new $.Deferred();
+                var is_today = false,
+                    code     = this.Random( 0, this.ORIGINS_MAX );
+                this.defer   = new $.Deferred();
 
                 // verify background every day && is today is new day
                 // Verify( 13 ) == true && background every time && today is new day
-                if ( ( IsNewDay( Today(), true ) && !IsRandom() ) || 
-                     ( Verify( 13 ) == "true" && IsNewDay( Today(), true ) && IsRandom() ) ) {
+                if ( IsNewDay( Today(), true ) ) { is_today = true; }
+                if ( ( is_today && !IsRandom() ) || 
+                     ( is_today &&  IsRandom() && Verify( 13 ) == "true" ) ) {
                     code = 13;
                 }
                 // verify today is holiday
