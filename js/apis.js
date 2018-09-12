@@ -240,14 +240,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
         console.log( "=== Unsplash.it call ===" );
 
         try {
-          var url    = "https://picsum.photos/1920/1080/?random";
+          var dtd = $.Deferred(),
+              url = "https://picsum.photos/1920/1080/?random"
           apis.Update({ url : url, method: "apis.unsplashIT()", dataType : "image" });
-          apis.defer.resolve( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", apis.vo.origin, apis.vo );
+          dtd.resolve( url, url, "Unsplash.it Image", "#", date.Now(), "Unsplash.it Image", apis.vo.origin, apis.vo );
         }
         catch( error ) {
-          apis.defer.reject( new SimpError( apis.vo.origin , "Parse unsplash.it error, url is " + url, apis.vo ), error );
+            dtd.reject( new SimpError( apis.vo.origin , "Parse unsplash.it error, url is " + url, apis.vo ), error );
         }
-        return apis.defer.promise();
+        return dtd;
     }
 
     /*
