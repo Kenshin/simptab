@@ -467,7 +467,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 dtd.reject( new SimpError( apis.vo.method , "Parse Desktoppr.co error, url is " + url, apis.vo ), error );
             }
         });
-        return dtd.promise();
+        return dtd;
     }
 
     /*
@@ -477,7 +477,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
         console.log( "=== visualhunt.com call ===");
 
-        var VISUALHUNT_NAME = "visualhunt.json",
+        var dtd             = $.Deferred(),
+            VISUALHUNT_NAME = "visualhunt.json",
             VISUALHUNT_HOST = "https://visualhunt.com";
 
         apis.Update({ url : SIMP_API_HOST + VISUALHUNT_NAME, method : "apis.visualhunt()" });
@@ -487,13 +488,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                   random = apis.Random( 0, max ),
                   obj    = result[ random ],
                   url    = obj.url.replace( "http://", "https://" ); // 139-simptab-visualhunt-com-cross-origin-resource-sharing-policy-no-access-control-allow-origin
-              apis.defer.resolve( url, url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo );
+                  dtd.resolve( url, url, "Visualhunt.com Image", VISUALHUNT_HOST + obj.info, date.Now(), "Visualhunt.com Image", apis.vo.origin, apis.vo );
             }
             catch( error ) {
-              apis.defer.reject( new SimpError( apis.vo.method , "Parse visualhunt.com error, url is " + apis.vo.url, apis.vo ), error );
+                dtd.reject( new SimpError( apis.vo.method , "Parse visualhunt.com error, url is " + apis.vo.url, apis.vo ), error );
             }
         });
-        return apis.defer.promise();
+        return dtd;
     }
 
     /*
