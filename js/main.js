@@ -67,7 +67,9 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
             case "favorite": background.Favorite( result ); break;
             case "dislike" : background.Dislike( result );  break;
             case "pin"     : background.Pin( result );      break;
-            case "refresh" : background.UpdateBg( result ); break;
+            case "refresh" :
+                setting.Mode( "changestate" ) == "time" && background.UpdateBg( result );
+                break;
         }
     });
     setting.Listen( function( type, result ) {
@@ -75,7 +77,9 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
             case "tsstate"      : topsites.Refresh( result ); break;
             case "clockstate"   : date.Toggle( result );      break;
             case "positionstate": controlbar.SetBgPosition( true ); break;
-            case "changestate"  : background.UpdateBg( result ); break;
+            case "changestate"  :
+                result == "none" && background.UpdateBg( result );
+                break;
         }
     });
 
