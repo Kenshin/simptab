@@ -445,7 +445,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
         console.log( "=== Desktoppr.co call ===");
 
-        var max    = 4586,
+        var dtd    = $.Deferred(),
+            max    = 4586,
             url    = "https://api.desktoppr.co/1/wallpapers?page=" + apis.Random( 0, max );
 
         apis.Update({ url : url, method : "apis.desktoppr()", timeout: 2000 * 4 });
@@ -460,13 +461,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                       random = apis.Random( 0, max );
                       obj    = response[ random ];
                   }
-                  apis.defer.resolve( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", apis.vo.origin, apis.vo );
+                  dtd.resolve( obj.image.url, obj.image.url, "Desktoppr.co Image", obj.url, date.Now(), "Desktoppr.co Image", apis.vo.origin, apis.vo );
             }
             catch ( error ) {
-                apis.defer.reject( new SimpError( apis.vo.method , "Parse Desktoppr.co error, url is " + url, apis.vo ), error );
+                dtd.reject( new SimpError( apis.vo.method , "Parse Desktoppr.co error, url is " + url, apis.vo ), error );
             }
         });
-        return apis.defer.promise();
+        return dtd.promise();
     }
 
     /*
