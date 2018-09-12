@@ -219,16 +219,17 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
       var unsplash_ids = [ "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ];
       try {
-          var max    = unsplash_ids.length - 1,
+          var dtd    = $.Deferred(),
+              max    = unsplash_ids.length - 1,
               id     = unsplash_ids[ apis.Random( 0, max ) ],
               url    = "https://source.unsplash.com/" + id + "/2560×1600";
           apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
-          apis.defer.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
+          dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
       }
       catch ( error ) {
-        apis.defer.reject( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
+        dtd.reject( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
       }
-      return apis.defer.promise();
+      return dtd;
     }
 
     /*
