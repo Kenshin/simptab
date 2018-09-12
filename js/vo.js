@@ -65,11 +65,11 @@ define([ "jquery" ], function( $ ) {
     };
 
     VO.prototype.Set = function( result ) {
-            chrome.storage.local.set( { "simptab-background" : result });
+        chrome.storage.local.set( { "simptab-background" : result });
     };
 
     VO.prototype.Get = function ( callBack ) {
-            return chrome.storage.local.get( "simptab-background", callBack );
+        return chrome.storage.local.get( "simptab-background", callBack );
     };
 
     VO.prototype.Verify = function() {
