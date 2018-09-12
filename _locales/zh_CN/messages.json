@@ -245,6 +245,10 @@
         "message": "新背景获取中，请稍后才能继续操作。"
     },
 
+    "notify_not_refresh": {
+        "message": "只在随机更换背景时才能使用此功能。"
+    },
+
     "version_detail": {
         "message": ""
     },

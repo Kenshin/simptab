@@ -245,6 +245,10 @@
         "message": "New background loading, please wait a moment."
     },
 
+    "notify_not_refresh": {
+        "message": "Use only when When Change background randomly is enable."
+    },
+
     "version_detail": {
         "message": ""
     },
