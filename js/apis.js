@@ -673,7 +673,6 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
         var dtd = $.Deferred();
         apis.Stack[ apis.New().origin ]()
         .done( function() {
-            console.log("222222222222")
             var url = arguments && arguments[0];
             // when change background mode is 'day', not invoke vo.isDislike( url )
             if ( !setting.IsRandom() || vo.isDislike( url )) {
