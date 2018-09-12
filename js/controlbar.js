@@ -32,6 +32,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     }
 
     function setBackground( url ) {
+        if ( localStorage[ "simptab-background-update" ] == "true" ) return;
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 
@@ -137,7 +138,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                     case "download":
                         // hack code( when 'unsplash.com' or 'nasa.gov' image download, new tab happen crash error. )
                         //if ( vo.cur.type != "unsplash.com" && vo.cur.type != "nasa.gov" ) {
-                        event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
+                        //event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
                         //}
                         break;
                     case "upload":

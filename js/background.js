@@ -168,6 +168,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
             // sync vo
             isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
+            localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
         }
     }
@@ -176,6 +177,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
         // re-set (hide) progress bar
         progress.Set( "remotefailed" );
+
+        // re-set simptab-background-update
+        localStorage[ "simptab-background-update" ] = "false";
 
         // when bing.com( today ) remote failed, set vo.new == vo.cur and refresh current backgrond
         if ( error.data.apis_vo && error.data.apis_vo.origin == "today" && vo.cur && vo.cur.type != "default" ) {
@@ -217,6 +221,20 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 progress.Set( "pinnedsuccess" );
                 console.log( "======= Current background dispin success.", vo )
             });
+    }
+
+    function updateBackground() {
+        var url = 'filesystem:chrome-extension://gickmhcojddhnceiemdmbaollkmchefo/temporary/background.jpg' + '?' + +new Date() ;
+        // change background
+        $( "body" ).css( "background-image", 'url("' + url + '")' );
+        // change background mask
+        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+        $( "body" ).find( ".img-bg > img" ).attr( "src", url );
+        // change conntrolbar download url and info
+        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
+        $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.new.type );
+        // re-set simptab-background-update
+        localStorage[ "simptab-background-update" ] = "false";
     }
 
     return {
@@ -410,7 +428,11 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         UpdateBg: function( type ) {
             if ( type == "none" ) writePinBackground();
             if ( type == "time" ) {
-                localStorage[ "simptab-background-state" ] != "success" ? new Notify().Render( i18n.GetLang( "notify_refresh" ) ) : this.Get( true );
+                if ( localStorage[ "simptab-background-state" ] != "success" && localStorage[ "simptab-background-state" ] != "remotefailed" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
+                else {
+                    localStorage[ "simptab-background-update" ] = "true";
+                    this.Get( true );
+                }
             }
         }
     };
