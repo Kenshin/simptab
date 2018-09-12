@@ -569,10 +569,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
         console.log( "=== Favorite background call ===");
 
         try {
-            var arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
+            var dtd = $.Deferred(),
+                arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
-                apis.defer.reject( new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo ));
-                return apis.defer.promise();
+                dtd.reject( new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo ));
+                return dtd;
             }
 
             var max    = arr.length - 1,
@@ -582,16 +583,16 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
             console.log( "Get favorite background is ", JSON.parse( obj.result ) );
             // verify favorite data structure
             if ( !vo.Verify.call( result ))  {
-                apis.defer.reject( new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo }));
+                dtd.reject( new SimpError( "favorite", "Current 'simptab-favorites' vo structure error.", { result : result, apis_vo : apis.vo }));
             }
             else {
-                setTimeout( function(){ apis.defer.resolve( result.url, result.url, result.name, result.info, result.enddate, result.shortname, result.type, result.apis_vo, result.favorite ); }, 1000 );
+                setTimeout( function(){ dtd.resolve( result.url, result.url, result.name, result.info, result.enddate, result.shortname, result.type, result.apis_vo, result.favorite ); }, 1000 );
             }
         }
         catch( error ) {
-            apis.defer.reject( new SimpError( "favorite", "Current 'simptab-favorites' data structure error.", apis.vo ), error );
+            dtd.reject( new SimpError( "favorite", "Current 'simptab-favorites' data structure error.", apis.vo ), error );
         }
-        return apis.defer.promise();
+        return dtd;
     }
 
     /*
