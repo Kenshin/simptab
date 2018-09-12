@@ -409,6 +409,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         },
         UpdateBg: function( type ) {
             type == "none" && writePinBackground();
+            type == "time" && this.Get( true );
         }
     };
 });
