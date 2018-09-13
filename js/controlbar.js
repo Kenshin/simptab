@@ -173,6 +173,8 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         setting.TogglePinState( !is_pinned );
                         callBack( url, is_pinned );
                         break;
+                    case "manage":
+                        break;
                 }
             });
         },
