@@ -183,6 +183,10 @@ body {
     background-image: url("../images/upload.png");
 }
 
+.refreshicon {
+    background-image: url("../images/refresh.png");
+}
+
 .favoriteicon {
     background-image: url("../images/favorite.png");
 }
@@ -305,14 +309,25 @@ body {
 }
 
 .originstate .lineradio:nth-of-type(6),
-.originstate .lineradio:nth-of-type(9) {
+.originstate .lineradio:nth-of-type(9),
+.originstate .lineradio:nth-of-type(12) {
     display: none!important;
 }
 
-.originstate .lineradio:last-child {
+.originstate .lineradio:nth-child(10) {
     margin-top: 26px;
+}
+
+.originstate .lineradio:nth-child(10),
+.originstate .lineradio:nth-child(11),
+.originstate .lineradio:nth-child(13),
+.originstate .lineradio:nth-child(14) {
     font-weight: bold;
     background-color: #1dba90;
+}
+
+.originstate .lineradio:nth-child(10) {
+    background-color: #008962;
 }
 
 .pinstate {
@@ -732,6 +747,21 @@ img {
 
     background: #fff;
     border: 1px solid #bbb;
+}
+
+.bgeffect {
+    position: absolute;
+    background-size: cover;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: -100px;
+    transition: 1s all;
+
+    overflow: hidden;
 }
 
 @media screen and (min-height:820px) {

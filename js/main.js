@@ -36,7 +36,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves" ], function ( $, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves ) {
+requirejs([ "jquery", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves" ], function ( $, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves ) {
 
     progress.Init();
 
@@ -67,13 +67,21 @@ requirejs([ "jquery", "background", "date" , "controlbar", "setting", "i18n", "s
             case "favorite": background.Favorite( result ); break;
             case "dislike" : background.Dislike( result );  break;
             case "pin"     : background.Pin( result );      break;
+            case "refresh" :
+                setting.Mode( "changestate" ) == "time" ? 
+                    background.UpdateBg( result ) : 
+                    new Notify().Render( 2, i18n.GetLang( "notify_not_refresh" ) );
+                break;
         }
     });
     setting.Listen( function( type, result ) {
         switch ( type) {
             case "tsstate"      : topsites.Refresh( result ); break;
             case "clockstate"   : date.Toggle( result );      break;
-            case "positionstate": controlbar.SetBgPosition(); break;
+            case "positionstate": controlbar.SetBgPosition( true ); break;
+            case "changestate"  :
+                result == "none" && background.UpdateBg( result );
+                break;
         }
     });
 

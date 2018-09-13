@@ -45,6 +45,10 @@
         "message": "Upload background"
     },
 
+    "controlbar_refresh": {
+        "message": "Refresh background"
+    },
+
     "controlbar_setting": {
         "message": "Settings"
     },
@@ -75,6 +79,10 @@
 
     "setting_background_every_time": {
         "message": "Change background randomly"
+    },
+
+    "setting_background_forever": {
+        "message": "Not Change background"
     },
 
     "setting_background_position_center": {
@@ -135,6 +143,18 @@
 
     "setting_multi_origin_9": {
         "message": "Add SimpTab"
+    },
+
+    "setting_multi_origin_10": {
+        "message": "Add Favorite origins"
+    },
+
+    "setting_multi_origin_12": {
+        "message": "Add Bing Random"
+    },
+
+    "setting_multi_origin_13": {
+        "message": "Add Bing Today"
     },
 
     "setting_ts_state_normal": {
@@ -219,6 +239,14 @@
 
     "notify_pin_del": {
         "message": "Background pinning is cancelled."
+    },
+
+    "notify_refresh": {
+        "message": "New background loading, please wait a moment."
+    },
+
+    "notify_not_refresh": {
+        "message": "Use only when When Change background randomly is enable."
     },
 
     "version_detail": {

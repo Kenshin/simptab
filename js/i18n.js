@@ -14,16 +14,18 @@ define([ "jquery" ], function( $ ) {
         $($( ".controlbar" ).children()[3]).find( ".tooltip" ).text( i18n( "controlbar_info" ));
         $($( ".controlbar" ).children()[4]).find( ".tooltip" ).text( i18n( "controlbar_download" ));
         $($( ".controlbar" ).children()[5]).find( ".tooltip" ).text( i18n( "controlbar_upload" ));
-        $($( ".controlbar" ).children()[6]).find( ".tooltip" ).text( i18n( "controlbar_setting" ));
-        $($( ".controlbar" ).children()[7]).find( ".tooltip" ).text( i18n( "controlbar_favorite" ));
-        $($( ".controlbar" ).children()[8]).find( ".tooltip" ).text( i18n( "controlbar_pin" ));
-        $($( ".controlbar" ).children()[9]).find( ".tooltip" ).text( i18n( "controlbar_dislike" ));
+        $($( ".controlbar" ).children()[6]).find( ".tooltip" ).text( i18n( "controlbar_refresh" ));
+        $($( ".controlbar" ).children()[7]).find( ".tooltip" ).text( i18n( "controlbar_setting" ));
+        $($( ".controlbar" ).children()[8]).find( ".tooltip" ).text( i18n( "controlbar_favorite" ));
+        $($( ".controlbar" ).children()[9]).find( ".tooltip" ).text( i18n( "controlbar_pin" ));
+        $($( ".controlbar" ).children()[10]).find( ".tooltip" ).text( i18n( "controlbar_dislike" ));
     }
 
     function setting() {
 
-        $($( ".changestate" ).find("label:first")).text( i18n( "setting_background_every_day" ));
-        $($( ".changestate" ).find("label:last" )).text( i18n( "setting_background_every_time" ));
+        $($( ".changestate" ).find("label")[0]).text( i18n( "setting_background_every_day" ));
+        $($( ".changestate" ).find("label" )[1]).text( i18n( "setting_background_every_time" ));
+        $($( ".changestate" ).find("label" )[2]).text( i18n( "setting_background_forever" ));
 
         $($( ".positionstate" ).find("label:first")).text( i18n( "setting_background_position_center" ));
         $($( ".positionstate" ).find("label" )[1]).text( i18n( "setting_background_position_corner" ));

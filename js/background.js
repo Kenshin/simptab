@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves" ], function( $, date, i18n, apis, vo, files, controlbar, SimpError, Notify, progress, Waves ) {
+define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves ) {
 
     "use strict";
 
@@ -25,17 +25,19 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                     def.resolve(1);
                 }
                 else {
-                    if ( date.IsNewDay( date.Today() ) || ( !is_random && date.Today() != vo.cur.enddate ) ) {
+                    if ( setting.Mode( "changestate" ) == "none" ) {
+                        def.resolve(4);
+                    } else if ( setting.Mode( "changestate" ) == "day" && !date.IsNewDay( date.Today() ) ) {
+                        def.resolve(4);
+                    } else if ( date.IsNewDay( date.Today() ) || ( !is_random && date.Today() != vo.cur.enddate ) ) {
                         //// set background refresh
                         localStorage["simptab-background-refresh"] = "true";
                         //// only call api. type 3
                         def.resolve(3);
-                    }
-                    else if ( is_random && isPinTimeout() ) {
+                    } else if ( is_random && isPinTimeout() ) {
                         //// set current background and call api. type 2
                         def.resolve(2);
-                    }
-                    else {
+                    } else {
                         //// set current background and not-call api. type 4
                         def.resolve(4);
                     }
@@ -166,6 +168,7 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
             // sync vo
             isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
+            localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
         }
     }
@@ -174,6 +177,10 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
 
         // re-set (hide) progress bar
         progress.Set( "remotefailed" );
+
+        // re-set simptab-background-update
+        localStorage[ "simptab-background-update" ] = "false";
+        bgeffect( "delete" );
 
         // when bing.com( today ) remote failed, set vo.new == vo.cur and refresh current backgrond
         if ( error.data.apis_vo && error.data.apis_vo.origin == "today" && vo.cur && vo.cur.type != "default" ) {
@@ -215,6 +222,37 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
                 progress.Set( "pinnedsuccess" );
                 console.log( "======= Current background dispin success.", vo )
             });
+    }
+
+    function updateBackground() {
+        var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() ;
+        // change background
+        $( "body" ).css( "background-image", 'url("' + url + '")' );
+        // change background mask
+        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+        $( "body" ).find( ".img-bg > img" ).attr( "src", url );
+        // change conntrolbar download url and info
+        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
+        $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.new.type );
+
+        bgeffect( "delete" );
+        // re-set simptab-background-update
+        localStorage[ "simptab-background-update" ] = "false";
+    }
+
+    function bgeffect( type ) {
+        var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date();
+        if ( type == "add" ) {
+            $( "body" ).append( '<div class="bgeffect" style="background-image: url(' + url +');"></div>' );
+            setTimeout( function() {
+                $( "body" ).find( ".bgeffect" ).css( 'filter', 'blur(50px)' );
+            }, 1 );
+        } else {
+            $( ".bgeffect" ).css( 'background-image', 'url(' + url +')' );
+            $( ".bgeffect" ).animate({'opacity': '0'}, 1000, function() {
+                $( ".bgeffect" ).remove();
+            });
+        }
     }
 
     return {
@@ -404,6 +442,17 @@ define([ "jquery", "date", "i18n", "apis", "vo", "files", "controlbar", "error",
             controlbar.setPinIcon();
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
             Waves.attach( '.icon', ['waves-circle'] );
+        },
+        UpdateBg: function( type ) {
+            if ( type == "none" ) writePinBackground();
+            if ( type == "time" ) {
+                if ( localStorage[ "simptab-background-state" ] != "success" && localStorage[ "simptab-background-state" ] != "remotefailed" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
+                else {
+                    localStorage[ "simptab-background-update" ] = "true";
+                    bgeffect( "add" );
+                    this.Get( true );
+                }
+            }
         }
     };
 });

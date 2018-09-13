@@ -45,6 +45,10 @@
         "message": "上傳背景"
     },
 
+    "controlbar_refresh": {
+        "message": "下一張"
+    },
+
     "controlbar_setting": {
         "message": "設定"
     },
@@ -75,6 +79,10 @@
 
     "setting_background_every_time": {
         "message": "隨機更換背景"
+    },
+
+    "setting_background_forever": {
+        "message": "只顯示當前背景"
     },
 
     "setting_background_position_center": {
@@ -135,6 +143,18 @@
 
     "setting_multi_origin_9": {
         "message": "添加 SimpTab 精選集"
+    },
+
+    "setting_multi_origin_10": {
+        "message": "添加 收藏夾背景源"
+    },
+
+    "setting_multi_origin_12": {
+        "message": "添加 必應隨機背景"
+    },
+
+    "setting_multi_origin_13": {
+        "message": "添加 必應每日更新"
     },
 
     "setting_ts_state_normal": {
@@ -219,6 +239,14 @@
 
     "notify_pin_del": {
         "message": "已取消當前背景的固定。"
+    },
+
+    "notify_refresh": {
+        "message": "新背景獲取中，請稍後才能繼續操作。"
+    },
+
+    "notify_not_refresh": {
+        "message": "只在隨機更換背景時才能使用此功能。"
     },
 
     "version_detail": {

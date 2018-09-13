@@ -10,7 +10,8 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         var defaultOrigins = (function() {
             var origins = [];
             $( ".originstate" ).children().each( function( idx ) {
-                origins.push( idx + ":false" );
+                var suff = ( idx == 9 || idx == 10 || idx == 12 || idx == 13 ) ? ":true" : ":false";
+                origins.push( idx + suff );
             });
             return origins;
         })();
@@ -68,25 +69,25 @@ define([ "jquery", "waves" ], function( $, Waves ) {
                 "changestate" : {
                     value  : getLS( "simptab-background-mode" ),
                     type   : "simptab-background-mode",
-                    vals   : [ "day","time" ],
+                    vals   : [ "day", "time", "none" ],
                     default: 1
                 },
                 "positionstate" : {
-                    value  : getLS( "simptab-background-position"  ),
+                    value  : getLS( "simptab-background-position" ),
                     type   : "simptab-background-position",
                     vals   : [ "center", "corner", "mask" ],
                     default: 1
                 },
                 "clockstate" : {
-                    value  : getLS( "simptab-background-clock"  ),
+                    value  : getLS( "simptab-background-clock" ),
                     type   : "simptab-background-clock",
-                    vals   : [ "show","hide" ],
+                    vals   : [ "show", "hide" ],
                     default: 0
                 },
                 "tsstate"  : {
                     value  : getLS( "simptab-topsites" ),
                     type   : "simptab-topsites",
-                    vals   : [ "normal","simple", "senior" ],
+                    vals   : [ "normal", "simple", "senior" ],
                     default: 1
                 },
                 "pinstate"  : {
@@ -213,7 +214,7 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         },
 
         IsRandom: function() {
-          return setting.mode["changestate"].value  === "time" ? true : false;
+            return setting.mode["changestate"].value === "time" ? true : false;
         },
 
         Verify: function( idx ) {
@@ -222,6 +223,16 @@ define([ "jquery", "waves" ], function( $, Waves ) {
 
             return value.split(":")[1];
         },
+
+        Only: function() {
+            var code = 14;
+            setting.origins.forEach( function( origin, index ) {
+                if ( origin.endsWith( "true" ) && index != 13 ) {
+                    code = origin.split(":")[0];
+                }
+            });
+            return code;
+       },
 
         TogglePinState: function( state ) {
             state ? $( ".pinstate" ).fadeIn() : $( ".pinstate" ).fadeOut();
