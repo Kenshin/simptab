@@ -224,7 +224,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     }
 
     function updateBackground() {
-        var url = 'filesystem:chrome-extension://gickmhcojddhnceiemdmbaollkmchefo/temporary/background.jpg' + '?' + +new Date() ;
+        var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() ;
         // change background
         $( "body" ).css( "background-image", 'url("' + url + '")' );
         // change background mask
