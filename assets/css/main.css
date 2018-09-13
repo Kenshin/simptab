@@ -820,6 +820,7 @@ img {
 
 .manage {
     display: flex;
+    flex-direction: column;
 
     width: 850px;
     height: 600px;
@@ -855,6 +856,18 @@ img {
 .manage .tab:nth-child(2) {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+}
+
+.manage .album {
+    display: flex;
+    flex-flow: row wrap;
+
+    width: 100%;
+    height: 100%;
+}
+
+.manage .album .photograph {
+    margin: 10px;
 }
 
 @media screen and (min-height:820px) {
