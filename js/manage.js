@@ -5,7 +5,10 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error" ], function( $, _, i1
 
     return {
         Render: function () {
-            //TO-DO
+            $( "body" ).append( '<div class="manage-overlay"><div class="manage-bg"><div class="manage"></div></div></div>' );
+            setTimeout( function() {
+                $( ".manage-bg" ).addClass( "manage-bg-show" );
+            }, 10 );
         }
     };
 });

@@ -785,6 +785,49 @@ img {
     overflow: hidden;
 }
 
+.manage-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,.5);
+}
+
+.manage-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    transform: translateY( 20% );
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.manage-bg-show {
+    opacity: 1;
+    transform: translateY( 0 );
+}
+
+.manage {
+    display: flex;
+
+    width: 850px;
+    height: 600px;
+
+    color: rgb(202, 204, 206);
+    background: rgb(47, 52, 55);
+}
+
 @media screen and (min-height:820px) {
 
     body {
