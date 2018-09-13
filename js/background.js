@@ -180,6 +180,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
         // re-set simptab-background-update
         localStorage[ "simptab-background-update" ] = "false";
+        bgeffect( "delete" );
 
         // when bing.com( today ) remote failed, set vo.new == vo.cur and refresh current backgrond
         if ( error.data.apis_vo && error.data.apis_vo.origin == "today" && vo.cur && vo.cur.type != "default" ) {
