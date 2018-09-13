@@ -24,7 +24,8 @@ requirejs.config({
       "topsites"   : "js/topsites",
       "version"    : "js/version",
       "progress"   : "js/progress",
-      "cdns"       : "js/cdns"
+      "cdns"       : "js/cdns",
+      "manage"     : "js/manage"
     },
     shim: {
       "mousetrap"    : {

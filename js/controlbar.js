@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n, vo, date, files, setting ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], function( $, i18n, vo, date, files, setting, manage ) {
 
     "use strict";
 
@@ -174,6 +174,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         callBack( url, is_pinned );
                         break;
                     case "manage":
+                        manage.Render();
                         break;
                 }
             });
