@@ -828,6 +828,35 @@ img {
     background: rgb(47, 52, 55);
 }
 
+.manage .tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+}
+
+.manage .tab-active {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.manage .tab {
+    padding: 5px 15px;
+    border: 1px solid rgb(202, 204, 206);
+    cursor: pointer;
+}
+
+.manage .tab:nth-child(1) {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.manage .tab:nth-child(2) {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
 @media screen and (min-height:820px) {
 
     body {
