@@ -839,16 +839,22 @@ img {
 }
 
 .manage .tab-active {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .manage .tab {
-    padding: 5px 15px;
+    padding: 5px 35px;
     border: 1px solid rgb(202, 204, 206);
     cursor: pointer;
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.manage .tab:hover {
+    background: rgba(255, 255, 255, 0.07);
 }
 
 .manage .tab:nth-child(1) {
+    border-right: none;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
@@ -859,7 +865,7 @@ img {
 }
 
 .manage .album {
-    display: flex;
+    display: none;
     flex-flow: row wrap;
 
     width: 100%;

@@ -13,6 +13,14 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error" ], function( $, _, i1
                 </div>\
                ';
 
+    function tabListenEvent() {
+        $( ".manage .tab" ).click( function( event ) {
+            var $target = $( event.target );
+            $( ".manage .tab" ).removeClass( "tab-active" );
+            $target.addClass( "tab-active" );
+        });
+    }
+
     function getFavoriteTmpl() {
         var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %><div class="photograph"><%- album %></div><% }); %>', { 'imports': { 'jq': jQuery }} );
         return compiled({ 'albums': [ 'fred', 'barney' ] });
@@ -27,6 +35,7 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error" ], function( $, _, i1
             setTimeout( function() {
                 $( ".manage-bg" ).addClass( "manage-bg-show" );
                 $( ".manage" ).html( html );
+                tabListenEvent();
             }, 10 );
         }
     };
