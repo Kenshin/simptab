@@ -433,6 +433,7 @@ body {
 /*
 * tooltip
 */
+/*
 .tooltip {
     font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
 
@@ -481,7 +482,6 @@ body {
 
 .tooltip-top {
     position: relative;
-    /*cursor: pointer;*/
     padding: 0;
     text-transform: none;
 }
@@ -522,6 +522,7 @@ body {
 .tooltip-top:last-child:after {
     left: -63px;
 }
+*/
 
 /*
 * bottom, inlcude: topsites and senior
