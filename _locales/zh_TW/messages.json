@@ -53,6 +53,10 @@
         "message": "設定"
     },
 
+    "controlbar_manage": {
+        "message": "背景管理器"
+    },
+
     "controlbar_favorite": {
         "message": "收藏"
     },
