@@ -97,6 +97,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                 });
             });
 
+            $( ".controlink[url=setting]" ).mouseenter( function( event ) {
+                $( ".controlink[url=setting]" ).prev().addClass( "children-show" );
+            });
+
+            $($( ".controlbar .tooltip-left" )[7]).mouseleave( function( event ) {
+                $( ".controlink[url=setting]" ).prev().removeClass( "children-show" );
+            });
+
             // listen control link
             $( ".controlink" ).click( function( event ) {
                 var $target =  $( event.currentTarget ),

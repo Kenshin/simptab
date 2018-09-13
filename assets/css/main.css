@@ -121,6 +121,10 @@ body {
     opacity: 1;
 }
 
+.controlbar li {
+    list-style: none;
+}
+
 .controlbar a {
     margin: 10px;
 
@@ -136,6 +140,18 @@ body {
 
 .controlbar a:hover {
     /*background: rgba(255, 255, 255,.4);*/
+    opacity: 1;
+}
+
+.children {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transition: all .6s ease;
+}
+
+.children-show {
+    transform: translateX(-60px);
     opacity: 1;
 }
 
@@ -213,6 +229,10 @@ body {
 
 .settingicon {
     background-image: url("../images/setting.png");
+}
+
+.manageicon {
+    background-image: url("../images/manage.png");
 }
 
 /*
