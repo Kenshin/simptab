@@ -872,6 +872,10 @@ img {
     height: 100%;
 }
 
+.manage .album-active {
+    display: flex;
+}
+
 .manage .album .photograph {
     margin: 10px;
 }

@@ -4,20 +4,24 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error" ], function( $, _, i1
     "use strict";
 
     var tmpl = '<div class="tabs">\
-                    <div class="tab tab-active">收藏</div>\
-                    <div class="tab">订阅</div>\
+                    <div class="tab tab-active" idx="0">收藏</div>\
+                    <div class="tab" idx="1">订阅</div>\
                 </div>\
                 <div class="albums">\
-                    <div class="album favorite"><%= favorite %></div>\
+                    <div class="album favorite album-active"><%= favorite %></div>\
                     <div class="album subscribe"></div>\
                 </div>\
                ';
 
     function tabListenEvent() {
         $( ".manage .tab" ).click( function( event ) {
-            var $target = $( event.target );
+            var $target = $( event.target ),
+                idx     = $target.attr( "idx" );
             $( ".manage .tab" ).removeClass( "tab-active" );
             $target.addClass( "tab-active" );
+
+            $( ".manage .album" ).removeClass( "album-active" );
+            $( $( ".manage .album" )[idx] ).addClass( "album-active" );
         });
     }
 
