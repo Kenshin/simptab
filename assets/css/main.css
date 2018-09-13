@@ -749,6 +749,21 @@ img {
     border: 1px solid #bbb;
 }
 
+.bgeffect {
+    position: absolute;
+    background-size: cover;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: -100px;
+    transition: 1s all;
+
+    overflow: hidden;
+}
+
 @media screen and (min-height:820px) {
 
     body {

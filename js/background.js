@@ -233,8 +233,25 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         // change conntrolbar download url and info
         $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
         $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.new.type );
+
+        bgeffect( "delete" );
         // re-set simptab-background-update
         localStorage[ "simptab-background-update" ] = "false";
+    }
+
+    function bgeffect( type ) {
+        var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date();
+        if ( type == "add" ) {
+            $( "body" ).append( '<div class="bgeffect" style="background-image: url(' + url +');"></div>' );
+            setTimeout( function() {
+                $( "body" ).find( ".bgeffect" ).css( 'filter', 'blur(50px)' );
+            }, 1 );
+        } else {
+            $( ".bgeffect" ).css( 'background-image', 'url(' + url +')' );
+            $( ".bgeffect" ).animate({'opacity': '0'}, 1000, function() {
+                $( ".bgeffect" ).remove();
+            });
+        }
     }
 
     return {
@@ -431,6 +448,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 if ( localStorage[ "simptab-background-state" ] != "success" && localStorage[ "simptab-background-state" ] != "remotefailed" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
                 else {
                     localStorage[ "simptab-background-update" ] = "true";
+                    bgeffect( "add" );
                     this.Get( true );
                 }
             }
