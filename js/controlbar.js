@@ -101,7 +101,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                 $( ".controlink[url=setting]" ).prev().addClass( "children-show" );
             });
 
-            $($( ".controlbar .tooltip-left" )[7]).mouseleave( function( event ) {
+            $($( ".controlbar li" )[7]).mouseleave( function( event ) {
                 $( ".controlink[url=setting]" ).prev().removeClass( "children-show" );
             });
 
