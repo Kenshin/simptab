@@ -205,6 +205,26 @@
         "message": "不支持當前關鍵字："
     },
 
+    "manage_tab_fav": {
+        "message": "收藏"
+    },
+
+    "manage_tab_sub": {
+        "message": "訂閱"
+    },
+
+    "manage_toolbar_use": {
+        "message": "使用當前背景"
+    },
+
+    "manage_toolbar_down": {
+        "message": "下載"
+    },
+
+    "manage_toolbar_remove": {
+        "message": "刪除"
+    },
+
     "version_title": {
         "message": "簡 Tab 版本提示"
     },

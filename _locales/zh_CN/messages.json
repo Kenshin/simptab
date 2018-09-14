@@ -205,6 +205,26 @@
         "message": "不支持当前关键字："
     },
 
+    "manage_tab_fav": {
+        "message": "收藏"
+    },
+
+    "manage_tab_sub": {
+        "message": "订阅"
+    },
+
+    "manage_toolbar_use": {
+        "message": "使用当前背景"
+    },
+
+    "manage_toolbar_down": {
+        "message": "下载"
+    },
+
+    "manage_toolbar_remove": {
+        "message": "删除"
+    },
+
     "version_title": {
         "message": "简 Tab 版本提示"
     },

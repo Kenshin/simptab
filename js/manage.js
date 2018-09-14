@@ -4,8 +4,8 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function(
     "use strict";
 
     var tmpl = '<div class="tabs">\
-                    <div class="tab tab-active" idx="0">收藏</div>\
-                    <div class="tab" idx="1">订阅</div>\
+                    <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
+                    <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
                 </div>\
                 <div class="albums">\
                     <div class="album favorite album-active">Loading...</div>\
@@ -15,9 +15,9 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function(
         album = '<div class="photograph">\
                     <img src=<%- album %>>\
                     <ul class="toolbox">\
-                        <li><span data-balloon="设置为当前背景" data-balloon-pos="up" class="useicon"></span></li>\
-                        <li><span data-balloon="下载" data-balloon-pos="up" class="downicon"></span></li>\
-                        <li><span data-balloon="删除" data-balloon-pos="up" class="removeicon"></span></li>\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
                     </ul>\
                 </div>';
 

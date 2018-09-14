@@ -205,6 +205,26 @@
         "message": "Not supported keywords: "
     },
 
+    "manage_tab_fav": {
+        "message": "Favorite"
+    },
+
+    "manage_tab_sub": {
+        "message": "Subscribe"
+    },
+
+    "manage_toolbar_use": {
+        "message": "Set current Background"
+    },
+
+    "manage_toolbar_down": {
+        "message": "Download Background"
+    },
+
+    "manage_toolbar_remove": {
+        "message": "Remove Background"
+    },
+
     "version_title": {
         "message": "SimpTab is updated"
     },
