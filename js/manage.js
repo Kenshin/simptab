@@ -48,6 +48,9 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function(
                 case "useicon":
                     break;
                 case "downicon":
+                    var url  = $( event.target ).parent().parent().prev().attr( "src" ),
+                        name = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" )
+                    files.Download( url, name );
                     break;
                 case "removeicon":
                     break;
