@@ -894,6 +894,13 @@ img {
     display: flex;
 }
 
+.manage .album .empty {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    width: 100%;
+}
+
 .manage .album .photograph {
     display: flex;
     flex-direction: column;
