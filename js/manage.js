@@ -3,7 +3,8 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     "use strict";
 
-    var tmpl = '<div class="tabs">\
+    var tmpl = '<div class="close"><span class="close"></span></div>\
+                <div class="tabs">\
                     <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
                     <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
                 </div>\
@@ -20,6 +21,15 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
                     </ul>\
                 </div>';
+
+    function closeListenEvent() {
+        $( ".manage .close" ).click( function( event ) {
+            $( ".manage-bg" ).removeClass( "manage-bg-show" );
+            setTimeout( function() {
+                $( ".manage-overlay" ).remove();
+            }, 400 );
+        });
+    }
 
     function tabListenEvent() {
         $( ".manage .tab" ).click( function( event ) {
@@ -109,6 +119,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
             setTimeout( function() {
                 $( ".manage-bg" ).addClass( "manage-bg-show" );
                 $( ".manage" ).html( html );
+                closeListenEvent();
                 tabListenEvent();
                 getFavoriteTmpl();
             }, 10 );

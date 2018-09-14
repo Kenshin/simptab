@@ -819,6 +819,8 @@ img {
 }
 
 .manage {
+    position: relative;
+
     display: flex;
     flex-direction: column;
 
@@ -829,6 +831,13 @@ img {
     background: rgb(47, 52, 55);
 
     box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
+}
+
+.manage .close {
+    position: absolute;
+
+    top: 5px;
+    right: 5px;
 }
 
 .manage .tabs {
@@ -910,6 +919,7 @@ img {
     list-style-type: none;
 }
 
+.manage .close span,
 .manage .album .photograph ul li span {
     display: block;
 
@@ -930,6 +940,7 @@ img {
     background-image: url("../images/down.png");
 }
 
+.manage .close span.close,
 .manage .album .photograph ul li span.removeicon {
     background-image: url("../images/remove.png");
 }
