@@ -1,5 +1,5 @@
 
-define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function( $, _, i18n, vo, date, SimpError, files ) {
+define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ], function( $, _, Notify, i18n, vo, date, SimpError, files ) {
 
     "use strict";
 
@@ -49,10 +49,21 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function(
                     break;
                 case "downicon":
                     var url  = $( event.target ).parent().parent().prev().attr( "src" ),
-                        name = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" )
+                        name = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" );
                     files.Download( url, name );
                     break;
                 case "removeicon":
+                    var url  = $( event.target ).parent().parent().prev().attr( "src" ),
+                        name = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
+                    files.Delete( name, function( result ) {
+                        new Notify().Render( "已删除当前背景" );
+                        $( event.target ).parent().parent().parent().slideUp( function(){
+                            $( event.target ).parent().parent().parent().remove();
+                        });
+                        files.DeleteFavorite( files.FavoriteVO(), name );
+                    }, function( error ) {
+                        new Notify().Render( 2, "删除错误，请重新操作。" );
+                    });
                     break;
             }
         });
