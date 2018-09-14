@@ -35,6 +35,7 @@ define([ "jquery" ], function( $ ) {
     VO.DEFAULT_BACKGROUND = "../assets/images/background.jpg";
     VO.CURRENT_BACKGROUND = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
     VO.BACKGROUND         = "background.jpg";
+    VO.FAVORITE           ="filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/";
 
     VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, apis_vo, favorite ) {
 
