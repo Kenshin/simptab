@@ -143,7 +143,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
                         console.log("Directory: " + entry.fullPath );
                       }
                       else if ( entry.isFile ) {
-                        console.log("File: " + entry.fullPath );
+                        //console.log("File: " + entry.fullPath );
                         if ( file_name + ".jpg" == entry.name ) {
                             is_del    = true;
                             del_entry = entry;
