@@ -42,10 +42,41 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
         });
     }
 
+    function setFavorite2Bg( url, name ) {
+        // set vo.cur
+        var new_vo = files.FindFavorite( files.FavoriteVO(), name );
+        if ( new_vo ) {
+            // save favorite to background.jpg
+            files.GetDataURI( url ).then( function( result ) {
+                files.Add( vo.constructor.BACKGROUND, result )
+                    .progress( function( result ) { console.log( "Write process:", result ); })
+                    .fail(     function( result ) { console.log( "Write error: ", result );  })
+                    .done( function( result ) {
+                        console.log( "Write completed: ", result );
+                        vo.cur = new_vo;
+                        vo.Set( vo.cur );
+                        console.log( "======= Current background dispin success.", vo )
+                });
+            });
+            // hack code
+            // change background
+            $( "body" ).css( "background-image", 'url("' + url + '")' );
+            // change background mask
+            $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+            $( "body" ).find( ".img-bg > img" ).attr( "src", url );
+            // change conntrolbar download url and info
+            $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
+            $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
+        }
+    }
+
     function toolbarListenEvent() {
         $( ".manage .toolbox span" ).click( function( event ) {
             switch( event.target.className ) {
                 case "useicon":
+                    var url  = $( event.target ).parent().parent().prev().attr( "src" ),
+                        name = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
+                    setFavorite2Bg( url, name );
                     break;
                 case "downicon":
                     var url  = $( event.target ).parent().parent().prev().attr( "src" ),
