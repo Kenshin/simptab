@@ -223,6 +223,21 @@ define([ "jquery", "vo" ], function( $, vo ) {
             localStorage[ "simptab-favorites" ] = JSON.stringify( favorite_vo );
         },
 
+        FindFavorite: function( favorite_vo, file_name ) {
+            var result;
+            try {
+                favorite_vo.forEach( function( item ) {
+                    item = JSON.parse( item );
+                    if ( item.file_name == file_name ) {
+                        result = JSON.parse( item.result );
+                    }
+                });
+                return result;
+            } catch( error ) {
+                return result;
+            }
+        },
+
         DeleteFavorite: function( favorite_vo, file_name ) {
             var obj = {};
             for( var idx = 0, len = favorite_vo.length; idx < len; idx++ ) {
