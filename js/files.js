@@ -177,7 +177,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
                   }
                   else if ( entry.isFile ) {
                     console.log("File: " + entry.fullPath );
-                    name_arry.push( entry.name.replace( ".jpg", "" ) );
+                    name_arry.push( vo.constructor.FAVORITE + entry.name );
                   }
                 }
                 callback( name_arry );
