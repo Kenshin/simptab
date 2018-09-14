@@ -176,7 +176,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
                     console.log("Directory: " + entry.fullPath );
                   }
                   else if ( entry.isFile ) {
-                    console.log("File: " + entry.fullPath );
+                    //console.log("File: " + entry.fullPath );
                     name_arry.push( vo.constructor.FAVORITE + entry.name );
                   }
                 }
