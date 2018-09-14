@@ -82,23 +82,20 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     function toolbarListenEvent() {
         $( ".manage .toolbox span" ).click( function( event ) {
+            var url  = $( event.target ).parent().parent().prev().attr( "src" ),
+                name = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
             switch( event.target.className ) {
                 case "useicon":
-                    var url  = $( event.target ).parent().parent().prev().attr( "src" ),
-                        name = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
                     setFavorite2Bg( url, name );
                     break;
                 case "downicon":
-                    var url  = $( event.target ).parent().parent().prev().attr( "src" ),
-                        name = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" );
-                    files.Download( url, name );
+                    var title = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" );
+                    files.Download( url, title );
                     break;
                 case "removeicon":
-                    var url  = $( event.target ).parent().parent().prev().attr( "src" ),
-                        name = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
                     files.Delete( name, function( result ) {
                         new Notify().Render( "已删除当前背景" );
-                        $( event.target ).parent().parent().parent().slideUp( function(){
+                        $( event.target ).parent().parent().parent().slideUp( function() {
                             $( event.target ).parent().parent().parent().remove();
                         });
                         files.DeleteFavorite( files.FavoriteVO(), name );
