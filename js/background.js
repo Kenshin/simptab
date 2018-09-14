@@ -225,6 +225,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     }
 
     function updateBackground() {
+        // hack code
         var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() ;
         // change background
         $( "body" ).css( "background-image", 'url("' + url + '")' );
