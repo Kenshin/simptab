@@ -38,6 +38,20 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function(
             var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
                 html     = compiled({ 'albums': result });
             $( ".manage .albums .favorite" ).html( html );
+            toolbarListenEvent();
+        });
+    }
+
+    function toolbarListenEvent() {
+        $( ".manage .toolbox span" ).click( function( event ) {
+            switch( event.target.className ) {
+                case "useicon":
+                    break;
+                case "downicon":
+                    break;
+                case "removeicon":
+                    break;
+            }
         });
     }
 
