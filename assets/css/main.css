@@ -827,6 +827,8 @@ img {
 
     color: rgb(202, 204, 206);
     background: rgb(47, 52, 55);
+
+    box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
 }
 
 .manage .tabs {
@@ -864,9 +866,15 @@ img {
     border-bottom-right-radius: 3px;
 }
 
+.manage .albums {
+    height: 100%;
+    overflow: auto;
+}
+
 .manage .album {
     display: none;
     flex-flow: row wrap;
+    justify-content: space-between;
 
     width: 100%;
     height: 100%;
@@ -877,7 +885,18 @@ img {
 }
 
 .manage .album .photograph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     margin: 10px;
+}
+
+.manage .album .photograph img {
+    padding: 2px;
+
+    max-width: 150px;
+    height: auto;
 }
 
 @media screen and (min-height:820px) {

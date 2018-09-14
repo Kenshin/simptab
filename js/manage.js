@@ -1,5 +1,5 @@
 
-define([ "jquery", "lodash", "i18n", "vo", "date", "error" ], function( $, _, i18n, vo, date, SimpError ) {
+define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function( $, _, i18n, vo, date, SimpError, files ) {
 
     "use strict";
 
@@ -8,7 +8,7 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error" ], function( $, _, i1
                     <div class="tab" idx="1">订阅</div>\
                 </div>\
                 <div class="albums">\
-                    <div class="album favorite album-active"><%= favorite %></div>\
+                    <div class="album favorite album-active">Loading...</div>\
                     <div class="album subscribe"></div>\
                 </div>\
                ';
@@ -26,20 +26,24 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error" ], function( $, _, i1
     }
 
     function getFavoriteTmpl() {
-        var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %><div class="photograph"><%- album %></div><% }); %>', { 'imports': { 'jq': jQuery }} );
-        return compiled({ 'albums': [ 'fred', 'barney' ] });
+        files.List( function( result ) {
+            var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %><div class="photograph"><img src=<%- album %>></div><% }); %>', { 'imports': { 'jq': jQuery }} ),
+                html     = compiled({ 'albums': result });
+            $( ".manage .albums .favorite" ).html( html );
+        });
     }
 
     return {
         Render: function () {
             var compiled = _.template( tmpl ),
-                html     = compiled({ favorite: getFavoriteTmpl() });
+                html     = compiled();
 
             $( "body" ).append( '<div class="manage-overlay"><div class="manage-bg"><div class="manage"></div></div></div>' );
             setTimeout( function() {
                 $( ".manage-bg" ).addClass( "manage-bg-show" );
                 $( ".manage" ).html( html );
                 tabListenEvent();
+                getFavoriteTmpl();
             }, 10 );
         }
     };
