@@ -11,7 +11,15 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function(
                     <div class="album favorite album-active">Loading...</div>\
                     <div class="album subscribe"></div>\
                 </div>\
-               ';
+               ',
+        album = '<div class="photograph">\
+                    <img src=<%- album %>>\
+                    <ul class="toolbox">\
+                        <li><span data-balloon="设置为当前背景" data-balloon-pos="up" class="useicon"></span></li>\
+                        <li><span data-balloon="下载" data-balloon-pos="up" class="downicon"></span></li>\
+                        <li><span data-balloon="删除" data-balloon-pos="up" class="removeicon"></span></li>\
+                    </ul>\
+                </div>';
 
     function tabListenEvent() {
         $( ".manage .tab" ).click( function( event ) {
@@ -27,7 +35,7 @@ define([ "jquery", "lodash", "i18n", "vo", "date", "error", "files" ], function(
 
     function getFavoriteTmpl() {
         files.List( function( result ) {
-            var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %><div class="photograph"><img src=<%- album %>></div><% }); %>', { 'imports': { 'jq': jQuery }} ),
+            var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
                 html     = compiled({ 'albums': result });
             $( ".manage .albums .favorite" ).html( html );
         });
