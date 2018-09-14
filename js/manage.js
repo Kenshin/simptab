@@ -45,10 +45,14 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     function getFavoriteTmpl() {
         files.List( function( result ) {
-            var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
-                html     = compiled({ 'albums': result });
-            $( ".manage .albums .favorite" ).html( html );
-            toolbarListenEvent();
+            if ( result.length > 0 ) {
+                    var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+                    html     = compiled({ 'albums': result });
+                $( ".manage .albums .favorite" ).html( html );
+                toolbarListenEvent();
+            } else {
+                $( ".manage .empty" ).text( "暂时没有任何收藏的图片" );
+            }
         });
     }
 
