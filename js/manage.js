@@ -22,27 +22,16 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                     <img src=<%- album %>>\
                     <%= toolbox %>\
                 </div>',
+        image = '<div class="image">\
+                    <img src=<%- image.url %>>\
+                    <%= toolbox %>\
+                </div>',
         scrib = '<div class="photograph">\
                     <div class="photos">\
-                        <div class="title">优胜美地</div>\
-                        <div class="desc">美国最热门的国家公园之一。</div>\
+                        <div class="title"><%= title %></div>\
+                        <div class="desc"><%= desc %></div>\
                         <div class="images">\
-                            <div class="image">\
-                                <img src="http://papers.co/wallpaper/papers.co-my11-yosemite-mountain-nature-rock-sky-forest-cloud-bw-23-wallpaper.jpg">\
-                                <ul class="toolbox">\
-                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
-                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
-                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
-                                </ul>\
-                            </div>\
-                            <div class="image">\
-                                <img src="http://papers.co/wallpaper/papers.co-nq61-yosemite-mountain-wood-summer-nature-23-wallpaper.jpg">\
-                                <ul class="toolbox">\
-                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
-                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
-                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
-                                </ul>\
-                            </div>\
+                            <%= images %>\
                         </div>\
                     </div>\
                  </div>';
@@ -71,7 +60,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
     function getFavoriteTmpl() {
         files.List( function( result ) {
             if ( result.length > 0 ) {
-                    var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery, 'toolbox': toolbox }} ),
+                var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery, 'toolbox': toolbox }} ),
                     html     = compiled({ 'albums': result });
                 $( ".manage .albums .favorite" ).html( html );
                 toolbarListenEvent();
@@ -89,7 +78,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 var category    = result.category,
                     collections = result.collections,
                     len         = collections.length,
-                    albums      = [],
+                    albums      = {},
                     album;
                 for( var i = 0; i < len; i++ ) {
                     album = collections[i];
@@ -108,8 +97,26 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
         getSubscribe( function( albums, category, error ) {
             if ( error ) new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
             else {
-                console.log( albums, category )
-                $( ".manage .albums .subscribe" ).html( scrib + scrib );
+                var html = "";
+                //$( ".manage .albums .subscribe" ).html( scrib + scrib );
+                Object.keys( albums ).forEach( function( idx ) {
+                    // get title and desc
+                    var lang   = i18n.GetLocale(),
+                        title  = category[idx]["lang"][lang].title,
+                        desc   = category[idx]["lang"][lang].desc,
+                        images = albums[idx];
+
+                    // get images html template
+                    var compiled = _.template( '<% jq.each( images, function( idx, image ) { %>' + image + '<% }); %>', { 'imports': { 'jq': jQuery, 'toolbox': toolbox }} ),
+                        imgTmpl  = compiled({ 'images': images });
+
+                    // get subscribe html template
+                    var compScrib = _.template( scrib ),
+                        scribTmpl = compScrib({ title: title, desc: desc, images: imgTmpl });
+
+                    html += scribTmpl;
+                });
+                $( ".manage .albums .subscribe" ).html( html );
             }
         });
     }

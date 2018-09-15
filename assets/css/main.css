@@ -973,10 +973,15 @@ img {
     font-weight: bold;
 }
 
+.manage .album.subscribe .photos .title,
+.manage .album.subscribe .photos .desc {
+    padding-left: 20px;
+}
+
 .manage .album.subscribe .photos .images {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     width: 100%;
     height: 100%;
