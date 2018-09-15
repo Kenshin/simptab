@@ -28,17 +28,17 @@ requirejs.config({
       "manage"     : "js/manage"
     },
     shim: {
-      "mousetrap"    : {
-          exports    : "Mousetrap"
-      },
-       "progressbar" : {
-          exports    : "ProgressBar"
-      }
+        "mousetrap"    : {
+            exports    : "Mousetrap"
+        },
+        "progressbar" : {
+            exports    : "ProgressBar"
+        }
     }
 });
 
 // main
-requirejs([ "jquery", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves" ], function ( $, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves ) {
 
     progress.Init();
 
