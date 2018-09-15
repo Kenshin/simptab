@@ -10,7 +10,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 </div>\
                 <div class="albums">\
                     <div class="album favorite album-active"><div class="empty">Loading...</div></div>\
-                    <div class="album subscribe"></div>\
+                    <div class="album subscribe"><div class="empty">Loading...</div></div>\
                 </div>\
                ',
         album = '<div class="photograph">\
@@ -51,6 +51,31 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 $( ".manage .albums .favorite" ).html( html );
                 toolbarListenEvent();
             } else $( ".manage .empty" ).text( "暂时没有任何收藏的图片" );
+        });
+    }
+
+    function getSubscribeTmp() {
+        $.ajax({
+            type       : "GET",
+            url        : "http://simptab.qiniudn.com/special.day.v2.json?_=" + Math.round(+new Date()),
+            dataType   : "json"
+        }).then( function( result ) {
+            if ( result && result.collections ) {
+                var category    = result.category,
+                    collections = result.collections,
+                    len         = collections.length,
+                    albums      = [],
+                    album;
+                for( var i = 0; i < len; i++ ) {
+                    album = collections[i];
+                    if ( !albums[ album.create ] ) {
+                        albums[ album.create ] = [ album ];
+                    } else albums[ album.create ].push( album );
+                }
+                console.log( albums, category )
+            } else new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
+        }, function( jqXHR, textStatus, errorThrown ) {
+            new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
         });
     }
 
@@ -118,6 +143,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 closeListenEvent();
                 tabListenEvent();
                 getFavoriteTmpl();
+                getSubscribeTmp();
             }, 10 );
         }
     };
