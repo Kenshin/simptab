@@ -283,7 +283,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         Download: function( url, name ) {
-            const $a = $( '<a style="display:none" href=${url} download="${name}"></a>' ).appendTo( "body" );
+            const $a = $( '<a style="display:none" href=' + url + ' download="' + name + '"></a>' ).appendTo( "body" );
             $a[0].click();
             $a.remove();
         }
