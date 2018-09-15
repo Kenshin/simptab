@@ -68,7 +68,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 name = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
             switch( event.target.className ) {
                 case "useicon":
-                    setFavorite2Bg( url, name );
+                    setBackground( url, name );
                     break;
                 case "downicon":
                     var title = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" );
@@ -89,7 +89,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
         });
     }
 
-    function setFavorite2Bg( url, name ) {
+    function setBackground( url, name ) {
         // set vo.cur
         var new_vo = files.FindFavorite( files.FavoriteVO(), name );
         if ( new_vo ) {
