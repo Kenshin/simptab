@@ -11,15 +11,16 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 <div class="albums">\
                     <div class="album favorite"><div class="empty">Loading...</div></div>\
                     <div class="album subscribe album-active"><div class="empty">Loading...</div></div>\
-                </div>\
-               ',
+                </div>',
+        toolbox = 
+                '<ul class="toolbox">\
+                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
+                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
+                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
+                </ul>',
         album = '<div class="photograph">\
                     <img src=<%- album %>>\
-                    <ul class="toolbox">\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
-                    </ul>\
+                    <%= toolbox %>\
                 </div>',
         scrib = '<div class="photograph">\
                     <div class="photos">\
@@ -70,7 +71,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
     function getFavoriteTmpl() {
         files.List( function( result ) {
             if ( result.length > 0 ) {
-                    var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+                    var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery, 'toolbox': toolbox }} ),
                     html     = compiled({ 'albums': result });
                 $( ".manage .albums .favorite" ).html( html );
                 toolbarListenEvent();
