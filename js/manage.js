@@ -54,7 +54,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
         });
     }
 
-    function getSubscribeTmp() {
+    function getSubscribe( callback ) {
         $.ajax({
             type       : "GET",
             url        : "http://simptab.qiniudn.com/special.day.v2.json?_=" + Math.round(+new Date()),
@@ -72,10 +72,19 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         albums[ album.create ] = [ album ];
                     } else albums[ album.create ].push( album );
                 }
-                console.log( albums, category )
-            } else new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
+                callback( albums, category );
+            } else callback( undefined, undefined, "remote json error" );
         }, function( jqXHR, textStatus, errorThrown ) {
-            new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
+            callback( undefined, undefined, textStatus );
+        });
+    }
+
+    function getSubscribeTmpl() {
+        getSubscribe( function( albums, category, error ) {
+            if ( error ) new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
+            else {
+                console.log( albums, category )
+            }
         });
     }
 
@@ -143,7 +152,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 closeListenEvent();
                 tabListenEvent();
                 getFavoriteTmpl();
-                getSubscribeTmp();
+                getSubscribeTmpl();
             }, 10 );
         }
     };
