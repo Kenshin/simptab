@@ -70,7 +70,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         console.log( "======= Current background dispin success.", vo )
                 });
             });
-            // hack code
+            // hack code( source copie from background.js → updateBackground() )
             // change background
             $( "body" ).css( "background-image", 'url("' + url + '")' );
             // change background mask
