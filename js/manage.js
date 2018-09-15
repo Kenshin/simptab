@@ -36,6 +36,12 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 <div class="image">\
                     <img src=<%- image.url %>>\
                     <ul class="toolbox">\
+                        <li>\
+                            <a href="<%= image.contact == "" ? "#" : image.contact %>" target="<%= image.contact == "" ? "_self" : "_blank" %>">\
+                                <span data-balloon="<%= image.name == "" ? "暂无" : image.name %>" data-balloon-pos="up" class="authoricon"></span>\
+                            </a>\
+                        </li>\
+                        <li><a href="<%= image.info %>" target="_blank"><span class="linkicon"></span></a></li>\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
                     </ul>\

@@ -948,6 +948,14 @@ img {
     background-image: url("../images/down.png");
 }
 
+.manage .album .photograph ul li span.authoricon {
+    background-image: url("../images/author.png");
+}
+
+.manage .album .photograph ul li span.linkicon {
+    background-image: url("../images/link.png");
+}
+
 .manage .close span.close,
 .manage .album .photograph ul li span.removeicon {
     background-image: url("../images/remove.png");
