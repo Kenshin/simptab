@@ -22,14 +22,6 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
                     </ul>\
                 </div>',
-        image = '\
-                <div class="image">\
-                    <img src=<%- image.url %>>\
-                    <ul class="toolbox">\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
-                    </ul>\
-                </div>',
         subTmpl = '\
                 <div class="photograph">\
                     <div class="photos">\
@@ -39,6 +31,14 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                             <%= images %>\
                         </div>\
                     </div>\
+                </div>',
+        imgTmpl = '\
+                <div class="image">\
+                    <img src=<%- image.url %>>\
+                    <ul class="toolbox">\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
+                    </ul>\
                 </div>';
 
     function closeListenEvent() {
@@ -111,14 +111,14 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         images = albums[idx];
 
                     // get images html template
-                    var compiled = _.template( '<% jq.each( images, function( idx, image ) { %>' + image + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
-                        imgTmpl  = compiled({ 'images': images });
+                    var compiled = _.template( '<% jq.each( images, function( idx, image ) { %>' + imgTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+                        imgHtml  = compiled({ 'images': images });
 
                     // get subscribe html template
                     var compScrib = _.template( subTmpl ),
-                        scribTmpl = compScrib({ title: title, desc: desc, images: imgTmpl });
+                        scribHTML = compScrib({ title: title, desc: desc, images: imgHtml });
 
-                    html += scribTmpl;
+                    html += scribHTML;
                 });
                 $( ".manage .albums .subscribe" ).html( html );
             }
