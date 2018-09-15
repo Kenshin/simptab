@@ -111,12 +111,12 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         images = albums[idx];
 
                     // get images html template
-                    var compiled = _.template( '<% jq.each( images, function( idx, image ) { %>' + imgTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
-                        imgHtml  = compiled({ 'images': images });
+                    var imgComp  = _.template( '<% jq.each( images, function( idx, image ) { %>' + imgTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+                        imgHtml  = imgComp({ 'images': images });
 
                     // get subscribe html template
-                    var compScrib = _.template( subTmpl ),
-                        scribHTML = compScrib({ title: title, desc: desc, images: imgHtml });
+                    var scribComp = _.template( subTmpl ),
+                        scribHTML = scribComp({ title: title, desc: desc, images: imgHtml });
 
                     html += scribHTML;
                 });
