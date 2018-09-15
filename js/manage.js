@@ -13,7 +13,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                     <div class="album favorite"><div class="empty">Loading...</div></div>\
                     <div class="album subscribe album-active"><div class="empty">Loading...</div></div>\
                 </div>',
-        album = '\
+        favTmpl = '\
                 <div class="photograph">\
                     <img src=<%- album %>>\
                     <ul class="toolbox">\
@@ -30,7 +30,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
                     </ul>\
                 </div>',
-        scrib = '\
+        subTmpl = '\
                 <div class="photograph">\
                     <div class="photos">\
                         <div class="title"><%= title %></div>\
@@ -65,7 +65,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
     function getFavoriteTmpl() {
         files.List( function( result ) {
             if ( result.length > 0 ) {
-                var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + album + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+                var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + favTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
                     html     = compiled({ 'albums': result });
                 $( ".manage .albums .favorite" ).html( html );
                 toolbarListenEvent();
@@ -115,7 +115,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         imgTmpl  = compiled({ 'images': images });
 
                     // get subscribe html template
-                    var compScrib = _.template( scrib ),
+                    var compScrib = _.template( subTmpl ),
                         scribTmpl = compScrib({ title: title, desc: desc, images: imgTmpl });
 
                     html += scribTmpl;
