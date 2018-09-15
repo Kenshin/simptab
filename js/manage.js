@@ -111,13 +111,10 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     return {
         Render: function () {
-            var compiled = _.template( tmpl ),
-                html     = compiled();
-
             $( "body" ).append( '<div class="manage-overlay"><div class="manage-bg"><div class="manage"></div></div></div>' );
             setTimeout( function() {
                 $( ".manage-bg" ).addClass( "manage-bg-show" );
-                $( ".manage" ).html( html );
+                $( ".manage" ).html( tmpl );
                 closeListenEvent();
                 tabListenEvent();
                 getFavoriteTmpl();
