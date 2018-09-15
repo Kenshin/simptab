@@ -69,7 +69,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
     }
 
     function toolbarListenEvent() {
-        $( ".manage .toolbox span" ).click( function( event ) {
+        $( "body" ).on( "click", ".manage .toolbox span", function( event ) {
             var url  = $( event.target ).parent().parent().prev().attr( "src" ),
                 name = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
             switch( event.target.className ) {
@@ -129,7 +129,6 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + favTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
                     html     = compiled({ 'albums': result });
                 $( ".manage .albums .favorite" ).html( html );
-                toolbarListenEvent();
             } else $( ".manage .empty" ).text( "暂时没有任何收藏的图片" );
         });
     }
@@ -196,6 +195,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                 tabListenEvent();
                 getFavoriteTmpl();
                 getSubscribeTmpl();
+                toolbarListenEvent();
             }, 10 );
         }
     };
