@@ -3,7 +3,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     "use strict";
 
-    var tmpl = '\
+    var rTmpl = '\
                 <div class="close"><span class="close"></span></div>\
                 <div class="tabs">\
                     <div class="tab" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
@@ -185,7 +185,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
             $( "body" ).append( '<div class="manage-overlay"><div class="manage-bg"><div class="manage"></div></div></div>' );
             setTimeout( function() {
                 $( ".manage-bg" ).addClass( "manage-bg-show" );
-                $( ".manage" ).html( tmpl );
+                $( ".manage" ).html( rTmpl );
                 closeListenEvent();
                 tabListenEvent();
                 getFavoriteTmpl();
