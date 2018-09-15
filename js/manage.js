@@ -3,7 +3,8 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     "use strict";
 
-    var tmpl = '<div class="close"><span class="close"></span></div>\
+    var tmpl = '\
+                <div class="close"><span class="close"></span></div>\
                 <div class="tabs">\
                     <div class="tab" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
                     <div class="tab tab-active" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
@@ -12,7 +13,8 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                     <div class="album favorite"><div class="empty">Loading...</div></div>\
                     <div class="album subscribe album-active"><div class="empty">Loading...</div></div>\
                 </div>',
-        album = '<div class="photograph">\
+        album = '\
+                <div class="photograph">\
                     <img src=<%- album %>>\
                     <ul class="toolbox">\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
@@ -20,14 +22,16 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
                     </ul>\
                 </div>',
-        image = '<div class="image">\
+        image = '\
+                <div class="image">\
                     <img src=<%- image.url %>>\
                     <ul class="toolbox">\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
                     </ul>\
                 </div>',
-        scrib = '<div class="photograph">\
+        scrib = '\
+                <div class="photograph">\
                     <div class="photos">\
                         <div class="title"><%= title %></div>\
                         <div class="desc"><%= desc %></div>\
@@ -35,7 +39,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                             <%= images %>\
                         </div>\
                     </div>\
-                 </div>';
+                </div>';
 
     function closeListenEvent() {
         $( ".manage .close" ).click( function( event ) {
@@ -99,7 +103,6 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
             if ( error ) new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
             else {
                 var html = "";
-                //$( ".manage .albums .subscribe" ).html( scrib + scrib );
                 Object.keys( albums ).forEach( function( idx ) {
                     // get title and desc
                     var lang   = i18n.GetLocale(),
