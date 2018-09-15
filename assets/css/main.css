@@ -901,7 +901,8 @@ img {
     width: 100%;
 }
 
-.manage .album .photograph {
+.manage .album .photograph,
+.manage .album.subscribe .photos .image {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -957,6 +958,28 @@ img {
 
     max-width: 150px;
     height: auto;
+}
+
+.manage .album.subscribe .photograph {
+    justify-content: flex-start;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.manage .album.subscribe .photos .title {
+    padding-bottom: 3px;
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.manage .album.subscribe .photos .images {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
 }
 
 @media screen and (min-height:820px) {

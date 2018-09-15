@@ -5,12 +5,12 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     var tmpl = '<div class="close"><span class="close"></span></div>\
                 <div class="tabs">\
-                    <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
-                    <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
+                    <div class="tab" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
+                    <div class="tab tab-active" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
                 </div>\
                 <div class="albums">\
-                    <div class="album favorite album-active"><div class="empty">Loading...</div></div>\
-                    <div class="album subscribe"><div class="empty">Loading...</div></div>\
+                    <div class="album favorite"><div class="empty">Loading...</div></div>\
+                    <div class="album subscribe album-active"><div class="empty">Loading...</div></div>\
                 </div>\
                ',
         album = '<div class="photograph">\
@@ -20,7 +20,31 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
                     </ul>\
-                </div>';
+                </div>',
+        scrib = '<div class="photograph">\
+                    <div class="photos">\
+                        <div class="title">优胜美地</div>\
+                        <div class="desc">美国最热门的国家公园之一。</div>\
+                        <div class="images">\
+                            <div class="image">\
+                                <img src="http://papers.co/wallpaper/papers.co-my11-yosemite-mountain-nature-rock-sky-forest-cloud-bw-23-wallpaper.jpg">\
+                                <ul class="toolbox">\
+                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
+                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
+                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
+                                </ul>\
+                            </div>\
+                            <div class="image">\
+                                <img src="http://papers.co/wallpaper/papers.co-nq61-yosemite-mountain-wood-summer-nature-23-wallpaper.jpg">\
+                                <ul class="toolbox">\
+                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
+                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
+                                    <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
+                                </ul>\
+                            </div>\
+                        </div>\
+                    </div>\
+                 </div>';
 
     function closeListenEvent() {
         $( ".manage .close" ).click( function( event ) {
@@ -84,6 +108,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
             if ( error ) new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
             else {
                 console.log( albums, category )
+                $( ".manage .albums .subscribe" ).html( scrib + scrib );
             }
         });
     }
