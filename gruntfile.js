@@ -40,7 +40,7 @@ module.exports = function( grunt ) {
       publish: {
         files: [{
             expand: true,
-            src: [ "_locales/**", "assets/**", "!assets/**/*.woff", "vender/require.js", "manifest.json", "vender/waves/waves.min.css", "vender/notify/notify.min.css" ],
+            src: [ "_locales/**", "assets/**", "!assets/**/*.woff", "vender/require.js", "manifest.json", "vender/waves/waves.min.css", "vender/notify/notify.min.css", "vender/balloon.min.css" ],
             dest: "dest-extension"
           }]
       }
@@ -64,7 +64,7 @@ module.exports = function( grunt ) {
           baseUrl        : ".",
           mainConfigFile : "./js/main.js",
           name           : "main",
-          include        : [ "jquery", "mousetrap", "progressbar", "background", "date", "controlbar", "setting", "i18n", "progress" ],
+          include        : [ "jquery", "mousetrap", "lodash", "progressbar", "background", "date", "controlbar", "setting", "i18n", "progress" ],
           out            : "./dest-extension/js/main.js",
           keepBuildDir   : true,
           optimize       : "uglify2",
