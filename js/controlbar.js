@@ -87,6 +87,19 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], functio
         });
     }
 
+    function update( url ) {
+        // change background
+        $( "body" ).css( "background-image", 'url("' + url + '")' );
+        // change background mask
+        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+        $( "body" ).find( ".img-bg > img" ).attr( "src", url );
+        // change conntrolbar download url and info
+        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
+        $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
+        // change favorite
+        setFavorteIcon();
+    }
+
     return {
         Listen: function ( callBack ) {
 
@@ -218,6 +231,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], functio
         setDislikeIcon    : setDislikeIcon,
         SetDislikeState   : setDislikeState,
         setPinIcon        : setPinIcon,
-        setPinState       : setPinState
+        setPinState       : setPinState,
+        Update            : update,
     };
 });
