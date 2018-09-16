@@ -225,11 +225,12 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     }
 
     function updateBackground() {
+        // update controlbar
         var evt  = document.createEvent( "Event" );
         evt.data = { url: 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() };
         evt.initEvent( "update_controlbar" );
         document.dispatchEvent( evt );
-
+        // remove effect
         bgeffect( "delete" );
         // re-set simptab-background-update
         localStorage[ "simptab-background-update" ] = "false";
