@@ -112,6 +112,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
         new_vo == undefined && ( new_vo = files.FindFavorite( files.FavoriteVO(), name ));
         //new_vo = new_vo == undefined ? files.FindFavorite( files.FavoriteVO(), name ) : new_vo;
         if ( new_vo ) {
+            type == "subscribe" && new Notify().Render( "正在应用中，请稍后..." );
             // save favorite to background.jpg
             files.GetDataURI( url ).then( function( result ) {
                 files.Add( vo.constructor.BACKGROUND, result )
@@ -122,7 +123,8 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         type == "favorite" ? vo.cur = new_vo : subscribe2VO( new_vo );
                         vo.Set( vo.cur );
                         console.log( "======= Current background dispin success.", vo )
-                });
+                        type == "subscribe" && new Notify().Render( "设置成功..." );
+                    });
             });
             // hack code( source copie from background.js → updateBackground() )
             // change background
