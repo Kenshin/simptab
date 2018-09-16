@@ -225,16 +225,10 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     }
 
     function updateBackground() {
-        // hack code
-        var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() ;
-        // change background
-        $( "body" ).css( "background-image", 'url("' + url + '")' );
-        // change background mask
-        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-        $( "body" ).find( ".img-bg > img" ).attr( "src", url );
-        // change conntrolbar download url and info
-        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
-        $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.new.type );
+        var evt  = document.createEvent( "Event" );
+        evt.data = { url: 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() };
+        evt.initEvent( "update_controlbar" );
+        document.dispatchEvent( evt );
 
         bgeffect( "delete" );
         // re-set simptab-background-update
