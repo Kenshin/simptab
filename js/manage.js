@@ -49,6 +49,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     function closeListenEvent() {
         $( ".manage .close" ).click( function( event ) {
+            $( "body" ).off( "click", ".manage .toolbox span" );
             $( ".manage-bg" ).removeClass( "manage-bg-show" );
             setTimeout( function() {
                 $( ".manage-overlay" ).remove();
