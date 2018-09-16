@@ -42,7 +42,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                             </a>\
                         </li>\
                         <li><a href="<%= image.info %>" target="_blank"><span class="linkicon"></span></a></li>\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
+                        <li><span data-vo="<%= encodeURI(JSON.stringify( image )) %>" data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
                     </ul>\
                 </div>';
@@ -70,11 +70,13 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     function toolbarListenEvent() {
         $( "body" ).on( "click", ".manage .toolbox span", function( event ) {
-            var url  = $( event.target ).parent().parent().prev().attr( "src" ),
-                name = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
+            var url    = $( event.target ).parent().parent().prev().attr( "src" ),
+                new_vo = $( event.target ).attr( "data-vo" ),
+                name   = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
             switch( event.target.className ) {
                 case "useicon":
-                    setBackground( url, name );
+                    new_vo && ( new_vo = JSON.parse( decodeURI( new_vo )) );
+                    setBackground( url, name, new_vo );
                     break;
                 case "downicon":
                     var title = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" );
@@ -95,9 +97,20 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
         });
     }
 
-    function setBackground( url, name ) {
+    function subscribe2VO( new_vo ) {
+        vo.cur.hdurl = new_vo.url;
+        vo.cur.url   = new_vo.url;
+        vo.cur.info  = new_vo.info;
+        vo.cur.name  = new_vo.origin;
+        vo.cur.favorite = -1;
+        delete vo.cur.apis_vo;
+    }
+
+    function setBackground( url, name, new_vo ) {
         // set vo.cur
-        var new_vo = files.FindFavorite( files.FavoriteVO(), name );
+        var type =  new_vo == undefined ? "favorite" : "subscribe";
+        new_vo == undefined && ( new_vo = files.FindFavorite( files.FavoriteVO(), name ));
+        //new_vo = new_vo == undefined ? files.FindFavorite( files.FavoriteVO(), name ) : new_vo;
         if ( new_vo ) {
             // save favorite to background.jpg
             files.GetDataURI( url ).then( function( result ) {
@@ -106,7 +119,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                     .fail(     function( result ) { console.log( "Write error: ", result );  })
                     .done( function( result ) {
                         console.log( "Write completed: ", result );
-                        vo.cur = new_vo;
+                        type == "favorite" ? vo.cur = new_vo : subscribe2VO( new_vo );
                         vo.Set( vo.cur );
                         console.log( "======= Current background dispin success.", vo )
                 });
