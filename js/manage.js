@@ -123,7 +123,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         type == "favorite" ? vo.cur = new_vo : subscribe2VO( new_vo );
                         vo.Set( vo.cur );
                         console.log( "======= Current background dispin success.", vo )
-                        type == "subscribe" && new Notify().Render( "设置成功..." );
+                        new Notify().Render( "设置成功。" );
                     });
             });
             // hack code( source copie from background.js → updateBackground() )
