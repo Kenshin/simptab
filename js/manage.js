@@ -108,7 +108,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
 
     function setBackground( url, name, new_vo ) {
         // set vo.cur
-        var type =  new_vo == undefined ? "favorite" : "subscribe";
+        var type = new_vo == undefined ? "favorite" : "subscribe";
         new_vo == undefined && ( new_vo = files.FindFavorite( files.FavoriteVO(), name ));
         //new_vo = new_vo == undefined ? files.FindFavorite( files.FavoriteVO(), name ) : new_vo;
         if ( new_vo ) {
