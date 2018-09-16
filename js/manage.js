@@ -108,41 +108,32 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
     }
 
     function setBackground( url, name, new_vo ) {
-        // set vo.cur
+        // set vo.cur, include: favorite, subscribe
         var type = new_vo == undefined ? "favorite" : "subscribe";
+        // when new_vo is undefined is favorite call
         new_vo == undefined && ( new_vo = files.FindFavorite( files.FavoriteVO(), name ));
-        //new_vo = new_vo == undefined ? files.FindFavorite( files.FavoriteVO(), name ) : new_vo;
         if ( new_vo ) {
-            type == "subscribe" && new Notify().Render( "正在应用中，请稍后..." );
-            // save favorite to background.jpg
+            type == "subscribe" && new Notify().Render( "开始下载当前图片并设定为背景，请稍后..." );
+            // save url to background.jpg
             files.GetDataURI( url ).then( function( result ) {
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) { console.log( "Write process:", result ); })
                     .fail(     function( result ) { console.log( "Write error: ", result );  })
                     .done( function( result ) {
                         console.log( "Write completed: ", result );
+                        // set new_vo to vo.cur
                         type == "favorite" ? vo.cur = new_vo : subscribe2VO( new_vo );
                         vo.Set( vo.cur );
-                        console.log( "======= Current background dispin success.", vo )
-                        new Notify().Render( "设置成功。" );
-
+                        console.log( "======= Current background download success.", vo )
+                        // add url to custom event
                         var evt  = document.createEvent( "Event" );
                         evt.data = { url: url };
                         evt.initEvent( "update_controlbar" );
                         document.dispatchEvent( evt );
+                        // complete notify
+                        new Notify().Render( "设置成功。" );
                     });
             });
-            /*
-            // hack code( source copie from background.js → updateBackground() )
-            // change background
-            $( "body" ).css( "background-image", 'url("' + url + '")' );
-            // change background mask
-            $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-            $( "body" ).find( ".img-bg > img" ).attr( "src", url );
-            // change conntrolbar download url and info
-            $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
-            $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
-            */
         }
     }
 
