@@ -102,4 +102,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     Waves.attach( '.lineradio', ['waves-block'] );
     Waves.init();
 
+    // global event handler
+    document.addEventListener( "update_controlbar", function( event ) {
+        controlbar.Update( event.data.url );
+    });
+
 });

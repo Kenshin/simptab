@@ -125,8 +125,14 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         vo.Set( vo.cur );
                         console.log( "======= Current background dispin success.", vo )
                         new Notify().Render( "设置成功。" );
+
+                        var evt  = document.createEvent( "Event" );
+                        evt.data = { url: url };
+                        evt.initEvent( "update_controlbar" );
+                        document.dispatchEvent( evt );
                     });
             });
+            /*
             // hack code( source copie from background.js → updateBackground() )
             // change background
             $( "body" ).css( "background-image", 'url("' + url + '")' );
@@ -136,6 +142,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
             // change conntrolbar download url and info
             $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
             $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
+            */
         }
     }
 
