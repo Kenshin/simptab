@@ -273,6 +273,10 @@
         "message": "只在随机更换背景时才能使用此功能。"
     },
 
+    "notify_refresh_failed": {
+        "message": "下一张背景获取失败，请重新获取。"
+    },
+
     "version_detail": {
         "message": ""
     },

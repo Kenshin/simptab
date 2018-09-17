@@ -273,6 +273,10 @@
         "message": "Use only when When Change background randomly is enable."
     },
 
+    "notify_refresh_failed": {
+        "message": "New background get failed, please re-try agin."
+    },
+
     "version_detail": {
         "message": ""
     },
