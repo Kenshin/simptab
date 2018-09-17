@@ -225,6 +225,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     }
 
     function updateBackground() {
+        // update vo.cur from vo.new
+        vo.cur = vo.Clone( vo.new );
+        vo.Set( vo.cur );
         // update controlbar
         message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() });
         // remove effect
