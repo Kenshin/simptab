@@ -25,7 +25,8 @@ requirejs.config({
       "version"    : "js/version",
       "progress"   : "js/progress",
       "cdns"       : "js/cdns",
-      "manage"     : "js/manage"
+      "manage"     : "js/manage",
+      "message"    : "js/message",
     },
     shim: {
         "mousetrap"    : {
@@ -38,7 +39,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message ) {
 
     progress.Init();
 
@@ -103,7 +104,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     Waves.init();
 
     // global event handler
-    document.addEventListener( "update_controlbar", function( event ) {
+    message.Subscribe( message.TYPE.UPDATE_CONTROLBAR, function( event ) {
         controlbar.Update( event.data.url );
     });
 

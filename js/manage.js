@@ -1,5 +1,5 @@
 
-define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ], function( $, _, Notify, i18n, vo, date, SimpError, files ) {
+define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "message" ], function( $, _, Notify, i18n, vo, date, SimpError, files, message ) {
 
     "use strict";
 
@@ -126,10 +126,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files" ],
                         vo.Set( vo.cur );
                         console.log( "======= Current background download success.", vo )
                         // add url to custom event
-                        var evt  = document.createEvent( "Event" );
-                        evt.data = { url: url };
-                        evt.initEvent( "update_controlbar" );
-                        document.dispatchEvent( evt );
+                        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url });
                         // complete notify
                         new Notify().Render( "设置成功。" );
                     });

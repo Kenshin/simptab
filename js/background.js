@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves ) {
+define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves", "message" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves, message ) {
 
     "use strict";
 
@@ -226,10 +226,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
     function updateBackground() {
         // update controlbar
-        var evt  = document.createEvent( "Event" );
-        evt.data = { url: 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() };
-        evt.initEvent( "update_controlbar" );
-        document.dispatchEvent( evt );
+        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() });
         // remove effect
         bgeffect( "delete" );
         // re-set simptab-background-update
