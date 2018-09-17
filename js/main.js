@@ -70,11 +70,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "favorite": background.Favorite( result ); break;
             case "dislike" : background.Dislike( result );  break;
             case "pin"     : background.Pin( result );      break;
-            case "refresh" :
-                setting.Mode( "changestate" ) == "time" ? 
-                    background.UpdateBg( result ) : 
-                    new Notify().Render( 2, i18n.GetLang( "notify_not_refresh" ) );
-                break;
+            case "refresh" : background.UpdateBg( result ); break;
         }
     });
     setting.Listen( function( type, result ) {

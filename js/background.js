@@ -25,7 +25,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     def.resolve(1);
                 }
                 else {
-                    if ( setting.Mode( "changestate" ) == "none" ) {
+                    if ( localStorage[ "simptab-background-update" ] == "true" ) {
+                        def.resolve(3);
+                    } else if ( setting.Mode( "changestate" ) == "none" ) {
                         def.resolve(4);
                     } else if ( setting.Mode( "changestate" ) == "day" && !date.IsNewDay( date.Today() ) ) {
                         def.resolve(4);
