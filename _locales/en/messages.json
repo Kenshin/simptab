@@ -297,6 +297,10 @@
         "message": "Setting successful."
     },
 
+    "notify_mange_empty": {
+        "message": "Not any background image"
+    },
+
     "version_detail": {
         "message": ""
     },

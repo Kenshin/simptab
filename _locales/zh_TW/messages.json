@@ -305,6 +305,10 @@
         "message": ""
     },
 
+    "notify_mange_empty": {
+        "message": "暫時沒有任何背景"
+    },
+
     "version_detail_0": {
         "message": "修復之前版本的一些錯誤；"
     },

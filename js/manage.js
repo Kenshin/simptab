@@ -144,7 +144,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                 var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + favTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
                     html     = compiled({ 'albums': result });
                 $( ".manage .albums .favorite" ).html( html );
-            } else $( ".manage .empty" ).text( "暂时没有任何收藏的图片" );
+            } else $( ".manage .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
         });
     }
 
@@ -175,7 +175,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
 
     function getSubscribeTmpl() {
         getSubscribe( function( albums, category, error ) {
-            if ( error ) new Notify().Render( 2, i18n.GetLang( "notify_mange_subscibe_failed" ) );
+            if ( error ) $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
             else {
                 var html = "";
                 Object.keys( albums ).forEach( function( idx ) {

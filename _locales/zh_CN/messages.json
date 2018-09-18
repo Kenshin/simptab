@@ -297,6 +297,10 @@
         "message": "设置成功。"
     },
 
+    "notify_mange_empty": {
+        "message": "暂时没有任何背景"
+    },
+
     "version_detail": {
         "message": ""
     },
