@@ -301,6 +301,10 @@
         "message": "暂时没有任何背景"
     },
 
+    "notify_mange_no_user": {
+        "message": "暂无"
+    },
+
     "version_detail": {
         "message": ""
     },

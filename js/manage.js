@@ -41,7 +41,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                     <ul class="toolbox">\
                         <li>\
                             <a href="<%= image.contact == "" ? "#" : image.contact %>" target="<%= image.contact == "" ? "_self" : "_blank" %>">\
-                                <span data-balloon="<%= image.name == "" ? "暂无" : image.name %>" data-balloon-pos="up" class="authoricon"></span>\
+                                <span data-balloon="<%= image.name == "" ? "' + i18n.GetLang( "notify_mange_no_user" ) + '" : image.name %>" data-balloon-pos="up" class="authoricon"></span>\
                             </a>\
                         </li>\
                         <li><a href="<%= image.info %>" target="_blank"><span class="linkicon"></span></a></li>\

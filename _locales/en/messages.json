@@ -301,6 +301,10 @@
         "message": "Not any background image"
     },
 
+    "notify_mange_no_user": {
+        "message": "anonymous"
+    },
+
     "version_detail": {
         "message": ""
     },
