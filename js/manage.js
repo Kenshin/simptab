@@ -30,6 +30,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                     <div class="photos">\
                         <div class="title"><%= title %></div>\
                         <div class="desc"><%= desc %></div>\
+                        <div class="author"><a href="<%= contact %>" target="_blank"><%= name %></a></div>\
                         <div class="images">\
                             <%= images %>\
                         </div>\
@@ -183,6 +184,8 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                     var lang   = i18n.GetLocale(),
                         title  = category[idx]["lang"][lang].title,
                         desc   = category[idx]["lang"][lang].desc,
+                        name   = category[idx]["author"].name,
+                        contact= category[idx]["author"].contact,
                         images = albums[idx];
 
                     // get images html template
@@ -191,7 +194,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
 
                     // get subscribe html template
                     var scribComp = _.template( subTmpl ),
-                        scribHTML = scribComp({ title: title, desc: desc, images: imgHtml });
+                        scribHTML = scribComp({ title: title, desc: desc, name: name, contact: contact, images: imgHtml });
 
                     html += scribHTML;
                 });

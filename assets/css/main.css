@@ -986,8 +986,27 @@ img {
 }
 
 .manage .album.subscribe .photos .title,
-.manage .album.subscribe .photos .desc {
+.manage .album.subscribe .photos .desc,
+.manage .album.subscribe .photos .author {
     padding-left: 20px;
+}
+
+.manage .album.subscribe .photos .author {
+    margin-top: 3px;
+}
+
+.manage .album.subscribe .photos .author a {
+    color: inherit;
+
+    font-weight: bold;
+    text-transform: initial;
+    text-decoration: none;
+
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.manage .album.subscribe .photos .author a:hover {
+    color: rgb(202, 204, 206);
 }
 
 .manage .album.subscribe .photos .images {
