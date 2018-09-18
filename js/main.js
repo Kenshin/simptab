@@ -5,7 +5,7 @@ requirejs.config({
 
       "jquery"     : "vender/jquery-3.3.1.min",
       "unveil"     : "vender/jquery.unveil",
-      "lodash"     : "vender/lodash.min",
+      "lodash"     : "vender/lodash",
       "mousetrap"  : "vender/mousetrap.min",
       "progressbar": "vender/progressbar.min",
       "notify"     : "vender/notify/notify.min",
