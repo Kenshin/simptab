@@ -45,7 +45,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                             </a>\
                         </li>\
                         <li><a href="<%= image.info %>" target="_blank"><span class="linkicon"></span></a></li>\
-                        <li><span data-vo="<%= encodeURI(JSON.stringify( image )) %>" data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
+                        <li><span data-vo="<%= encodeURI(JSON.stringify( image )) %>" data-balloon="' + i18n.GetLang( "manage_toolbar_use" ) + '" data-balloon-pos="up" class="useicon"></span></li>\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
                     </ul>\
                 </div>';
