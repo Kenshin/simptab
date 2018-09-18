@@ -979,8 +979,6 @@ img {
 }
 
 .manage .album.subscribe .photos .title {
-    padding-bottom: 3px;
-
     font-size: 17px;
     font-weight: bold;
 }
@@ -991,8 +989,9 @@ img {
     padding-left: 20px;
 }
 
-.manage .album.subscribe .photos .author {
-    margin-top: 3px;
+.manage .album.subscribe .photos .title,
+.manage .album.subscribe .photos .desc {
+    margin-bottom: 3px;
 }
 
 .manage .album.subscribe .photos .author a {
