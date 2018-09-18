@@ -277,6 +277,26 @@
         "message": "下一张背景获取失败，请重新获取。"
     },
 
+    "notify_mange_remove": {
+        "message": "已删除当前背景。"
+    },
+
+    "notify_mange_remove_failed": {
+        "message": "删除错误，请重新操作。"
+    },
+
+    "notify_mange_setting": {
+        "message": "开始下载当前图片并设定为背景，请稍后..."
+    },
+
+    "notify_mange_subscibe_failed": {
+        "message": "获取订阅源错误，请稍后再试。"
+    },
+
+    "notify_mange_setting_success": {
+        "message": "设置成功。"
+    },
+
     "version_detail": {
         "message": ""
     },

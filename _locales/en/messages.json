@@ -277,6 +277,26 @@
         "message": "New background get failed, please re-try agin."
     },
 
+    "notify_mange_remove": {
+        "message": "Remove favorite success."
+    },
+
+    "notify_mange_remove_failed": {
+        "message": "Remove happend failed."
+    },
+
+    "notify_mange_setting": {
+        "message": "Begining download and set background image."
+    },
+
+    "notify_mange_subscibe_failed": {
+        "message": "Remote subscribe failed."
+    },
+
+    "notify_mange_setting_success": {
+        "message": "Setting successful."
+    },
+
     "version_detail": {
         "message": ""
     },

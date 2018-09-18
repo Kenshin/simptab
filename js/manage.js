@@ -89,13 +89,13 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                     break;
                 case "removeicon":
                     files.Delete( name, function( result ) {
-                        new Notify().Render( "已删除当前背景" );
+                        new Notify().Render( i18n.GetLang( "notify_mange_remove" ) );
                         $( event.target ).parent().parent().parent().slideUp( function() {
                             $( event.target ).parent().parent().parent().remove();
                         });
                         files.DeleteFavorite( files.FavoriteVO(), name );
                     }, function( error ) {
-                        new Notify().Render( 2, "删除错误，请重新操作。" );
+                        new Notify().Render( 2, i18n.GetLang( "notify_mange_remove_failed" ) );
                     });
                     break;
             }
@@ -117,7 +117,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
         // when new_vo is undefined is favorite call
         new_vo == undefined && ( new_vo = files.FindFavorite( files.FavoriteVO(), name ));
         if ( new_vo ) {
-            type == "subscribe" && new Notify().Render( "开始下载当前图片并设定为背景，请稍后..." );
+            type == "subscribe" && new Notify().Render( i18n.GetLang( "notify_mange_setting" ) );
             // save url to background.jpg
             files.GetDataURI( url ).then( function( result ) {
                 files.Add( vo.constructor.BACKGROUND, result )
@@ -132,7 +132,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                         // add url to custom event
                         message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url });
                         // complete notify
-                        new Notify().Render( "设置成功。" );
+                        new Notify().Render( i18n.GetLang( "notify_mange_setting_success" ) );
                     });
             });
         }
@@ -175,7 +175,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
 
     function getSubscribeTmpl() {
         getSubscribe( function( albums, category, error ) {
-            if ( error ) new Notify().Render( 2, "获取订阅源错误，请稍后再试。" );
+            if ( error ) new Notify().Render( 2, i18n.GetLang( "notify_mange_subscibe_failed" ) );
             else {
                 var html = "";
                 Object.keys( albums ).forEach( function( idx ) {
