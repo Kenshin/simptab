@@ -9,12 +9,12 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
         rTmpl  = '\
                 <div class="close"><span class="close"></span></div>\
                 <div class="tabs">\
-                    <div class="tab" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
-                    <div class="tab tab-active" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
+                    <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
+                    <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
                 </div>\
                 <div class="albums">\
-                    <div class="album favorite"><div class="empty">Loading...</div></div>\
-                    <div class="album subscribe album-active"><div class="empty">Loading...</div></div>\
+                    <div class="album favorite album-active"><div class="empty">Loading...</div></div>\
+                    <div class="album subscribe"><div class="empty">Loading...</div></div>\
                 </div>',
         favTmpl = '\
                 <div class="photograph">\
