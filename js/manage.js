@@ -1,9 +1,12 @@
 
-define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "message" ], function( $, _, Notify, i18n, vo, date, SimpError, files, message ) {
+define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "message", "unveil" ], function( $, _, Notify, i18n, vo, date, SimpError, files, message, unveil ) {
 
     "use strict";
 
-    var rTmpl = '\
+    var albumLoad = 0,
+        io     = new IntersectionObserver( observerImg ),
+        oriImg = chrome.extension.getURL( "/assets/images/loading.png" ),
+        rTmpl  = '\
                 <div class="close"><span class="close"></span></div>\
                 <div class="tabs">\
                     <div class="tab" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
@@ -15,7 +18,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                 </div>',
         favTmpl = '\
                 <div class="photograph">\
-                    <img src=<%- album %>>\
+                    <img src="' + oriImg + '" data-src=<%- album %>>\
                     <ul class="toolbox">\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
                         <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
@@ -34,7 +37,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                 </div>',
         imgTmpl = '\
                 <div class="image">\
-                    <img src=<%- image.url %>>\
+                    <img src="' + oriImg + '" data-src=<%- image.url %>>\
                     <ul class="toolbox">\
                         <li>\
                             <a href="<%= image.contact == "" ? "#" : image.contact %>" target="<%= image.contact == "" ? "_self" : "_blank" %>">\
@@ -49,6 +52,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
 
     function closeListenEvent() {
         $( ".manage .close" ).click( function( event ) {
+            albumLoad = 0;
             $( "body" ).off( "click", ".manage .toolbox span" );
             $( ".manage-bg" ).removeClass( "manage-bg-show" );
             setTimeout( function() {
@@ -196,6 +200,47 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
         });
     }
 
+    function albumLoadListenEvent() {
+        var observer = new MutationObserver( function() {
+            albumLoad++;
+            if ( albumLoad <= 2 ) {
+                setTimeout( function() { checkImg(); }, 800 );
+                observer = undefined;
+            }
+        });
+        observer.observe( $( ".manage .albums" )[0], { childList: true, subtree: true });
+    }
+
+    function checkImg() {
+        var imgs = Array.from( $( ".manage .albums img" ) );
+        imgs.forEach( function ( item ) {
+            $( item ).attr( "data-src" ) ? io.observe( item ) : io.unobserve( item );
+        });
+    }
+
+    function loadImg( el ) {
+        var $target = $( el ),
+            lazy    = $target.attr( "data-src" );
+        lazy && $( el ).unveil( 200, function() {
+            $( this ).removeAttr( "data-src" );
+        });
+    }
+
+    function scrollListenEvent() {
+        $( ".manage .albums" ).scroll( function() {
+            checkImg();
+        })
+    }
+
+    function observerImg( ioes ) {
+        ioes.forEach( function( ioe ) {
+            var el  = ioe.target,
+                num = ioe.intersectionRatio;
+            num > 0 && loadImg( el );
+            el.onload = el.onerror = function() { io.unobserve( el ) };
+        });
+    }
+
     return {
         Render: function () {
             $( "body" ).append( '<div class="manage-overlay"><div class="manage-bg"><div class="manage"></div></div></div>' );
@@ -204,9 +249,11 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                 $( ".manage" ).html( rTmpl );
                 closeListenEvent();
                 tabListenEvent();
+                albumLoadListenEvent();
                 getFavoriteTmpl();
                 getSubscribeTmpl();
                 toolbarListenEvent();
+                scrollListenEvent();
             }, 10 );
         }
     };

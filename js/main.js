@@ -4,6 +4,7 @@ requirejs.config({
     paths: {
 
       "jquery"     : "vender/jquery-3.3.1.min",
+      "unveil"     : "vender/jquery.unveil",
       "lodash"     : "vender/lodash.min",
       "mousetrap"  : "vender/mousetrap.min",
       "progressbar": "vender/progressbar.min",
