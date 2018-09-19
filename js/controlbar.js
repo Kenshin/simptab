@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], function( $, i18n, vo, date, files, setting, manage ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ], function( $, i18n, vo, date, files, setting, manage, about ) {
 
     "use strict";
 
@@ -192,6 +192,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], functio
                         break;
                     case "manage":
                         manage.Render();
+                        break;
+                    case "about":
+                        about.Render();
                         break;
                 }
             });
