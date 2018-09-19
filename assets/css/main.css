@@ -143,7 +143,7 @@ body {
     opacity: 1;
 }
 
-.children {
+.horz-toolbox {
     display: flex;
     flex-direction: row;
 
@@ -153,22 +153,22 @@ body {
     transition: all .6s ease;
 }
 
-.children li {
+.horz-toolbox li {
     position: absolute;
     top: 0;
     left: -25px;
     transition: all .6s ease;
 }
 
-.children-show {
+.horz-toolbox-show {
     opacity: 1;
 }
 
-.children-show-1 {
+.horz-toolbox-show-1 {
     transform: translateX(-50px);
 }
 
-.children-show-2 {
+.horz-toolbox-show-2 {
     transform: translateX(-100px);
 }
 
