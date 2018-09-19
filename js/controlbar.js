@@ -112,10 +112,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], functio
 
             $( ".controlink[url=setting]" ).mouseenter( function( event ) {
                 $( ".controlink[url=setting]" ).prev().addClass( "children-show" );
+                $( ".controlink[url=manage]" ).parent().addClass( "children-show-1" );
+                $( ".controlink[url=about]" ).parent().addClass( "children-show-2" );
             });
 
             $($( ".controlbar li" )[7]).mouseleave( function( event ) {
                 $( ".controlink[url=setting]" ).prev().removeClass( "children-show" );
+                $( ".controlink[url=manage]" ).parent().removeClass( "children-show-1" );
+                $( ".controlink[url=about]" ).parent().removeClass( "children-show-2" );
             });
 
             // listen control link

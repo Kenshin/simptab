@@ -111,7 +111,7 @@ body {
     list-style: none;
     font-size: 15px;
 
-    opacity: 0;
+    opacity: 1;
 
     transition: opacity .5s ease;
     -webkit-transition: opacity .5s ease;
@@ -144,15 +144,32 @@ body {
 }
 
 .children {
+    display: flex;
+    flex-direction: row;
+
     position: absolute;
     right: 0;
     opacity: 0;
     transition: all .6s ease;
 }
 
+.children li {
+    position: absolute;
+    top: 0;
+    left: -25px;
+    transition: all .6s ease;
+}
+
 .children-show {
-    transform: translateX(-60px);
     opacity: 1;
+}
+
+.children-show-1 {
+    transform: translateX(-50px);
+}
+
+.children-show-2 {
+    transform: translateX(-100px);
 }
 
 .chromelink, .controlink {
@@ -233,6 +250,10 @@ body {
 
 .manageicon {
     background-image: url("../images/manage.png");
+}
+
+.abouticon {
+    background-image: url("../images/about.png");
 }
 
 /*
