@@ -165,11 +165,11 @@ body {
 }
 
 .horz-toolbox-show-1 {
-    transform: translateX(-50px);
+    transform: translateX(-60px);
 }
 
 .horz-toolbox-show-2 {
-    transform: translateX(-100px);
+    transform: translateX(-120px);
 }
 
 .chromelink, .controlink {
