@@ -57,6 +57,10 @@
         "message": "BG Manage"
     },
 
+    "controlbar_about": {
+        "message": "About"
+    },
+
     "controlbar_favorite": {
         "message": "Like"
     },

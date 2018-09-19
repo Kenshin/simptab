@@ -17,6 +17,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".controlbar" ).children()[6]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_refresh" ));
         $($( ".controlbar" ).children()[7]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_setting" ));
         $( ".controlbar" ).find( "a[url=manage]" ).attr("data-balloon", i18n( "controlbar_manage" ));
+        $( ".controlbar" ).find( "a[url=about]" ).attr("data-balloon", i18n( "controlbar_about" ));
         $($( ".controlbar" ).children()[8]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_favorite" ));
         $($( ".controlbar" ).children()[9]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_pin" ));
         $($( ".controlbar" ).children()[10]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_dislike" ));
