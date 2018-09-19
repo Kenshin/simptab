@@ -121,6 +121,10 @@ body {
     opacity: 1;
 }
 
+.controlbar li {
+    list-style: none;
+}
+
 .controlbar a {
     margin: 10px;
 
@@ -136,6 +140,18 @@ body {
 
 .controlbar a:hover {
     /*background: rgba(255, 255, 255,.4);*/
+    opacity: 1;
+}
+
+.children {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transition: all .6s ease;
+}
+
+.children-show {
+    transform: translateX(-60px);
     opacity: 1;
 }
 
@@ -213,6 +229,10 @@ body {
 
 .settingicon {
     background-image: url("../images/setting.png");
+}
+
+.manageicon {
+    background-image: url("../images/manage.png");
 }
 
 /*
@@ -413,6 +433,7 @@ body {
 /*
 * tooltip
 */
+/*
 .tooltip {
     font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
 
@@ -461,7 +482,6 @@ body {
 
 .tooltip-top {
     position: relative;
-    /*cursor: pointer;*/
     padding: 0;
     text-transform: none;
 }
@@ -502,6 +522,7 @@ body {
 .tooltip-top:last-child:after {
     left: -63px;
 }
+*/
 
 /*
 * bottom, inlcude: topsites and senior
@@ -762,6 +783,238 @@ img {
     transition: 1s all;
 
     overflow: hidden;
+}
+
+.manage-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,.5);
+}
+
+.manage-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    transform: translateY( 20% );
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.manage-bg-show {
+    opacity: 1;
+    transform: translateY( 0 );
+}
+
+.manage {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 850px;
+    height: 600px;
+
+    color: rgb(202, 204, 206);
+    background: rgb(47, 52, 55);
+
+    box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
+}
+
+.manage .close {
+    position: absolute;
+
+    top: 5px;
+    right: 5px;
+}
+
+.manage .tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+}
+
+.manage .tab-active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.manage .tab {
+    padding: 5px 35px;
+    border: 1px solid rgb(202, 204, 206);
+    cursor: pointer;
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.manage .tab:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.manage .tab:nth-child(1) {
+    border-right: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.manage .tab:nth-child(2) {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.manage .albums {
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.manage .album {
+    display: none;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+}
+
+.manage .album-active {
+    display: flex;
+}
+
+.manage .album .empty {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    width: 100%;
+}
+
+.manage .album .photograph,
+.manage .album.subscribe .photos .image {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin: 10px;
+}
+
+.manage .album .photograph ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    margin: 0;
+    padding: 0;
+
+    width: 150px;
+}
+
+.manage .album .photograph ul li {
+    padding-left: 8px;
+    list-style-type: none;
+}
+
+.manage .close span,
+.manage .album .photograph ul li span {
+    display: block;
+
+    width: 14px;
+    height: 14px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+
+.manage .album .photograph ul li span.useicon {
+    background-image: url("../images/use.png");
+}
+
+.manage .album .photograph ul li span.downicon {
+    background-image: url("../images/down.png");
+}
+
+.manage .album .photograph ul li span.authoricon {
+    background-image: url("../images/author.png");
+}
+
+.manage .album .photograph ul li span.linkicon {
+    background-image: url("../images/link.png");
+}
+
+.manage .close span.close,
+.manage .album .photograph ul li span.removeicon {
+    background-image: url("../images/remove.png");
+}
+
+.manage .album .photograph img {
+    padding: 2px;
+
+    max-width: 150px;
+    height: auto;
+    background: transparent;
+
+    border: none;
+    border-radius: 10px;
+}
+
+.manage .album.subscribe .photograph {
+    justify-content: flex-start;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.manage .album.subscribe .photos .title {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.manage .album.subscribe .photos .title,
+.manage .album.subscribe .photos .desc,
+.manage .album.subscribe .photos .author {
+    padding-left: 20px;
+}
+
+.manage .album.subscribe .photos .title,
+.manage .album.subscribe .photos .desc {
+    margin-bottom: 3px;
+}
+
+.manage .album.subscribe .photos .author a {
+    color: inherit;
+
+    font-weight: bold;
+    text-transform: initial;
+    text-decoration: none;
+
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.manage .album.subscribe .photos .author a:hover {
+    color: rgb(202, 204, 206);
+}
+
+.manage .album.subscribe .photos .images {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    width: 100%;
+    height: 100%;
 }
 
 @media screen and (min-height:820px) {

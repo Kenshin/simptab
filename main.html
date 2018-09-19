@@ -9,28 +9,31 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="vender/notify/notify.min.css">
     <link rel="stylesheet" href="vender/waves/waves.min.css">
+    <link rel="stylesheet" href="vender/balloon.min.css">
 </head>
 <body>
     <div class="content"><div class="progress"></div></div>
     <div class="sidebar">
         <ul class="controlbar">
-            <li class="tooltip-left"><span class="tooltip">Bookmarks</span><a class="chromelink" href="#" url="chrome://bookmarks"><span class="icon bookmarksicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">History</span><a class="chromelink" href="#" url="chrome://history"><span class="icon historyicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Apps</span><a class="chromelink" href="#" url="chrome://apps"><span class="icon appsicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Info</span><a class="controlink" href="#" url="info"><span class="icon infoicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Download background</span><a class="controlink" href="#" url="download"><span class="icon downloadicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Upload</span><a class="controlink" href="#" url="upload"><span class="icon uploadicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Refresh</span><a class="controlink" href="#" url="refresh"><span class="icon refreshicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Setting</span><a class="controlink" href="#" url="setting"><span class="icon settingicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Favorite</span><a class="controlink" href="#" url="favorite"><span class="icon unfavoriteicon"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Pin</span><a class="controlink" href="#" url="pin"><span class="icon pin"></span></a></li>
-            <li class="tooltip-left"><span class="tooltip">Dislike</span><a class="controlink" href="#" url="dislike"><span class="icon dislike"></span></a></li>
+            <li><a data-balloon="Bookmarks" data-balloon-pos="left" class="chromelink" href="#" url="chrome://bookmarks"><span class="icon bookmarksicon"></span></a></li>
+            <li><a data-balloon="History" data-balloon-pos="left" class="chromelink" href="#" url="chrome://history"><span class="icon historyicon"></span></a></li>
+            <li><a data-balloon="Apps" data-balloon-pos="left" class="chromelink" href="#" url="chrome://apps"><span class="icon appsicon"></span></a></li>
+            <li><a data-balloon="Info" data-balloon-pos="left" class="controlink" href="#" url="info"><span class="icon infoicon"></span></a></li>
+            <li><a data-balloon="Download background" data-balloon-pos="left" class="controlink" href="#" url="download"><span class="icon downloadicon"></span></a></li>
+            <li><a data-balloon="Upload" data-balloon-pos="left" class="controlink" href="#" url="upload"><span class="icon uploadicon"></span></a></li>
+            <li><a data-balloon="Refresh" data-balloon-pos="left" class="controlink" href="#" url="refresh"><span class="icon refreshicon"></span></a></li>
+            <li>
+                <ul class="children">
+                    <li><a data-balloon="Background Manage" data-balloon-pos="up" class="controlink" href="#" url="manage"><span class="icon manageicon"></span></a></li>
+                </ul>
+                <a data-balloon="Option" data-balloon-pos="up" class="controlink" href="#" url="setting"><span class="icon settingicon"></span></a>
+            </li>
+            <li><a data-balloon="Favorite" data-balloon-pos="left" class="controlink" href="#" url="favorite"><span class="icon unfavoriteicon"></span></a></li>
+            <li><a data-balloon="Pin" data-balloon-pos="left" class="controlink" href="#" url="pin"><span class="icon pin"></span></a></li>
+            <li><a data-balloon="Dislike" data-balloon-pos="left"class="controlink" href="#" url="dislike"><span class="icon dislike"></span></a></li>
         </ul>
         <div class="clock">
-            <div class="clock-tooltip">
-                <span class="tooltip">&nbsp;</span>
-                <div id="time">-:-</div>
-            </div>
+            <div data-balloon="NaN" data-balloon-pos="up" id="time">-:-</div>
         </div>
     </div>
     <div class="setting">

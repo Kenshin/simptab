@@ -53,6 +53,10 @@
         "message": "Settings"
     },
 
+    "controlbar_manage": {
+        "message": "BG Manage"
+    },
+
     "controlbar_favorite": {
         "message": "Like"
     },
@@ -201,6 +205,26 @@
         "message": "Not supported keywords: "
     },
 
+    "manage_tab_fav": {
+        "message": "Favorite"
+    },
+
+    "manage_tab_sub": {
+        "message": "Collections"
+    },
+
+    "manage_toolbar_use": {
+        "message": "Set current Background"
+    },
+
+    "manage_toolbar_down": {
+        "message": "Download Background"
+    },
+
+    "manage_toolbar_remove": {
+        "message": "Remove Background"
+    },
+
     "version_title": {
         "message": "SimpTab is updated"
     },
@@ -247,6 +271,38 @@
 
     "notify_not_refresh": {
         "message": "Use only when When Change background randomly is enable."
+    },
+
+    "notify_refresh_failed": {
+        "message": "New background get failed, please re-try agin."
+    },
+
+    "notify_mange_remove": {
+        "message": "Remove favorite success."
+    },
+
+    "notify_mange_remove_failed": {
+        "message": "Remove happend failed."
+    },
+
+    "notify_mange_setting": {
+        "message": "Begining download and set background image."
+    },
+
+    "notify_mange_subscibe_failed": {
+        "message": "Remote subscribe failed."
+    },
+
+    "notify_mange_setting_success": {
+        "message": "Setting successful."
+    },
+
+    "notify_mange_empty": {
+        "message": "Not any background image"
+    },
+
+    "notify_mange_no_user": {
+        "message": "anonymous"
     },
 
     "version_detail": {

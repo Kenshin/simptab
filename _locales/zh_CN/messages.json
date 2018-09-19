@@ -53,6 +53,10 @@
         "message": "设定"
     },
 
+    "controlbar_manage": {
+        "message": "背景管理器"
+    },
+
     "controlbar_favorite": {
         "message": "收藏"
     },
@@ -201,6 +205,26 @@
         "message": "不支持当前关键字："
     },
 
+    "manage_tab_fav": {
+        "message": "收藏"
+    },
+
+    "manage_tab_sub": {
+        "message": "精选集"
+    },
+
+    "manage_toolbar_use": {
+        "message": "使用当前背景"
+    },
+
+    "manage_toolbar_down": {
+        "message": "下载"
+    },
+
+    "manage_toolbar_remove": {
+        "message": "删除"
+    },
+
     "version_title": {
         "message": "简 Tab 版本提示"
     },
@@ -247,6 +271,38 @@
 
     "notify_not_refresh": {
         "message": "只在随机更换背景时才能使用此功能。"
+    },
+
+    "notify_refresh_failed": {
+        "message": "下一张背景获取失败，请重新获取。"
+    },
+
+    "notify_mange_remove": {
+        "message": "已删除当前背景。"
+    },
+
+    "notify_mange_remove_failed": {
+        "message": "删除错误，请重新操作。"
+    },
+
+    "notify_mange_setting": {
+        "message": "开始下载当前图片并设定为背景，请稍后..."
+    },
+
+    "notify_mange_subscibe_failed": {
+        "message": "获取订阅源错误，请稍后再试。"
+    },
+
+    "notify_mange_setting_success": {
+        "message": "设置成功。"
+    },
+
+    "notify_mange_empty": {
+        "message": "暂时没有任何背景"
+    },
+
+    "notify_mange_no_user": {
+        "message": "暂无"
     },
 
     "version_detail": {

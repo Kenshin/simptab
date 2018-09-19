@@ -143,7 +143,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
                         console.log("Directory: " + entry.fullPath );
                       }
                       else if ( entry.isFile ) {
-                        console.log("File: " + entry.fullPath );
+                        //console.log("File: " + entry.fullPath );
                         if ( file_name + ".jpg" == entry.name ) {
                             is_del    = true;
                             del_entry = entry;
@@ -176,8 +176,8 @@ define([ "jquery", "vo" ], function( $, vo ) {
                     console.log("Directory: " + entry.fullPath );
                   }
                   else if ( entry.isFile ) {
-                    console.log("File: " + entry.fullPath );
-                    name_arry.push( entry.name.replace( ".jpg", "" ) );
+                    //console.log("File: " + entry.fullPath );
+                    name_arry.push( vo.constructor.FAVORITE + entry.name );
                   }
                 }
                 callback( name_arry );
@@ -223,6 +223,21 @@ define([ "jquery", "vo" ], function( $, vo ) {
             localStorage[ "simptab-favorites" ] = JSON.stringify( favorite_vo );
         },
 
+        FindFavorite: function( favorite_vo, file_name ) {
+            var result;
+            try {
+                favorite_vo.forEach( function( item ) {
+                    item = JSON.parse( item );
+                    if ( item.file_name == file_name ) {
+                        result = JSON.parse( item.result );
+                    }
+                });
+                return result;
+            } catch( error ) {
+                return result;
+            }
+        },
+
         DeleteFavorite: function( favorite_vo, file_name ) {
             var obj = {};
             for( var idx = 0, len = favorite_vo.length; idx < len; idx++ ) {
@@ -265,6 +280,12 @@ define([ "jquery", "vo" ], function( $, vo ) {
                 }
             }
             return -1;
+        },
+
+        Download: function( url, name ) {
+            const $a = $( '<a style="display:none" href=' + url + ' download="' + name + '"></a>' ).appendTo( "body" );
+            $a[0].click();
+            $a.remove();
         }
     };
 });

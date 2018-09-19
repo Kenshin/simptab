@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves ) {
+define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves", "message" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves, message ) {
 
     "use strict";
 
@@ -25,7 +25,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     def.resolve(1);
                 }
                 else {
-                    if ( setting.Mode( "changestate" ) == "none" ) {
+                    if ( localStorage[ "simptab-background-update" ] == "true" ) {
+                        def.resolve(3);
+                    } else if ( setting.Mode( "changestate" ) == "none" ) {
                         def.resolve(4);
                     } else if ( setting.Mode( "changestate" ) == "day" && !date.IsNewDay( date.Today() ) ) {
                         def.resolve(4);
@@ -192,6 +194,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             throw error;
         }
         catch( error ) {
+            new Notify().Render( 2, i18n.GetLang( "notify_refresh_failed" ));
             console.group( "===== SimpTab failed ====="             );
             console.error( "error             = ", error             );
             console.error( "error.stack       = ", error.stack       );
@@ -225,16 +228,12 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     }
 
     function updateBackground() {
-        var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() ;
-        // change background
-        $( "body" ).css( "background-image", 'url("' + url + '")' );
-        // change background mask
-        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-        $( "body" ).find( ".img-bg > img" ).attr( "src", url );
-        // change conntrolbar download url and info
-        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
-        $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.new.type );
-
+        // update vo.cur from vo.new
+        vo.cur = vo.Clone( vo.new );
+        vo.Set( vo.cur );
+        // update controlbar
+        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() });
+        // remove effect
         bgeffect( "delete" );
         // re-set simptab-background-update
         localStorage[ "simptab-background-update" ] = "false";
@@ -446,7 +445,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         UpdateBg: function( type ) {
             if ( type == "none" ) writePinBackground();
             if ( type == "time" ) {
-                if ( localStorage[ "simptab-background-state" ] != "success" && localStorage[ "simptab-background-state" ] != "remotefailed" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
+                if ( localStorage[ "simptab-background-state" ] == "loading" || localStorage[ "simptab-background-state" ] == "pending" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
                 else {
                     localStorage[ "simptab-background-update" ] = "true";
                     bgeffect( "add" );

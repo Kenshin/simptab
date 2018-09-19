@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n, vo, date, files, setting ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], function( $, i18n, vo, date, files, setting, manage ) {
 
     "use strict";
 
@@ -87,6 +87,19 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
         });
     }
 
+    function update( url ) {
+        // change background
+        $( "body" ).css( "background-image", 'url("' + url + '")' );
+        // change background mask
+        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+        $( "body" ).find( ".img-bg > img" ).attr( "src", url );
+        // change conntrolbar download url and info
+        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
+        $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
+        // change favorite
+        setFavorteIcon();
+    }
+
     return {
         Listen: function ( callBack ) {
 
@@ -95,6 +108,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                 chrome.tabs.getCurrent( function( tab ) {
                     chrome.tabs.update( tab.id, { url : $( event.currentTarget ).attr( "url" ) });
                 });
+            });
+
+            $( ".controlink[url=setting]" ).mouseenter( function( event ) {
+                $( ".controlink[url=setting]" ).prev().addClass( "children-show" );
+            });
+
+            $($( ".controlbar li" )[7]).mouseleave( function( event ) {
+                $( ".controlink[url=setting]" ).prev().removeClass( "children-show" );
             });
 
             // listen control link
@@ -165,6 +186,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         setting.TogglePinState( !is_pinned );
                         callBack( url, is_pinned );
                         break;
+                    case "manage":
+                        manage.Render();
+                        break;
                 }
             });
         },
@@ -207,6 +231,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
         setDislikeIcon    : setDislikeIcon,
         SetDislikeState   : setDislikeState,
         setPinIcon        : setPinIcon,
-        setPinState       : setPinState
+        setPinState       : setPinState,
+        Update            : update,
     };
 });

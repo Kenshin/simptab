@@ -4,6 +4,8 @@ requirejs.config({
     paths: {
 
       "jquery"     : "vender/jquery-3.3.1.min",
+      "unveil"     : "vender/jquery.unveil",
+      "lodash"     : "vender/lodash",
       "mousetrap"  : "vender/mousetrap.min",
       "progressbar": "vender/progressbar.min",
       "notify"     : "vender/notify/notify.min",
@@ -23,20 +25,22 @@ requirejs.config({
       "topsites"   : "js/topsites",
       "version"    : "js/version",
       "progress"   : "js/progress",
-      "cdns"       : "js/cdns"
+      "cdns"       : "js/cdns",
+      "manage"     : "js/manage",
+      "message"    : "js/message",
     },
     shim: {
-      "mousetrap"    : {
-          exports    : "Mousetrap"
-      },
-       "progressbar" : {
-          exports    : "ProgressBar"
-      }
+        "mousetrap"    : {
+            exports    : "Mousetrap"
+        },
+        "progressbar" : {
+            exports    : "ProgressBar"
+        }
     }
 });
 
 // main
-requirejs([ "jquery", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves" ], function ( $, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message ) {
 
     progress.Init();
 
@@ -67,11 +71,7 @@ requirejs([ "jquery", "notify", "background", "date" , "controlbar", "setting", 
             case "favorite": background.Favorite( result ); break;
             case "dislike" : background.Dislike( result );  break;
             case "pin"     : background.Pin( result );      break;
-            case "refresh" :
-                setting.Mode( "changestate" ) == "time" ? 
-                    background.UpdateBg( result ) : 
-                    new Notify().Render( 2, i18n.GetLang( "notify_not_refresh" ) );
-                break;
+            case "refresh" : background.UpdateBg( result ); break;
         }
     });
     setting.Listen( function( type, result ) {
@@ -99,5 +99,10 @@ requirejs([ "jquery", "notify", "background", "date" , "controlbar", "setting", 
     Waves.attach( '.icon', ['waves-circle'] );
     Waves.attach( '.lineradio', ['waves-block'] );
     Waves.init();
+
+    // global event handler
+    message.Subscribe( message.TYPE.UPDATE_CONTROLBAR, function( event ) {
+        controlbar.Update( event.data.url );
+    });
 
 });
