@@ -111,7 +111,7 @@ body {
     list-style: none;
     font-size: 15px;
 
-    opacity: 1;
+    opacity: 0;
 
     transition: opacity .5s ease;
     -webkit-transition: opacity .5s ease;
