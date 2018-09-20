@@ -1029,6 +1029,19 @@ img {
     border-bottom: 1px dotted rgba(51, 51, 51, 0.87);;
 }
 
+.about .content a {
+    color: #1dba90;
+    text-decoration: none;
+
+    border-bottom: 1px dotted #1dba90;
+
+    transition: color .6s ease-in-out;
+}
+
+.about .content a:hover {
+    color: #179b78;
+}
+
 /*
 * media
 */
