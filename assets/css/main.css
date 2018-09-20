@@ -700,7 +700,7 @@ img {
     z-index: -1;
 }
 
-.img-bg {
+.bgmask-bg {
     position: fixed;
     left: 0;
     top: 0;
