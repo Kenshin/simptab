@@ -1015,7 +1015,18 @@ img {
 }
 
 .about .content p {
+    margin: 0;
     font-size: 14px;
+    line-height: 1.7;
+}
+
+.about .content code {
+    padding-bottom: 2px;
+
+    font-weight: 600;
+    text-decoration: dotted;
+
+    border-bottom: 1px dotted rgba(51, 51, 51, 0.87);;
 }
 
 /*
