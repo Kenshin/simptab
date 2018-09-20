@@ -13,6 +13,9 @@
     font-family: "zh";
 }
 
+/*
+* global
+*/
 html {
     height: 100%;
     overflow: hidden;
@@ -65,6 +68,9 @@ body {
     -webkit-box-flex: 1;
 }
 
+/*
+* setting
+*/
 .setting {
     display: flex;
     flex-direction: column;
