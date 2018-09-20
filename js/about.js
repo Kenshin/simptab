@@ -2,7 +2,16 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
 
     var rTmpl  = '\
                 <div class="close"><span class="close"></span></div>\
-                    <div class="about">About</div>\
+                    <div class="about">\
+                        <div class="banner"><img src="filesystem:' + chrome.extension.getURL( "temporary/background.jpg" ) + '?' + +new Date() + '"/></div>\
+                        <div class="content">\
+                            <h1>简 Tab</h1>\
+                            <div class="desc">\
+                                <p>' + i18n.GetLang( 'extension_desc' ) + '去除多余功能，只关注标签页呈现效果。</p>\
+                                <p></p>\
+                            </div>\
+                        </div>\
+                    </div>\
                 </div>';
 
     function closeListenEvent() {
