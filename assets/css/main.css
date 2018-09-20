@@ -453,100 +453,6 @@ body {
 }
 
 /*
-* tooltip
-*/
-/*
-.tooltip {
-    font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
-
-    padding: .5em 1em;
-
-    color: #fff;
-    background: #232F34;
-
-    height: 25px;
-    line-height: 25px;
-
-    font-size: 13px;
-    font-weight: 300;
-
-    border-radius: 2px;
-    opacity: 0;
-}
-
-.tooltip:hover {
-    display: none;
-}
-
-.tooltip-left {
-    display: -webkit-box;
-    -webkit-box-align: center;
-    -webkit-box-pack: start;
-}
-
-.clock-tooltip {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-box-align: center;
-    -webkit-box-pack: start;
-}
-
-.tooltip-left:hover .tooltip,
-.clock-tooltip:hover  .tooltip {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-
-    transition: opacity 2s ease;
-    -webkit-transition: opacity 2s ease;
-
-    opacity: 1;
-}
-
-.tooltip-top {
-    position: relative;
-    padding: 0;
-    text-transform: none;
-}
-
-.tooltip-top:hover:before,
-.tooltip-top:hover:after {
-    transition: opacity 1s ease;
-    -webkit-transition: opacity 1s ease;
-    -moz-transition: opacity 1s ease;
-    -o-transition: opacity 1s ease;
-    -ms-transition: opacity 1s ease;
-    opacity: .9;
-}
-
-.tooltip-top:after {
-    content: attr(data-tooltip);
-    position: absolute;
-
-    left: -30px;
-    bottom: 30px;
-
-    padding: 3px 8px;
-
-    min-width: 100px;
-
-    color: #fff;
-    background-color: #232F34;
-
-    font-size: 12px;
-    text-align: center;
-
-    border-radius: 2px;
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-.tooltip-top:last-child:after {
-    left: -63px;
-}
-*/
-
-/*
 * bottom, inlcude: topsites and senior
 */
 .bottom {
@@ -1099,6 +1005,100 @@ img {
     }
 
 }
+
+/*
+* tooltip
+*/
+/*
+.tooltip {
+    font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
+
+    padding: .5em 1em;
+
+    color: #fff;
+    background: #232F34;
+
+    height: 25px;
+    line-height: 25px;
+
+    font-size: 13px;
+    font-weight: 300;
+
+    border-radius: 2px;
+    opacity: 0;
+}
+
+.tooltip:hover {
+    display: none;
+}
+
+.tooltip-left {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: start;
+}
+
+.clock-tooltip {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: center;
+    -webkit-box-pack: start;
+}
+
+.tooltip-left:hover .tooltip,
+.clock-tooltip:hover  .tooltip {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+
+    transition: opacity 2s ease;
+    -webkit-transition: opacity 2s ease;
+
+    opacity: 1;
+}
+
+.tooltip-top {
+    position: relative;
+    padding: 0;
+    text-transform: none;
+}
+
+.tooltip-top:hover:before,
+.tooltip-top:hover:after {
+    transition: opacity 1s ease;
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    -ms-transition: opacity 1s ease;
+    opacity: .9;
+}
+
+.tooltip-top:after {
+    content: attr(data-tooltip);
+    position: absolute;
+
+    left: -30px;
+    bottom: 30px;
+
+    padding: 3px 8px;
+
+    min-width: 100px;
+
+    color: #fff;
+    background-color: #232F34;
+
+    font-size: 12px;
+    text-align: center;
+
+    border-radius: 2px;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tooltip-top:last-child:after {
+    left: -63px;
+}
+*/
 
 /*
 @media screen and (max-height:768px) {
