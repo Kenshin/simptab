@@ -2,7 +2,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
 
     var rTmpl  = '\
                 <div class="close"><span class="close"></span></div>\
-                    <div class="about">\
+                    <div class="about" style="height:auto;">\
                         <div class="banner"><img src="filesystem:' + chrome.extension.getURL( "temporary/background.jpg" ) + '?' + +new Date() + '"/></div>\
                         <div class="content">\
                             <h1>简 Tab</h1>\
@@ -14,6 +14,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                             </p>\
                             \
                         </div>\
+                        <div class="footer">简 Tab ( SimpTab ) - 极简的 Chrome 新标签页扩展，望你每次打开都有好心情。 © 2014 <a href="http://ksria.com/simptab">ksria.com</a> via <a href="http://kenshin.wang" target="_blank">Kenshin</a></div>\
                     </div>\
                 </div>';
 
