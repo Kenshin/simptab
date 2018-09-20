@@ -969,11 +969,16 @@ img {
     display: flex;
     flex-direction: column;
 
-    margin: 10px;
+    margin: 15px;
+    padding: 0;
 }
 
 .about .content * {
     text-transform: initial;
+}
+
+.about .content h1 {
+    margin-bottom: 0;
 }
 
 .about .content p {
@@ -1005,7 +1010,9 @@ img {
 }
 
 .about .footer {
+    margin: 0 15px;
     padding: 15px 10px;
+
     text-align: center;
     text-transform: initial;
 
@@ -1016,6 +1023,11 @@ img {
     color: inherit;
     text-decoration: none;
     font-size: 11px;
+    transition: color .3s ease-in-out;
+}
+
+.about .footer a:hover {
+    color: #000;
 }
 
 /*
