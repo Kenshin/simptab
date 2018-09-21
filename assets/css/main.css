@@ -692,7 +692,7 @@ img {
 /*
 * popup
 */
-.manage-overlay {
+.dialog-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -703,7 +703,7 @@ img {
     background-color: rgba(0,0,0,.5);
 }
 
-.manage-bg {
+.dialog-bg {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -720,7 +720,7 @@ img {
     transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 
-.manage-bg-show {
+.dialog-bg-show {
     opacity: 1;
     transform: translateY( 0 );
 }
