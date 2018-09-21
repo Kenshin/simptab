@@ -7,7 +7,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                         <div class="banner"><img src="filesystem:' + chrome.extension.getURL( "temporary/background.jpg" ) + '?' + +new Date() + '"/></div>\
                         <div class="content">\
                             <div class="title">\
-                                <h1>'  + i18n.GetLang( 'short_title' )    + '</h1>\
+                                <h1>' + i18n.GetLang( 'short_title' ) + '</h1>\
                                 <div>\
                                     <a target="_blank" href="https://github.com/Kenshin/simptab/releases"><img src="' + chrome.extension.getURL( "assets/images/version.svg" ) + '"></a>\
                                     <a target="_blank" href="http://ksria.com/simptab"><img src="' + chrome.extension.getURL( "assets/images/website.svg" ) + '"></a>\
