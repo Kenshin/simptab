@@ -116,7 +116,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                 $( ".controlink[url=about]" ).parent().addClass( "horz-toolbox-show-2" );
             });
 
-            $($( ".controlbar li" )[7]).mouseleave( function( event ) {
+            $($( ".controlbar li" )[8]).mouseleave( function( event ) {
                 $( ".controlink[url=setting]" ).prev().removeClass( "horz-toolbox-show" );
                 $( ".controlink[url=manage]" ).parent().removeClass( "horz-toolbox-show-1" );
                 $( ".controlink[url=about]" ).parent().removeClass( "horz-toolbox-show-2" );
