@@ -277,11 +277,6 @@ img {
 .clock {
     position: absolute;
 
-    display: -webkit-box;
-    -webkit-box-flex: 1;
-    -webkit-box-pack: end;
-    -webkit-box-align: end;
-
     right: 10px;
     bottom: 10px;
 
