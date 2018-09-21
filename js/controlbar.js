@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], function( $, i18n, vo, date, files, setting, manage ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ], function( $, i18n, vo, date, files, setting, manage, about ) {
 
     "use strict";
 
@@ -37,17 +37,17 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], functio
     }
 
     function setBackgroundPosition( is_settingclick ) {
-        if ( !is_settingclick && $( "body" ).find( ".img-bg" ).length > 0 ) return;
+        if ( !is_settingclick && $( "body" ).find( ".bgmask-bg" ).length > 0 ) return;
         var value = localStorage[ "simptab-background-position" ];
         if ( value == "mask" ) {
             var url       = vo.cur.type == "default" ? vo.cur.hdurl : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
                 maxHeight = 800,
                 height    = $( "body" ).height();
-            $( "body" ).addClass( "bgmask" ).prepend( '<div class="img-bg"><img src="' + url + '"></div>' );
+            $( "body" ).addClass( "bgmask" ).prepend( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
             $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-            height <= maxHeight && $( ".img-bg" ).find( "img" ).height( height - 300 );
+            height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
         } else {
-            $( "body" ).removeClass( "bgmask" ).find( ".img-bg" ).remove();
+            $( "body" ).removeClass( "bgmask" ).find( ".bgmask-bg" ).remove();
             $( ".bgmask-filter" ).remove();
             vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
         }
@@ -92,7 +92,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], functio
         $( "body" ).css( "background-image", 'url("' + url + '")' );
         // change background mask
         $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-        $( "body" ).find( ".img-bg > img" ).attr( "src", url );
+        $( "body" ).find( ".bgmask-bg > img" ).attr( "src", url );
         // change conntrolbar download url and info
         $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
         $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
@@ -111,11 +111,15 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], functio
             });
 
             $( ".controlink[url=setting]" ).mouseenter( function( event ) {
-                $( ".controlink[url=setting]" ).prev().addClass( "children-show" );
+                $( ".controlink[url=setting]" ).prev().addClass( "horz-toolbox-show" );
+                $( ".controlink[url=manage]" ).parent().addClass( "horz-toolbox-show-1" );
+                $( ".controlink[url=about]" ).parent().addClass( "horz-toolbox-show-2" );
             });
 
             $($( ".controlbar li" )[7]).mouseleave( function( event ) {
-                $( ".controlink[url=setting]" ).prev().removeClass( "children-show" );
+                $( ".controlink[url=setting]" ).prev().removeClass( "horz-toolbox-show" );
+                $( ".controlink[url=manage]" ).parent().removeClass( "horz-toolbox-show-1" );
+                $( ".controlink[url=about]" ).parent().removeClass( "horz-toolbox-show-2" );
             });
 
             // listen control link
@@ -188,6 +192,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage" ], functio
                         break;
                     case "manage":
                         manage.Render();
+                        break;
+                    case "about":
+                        about.Render();
                         break;
                 }
             });

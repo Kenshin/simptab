@@ -27,6 +27,7 @@ requirejs.config({
       "progress"   : "js/progress",
       "cdns"       : "js/cdns",
       "manage"     : "js/manage",
+      "about"      : "js/about",
       "message"    : "js/message",
     },
     shim: {
