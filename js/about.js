@@ -16,7 +16,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                                     <a target="_blank" href="https://weibo.com/simptab"><img src="' + chrome.extension.getURL( "assets/images/weibo.svg" ) + '"></a>\
                                 </div>\
                             </div>\
-                            <h3>'  + i18n.GetLang( 'extension_desc' ) + '</h3>\
+                            <h3>' + i18n.GetLang( 'extension_desc' ) + '</h3>\
                             <div>\
                                 ' + i18n.GetLang( 'about_content_begin' ) + '<b class="ellipsis">' + i18n.GetLang( 'about_content_more' ) + '</b><span class="more">' + i18n.GetLang( 'about_content_middle' ) + '</span>' + i18n.GetLang( 'about_content_end' ) + '\
                             </div>\
