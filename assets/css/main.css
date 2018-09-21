@@ -203,6 +203,10 @@ img {
     -webkit-border-radius: 90%;
 }
 
+.newtabicon {
+    background-image: url("../images/default-new-tab.png");
+}
+
 .bookmarksicon {
     background-image: url("../images/bookmarks.png");
 }

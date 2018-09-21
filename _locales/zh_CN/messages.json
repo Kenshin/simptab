@@ -25,6 +25,10 @@
         "description": "极简的 Chrome 新标签页扩展, 新标签页, 标签页, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
+    "controlbar_new_tab": {
+        "message": "默认新标签页"
+    },
+
     "controlbar_bookmarks": {
         "message": "书签"
     },
