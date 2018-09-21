@@ -1025,6 +1025,14 @@ img {
     color: #179b78;
 }
 
+.about .content .more {
+    display: none;
+}
+
+.about .content .ellipsis {
+    cursor: pointer;
+}
+
 .about .footer {
     margin: 0 15px;
     padding: 15px 10px;

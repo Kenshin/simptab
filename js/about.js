@@ -3,7 +3,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
     var prefix = i18n.GetLang( 'lang' ) == "cn" ? "" : i18n.GetLang( 'lang' ),
         rTmpl  = '\
                 <div class="close"><span class="close"></span></div>\
-                    <div class="about" style="height:auto;">\
+                    <div class="about">\
                         <div class="banner"><img src="filesystem:' + chrome.extension.getURL( "temporary/background.jpg" ) + '?' + +new Date() + '"/></div>\
                         <div class="content">\
                             <div class="title">\
@@ -16,7 +16,9 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                                 </div>\
                             </div>\
                             <h3>'  + i18n.GetLang( 'extension_desc' ) + '</h3>\
-                            <div>' + i18n.GetLang( 'about_content' )  + '</div>\
+                            <div>\
+                                ' + i18n.GetLang( 'about_content_begin' ) + '<b class="ellipsis">查看更多...</b><span class="more">' + i18n.GetLang( 'about_content_more' ) + '</span>' + i18n.GetLang( 'about_content_end' ) + '\
+                            </div>\
                         </div>\
                         <div class="footer">' + i18n.GetLang( 'short_title' ) + ' - ' + i18n.GetLang( 'extension_desc' ) + ' © 2014 <a href="http://ksria.com/simptab">ksria.com</a> via <a href="http://kenshin.wang" target="_blank">Kenshin</a></div>\
                     </div>\
@@ -31,13 +33,21 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
         });
     }
 
+    function moreAbout() {
+        $( ".about .content .ellipsis" ).click( function( event ) {
+            $( ".about .content .ellipsis" ).remove();
+            $( ".about .content .more" ).show( 600 );
+        });
+    }
+
     return {
         Render: function() {
-            $( "body" ).append( '<div class="manage-overlay"><div class="manage-bg"><div class="manage"></div></div></div>' );
+            $( "body" ).append( '<div class="manage-overlay"><div class="manage-bg"><div class="manage" style="height:auto;"></div></div></div>' );
             setTimeout( function() {
                 $( ".manage-bg" ).addClass( "manage-bg-show" );
                 $( ".manage" ).html( rTmpl );
                 closeListenEvent();
+                moreAbout();
             }, 10 );
         }
     }

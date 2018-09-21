@@ -233,8 +233,16 @@
         "message": "刪除"
     },
 
-    "about_content": {
-        "message": "<p>嗨，我叫 <a href='http://kenshin.wang' target='_blank'>Kenshin</a> ，感謝使用 簡 Tab，希望它可以給你一成不變的 New Tab 帶來一些不同；簡 Tab 只關注如何能更好的在 New Tab 呈現背景，這些背景均來自於：<code>bing</code> · <code>unsplash</code> · <code>flickr</code> · <code>wallhaven</code> · <code>google art</code> · <code>desktoppr</code> · <code>visualhunt</code> 等。<br>簡 Tab 還擁有自己的 <code>精選集</code>；如同 iPhone 上的壁紙類 App 一樣，通過 <code>人工篩選</code> 的方式進一步將適合作為 New Tab 背景的壁紙呈現給你，這也是最與眾不同的地方。</p><p style='margin-top: 14px;'>如果你有 <code>好的作品</code> 亦或 <code>適合的背景</code>，也請告訴 簡 Tab，投稿地址 👉 <a href='https://goo.gl/forms/om5r57qk1PkksuNr2' target='_blank'>猛戳這裡</a><br>覺得它還不錯，請幫忙 <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>五星好評</a>，這是對我最大的肯定，有任何問題也請 <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>提交 issues</a>，有你的幫助才能更完美。<br></p>"
+    "about_content_begin": {
+        "message": "<p>嗨，我叫 <a href='http://kenshin.wang' target='_blank'>Kenshin</a> ，感謝使用 簡 Tab，希望它可以給你一成不變的 New Tab 帶來一些不同；"
+    },
+
+    "about_content_more": {
+        "message": "簡 Tab 只關注如何能更好的在 New Tab 呈現背景，這些背景均來自於：<code>bing</code> · <code>unsplash</code> · <code>flickr</code> · <code>wallhaven</code> · <code>google art</code> · <code>desktoppr</code> · <code>visualhunt</code> 等。<br>簡 Tab 還擁有自己的 <code>精選集</code>；如同 iPhone 上的壁紙類 App 一樣，通過 <code>人工篩選</code> 的方式進一步將適合作為 New Tab 背景的壁紙呈現給你，這也是最與眾不同的地方。</p>"
+    },
+
+    "about_content_end": {
+        "message": "<p style='margin-top:14px;'>如果你有 <code>好的作品</code> 亦或 <code>適合的背景</code>，也請告訴 簡 Tab，投稿地址 👉 <a href='https://goo.gl/forms/om5r57qk1PkksuNr2' target='_blank'>猛戳這裡</a><br>覺得它還不錯，請幫忙 <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>五星好評</a>，這是對我最大的肯定，有任何問題也請 <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>提交 issues</a>，有你的幫助才能更完美。</p>"
     },
 
     "version_title": {
