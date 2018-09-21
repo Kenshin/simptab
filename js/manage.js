@@ -246,10 +246,10 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
 
     return {
         Render: function () {
-            $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="manage"></div></div></div>' );
+            $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog manage"></div></div></div>' );
             setTimeout( function() {
                 $( ".dialog-bg" ).addClass( "dialog-bg-show" );
-                $( ".manage" ).html( rTmpl );
+                $( ".dialog" ).html( rTmpl );
                 closeListenEvent();
                 tabListenEvent();
                 albumLoadListenEvent();

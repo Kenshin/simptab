@@ -690,7 +690,7 @@ img {
 }
 
 /*
-* popup
+* dialog
 */
 .dialog-overlay {
     position: fixed;
@@ -725,7 +725,7 @@ img {
     transform: translateY( 0 );
 }
 
-.manage {
+.dialog {
     position: relative;
 
     display: flex;
@@ -740,13 +740,29 @@ img {
     box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
 }
 
-.manage .close {
+.dialog .close {
     position: absolute;
 
     top: 5px;
     right: 5px;
 
     z-index: 2;
+}
+
+.dialog .close span {
+    display: block;
+
+    width: 14px;
+    height: 14px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+
+.dialog .close span.close {
+    background-image: url("../images/remove.png");
 }
 
 /*
@@ -839,7 +855,6 @@ img {
     list-style-type: none;
 }
 
-.manage .close span,
 .manage .album .photograph ul li span {
     display: block;
 
@@ -929,6 +944,9 @@ img {
     height: 100%;
 }
 
+/*
+* about
+*/
 .about {
     width: 100%;
     height: 100%;

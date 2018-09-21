@@ -26,7 +26,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                 </div>';
 
     function closeListenEvent() {
-        $( ".manage .close" ).click( function( event ) {
+        $( ".dialog .close" ).click( function( event ) {
             $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
             setTimeout( function() {
                 $( ".dialog-overlay" ).remove();
@@ -43,10 +43,10 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
 
     return {
         Render: function() {
-            $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="manage" style="height:auto;"></div></div></div>' );
+            $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog" style="height:auto;"></div></div></div>' );
             setTimeout( function() {
                 $( ".dialog-bg" ).addClass( "dialog-bg-show" );
-                $( ".manage" ).html( rTmpl );
+                $( ".dialog" ).html( rTmpl );
                 closeListenEvent();
                 moreAbout();
             }, 10 );
