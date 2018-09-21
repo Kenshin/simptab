@@ -233,6 +233,10 @@
         "message": "刪除"
     },
 
+    "about_content_more": {
+        "message": "查看更多..."
+    },
+
     "about_content_begin": {
         "message": "<p>嗨，我叫 <a href='http://kenshin.wang' target='_blank'>Kenshin</a> ，感謝使用 簡 Tab，希望它可以給你一成不變的 New Tab 帶來一些不同；"
     },

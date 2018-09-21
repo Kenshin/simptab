@@ -233,6 +233,10 @@
         "message": "Remove Background"
     },
 
+    "about_content_more": {
+        "message": "More about..."
+    },
+
     "about_content_begin": {
         "message": "<p>Hi, my name is <a href='http://kenshin.wang' target='_blank'>Kenshin</a>, Thank you for using SimpTab. I hope it can make some difference to your unchanging New Tab; "
     },
