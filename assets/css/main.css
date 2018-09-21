@@ -56,20 +56,15 @@ img {
     border: 1px solid #bbb;
 }
 
-.content {
-    display: -webkit-box;
-
-    -webkit-box-flex: 1;
-    -webkit-box-align: end;
-    -webkit-box-orient: horizontal;
-
-    padding-left: 5px;
-    padding-bottom: 5px;
-}
-
 .progress {
-    width: 20px;
+    position: fixed;
+    left: 5px;
+    bottom: 5px;
+
+    width:20px;
     height:20px;
+
+    z-index: 200;
 }
 
 .sidebar {
