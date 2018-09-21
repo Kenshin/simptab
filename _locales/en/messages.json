@@ -237,7 +237,7 @@
         "message": "<p>Hi, my name is <a href='http://kenshin.wang' target='_blank'>Kenshin</a>, Thank you for using SimpTab. I hope it can make some difference to your unchanging New Tab; "
     },
 
-    "about_content_more": {
+    "about_content_middle": {
         "message": "SimpTab only focuses on how to better present the background in new tab，this backgrounds come from: <code>bing</code> · <code>unsplash</code> · <code>flickr</code> · <code>wallhaven</code> · <code>google art</code> · <code>desktoppr</code> · <code>visualhunt</code>. <br>SimpTab also has its own <code>collections</code>, like the wallpaper app on the iPhone，Present your wallpaper as a New Tab background to you by <code>manual filtering</code>, This is also the most unusual place.</p>"
     },
 

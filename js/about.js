@@ -18,7 +18,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                             </div>\
                             <h3>'  + i18n.GetLang( 'extension_desc' ) + '</h3>\
                             <div>\
-                                ' + i18n.GetLang( 'about_content_begin' ) + '<b class="ellipsis">查看更多...</b><span class="more">' + i18n.GetLang( 'about_content_more' ) + '</span>' + i18n.GetLang( 'about_content_end' ) + '\
+                                ' + i18n.GetLang( 'about_content_begin' ) + '<b class="ellipsis">查看更多...</b><span class="more">' + i18n.GetLang( 'about_content_middle' ) + '</span>' + i18n.GetLang( 'about_content_end' ) + '\
                             </div>\
                         </div>\
                         <div class="footer">' + i18n.GetLang( 'short_title' ) + ' - ' + i18n.GetLang( 'extension_desc' ) + ' © 2014 <a href="http://ksria.com/simptab">ksria.com</a> via <a href="http://kenshin.wang" target="_blank">Kenshin</a></div>\
