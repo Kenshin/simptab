@@ -1,6 +1,7 @@
 define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) {
 
-    var rTmpl  = '\
+    var prefix = i18n.GetLang( 'lang' ) == "cn" ? "" : i18n.GetLang( 'lang' ),
+        rTmpl  = '\
                 <div class="close"><span class="close"></span></div>\
                     <div class="about" style="height:auto;">\
                         <div class="banner"><img src="filesystem:' + chrome.extension.getURL( "temporary/background.jpg" ) + '?' + +new Date() + '"/></div>\
@@ -11,7 +12,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                                     <a target="_blank" href="https://github.com/Kenshin/simptab/releases"><img src="' + chrome.extension.getURL( "assets/images/version.svg" ) + '"></a>\
                                     <a target="_blank" href="http://ksria.com/simptab"><img src="' + chrome.extension.getURL( "assets/images/website.svg" ) + '"></a>\
                                     <a target="_blank" href="https://github.com/Kenshin/simptab"><img src="' + chrome.extension.getURL( "assets/images/github.svg" ) + '"></a>\
-                                    <a target="_blank" href="https://github.com/Kenshin/simptab/blob/master/CHANGELOG.md"><img src="' + chrome.extension.getURL( "assets/images/changelog.svg" ) + '"></a>\
+                                    <a target="_blank" href="https://github.com/Kenshin/simptab/blob/master/CHANGELOG' + prefix + '.md"><img src="' + chrome.extension.getURL( "assets/images/changelog.svg" ) + '"></a>\
                                 </div>\
                             </div>\
                             <h3>'  + i18n.GetLang( 'extension_desc' ) + '</h3>\
