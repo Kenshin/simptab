@@ -977,13 +977,23 @@ img {
     text-transform: initial;
 }
 
-.about .content .hr {
-    width: 100%;
-    height: 10px;
-    border-bottom: 1px dotted rgba(51, 51, 51, 0.87);
+.about .content .title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
 }
 
-.about .content h1 {
+.about .content .title img {
+    margin: 0;
+    padding: 0 0 0 8px;
+    border: 0;
+}
+
+.about .content .title a {
+    border: none;
+}
+
+.about .content .title h1 {
     margin-bottom: 0;
 }
 
