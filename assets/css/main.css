@@ -78,8 +78,6 @@ html {
 body {
     font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
 
-    /*display: -webkit-box;*/
-
     margin: 0px;
     padding: 0px;
     height: 100%;
@@ -118,12 +116,6 @@ img {
 }
 
 .sidebar {
-    /*
-    position: relative;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-box-flex: 1;
-    */
     position: absolute;
     top: 0;
     right: 0;
@@ -177,14 +169,6 @@ img {
 * control
 */
 .controlbar {
-
-    /*
-    display: -webkit-box;
-    -webkit-box-pack: end;
-    -webkit-box-align: end;
-    -webkit-box-orient: vertical;
-    */
-
     display: flex;
     flex-direction: column;
     align-items: flex-end;
