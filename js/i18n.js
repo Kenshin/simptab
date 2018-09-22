@@ -51,8 +51,8 @@ define([ "jquery" ], function( $ ) {
         $($(".setting .contact").find("a")[3]).attr( "title", i18n( "setting_contact_gplus" ));
         $($(".setting .contact").find("a")[4]).attr( "title", i18n( "setting_contact_me" ));
 
-        $.each( $(".pinstate .tooltip-top").find("input"), function( idx, item ) {
-            $(item).parent().parent().attr( "data-tooltip", i18n( "setting_pin_tooltip" ).replace( "#1", $(item).val() / 60 ) );
+        $.each( $(".pinstate section"), function( idx, item ) {
+            $(item).attr( "data-balloon", i18n( "setting_pin_tooltip" ).replace( "#1", $(item).attr( "data-balloon" ) ) );
         });
 
     }
