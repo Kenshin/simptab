@@ -91,7 +91,8 @@ img {
 
     box-shadow: -5px 0 4px;
 
-    /*overflow: overlay;*/
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 .setting div {
@@ -387,6 +388,10 @@ img {
     justify-content:space-between;
 
     margin: 5px 0px 0px 0px;
+}
+
+.pinstate .boxradio {
+    padding: 0 4px;
 }
 
 .boxradio {
@@ -1069,6 +1074,29 @@ img {
 /*
 * media
 */
+@media screen and (max-height:768px) {
+    .controlbar {
+        zoom: .9;
+    }
+
+    .clock {
+        right: 60px;
+    }
+}
+
+/*
+* media
+*/
+@media screen and (max-height:749px) {
+    .controlbar {
+        zoom: .8;
+    }
+
+    .clock {
+        right: 50px;
+    }
+}
+
 @media screen and (min-height:820px) {
 
     body {
