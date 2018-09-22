@@ -516,16 +516,6 @@ img {
 * topsites
 */
 .topsites {
-    /*
-    position: relative;
-
-    display: -webkit-box;
-    -webkit-box-align: center;
-    -webkit-box-orient: horizontal;
-    -webkit-box-pack: center;
-
-    left: 33px;
-    */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -602,12 +592,6 @@ img {
     top   : 0;
     right : 65px;
 
-    /*
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    */
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -650,23 +634,15 @@ img {
 }
 
 .senior a {
-    /*
-    display: -webkit-box;
-    -webkit-box-orient:vertical;
-    -webkit-box-align: center;
-    */
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    text-decoration: none;
-
-    width: 80px;
-    /*height:80px;*/
-
     padding: 20px;
+    width: 80px;
+
+    text-decoration: none;
 }
 
 .senior a:hover {
