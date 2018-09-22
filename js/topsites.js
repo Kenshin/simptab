@@ -75,7 +75,7 @@ define([ "jquery" ], function( $ ) {
         $( ".seniorgp" ).fadeOut( 500, function () {
             $(this).removeAttr( "style" ).removeClass( "senior-show" ).addClass( "senior-hide" );
             addRootEvent();
-            offestPosition();
+            //offestPosition();
         });
     },
     offestPosition = function() {
@@ -144,7 +144,7 @@ define([ "jquery" ], function( $ ) {
                 break;
         }
         // 116-simptab-optimize-layout
-        offestPosition();
+        //offestPosition();
     }
 
     return {

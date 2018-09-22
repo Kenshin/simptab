@@ -137,7 +137,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                             });
                             $( ".clock" ).animate({ "right": width + 10 }, 500 );
 
-                            $( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
+                            //$( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
                             // 116-simptab-optimize-layout
                             var selector = ".content, .sidebar, .controlbar, .clock";
@@ -155,7 +155,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                                 $target.removeClass( "close" );
                             });
                             $( ".clock" ).animate({ "right": 10 }, 500 );
-                            $( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
+                            //$( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":
