@@ -32,7 +32,7 @@ define([ "jquery" ], function( $ ) {
         this.new = {};  //new background data structure
     }
 
-    VO.DEFAULT_BACKGROUND = "../assets/images/background.jpg";
+    VO.DEFAULT_BACKGROUND = "../assets/images/background.webp";
     VO.CURRENT_BACKGROUND = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
     VO.BACKGROUND         = "background.jpg";
     VO.FAVORITE           ="filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/";
