@@ -135,6 +135,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                             $( ".setting" ).animate({ "width": width, opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
                             });
+                            $( ".clock" ).animate({ "right": width + 10 }, 500 );
 
                             $( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
@@ -153,6 +154,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                             $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                                 $target.removeClass( "close" );
                             });
+                            $( ".clock" ).animate({ "right": 10 }, 500 );
                             $( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;

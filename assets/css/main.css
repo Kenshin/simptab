@@ -78,7 +78,7 @@ html {
 body {
     font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
 
-    display: -webkit-box;
+    /*display: -webkit-box;*/
 
     margin: 0px;
     padding: 0px;
@@ -118,10 +118,21 @@ img {
 }
 
 .sidebar {
+    /*
     position: relative;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-box-flex: 1;
+    */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    justify-content: flex-end;
+
+    width: 800px;
 }
 
 /*
@@ -166,10 +177,20 @@ img {
 * control
 */
 .controlbar {
+
+    /*
     display: -webkit-box;
     -webkit-box-pack: end;
     -webkit-box-align: end;
     -webkit-box-orient: vertical;
+    */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    padding: 0;
+    width: 200px;
 
     list-style: none;
     font-size: 15px;
@@ -182,10 +203,6 @@ img {
 
 .controlbar:hover {
     opacity: 1;
-}
-
-.controlbar li {
-    list-style: none;
 }
 
 .controlbar a {
@@ -203,6 +220,14 @@ img {
 
 .controlbar a:hover {
     opacity: 1;
+}
+
+.controlbar li {
+    list-style: none;
+}
+
+.controlbar li:nth-child(9) {
+    position: relative;
 }
 
 .horz-toolbox {
