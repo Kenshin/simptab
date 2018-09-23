@@ -498,6 +498,7 @@ img {
 
 .topsites li {
     margin: 5px;
+    text-transform: none;
 }
 
 .topsites a {
@@ -509,12 +510,13 @@ img {
     max-width: 75px;
 
     color: #fff;
-    font-size: 12x;
+    font-size: 12px;
 
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     text-decoration: none;
+    text-transform: uppercase;
 
     opacity: 0.4;
 

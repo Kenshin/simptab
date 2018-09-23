@@ -117,6 +117,7 @@ define([ "jquery" ], function( $ ) {
     Topsites.prototype.SimpleRender = function( site ) {
         this.simple.$a.attr( "href", site.url );
         this.simple.$span.text( site.title );
+        this.simple.$item.attr( "data-balloon", site.url ).attr( "data-balloon-pos", "up" );
         this.simple.html += this.simple.$item[0].outerHTML;
     };
 
