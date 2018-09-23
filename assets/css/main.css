@@ -3,16 +3,6 @@
     font-family: "clock";
 }
 
-@font-face {
-    src: url("../fonts/en.otf") format( "opentype" );
-    font-family: "en";
-}
-
-@font-face {
-    src: url("../fonts/zh.bmp") format( "woff" );
-    font-family: "zh";
-}
-
 /*
 * global
 */
@@ -1157,6 +1147,19 @@ img {
     }
 
 }
+
+
+/*
+@font-face {
+    src: url("../fonts/en.otf") format( "opentype" );
+    font-family: "en";
+}
+
+@font-face {
+    src: url("../fonts/zh.bmp") format( "woff" );
+    font-family: "zh";
+}
+*/
 
 /*
 * tooltip
