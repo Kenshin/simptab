@@ -488,7 +488,6 @@ img {
     padding: 0px;
     height: 44px;
 
-    font-weight: 300;
     list-style: none;
 
     background-color: #222;
@@ -502,18 +501,20 @@ img {
 }
 
 .topsites a {
-    display:block;
+    display: block;
+
+
+    padding: 8px;
 
     max-width: 75px;
+
+    color: #fff;
+    font-size: 12x;
 
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    padding: 8px;
-
     text-decoration: none;
-    color: #fff;
 
     opacity: 0.4;
 
