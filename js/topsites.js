@@ -55,12 +55,6 @@ define([ "jquery" ], function( $ ) {
             }
     },
     getTLD = function ( url ) {
-        /*
-        var re    = /(\w+)(\.[a-zA-Z]{2,3})($|\/)/ig,
-            match = [];
-        match     = re.exec(url);
-        return match && match.length > 1 ? match[1][0] : "empty";
-        */
         var re    = /http(s)?:\/\/\S[^\/]+/ig,
             match = [];
         match     = re.exec(url);
@@ -128,7 +122,6 @@ define([ "jquery" ], function( $ ) {
 
     Topsites.prototype.SeniorRender = function( site ) {
         this.senior.$item.attr( "href", site.url );
-        //this.senior.$span.attr( "class", "senior-ts-icon-" + getTLD( site.url ));
         var chars = getTLD( site.url ).substr( 0, 1 ),
             idx = bgColors.idx.indexOf( chars ),
             bg  = bgColors.colors[idx];
