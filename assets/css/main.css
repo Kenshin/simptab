@@ -474,7 +474,7 @@ img {
 }
 
 .bottom:hover {
-    opacity: 0.8;
+    opacity: 1;
 }
 
 /*
@@ -486,14 +486,16 @@ img {
     align-items: center;
 
     padding: 0px;
-    height: 44px;
+    height: 48px;
 
     list-style: none;
 
-    background-color: #222;
+    background-color: rgba( 50, 50, 50, 1 );
 
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
 }
 
 .topsites li {
@@ -509,7 +511,7 @@ img {
 
     max-width: 75px;
 
-    color: #fff;
+    color: rgba( 255, 255, 255, .7 );
     font-size: 12px;
 
     overflow: hidden;
@@ -518,16 +520,15 @@ img {
     text-decoration: none;
     text-transform: uppercase;
 
-    opacity: 0.4;
-
     transition: background .5s ease;
     -webkit-transition: background .5s ease;
 
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
 }
 
 .topsites a:hover {
+    color: #fff;
     background: rgba(139, 137, 134,.4);
     opacity: 1;
 }
@@ -576,11 +577,11 @@ img {
 
     white-space: nowrap;
 
-    background-color: rgba( 255, 255, 255,.8 );
+    background-color: rgba( 255, 255, 255, .7 );
 
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
 
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .senior a {
@@ -601,7 +602,7 @@ img {
     transition: background-color .5s ease;
     -webkit-transition: background-color .5s ease;
 
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .senior-hide {
