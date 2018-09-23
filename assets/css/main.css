@@ -325,8 +325,8 @@ img {
     background: #555;
 
     border: none;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
 
     cursor: pointer;
 }
@@ -428,8 +428,8 @@ img {
     width: 25px;
 
     border: none;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
 }
 
 .boxradio span {
