@@ -467,9 +467,6 @@ img {
 
     min-height: 100px;
 
-    font-size: 12px;
-    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
-
     opacity: 0;
 
     transition: opacity .5s ease;
@@ -559,16 +556,12 @@ img {
 
     /* background-color: rgba( 255, 255, 255, .6 ); */
 
-    font-size: 15px;
-    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
     text-transform: none;
 
     z-index: 2000;
 }
 
 .senior {
-    font-family: -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif!important;
-
     position: relative;
 
     display: flex;
@@ -578,8 +571,6 @@ img {
     max-width: 360px;
     max-height: 500px;
 
-    font-size: 13px;
-    font-weight: 300;
     white-space: nowrap;
 
     background-color: rgba( 255, 255, 255,.8 );
@@ -630,7 +621,8 @@ img {
     width: 60px;
     color: rgba(51,51,51,.7);
 
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 500;
     text-decoration: none;
     text-align: center;
 
