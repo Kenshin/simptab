@@ -116,7 +116,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                 $( ".controlink[url=about]" ).parent().addClass( "horz-toolbox-show-2" );
             });
 
-            $($( ".controlbar li" )[7]).mouseleave( function( event ) {
+            $($( ".controlbar li" )[8]).mouseleave( function( event ) {
                 $( ".controlink[url=setting]" ).prev().removeClass( "horz-toolbox-show" );
                 $( ".controlink[url=manage]" ).parent().removeClass( "horz-toolbox-show-1" );
                 $( ".controlink[url=about]" ).parent().removeClass( "horz-toolbox-show-2" );
@@ -135,8 +135,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                             $( ".setting" ).animate({ "width": width, opacity : 0.8 }, 500, function() {
                                 $target.addClass( "close" );
                             });
+                            $( ".clock" ).animate({ "right": width + 10 }, 500 );
 
-                            $( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
+                            //$( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
                             // 116-simptab-optimize-layout
                             var selector = ".content, .sidebar, .controlbar, .clock";
@@ -153,7 +154,8 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                             $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
                                 $target.removeClass( "close" );
                             });
-                            $( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
+                            $( ".clock" ).animate({ "right": 10 }, 500 );
+                            //$( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":

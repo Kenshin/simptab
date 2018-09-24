@@ -55,9 +55,9 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
         $( ".manage .close" ).click( function( event ) {
             albumLoad = 0;
             $( "body" ).off( "click", ".manage .toolbox span" );
-            $( ".manage-bg" ).removeClass( "manage-bg-show" );
+            $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
             setTimeout( function() {
-                $( ".manage-overlay" ).remove();
+                $( ".dialog-overlay" ).remove();
             }, 400 );
         });
     }
@@ -246,10 +246,10 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
 
     return {
         Render: function () {
-            $( "body" ).append( '<div class="manage-overlay"><div class="manage-bg"><div class="manage"></div></div></div>' );
+            $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog manage"></div></div></div>' );
             setTimeout( function() {
-                $( ".manage-bg" ).addClass( "manage-bg-show" );
-                $( ".manage" ).html( rTmpl );
+                $( ".dialog-bg" ).addClass( "dialog-bg-show" );
+                $( ".dialog" ).html( rTmpl );
                 closeListenEvent();
                 tabListenEvent();
                 albumLoadListenEvent();

@@ -25,6 +25,10 @@
         "description": "極簡的 Chrome 新標籤頁擴展, 新標籤頁, 標籤頁, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
+    "controlbar_new_tab": {
+        "message": "默認新標籤頁"
+    },
+
     "controlbar_bookmarks": {
         "message": "書籤"
     },

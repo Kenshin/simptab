@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="vender/balloon.min.css">
 </head>
 <body>
-    <div class="content"><div class="progress"></div></div>
+    <div class="progress"></div>
     <div class="sidebar">
         <ul class="controlbar">
+            <li><a data-balloon="Default New Tab" data-balloon-pos="left" class="chromelink" href="#" url="chrome-search://local-ntp/local-ntp.html"><span class="icon newtabicon"></span></a></li>
             <li><a data-balloon="Bookmarks" data-balloon-pos="left" class="chromelink" href="#" url="chrome://bookmarks"><span class="icon bookmarksicon"></span></a></li>
             <li><a data-balloon="History" data-balloon-pos="left" class="chromelink" href="#" url="chrome://history"><span class="icon historyicon"></span></a></li>
             <li><a data-balloon="Apps" data-balloon-pos="left" class="chromelink" href="#" url="chrome://apps"><span class="icon appsicon"></span></a></li>
@@ -36,92 +37,93 @@
         <div class="clock">
             <div data-balloon="NaN" data-balloon-pos="up" id="time">-:-</div>
         </div>
-    </div>
-    <div class="setting">
-        <div class="changestate">
-            <div class="lineradio">
-                <input id="everyday" type="radio" name="changestate" value="day">
-                <label for="everyday">Change background daily</label>
+        <div class="setting">
+            <div class="changestate">
+                <div class="lineradio">
+                    <input id="everyday" type="radio" name="changestate" value="day">
+                    <label for="everyday">Change background daily</label>
+                </div>
+                <div class="lineradio">
+                    <input id="everytime" type="radio" name="changestate" value="time">
+                    <label for="everytime">Change background randomly</label>
+                </div>
+                <div class="lineradio">
+                    <input id="forever" type="radio" name="changestate" value="none">
+                    <label for="forever">Not Change background</label>
+                </div>
             </div>
-            <div class="lineradio">
-                <input id="everytime" type="radio" name="changestate" value="time">
-                <label for="everytime">Change background randomly</label>
+            <div class="positionstate">
+                <div class="lineradio">
+                    <input id="centeralig" type="radio" name="positionstate" value="center">
+                    <label for="centeralig">Align to the center</label>
+                </div>
+                <div class="lineradio">
+                    <input id="corneralig" type="radio" name="positionstate" value="corner">
+                    <label for="corneralig">Align to the top-left corner</label>
+                </div>
+                <div class="lineradio">
+                    <input id="maskalig" type="radio" name="positionstate" value="mask">
+                    <label for="maskralig">Mask</label>
+                </div>
             </div>
-            <div class="lineradio">
-                <input id="forever" type="radio" name="changestate" value="none">
-                <label for="forever">Not Change background</label>
+            <div class="clockstate">
+                <div class="lineradio">
+                    <input id="clockshow" type="radio" name="clockstate" value="show">
+                    <label for="clockshow">Show Clock</label>
+                </div>
+                <div class="lineradio">
+                    <input id="clockhide" type="radio" name="clockstate" value="hide">
+                    <label for="clockhide">Hide Clock</label>
+                </div>
             </div>
-        </div>
-        <div class="positionstate">
-            <div class="lineradio">
-                <input id="centeralig" type="radio" name="positionstate" value="center">
-                <label for="centeralig">Align to the center</label>
+            <div class="originstate">
+                <div class="lineradio"><input type="checkbox" id="wallhaven" name="0" ><label for="wallhaven">Add Wallhaven.cc</label></div>
+                <div class="lineradio"><input type="checkbox" id="unsplashcom" name="1" ><label for="unsplashcom">Add Unsplash.com</label></div>
+                <div class="lineradio"><input type="checkbox" id="unsplashit" name="2" ><label for="unsplashit">Add Unsplash.it</label></div>
+                <div class="lineradio"><input type="checkbox" id="flickr" name="3" ><label for="flickr">Add Flickr.com</label></div>
+                <div class="lineradio"><input type="checkbox" id="googleartproject" name="4" ><label for="googleartproject">Add Google Art</label></div>
+                <div class="lineradio"><input type="checkbox" id="500px" name="5" ><label for="500px">Add 500px.com</label></div>
+                <div class="lineradio"><input type="checkbox" id="desktoppr" name="6" ><label for="desktoppr">Add desktoppr.co</label></div>
+                <div class="lineradio"><input type="checkbox" id="visualhunt" name="7" ><label for="visualhunt">Add visualhunt.com</label></div>
+                <div class="lineradio"><input type="checkbox" id="nasa" name="8" ><label for="nasa">Add NASA.gov</label></div>
+                <div class="lineradio"><input type="checkbox" id="simptab" name="9" ><label for="simptab">Add SimpTab</label></div>
+                <div class="lineradio"><input type="checkbox" id="favorite" name="10" ><label for="favorite">Add Favorite</label></div>
+                <div class="lineradio"><input type="checkbox" id="holiday" name="11" ><label for="holiday">Add Holiday</label></div>
+                <div class="lineradio"><input type="checkbox" id="bing" name="12" ><label for="bing">Add Bing Random</label></div>
+                <div class="lineradio"><input type="checkbox" id="today" name="13" ><label for="today">Add Bing Today</label></div>
             </div>
-            <div class="lineradio">
-                <input id="corneralig" type="radio" name="positionstate" value="corner">
-                <label for="corneralig">Align to the top-left corner</label>
+            <div class="tsstate">
+                <div class="lineradio">
+                    <input id="stnormal" type="radio" name="tsstate" value="normal">
+                    <label for="stnormal">Hide Top Sites</label>
+                </div>
+                <div class="lineradio">
+                    <input id="stsimple" type="radio" name="tsstate" value="simple">
+                    <label for="stsimple">Show Top Sites at the bottom</label>
+                </div>
+                <div class="lineradio">
+                    <input id="stsenior" type="radio" name="tsstate" value="senior">
+                    <label for="stsenior">Show Top Sites in the center</label>
+                </div>
             </div>
-            <div class="lineradio">
-                <input id="maskalig" type="radio" name="positionstate" value="mask">
-                <label for="maskralig">Mask</label>
+            <div class="pinstate">
+                <section data-balloon="0.5" data-balloon-pos="up" >
+                    <div class="boxradio"><input id="pintime1" type="radio" name="pinstate" value="30"><label for="pintime1">0.5</label></div>
+                </section>
+                <section data-balloon="1" data-balloon-pos="up" >
+                    <div class="boxradio"><input id="pintime2" type="radio" name="pinstate" value="60"><label for="pintime2">1</label></div>
+                </section>
+                <section data-balloon="2" data-balloon-pos="up" >
+                    <div class="boxradio"><input id="pintime3" type="radio" name="pinstate" value="120"><label for="pintime3">2</label></div>
+                </section>
+                <section data-balloon="4" data-balloon-pos="up" >
+                    <div class="boxradio"><input id="pintime4" type="radio" name="pinstate" value="240"><label for="pintime4">4</label></div>
+                </section>
+                <section data-balloon="8" data-balloon-pos="up" >
+                    <div class="boxradio"><input id="pintime5" type="radio" name="pinstate" value="480"><label for="pintime5">8</label></div>
+                </section>
             </div>
-        </div>
-        <div class="clockstate">
-            <div class="lineradio">
-                <input id="clockshow" type="radio" name="clockstate" value="show">
-                <label for="clockshow">Show Clock</label>
-            </div>
-            <div class="lineradio">
-                <input id="clockhide" type="radio" name="clockstate" value="hide">
-                <label for="clockhide">Hide Clock</label>
-            </div>
-        </div>
-        <div class="originstate">
-            <div class="lineradio"><input type="checkbox" id="wallhaven" name="0" ><label for="wallhaven">Add Wallhaven.cc</label></div>
-            <div class="lineradio"><input type="checkbox" id="unsplashcom" name="1" ><label for="unsplashcom">Add Unsplash.com</label></div>
-            <div class="lineradio"><input type="checkbox" id="unsplashit" name="2" ><label for="unsplashit">Add Unsplash.it</label></div>
-            <div class="lineradio"><input type="checkbox" id="flickr" name="3" ><label for="flickr">Add Flickr.com</label></div>
-            <div class="lineradio"><input type="checkbox" id="googleartproject" name="4" ><label for="googleartproject">Add Google Art</label></div>
-            <div class="lineradio"><input type="checkbox" id="500px" name="5" ><label for="500px">Add 500px.com</label></div>
-            <div class="lineradio"><input type="checkbox" id="desktoppr" name="6" ><label for="desktoppr">Add desktoppr.co</label></div>
-            <div class="lineradio"><input type="checkbox" id="visualhunt" name="7" ><label for="visualhunt">Add visualhunt.com</label></div>
-            <div class="lineradio"><input type="checkbox" id="nasa" name="8" ><label for="nasa">Add NASA.gov</label></div>
-            <div class="lineradio"><input type="checkbox" id="simptab" name="9" ><label for="simptab">Add SimpTab</label></div>
-            <div class="lineradio"><input type="checkbox" id="favorite" name="10" ><label for="favorite">Add Favorite</label></div>
-            <div class="lineradio"><input type="checkbox" id="holiday" name="11" ><label for="holiday">Add Holiday</label></div>
-            <div class="lineradio"><input type="checkbox" id="bing" name="12" ><label for="bing">Add Bing Random</label></div>
-            <div class="lineradio"><input type="checkbox" id="today" name="13" ><label for="today">Add Bing Today</label></div>
-        </div>
-        <div class="tsstate">
-            <div class="lineradio">
-                <input id="stnormal" type="radio" name="tsstate" value="normal">
-                <label for="stnormal">Hide Top Sites</label>
-            </div>
-            <div class="lineradio">
-                <input id="stsimple" type="radio" name="tsstate" value="simple">
-                <label for="stsimple">Show Top Sites at the bottom</label>
-            </div>
-            <div class="lineradio">
-                <input id="stsenior" type="radio" name="tsstate" value="senior">
-                <label for="stsenior">Show Top Sites in the center</label>
-            </div>
-        </div>
-        <div class="pinstate">
-            <section class="tooltip-top">
-                <div class="boxradio"><input id="pintime1" type="radio" name="pinstate" value="30"><label for="pintime1">0.5</label></div>
-            </section>
-            <section class="tooltip-top">
-                <div class="boxradio"><input id="pintime2" type="radio" name="pinstate" value="60"><label for="pintime2">1</label></div>
-            </section>
-            <section class="tooltip-top">
-                <div class="boxradio"><input id="pintime3" type="radio" name="pinstate" value="120"><label for="pintime3">2</label></div>
-            </section>
-            <section class="tooltip-top">
-                <div class="boxradio"><input id="pintime4" type="radio" name="pinstate" value="240"><label for="pintime4">4</label></div>
-            </section>
-            <section class="tooltip-top">
-                <div class="boxradio"><input id="pintime5" type="radio" name="pinstate" value="480"><label for="pintime5">8</label></div>
-            </section>
+            <div class="placeholder" style="margin-top:31px;min-height:31px;">&nbsp;</div>
         </div>
     </div>
     <div class="bottom"></div>

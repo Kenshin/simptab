@@ -97,8 +97,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     version.Init();
 
     // waves config
-    Waves.attach( '.icon', ['waves-circle'] );
-    Waves.attach( '.lineradio', ['waves-block'] );
+    Waves.attach( '.icon',      [ 'waves-circle']);
+    Waves.attach( '.lineradio', [ 'waves-block' ]);
+    Waves.attach( '.boxradio',  [ 'waves-block' ]);
     Waves.init();
 
     // global event handler

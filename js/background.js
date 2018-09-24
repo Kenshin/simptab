@@ -267,7 +267,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         },
 
         SetLang: function( lang ) {
-            $( "body" ).css({ "font-family" : lang.substr(0,2) });
+            //$( "body" ).css({ "font-family" : lang.substr(0,2) });
         },
 
         Valid: function() {
