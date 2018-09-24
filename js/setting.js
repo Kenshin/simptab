@@ -202,7 +202,8 @@ define([ "jquery", "waves" ], function( $, Waves ) {
                 setting.UpdateOriginsMode( idx, value );
             });
 
-            $( ".lineradio" ).on( "click", function( event ) { Waves.attach( '.lineradio', ['waves-block'] );; });
+            $( ".lineradio" ).on( "click", function( event ) { Waves.attach( '.lineradio', ['waves-block'] ); });
+            $( ".boxradio"  ).on( "click", function( event ) { Waves.attach( '.boxradio',  ['waves-block'] ); });
             // listen span click event
             $( ".lineradio" ).on( "click", "span", function( event ) { $(this).next().click(); });
             // hack code by label(maskralig)

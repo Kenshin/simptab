@@ -409,7 +409,7 @@ img {
     margin-left: -31px;
 }
 .boxradio {
-    display: -webkit-flex;
+    display: flex!important;
     justify-content:center;
 
     font-size: 13px;
