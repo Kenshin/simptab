@@ -1081,6 +1081,33 @@ img {
 }
 
 /*
+* bookmarks
+*/
+.bm-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 100px;
+    height: 100%;
+}
+
+.bm {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 300px;
+    height: 100%;
+
+    background: #fff;
+
+    opacity: 0;
+    transform: translateX(-300px);
+    transition: all .6s ease;
+}
+
+/*
 * media
 */
 @media screen and (max-height:768px) {
