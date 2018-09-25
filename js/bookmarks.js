@@ -7,7 +7,7 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
             $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 1 });
         });
         $( ".bm" ).mouseleave( function() {
-            $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
+            //$( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
         });
     }
 
@@ -28,20 +28,28 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
             if ( item.children ) {
                 //maxBookmark += item.children.length;
                 //!is_parent && maxBookmark--;
-                bookmarks.folders.push({ id: item.id, title: item.title, children: item.children });
+                createFolderTmpl({ id: item.id, title: item.title, children: item.children });
                 fmtBookmarks( item.children );
             } else {
                 bookmarks.all.push({ id: item.parentId, title: item.title, url: item.url, item: item });
                 //is_parent && maxBookmark++;
-                is_parent && bookmarks.root.push({ id: item.parentId, title: item.title, url: item.url, item: item });
+                is_parent && createRootTmpl({ id: item.parentId, title: item.title, url: item.url, item: item });
             }
         });
         console.log( bookmarks )
     }
 
+    function createFolderTmpl( folder ) {
+        bookmarks.folders.push( folder );
+    }
+
+    function createRootTmpl( item ) {
+        bookmarks.root.push( item );
+    }
+
     return {
         Render() {
-            $( "body" ).append( '<div class="bm-overlay"><div class="bm"></div></div>' );
+            $( "body" ).append( '<div class="bm-overlay"><div class="bm"><div class="folder"></div><div class="file"></div></div></div>' );
             setTimeout( function() {
                 bmListen();
                 getBookmarks();
