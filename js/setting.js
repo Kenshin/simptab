@@ -168,9 +168,11 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
             if ( result ) {
                 span = '<span class="checked"></span>';
                 localStorage["simptab-bookmarks"] = "true";
+                $target.addClass( "lrselected" );
             } else {
                 localStorage["simptab-bookmarks"] = "false";
                 span = '<span class="unchecked"></span>';
+                $target.removeClass( "lrselected" );
             }
             $target.find( "input" ).val( result );
             $target.prepend( span );
@@ -240,7 +242,11 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
                     value   = event.target.value == "false" ? "true" : "false";
                 if ( value == "true" ) {
                     $span.removeAttr( "class" ).addClass( "checked" );
-                } else $span.removeAttr( "class" ).addClass( "unchecked" );
+                    $target.addClass( "lrselected" );
+                } else {
+                    $span.removeAttr( "class" ).addClass( "unchecked" );
+                    $target.removeClass( "lrselected" );
+                }
                 event.target.value = value;
                 setbookmarksPermissions( value );
             });
