@@ -28,7 +28,7 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
             if ( item.children ) {
                 //maxBookmark += item.children.length;
                 //!is_parent && maxBookmark--;
-                createFolderTmpl({ id: item.id, title: item.title, children: item.children });
+                createFoldersTmpl({ id: item.id, title: item.title, children: item.children });
                 fmtBookmarks( item.children );
             } else {
                 bookmarks.all.push({ id: item.parentId, title: item.title, url: item.url, item: item });
@@ -39,7 +39,7 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
         console.log( bookmarks )
     }
 
-    function createFolderTmpl( folder ) {
+    function createFoldersTmpl( folder ) {
         bookmarks.folders.push( folder );
     }
 
@@ -49,7 +49,7 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
 
     return {
         Render() {
-            $( "body" ).append( '<div class="bm-overlay"><div class="bm"><div class="folder"></div><div class="file"></div></div></div>' );
+            $( "body" ).append( '<div class="bm-overlay"><div class="bm"><div class="folders"></div><div class="files"></div></div></div>' );
             setTimeout( function() {
                 bmListen();
                 getBookmarks();
