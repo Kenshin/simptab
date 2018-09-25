@@ -17,10 +17,10 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
         },
         folderTmpl = '\
                     <div class="folder special root" data-balloon="书签栏" data-balloon-pos="right">\
-                        <span><icon></icon></span>\
+                        <span class="waves-effect waves-block"><icon></icon></span>\
                     </div>\
                     <div class="folder special recent" data-balloon="近期使用" data-balloon-pos="right">\
-                        <span><icon></icon></span>\
+                        <span class="waves-effect waves-block"><icon></icon></span>\
                     </div>\
                     ';
 
@@ -64,7 +64,7 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
     function createFoldersTmpl( folder ) {
         bookmarks.folders.push( folder );
         var title = folder.title.substr( 0, 1 ),
-            tmpl  = '<div data-balloon="' + folder.title + '" data-balloon-pos="right" class="folder normal"><span style="background-color: ' + getBgColor( title ) + '">' + title + '</span></div>';
+            tmpl  = '<div class="folder normal" data-balloon="' + folder.title + '" data-balloon-pos="right"><span class="waves-effect waves-block" style="background-color: ' + getBgColor( title ) + '">' + title + '</span></div>';
         folderTmpl += tmpl;
         $( ".bm .folders" ).html( folderTmpl );
     }
