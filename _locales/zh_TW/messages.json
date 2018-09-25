@@ -173,6 +173,10 @@
         "message": "添加 必應每日更新"
     },
 
+    "setting_bm_state": {
+        "message": "啟用 書籤欄"
+    },
+
     "setting_ts_state_normal": {
         "message": "常用網址（隱藏模式）"
     },
@@ -375,6 +379,10 @@
 
     "permissions_success": {
         "message": "新的許可權已經啟用成功。"
+    },
+
+    "permissions_disable": {
+        "message": "新的許可權已經取消成功。"
     },
 
     "permissions_failed": {

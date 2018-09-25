@@ -184,7 +184,7 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
             });
         } else {
             chrome.permissions.remove({ permissions: [ 'bookmarks' ]}, function( result ) {
-                new Notify().Render( result ? "权限取消成功。" : i18n.GetLang( "permissions_failed" ) );
+                new Notify().Render( result ? i18n.GetLang( "permissions_disable" ) : i18n.GetLang( "permissions_failed" ) );
           });
         }
     }

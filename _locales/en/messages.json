@@ -173,6 +173,10 @@
         "message": "Add Bing Today"
     },
 
+    "setting_bm_state": {
+        "message": "Enable Bookmarks bar"
+    },
+
     "setting_ts_state_normal": {
         "message": "Hide Top Sites"
     },
@@ -375,6 +379,10 @@
 
     "permissions_success": {
         "message": "All permissions are granted."
+    },
+
+    "permissions_disable": {
+        "message": "Bookmarks permissions disable success."
     },
 
     "permissions_failed": {
