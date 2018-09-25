@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves" ], function( $, Waves ) {
+define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
 
     "use strict";
 
@@ -160,6 +160,35 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         localStorage["simptab-background-mode"] == "day" ? $(".originstate").fadeOut() : $(".originstate").fadeIn();
     }
 
+    function bookmarksPermissions() {
+        chrome.permissions.contains({
+            permissions: [ 'bookmarks' ],
+        }, function( result ) {
+            var $target = $( ".bmstate .lineradio" ), span;
+            if ( result ) {
+                span = '<span class="checked"></span>';
+                localStorage["simptab-bookmarks"] = "true";
+            } else {
+                localStorage["simptab-bookmarks"] = "false";
+                span = '<span class="unchecked"></span>';
+            }
+            $target.find( "input" ).val( result );
+            $target.prepend( span );
+        });
+    }
+
+    function setbookmarksPermissions( type ) {
+        if ( type == "true" ) {
+            chrome.permissions.request({ permissions: [ 'bookmarks' ]}, function( result ) {
+                new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
+            });
+        } else {
+            chrome.permissions.remove({ permissions: [ 'bookmarks' ]}, function( result ) {
+                new Notify().Render( result ? "权限取消成功。" : i18n.GetLang( "permissions_failed" ) );
+          });
+        }
+    }
+
     return {
         Init: function() {
 
@@ -176,6 +205,8 @@ define([ "jquery", "waves" ], function( $, Waves ) {
             // update originsstate visible
             updateOriginsVisible();
 
+            // bookmarks permissions checked
+            bookmarksPermissions();
         },
 
         Listen: function ( callback ) {
@@ -200,6 +231,18 @@ define([ "jquery", "waves" ], function( $, Waves ) {
                     value   = event.target.value == "true" ? "false" : "true";
                 updateCkState( idx + ":" + value );
                 setting.UpdateOriginsMode( idx, value );
+            });
+
+            // listen originstate checkbox button event
+            $( ".bmstate input" ).click( function( event ) {
+                var $target = $( event.target ).parent(),
+                    $span   = $target.find( "span" ),
+                    value   = event.target.value == "false" ? "true" : "false";
+                if ( value == "true" ) {
+                    $span.removeAttr( "class" ).addClass( "checked" );
+                } else $span.removeAttr( "class" ).addClass( "unchecked" );
+                event.target.value = value;
+                setbookmarksPermissions( value );
             });
 
             $( ".lineradio" ).on( "click", function( event ) { Waves.attach( '.lineradio', ['waves-block'] ); });
