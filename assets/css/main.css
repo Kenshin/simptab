@@ -1113,9 +1113,13 @@ img {
 }
 
 .bm .folders {
-    width: 50px;
+    width: 70px;
     height: 100%;
     background: rgb(238, 238, 238);
+}
+
+.bm .folders .folder:first-child {
+    margin-top: 5px;
 }
 
 .bm .folders .folder {
