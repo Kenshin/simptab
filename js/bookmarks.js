@@ -41,6 +41,12 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         });
     }
 
+    function folderListen() {
+        $( "body" ).on( "click", ".bm .folders .folder span", function( event ) {
+            
+        });
+    }
+
     function getBookmarks() {
         chrome.bookmarks.getTree( function( result ) {
             if ( result && result.length > 0 && result[0].children && result[0].children.length > 0 ) {
@@ -103,6 +109,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             setTimeout( function() {
                 bmListen();
                 getBookmarks();
+                folderListen();
             }, 10 );
         }
     }
