@@ -41,13 +41,17 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                     ',
         fileHTML = "";
 
+    function close() {
+        $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
+    }
+
     function bmListen() {
         $( ".bm-overlay" ).mouseenter( function() {
             $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 });
             $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
         });
         $( ".bm" ).mouseleave( function() {
-            $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
+            close();
         });
     }
 
@@ -65,7 +69,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             }
 
             if ( id == "search" ) {
-                
+                close();
             } else if ( id == "root" ) {
                 fileHTML = "";
                 bookmarks.root.forEach( function( bookmark ) {
