@@ -30,7 +30,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         },
         folderHTML = '\
                     <div class="folder special root" data-balloon="书签栏" data-balloon-pos="right">\
-                        <span id="root" class="waves-effect waves-block"><icon id="root"></icon></span>\
+                        <span id="root" class="active waves-effect waves-block"><icon id="root"></icon></span>\
                     </div>\
                     <div class="folder special recent" data-balloon="近期使用" data-balloon-pos="right">\
                         <span id="recent" class="waves-effect waves-block"><icon id="recent"></icon></span>\
@@ -50,7 +50,15 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
 
     function folderListen() {
         $( "body" ).on( "click", ".bm .folders .folder span", function( event ) {
-            var id = event.target.id;
+            var id      = event.target.id,
+                $target = $( event.target ),
+                tag     = event.target.tagName.toLowerCase();
+
+            $( ".bm .folders .folder span" ).removeClass( "active" );
+            tag == "span" ?
+                $target.addClass( "active" ) :
+                $target.parent().addClass( "active" );
+
             if ( id == "root" ) {
                 fileHTML = "";
                 bookmarks.root.forEach( function( bookmark ) {
