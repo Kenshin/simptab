@@ -1200,7 +1200,7 @@ img {
     display: flex;
     align-items: center;
 
-    padding: 5px 5px 5px 0;
+    padding: 5px 5px 5px 5px;
 
     color: inherit;
     text-decoration: none;
@@ -1230,7 +1230,7 @@ img {
 }
 
 .bm .files .file {
-    margin: 5px;
+    margin: 5px 0 5px 0;
 }
 
 .bm .files .file .title {
