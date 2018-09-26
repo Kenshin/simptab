@@ -23,10 +23,10 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         },
         folderHTML = '\
                     <div class="folder special root" data-balloon="书签栏" data-balloon-pos="right">\
-                        <span class="waves-effect waves-block"><icon></icon></span>\
+                        <span id="root" class="waves-effect waves-block"><icon id="root"></icon></span>\
                     </div>\
                     <div class="folder special recent" data-balloon="近期使用" data-balloon-pos="right">\
-                        <span class="waves-effect waves-block"><icon></icon></span>\
+                        <span id="recent" class="waves-effect waves-block"><icon id="recent"></icon></span>\
                     </div>\
                     ',
         fileHTML = "";
@@ -43,7 +43,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
 
     function folderListen() {
         $( "body" ).on( "click", ".bm .folders .folder span", function( event ) {
-            
+            console.log( event.target.id )
         });
     }
 
@@ -77,8 +77,12 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
 
     function createFoldersTmpl( folder ) {
         bookmarks.folders.push( folder );
-        var title = folder.title.substr( 0, 1 ),
-            tmpl  = '<div class="folder normal" data-balloon="' + folder.title + '" data-balloon-pos="right"><span class="waves-effect waves-block" style="background-color: ' + getBgColor( title ) + '">' + title + '</span></div>';
+        var id    = folder.id,
+            title = folder.title.substr( 0, 1 ),
+            tmpl  = '\
+                    <div class="folder normal" data-balloon="' + folder.title + '" data-balloon-pos="right">\
+                        <span id="' + id + '" class="waves-effect waves-block" style="background-color: ' + getBgColor( title ) + '">' + title + '</span>\
+                    </div>';
         folderHTML += tmpl;
         $( ".bm .folders" ).html( folderHTML );
     }
