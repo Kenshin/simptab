@@ -29,6 +29,9 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             idx   : "abcdefghijklmnopqrstuvwxyz0123456789",
         },
         folderHTML = '\
+                    <div class="folder special search" data-balloon="搜索" data-balloon-pos="right">\
+                        <span id="search" class="waves-effect waves-block"><icon id="search"></icon></span>\
+                    </div>\
                     <div class="folder special root" data-balloon="书签栏" data-balloon-pos="right">\
                         <span id="root" class="active waves-effect waves-block"><icon id="root"></icon></span>\
                     </div>\
@@ -54,12 +57,16 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 $target = $( event.target ),
                 tag     = event.target.tagName.toLowerCase();
 
-            $( ".bm .folders .folder span" ).removeClass( "active" );
-            tag == "span" ?
-                $target.addClass( "active" ) :
-                $target.parent().addClass( "active" );
+            if ( id != "search" ) {
+                $( ".bm .folders .folder span" ).removeClass( "active" );
+                tag == "span" ?
+                    $target.addClass( "active" ) :
+                    $target.parent().addClass( "active" );
+            }
 
-            if ( id == "root" ) {
+            if ( id == "search" ) {
+                
+            } else if ( id == "root" ) {
                 fileHTML = "";
                 bookmarks.root.forEach( function( bookmark ) {
                     createFilesTmpl( bookmark );

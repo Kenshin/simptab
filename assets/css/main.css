@@ -1173,6 +1173,14 @@ img {
     background-repeat: no-repeat;
 }
 
+.bm .folders .folder.search span {
+    background-color: #FF5252;
+}
+
+.bm .folders .folder.search span icon {
+    background-image: url("../images/search.png");
+}
+
 .bm .folders .folder.root span {
     background-color: #179b78;
 }
