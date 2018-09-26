@@ -17,6 +17,13 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             match     = re.exec( url) ;
             return match && match.length > 1 ? match[0].replace( /(http(s)?:\/\/)(w{3}.)?/ig, "" ) : url.substr( 0, 1 );
         },
+        findBookmarks = function( id ) {
+            var result = [];
+            bookmarks.all.forEach( function( item ) {
+                item.id == id && result.push( item );
+            });
+            return result;
+        },
         bgColors = {
             colors: ["rgb(255, 114, 129)", "rgb(64, 196, 255)", "rgb(255, 157, 68)", "rgb(140, 216, 66)", "rgb(251, 88, 74)", "rgb(255, 229, 95)", "rgb(0, 230, 118)", "rgb(0, 169, 240)", "rgb(128, 222, 234)", "rgb(247, 77, 95)", "rgb(255, 206, 73)", "rgb(250, 154, 63)", "rgb(155, 88, 182)", "rgb(57, 194, 241)", "rgb(141, 196, 72)", "rgb(49,149,215)", "rgb(83, 109, 254)", "rgb(255, 183, 77)", "rgb(197, 231, 99)", "rgb(239, 83, 80)", "rgb(126,86,77)", "rgb(156,39,176)", "rgb(100, 181, 246)", "rgb(119, 232, 86)", "rgb(141,110,99)", "rgb(0, 203, 232)", "rgb(038,166,154)", "rgb(255, 196, 0)", "rgb(253,154,155)", "rgb(167, 134, 116)", "rgb(86, 209, 216)", "rgb(253, 208, 174)", "rgb(97,97,97)", "rgb(239, 88, 74)", "rgb(249, 79, 40)", "rgb(255, 88, 100)", "rgb(224,64,251)", "rgb(0, 177, 251)", "rgb(255,202,40)", "rgb(251, 182, 75)", "rgb(48,63,159)", "rgb(35, 180, 210)", "rgb(0,229,255)", "rgb(158,157,36)", "rgb(239,83,80)", "rgb(50, 71, 93)", "rgb(216,67,21)", "rgb(139, 223, 231)", "rgb(69,90,100)"],
             idx   : "abcdefghijklmnopqrstuvwxyz0123456789",
@@ -43,7 +50,23 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
 
     function folderListen() {
         $( "body" ).on( "click", ".bm .folders .folder span", function( event ) {
-            console.log( event.target.id )
+            var id = event.target.id;
+            if ( id == "root" ) {
+                fileHTML = "";
+                bookmarks.root.forEach( function( bookmark ) {
+                    createRootTmpl( bookmark );
+                });
+                $( ".bm .files" ).html( fileHTML );
+            } else if ( id == "recent" ) {
+                // TO-DO
+            } else {
+                var result = findBookmarks( id );
+                fileHTML = "";
+                result.forEach( function( bookmark ) {
+                    createRootTmpl( bookmark );
+                });
+                $( ".bm .files" ).html( fileHTML );
+            }
         });
     }
 
@@ -69,7 +92,12 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             } else {
                 bookmarks.all.push({ id: item.parentId, title: item.title, url: item.url, item: item });
                 //is_parent && maxBookmark++;
-                is_parent && createRootTmpl({ id: item.parentId, title: item.title, url: item.url, item: item });
+                //is_parent && createRootTmpl({ id: item.parentId, title: item.title, url: item.url, item: item });
+                if ( is_parent ) {
+                    var bookmark = { id: item.parentId, title: item.title, url: item.url, item: item };
+                    bookmarks.root.push( bookmark );
+                    createRootTmpl( bookmark );
+                }
             }
         });
         console.log( bookmarks )
@@ -88,7 +116,6 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
     }
 
     function createRootTmpl( item ) {
-        bookmarks.root.push( item );
         var fileTmpl = '\
                         <div class="file">\
                             <a href="<%- url %>">\
