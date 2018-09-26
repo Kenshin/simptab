@@ -1,6 +1,6 @@
 define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
 
-    var bookmarks  = { origin: [], root: [], folders: [], all: [] },
+    var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [] },
         getBgColor = function ( chars ) {
             var idx = bgColors.idx.indexOf( chars.toLowerCase() ),
                 bg  = bgColors.colors[idx];
@@ -58,7 +58,10 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 });
                 $( ".bm .files" ).html( fileHTML );
             } else if ( id == "recent" ) {
-                // TO-DO
+                fileHTML = "";
+                getRecent( function() {
+                    $( ".bm .files" ).html( fileHTML );
+                });
             } else {
                 var result = findBookmarks( id );
                 fileHTML = "";
@@ -80,6 +83,18 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 // TO-DO
             }
         })
+    }
+
+    function getRecent( callback ) {
+        chrome.bookmarks.getRecent( 40, function( result ) {
+            bookmarks.recent = result;
+            bookmarks.recent.forEach( function( item, idx ) {
+                createFilesTmpl( item );
+                if ( idx == bookmarks.recent.length - 1 ) {
+                    callback && callback();
+                }
+            });
+        });
     }
 
     function fmtBookmarks( result, is_parent ) {
