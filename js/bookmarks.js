@@ -47,7 +47,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
         });
         $( ".bm" ).mouseleave( function() {
-            //$( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
+            $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
         });
     }
 
