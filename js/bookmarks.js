@@ -1,6 +1,6 @@
 define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
 
-    var bookmarks  = { origin: [], root: [], folders: [], all: [] }, maxBookmark = 0,
+    var bookmarks  = { origin: [], root: [], folders: [], all: [] },
         getBgColor = function ( chars ) {
             var idx = bgColors.idx.indexOf( chars.toLowerCase() ),
                 bg  = bgColors.colors[idx];
@@ -85,14 +85,10 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
     function fmtBookmarks( result, is_parent ) {
         result.forEach( function( item ) {
             if ( item.children ) {
-                //maxBookmark += item.children.length;
-                //!is_parent && maxBookmark--;
                 createFoldersTmpl({ id: item.id, title: item.title, children: item.children });
                 fmtBookmarks( item.children );
             } else {
                 bookmarks.all.push({ id: item.parentId, title: item.title, url: item.url, item: item });
-                //is_parent && maxBookmark++;
-                //is_parent && createRootTmpl({ id: item.parentId, title: item.title, url: item.url, item: item });
                 if ( is_parent ) {
                     var bookmark = { id: item.parentId, title: item.title, url: item.url, item: item };
                     bookmarks.root.push( bookmark );
