@@ -1248,6 +1248,53 @@ img {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+/*
+* bookmarks
+*/
+.quickbar-overlay {
+    position: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,.5);
+}
+
+.quickbar {
+    position: absolute;
+    top: 30%;
+
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.quickbar input[type="text"] {
+    width: 500px;
+    height: 40px;
+
+    font-size: 20px;
+
+    color: rgba(51, 51, 51, .87);
+    background-color: rgba(255, 255, 255, .8);
+
+    border: none;
+    outline: none;
+
+    transition: background-color 1s ease;
+}
+
+.quickbar input[type="text"]:hover {
+    background-color: #fff;
+}
+
 /*
 * media
 */

@@ -70,6 +70,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
 
             if ( id == "search" ) {
                 close();
+                openQuickbar();
             } else if ( id == "root" ) {
                 fileHTML = "";
                 bookmarks.root.forEach( function( bookmark ) {
@@ -162,6 +163,25 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         var compiled= _.template( fileTmpl ),
             html    = compiled({ title: title, url: url, avatar: avatar, bgColor: bgColor });
         fileHTML += html;
+    }
+
+    function openQuickbar() {
+        if ( $( ".quickbar-overlay" ).length > 0 ) return;
+        $( "body" ).append( '<div class="quickbar-overlay"><div class="quickbar"></div></div>' );
+        setTimeout( function() {
+            createQuickbar();
+        }, 10 );
+    }
+
+    function createQuickbar() {
+        var tmpl = '\
+                    <div class="search">\
+                        <input type="text"/>\
+                    </div>\
+                    <div class="result"></div>\
+                    ';
+        $( ".quickbar" ).html( tmpl );
+        $( ".quickbar" ).css( "opacity", 1 );
     }
 
     return {
