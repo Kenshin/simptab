@@ -54,7 +54,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             if ( id == "root" ) {
                 fileHTML = "";
                 bookmarks.root.forEach( function( bookmark ) {
-                    createRootTmpl( bookmark );
+                    createFilesTmpl( bookmark );
                 });
                 $( ".bm .files" ).html( fileHTML );
             } else if ( id == "recent" ) {
@@ -63,7 +63,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 var result = findBookmarks( id );
                 fileHTML = "";
                 result.forEach( function( bookmark ) {
-                    createRootTmpl( bookmark );
+                    createFilesTmpl( bookmark );
                 });
                 $( ".bm .files" ).html( fileHTML );
             }
@@ -92,7 +92,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 if ( is_parent ) {
                     var bookmark = { id: item.parentId, title: item.title, url: item.url, item: item };
                     bookmarks.root.push( bookmark );
-                    createRootTmpl( bookmark );
+                    createFilesTmpl( bookmark );
                 }
             }
         });
@@ -111,7 +111,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         $( ".bm .folders" ).html( folderHTML );
     }
 
-    function createRootTmpl( item ) {
+    function createFilesTmpl( item ) {
         var fileTmpl = '\
                         <div class="file">\
                             <a href="<%- url %>">\
