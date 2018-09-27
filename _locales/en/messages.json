@@ -378,11 +378,11 @@
     },
 
     "permissions_success": {
-        "message": "All permissions are granted."
+        "message": "All permissions are granted, please refresh."
     },
 
     "permissions_disable": {
-        "message": "Bookmarks permissions disable success."
+        "message": "Bookmarks permissions disable success, please refresh."
     },
 
     "permissions_failed": {

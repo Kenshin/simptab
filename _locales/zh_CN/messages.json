@@ -378,11 +378,11 @@
     },
 
     "permissions_success": {
-        "message": "新的权限已经启用成功。"
+        "message": "新的权限已经启用成功，刷新后生效。"
     },
 
     "permissions_disable": {
-        "message": "新的权限已经取消成功。"
+        "message": "新的权限已经取消成功，刷新后生效。"
     },
 
     "permissions_failed": {
