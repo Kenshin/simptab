@@ -100,6 +100,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 fmtBookmarks( bookmarks.origin, true );
             } else {
                 new new Notify().Render( "当前环境并未有任何书签。" );
+                $( ".bm-overlay" ).remove();
             }
         })
     }
