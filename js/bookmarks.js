@@ -242,7 +242,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
     function createQuickbar() {
         var tmpl = '\
                     <div class="search">\
-                        <input type="text" placeholder="搜索内容包括：书签栏与最近常用网址"/>\
+                        <input type="text" placeholder="' + i18n.GetLang( "quickbar_input_placeholder" ) + '"/>\
                     </div>\
                     <div class="results"></div>\
                     ';

@@ -253,6 +253,10 @@
         "message": "近期使用"
     },
 
+    "quickbar_input_placeholder": {
+        "message": "搜索内容包括：书签栏与最近常用网址"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

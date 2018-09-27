@@ -253,6 +253,10 @@
         "message": "近期使用"
     },
 
+    "quickbar_input_placeholder": {
+        "message": "搜索內容包括：書籤欄與最近常用網址"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

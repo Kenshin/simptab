@@ -253,6 +253,10 @@
         "message": "Recent"
     },
 
+    "quickbar_input_placeholder": {
+        "message": "Include: Bookmarks and Recent"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
