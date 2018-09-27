@@ -173,6 +173,10 @@
         "message": "添加 必应每日更新"
     },
 
+    "setting_bm_state": {
+        "message": "启用 书签栏"
+    },
+
     "setting_ts_state_normal": {
         "message": "常用网址（隐藏模式）"
     },
@@ -235,6 +239,22 @@
 
     "manage_toolbar_remove": {
         "message": "删除"
+    },
+
+    "bm_foder_search": {
+        "message": "搜索"
+    },
+
+    "bm_foder_root": {
+        "message": "书签栏"
+    },
+
+    "bm_foder_recent": {
+        "message": "近期使用"
+    },
+
+    "quickbar_input_placeholder": {
+        "message": "搜索内容包括：书签栏与最近常用网址"
     },
 
     "about_content_more": {
@@ -333,6 +353,10 @@
         "message": "暂无"
     },
 
+    "notify_bm_empty": {
+        "message": "当前环境并未有任何书签。"
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -374,7 +398,11 @@
     },
 
     "permissions_success": {
-        "message": "新的权限已经启用成功。"
+        "message": "新的权限已经启用成功，刷新后生效。"
+    },
+
+    "permissions_disable": {
+        "message": "新的权限已经取消成功，刷新后生效。"
     },
 
     "permissions_failed": {

@@ -173,6 +173,10 @@
         "message": "Add Bing Today"
     },
 
+    "setting_bm_state": {
+        "message": "Enable Bookmarks bar"
+    },
+
     "setting_ts_state_normal": {
         "message": "Hide Top Sites"
     },
@@ -235,6 +239,22 @@
 
     "manage_toolbar_remove": {
         "message": "Remove Background"
+    },
+
+    "bm_foder_search": {
+        "message": "Search"
+    },
+
+    "bm_foder_root": {
+        "message": "Bookmark"
+    },
+
+    "bm_foder_recent": {
+        "message": "Recent"
+    },
+
+    "quickbar_input_placeholder": {
+        "message": "Include: Bookmarks and Recent"
     },
 
     "about_content_more": {
@@ -333,6 +353,10 @@
         "message": "anonymous"
     },
 
+    "notify_bm_empty": {
+        "message": "Not any bookmarks."
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -374,7 +398,11 @@
     },
 
     "permissions_success": {
-        "message": "All permissions are granted."
+        "message": "All permissions are granted, please refresh."
+    },
+
+    "permissions_disable": {
+        "message": "Bookmarks permissions disable success, please refresh."
     },
 
     "permissions_failed": {

@@ -173,6 +173,10 @@
         "message": "添加 必應每日更新"
     },
 
+    "setting_bm_state": {
+        "message": "啟用 書籤欄"
+    },
+
     "setting_ts_state_normal": {
         "message": "常用網址（隱藏模式）"
     },
@@ -235,6 +239,22 @@
 
     "manage_toolbar_remove": {
         "message": "刪除"
+    },
+
+    "bm_foder_search": {
+        "message": "搜索"
+    },
+
+    "bm_foder_root": {
+        "message": "書籤欄"
+    },
+
+    "bm_foder_recent": {
+        "message": "近期使用"
+    },
+
+    "quickbar_input_placeholder": {
+        "message": "搜索內容包括：書籤欄與最近常用網址"
     },
 
     "about_content_more": {
@@ -325,20 +345,24 @@
         "message": "設置成功。"
     },
 
-    "version_detail": {
-        "message": ""
-    },
-
-    "version_detail_prefix": {
-        "message": ""
-    },
-
     "notify_mange_empty": {
         "message": "暫時沒有任何背景"
     },
 
     "notify_mange_no_user": {
         "message": "暫無"
+    },
+
+    "notify_bm_empty": {
+        "message": "當前環境並未有任何書籤。"
+    },
+
+    "version_detail": {
+        "message": ""
+    },
+
+    "version_detail_prefix": {
+        "message": ""
     },
 
     "version_detail_0": {
@@ -374,7 +398,11 @@
     },
 
     "permissions_success": {
-        "message": "新的許可權已經啟用成功。"
+        "message": "新的許可權已經啟用成功，刷新後生效。"
+    },
+
+    "permissions_disable": {
+        "message": "新的許可權已經取消成功，刷新後生效。"
     },
 
     "permissions_failed": {

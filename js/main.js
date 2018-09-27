@@ -28,6 +28,7 @@ requirejs.config({
       "cdns"       : "js/cdns",
       "manage"     : "js/manage",
       "about"      : "js/about",
+      "bookmarks"  : "js/bookmarks",
       "message"    : "js/message",
     },
     shim: {
@@ -41,7 +42,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks ) {
 
     progress.Init();
 
@@ -105,6 +106,10 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // global event handler
     message.Subscribe( message.TYPE.UPDATE_CONTROLBAR, function( event ) {
         controlbar.Update( event.data.url );
+    });
+
+    chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
+        result && bookmarks.Render();
     });
 
 });
