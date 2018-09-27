@@ -254,7 +254,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
     }
 
     return {
-        Render() {
+        Render: function() {
             $( "body" ).append( '<div class="bm-overlay"><div class="bm"><div class="folders"></div><div class="files"></div></div></div>' );
             setTimeout( function() {
                 bmListen();
