@@ -191,7 +191,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                         tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc">' + desc + '</div></div>';
                     html += tmpl;
                 });
-                $( "body" ).append( '<div class="shortcuts"><div class="title">快捷键一览</div><div>' + html + '</div></div>' );
+                html = '<div><div class="subtitle">控制栏快捷键</div>' + html + '</div>';
+                $( "body" ).append( '<div class="shortcuts"><div class="title">快捷键一览</div><div class="keymaps">' + html + '</div></div>' );
             }
         });
     }

@@ -1351,8 +1351,6 @@ img {
 
     padding: 15px;
 
-    width: 200px;
-
     text-transform: initial;
 
     color: rgba(51, 51, 51, 0.87);
@@ -1366,6 +1364,18 @@ img {
 .shortcuts .title {
     margin: 5px 0;
     font-size: 14px;
+    font-weight: 700;
+}
+
+.shortcuts .keymaps {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.shortcuts .keymaps .subtitle {
+    margin: 5px 0;
+    text-align: center;
+    font-size: 12px;
     font-weight: 700;
 }
 
