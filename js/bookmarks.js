@@ -41,14 +41,18 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                     ',
         fileHTML = "";
 
+    function open() {
+        $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 });
+        $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
+    }
+
     function close() {
         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
     }
 
     function bmListen() {
         $( ".bm-overlay" ).mouseenter( function() {
-            $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 });
-            $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
+            open();
         });
         $( ".bm" ).mouseleave( function() {
             close();
