@@ -9,20 +9,20 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         var CONTROL_KEY_MAP, getKey;
 
         CONTROL_KEY_MAP = [
-            { short: "aa",   long: "newtab"   },
-            { short: "book", long: "bookmarks"},
-            { short: "his",  long: "history"  },
-            { short: "app",  long: "apps"     },
-            { short: "info", long: "info"     },
-            { short: "down", long: "download" },
-            { short: "up",   long: "upload", hiden: true },
-            { short: "ff",   long: "refresh"  },
-            { short: "mn",   long: "manage"  },
-            { short: "ab",   long: "about"  },
-            { short: "set",  long: "setting"  },
-            { short: "fav",  long: "favorite" },
-            { short: "pin",  long: "pin"      },
-            { short: "un",   long: "dislike"  }
+            { short: "1", long: "newtab"   },
+            { short: "2", long: "bookmarks"},
+            { short: "3", long: "history"  },
+            { short: "4", long: "apps"     },
+            { short: "5", long: "info"     },
+            { short: "6", long: "download" },
+            { short: "7", long: "upload", hiden: true },
+            { short: "f", long: "refresh"  },
+            { short: "m", long: "manage"   },
+            { short: "b", long: "about"    },
+            { short: "s", long: "setting"  },
+            { short: "a", long: "favorite" },
+            { short: "q", long: "pin"      },
+            { short: "u", long: "dislike"  },
         ];
 
         getKey = function( type ) {
