@@ -337,6 +337,10 @@
         "message": "anonymous"
     },
 
+    "notify_bm_empty": {
+        "message": "Not any bookmarks."
+    },
+
     "version_detail": {
         "message": ""
     },

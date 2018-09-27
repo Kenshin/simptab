@@ -337,6 +337,10 @@
         "message": "暫無"
     },
 
+    "notify_bm_empty": {
+        "message": "當前環境並未有任何書籤。"
+    },
+
     "version_detail": {
         "message": ""
     },

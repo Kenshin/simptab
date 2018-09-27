@@ -337,6 +337,10 @@
         "message": "暂无"
     },
 
+    "notify_bm_empty": {
+        "message": "当前环境并未有任何书签。"
+    },
+
     "version_detail": {
         "message": ""
     },

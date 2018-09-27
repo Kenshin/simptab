@@ -99,7 +99,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 bookmarks.origin = result[0].children[0].children;
                 fmtBookmarks( bookmarks.origin, true );
             } else {
-                new new Notify().Render( "当前环境并未有任何书签。" );
+                new Notify().Render( i18n.GetLang( "notify_bm_empty" ));
                 $( ".bm-overlay" ).remove();
             }
         })
