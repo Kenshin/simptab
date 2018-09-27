@@ -69,12 +69,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
     })();
 
     function formatShortcut( key ) {
-
         var formatter = "",
             arr       = new Array( key.length );
-
         $.each( arr, function ( idx, value ) {
-
             if ( idx < key.length - 1 ) {
                 formatter += key[idx] + " ";
             }
@@ -83,7 +80,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             }
 
         });
-
         return formatter;
     }
 
@@ -137,11 +133,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
     }
 
     function listenOminbox() {
-
         var prefix = "site:";
-
         chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ").replace( ", ,", "," ) + ", site" });
-
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
             var suggestResult = [],
                 command       = command.toLowerCase();
@@ -172,7 +165,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             }
             suggest( suggestResult );
         });
-
         chrome.omnibox.onInputEntered.addListener( function( command ) {
             console.log( "SimpTab command is " + command );
             verifyCurrentTab( function() {
