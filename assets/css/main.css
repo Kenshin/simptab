@@ -1115,11 +1115,7 @@ img {
 .bm .folders {
     width: 70px;
     height: 100%;
-
     background: rgb(238, 238, 238);
-
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .bm .folders .folder:first-child {
