@@ -187,19 +187,16 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         $( ".quickbar .search input" ).on( "keydown", function( event ) {
             var key = event.keyCode;
             if ( key == 40 ) {
-                if ( !$( ".quickbar .results .result" ).hasClass( "active" )) {
-                    $($( ".quickbar .results .result" )[0]).addClass( "active" );
+                if ( !$( ".quickbar .results" ).find( ".result" ).hasClass( "active" )) {
+                    $($( ".quickbar .results" ).find( ".result" )[0]).addClass( "active" );
                 } else {
                     $( ".quickbar .results" ).find( ".result.active" ).removeClass( "active" ).next().addClass( "active" );
                 }
             } else if ( key == 38 ) {
-                if ( !$( ".quickbar .results .result" ).hasClass( "active" )) {
-                    
-                } else {
+                $( ".quickbar .results" ).find( ".result" ).hasClass( "active" ) &&
                     $( ".quickbar .results" ).find( ".result.active" ).removeClass( "active" ).prev().addClass( "active" );
-                }
             } else if ( key == 13 ) {
-                $( ".quickbar .results .result" ).hasClass( "active" ) &&
+                $( ".quickbar .results" ).find( ".result" ).hasClass( "active" ) &&
                     $( ".quickbar .results" ).find( ".result.active" )[0].click();
             }
         });
