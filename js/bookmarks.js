@@ -185,19 +185,20 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             }
         });
         $( ".quickbar .search input" ).on( "keydown", function( event ) {
-            var key = event.keyCode;
+            var key     = event.keyCode,
+                $target = $( ".quickbar .results" );
             if ( key == 40 ) {
-                if ( !$( ".quickbar .results" ).find( ".result" ).hasClass( "active" )) {
-                    $($( ".quickbar .results" ).find( ".result" )[0]).addClass( "active" );
+                if ( !$target.find( ".result" ).hasClass( "active" )) {
+                    $target.find( ".result:first-child" ).addClass( "active" );
                 } else {
-                    $( ".quickbar .results" ).find( ".result.active" ).removeClass( "active" ).next().addClass( "active" );
+                    $target.find( ".result.active" ).removeClass( "active" ).next().addClass( "active" );
                 }
             } else if ( key == 38 ) {
-                $( ".quickbar .results" ).find( ".result" ).hasClass( "active" ) &&
-                    $( ".quickbar .results" ).find( ".result.active" ).removeClass( "active" ).prev().addClass( "active" );
+                $target.find( ".result" ).hasClass( "active" ) &&
+                    $target.find( ".result.active" ).removeClass( "active" ).prev().addClass( "active" );
             } else if ( key == 13 ) {
-                $( ".quickbar .results" ).find( ".result" ).hasClass( "active" ) &&
-                    $( ".quickbar .results" ).find( ".result.active" )[0].click();
+                $target.find( ".result" ).hasClass( "active" ) &&
+                    $target.find( ".result.active" )[0].click();
             }
         });
         $( ".quickbar .search input" ).on( "keyup", function( event ) {
