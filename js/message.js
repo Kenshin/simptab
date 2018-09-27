@@ -14,6 +14,8 @@ define([ "jquery" ], function( $ ) {
     return {
         TYPE     : {
             "UPDATE_CONTROLBAR": "UPDATE_CONTROLBAR",
+            "OPEN_BOOKMARKS"   : "OPEN_BOOKMARKS",
+            "OPEN_QUICKBAR"    : "OPEN_QUICKBAR",
         },
         Subscribe: subscribe,
         Publish  : publish
