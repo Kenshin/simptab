@@ -165,6 +165,17 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         fileHTML += html;
     }
 
+    function search( value ) {
+        var match = [], html = "";
+        bookmarks.all.forEach( function( item ) {
+            if ( item.title.indexOf( value ) != -1 || item.url.indexOf( value ) != -1 ) {
+                match.push( item );
+                html += createResultTmpl( item );
+            }
+        });
+        return { match: match, html: html };
+    }
+
     function quickbarListen() {
         $( ".quickbar-overlay" ).on( "click", function( event ) {
             if ( event.target.className == "quickbar-overlay" ) {
@@ -174,8 +185,31 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             }
         });
         $( ".quickbar .search input" ).on( "keyup", function( event ) {
-            
+            var value  = event.target.value,
+                result = { match: [], html: "" };
+            if ( value != "" ) {
+                result = search( event.target.value );
+                $( ".quickbar .search" ).addClass( "fix" );
+            } else {
+                $( ".quickbar .search" ).removeClass( "fix" );
+            }
+            console.log( result )
+            $( ".quickbar .results" ).html( result.html );
         });
+    }
+
+    function createResultTmpl( item ) {
+        var tmpl    = '<a class="result" href="<%- url %>">\
+                        <span class="avatar" style="background-color: <%- bgColor %>;"><%- avatar %></span>\
+                        <div class="title"><%- title %></div>\
+                    </a>',
+            title   = item.title != "" ? item.title : fmtTitle( item.url ),
+            url     = item.url,
+            avatar  = title.substr( 0, 1 ),
+            bgColor = getBgColor( avatar ),
+            compiled= _.template( tmpl ),
+            html    = compiled({ title: title, url: url, avatar: avatar, bgColor: bgColor });
+        return html;
     }
 
     function openQuickbar() {
@@ -192,9 +226,9 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                     <div class="search">\
                         <input type="text" placeholder="搜索内容包括：书签栏与最近常用网址"/>\
                     </div>\
-                    <div class="result"></div>\
+                    <div class="results"></div>\
                     ';
-        $( ".quickbar" ).html( tmpl ).css( "opacity", 1 );
+        $( ".quickbar" ).html( tmpl ).css( "opacity", 1 ).find( "input" ).focus();
     }
 
     return {
