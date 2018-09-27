@@ -29,13 +29,13 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
             idx   : "abcdefghijklmnopqrstuvwxyz0123456789",
         },
         folderHTML = '\
-                    <div class="folder special search" data-balloon="搜索" data-balloon-pos="right">\
+                    <div class="folder special search" data-balloon="' + i18n.GetLang( "bm_foder_search" ) + '" data-balloon-pos="right">\
                         <span id="search" class="waves-effect waves-block"><icon id="search"></icon></span>\
                     </div>\
-                    <div class="folder special root" data-balloon="书签栏" data-balloon-pos="right">\
+                    <div class="folder special root" data-balloon="' + i18n.GetLang( "bm_foder_root" ) + '" data-balloon-pos="right">\
                         <span id="root" class="active waves-effect waves-block"><icon id="root"></icon></span>\
                     </div>\
-                    <div class="folder special recent" data-balloon="近期使用" data-balloon-pos="right">\
+                    <div class="folder special recent" data-balloon="' + i18n.GetLang( "bm_foder_recent" ) + '" data-balloon-pos="right">\
                         <span id="recent" class="waves-effect waves-block"><icon id="recent"></icon></span>\
                     </div>\
                     ',

@@ -241,6 +241,18 @@
         "message": "Remove Background"
     },
 
+    "bm_foder_search": {
+        "message": "Search"
+    },
+
+    "bm_foder_root": {
+        "message": "Bookmark"
+    },
+
+    "bm_foder_recent": {
+        "message": "Recent"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },

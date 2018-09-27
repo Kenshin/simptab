@@ -241,6 +241,18 @@
         "message": "删除"
     },
 
+    "bm_foder_search": {
+        "message": "搜索"
+    },
+
+    "bm_foder_root": {
+        "message": "书签栏"
+    },
+
+    "bm_foder_recent": {
+        "message": "近期使用"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },
