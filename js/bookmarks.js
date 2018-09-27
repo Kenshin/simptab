@@ -221,9 +221,9 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                         <span class="avatar" style="background-color: <%- bgColor %>;"><%- avatar %></span>\
                         <div class="title"><%- title %></div>\
                     </a>',
-            title   = item.title != "" ? item.title : fmtTitle( item.url ),
+            title   = item.title != "" ? item.title : item.url,
             url     = item.url,
-            avatar  = title.substr( 0, 1 ),
+            avatar  = fmtTitle( title ).substr( 0, 1 ),
             bgColor = getBgColor( avatar ),
             compiled= _.template( tmpl ),
             html    = compiled({ title: title, url: url, avatar: avatar, bgColor: bgColor });
