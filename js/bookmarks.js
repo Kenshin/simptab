@@ -165,7 +165,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         fileHTML += html;
     }
 
-    function search( value ) {
+    function quickSearch( value ) {
         var match = [], html = "";
         bookmarks.all.forEach( function( item ) {
             if ( item.title.indexOf( value ) != -1 || item.url.indexOf( value ) != -1 ) {
@@ -207,7 +207,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 key    = event.keyCode;
             if ( key == 38 || key == 40 || key == 13 ) return;
             if ( value != "" ) {
-                result = search( event.target.value );
+                result = quickSearch( event.target.value );
                 $( ".quickbar .search" ).addClass( "fix" );
             } else {
                 $( ".quickbar .search" ).removeClass( "fix" );
