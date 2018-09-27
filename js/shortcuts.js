@@ -164,12 +164,30 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         });
     }
 
+    function listenHelp() {
+        Mousetrap.bind( "?", function() {
+            if ( $( ".shortcuts" ).children().length > 0 ) {
+                $( ".shortcuts" ).remove();
+            } else {
+                var html = "";
+                $.each( keys.CONTROL_KEY_MAP, function( idx, shortcut ) {
+                    var key  = shortcut.short,
+                        desc = i18n.GetLang( "controlbar_" + shortcut.long ),
+                        tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc">' + desc + '</div></div>';
+                    html += tmpl;
+                });
+                $( "body" ).append( '<div class="shortcuts"><div class="title">快捷键一览</div><div>' + html + '</div></div>' );
+            }
+        });
+    }
+
     return {
         Init: function () {
             listenCurrentTab();
             listenControl();
             listenCommand();
             listenOminbox();
+            listenHelp();
         }
     };
 });
