@@ -42,12 +42,12 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         fileHTML = "";
 
     function open() {
-        $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 });
+        $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
         $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
     }
 
     function close() {
-        $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
+        $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
     }
 
     function bmListen() {
@@ -265,7 +265,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
 
         Listen: function() {
             message.Subscribe( message.TYPE.OPEN_BOOKMARKS, function( event ) {
-                open();
+                !$( ".bm" ).hasClass( "open" ) ? open() : close();
             });
             message.Subscribe( message.TYPE.OPEN_QUICKBAR, function( event ) {
                 openQuickbar();
