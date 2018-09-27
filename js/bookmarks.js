@@ -1,4 +1,4 @@
-define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
+define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves, i18n, message ) {
 
     var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [] },
         getBgColor = function ( chars ) {
@@ -261,6 +261,15 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                 getBookmarks();
                 folderListen();
             }, 10 );
+        },
+
+        Listen: function() {
+            message.Subscribe( message.TYPE.OPEN_BOOKMARKS, function( event ) {
+                open();
+            });
+            message.Subscribe( message.TYPE.OPEN_QUICKBAR, function( event ) {
+                openQuickbar();
+            });
         }
     }
 });
