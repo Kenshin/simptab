@@ -25,7 +25,7 @@
         "description": "Minimalistic's chrome new tab page extension, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
-    "controlbar_new_tab": {
+    "controlbar_newtab": {
         "message": "Default New Tab"
     },
 

@@ -8,7 +8,7 @@ define([ "jquery" ], function( $ ) {
     }
 
     function controlbar() {
-        $($( ".controlbar" ).children()[0]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_new_tab" ));
+        $($( ".controlbar" ).children()[0]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_newtab" ));
         $($( ".controlbar" ).children()[1]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_bookmarks" ));
         $($( ".controlbar" ).children()[2]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_history" ));
         $($( ".controlbar" ).children()[3]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_apps" ));
