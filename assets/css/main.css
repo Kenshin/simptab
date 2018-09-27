@@ -1219,7 +1219,8 @@ img {
 }
 
 .bm .file a:hover,
-.quickbar .results .result:hover {
+.quickbar .results .result:hover,
+.quickbar .result.active {
     color: #fff;
     background-color: rgb(189, 189, 189);
 }
