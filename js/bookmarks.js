@@ -165,11 +165,25 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
         fileHTML += html;
     }
 
+    function quickbarListen() {
+        $( ".quickbar-overlay" ).on( "click", function( event ) {
+            if ( event.target.className == "quickbar-overlay" ) {
+                $( ".quickbar-overlay" ).animate({ opacity: 0 }, 500, function() {
+                    $( ".quickbar-overlay" ).remove();
+                });
+            }
+        });
+        $( ".quickbar .search input" ).on( "keyup", function( event ) {
+            
+        });
+    }
+
     function openQuickbar() {
         if ( $( ".quickbar-overlay" ).length > 0 ) return;
         $( "body" ).append( '<div class="quickbar-overlay"><div class="quickbar"></div></div>' );
         setTimeout( function() {
             createQuickbar();
+            quickbarListen();
         }, 10 );
     }
 
@@ -180,8 +194,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                     </div>\
                     <div class="result"></div>\
                     ';
-        $( ".quickbar" ).html( tmpl );
-        $( ".quickbar" ).css( "opacity", 1 );
+        $( ".quickbar" ).html( tmpl ).css( "opacity", 1 );
     }
 
     return {
