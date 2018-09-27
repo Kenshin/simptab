@@ -176,7 +176,7 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
     function createQuickbar() {
         var tmpl = '\
                     <div class="search">\
-                        <input type="text"/>\
+                        <input type="text" placeholder="搜索内容包括：书签栏与最近常用网址"/>\
                     </div>\
                     <div class="result"></div>\
                     ';
