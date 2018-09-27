@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $, Mousetrap, controlbar, i18n, topsites ) {
+define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], function( $, Mousetrap, controlbar, i18n, topsites, message ) {
 
     "use strict";
 
@@ -32,6 +32,11 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         };
 
         function Keys(){}
+
+        Keys.prototype.OTHERS_KEY_MAP = [
+            { short: "b", long: "bookmarks"},
+            { short: "q", long: "quickbar" },
+        ];
 
         Object.defineProperties( Keys.prototype, {
             "CONTROL_KEY_MAP" : {
@@ -98,6 +103,21 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                 console.log("click = " + shortcut.short.replace( / /g, "" ) );
                 controlbar.AutoClick( idx );
             });
+        });
+    }
+
+    function listenOthers() {
+        var binds = [];
+        keys.OTHERS_KEY_MAP.forEach( function( item ) { binds.push( item.short ) });
+        Mousetrap.bind( binds, function( event, combo ) {
+            switch ( combo ) {
+                case "b":
+                    message.Publish( message.TYPE.OPEN_BOOKMARKS );
+                    break;
+                case "q":
+                    message.Publish( message.TYPE.OPEN_QUICKBAR );
+                    break;
+            }
         });
     }
 
@@ -182,6 +202,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
     return {
         Init: function () {
             listenCurrentTab();
+            listenOthers();
             listenControl();
             listenCommand();
             listenOminbox();
