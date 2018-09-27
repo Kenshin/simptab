@@ -33,6 +33,11 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
 
         function Keys(){}
 
+        Keys.prototype.GLOBALS_KEY_MAP = [
+            { short: "esc", long: "esc"  },
+            { short: "?",   long: "help" },
+        ];
+
         Keys.prototype.OTHERS_KEY_MAP = [
             { short: "b", long: "bookmarks"},
             { short: "q", long: "quickbar" },
