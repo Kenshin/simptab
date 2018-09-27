@@ -21,7 +21,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
             { short: "t", long: "about"    },
             { short: "s", long: "setting"  },
             { short: "a", long: "favorite" },
-            { short: "q", long: "pin"      },
+            { short: "n", long: "pin"      },
             { short: "u", long: "dislike"  },
         ];
 
@@ -92,7 +92,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
     }
 
     function listenControl() {
-
         $.each( keys.CONTROL_KEY_MAP, function( idx, shortcut ) {
             var new_key = formatShortcut( shortcut.short );
             Mousetrap.bind( new_key , function() {
@@ -100,7 +99,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                 controlbar.AutoClick( idx );
             });
         });
-
     }
 
     function listenCommand() {
