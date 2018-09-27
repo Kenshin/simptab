@@ -9,7 +9,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         var CONTROL_KEY_MAP, getKey;
 
         CONTROL_KEY_MAP = [
-            { short: "aa",   long: "newtab"},
+            { short: "aa",   long: "newtab"   },
             { short: "book", long: "bookmarks"},
             { short: "his",  long: "history"  },
             { short: "app",  long: "apps"     },
