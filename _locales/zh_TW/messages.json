@@ -329,20 +329,20 @@
         "message": "設置成功。"
     },
 
-    "version_detail": {
-        "message": ""
-    },
-
-    "version_detail_prefix": {
-        "message": ""
-    },
-
     "notify_mange_empty": {
         "message": "暫時沒有任何背景"
     },
 
     "notify_mange_no_user": {
         "message": "暫無"
+    },
+
+    "version_detail": {
+        "message": ""
+    },
+
+    "version_detail_prefix": {
+        "message": ""
     },
 
     "version_detail_0": {
