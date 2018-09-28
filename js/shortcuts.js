@@ -203,6 +203,32 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         });
     }
 
+    function listenESC() {
+        Mousetrap.bind( "esc", function() {
+            var cls = $("body").children().last()[0].className.toLowerCase();
+            // hack code
+            switch ( cls ) {
+                case "quickbar-overlay":
+                    $( ".quickbar-overlay" )[0].click();
+                    break;
+                case "dialog-overlay":
+                    $( ".dialog .close" )[0].click();
+                    break;
+                case "shortcuts":
+                    $( ".shortcuts" ).remove();
+                    break;
+                case "bm-overlay":
+                    if ( $( ".bm" ).hasClass( "open" ) ) {
+                        $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
+                    } else {
+                        $( ".setting" ).hasClass( "open" ) &&
+                            $( ".controlink .settingicon" ).trigger( "click" );
+                    }
+                    break;
+            }
+        });
+    }
+
     return {
         Init: function () {
             listenCurrentTab();
@@ -211,6 +237,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             listenCommand();
             listenOminbox();
             listenHelp();
+            listenESC();
         }
     };
 });
