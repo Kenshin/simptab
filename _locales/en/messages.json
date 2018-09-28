@@ -281,6 +281,14 @@
         "message": "Open/Close Keymaps"
     },
 
+    "shortcuts_key_bookmarks": {
+        "message": "Open/Close Bookmarks"
+    },
+
+    "shortcuts_key_quickbar": {
+        "message": "Open/Close Quick bar"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
