@@ -190,15 +190,29 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         return '<div><div class="subtitle">' + title + '</div>' + html + '</div>';
     }
 
+    function open() {
+        setTimeout( function(){
+            $( ".shortcuts" ).css({ "transform": "translateY(0px)", "opacity": 1 });
+        }, 10 );
+    }
+
+    function close() {
+        $( ".shortcuts" ).css({ "transform": "translateY(100px)", "opacity": 0 });
+        setTimeout( function(){
+            $( ".shortcuts" ).remove();
+        }, 500 );
+    }
+
     function listenHelp() {
         Mousetrap.bind( "?", function() {
             if ( $( ".shortcuts" ).children().length > 0 ) {
-                $( ".shortcuts" ).remove();
+                close();
             } else {
                 var html = createKeymapTmpl( i18n.GetLang( "shortcuts_key_global_title" ),  keys.GLOBALS_KEY_MAP, "shortcuts_key_" );
                 html    += createKeymapTmpl( i18n.GetLang( "shortcuts_key_others_title" ),  keys.OTHERS_KEY_MAP,  "shortcuts_key_" );
                 html    += createKeymapTmpl( i18n.GetLang( "shortcuts_key_control_title" ), keys.CONTROL_KEY_MAP,  "controlbar_"   );
                 $( "body" ).append( '<div class="shortcuts"><div class="title">' + i18n.GetLang( "shortcuts_title" ) + '</div><div class="keymaps">' + html + '</div></div>' );
+                open();
             }
         });
     }
@@ -215,7 +229,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     $( ".dialog .close" )[0].click();
                     break;
                 case "shortcuts":
-                    $( ".shortcuts" ).remove();
+                    close();
                     break;
                 case "bm-overlay":
                     if ( $( ".bm" ).hasClass( "open" ) ) {
