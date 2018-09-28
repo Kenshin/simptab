@@ -1344,10 +1344,12 @@ img {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     left: 5px;
     bottom: 5px;
+
+    width: 250px;
+    height: 400px;
 
     padding: 15px;
 
@@ -1363,13 +1365,15 @@ img {
 
 .shortcuts .title {
     margin: 5px 0;
+
     font-size: 14px;
     font-weight: 700;
+    text-align: center;
 }
 
 .shortcuts .keymaps {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
 }
 
 .shortcuts .keymaps .subtitle {
