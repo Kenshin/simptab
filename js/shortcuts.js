@@ -78,7 +78,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             else {
                 formatter += key[idx];
             }
-
         });
         return formatter;
     }
