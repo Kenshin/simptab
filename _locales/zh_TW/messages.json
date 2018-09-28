@@ -273,6 +273,14 @@
         "message": "控制欄快捷鍵"
     },
 
+    "shortcuts_key_esc": {
+        "message": "退出當前模式"
+    },
+
+    "shortcuts_key_help": {
+        "message": "打開/關閉快捷鍵一覽"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

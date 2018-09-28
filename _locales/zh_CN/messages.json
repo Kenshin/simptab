@@ -273,6 +273,14 @@
         "message": "控制栏快捷键"
     },
 
+    "shortcuts_key_esc": {
+        "message": "退出当前模式"
+    },
+
+    "shortcuts_key_help": {
+        "message": "打开/关闭快捷键一览"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

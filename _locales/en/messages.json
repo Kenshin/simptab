@@ -273,6 +273,14 @@
         "message": "Controlbar Keymaps"
     },
 
+    "shortcuts_key_esc": {
+        "message": "Quit current mode"
+    },
+
+    "shortcuts_key_help": {
+        "message": "Open/Close Keymaps"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
