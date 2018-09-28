@@ -257,6 +257,22 @@
         "message": "Include: Bookmarks and Recent"
     },
 
+    "shortcuts_title": {
+        "message": "Shortcut Keymaps"
+    },
+
+    "shortcuts_key_global_title": {
+        "message": "Global Keymaps"
+    },
+
+    "shortcuts_key_others_title": {
+        "message": "Others Keymaps"
+    },
+
+    "shortcuts_key_control_title": {
+        "message": "Controlbar Keymaps"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },

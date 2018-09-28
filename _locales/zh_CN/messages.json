@@ -257,6 +257,22 @@
         "message": "搜索内容包括：书签栏与最近常用网址"
     },
 
+    "shortcuts_title": {
+        "message": "快捷键一览"
+    },
+
+    "shortcuts_key_global_title": {
+        "message": "全局快捷键"
+    },
+
+    "shortcuts_key_others_title": {
+        "message": "其它快捷键"
+    },
+
+    "shortcuts_key_control_title": {
+        "message": "控制栏快捷键"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

@@ -195,10 +195,10 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             if ( $( ".shortcuts" ).children().length > 0 ) {
                 $( ".shortcuts" ).remove();
             } else {
-                var html = createKeymapTmpl( "全局快捷键", keys.GLOBALS_KEY_MAP, "controlbar_" );
-                html    += createKeymapTmpl( "其它快捷键", keys.OTHERS_KEY_MAP, "controlbar_" );
-                html    += createKeymapTmpl( "控制栏快捷键", keys.CONTROL_KEY_MAP, "controlbar_" );
-                $( "body" ).append( '<div class="shortcuts"><div class="title">快捷键一览</div><div class="keymaps">' + html + '</div></div>' );
+                var html = createKeymapTmpl( i18n.GetLang( "shortcuts_key_global_title" ), keys.GLOBALS_KEY_MAP, "controlbar_" );
+                html    += createKeymapTmpl( i18n.GetLang( "shortcuts_key_others_title" ), keys.OTHERS_KEY_MAP, "controlbar_" );
+                html    += createKeymapTmpl( i18n.GetLang( "shortcuts_key_control_title" ), keys.CONTROL_KEY_MAP, "controlbar_" );
+                $( "body" ).append( '<div class="shortcuts"><div class="title">' + i18n.GetLang( "shortcuts_title" ) + '</div><div class="keymaps">' + html + '</div></div>' );
             }
         });
     }

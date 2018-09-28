@@ -257,6 +257,22 @@
         "message": "搜索內容包括：書籤欄與最近常用網址"
     },
 
+    "shortcuts_title": {
+        "message": "快捷鍵一覽"
+    },
+
+    "shortcuts_key_global_title": {
+        "message": "全局快捷鍵"
+    },
+
+    "shortcuts_key_others_title": {
+        "message": "其它快捷鍵"
+    },
+
+    "shortcuts_key_control_title": {
+        "message": "控制欄快捷鍵"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },
