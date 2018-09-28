@@ -179,15 +179,15 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         });
     }
 
-    function createKeymapTmpl( map ) {
+    function createKeymapTmpl( title, map, prefix ) {
         var html = "";
         $.each( map, function( idx, shortcut ) {
             var key  = shortcut.short,
-                desc = i18n.GetLang( "controlbar_" + shortcut.long ),
+                desc = i18n.GetLang( prefix + shortcut.long ),
                 tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc">' + desc + '</div></div>';
             html += tmpl;
         });
-        return '<div><div class="subtitle">控制栏快捷键</div>' + html + '</div>';
+        return '<div><div class="subtitle">' + title + '</div>' + html + '</div>';
     }
 
     function listenHelp() {
@@ -195,7 +195,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             if ( $( ".shortcuts" ).children().length > 0 ) {
                 $( ".shortcuts" ).remove();
             } else {
-                var html = createKeymapTmpl( keys.CONTROL_KEY_MAP );
+                var html = createKeymapTmpl( "控制栏快捷键", keys.CONTROL_KEY_MAP, "controlbar_" );
                 $( "body" ).append( '<div class="shortcuts"><div class="title">快捷键一览</div><div class="keymaps">' + html + '</div></div>' );
             }
         });
