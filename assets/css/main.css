@@ -1461,12 +1461,41 @@ img {
     box-shadow: rgba(0, 0, 0, .247059) 0px 14px 45px;
 
     user-select: none;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all .6s ease;
 }
 
 .welcome img {
     margin: 0;
     padding: 0;
     border: 0;
+}
+
+.welcome .close {
+    position: absolute;
+
+    top: 5px;
+    right: 5px;
+
+    z-index: 2;
+}
+
+.welcome .close span {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+
+.welcome .close span.close {
+    background-image: url("../images/close@bigger.png");
 }
 
 /*
