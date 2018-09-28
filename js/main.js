@@ -10,6 +10,7 @@ requirejs.config({
       "progressbar": "vender/progressbar.min",
       "notify"     : "vender/notify/notify.min",
       "waves"      : "vender/waves/waves.min",
+      "carousel"   : "vender/carousel/carousel",
 
       "main"       : "js/main",
       "background" : "js/background",
