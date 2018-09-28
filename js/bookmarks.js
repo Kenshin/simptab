@@ -1,4 +1,4 @@
-define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
+define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves, i18n, message ) {
 
     var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [] },
         getBgColor = function ( chars ) {
@@ -41,14 +41,18 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
                     ',
         fileHTML = "";
 
+    function open() {
+        $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
+        $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
+    }
+
     function close() {
-        $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 });
+        $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
     }
 
     function bmListen() {
         $( ".bm-overlay" ).mouseenter( function() {
-            $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 });
-            $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
+            open();
         });
         $( ".bm" ).mouseleave( function() {
             close();
@@ -250,13 +254,22 @@ define([ "jquery", "lodash", "waves", "i18n" ], function( $, _, Waves, i18n ) {
     }
 
     return {
-        Render() {
+        Render: function() {
             $( "body" ).append( '<div class="bm-overlay"><div class="bm"><div class="folders"></div><div class="files"></div></div></div>' );
             setTimeout( function() {
                 bmListen();
                 getBookmarks();
                 folderListen();
             }, 10 );
+        },
+
+        Listen: function() {
+            message.Subscribe( message.TYPE.OPEN_BOOKMARKS, function( event ) {
+                !$( ".bm" ).hasClass( "open" ) ? open() : close();
+            });
+            message.Subscribe( message.TYPE.OPEN_QUICKBAR, function( event ) {
+                openQuickbar();
+            });
         }
     }
 });

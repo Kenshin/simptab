@@ -25,7 +25,7 @@
         "description": "Minimalistic's chrome new tab page extension, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
-    "controlbar_new_tab": {
+    "controlbar_newtab": {
         "message": "Default New Tab"
     },
 
@@ -255,6 +255,38 @@
 
     "quickbar_input_placeholder": {
         "message": "Include: Bookmarks and Recent"
+    },
+
+    "shortcuts_title": {
+        "message": "Shortcut Keymaps"
+    },
+
+    "shortcuts_key_global_title": {
+        "message": "Global Keymaps"
+    },
+
+    "shortcuts_key_others_title": {
+        "message": "Others Keymaps"
+    },
+
+    "shortcuts_key_control_title": {
+        "message": "Controlbar Keymaps"
+    },
+
+    "shortcuts_key_esc": {
+        "message": "Quit current mode"
+    },
+
+    "shortcuts_key_help": {
+        "message": "Open/Close Keymaps"
+    },
+
+    "shortcuts_key_bookmarks": {
+        "message": "Open/Close Bookmarks"
+    },
+
+    "shortcuts_key_quickbar": {
+        "message": "Open/Close Quick bar"
     },
 
     "about_content_more": {

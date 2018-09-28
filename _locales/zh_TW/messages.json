@@ -25,7 +25,7 @@
         "description": "極簡的 Chrome 新標籤頁擴展, 新標籤頁, 標籤頁, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
-    "controlbar_new_tab": {
+    "controlbar_newtab": {
         "message": "默認新標籤頁"
     },
 
@@ -255,6 +255,38 @@
 
     "quickbar_input_placeholder": {
         "message": "搜索內容包括：書籤欄與最近常用網址"
+    },
+
+    "shortcuts_title": {
+        "message": "快捷鍵一覽"
+    },
+
+    "shortcuts_key_global_title": {
+        "message": "全局快捷鍵"
+    },
+
+    "shortcuts_key_others_title": {
+        "message": "其它快捷鍵"
+    },
+
+    "shortcuts_key_control_title": {
+        "message": "控制欄快捷鍵"
+    },
+
+    "shortcuts_key_esc": {
+        "message": "退出當前模式"
+    },
+
+    "shortcuts_key_help": {
+        "message": "打開/關閉快捷鍵一覽"
+    },
+
+    "shortcuts_key_bookmarks": {
+        "message": "打開/關閉書籤欄"
+    },
+
+    "shortcuts_key_quickbar": {
+        "message": "打開/關閉快捷查找"
     },
 
     "about_content_more": {

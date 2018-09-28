@@ -1337,6 +1337,93 @@ img {
 }
 
 /*
+* shortcuts
+*/
+.shortcuts {
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+    left: 5px;
+    bottom: 5px;
+
+    width: 350px;
+    height: 360px;
+
+    padding: 15px;
+
+    text-transform: initial;
+
+    color: #fff;
+    background-color: rgb(47, 52, 55);
+
+    border-radius: 4px;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all .6s ease;
+
+    box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
+}
+
+.shortcuts .title {
+    margin: 5px 0;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.shortcuts .keymaps {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.shortcuts .keymaps .subtitle {
+    margin: 5px 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.shortcuts .keymap {
+    display: flex;
+    flex-direction: row;
+
+    margin: 5px 0px;
+}
+
+.shortcuts .keymap .map {
+    display: inline-block;
+    text-align: right;
+    width: 50px;
+}
+
+.shortcuts .keymap .key {
+    display: inline-block;
+
+    padding: 3px 5px;
+
+    font-size: 11px;
+    line-height: 10px;
+    vertical-align: middle;
+
+    color: rgb(47, 52, 55);
+    background-color: #fafbfc;
+
+    /*border: 1px solid #c6cbd1;
+    border-bottom-color: #959da5;*/
+    border-radius: 4px;
+
+    /*box-shadow: inset 0 -1px 0 #959da5;*/
+}
+
+.shortcuts .desc {
+    padding-left: 3px;
+}
+
+/*
 * media
 */
 @media screen and (max-height:768px) {

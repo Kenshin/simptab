@@ -25,7 +25,7 @@
         "description": "极简的 Chrome 新标签页扩展, 新标签页, 标签页, simptab, New Tab, New Tab page, Beautiful New Tab"
     },
 
-    "controlbar_new_tab": {
+    "controlbar_newtab": {
         "message": "默认新标签页"
     },
 
@@ -255,6 +255,38 @@
 
     "quickbar_input_placeholder": {
         "message": "搜索内容包括：书签栏与最近常用网址"
+    },
+
+    "shortcuts_title": {
+        "message": "快捷键一览"
+    },
+
+    "shortcuts_key_global_title": {
+        "message": "全局快捷键"
+    },
+
+    "shortcuts_key_others_title": {
+        "message": "其它快捷键"
+    },
+
+    "shortcuts_key_control_title": {
+        "message": "控制栏快捷键"
+    },
+
+    "shortcuts_key_esc": {
+        "message": "退出当前模式"
+    },
+
+    "shortcuts_key_help": {
+        "message": "打开/关闭快捷键一览"
+    },
+
+    "shortcuts_key_bookmarks": {
+        "message": "打开/关闭书签栏"
+    },
+
+    "shortcuts_key_quickbar": {
+        "message": "打开/关闭快捷查找"
     },
 
     "about_content_more": {
