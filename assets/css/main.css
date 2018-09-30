@@ -1500,6 +1500,41 @@ img {
     background-image: url("../images/close@bigger.png");
 }
 
+.welcome-overlay .paging a {
+    position: absolute;
+
+    top: 50%;
+    bottom: 50%;
+
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+
+    font-size: 30px;
+    text-decoration: none;
+
+    color: #4CAF50;
+
+    z-index: 2;
+}
+
+.welcome-overlay .paging a.next {
+    right: 30px;
+}
+
+.welcome-overlay .paging a.prev {
+    left: 30px;
+}
+
+.welcome-overlay .paging a span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fff;
+    border-radius: 50%;
+}
+
 /*
 * media
 */
