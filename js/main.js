@@ -97,7 +97,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // short cuts init
     shortcuts.Init();
 
-    version.Init();
+    version.Init( function( ver ) {
+        welcome.Render( ver );
+    });
 
     // waves config
     Waves.attach( '.icon',      [ 'waves-circle']);
@@ -114,7 +116,5 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         result && bookmarks.Render();
         result && bookmarks.Listen();
     });
-
-    welcome.Render();
 
 });

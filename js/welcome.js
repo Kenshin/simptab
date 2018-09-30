@@ -1,6 +1,27 @@
 
 define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, carousel, i18n ) {
 
+    var details = {
+        "1.5.1": '\
+                <div class="carousel-item" id="1.5.1">\
+                    <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-adapter.png">\
+                </div>',
+        "1.5.2": '\
+                <div class="carousel-item" id="1.5.2">\
+                    <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-plugins.png">\
+                </div>',
+    }
+
+    function getDetails( ver ) {
+        var detail = "";
+        if ( ver.first ) {
+            Object.keys( details ).forEach( function( item ) {
+                detail += details[item];
+            });
+        } else detail = details[ ver.update ];
+        return detail;
+    }
+
     function open() {
         $( ".welcome" ).css({ "transform": "translateY(0px)", "opacity": 1 });
     }
@@ -26,17 +47,12 @@ define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, ca
     }
 
     return {
-        Render: function() {
-            var tmpl = '<div class="carousel-item">\
+        Render: function( ver ) {
+            var tmpl = '<div class="carousel-item" id="start">\
                             <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-service-v2.png">\
                         </div>\
-                        <div class="carousel-item">\
-                            <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-adapter.png">\
-                        </div>\
-                        <div class="carousel-item">\
-                            <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-plugins.png">\
-                        </div>\
-                        <div class="carousel-item">\
+                       ' + getDetails( ver ) + '\
+                        <div class="carousel-item" id="end">\
                             <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-sites.png">\
                         </div>';
             $( "body" ).append( '<div class="welcome-overlay"><div class="welcome carousel carousel-slider"><div class="close"><span class="close"></span></div>' + tmpl + '</div></div>' )

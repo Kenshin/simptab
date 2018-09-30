@@ -164,22 +164,24 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
     }
 
     return {
-        Init: function() {
+        Init: function( callback ) {
 
             if ( version.isUpdate() ) {
                 correction();
                 var prefix    = i18n.GetShort() == "cn" ? "" : "." + i18n.GetShort(),
+                    details   = version.Details(),
                     changelog = "https://github.com/kenshin/simptab/blob/master/CHANGELOG" + prefix + ".md#" + version.new.replace( /\./ig, "" );
                 new Notify().Render( i18n.GetLang( 'version_title' ),
                                      i18n.GetLang( 'version_content' )
                                         .replace( '#1', version.new )
                                         .replace( '#2', '<a href="' + changelog + '" target="_blank">' )
                                         .replace( '#3', '</a>' )
-                                        .replace( '#4', version.Details())
+                                        .replace( '#4', details )
                                     );
 
                 version.isPermissions() && containsPermissions();
                 version.Save();
+                callback({ first: details == "" ? true : false, update: version.cur });
             }
             else {
                 version.GetPermissions();
