@@ -53,7 +53,6 @@ define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, ca
             close();
         });
         $( ".welcome .paging a span" ).on( "click", function( event ) {
-            console.log( "dasdfadf", event.target.className )
             $( '.carousel.carousel-slider' ).carousel( event.target.className );
         });
     }
