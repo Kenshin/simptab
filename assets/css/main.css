@@ -1481,8 +1481,8 @@ img {
 .welcome .close {
     position: absolute;
 
-    top: 5px;
-    right: 45px;
+    top: 10px;
+    right: 50px;
 
     z-index: 2;
 }
