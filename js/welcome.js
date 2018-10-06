@@ -2,14 +2,14 @@
 define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, carousel, i18n ) {
 
     var details = {
-        "1.5.1": '\
-                <div class="carousel-item" id="1.5.1">\
-                    <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-adapter.png">\
-                </div>',
-        "1.5.2": '\
-                <div class="carousel-item" id="1.5.2">\
-                    <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-plugins.png">\
-                </div>',
+            "1.5.1": '\
+                    <div class="carousel-item" id="1.5.1">\
+                        <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-adapter.png">\
+                    </div>',
+            "1.5.2": '\
+                    <div class="carousel-item" id="1.5.2">\
+                        <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-plugins.png">\
+                    </div>',
         },
         next_paging = '\
                 <a class="next waves-effect waves-circle" href="#">\
