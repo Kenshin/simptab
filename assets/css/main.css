@@ -1462,7 +1462,7 @@ img {
 
 .welcome .carousel {
     width: 650px!important;
-    height: 600px!important;
+    height: 500px!important;
 
     background-color: #fff;
 
@@ -1544,12 +1544,12 @@ img {
 }
 
 .welcome .content .title {
-    font-size: 28px;
+    font-size: 26px;
     text-align: center;
 }
 
 .welcome .content .desc {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
 }
 

@@ -2,20 +2,19 @@
 define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mousetrap, _, carousel, i18n ) {
 
     var details = {
-            "1.5.1": '\
-                    <div class="carousel-item" id="1.5.1">\
-                        <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-adapter.png">\
-                        <div class="content">\
-                            <h2 class="title"></h2>\
-                            <div class="desc"></div>\
-                        </div>\
-                    </div>',
             "1.5.2": '\
                     <div class="carousel-item" id="1.5.2">\
-                        <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-plugins.png">\
+                        <img src="http://st.ksria.cn/welcome-manage-2.png">\
                         <div class="content">\
-                            <h2 class="title"></h2>\
-                            <div class="desc"></div>\
+                            <h2 class="title">全新订阅版</h2>\
+                            <div class="desc">你的背景你做主，从此「告别」背景无法选择的窘境。</div>\
+                        </div>\
+                    </div>\
+                    <div class="carousel-item" id="1.5.2">\
+                        <img src="http://st.ksria.cn/welcome-bookmarks.png">\
+                        <div class="content">\
+                            <h2 class="title">内置书签栏</h2>\
+                            <div class="desc">要美景更要效率，效率达人必备之选。</div>\
                         </div>\
                     </div>',
         },
@@ -77,7 +76,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
     return {
         Render: function( ver ) {
             var tmpl = '<div class="carousel-item" id="start">\
-                            <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-service-v2.png">\
+                            <img src="http://st.ksria.cn/welcome-start.png">\
                             <div class="content">\
                                 <h2 class="title">' + i18n.GetLang( "welcome_title_start" ) + '</h2>\
                                 <div class="desc">' + ( ver.first ? i18n.GetLang( "welcome_desc_first_start" ) : i18n.GetLang( "welcome_desc_update_start" ) ) + '</div>\
@@ -85,9 +84,9 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                         </div>\
                        ' + getDetails( ver ) + '\
                         <div class="carousel-item" id="end">\
-                            <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-sites.png">\
+                            <img src="http://st.ksria.cn/welcome-end.png">\
                             <div class="content">\
-                                <h2 class="title"></h2>\
+                                <h2 class="title">简约不简单</h2>\
                                 <div class="desc">' + i18n.GetLang( "welcome_desc_end" ) +'</div>\
                             </div>\
                         </div>';
