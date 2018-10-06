@@ -1448,12 +1448,19 @@ img {
     position: relative;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 
     min-width: 400px;
     min-height: 400px;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all .6s ease;
+}
+
+.welcome .carousel {
     width: 650px!important;
     height: 600px!important;
 
@@ -1463,10 +1470,6 @@ img {
     box-shadow: rgba(0, 0, 0, .247059) 0px 14px 45px;
 
     user-select: none;
-
-    opacity: 0;
-    transform: translateY(100px);
-    transition: all .6s ease;
 }
 
 .welcome img {
@@ -1479,7 +1482,7 @@ img {
     position: absolute;
 
     top: 5px;
-    right: 5px;
+    right: 45px;
 
     z-index: 2;
 }
@@ -1500,12 +1503,15 @@ img {
     background-image: url("../images/close@bigger.png");
 }
 
-.welcome-overlay .paging a {
-    position: absolute;
+.welcome .paging {
+    display: flex;
+    justify-content: center;
 
-    top: 50%;
-    bottom: 50%;
+    width: 80px;
+    height: 100%;
+}
 
+.welcome .paging a {
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -1514,19 +1520,9 @@ img {
     text-decoration: none;
 
     color: #4CAF50;
-
-    z-index: 2;
 }
 
-.welcome-overlay .paging a.next {
-    right: 30px;
-}
-
-.welcome-overlay .paging a.prev {
-    left: 30px;
-}
-
-.welcome-overlay .paging a span {
+.welcome .paging a span {
     display: flex;
     justify-content: center;
     align-items: center;

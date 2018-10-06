@@ -10,16 +10,15 @@ define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, ca
                 <div class="carousel-item" id="1.5.2">\
                     <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-plugins.png">\
                 </div>',
-    },
-    paging = '\
-            <div class="paging">\
+        },
+        next_paging = '\
                 <a class="next waves-effect waves-circle" href="#">\
                     <span>→</span>\
-                </a>\
+                </a>',
+        prev_paging = '\
                 <a class="prev waves-effect waves-circle" href="#">\
                     <span>←</span>\
-                </a>\
-            </div>';
+                </a>';
 
     function getDetails( ver ) {
         var detail = "";
@@ -64,7 +63,7 @@ define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, ca
                         <div class="carousel-item" id="end">\
                             <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-sites.png">\
                         </div>';
-            $( "body" ).append( '<div class="welcome-overlay">' + paging + '<div class="welcome carousel carousel-slider"><div class="close"><span class="close"></span></div>' + tmpl + '</div></div>' )
+            $( "body" ).append( '<div class="welcome-overlay"><div class="welcome"><div class="close"><span class="close"></span></div><div class="paging prev">' + prev_paging + '</div><div class="carousel carousel-slider">' + tmpl + '</div><div class="paging prev">' + next_paging + '</div></div></div>' )
             setTimeout( function() {
                 open();
                 carousel();
