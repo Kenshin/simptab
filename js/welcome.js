@@ -12,12 +12,12 @@ define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, ca
                     </div>',
         },
         next_paging = '\
-                <a class="next waves-effect waves-circle" href="#">\
-                    <span>→</span>\
+                <a class="waves-effect waves-circle" href="#">\
+                    <span class="next">→</span>\
                 </a>',
         prev_paging = '\
-                <a class="prev waves-effect waves-circle" href="#">\
-                    <span>←</span>\
+                <a class="waves-effect waves-circle" href="#">\
+                    <span class="prev">←</span>\
                 </a>';
 
     function getDetails( ver ) {
@@ -51,6 +51,10 @@ define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, ca
     function listen() {
         $( ".welcome .close" ).on( "click", function() {
             close();
+        });
+        $( ".welcome .paging a span" ).on( "click", function( event ) {
+            console.log( "dasdfadf", event.target.className )
+            $( '.carousel.carousel-slider' ).carousel( event.target.className );
         });
     }
 
