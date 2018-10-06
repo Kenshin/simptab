@@ -429,6 +429,22 @@
         "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
 
+    "welcome_title_start": {
+        "message": "Welcome"
+    },
+
+    "welcome_desc_first_start": {
+        "message": "Hi, nice to meet you. I hope you have a good mood every time you open New Tab."
+    },
+
+    "welcome_desc_update_start": {
+        "message": "SimpTab has update success."
+    },
+
+    "welcome_desc_end": {
+        "message": "Minimalistic chrome new tab extension, hope every time open it, you have a good mood."
+    },
+
     "permissions_success": {
         "message": "All permissions are granted, please refresh."
     },

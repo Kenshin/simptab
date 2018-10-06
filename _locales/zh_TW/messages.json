@@ -425,6 +425,22 @@
         "message": "修復了一些界面與邏輯上的錯誤；優化了界面效果；增加了【精選集】等；"
     },
 
+    "welcome_title_start": {
+        "message": "歡迎使用"
+    },
+
+    "welcome_desc_first_start": {
+        "message": "嗨，很高興認識你，望你每次打開 New Tab 都有好心情。"
+    },
+
+    "welcome_desc_update_start": {
+        "message": "您的 簡 Tab 已煥然一新"
+    },
+
+    "welcome_desc_end": {
+        "message": "極簡的 Chrome 新標籤頁擴展，望你每次打開都有好心情。"
+    },
+
     "permissions": {
         "message": "新版本需要取得新的許可權。"
     },

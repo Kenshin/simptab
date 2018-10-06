@@ -421,6 +421,22 @@
         "message": "新增：不喜欢功能，Pin功能，优化背景获取速度等；"
     },
 
+    "welcome_title_start": {
+        "message": "欢迎使用"
+    },
+
+    "welcome_desc_first_start": {
+        "message": "嗨，很高兴认识你，望你每次打开 New Tab 都有好心情。"
+    },
+
+    "welcome_desc_update_start": {
+        "message": "您的 简 Tab 已焕然一新"
+    },
+
+    "welcome_desc_end": {
+        "message": "极简的 Chrome 新标签页扩展，望你每次打开都有好心情。"
+    },
+
     "version_detail_6": {
         "message": "修复了一些界面与逻辑上的错误；优化了界面效果；增加了【精选集】等；"
     },
