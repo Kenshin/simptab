@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, carousel, i18n ) {
+define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mousetrap, _, carousel, i18n ) {
 
     var details = {
             "1.5.1": '\
@@ -11,6 +11,15 @@ define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, ca
                         <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-plugins.png">\
                     </div>',
         },
+        welcomeTmpl = '\
+                    <div class="welcome-overlay">\
+                        <div class="welcome">\
+                            <div class="close"><span class="close"></span></div>\
+                            <div class="paging"><%= prev %></div>\
+                            <div class="carousel carousel-slider"><%= welcome %></div>\
+                            <div class="paging"><%= next %></div>\
+                        </div>\
+                    </div>',
         next_paging = '\
                 <a class="waves-effect waves-circle" href="#">\
                     <span class="next">→</span>\
@@ -66,7 +75,9 @@ define([ "jquery", "mousetrap", "carousel", "i18n" ], function( $, Mousetrap, ca
                         <div class="carousel-item" id="end">\
                             <img src="http://ojec5ddd5.bkt.clouddn.com/welcome-sites.png">\
                         </div>';
-            $( "body" ).append( '<div class="welcome-overlay"><div class="welcome"><div class="close"><span class="close"></span></div><div class="paging prev">' + prev_paging + '</div><div class="carousel carousel-slider">' + tmpl + '</div><div class="paging prev">' + next_paging + '</div></div></div>' )
+            var compiled = _.template( welcomeTmpl ),
+                html     = compiled({ prev: prev_paging, next: next_paging, welcome: tmpl });
+            $( "body" ).append( html );
             setTimeout( function() {
                 open();
                 carousel();
