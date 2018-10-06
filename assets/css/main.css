@@ -1537,16 +1537,20 @@ img {
     justify-content: center;
     align-items: center;
 
+    padding: 15px;
+
     color: rgba(51, 51, 51, 0.87);
     text-transform: initial;
 }
 
 .welcome .content .title {
     font-size: 28px;
+    text-align: center;
 }
 
 .welcome .content .desc {
     font-size: 18px;
+    text-align: center;
 }
 
 /*
