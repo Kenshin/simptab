@@ -1466,7 +1466,7 @@ img {
 
     background-color: #fff;
 
-    border-radius: 4px;
+    border-radius: 20px;
     box-shadow: rgba(0, 0, 0, .247059) 0px 14px 45px;
 
     user-select: none;
@@ -1529,6 +1529,24 @@ img {
 
     background-color: #fff;
     border-radius: 50%;
+}
+
+.welcome .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: rgba(51, 51, 51, 0.87);
+    text-transform: initial;
+}
+
+.welcome .content .title {
+    font-size: 28px;
+}
+
+.welcome .content .desc {
+    font-size: 18px;
 }
 
 /*
