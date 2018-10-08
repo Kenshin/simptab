@@ -445,6 +445,22 @@
         "message": "極簡的 Chrome 新標籤頁擴展，望你每次打開都有好心情。"
     },
 
+    "welcome_feature_1_title": {
+        "message": "全新相框模式"
+    },
+
+    "welcome_feature_1_desc": {
+        "message": "獨創模式，可支持瀏覽器任意尺寸。"
+    },
+
+    "welcome_feature_2_title": {
+        "message": "常用網址"
+    },
+
+    "welcome_feature_2_desc": {
+        "message": "一目了然「九宮格」的常用網址。"
+    },
+
     "welcome_152_title_1": {
         "message": "全新的 订阅 · 收藏"
     },

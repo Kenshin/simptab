@@ -441,6 +441,22 @@
         "message": "SimpTab has update success."
     },
 
+    "welcome_feature_1_title": {
+        "message": "Unique photo frame mode"
+    },
+
+    "welcome_feature_1_desc": {
+        "message": "Support browser any size."
+    },
+
+    "welcome_feature_2_title": {
+        "message": "Topsites"
+    },
+
+    "welcome_feature_2_desc": {
+        "message": "Top sites that are displayed on the new tab page."
+    },
+
     "welcome_end_title": {
         "message": "More features waiting for you"
     },

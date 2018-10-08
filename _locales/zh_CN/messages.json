@@ -445,6 +445,22 @@
         "message": "极简的 Chrome 新标签页扩展，望你每次打开都有好心情。"
     },
 
+    "welcome_feature_1_title": {
+        "message": "全新相框模式"
+    },
+
+    "welcome_feature_1_desc": {
+        "message": "独创模式，可支持浏览器任意尺寸。"
+    },
+
+    "welcome_feature_2_title": {
+        "message": "常用网址"
+    },
+
+    "welcome_feature_2_desc": {
+        "message": "一目了然「九宫格」的常用网址。"
+    },
+
     "welcome_152_title_1": {
         "message": "全新的 订阅 · 收藏"
     },
