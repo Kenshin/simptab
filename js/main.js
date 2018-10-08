@@ -100,7 +100,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     version.Init( function( ver ) {
         welcome.Render( ver );
     });
-    welcome.Render({ first: true, update: "1.5.1" });
+    welcome.Render({ first: true, update: "1.5.2" });
 
     // waves config
     Waves.attach( '.icon',      [ 'waves-circle']);
