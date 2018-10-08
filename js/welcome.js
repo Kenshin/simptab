@@ -4,7 +4,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
     var details = {
             "1.5.2": '\
                     <div class="carousel-item" id="1.5.2">\
-                        <img src="http://st.ksria.cn/welcome-manage-2.png">\
+                        <img src="http://st.ksria.cn/welcome-manage.png">\
                         <div class="content">\
                             <h2 class="title">' + i18n.GetLang( "welcome_152_title_1" ) +'</h2>\
                             <div class="desc">' + i18n.GetLang( "welcome_152_desc_1" ) +'</div>\
