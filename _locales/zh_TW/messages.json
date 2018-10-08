@@ -445,6 +445,22 @@
         "message": "極簡的 Chrome 新標籤頁擴展，望你每次打開都有好心情。"
     },
 
+    "welcome_152_title_1": {
+        "message": "全新訂閱版"
+    },
+
+    "welcome_152_desc_1": {
+        "message": "你的背景你做主，從此「告別」背景無法選擇的窘境。"
+    },
+
+    "welcome_152_title_2": {
+        "message": "內置書籤欄"
+    },
+
+    "welcome_152_desc_2": {
+        "message": "要美景更要效率，效率達人必備之選。"
+    },
+
     "permissions": {
         "message": "新版本需要取得新的許可權。"
     },

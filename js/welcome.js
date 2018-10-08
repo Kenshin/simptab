@@ -6,15 +6,15 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                     <div class="carousel-item" id="1.5.2">\
                         <img src="http://st.ksria.cn/welcome-manage-2.png">\
                         <div class="content">\
-                            <h2 class="title">全新订阅版</h2>\
-                            <div class="desc">你的背景你做主，从此「告别」背景无法选择的窘境。</div>\
+                            <h2 class="title">' + i18n.GetLang( "welcome_152_title_1" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_152_desc_1" ) +'</div>\
                         </div>\
                     </div>\
                     <div class="carousel-item" id="1.5.2">\
                         <img src="http://st.ksria.cn/welcome-bookmarks.png">\
                         <div class="content">\
-                            <h2 class="title">内置书签栏</h2>\
-                            <div class="desc">要美景更要效率，效率达人必备之选。</div>\
+                            <h2 class="title">' + i18n.GetLang( "welcome_152_title_2" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_152_desc_2" ) +'</div>\
                         </div>\
                     </div>',
         },

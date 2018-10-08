@@ -449,6 +449,22 @@
         "message": "Minimalistic chrome new tab extension, hope every time open it, you have a good mood."
     },
 
+    "welcome_152_title_1": {
+        "message": "Subscribe"
+    },
+
+    "welcome_152_desc_1": {
+        "message": "New subscribe and favorite manage."
+    },
+
+    "welcome_152_title_2": {
+        "message": "Bookmarks"
+    },
+
+    "welcome_152_desc_2": {
+        "message": "Bookmarks on your new tab."
+    },
+
     "permissions_success": {
         "message": "All permissions are granted, please refresh."
     },
