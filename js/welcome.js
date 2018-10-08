@@ -78,8 +78,8 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
             var tmpl = '<div class="carousel-item" id="start">\
                             <img src="http://st.ksria.cn/welcome-start.png">\
                             <div class="content">\
-                                <h2 class="title">' + i18n.GetLang( "welcome_title_start" ) + '</h2>\
-                                <div class="desc">' + ( ver.first ? i18n.GetLang( "welcome_desc_first_start" ) : i18n.GetLang( "welcome_desc_update_start" ) ) + '</div>\
+                                <h2 class="title">' + i18n.GetLang( "welcome_start_title" ) + '</h2>\
+                                <div class="desc">' + ( ver.first ? i18n.GetLang( "welcome_start_desc_first" ) : i18n.GetLang( "welcome_start_desc_update" ) ) + '</div>\
                             </div>\
                         </div>\
                        ' + getDetails( ver ) + '\
@@ -87,7 +87,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                             <img src="http://st.ksria.cn/welcome-end.png">\
                             <div class="content">\
                                 <h2 class="title">简约不简单</h2>\
-                                <div class="desc">' + i18n.GetLang( "welcome_desc_end" ) +'</div>\
+                                <div class="desc">' + i18n.GetLang( "welcome_end_desc" ) +'</div>\
                             </div>\
                         </div>';
             var compiled = _.template( welcomeTmpl ),
