@@ -86,7 +86,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                         <div class="carousel-item" id="end">\
                             <img src="http://st.ksria.cn/welcome-end.png">\
                             <div class="content">\
-                                <h2 class="title">简约不简单</h2>\
+                                <h2 class="title">' + i18n.GetLang( "welcome_end_title" ) +'</h2>\
                                 <div class="desc">' + i18n.GetLang( "welcome_end_desc" ) +'</div>\
                             </div>\
                         </div>';

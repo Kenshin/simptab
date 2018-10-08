@@ -437,6 +437,10 @@
         "message": "您的 簡 Tab 已煥然一新"
     },
 
+    "welcome_end_title": {
+        "message": "簡約不簡單"
+    },
+
     "welcome_end_desc": {
         "message": "極簡的 Chrome 新標籤頁擴展，望你每次打開都有好心情。"
     },

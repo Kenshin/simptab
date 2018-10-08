@@ -441,6 +441,10 @@
         "message": "SimpTab has update success."
     },
 
+    "welcome_end_title": {
+        "message": "More features waiting for you"
+    },
+
     "welcome_end_desc": {
         "message": "Minimalistic chrome new tab extension, hope every time open it, you have a good mood."
     },
