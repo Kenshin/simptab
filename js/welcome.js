@@ -2,9 +2,24 @@
 define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mousetrap, _, carousel, i18n ) {
 
     var details = {
+            "others": '\
+                    <div class="carousel-item" id="1.5.2">\
+                        <img src="http://st.ksria.cn/welcome-mask.png?201810081527">\
+                        <div class="content">\
+                            <h2 class="title">全新相框模式</h2>\
+                            <div class="desc">独创模式，可支持浏览器任意尺寸。</div>\
+                        </div>\
+                    </div>\
+                    <div class="carousel-item" id="1.5.2">\
+                        <img src="http://st.ksria.cn/welcome-topsites.png">\
+                        <div class="content">\
+                            <h2 class="title">常用网址</h2>\
+                            <div class="desc">一目了然「九宫格」的常用网址。</div>\
+                        </div>\
+                    </div>',
             "1.5.2": '\
                     <div class="carousel-item" id="1.5.2">\
-                        <img src="http://st.ksria.cn/welcome-manage.png">\
+                        <img src="http://st.ksria.cn/welcome-manage.png?201810081527">\
                         <div class="content">\
                             <h2 class="title">' + i18n.GetLang( "welcome_152_title_1" ) +'</h2>\
                             <div class="desc">' + i18n.GetLang( "welcome_152_desc_1" ) +'</div>\
@@ -84,7 +99,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                         </div>\
                        ' + getDetails( ver ) + '\
                         <div class="carousel-item" id="end">\
-                            <img src="http://st.ksria.cn/welcome-end2.png">\
+                            <img src="http://st.ksria.cn/welcome-end.png?201810081527">\
                             <div class="content">\
                                 <h2 class="title">' + i18n.GetLang( "welcome_end_title" ) +'</h2>\
                                 <div class="desc">' + i18n.GetLang( "welcome_end_desc" ) +'</div>\
