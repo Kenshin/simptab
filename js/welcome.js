@@ -91,7 +91,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
     return {
         Render: function( ver ) {
             var tmpl = '<div class="carousel-item" id="start">\
-                            <img src="http://st.ksria.cn/welcome-start.png">\
+                            <img src="../assets/images/welcome-start.webp">\
                             <div class="content">\
                                 <h2 class="title">' + i18n.GetLang( "welcome_start_title" ) + '</h2>\
                                 <div class="desc">' + ( ver.first ? i18n.GetLang( "welcome_start_desc_first" ) : i18n.GetLang( "welcome_start_desc_update" ) ) + '</div>\
