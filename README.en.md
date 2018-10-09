@@ -1,4 +1,4 @@
-<p align="center"><img src="http://simptab.qiniudn.com/logo@192.png" /></p>
+<p align="center"><img src="http://st.ksria.cn/logo@192.png" /></p>
 <h1 align="center">SimpTab - Minimalist Chrome new tab extension</h1>
 <p align="center">Hope to improve your mood every time you open a new tab. Clear & simple, focused on beautiful background images.</p>
 <p align="center">

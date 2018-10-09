@@ -1,4 +1,4 @@
-<p align="center"><img src="http://simptab.qiniudn.com/logo@192.png" /></p>
+<p align="center"><img src="http://st.ksria.cn/logo@192.png" /></p>
 <h1 align="center">簡 Tab - 極簡的 Chrome 新標籤頁擴展</h1>
 <p align="center">望你每次打開都有好心情；去除多餘功能，只關註標簽頁呈現效果。</p>
 <p align="center">

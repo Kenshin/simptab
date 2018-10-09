@@ -1,4 +1,4 @@
-<p align="center"><img src="http://simptab.qiniudn.com/logo@192.png" /></p>
+<p align="center"><img src="http://st.ksria.cn/logo@192.png" /></p>
 <h1 align="center">简 Tab - 极简的 Chrome 新标签页扩展</h1>
 <p align="center">望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。</p>
 <p align="center">
