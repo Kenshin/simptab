@@ -43,11 +43,13 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
 
     function open() {
         $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
+        $( ".bm-overlay" ).width( "50%" );
         $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
     }
 
     function close() {
         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
+        $( ".bm-overlay" ).removeAttr( "style" );
     }
 
     function bmListen() {
@@ -56,6 +58,10 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         });
         $( ".bm" ).mouseleave( function() {
             close();
+        });
+        $( ".bm-overlay" ).on( "click", function( event ) {
+            event.target.className.toLowerCase() == "bm-overlay" && $( ".bm" ).hasClass( "open" ) &&
+                close();
         });
     }
 
