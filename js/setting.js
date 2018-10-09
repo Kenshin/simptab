@@ -194,6 +194,10 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
     return {
         Init: function() {
 
+            // set settin width
+            var width = parseInt( i18n.GetSettingWidth() );
+            $( ".setting" ).width( width ).css({ "transform": "translateX(" + width + "px)"});
+
             // update [ changestate, clockstate, positionstate, topsites, pinstate ] radio button
             Object.keys( setting.mode ).forEach( function( item ) {
                 updateRdState( item, setting.mode[item].value );
