@@ -389,6 +389,10 @@
         "message": "當前環境並未有任何書籤。"
     },
 
+    "notify_double_open": {
+        "message": "請先退出當前模式。"
+    },
+
     "version_detail": {
         "message": ""
     },

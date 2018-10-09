@@ -389,6 +389,10 @@
         "message": "Not any bookmarks."
     },
 
+    "notify_double_open": {
+        "message": "Please close dialog."
+    },
+
     "version_detail": {
         "message": ""
     },

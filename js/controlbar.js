@@ -194,10 +194,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                         callBack( url, is_pinned );
                         break;
                     case "manage":
-                        manage.Render();
+                        $( "body" ).find( ".dialog-overlay" ).length == 0 ?
+                            manage.Render() :
+                            new Notify().Render( i18n.GetLang( "notify_double_open" ) );
                         break;
                     case "about":
-                        about.Render();
+                        $( "body" ).find( ".dialog-overlay" ).length == 0 ?
+                            about.Render() :
+                            new Notify().Render( i18n.GetLang( "notify_double_open" ) );
                         break;
                 }
             });
