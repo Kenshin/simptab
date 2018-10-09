@@ -425,6 +425,10 @@
         "message": "Fixed: Same UI and logic bug;Optimize UI;Add SimpTab collections; "
     },
 
+    "version_detail_7": {
+        "message": "Add: Subscibe & Favorite manage, Bookmarks, About page; "
+    },
+
     "permissions": {
         "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
