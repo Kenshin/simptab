@@ -29,7 +29,7 @@ define([ "jquery" ], function( $ ) {
             obj = JSON.parse( ls || "{}" ),
             new_cdn;
 
-        $.getJSON( "http://simptab.qiniudn.com/cdns.json" + "?random=" + Math.round(+new Date()), function( result ) {
+        $.getJSON( "http://st.ksria.cn/cdns.json" + "?random=" + Math.round(+new Date()), function( result ) {
             if ( result && !$.isEmptyObject( result ) && result.version != obj.version ) {
                 localStorage[ "simptab-cdns" ] = JSON.stringify( result );
             }

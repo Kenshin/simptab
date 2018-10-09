@@ -152,7 +152,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
     function getSubscribe( callback ) {
         $.ajax({
             type       : "GET",
-            url        : "http://simptab.qiniudn.com/special.day.v2.json?_=" + Math.round(+new Date()),
+            url        : "http://st.ksria.cn/special.day.v2.json?_=" + Math.round(+new Date()),
             dataType   : "json"
         }).then( function( result ) {
             if ( result && result.collections ) {

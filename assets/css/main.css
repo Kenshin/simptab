@@ -1424,6 +1424,136 @@ img {
 }
 
 /*
+* welcome page
+*/
+.welcome-overlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,.5);
+
+    z-index: 2;
+}
+
+.welcome {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 400px;
+    min-height: 400px;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all .6s ease;
+}
+
+.welcome .carousel {
+    width: 650px!important;
+    height: 500px!important;
+
+    background-color: #fff;
+
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, .247059) 0px 14px 45px;
+
+    user-select: none;
+}
+
+.welcome img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.welcome .close {
+    position: absolute;
+
+    top: 10px;
+    right: 50px;
+
+    z-index: 2;
+}
+
+.welcome .close span {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+
+.welcome .close span.close {
+    background-image: url("../images/close@bigger.png");
+}
+
+.welcome .paging {
+    display: flex;
+    justify-content: center;
+
+    width: 80px;
+    height: 100%;
+}
+
+.welcome .paging a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+
+    font-size: 30px;
+    text-decoration: none;
+
+    color: #4CAF50;
+}
+
+.welcome .paging a span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.welcome .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+
+    color: rgba(51, 51, 51, 0.87);
+    text-transform: initial;
+}
+
+.welcome .content .title {
+    font-size: 26px;
+    text-align: center;
+}
+
+.welcome .content .desc {
+    font-size: 16px;
+    text-align: center;
+}
+
+/*
 * media
 */
 @media screen and (max-height:768px) {

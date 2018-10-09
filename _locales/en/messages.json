@@ -429,6 +429,58 @@
         "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
 
+    "welcome_start_title": {
+        "message": "Welcome"
+    },
+
+    "welcome_start_desc_first": {
+        "message": "Hi, nice to meet you. I hope you have a good mood every time you open New Tab."
+    },
+
+    "welcome_start_desc_update": {
+        "message": "SimpTab has update success."
+    },
+
+    "welcome_feature_1_title": {
+        "message": "Unique photo frame mode"
+    },
+
+    "welcome_feature_1_desc": {
+        "message": "Support browser any size."
+    },
+
+    "welcome_feature_2_title": {
+        "message": "Topsites"
+    },
+
+    "welcome_feature_2_desc": {
+        "message": "Top sites that are displayed on the new tab page."
+    },
+
+    "welcome_end_title": {
+        "message": "More features waiting for you"
+    },
+
+    "welcome_end_desc": {
+        "message": "Minimalistic chrome new tab extension, hope every time open it, you have a good mood."
+    },
+
+    "welcome_152_title_1": {
+        "message": "Subscribe & Favorite"
+    },
+
+    "welcome_152_desc_1": {
+        "message": "New subscribe and favorite manage."
+    },
+
+    "welcome_152_title_2": {
+        "message": "Bookmarks"
+    },
+
+    "welcome_152_desc_2": {
+        "message": "Bookmarks on your new tab."
+    },
+
     "permissions_success": {
         "message": "All permissions are granted, please refresh."
     },

@@ -4,7 +4,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
     "use strict";
 
     var deferred      = new $.Deferred(),
-        SIMP_API_HOST = "http://simptab.qiniudn.com/",
+        SIMP_API_HOST = "http://st.ksria.cn/",
         apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify, Only ) {
 
             /*

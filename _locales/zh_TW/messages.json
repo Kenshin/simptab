@@ -425,6 +425,58 @@
         "message": "修復了一些界面與邏輯上的錯誤；優化了界面效果；增加了【精選集】等；"
     },
 
+    "welcome_start_title": {
+        "message": "歡迎使用"
+    },
+
+    "welcome_start_desc_first": {
+        "message": "嗨，很高興認識你，望你每次打開 New Tab 都有好心情。"
+    },
+
+    "welcome_start_desc_update": {
+        "message": "您的 簡 Tab 已煥然一新"
+    },
+
+    "welcome_end_title": {
+        "message": "簡約不簡單"
+    },
+
+    "welcome_end_desc": {
+        "message": "極簡的 Chrome 新標籤頁擴展，望你每次打開都有好心情。"
+    },
+
+    "welcome_feature_1_title": {
+        "message": "全新相框模式"
+    },
+
+    "welcome_feature_1_desc": {
+        "message": "獨創模式，可支持瀏覽器任意尺寸。"
+    },
+
+    "welcome_feature_2_title": {
+        "message": "常用網址"
+    },
+
+    "welcome_feature_2_desc": {
+        "message": "一目了然「九宮格」的常用網址。"
+    },
+
+    "welcome_152_title_1": {
+        "message": "全新的 订阅 · 收藏"
+    },
+
+    "welcome_152_desc_1": {
+        "message": "你的背景你做主，從此「告別」背景無法選擇的窘境。"
+    },
+
+    "welcome_152_title_2": {
+        "message": "內置書籤欄"
+    },
+
+    "welcome_152_desc_2": {
+        "message": "要美景更要效率，效率達人必備之選。"
+    },
+
     "permissions": {
         "message": "新版本需要取得新的許可權。"
     },

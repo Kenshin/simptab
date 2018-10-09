@@ -425,6 +425,58 @@
         "message": "修复了一些界面与逻辑上的错误；优化了界面效果；增加了【精选集】等；"
     },
 
+    "welcome_start_title": {
+        "message": "欢迎使用"
+    },
+
+    "welcome_start_desc_first": {
+        "message": "嗨，很高兴认识你，望你每次打开 New Tab 都有好心情。"
+    },
+
+    "welcome_start_desc_update": {
+        "message": "您的 简 Tab 已焕然一新"
+    },
+
+    "welcome_end_title": {
+        "message": "简约不简单"
+    },
+
+    "welcome_end_desc": {
+        "message": "极简的 Chrome 新标签页扩展，望你每次打开都有好心情。"
+    },
+
+    "welcome_feature_1_title": {
+        "message": "全新相框模式"
+    },
+
+    "welcome_feature_1_desc": {
+        "message": "独创模式，可支持浏览器任意尺寸。"
+    },
+
+    "welcome_feature_2_title": {
+        "message": "常用网址"
+    },
+
+    "welcome_feature_2_desc": {
+        "message": "一目了然「九宫格」的常用网址。"
+    },
+
+    "welcome_152_title_1": {
+        "message": "全新的 订阅 · 收藏"
+    },
+
+    "welcome_152_desc_1": {
+        "message": "你的背景你做主，从此「告别」背景无法选择的窘境。"
+    },
+
+    "welcome_152_title_2": {
+        "message": "内置书签栏"
+    },
+
+    "welcome_152_desc_2": {
+        "message": "要美景更要效率，效率达人必备之选。"
+    },
+
     "permissions": {
         "message": "新版本需要取得新的权限。"
     },
