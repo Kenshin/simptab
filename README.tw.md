@@ -2,16 +2,16 @@
 <h1 align="center">簡 Tab - 極簡的 Chrome 新標籤頁擴展</h1>
 <p align="center">望你每次打開都有好心情；去除多餘功能，只關註標簽頁呈現效果。</p>
 <p align="center">
-   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.1-blue.svg"></a>
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.2-blue.svg"></a>
    <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.1/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.2/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
 </p>
 
 ***
 
 #### 馬上使用：
-* [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.1/simptab.crx)
+* [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
 
 #### 截圖：
 ![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
