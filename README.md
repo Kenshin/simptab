@@ -19,8 +19,8 @@
 #### 截图：
 ![Snapshot](http://st.ksria.cn/start@webstore.png)
 ![Snapshot](http://st.ksria.cn/subscribe@webstore.png)  
-![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
 ![Snapshot](http://st.ksria.cn/mask@webstore.png)  
+![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
 
 #### 功能一览：
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
