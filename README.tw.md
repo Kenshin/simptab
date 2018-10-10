@@ -6,6 +6,8 @@
    <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
    <a href="http://ksria.com/simptab/crx/1.5.2/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+   <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
+</p>
 </p>
 
 ***
