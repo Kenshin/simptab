@@ -14,10 +14,13 @@
 #### 马上使用：
 * [Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
 
+* 有任何问题请看 [帮助中心](https://github.com/Kenshin/simptab/wiki) 或者 加入 [SimpTab 的讨论群](https://gitter.im/Kenshin/simptab)
+
 #### 截图：
-![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
-![Snapshot](https://i.imgur.com/7HuDEdph.png)  
-![Snapshot](https://i.imgur.com/uhB78LTh.png)  
+![Snapshot](http://st.ksria.cn/start@webstore.png)
+![Snapshot](http://st.ksria.cn/subscribe@webstore.png)  
+![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
+![Snapshot](http://st.ksria.cn/mask@webstore.png)  
 
 #### 功能一览：
 ![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
