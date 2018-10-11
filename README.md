@@ -16,52 +16,52 @@
 
 * 有任何问题请看 [帮助中心](https://github.com/Kenshin/simptab/wiki) 或者 加入 [SimpTab 的讨论群](https://gitter.im/Kenshin/simptab)
 
-#### 截图：
-![Snapshot](http://st.ksria.cn/start@webstore.png)
-![Snapshot](http://st.ksria.cn/subscribe@webstore.png)  
-![Snapshot](http://st.ksria.cn/mask@webstore.png)  
-![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
-
-#### 功能一览：
-![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
-![feature 2](http://i.imgur.com/auWFlc9.jpg)
+* 如果你有好的背景想跟大家分享，请告诉我，投稿地址 → [简体中文](https://goo.gl/forms/j1PuNz4DMAjS0Gj33) · [备用地址](https://wj.qq.com/s/2710075/6108)
 
 #### 其它语言：
 [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
 
+#### 截图：
+![Snapshot](http://st.ksria.cn/start@webstore.png)
+![Snapshot](http://st.ksria.cn/subscribe@webstore.png)  
+![Snapshot](http://st.ksria.cn/mask@webstore.png?20181011)  
+![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
+
 #### 详细功能：
-- SimpTab 精选集  
-  > 每周一期，每期九张手工采集精选壁纸，类似 iOS App 的做法，获取往期壁纸，请关注 简 Tab 精选集小秘 → https://weibo.com/u/6632928109
 
 - 自动识别语言； _包括： `简体` · `繁体` · `英文`_ 
-- 每日/随机更换背景； _注意：每日更换的背景只来自 `Bing.com`._ 
-- 多种背景源，包括：`bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `desktoppr.co`, `visualhunt.com`, `simptab 精选集`.
+
+- 多种更换壁纸方式：
+  * 每日更换背景： 每日只更换一次背景，背景仅来自 `Bing.com`._ 
+  * 随机更换背景： 根据下方勾选的背景源随机更换壁纸
+  * 只显示当前背景：永不更换背景源
+
+- 多种类型的背景源，包括：
+  * `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `desktoppr.co`, `visualhunt.com`
+
+  * SimpTab 精选集  
+
+    > 独有功能，每周一期，每期 【一 ~ 九】 张手工采集精选壁纸，类似 iOS App 的做法，获取往期壁纸，请关注 简 Tab 精选集小秘 → https://weibo.com/u/6632928109
+
+  * 收藏
+
+    > 点击 控制栏「收藏」后的背景集合
+
 - 多种布局； _包括： `相框效果` · `左上角对齐` · `居中对齐`_ 
+
 - 背景加载进度； _左下角，只在加载时显示_ 
+
 - 支持 `快捷键` / `多功能框` 操作；
+
 - 操作提示； _包括： `上传` · `收藏`_ 
+
 - 常用网址； _包括： `简单` · `高级` · `隐藏` 三种模式_ 
-- 上传；
-- 收藏；
-- 停留； _保留当前背景一段时间_ 
+
+- 上传 · 收藏 · 下载；
+
+- 固定； _保留当前背景一段时间_ 
+
 - 不再显示（删除）功能；
-
-#### 多功能框快捷键：
-`st`
-
-#### 快捷键 & 多功能框：
-名称 | 描述
------- | ------
-`book` | 打开 `书签` 标签。
-`his ` | 打开 `历史` 标签。
-`app ` | 打开 `应用` 标签。
-`info` | 当前背景的出处。
-`down` | `下载` 当前背景。
-`set ` | 打开设置界面。
-`fav`  | `收藏` （ `取消收藏` ）当前背景。
-`pin`  | `停留` 当前背景。
-`un`   | `不再显示` （删除）功能。
-`site` | 显示 `常用网址` 。（ 只针对 `omnibox` ）
 
 #### 投票：
 * 如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
@@ -78,8 +78,6 @@
 
 #### 感谢：
 - 图标 <http://www.easyicon.net> <https://www.iconfinder.com>。
-- 英文字体 `HapnaMono-Light`。
-- 简体/繁體 字体 `思源黑体 ExtraLight`。
 - 效果图 <http://magicmockups.com/>
 
 #### 请杯咖啡：
