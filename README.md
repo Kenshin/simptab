@@ -84,8 +84,8 @@
 
 #### 请杯咖啡：
 如果简 Tab 可以让你的心情更加愉悦，何不请杯 ☕ :smile:  
-_如发现下图显示不全，请直接访问 http://ojec5ddd5.bkt.clouddn.com/zhifu_m2.png_  
-![支付](http://ojec5ddd5.bkt.clouddn.com/zhifu_m2.png)
+_如发现下图显示不全，请直接访问 http://sr.ksria.cn/zhifu_m2.png_  
+![支付](http://sr.ksria.cn/zhifu_m2.png)
 
 #### 许可：
 [![license-badge]][license-link]
