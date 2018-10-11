@@ -19,7 +19,7 @@
 * 如果你有 **好的背景想跟大家分享** ，请告诉我，投稿地址 → [谷歌表格](https://goo.gl/forms/j1PuNz4DMAjS0Gj33) · [备用地址](https://wj.qq.com/s/2710075/6108)
 
 #### 其它语言：
-[繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+* [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
 
 #### 截图：
 ![Snapshot](http://st.ksria.cn/start@webstore.png)
@@ -53,9 +53,7 @@
 
 - 支持 `快捷键` / `多功能框` 操作；
 
-- 操作提示； _包括： `上传` · `收藏`_ 
-
-- 常用网址； _包括： `简单` · `高级` · `隐藏` 三种模式_ 
+- [常用网址](https://github.com/Kenshin/simptab/wiki/功能一览#常用网址)； _包括： `简单` · `高级` · `隐藏` 三种模式_ 
 
 - 上传 · 收藏 · 下载；
 
@@ -75,9 +73,13 @@
 
 #### 相关链接：
 * [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
+
 * [帮助中心](https://github.com/kenshin/simptab/wiki)
-* [常见问题](https://github.com/Kenshin/simptab/wiki/常见问题)
+
+* [功能一览](https://github.com/Kenshin/simptab/wiki/功能一览)
+
 * [反馈](https://github.com/kenshin/simptab/issues)
+
 * [联系](http://kenshin.wang) | [邮件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
 
 #### 感谢：
