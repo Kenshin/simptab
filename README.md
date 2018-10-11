@@ -27,13 +27,15 @@
 ![Snapshot](http://st.ksria.cn/mask@webstore.png?20181011)  
 ![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
 
-#### 详细功能：
+#### 主要功能一览：
 
 - 自动识别语言； _包括： `简体` · `繁体` · `英文`_ 
 
 - 多种更换壁纸方式：
-  * 每日更换背景： 每日只更换一次背景，背景仅来自 `Bing.com`._ 
+  * 每日更换背景： 每日只更换一次背景，背景仅来自 `Bing.com`
+
   * 随机更换背景： 根据下方勾选的背景源随机更换壁纸
+
   * 只显示当前背景：永不更换背景源
 
 - 多种类型的背景源，包括：
@@ -47,7 +49,9 @@
 
     > 点击 控制栏「收藏」后的背景集合
 
-- 多种布局； _包括： `相框效果` · `左上角对齐` · `居中对齐`_ 
+- 多种布局；
+
+  > 包括： `左上角对齐` · `居中对齐` · `相框效果`
 
 - 背景加载进度； _左下角，只在加载时显示_ 
 
@@ -70,6 +74,9 @@
 
 #### 照片集：
 * <http://ksria.com/simptab/gallery.html>
+
+#### 全部功能：
+* https://github.com/Kenshin/simptab/wiki//功能一览
 
 #### 相关链接：
 * [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
