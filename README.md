@@ -14,9 +14,9 @@
 #### 马上使用：
 * [Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
 
-* 有任何问题请看 [帮助中心](https://github.com/Kenshin/simptab/wiki) 或者 加入 [SimpTab 的讨论群](https://gitter.im/Kenshin/simptab)
+* 有任何问题请看 [帮助中心](https://github.com/Kenshin/simptab/wiki) 或者 加入 **[SimpTab 的讨论群](https://gitter.im/Kenshin/simptab)**
 
-* 如果你有好的背景想跟大家分享，请告诉我，投稿地址 → [简体中文](https://goo.gl/forms/j1PuNz4DMAjS0Gj33) · [备用地址](https://wj.qq.com/s/2710075/6108)
+* 如果你有 **好的背景想跟大家分享** ，请告诉我，投稿地址 → [简体中文](https://goo.gl/forms/j1PuNz4DMAjS0Gj33) · [备用地址](https://wj.qq.com/s/2710075/6108)
 
 #### 其它语言：
 [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
@@ -71,7 +71,7 @@
 
 #### 相关链接：
 * [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
-* [Wiki](https://github.com/kenshin/simptab/wiki)
+* [帮助中心](https://github.com/kenshin/simptab/wiki)
 * [常见问题](https://github.com/Kenshin/simptab/wiki/常见问题)
 * [反馈](https://github.com/kenshin/simptab/issues)
 * [联系](http://kenshin.wang) | [邮件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
