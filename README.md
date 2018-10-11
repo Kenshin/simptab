@@ -70,7 +70,7 @@
 - ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏与订阅管理器](https://github.com/Kenshin/simptab/wiki/功能一览#主要功能之二)；
 
 #### 投票：
-* 如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
+* 简 Tab 是一个免费并开源的项目，如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
 #### 照片集：
 * <http://ksria.com/simptab/gallery.html>
