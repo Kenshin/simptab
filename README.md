@@ -19,7 +19,7 @@
 * 如果你有 **好的背景想跟大家分享** ，请告诉我，投稿地址 → [谷歌表格](https://goo.gl/forms/j1PuNz4DMAjS0Gj33) · [备用地址](https://wj.qq.com/s/2710075/6108)
 
 #### 其它语言：
-* [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+* [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) · [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
 
 #### 截图：
 ![Snapshot](http://st.ksria.cn/start@webstore.png)
@@ -80,7 +80,7 @@
 
 * [反馈](https://github.com/kenshin/simptab/issues)
 
-* [联系](http://kenshin.wang) | [邮件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
+* [联系](http://kenshin.wang) · [邮件](kenshin@ksria.com) · [微博](http://weibo.com/23784148)
 
 #### 请杯咖啡：
 如果简 Tab 可以让你的心情更加愉悦，何不请杯 ☕ :smile:  
