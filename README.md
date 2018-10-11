@@ -82,10 +82,6 @@
 
 * [联系](http://kenshin.wang) | [邮件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
 
-#### 感谢：
-- 图标 <http://www.easyicon.net> <https://www.iconfinder.com>。
-- 效果图 <http://magicmockups.com/>
-
 #### 请杯咖啡：
 如果简 Tab 可以让你的心情更加愉悦，何不请杯 ☕ :smile:  
 _如发现下图显示不全，请直接访问 http://ojec5ddd5.bkt.clouddn.com/zhifu_m2.png_  
