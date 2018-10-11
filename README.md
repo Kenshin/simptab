@@ -63,6 +63,10 @@
 
 - 不再显示（删除）功能；
 
+- ![new纯色.png](https://i.loli.net/2018/09/05/5b8f718046acb.png) 书签栏；
+
+- ![new纯色.png](https://i.loli.net/2018/09/05/5b8f718046acb.png) 收藏与订阅管理器；
+
 #### 投票：
 * 如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
