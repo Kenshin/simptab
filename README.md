@@ -37,9 +37,9 @@
   * 只显示当前背景：永不更换背景源
 
 - 多种类型的背景源，包括：
-  * `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `desktoppr.co`, `visualhunt.com`
+  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `flickr.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
-  * SimpTab 精选集  
+  * ![1.5.1](https://img.shields.io/badge/version-1.5.1-red.svg)SimpTab 精选集  
 
     > 独有功能，每周一期，每期 【一 ~ 九】 张手工采集精选壁纸，类似 iOS App 的做法，获取往期壁纸，请关注 简 Tab 精选集小秘 → https://weibo.com/u/6632928109
 
@@ -63,9 +63,9 @@
 
 - 不再显示（删除）功能；
 
-- ![new纯色.png](https://i.loli.net/2018/09/05/5b8f718046acb.png) 书签栏；
+- ![1.5.2](https://img.shields.io/badge/version-1.5.2-red.svg) 书签栏；
 
-- ![new纯色.png](https://i.loli.net/2018/09/05/5b8f718046acb.png) 收藏与订阅管理器；
+- ![1.5.2](https://img.shields.io/badge/version-1.5.2-red.svg) 收藏与订阅管理器；
 
 #### 投票：
 * 如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
