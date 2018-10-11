@@ -76,7 +76,7 @@
 * <http://ksria.com/simptab/gallery.html>
 
 #### 全部功能：
-* https://github.com/Kenshin/simptab/wiki//功能一览
+![全部功能：](http://st.ksria.cn/feature%201.5.2.png)
 
 #### 相关链接：
 * [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
