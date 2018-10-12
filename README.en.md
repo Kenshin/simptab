@@ -15,6 +15,8 @@
 #### Download:
 * [Chrome Webstore](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) · [Offline Download](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
 
+* If you have a good background and would like to share with you, please tell me and submission address → [Google Form](https://goo.gl/forms/oThieQCP6xk626GU2)
+
 #### Other language:
 [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) · [简体中文](https://github.com/kenshin/simptab/blob/master/README.md)
 
