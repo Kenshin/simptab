@@ -14,7 +14,7 @@
 #### 馬上使用：
 * [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
 
-* 有任何問題請看 [幫助中心](https://github.com/Kenshin/simptab/wiki) 或者 加入 **[SimpTab 的討論群](https://gitter.im/Kenshin/simptab)**
+* 有任何問題請看 [幫助中心](http://ksria.com/simptab/docs/#) 或者 加入 **[SimpTab 的討論群](https://gitter.im/Kenshin/simptab)**
 
 * 如果你有 **好的背景想跟大家分享** ，請告訴我，投稿地址 → [谷歌表格](https://goo.gl/forms/j1PuNz4DMAjS0Gj33) · [備用地址](https://wj.qq.com/s/2710075/6108)
 
@@ -57,7 +57,7 @@
 
 - 支持 `快捷鍵` / `多功能框` 操作；
 
-- [常用網址](https://github.com/Kenshin/simptab/wiki/功能一覽#常用網址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 
+- [常用網址](http://ksria.com/simptab/docs/#/功能一览#常用网址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 
 
 - 上傳 · 收藏 · 下載；
 
@@ -65,9 +65,9 @@
 
 - 不再顯示（刪除）功能；
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [書籤欄](https://github.com/Kenshin/simptab/wiki/功能一覽#主要功能之一)；
+- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [書籤欄](http://ksria.com/simptab/docs/#/功能一览#主要功能之一)；
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏與訂閱管理器](https://github.com/Kenshin/simptab/wiki/功能一覽#主要功能之二)；
+- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏與訂閱管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
 
 #### 投票：
 * 簡 Tab 是一個免費並開源的項目，如果覺得不錯，請給我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)

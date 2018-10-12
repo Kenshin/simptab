@@ -52,9 +52,9 @@
 
 - Dislike. ( Prevent the background from appearing again )
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Bookmarks](https://github.com/Kenshin/simptab/wiki/功能一览#主要功能之一)；
+- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Bookmarks](http://ksria.com/simptab/docs/#/功能一览#主要功能之一)；
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Background Manage](https://github.com/Kenshin/simptab/wiki/功能一览#主要功能之二)；
+- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Background Manage](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
 
 #### Vote:
 * If you like this application, please [Rate](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) it
@@ -62,9 +62,9 @@
 #### About:
 * [CHANGELOG](http://ksria.com/simptab/docs/#/CHANGELOG.en)
 
-* [Wiki](https://github.com/kenshin/simptab/wiki)
+* [Wiki](http://ksria.com/simptab/docs/#)
 
-* [FAQ](https://github.com/Kenshin/simptab/wiki/常见问题)
+* [FAQ](http://ksria.com/simptab/docs/#/常见问题)
 
 * [Feedback](https://github.com/kenshin/simptab/issues)
 
