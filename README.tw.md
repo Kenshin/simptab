@@ -8,82 +8,91 @@
    <a href="http://ksria.com/simptab/crx/1.5.2/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
    <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
 </p>
-</p>
 
 ***
 
 #### 馬上使用：
 * [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
 
-#### 截圖：
-![Snapshot](http://i.imgur.com/xN58aJ2.jpg)
-![Snapshot](https://i.imgur.com/7HuDEdph.png)  
-![Snapshot](https://i.imgur.com/uhB78LTh.png)  
+* 有任何問題請看 [幫助中心](https://github.com/Kenshin/simptab/wiki) 或者 加入 **[SimpTab 的討論群](https://gitter.im/Kenshin/simptab)**
 
-#### 功能一覽：
-![feature 1](http://i.imgur.com/BZGMo4p.jpg)  
-![feature 2](http://i.imgur.com/auWFlc9.jpg)
+* 如果你有 **好的背景想跟大家分享** ，請告訴我，投稿地址 → [谷歌表格](https://goo.gl/forms/j1PuNz4DMAjS0Gj33) · [備用地址](https://wj.qq.com/s/2710075/6108)
 
 #### 其它語言：
-[繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+* [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) · [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
 
-#### 詳細功能：
-- SimpTab 精選集  
-  > 每周一期，每期九張手工採集精選壁紙，類似 iOS App 的做法，獲取往期壁紙，請關注 簡 Tab 精選集小秘 → https://weibo.com/u/6632928109
+#### 截圖：
+![Snapshot](http://st.ksria.cn/start@webstore.png)
+![Snapshot](http://st.ksria.cn/subscribe@webstore.png)  
+![Snapshot](http://st.ksria.cn/mask@webstore.png?20181011)  
+![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
+
+#### 主要功能一覽：
 
 - 自動識別語言； _包括： `簡體` · `繁體` · `英文`_ 
-- 每日/隨機更換背景； _注意：每日更換的背景只來自 `Bing.com`_ 
-- 多種背景源，包括：`bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `desktoppr.co`, `visualhunt.com`, `SimpTab 精選集`；
-- 多種布局； _包括： `相框效果` · `左上角對齊` · `居中對齊`_ 
+
+- 多種更換壁紙方式：
+  * 每日更換背景： 每日只更換一次背景，背景僅來自 `Bing.com`
+
+  * 隨機更換背景： 根據下方勾選的背景源隨機更換壁紙
+
+  * 只顯示當前背景：永不更換背景源
+
+- 多種類型的背景源，包括：
+  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `flickr.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
+
+  * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab 精選集**  
+
+    > 獨有功能，每周一期，每期 【一 ~ 九】 張手工採集精選壁紙，類似 iOS App 的做法，獲取往期壁紙，請關注 簡 Tab 精選集小秘 → https://weibo.com/u/6632928109
+
+  * 收藏
+
+    > 點擊 控制欄「收藏」後的背景集合
+
+- 多種布局；
+
+  > 包括： `左上角對齊` · `居中對齊` · `相框效果`
+
 - 背景載入進度； _左下角，只在載入時顯示_ 
+
 - 支持 `快捷鍵` / `多功能框` 操作；
-- 操作提示； _包括： `上傳` · `收藏`_ 
-- 常用網址； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 
-- 上傳；
-- 收藏；
-- 停留； _保留當前背景一段時間_ 
+
+- [常用網址](https://github.com/Kenshin/simptab/wiki/功能一覽#常用網址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 
+
+- 上傳 · 收藏 · 下載；
+
+- 固定； _保留當前背景一段時間_ 
+
 - 不再顯示（刪除）功能；
 
-#### 多功能框快捷鍵：
-`st`
+- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [書籤欄](https://github.com/Kenshin/simptab/wiki/功能一覽#主要功能之一)；
 
-#### 快捷鍵 & 多功能框：
-名稱 | 描述
------- | ------
-`book` | 打開 `書籤` 標籤。
-`his ` | 打開 `歷史` 標籤。
-`app ` | 打開 `應用` 標籤。
-`info` | 當前背景的出處。
-`down` | `下載` 當前背景。
-`set ` | 打開設置界面。
-`fav`  | `收藏` （ `取消收藏` ）當前背景。
-`pin`  | `停留` 當前背景。
-`un`   | `不再顯示` （刪除）功能。
-`site` | 顯示 `常用網址` 。（ 只針對 `omnibox` ）
+- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏與訂閱管理器](https://github.com/Kenshin/simptab/wiki/功能一覽#主要功能之二)；
 
 #### 投票：
-* 如果覺得不錯，請給我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
+* 簡 Tab 是一個免費並開源的項目，如果覺得不錯，請給我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
 #### 照片集：
 * <http://ksria.com/simptab/gallery.html>
 
-#### 相關鏈接：
-* [更新日誌](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
-* [Wiki](https://github.com/kenshin/simptab/wiki)
-* [常見問題](https://github.com/Kenshin/simptab/wiki/常見問題)
-* [反饋](https://github.com/kenshin/simptab/issues)
-* [聯繫](http://kenshin.wang) | [郵件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
+#### 全部功能：
+![全部功能：](http://st.ksria.cn/feature%201.5.2.png)
 
-#### 感謝：
-- 圖標 <http://www.easyicon.net> <https://www.iconfinder.com>。
-- 英文字體 `HapnaMono-Light`。
-- 簡體/繁體 字體 `思源黑體 ExtraLight`。
-- 效果圖 <http://magicmockups.com/>
+#### 相關鏈接：
+* [更新日誌](http://ksria.com/simptab/docs/#/CHANGELOG)
+
+* [幫助中心](http://ksria.com/simptab/docs/)
+
+* [功能一覽](http://ksria.com/simptab/docs/#/功能一覽)
+
+* [反饋](https://github.com/kenshin/simptab/issues)
+
+* [聯繫](http://kenshin.wang) · [郵件](kenshin@ksria.com) · [微博](http://weibo.com/23784148)
 
 #### 請杯咖啡：
 如果簡 Tab 可以讓你的心情更加愉悅，何不請杯 ☕ :smile:  
-_如發現下圖顯示不全，請直接訪問 http://ojec5ddd5.bkt.clouddn.com/zhifu_m2.png_  
-![支付](http://ojec5ddd5.bkt.clouddn.com/zhifu_m2.png)
+_如發現下圖顯示不全，請直接訪問 http://sr.ksria.cn/zhifu_m2.png_  
+![支付](http://sr.ksria.cn/zhifu_m2.png?20181011)
 
 #### 許可：
 [![license-badge]][license-link]

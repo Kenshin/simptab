@@ -62,7 +62,7 @@ Name | Description
 * If you like this application, please [Rate](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) it
 
 #### About:
-* [CHANGELOG](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
+* [CHANGELOG](http://ksria.com/simptab/docs/#/CHANGELOG.en)
 * [Wiki](https://github.com/kenshin/simptab/wiki)
 * [FAQ](https://github.com/Kenshin/simptab/wiki/常见问题)
 * [Feedback](https://github.com/kenshin/simptab/issues)

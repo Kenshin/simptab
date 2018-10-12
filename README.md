@@ -79,11 +79,11 @@
 ![全部功能：](http://st.ksria.cn/feature%201.5.2.png)
 
 #### 相关链接：
-* [更新日志](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
+* [更新日志](http://ksria.com/simptab/docs/#/CHANGELOG)
 
-* [帮助中心](https://github.com/kenshin/simptab/wiki)
+* [帮助中心](http://ksria.com/simptab/docs/)
 
-* [功能一览](https://github.com/Kenshin/simptab/wiki/功能一览)
+* [功能一览](http://ksria.com/simptab/docs/#/功能一览)
 
 * [反馈](https://github.com/kenshin/simptab/issues)
 
