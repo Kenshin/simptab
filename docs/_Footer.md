@@ -1,0 +1,1 @@
+简 Tab - 极简的 Chrome 新标签页扩展，望你每次打开都有好心情。 © 2014-2017 [ksria.com](http://ksria.com/simptab) by [Kenshin Wang](http://kenshin.wang/)
