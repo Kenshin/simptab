@@ -1,47 +1,91 @@
-<p align="center"><img src="http://st.ksria.cn/logo@192.png" /></p>
-<h1 align="center">SimpTab - Minimalist Chrome new tab extension</h1>
-<p align="center">Hope to improve your mood every time you open a new tab. Clear & simple, focused on beautiful background images.</p>
-<p align="center">
-   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.2-blue.svg"></a>
-   <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
-   <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.2/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
-   <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
-</p>
-</p>
+#### 1.5.2
+
+> 2018-10-14
+
+- :sparkles: Add `Bookmarks`;
+  ![2018-10-12_141443.png](https://i.loli.net/2018/10/12/5bc03d1ce05cc.png)
+
+  1. Need to apply for permission;
+
+  2. Search, support: `domain` & `title` keywords;
+  > Search box like Quick bar style.
+
+  3. Recent;
+
+- :sparkles: Add `Background Manage` ;
+  > For details, please see (Feature)[http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1]
+
+  ![2018-10-11_13-56-35.png](https://i.loli.net/2018/10/12/5bc03f7e85fd7.png)
+  1. Open  `Background Manage`;
+
+  2. Include: `Favorite` 与 `Subscibe` Tab;
+
+  3. `Favorite` 与 `Subscibe` difference between, `Favorite`  can be remove;
+
+  4. In this order: Author · Photos link · Set photo to background · Download;
+
+- :sparkles: Add `About page`
+  ![2018-10-12_144121.png](https://i.loli.net/2018/10/12/5bc0487f163d2.png)
+
+- :sparkles:  Add `Welcome page`;
+  ![2018-10-12_145647.png](https://i.loli.net/2018/10/12/5bc048bf612f8.png)
+
+- :sparkles: Add `Not Change background` checkitem;
+
+  ![2018-10-12_150254.png](https://i.loli.net/2018/10/12/5bc047edc3abf.png)
+
+- :sparkles: Add `Refresh` checkitem;
+
+  ![2018-10-12_151000.png](https://i.loli.net/2018/10/12/5bc049456454d.png)
+
+- :lipstick: Optimize `shortcuts`
+
+  ![快捷键](https://i.loli.net/2018/10/11/5bbefe9e22160.png)
+
+- :lipstick: Optimize `Bing today` `Bing random` `Favorite origins` priority;
+
+  ![2018-10-12_151532.png](https://i.loli.net/2018/10/12/5bc04a94bcb15.png)
+
+- :hammer: Rework `main.html` layout;
+
+- :lipstick: Optimize setting bar layout;
+
+- :hammer: Optmize all `font-family`;
+
+- :hammer: Rework Tooltip,  new scheme uses a third-party library [Balloon.css](https://kazzkiq.github.io/balloon.css/)
+
+- :hammer: Unified `bookmarks` 与 `setting` Effect;
+
+- :hammer: Rework `Topsites - senior` UI; 
+
+- :memo: 1.5.2 All feature
+  ![SimpTab 1.5.2](https://i.loli.net/2018/10/11/5bbf2d08da9c1.png)
 
 ***
-
-Download
----
-* [Chrome Webstore](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) | [Offline Download](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
-
-Features
----
-https://github.com/Kenshin/simptab
-
-CHANGELOG
----
 
 #### 1.5.1
 
 > 2018-08-12
 
-- [x] :sparkles: Add **【SimpTab Collections】**;  
+- :sparkles: Add **【SimpTab Collections】**;  
 
   ![Imgur](https://i.imgur.com/pblZLv0.png)
 
-- [x] :sparkles: Add [Waves](http://fian.my.id/Waves/) Effect;
+- :sparkles: Add [Waves](http://fian.my.id/Waves/) Effect;
 
-- [x] :lipstick: Optimize UI，like Google Metarial Design _Include: Topsites / Setting / Tooltip / Clock_
-- [x] :arrow_up: Update venders; _Include: jQuery / Notify_
+- :lipstick: Optimize UI，like Google Metarial Design _Include: Topsites / Setting / Tooltip / Clock_
 
-- [x] :bug: Fix `bing.com Today` not work bug; [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
-- [x] :bug: Fix `bing.com Random` not work bug; _origin from [https://bingwallpaper.com/](https://bingwallpaper.com/)_
-- [x] :bug: Fix `favorite` loading slow bug;
+- :arrow_up: Update venders; _Include: jQuery / Notify_
 
-- [x] :fire: Remove Setting bar sharde;
-- [x] :fire: Remove failed origins: `500px.com` `nasa.gov`;
+- :bug: Fix `bing.com Today` not work bug; [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
+
+- :bug: Fix `bing.com Random` not work bug; _origin from [https://bingwallpaper.com/](https://bingwallpaper.com/)_
+
+- :bug: Fix `favorite` loading slow bug;
+
+- :fire: Remove Setting bar sharde;
+
+- :fire: Remove failed origins: `500px.com` `nasa.gov`;
 
 ***
 
@@ -49,10 +93,13 @@ CHANGELOG
 
 > 2016-02-11
 
-- [x] :sparkles: Add pin feature.
-- [x] :sparkles: Add dislike feature.
-- [x] :sparkles: Add background remote cdns feature.
-- [x] :bug: Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
+- :sparkles: Add pin feature.
+
+- :sparkles: Add dislike feature.
+
+- :sparkles: Add background remote cdns feature.
+
+- :bug: Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
 
 ***
 
@@ -60,11 +107,13 @@ CHANGELOG
 
 > 2016-01-20
 
-- [x] :sparkles: More detailed version for version feature.
-- [x] :sparkles: Dynamic set permissions.
-- [x] :sparkles: Add background position item, intelligent adjusting background position.
+- :sparkles: More detailed version for version feature.
 
-- [x] :pencil2: Modify settin bar icon.
+- :sparkles: Dynamic set permissions.
+
+- :sparkles: Add background position item, intelligent adjusting background position.
+
+- :pencil2: Modify settin bar icon.
 
 ***
 
@@ -72,8 +121,9 @@ CHANGELOG
 
 > 2015-12-25
 
-- [x] :sparkles: Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
-- [x] :sparkles: Add special day(SimpTab Images) to Setting bar.
+- :sparkles: Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
+
+- :sparkles: Add special day(SimpTab Images) to Setting bar.
 
 ***
 
@@ -81,10 +131,11 @@ CHANGELOG
 
 > 2015-12-23
 
-- [x] :sparkles: Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
+- :sparkles: Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
 
-- [x] :bug: Fix 'simple' mode topsites hover display speed.
-- [x] :bug: Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
+- :bug: Fix 'simple' mode topsites hover display speed.
+
+- :bug: Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
 
 ***
 
@@ -92,18 +143,25 @@ CHANGELOG
 
 > 2015-12-10
 
-- [x] :sparkles: Feature: [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
-- [x] :sparkles: Add multi background origin: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
-- [x] :sparkles: Add update multi customer background.
-- [x] :sparkles: Add fovorite background.
-- [x] :sparkles: Add top sites.
-- [x] :sparkles: Add Download new background progress.
-- [x] :sparkles: Add Favorite/Upload background notification.
-- [x] :sparkles: Add Support omnibox shortcuts.
+- :sparkles: Feature: [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
 
-- [x] :hammer: Rework source.
+- :sparkles: Add multi background origin: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
 
-- [x] :bug: Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
+- :sparkles: Add update multi customer background.
+
+- :sparkles: Add fovorite background.
+
+- :sparkles: Add top sites.
+
+- :sparkles: Add Download new background progress.
+
+- :sparkles: Add Favorite/Upload background notification.
+
+- :sparkles: Add Support omnibox shortcuts.
+
+- :hammer: Rework source.
+
+- :bug: Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
 
 ***
 
@@ -111,11 +169,15 @@ CHANGELOG
 
 > 2014-08-29
 
-- [x] :bug: Fix Download background's duplication of name error.
-- [x] :bug: Fix when first running, info and download's title exist's error.
-- [x] :bug: Fix when background is default wallpaper, info and download's title exist's error.
-- [x] :bug: Fix when locale not zh-cn, change knows to search link.
-- [x] :bug: Fix change clock's font-family to `roboto.ttf`.
+- :bug: Fix Download background's duplication of name error.
+
+- :bug: Fix when first running, info and download's title exist's error.
+
+- :bug: Fix when background is default wallpaper, info and download's title exist's error.
+
+- :bug: Fix when locale not zh-cn, change knows to search link.
+
+- :bug: Fix change clock's font-family to `roboto.ttf`.
 
 ***
 
@@ -123,9 +185,11 @@ CHANGELOG
 
 > 2014-08-28
 
-- [x] :sparkles: Add multi-language to main.html's title.
-- [x] :sparkles: Add open Bookmark/Apps/Histroy/Info at current tab page.
-- [x] :sparkles: Add controlbar to shortcuts.
+- :sparkles: Add multi-language to main.html's title.
+
+- :sparkles: Add open Bookmark/Apps/Histroy/Info at current tab page.
+
+- :sparkles: Add controlbar to shortcuts.
 
 ***
 
@@ -133,12 +197,13 @@ CHANGELOG
 
 > 2014-08-22
 
-- [x] :sparkles: Add website and Rote link with main.html's footer.
+- :sparkles: Add website and Rote link with main.html's footer.
 
-- [x] :pencil2: Modify sns share title multi-language.
+- :pencil2: Modify sns share title multi-language.
 
-- [x] :bug: Fixed issues change SimpTab - Minimalistic New Tab Page by Chrome Extensions to SimpTab - New Tab from main.html's title.
-- [x] :bug: Fixed issues some of the copywriting error.
+- :bug: Fixed issues change SimpTab - Minimalistic New Tab Page by Chrome Extensions to SimpTab - New Tab from main.html's title.
+
+- :bug: Fixed issues some of the copywriting error.
 
 ***
 
@@ -146,7 +211,10 @@ CHANGELOG
 
 > 2014-08-20
 
-- [x] :sparkles: Add Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
-- [x] :sparkles: Add Daily/randomly changing background from Bing.com.
-- [x] :sparkles: Add Downloading (HD) background from Bing.com.
-- [x] :sparkles: Add View the current background of meaning.
+- :sparkles: Add Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
+
+- :sparkles: Add Daily/randomly changing background from Bing.com.
+
+- :sparkles: Add Downloading (HD) background from Bing.com.
+
+- :sparkles: Add View the current background of meaning.

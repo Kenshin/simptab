@@ -1,102 +1,230 @@
-<p align="center"><img src="http://st.ksria.cn/logo@192.png" /></p>
-<h1 align="center">簡 Tab - 極簡的 Chrome 新標籤頁擴展</h1>
-<p align="center">望你每次打開都有好心情；去除多餘功能，只關註標簽頁呈現效果。</p>
-<p align="center">
-   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.2-blue.svg"></a>
-   <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
-   <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.2/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
-   <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
-</p>
+#### 1.5.2
+
+> 2018-10-14
+
+- :sparkles: 新增 `書籤欄`；
+  ![2018-10-12_141443.png](https://i.loli.net/2018/10/12/5bc03d1ce05cc.png)
+  1. 需要申請許可權，側欄 → 選中 `開啟書籤欄`；
+
+  2. 搜索（支持：`域名` 和 `標題`）
+  > 點擊後，打開類似 Quick bar 的搜索。
+
+  3. 近期使用的 URL;
+
+- :sparkles: 新增 `背景管理器` （點擊控制欄 → 設定 → 背景管理器）
+  > 詳細說明請看 (功能一覽)[http://ksria.com/simptab/docs/#/功能一覽?id=主要功能之一-1]
+
+  ![2018-10-11_13-56-35.png](https://i.loli.net/2018/10/12/5bc03f7e85fd7.png)
+  1. 開啟  `背景管理器` ；
+
+  2. 1.5.2 包含：`收藏` 與 `訂閱` 兩個 Tab ；
+
+  3. `收藏` 與 `訂閱` 的區別：前者可以刪除；
+
+  4. 依次為：照片的作者 · 照片的出處 · 設置為當前背景 · 下載；
+
+- :sparkles: 新增 `關於` 頁面；
+  ![2018-10-12_144121.png](https://i.loli.net/2018/10/12/5bc0487f163d2.png)
+
+- :sparkles: 新增 `歡迎` 頁面；
+  ![2018-10-12_145647.png](https://i.loli.net/2018/10/12/5bc048bf612f8.png)
+
+- :sparkles: 新增 `只顯示當前背景` 的選項；
+  > 與 `Pin` 的區別是，選中此項後，當前背景永不再改變；後者只是固定一段時間；
+
+  ![2018-10-12_150254.png](https://i.loli.net/2018/10/12/5bc047edc3abf.png)
+
+- :sparkles: 新增 `刷新（下一張）` 的選項；
+  > 點擊後，會在當前 New Tab 基礎上更新下一張背景；
+
+  ![2018-10-12_151000.png](https://i.loli.net/2018/10/12/5bc049456454d.png)
+
+- :lipstick: 優化了 `全局快捷鍵`
+  > 通過全局快捷鍵 <kbd>?</kbd> 呼出
+
+  ![快捷鍵](https://i.loli.net/2018/10/11/5bbefe9e22160.png)
+
+- :lipstick: 優化了 `必應每日更新` `必應隨機背景` `收藏夾背景源` 的優先順序，現在可以關閉它們；
+
+  ![2018-10-12_151532.png](https://i.loli.net/2018/10/12/5bc04a94bcb15.png)
+
+- :hammer: 重構了頁面布局，使其更符合 HTML5 與 Material Design 風格；
+
+- :lipstick: 優化了側欄的布局，去掉了無用的分享功能；
+
+- :hammer: 重構了全部的字體樣式，去掉了之前 `繁體` `English` 的特殊字體方案；
+
+- :hammer: 重構了 Tooltip，新方案使用了第三方庫 [Balloon.css](https://kazzkiq.github.io/balloon.css/)
+
+- :hammer: 統一了 `bookmarks` 與 `setting` 的動效；
+
+- :hammer: 重構了 `Topsites - 高級模式(九宮格)` 的 UI;
+
+- :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.2](https://i.loli.net/2018/10/11/5bbf2d08da9c1.png)
 
 ***
 
-#### 馬上使用：
-* [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
+#### 1.5.1
 
-* 有任何問題請看 [幫助中心](https://github.com/Kenshin/simptab/wiki) 或者 加入 **[SimpTab 的討論群](https://gitter.im/Kenshin/simptab)**
+> 2018-08-12
 
-* 如果你有 **好的背景想跟大家分享** ，請告訴我，投稿地址 → [谷歌表格](https://goo.gl/forms/om5r57qk1PkksuNr2)
+- :sparkles: 增加了 全新的 **【SimpTab 精選集】**；  
+  > 類似 iOS 某些壁紙 App 的方式，通過手動採集的方式更新，每周一期。  
 
-#### 其它語言：
-* [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) · [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+  ![Imgur](https://i.imgur.com/pblZLv0.png)
 
-#### 截圖：
-![Snapshot](http://st.ksria.cn/start@webstore.png)
-![Snapshot](http://st.ksria.cn/subscribe@webstore.png)  
-![Snapshot](http://st.ksria.cn/mask@webstore.png?20181011)  
-![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
+- :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 動效；
 
-#### 主要功能一覽：
+- :sparkles: 增加了 全新的背景布局：`相框布局`；
+  ![Imgur](https://i.imgur.com/7HuDEdpl.png)
 
-- 自動識別語言； _包括： `簡體` · `繁體` · `英文`_ 
+- :lipstick: 優化了 界面，使其更符合 Google Metarial Design 風格； _包括：Topsites / 側欄 / Tooltip / Clock 等_
 
-- 多種更換壁紙方式：
-  * 每日更換背景： 每日只更換一次背景，背景僅來自 `Bing.com`
+- :lipstick: 更新了 若干依賴；_包括： jQuery / Notify_
 
-  * 隨機更換背景： 根據下方勾選的背景源隨機更換壁紙
+- :bug: 修復了 `bing.com 每日圖片` 無法獲取的錯誤； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
 
-  * 只顯示當前背景：永不更換背景源
+- :bug: 修復了 `隨機 bing.com` 的地址源失效問題；_新的地址來源於 [https://bingwallpaper.com/](https://bingwallpaper.com/)_
 
-- 多種類型的背景源，包括：
-  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `flickr.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
+- :bug: 修復了 `收藏` 後的壁紙載入慢的問題；
 
-  * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab 精選集**  
+- :fire: 去掉了 側欄分享的功能；
 
-    > 獨有功能，每周一期，每期 【一 ~ 九】 張手工採集精選壁紙，類似 iOS App 的做法，獲取往期壁紙，請關注 簡 Tab 精選集小秘 → https://weibo.com/u/6632928109
+- :fire: 去掉了 已失效的背景源 `500px.com` `nasa.gov`；
 
-  * 收藏
+***
 
-    > 點擊 控制欄「收藏」後的背景集合
+#### 1.5.0
 
-- 多種布局；
+> 2016-02-11
 
-  > 包括： `左上角對齊` · `居中對齊` · `相框效果`
+- :sparkles: 增加了 `Pin` 功能；
 
-- 背景載入進度； _左下角，只在載入時顯示_ 
+  > 可以固定一段時間，包括： 0.5, 1, 2, 4, 8 小時
 
-- 支持 `快捷鍵` / `多功能框` 操作；
+- :sparkles: 增加了 `dislike` 功能；
 
-- [常用網址](https://github.com/Kenshin/simptab/wiki/功能一覽#常用網址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 
+  > 加入後不再顯示當前背景；
 
-- 上傳 · 收藏 · 下載；
+- :sparkles: 增加了 背景源的 CDN 功能；
 
-- 固定； _保留當前背景一段時間_ 
+- :bug: 修復了 `checkbox/radio` 偶爾無法點擊的錯誤； [issues 16](https://github.com/kenshin/simptab/issues/16)
 
-- 不再顯示（刪除）功能；
+***
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [書籤欄](https://github.com/Kenshin/simptab/wiki/功能一覽#主要功能之一)；
+#### 1.4.3
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏與訂閱管理器](https://github.com/Kenshin/simptab/wiki/功能一覽#主要功能之二)；
+> 2016-01-20
 
-#### 投票：
-* 簡 Tab 是一個免費並開源的項目，如果覺得不錯，請給我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
+- :sparkles: 增加了 版本介紹；
 
-#### 照片集：
-* <http://ksria.com/simptab/gallery.html>
+- :sparkles: 增加了 `動態許可權設定` 功能；
 
-#### 全部功能：
-![全部功能：](http://st.ksria.cn/feature%201.5.2.png)
+- :sparkles: 增加了 `背景源的顯示位置`，包括： `居中`和 `左上角` 對其；
 
-#### 相關鏈接：
-* [更新日誌](https://github.com/kenshin/simptab/blob/master/CHANGELOG.md)
+- :pencil2: 優化了設定欄的 icon；
 
-* [幫助中心](https://github.com/kenshin/simptab/wiki)
+***
 
-* [功能一覽](https://github.com/Kenshin/simptab/wiki/功能一覽)
+#### 1.4.2
 
-* [反饋](https://github.com/kenshin/simptab/issues)
+> 2015-12-25
 
-* [聯繫](http://kenshin.wang) · [郵件](kenshin@ksria.com) · [微博](http://weibo.com/23784148)
+- :sparkles: 增加了 新的背景源： [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
 
-#### 請杯咖啡：
-如果簡 Tab 可以讓你的心情更加愉悅，何不請杯 ☕ :smile:  
-_如發現下圖顯示不全，請直接訪問 http://sr.ksria.cn/zhifu_m2.png_  
-![支付](http://sr.ksria.cn/zhifu_m2.png?20181011)
+- :sparkles: 增加了 新的背景源： `SimpTab Images`.
 
-#### 許可：
-[![license-badge]][license-link]
+***
 
-<!-- Link -->
-[license-badge]:    https://img.shields.io/github/license/mashape/apistatus.svg
-[license-link]:     https://opensource.org/licenses/MIT
+#### 1.4.1
+
+> 2015-12-23
+
+- :sparkles: 常用網址增加了全新的： `高級布局` 方式；
+
+- :bug: 調整了 `常用網址（簡單布局）` 滑鼠 hover 時的顯示速度.
+
+- :bug: 修復 `Notifiy` z-index 錯誤； [issues 8](https://github.com/kenshin/simptab/issues/8)
+
+***
+
+#### 1.4.0
+
+> 2015-12-10
+
+- :sparkles: 增加了 多語言，包括： [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+
+- :sparkles: 增加了 新的背景源： `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
+
+- :sparkles: 增加了 `上傳背景源` 功能；
+
+- :sparkles: 增加了 `fovorite` 功能；
+
+- :sparkles: 增加了 `top sites` 功能；
+
+- :sparkles: 增加了 載入新的背景源時的進度顯示；
+
+- :sparkles: 增加了 `Favorite/Upload` 背景源的提示；
+
+- :sparkles: 增加了 `omnibox` 快捷鍵；
+
+- :hammer: 重構了代碼；
+
+- :bug: 修復了 `1.0.3` 版版的錯誤，包括： [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
+
+***
+
+#### 1.0.3
+
+> 2014-08-29
+
+- :sparkles: 增加了 `clock's font-family` to `roboto.ttf`.
+
+- :bug: 修復了 下載背景時重複命名的錯誤；
+
+- :bug: 修復了 第一次安裝下載背景的錯誤；
+
+- :bug: 修復了 默認背景下載時命名的錯誤；
+
+- :bug: 修復了 非 `zh-cn` 環境下 `info 鏈接` 指向的錯誤；
+
+***
+
+#### 1.0.2
+
+> 2014-08-28
+
+- :sparkles: 增加了 `main.html's title` 的多語言；
+
+- :sparkles: 增加了 `Bookmark/Apps/Histroy/Info` 在本頁打開的功能；
+
+- :sparkles: 增加了 `controlbar` 的快捷鍵方案；
+
+***
+
+#### 1.0.1
+
+> 2014-08-22
+
+- :sparkles: 增加了 `footer 欄` 投票的鏈接；
+
+- :pencil2: 優化了 `分享 icon` 的多語言；
+
+- :bug: 修復了 main.html's title 為 `SimpTab - Minimalistic New Tab Page by Chrome Extensions`;
+
+- :bug: 修復了 一些文案上的錯誤；
+
+***
+
+#### 1.0.0
+
+> 2014-08-20
+
+- :sparkles: 增加了 `多語言` 環境；
+
+- :sparkles: 增加了 `每日/隨機` （ 從 `bing.com` ）更換背景；
+
+- :sparkles: 增加了 `下載背景` 功能；
+
+- :sparkles: 增加了 `info` 功能；
