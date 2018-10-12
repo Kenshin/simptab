@@ -84,7 +84,10 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
             close();
         });
         $( ".welcome .paging a span" ).on( "click", function( event ) {
-            $( '.carousel.carousel-slider' ).carousel( event.target.parentElement.className );
+            var tag = event.target.tagName.toLowerCase(),
+                cls = event.target.parentElement.className;
+            tag == "path" && ( cls = event.target.parentElement.parentElement.className );
+            $( '.carousel.carousel-slider' ).carousel( cls );
         });
     }
 
