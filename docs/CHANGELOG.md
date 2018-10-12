@@ -1,3 +1,69 @@
+#### 1.5.2
+
+> 2018-10-14
+
+- :sparkles: 新增 `书签栏`；
+  ![2018-10-12_141443.png](https://i.loli.net/2018/10/12/5bc03d1ce05cc.png)
+  1. 需要申请权限，侧栏 → 选中 `开启书签栏`；
+
+  2. 搜索（支持：`域名` 和 `标题`）
+  > 点击后，打开类似 Quick bar 的搜索。
+
+  3. 近期使用的 URL ；
+
+- :sparkles: 新增 `背景管理器` （点击控制栏 → 设定 → 背景管理器）
+  > 详细说明请看 (功能一览)[http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1]
+
+  ![2018-10-11_13-56-35.png](https://i.loli.net/2018/10/12/5bc03f7e85fd7.png)
+  1. 开启  `背景管理器` ；
+
+  2. 1.5.2 包含：`收藏` 与 `订阅` 两个 Tab ；
+
+  3. `收藏` 与 `订阅` 的区别：前者可以删除；
+
+  4. 依次为：照片的作者 · 照片的出处 · 设置为当前背景 · 下载；
+
+- :sparkles: 新增 `关于` 页面；
+  ![2018-10-12_144121.png](https://i.loli.net/2018/10/12/5bc0487f163d2.png)
+
+- :sparkles: 新增 `欢迎` 页面；
+  ![2018-10-12_145647.png](https://i.loli.net/2018/10/12/5bc048bf612f8.png)
+
+- :sparkles: 新增 `只显示当前背景` 的选项；
+  > 与 `Pin` 的区别是，选中此项后，当前背景永不再改变；后者只是固定一段时间；
+
+  ![2018-10-12_150254.png](https://i.loli.net/2018/10/12/5bc047edc3abf.png)
+
+- :sparkles: 新增 `刷新（下一张）` 的选项；
+  > 点击后，会在当前 New Tab 基础上更新下一张背景；
+
+  ![2018-10-12_151000.png](https://i.loli.net/2018/10/12/5bc049456454d.png)
+
+- :lipstick: 优化了 `全局快捷键`
+  > 通过全局快捷键 <kbd>?</kbd> 呼出
+
+  ![快捷键](https://i.loli.net/2018/10/11/5bbefe9e22160.png)
+
+- :lipstick: 优化了 `必应每日更新` `必应随机背景` `收藏夹背景源` 的优先级，现在可以关闭它们；
+
+  ![2018-10-12_151532.png](https://i.loli.net/2018/10/12/5bc04a94bcb15.png)
+
+- :hammer: 重构了页面布局，使其更符合 HTML5 与 Material Design 风格； 
+
+- :lipstick: 优化了侧栏的布局，去掉了无用的分享功能；
+
+- :hammer: 重构了全部的字体样式，去掉了之前 `繁体` `English` 的特殊字体方案；
+
+- :hammer: 重构了 Tooltip，新方案使用了第三方库 [Balloon.css](https://kazzkiq.github.io/balloon.css/)
+
+- :hammer: 统一了 `bookmarks` 与 `setting` 的动效；
+
+- :hammer: 重构了 `Topsites - 高级模式(九宫格)` 的 UI ； 
+
+- :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.2](https://i.loli.net/2018/10/11/5bbf2d08da9c1.png)
+
+***
 
 #### 1.5.1
 
@@ -34,9 +100,11 @@
 > 2016-02-11
 
 - :sparkles: 增加了 `Pin` 功能；
+
   > 可以固定一段时间，包括： 0.5, 1, 2, 4, 8 小时
 
 - :sparkles: 增加了 `dislike` 功能；
+
   > 加入后不再显示当前背景；
 
 - :sparkles: 增加了 背景源的 CDN 功能；
