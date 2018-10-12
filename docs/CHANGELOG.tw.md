@@ -9,7 +9,7 @@
   2. 搜索（支持：`域名` 和 `標題`）
   > 點擊後，打開類似 Quick bar 的搜索。
 
-  3. 近期使用的 URL ；
+  3. 近期使用的 URL;
 
 - :sparkles: 新增 `背景管理器` （點擊控制欄 → 設定 → 背景管理器）
   > 詳細說明請看 (功能一覽)[http://ksria.com/simptab/docs/#/功能一覽?id=主要功能之一-1]
@@ -48,7 +48,7 @@
 
   ![2018-10-12_151532.png](https://i.loli.net/2018/10/12/5bc04a94bcb15.png)
 
-- :hammer: 重構了頁面布局，使其更符合 HTML5 與 Material Design 風格； 
+- :hammer: 重構了頁面布局，使其更符合 HTML5 與 Material Design 風格；
 
 - :lipstick: 優化了側欄的布局，去掉了無用的分享功能；
 
@@ -58,7 +58,7 @@
 
 - :hammer: 統一了 `bookmarks` 與 `setting` 的動效；
 
-- :hammer: 重構了 `Topsites - 高級模式(九宮格)` 的 UI ； 
+- :hammer: 重構了 `Topsites - 高級模式(九宮格)` 的 UI;
 
 - :memo: 截至到目前全部的功能
   ![SimpTab 1.5.2](https://i.loli.net/2018/10/11/5bbf2d08da9c1.png)

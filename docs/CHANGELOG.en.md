@@ -2,17 +2,17 @@
 
 > 2018-10-14
 
-- :sparkles: Add `Bookmarks`；
+- :sparkles: Add `Bookmarks`;
   ![2018-10-12_141443.png](https://i.loli.net/2018/10/12/5bc03d1ce05cc.png)
 
-  1. Need to apply for permission；
+  1. Need to apply for permission;
 
   2. Search, support: `domain` & `title` keywords;
   > Search box like Quick bar style.
 
   3. Recent;
 
-- :sparkles: Add `Background Manage` ；
+- :sparkles: Add `Background Manage` ;
   > For details, please see (Feature)[http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1]
 
   ![2018-10-11_13-56-35.png](https://i.loli.net/2018/10/12/5bc03f7e85fd7.png)
@@ -22,7 +22,7 @@
 
   3. `Favorite` 与 `Subscibe` difference between, `Favorite`  can be remove;
 
-  4. In this order: Author · Photos link · Set photo to background · Download；
+  4. In this order: Author · Photos link · Set photo to background · Download;
 
 - :sparkles: Add `About page`
   ![2018-10-12_144121.png](https://i.loli.net/2018/10/12/5bc0487f163d2.png)
@@ -34,7 +34,7 @@
 
   ![2018-10-12_150254.png](https://i.loli.net/2018/10/12/5bc047edc3abf.png)
 
-- :sparkles: Add `Refresh` checkitem；
+- :sparkles: Add `Refresh` checkitem;
 
   ![2018-10-12_151000.png](https://i.loli.net/2018/10/12/5bc049456454d.png)
 
