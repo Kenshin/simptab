@@ -91,6 +91,7 @@ header {
 .top ul li {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0 10px;
   padding-bottom: 5px;
   transition: border-color 0.5s;

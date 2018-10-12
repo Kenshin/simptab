@@ -54,9 +54,10 @@ $( document ).ready( function() {
         $(".download .smaller").html( t( "or" ));
         $(".download .btn-offline-download").html( t( "offline" ));
 
-        //$.each( $(".top ul li a"), function( idx, item ) {
-        //    idx <= 4 && $( item ).text( t( "nav" + (++idx) ));
-        //});
+        $($(".top ul li a")[0]).text( t( "nav3" ) );
+        $($(".top ul li a")[1]).text( t( "nav2" ) );
+        $($(".top ul li a")[2]).text( t( "nav4" ) );
+        $($(".top ul li a")[6]).text( t( "nav5" ) );
 
         if ( lang == "zh-tw" ) $($(".top ul li a")[1]).attr( "href", "http://ksria.com/simptab/docs/#/CHANGELOG.tw" );
         if ( lang == "en"    ) $($(".top ul li a")[1]).attr( "href", "http://ksria.com/simptab/docs/#/CHANGELOG.en" );
