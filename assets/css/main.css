@@ -1516,14 +1516,16 @@ img {
 }
 
 .welcome .paging a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 40px;
     height: 40px;
     line-height: 40px;
 
     font-size: 30px;
     text-decoration: none;
-
-    color: #4CAF50;
 }
 
 .welcome .paging a span {
@@ -1531,7 +1533,6 @@ img {
     justify-content: center;
     align-items: center;
 
-    background-color: #fff;
     border-radius: 50%;
 }
 
