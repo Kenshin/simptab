@@ -58,8 +58,8 @@ $( document ).ready( function() {
         //    idx <= 4 && $( item ).text( t( "nav" + (++idx) ));
         //});
 
-        if ( lang == "zh-tw" ) $($(".top ul li a")[1]).attr( "href", "https://github.com/Kenshin/simptab/blob/master/CHANGELOG.tw.md" );
-        if ( lang == "en"    ) $($(".top ul li a")[1]).attr( "href", "https://github.com/Kenshin/simptab/blob/master/CHANGELOG.en.md" );
+        if ( lang == "zh-tw" ) $($(".top ul li a")[1]).attr( "href", "http://ksria.com/simptab/docs/#/CHANGELOG.tw" );
+        if ( lang == "en"    ) $($(".top ul li a")[1]).attr( "href", "http://ksria.com/simptab/docs/#/CHANGELOG.en" );
 
         $.each( $(".feature"), function( idx, item ) {
             $( item ).find( ".desc" ).html( t( "desc" + (++idx) ));
