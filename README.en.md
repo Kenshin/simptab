@@ -36,25 +36,25 @@
 
   * Favorite origins
 
-- Multiple layouts. (picture frame effect, top left aligned, center aligned)
+- Multiple layouts; (picture frame effect, top left aligned, center aligned)
 
   > include: `top left aligned` · `center aligned` · `photo frame`
 
-- Background loading progress. ( Lower left corner, only at load time. )
+- Background loading progress; ( Lower left corner, only at load time. )
 
-- Support `shortcuts` / `omnibox` operation.
+- Support `shortcuts` / `omnibox` operation;
 
-- Top sites. ( include: simptab, senior, hidden modes. )
+- Top sites; ( include: simptab, senior, hidden modes. )
 
-- Upload · Favorite · Download.
+- Upload · Favorite · Download;
 
-- Pin. ( Don't change the background for some time )
+- Pin; ( Don't change the background for some time )
 
-- Dislike. ( Prevent the background from appearing again )
+- Dislike; ( Prevent the background from appearing again )
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Bookmarks](http://ksria.com/simptab/docs/#/功能一览#主要功能之一)；
+- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Bookmarks](http://ksria.com/simptab/docs/#/功能一览#主要功能之一) ;
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Background Manage](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
+- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Background Manage](http://ksria.com/simptab/docs/#/功能一览#主要功能之二) ;
 
 #### Vote:
 * If you like this application, please [Rate](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) it
