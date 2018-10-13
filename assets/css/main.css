@@ -408,7 +408,7 @@ header {
   background: url("../image/upload.png") no-repeat;
 }
 .main .feature:nth-child(4) .icon {
-  background: url("../image/download.png") no-repeat;
+  background: url("../image/bookmarks.png") no-repeat;
 }
 .main .feature:nth-child(5) .icon {
   background: url("../image/favorite.png") no-repeat;
