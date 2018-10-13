@@ -405,7 +405,7 @@ header {
   background: url("../image/time.png") no-repeat;
 }
 .main .feature:nth-child(3) .icon {
-  background: url("../image/upload.png") no-repeat;
+  background: url("../image/subscribe.png") no-repeat;
 }
 .main .feature:nth-child(4) .icon {
   background: url("../image/bookmarks.png") no-repeat;
