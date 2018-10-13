@@ -106,6 +106,7 @@ header {
 .top ul li img {
   padding-right: 5px;
   height: 15px;
+  cursor: inherit;
 }
 .top ul li a {
   color: #fff;
