@@ -411,7 +411,7 @@ header {
   background: url("../image/bookmarks.png") no-repeat;
 }
 .main .feature:nth-child(5) .icon {
-  background: url("../image/favorite.png") no-repeat;
+  background: url("../image/setting.png") no-repeat;
 }
 .main .feature:nth-child(6) .icon {
   background: url("../image/shortcuts.png") no-repeat;
