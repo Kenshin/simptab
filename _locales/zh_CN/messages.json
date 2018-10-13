@@ -389,6 +389,10 @@
         "message": "当前环境并未有任何书签。"
     },
 
+    "notify_double_open": {
+        "message": "请先退出当前模式。"
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -423,6 +427,10 @@
 
     "version_detail_6": {
         "message": "修复了一些界面与逻辑上的错误；优化了界面效果；增加了【精选集】等；"
+    },
+
+    "version_detail_7": {
+        "message": "新增：订阅和收藏管理，书签栏，下一张，重构了页面结构等；"
     },
 
     "welcome_start_title": {

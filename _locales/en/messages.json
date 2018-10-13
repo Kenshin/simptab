@@ -389,6 +389,10 @@
         "message": "Not any bookmarks."
     },
 
+    "notify_double_open": {
+        "message": "Please close dialog."
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -423,6 +427,10 @@
 
     "version_detail_6": {
         "message": "Fixed: Same UI and logic bug;Optimize UI;Add SimpTab collections; "
+    },
+
+    "version_detail_7": {
+        "message": "Add: Subscibe & Favorite manage, Bookmarks, Controlbar - Refresh; "
     },
 
     "permissions": {

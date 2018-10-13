@@ -44,11 +44,11 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                     </div>',
         next_paging = '\
                 <a class="waves-effect waves-circle" href="#">\
-                    <span class="next">→</span>\
+                    <span class="next"><?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="next" t="1539314552596" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1043" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25"><defs><style type="text/css"></style></defs><path d="M-0.064 478.464h837.504L435.712 76.672l46.144-44.48 478.144 478.144-481.6 481.472-44.48-44.48 403.648-405.248H-0.064v-63.616z" p-id="1044" fill="#ffffff"></path></svg></span>\
                 </a>',
         prev_paging = '\
                 <a class="waves-effect waves-circle" href="#">\
-                    <span class="prev">←</span>\
+                    <span class="prev"><?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="prev" t="1539314235448" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3570" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25"><defs><style type="text/css"></style></defs><path d="M959.936 545.536H122.432l401.728 401.728-46.08 44.544-478.144-478.144L481.536 32.192l44.544 44.48L122.432 481.92h837.504v63.616z" p-id="3571" fill="#ffffff"></path></svg></span>\
                 </a>';
 
     function getDetails( ver ) {
@@ -84,7 +84,10 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
             close();
         });
         $( ".welcome .paging a span" ).on( "click", function( event ) {
-            $( '.carousel.carousel-slider' ).carousel( event.target.className );
+            var tag = event.target.tagName.toLowerCase(),
+                cls = event.target.parentElement.className;
+            tag == "path" && ( cls = event.target.parentElement.parentElement.className );
+            $( '.carousel.carousel-slider' ).carousel( cls );
         });
     }
 

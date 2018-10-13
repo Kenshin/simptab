@@ -389,6 +389,10 @@
         "message": "當前環境並未有任何書籤。"
     },
 
+    "notify_double_open": {
+        "message": "請先退出當前模式。"
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -423,6 +427,10 @@
 
     "version_detail_6": {
         "message": "修復了一些界面與邏輯上的錯誤；優化了界面效果；增加了【精選集】等；"
+    },
+
+    "version_detail_7": {
+        "message": "新增：訂閱和收藏管理，書籤欄，下一張，重構了頁面結構等；"
     },
 
     "welcome_start_title": {

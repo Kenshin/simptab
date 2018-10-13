@@ -66,6 +66,12 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 details : i18n.GetLang( "version_detail_6" ),
                 permissions: [],
                 removePermissions : []
+            },
+            "1.5.2" : {
+                level   : 8,
+                details : i18n.GetLang( "version_detail_7" ),
+                permissions: [],
+                removePermissions : []
             }
         };
 
@@ -170,7 +176,8 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 correction();
                 var prefix    = i18n.GetShort() == "cn" ? "" : "." + i18n.GetShort(),
                     details   = version.Details(),
-                    changelog = "https://github.com/kenshin/simptab/blob/master/CHANGELOG" + prefix + ".md#" + version.new.replace( /\./ig, "" );
+                    changelog = "http://ksria.com/simptab/docs/#/CHANGELOG" + prefix + "?id=_" + version.new.replace( /\./ig, "" );
+                details == "" && ( changelog = "https://github.com/kenshin/simptab/blob/master/README" + prefix + ".md" );
                 new Notify().Render( i18n.GetLang( 'version_title' ),
                                      i18n.GetLang( 'version_content' )
                                         .replace( '#1', version.new )
