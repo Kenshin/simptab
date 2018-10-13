@@ -1,6 +1,7 @@
 "use strict";
 $( document ).ready( function() {
 
+    
     var lang = navigator.language;
 
     // set 'en-XX' to 'en'
@@ -28,11 +29,13 @@ $( document ).ready( function() {
         lang = "en";
     }
 
+    /*
     // set body font-family
     $( "body" ).css({ "font-family": lang.toLowerCase() });
     if ( lang !== "en" ) {
         $( "body" ).css({ "font-weight": "normal" });
     }
+    */
 
     // set options
     var options = {
