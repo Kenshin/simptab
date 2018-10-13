@@ -1,18 +1,3 @@
-/*
-@font-face {
-  src: url("../font/en.ttf");
-  font-family: en;
-}
-@font-face {
-  src: url("../font/zh-cn.bmp") format('woff');
-  font-family: zh-cn;
-}
-@font-face {
-  src: url("../font/zh-tw.bmp") format('woff');
-  font-family: zh-tw;
-}
-*/
-
 html {
   color: #333;
   background: #fafafa;
@@ -24,7 +9,7 @@ html {
   height: 100%;
 }
 body {
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol","Segoe UI Emoji","Segoe UI Symbol",Symbola,EmojiSymbols !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI Emoji", "Segoe UI Symbol", Symbola, EmojiSymbols !important;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -200,7 +185,7 @@ header {
   color: #fff;
   font-size: 33px;
   text-decoration: none;
-  /*text-shadow: #000 0 1px 2px;*/
+/*text-shadow: #000 0 1px 2px;*/
   background-color: #7c4dff;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -340,18 +325,6 @@ header {
   transition: opacity 1s ease;
   opacity: 1;
 }
-/*
-.main .feature .tooltip:before {
-  content: " ";
-  position: absolute;
-  left: 82px;
-  bottom: 42px;
-  border-top: 9px solid #2c3e50;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  opacity: 0;
-}
-*/
 .main .feature .tooltip:after {
   content: attr(data-tooltip);
   position: absolute;
@@ -360,10 +333,7 @@ header {
   padding: 10px;
   width: 100%;
   color: #fff;
-  /*font-weight: 100;
-  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;*/
   text-align: center;
-  font-size: 14px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -o-border-radius: 4px;

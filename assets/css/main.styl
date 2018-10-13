@@ -22,18 +22,6 @@ adapter-display( type = box )
 division()
     margin: 0 0 53px 0
 
-@font-face
-    src: url( ../font/en.ttf )
-    font-family: en
-
-@font-face
-    src: url( ../font/zh-cn.bmp ) format('woff')
-    font-family: zh-cn
-
-@font-face
-    src: url( ../font/zh-tw.bmp ) format('woff')
-    font-family: zh-tw
-
 html
     color: #333
     background: #fafafa
@@ -47,6 +35,7 @@ html
     height : 100%
 
 body
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol","Segoe UI Emoji","Segoe UI Symbol",Symbola,EmojiSymbols !important
     width   : 100%
     height  : 100%
     margin  : 0
@@ -83,6 +72,7 @@ header
         li
             display: flex;
             justify-content: center;
+            align-items: center;
 
             margin: 0 10px
             padding-bottom: 5px
@@ -93,6 +83,11 @@ header
             &:hover
                 color: rgb(255, 255, 255)
                 all-browser "border-bottom", 2px solid #fff
+
+            &:nth-child(4) a
+            &:nth-child(5) a
+            &:nth-child(6) a
+                min-width: 50px;
 
             img
                 padding-right: 5px;
@@ -122,6 +117,7 @@ header
             all-browser "flex-flow", column nowrap
 
             margin-bottom: 15px
+            font-weight: 400
 
             div
                 &:nth-child(1)
@@ -144,7 +140,7 @@ header
             font-size: 33px
 
             text-decoration: none
-            text-shadow: #000 0 1px 2px
+            /*text-shadow: #000 0 1px 2px;*/
 
             background-color: #7C4DFF
 
@@ -173,6 +169,7 @@ header
                     line-height: 48px
 
                 div
+                    padding-top: 5px
                     font-size  : 10px
 
             &:hover
@@ -198,7 +195,7 @@ header
                 color: #fff
 
         .smaller
-            font-size: 10px
+            font-size: 13px
             color: #fff
 
     .banner
@@ -240,20 +237,7 @@ header
             &:hover:before,
             &:hover:after
                 all-browser "transition", opacity 1s ease
-                opacity: 0.8
-
-        .tooltip:before
-            content: " "
-
-            position: absolute
-            left: 82px
-            bottom: 42px
-
-            border-top:   9px solid #2C3E50
-            border-left:  9px solid transparent
-            border-right: 9px solid transparent
-
-            opacity: 0
+                opacity: 1
 
         .tooltip:after
             content: attr(data-tooltip)
@@ -267,14 +251,12 @@ header
             width: 100%
 
             color: #fff
-            font-weight: 100
-            font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif
 
             text-align: center
 
-            all-browser "border-radius", 5px
+            all-browser "border-radius", 4px
 
-            background-color: #2C3E50
+            background-color: #323232
             all-browser "box-shadow", 0 0 2px 0 rgba(50, 50, 50, 0.75)
 
             opacity: 0
@@ -305,13 +287,13 @@ header
             background: url( ../image/time.png ) no-repeat
 
         &:nth-child(3) .icon
-            background: url( ../image/upload.png ) no-repeat
+            background: url( ../image/subscribe.png ) no-repeat
 
         &:nth-child(4) .icon
-            background: url( ../image/download.png ) no-repeat
+            background: url( ../image/bookmarks.png ) no-repeat
 
         &:nth-child(5) .icon
-            background: url( ../image/favorite.png ) no-repeat
+            background: url( ../image/setting.png ) no-repeat
 
         &:nth-child(6) .icon
             background: url( ../image/shortcuts.png ) no-repeat
