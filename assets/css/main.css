@@ -113,6 +113,11 @@ header {
   -ms-border-bottom: 2px solid #fff;
   border-bottom: 2px solid #fff;
 }
+.top ul li:nth-child(4) a,
+.top ul li:nth-child(5) a,
+.top ul li:nth-child(6) a {
+  min-width: 50px;
+}
 .top ul li img {
   padding-right: 5px;
   height: 15px;
@@ -195,7 +200,7 @@ header {
   color: #fff;
   font-size: 33px;
   text-decoration: none;
-  text-shadow: #000 0 1px 2px;
+  /*text-shadow: #000 0 1px 2px;*/
   background-color: #7c4dff;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -240,6 +245,7 @@ header {
   line-height: 48px;
 }
 .describe .introduce .btn-download nav div {
+  padding-top: 5px;
   font-size: 10px;
 }
 .describe .introduce .btn-download:hover {
@@ -278,7 +284,7 @@ header {
   color: #fff;
 }
 .describe .introduce .smaller {
-  font-size: 10px;
+  font-size: 13px;
   color: #fff;
 }
 .describe .banner {
