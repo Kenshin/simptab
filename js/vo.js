@@ -32,9 +32,10 @@ define([ "jquery" ], function( $ ) {
         this.new = {};  //new background data structure
     }
 
-    VO.DEFAULT_BACKGROUND = "../assets/images/background.jpg";
+    VO.DEFAULT_BACKGROUND = "../assets/images/background.webp";
     VO.CURRENT_BACKGROUND = "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg";
     VO.BACKGROUND         = "background.jpg";
+    VO.FAVORITE           ="filesystem:" + chrome.extension.getURL( "/" ) + "temporary/favorites/";
 
     VO.prototype.Create = function( url, hdurl, name, info, enddate, shortname, type, apis_vo, favorite ) {
 
@@ -65,11 +66,11 @@ define([ "jquery" ], function( $ ) {
     };
 
     VO.prototype.Set = function( result ) {
-            chrome.storage.local.set( { "simptab-background" : result });
+        chrome.storage.local.set( { "simptab-background" : result });
     };
 
     VO.prototype.Get = function ( callBack ) {
-            return chrome.storage.local.get( "simptab-background", callBack );
+        return chrome.storage.local.get( "simptab-background", callBack );
     };
 
     VO.prototype.Verify = function() {

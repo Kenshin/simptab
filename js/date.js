@@ -17,7 +17,7 @@ define([ "jquery" ], function( $ ) {
                 var date = new Date();
 
                 // set date
-                $($( "#time" ).prev()).text( date.getFullYear() + "-" + ( date.getUTCMonth() + 1 ) + "-" + date.getDate() );
+                $( "#time" ).attr("data-balloon", date.getFullYear() + "-" + ( date.getUTCMonth() + 1 ) + "-" + date.getDate() );
 
                 // set time
                 $( "#time" ).text( date.getHours() + ":" + format(date.getMinutes()) );

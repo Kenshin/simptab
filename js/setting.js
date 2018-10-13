@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves" ], function( $, Waves ) {
+define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
 
     "use strict";
 
@@ -10,7 +10,8 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         var defaultOrigins = (function() {
             var origins = [];
             $( ".originstate" ).children().each( function( idx ) {
-                origins.push( idx + ":false" );
+                var suff = ( idx == 9 || idx == 10 || idx == 12 || idx == 13 ) ? ":true" : ":false";
+                origins.push( idx + suff );
             });
             return origins;
         })();
@@ -68,25 +69,25 @@ define([ "jquery", "waves" ], function( $, Waves ) {
                 "changestate" : {
                     value  : getLS( "simptab-background-mode" ),
                     type   : "simptab-background-mode",
-                    vals   : [ "day","time" ],
+                    vals   : [ "day", "time", "none" ],
                     default: 1
                 },
                 "positionstate" : {
-                    value  : getLS( "simptab-background-position"  ),
+                    value  : getLS( "simptab-background-position" ),
                     type   : "simptab-background-position",
                     vals   : [ "center", "corner", "mask" ],
                     default: 1
                 },
                 "clockstate" : {
-                    value  : getLS( "simptab-background-clock"  ),
+                    value  : getLS( "simptab-background-clock" ),
                     type   : "simptab-background-clock",
-                    vals   : [ "show","hide" ],
+                    vals   : [ "show", "hide" ],
                     default: 0
                 },
                 "tsstate"  : {
                     value  : getLS( "simptab-topsites" ),
                     type   : "simptab-topsites",
-                    vals   : [ "normal","simple", "senior" ],
+                    vals   : [ "normal", "simple", "senior" ],
                     default: 1
                 },
                 "pinstate"  : {
@@ -159,8 +160,43 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         localStorage["simptab-background-mode"] == "day" ? $(".originstate").fadeOut() : $(".originstate").fadeIn();
     }
 
+    function bookmarksPermissions() {
+        chrome.permissions.contains({
+            permissions: [ 'bookmarks' ],
+        }, function( result ) {
+            var $target = $( ".bmstate .lineradio" ), span;
+            if ( result ) {
+                span = '<span class="checked"></span>';
+                localStorage["simptab-bookmarks"] = "true";
+                $target.addClass( "lrselected" );
+            } else {
+                localStorage["simptab-bookmarks"] = "false";
+                span = '<span class="unchecked"></span>';
+                $target.removeClass( "lrselected" );
+            }
+            $target.find( "input" ).val( result );
+            $target.prepend( span );
+        });
+    }
+
+    function setbookmarksPermissions( type ) {
+        if ( type == "true" ) {
+            chrome.permissions.request({ permissions: [ 'bookmarks' ]}, function( result ) {
+                new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
+            });
+        } else {
+            chrome.permissions.remove({ permissions: [ 'bookmarks' ]}, function( result ) {
+                new Notify().Render( result ? i18n.GetLang( "permissions_disable" ) : i18n.GetLang( "permissions_failed" ) );
+          });
+        }
+    }
+
     return {
         Init: function() {
+
+            // set settin width
+            var width = parseInt( i18n.GetSettingWidth() );
+            $( ".setting" ).width( width ).css({ "transform": "translateX(" + width + "px)"});
 
             // update [ changestate, clockstate, positionstate, topsites, pinstate ] radio button
             Object.keys( setting.mode ).forEach( function( item ) {
@@ -175,6 +211,8 @@ define([ "jquery", "waves" ], function( $, Waves ) {
             // update originsstate visible
             updateOriginsVisible();
 
+            // bookmarks permissions checked
+            bookmarksPermissions();
         },
 
         Listen: function ( callback ) {
@@ -201,7 +239,24 @@ define([ "jquery", "waves" ], function( $, Waves ) {
                 setting.UpdateOriginsMode( idx, value );
             });
 
-            $( ".lineradio" ).on( "click", function( event ) { Waves.attach( '.lineradio', ['waves-block'] );; });
+            // listen originstate checkbox button event
+            $( ".bmstate input" ).click( function( event ) {
+                var $target = $( event.target ).parent(),
+                    $span   = $target.find( "span" ),
+                    value   = event.target.value == "false" ? "true" : "false";
+                if ( value == "true" ) {
+                    $span.removeAttr( "class" ).addClass( "checked" );
+                    $target.addClass( "lrselected" );
+                } else {
+                    $span.removeAttr( "class" ).addClass( "unchecked" );
+                    $target.removeClass( "lrselected" );
+                }
+                event.target.value = value;
+                setbookmarksPermissions( value );
+            });
+
+            $( ".lineradio" ).on( "click", function( event ) { Waves.attach( '.lineradio', ['waves-block'] ); });
+            $( ".boxradio"  ).on( "click", function( event ) { Waves.attach( '.boxradio',  ['waves-block'] ); });
             // listen span click event
             $( ".lineradio" ).on( "click", "span", function( event ) { $(this).next().click(); });
             // hack code by label(maskralig)
@@ -213,7 +268,7 @@ define([ "jquery", "waves" ], function( $, Waves ) {
         },
 
         IsRandom: function() {
-          return setting.mode["changestate"].value  === "time" ? true : false;
+            return setting.mode["changestate"].value === "time" ? true : false;
         },
 
         Verify: function( idx ) {
@@ -222,6 +277,16 @@ define([ "jquery", "waves" ], function( $, Waves ) {
 
             return value.split(":")[1];
         },
+
+        Only: function() {
+            var code = 14;
+            setting.origins.forEach( function( origin, index ) {
+                if ( origin.endsWith( "true" ) && index != 13 ) {
+                    code = origin.split(":")[0];
+                }
+            });
+            return code;
+       },
 
         TogglePinState: function( state ) {
             state ? $( ".pinstate" ).fadeIn() : $( ".pinstate" ).fadeOut();

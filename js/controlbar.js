@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n, vo, date, files, setting ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ], function( $, i18n, vo, date, files, setting, manage, about ) {
 
     "use strict";
 
@@ -32,20 +32,22 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
     }
 
     function setBackground( url ) {
+        if ( localStorage[ "simptab-background-update" ] == "true" ) return;
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 
-    function setBackgroundPosition() {
+    function setBackgroundPosition( is_settingclick ) {
+        if ( !is_settingclick && $( "body" ).find( ".bgmask-bg" ).length > 0 ) return;
         var value = localStorage[ "simptab-background-position" ];
         if ( value == "mask" ) {
             var url       = vo.cur.type == "default" ? vo.cur.hdurl : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
                 maxHeight = 800,
                 height    = $( "body" ).height();
-            $( "body" ).addClass( "bgmask" ).prepend( '<div class="img-bg"><img src="' + url + '"></div>' );
+            $( "body" ).addClass( "bgmask" ).prepend( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
             $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-            height <= maxHeight && $( ".img-bg" ).find( "img" ).height( height - 300 );
+            height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
         } else {
-            $( "body" ).removeClass( "bgmask" ).find( ".img-bg" ).remove();
+            $( "body" ).removeClass( "bgmask" ).find( ".bgmask-bg" ).remove();
             $( ".bgmask-filter" ).remove();
             vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
         }
@@ -85,6 +87,19 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
         });
     }
 
+    function update( url ) {
+        // change background
+        $( "body" ).css( "background-image", 'url("' + url + '")' );
+        // change background mask
+        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
+        $( "body" ).find( ".bgmask-bg > img" ).attr( "src", url );
+        // change conntrolbar download url and info
+        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
+        $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
+        // change favorite
+        setFavorteIcon();
+    }
+
     return {
         Listen: function ( callBack ) {
 
@@ -95,6 +110,18 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                 });
             });
 
+            $( ".controlink[url=setting]" ).mouseenter( function( event ) {
+                $( ".controlink[url=setting]" ).prev().addClass( "horz-toolbox-show" );
+                $( ".controlink[url=manage]" ).parent().addClass( "horz-toolbox-show-1" );
+                $( ".controlink[url=about]" ).parent().addClass( "horz-toolbox-show-2" );
+            });
+
+            $($( ".controlbar li" )[8]).mouseleave( function( event ) {
+                $( ".controlink[url=setting]" ).prev().removeClass( "horz-toolbox-show" );
+                $( ".controlink[url=manage]" ).parent().removeClass( "horz-toolbox-show-1" );
+                $( ".controlink[url=about]" ).parent().removeClass( "horz-toolbox-show-2" );
+            });
+
             // listen control link
             $( ".controlink" ).click( function( event ) {
                 var $target =  $( event.currentTarget ),
@@ -102,14 +129,15 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
 
                 switch ( url ) {
                     case "setting":
+                        var width = parseInt( i18n.GetSettingWidth() );
                         if ( !$target.hasClass( "close" )) {
-                            var width = parseInt( i18n.GetSettingWidth() );
-
-                            $( ".setting" ).animate({ "width": width, opacity : 0.8 }, 500, function() {
+                            $( ".setting" ).css({ "transform": "translateX(0px)", "opacity": 0.8 });
+                            $( ".sidebar" ).animate({ right: width }, 500, function() {
                                 $target.addClass( "close" );
+                                $( ".setting" ).addClass( "open" );
                             });
 
-                            $( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
+                            //$( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
                             // 116-simptab-optimize-layout
                             var selector = ".content, .sidebar, .controlbar, .clock";
@@ -123,10 +151,12 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                             });
                         }
                         else {
-                            $( ".setting" ).animate({ width: 0, opacity : 0 }, 500, function() {
+                           $( ".setting" ).css({ "transform": "translateX(" + width + "px)", "opacity": 0 });
+                           $( ".sidebar" ).animate({ right: 0 }, 600, function() {
                                 $target.removeClass( "close" );
+                                $( ".setting" ).removeClass( "open" );
                             });
-                            $( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
+                            //$( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;
                     case "favorite":
@@ -136,7 +166,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                     case "download":
                         // hack code( when 'unsplash.com' or 'nasa.gov' image download, new tab happen crash error. )
                         //if ( vo.cur.type != "unsplash.com" && vo.cur.type != "nasa.gov" ) {
-                        event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
+                        //event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
                         //}
                         break;
                     case "upload":
@@ -151,6 +181,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         });
                         $input.trigger("click");
                         break;
+                    case "refresh":
+                        callBack( url, "time" );
+                        break;
                     case "dislike":
                         var is_dislike = $target.find( "span" ).hasClass( "dislike" );
                         callBack( url, is_dislike );
@@ -159,6 +192,16 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
                         var is_pinned = $target.find( "span" ).hasClass( "pinned" );
                         setting.TogglePinState( !is_pinned );
                         callBack( url, is_pinned );
+                        break;
+                    case "manage":
+                        $( "body" ).find( ".dialog-overlay" ).length == 0 ?
+                            manage.Render() :
+                            new Notify().Render( i18n.GetLang( "notify_double_open" ) );
+                        break;
+                    case "about":
+                        $( "body" ).find( ".dialog-overlay" ).length == 0 ?
+                            about.Render() :
+                            new Notify().Render( i18n.GetLang( "notify_double_open" ) );
                         break;
                 }
             });
@@ -202,6 +245,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting" ], function( $, i18n
         setDislikeIcon    : setDislikeIcon,
         SetDislikeState   : setDislikeState,
         setPinIcon        : setPinIcon,
-        setPinState       : setPinState
+        setPinState       : setPinState,
+        Update            : update,
     };
 });

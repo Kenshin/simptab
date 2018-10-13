@@ -11,6 +11,10 @@
         "message": "简 Tab - 新标签页"
     },
 
+    "short_title": {
+        "message": "简 Tab"
+    },
+
     "extension_name": {
         "message": "简 Tab (SimpTab) - 新标签页",
         "description": "极简的 Chrome 新标签页扩展, 新标签页, 标签页, simptab, New Tab, New Tab page, Beautiful New Tab"
@@ -19,6 +23,10 @@
     "extension_desc": {
         "message": "极简的 Chrome 新标签页扩展，望你每次打开都有好心情。",
         "description": "极简的 Chrome 新标签页扩展, 新标签页, 标签页, simptab, New Tab, New Tab page, Beautiful New Tab"
+    },
+
+    "controlbar_newtab": {
+        "message": "默认新标签页"
     },
 
     "controlbar_bookmarks": {
@@ -45,8 +53,20 @@
         "message": "上传背景"
     },
 
+    "controlbar_refresh": {
+        "message": "下一张"
+    },
+
     "controlbar_setting": {
         "message": "设定"
+    },
+
+    "controlbar_manage": {
+        "message": "背景管理器"
+    },
+
+    "controlbar_about": {
+        "message": "关于"
     },
 
     "controlbar_favorite": {
@@ -75,6 +95,10 @@
 
     "setting_background_every_time": {
         "message": "随机更换背景"
+    },
+
+    "setting_background_forever": {
+        "message": "只显示当前背景"
     },
 
     "setting_background_position_center": {
@@ -137,6 +161,22 @@
         "message": "添加 SimpTab 精选集"
     },
 
+    "setting_multi_origin_10": {
+        "message": "添加 收藏夹背景源"
+    },
+
+    "setting_multi_origin_12": {
+        "message": "添加 必应随机背景"
+    },
+
+    "setting_multi_origin_13": {
+        "message": "添加 必应每日更新"
+    },
+
+    "setting_bm_state": {
+        "message": "启用 书签栏"
+    },
+
     "setting_ts_state_normal": {
         "message": "常用网址（隐藏模式）"
     },
@@ -181,6 +221,90 @@
         "message": "不支持当前关键字："
     },
 
+    "manage_tab_fav": {
+        "message": "收藏"
+    },
+
+    "manage_tab_sub": {
+        "message": "精选集"
+    },
+
+    "manage_toolbar_use": {
+        "message": "使用当前背景"
+    },
+
+    "manage_toolbar_down": {
+        "message": "下载"
+    },
+
+    "manage_toolbar_remove": {
+        "message": "删除"
+    },
+
+    "bm_foder_search": {
+        "message": "搜索"
+    },
+
+    "bm_foder_root": {
+        "message": "书签栏"
+    },
+
+    "bm_foder_recent": {
+        "message": "近期使用"
+    },
+
+    "quickbar_input_placeholder": {
+        "message": "搜索内容包括：书签栏与最近常用网址"
+    },
+
+    "shortcuts_title": {
+        "message": "快捷键一览"
+    },
+
+    "shortcuts_key_global_title": {
+        "message": "全局快捷键"
+    },
+
+    "shortcuts_key_others_title": {
+        "message": "其它快捷键"
+    },
+
+    "shortcuts_key_control_title": {
+        "message": "控制栏快捷键"
+    },
+
+    "shortcuts_key_esc": {
+        "message": "退出当前模式"
+    },
+
+    "shortcuts_key_help": {
+        "message": "打开/关闭快捷键一览"
+    },
+
+    "shortcuts_key_bookmarks": {
+        "message": "打开/关闭书签栏"
+    },
+
+    "shortcuts_key_quickbar": {
+        "message": "打开/关闭快捷查找"
+    },
+
+    "about_content_more": {
+        "message": "查看更多..."
+    },
+
+    "about_content_begin": {
+        "message": "<p>嗨，我叫 <a href='http://kenshin.wang' target='_blank'>Kenshin</a> ，感谢使用 简 Tab，希望它可以给你一成不变的 New Tab 带来一些不同；"
+    },
+
+    "about_content_middle": {
+        "message": "简 Tab 只关注如何能更好的在 New Tab 呈现背景，这些背景均来自于：<code>bing</code> · <code>unsplash</code> · <code>flickr</code> · <code>wallhaven</code> · <code>google art</code> · <code>desktoppr</code> · <code>visualhunt</code> 等。<br>简 Tab 还拥有自己的 <code>精选集</code>；如同 iPhone 上的壁纸类 App 一样，通过 <code>人工筛选</code> 的方式进一步将适合作为 New Tab 背景的壁纸呈现给你，这也是最与众不同的地方。</p>"
+    },
+
+    "about_content_end": {
+        "message": "<p style='margin-top:14px;'>如果你有 <code>好的作品</code> 亦或 <code>适合的背景</code>，也请告诉 简 Tab，投稿地址 👉 <a href='https://goo.gl/forms/j1PuNz4DMAjS0Gj33' target='_blank'>猛戳这里</a> · <a href='https://wj.qq.com/s/2710075/6108' target='_blank'>备用地址</a><br>觉得它还不错，请帮忙 <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>五星好评</a>，这是对我最大的肯定，有任何问题也请 <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>提交 issues</a>，有你的帮助才能更完美。</p>"
+    },
+
     "version_title": {
         "message": "简 Tab 版本提示"
     },
@@ -221,6 +345,54 @@
         "message": "已取消当前背景的固定。"
     },
 
+    "notify_refresh": {
+        "message": "新背景获取中，请稍后才能继续操作。"
+    },
+
+    "notify_not_refresh": {
+        "message": "只在随机更换背景时才能使用此功能。"
+    },
+
+    "notify_refresh_failed": {
+        "message": "下一张背景获取失败，请重新获取。"
+    },
+
+    "notify_mange_remove": {
+        "message": "已删除当前背景。"
+    },
+
+    "notify_mange_remove_failed": {
+        "message": "删除错误，请重新操作。"
+    },
+
+    "notify_mange_setting": {
+        "message": "开始下载当前图片并设定为背景，请稍后..."
+    },
+
+    "notify_mange_subscibe_failed": {
+        "message": "获取订阅源错误，请稍后再试。"
+    },
+
+    "notify_mange_setting_success": {
+        "message": "设置成功。"
+    },
+
+    "notify_mange_empty": {
+        "message": "暂时没有任何背景"
+    },
+
+    "notify_mange_no_user": {
+        "message": "暂无"
+    },
+
+    "notify_bm_empty": {
+        "message": "当前环境并未有任何书签。"
+    },
+
+    "notify_double_open": {
+        "message": "请先退出当前模式。"
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -257,12 +429,72 @@
         "message": "修复了一些界面与逻辑上的错误；优化了界面效果；增加了【精选集】等；"
     },
 
+    "version_detail_7": {
+        "message": "新增：订阅和收藏管理，书签栏，下一张，重构了页面结构等；"
+    },
+
+    "welcome_start_title": {
+        "message": "欢迎使用"
+    },
+
+    "welcome_start_desc_first": {
+        "message": "嗨，很高兴认识你，望你每次打开 New Tab 都有好心情。"
+    },
+
+    "welcome_start_desc_update": {
+        "message": "您的 简 Tab 已焕然一新"
+    },
+
+    "welcome_end_title": {
+        "message": "简约不简单"
+    },
+
+    "welcome_end_desc": {
+        "message": "极简的 Chrome 新标签页扩展，望你每次打开都有好心情。"
+    },
+
+    "welcome_feature_1_title": {
+        "message": "全新相框模式"
+    },
+
+    "welcome_feature_1_desc": {
+        "message": "独创模式，可支持浏览器任意尺寸。"
+    },
+
+    "welcome_feature_2_title": {
+        "message": "常用网址"
+    },
+
+    "welcome_feature_2_desc": {
+        "message": "一目了然「九宫格」的常用网址。"
+    },
+
+    "welcome_152_title_1": {
+        "message": "全新的 订阅 · 收藏"
+    },
+
+    "welcome_152_desc_1": {
+        "message": "你的背景你做主，从此「告别」背景无法选择的窘境。"
+    },
+
+    "welcome_152_title_2": {
+        "message": "内置书签栏"
+    },
+
+    "welcome_152_desc_2": {
+        "message": "要美景更要效率，效率达人必备之选。"
+    },
+
     "permissions": {
         "message": "新版本需要取得新的权限。"
     },
 
     "permissions_success": {
-        "message": "新的权限已经启用成功。"
+        "message": "新的权限已经启用成功，刷新后生效。"
+    },
+
+    "permissions_disable": {
+        "message": "新的权限已经取消成功，刷新后生效。"
     },
 
     "permissions_failed": {

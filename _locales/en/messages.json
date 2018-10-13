@@ -11,6 +11,10 @@
         "message": "SimpTab - Minimalistic New Tab"
     },
 
+    "short_title": {
+        "message": "SimpTab"
+    },
+
     "extension_name": {
         "message": "SimpTab - Minimalistic New Tab",
         "description": "Minimalistic's chrome new tab page extension, simptab, New Tab, New Tab page, Beautiful New Tab"
@@ -19,6 +23,10 @@
     "extension_desc": {
         "message": "Minimalistic's chrome new tab page extension, hope every time open, you have a good mood.",
         "description": "Minimalistic's chrome new tab page extension, simptab, New Tab, New Tab page, Beautiful New Tab"
+    },
+
+    "controlbar_newtab": {
+        "message": "Default New Tab"
     },
 
     "controlbar_bookmarks": {
@@ -45,8 +53,20 @@
         "message": "Upload background"
     },
 
+    "controlbar_refresh": {
+        "message": "Refresh background"
+    },
+
     "controlbar_setting": {
         "message": "Settings"
+    },
+
+    "controlbar_manage": {
+        "message": "BG Manage"
+    },
+
+    "controlbar_about": {
+        "message": "About"
     },
 
     "controlbar_favorite": {
@@ -75,6 +95,10 @@
 
     "setting_background_every_time": {
         "message": "Change background randomly"
+    },
+
+    "setting_background_forever": {
+        "message": "Not Change background"
     },
 
     "setting_background_position_center": {
@@ -137,6 +161,22 @@
         "message": "Add SimpTab"
     },
 
+    "setting_multi_origin_10": {
+        "message": "Add Favorite origins"
+    },
+
+    "setting_multi_origin_12": {
+        "message": "Add Bing Random"
+    },
+
+    "setting_multi_origin_13": {
+        "message": "Add Bing Today"
+    },
+
+    "setting_bm_state": {
+        "message": "Enable Bookmarks bar"
+    },
+
     "setting_ts_state_normal": {
         "message": "Hide Top Sites"
     },
@@ -181,6 +221,90 @@
         "message": "Not supported keywords: "
     },
 
+    "manage_tab_fav": {
+        "message": "Favorite"
+    },
+
+    "manage_tab_sub": {
+        "message": "Collections"
+    },
+
+    "manage_toolbar_use": {
+        "message": "Set current Background"
+    },
+
+    "manage_toolbar_down": {
+        "message": "Download Background"
+    },
+
+    "manage_toolbar_remove": {
+        "message": "Remove Background"
+    },
+
+    "bm_foder_search": {
+        "message": "Search"
+    },
+
+    "bm_foder_root": {
+        "message": "Bookmark"
+    },
+
+    "bm_foder_recent": {
+        "message": "Recent"
+    },
+
+    "quickbar_input_placeholder": {
+        "message": "Include: Bookmarks and Recent"
+    },
+
+    "shortcuts_title": {
+        "message": "Shortcut Keymaps"
+    },
+
+    "shortcuts_key_global_title": {
+        "message": "Global Keymaps"
+    },
+
+    "shortcuts_key_others_title": {
+        "message": "Others Keymaps"
+    },
+
+    "shortcuts_key_control_title": {
+        "message": "Controlbar Keymaps"
+    },
+
+    "shortcuts_key_esc": {
+        "message": "Quit current mode"
+    },
+
+    "shortcuts_key_help": {
+        "message": "Open/Close Keymaps"
+    },
+
+    "shortcuts_key_bookmarks": {
+        "message": "Open/Close Bookmarks"
+    },
+
+    "shortcuts_key_quickbar": {
+        "message": "Open/Close Quick bar"
+    },
+
+    "about_content_more": {
+        "message": "More about..."
+    },
+
+    "about_content_begin": {
+        "message": "<p>Hi, my name is <a href='http://kenshin.wang' target='_blank'>Kenshin</a>, Thank you for using SimpTab. I hope it can make some difference to your unchanging New Tab; "
+    },
+
+    "about_content_middle": {
+        "message": "SimpTab only focuses on how to better present the background in new tab，this backgrounds come from: <code>bing</code> · <code>unsplash</code> · <code>flickr</code> · <code>wallhaven</code> · <code>google art</code> · <code>desktoppr</code> · <code>visualhunt</code>. <br>SimpTab also has its own <code>collections</code>, like the wallpaper app on the iPhone，Present your wallpaper as a New Tab background to you by <code>manual filtering</code>, This is also the most unusual place.</p>"
+    },
+
+    "about_content_end": {
+        "message": "<p style='margin-top: 14px;'>If you have a good work or suitable background, please also tell SimpTab, Submission address 👉 <a href='https://goo.gl/forms/oThieQCP6xk626GU2' target='_blank'>Google Form</a><br> Give me a <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>5-star</a> rating, Send feedback and submit <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>issues</a>, with your help to be more perfect.<br></p>"
+    },
+
     "version_title": {
         "message": "SimpTab is updated"
     },
@@ -221,6 +345,54 @@
         "message": "Background pinning is cancelled."
     },
 
+    "notify_refresh": {
+        "message": "New background loading, please wait a moment."
+    },
+
+    "notify_not_refresh": {
+        "message": "Use only when When Change background randomly is enable."
+    },
+
+    "notify_refresh_failed": {
+        "message": "New background get failed, please re-try agin."
+    },
+
+    "notify_mange_remove": {
+        "message": "Remove favorite success."
+    },
+
+    "notify_mange_remove_failed": {
+        "message": "Remove happend failed."
+    },
+
+    "notify_mange_setting": {
+        "message": "Begining download and set background image."
+    },
+
+    "notify_mange_subscibe_failed": {
+        "message": "Remote subscribe failed."
+    },
+
+    "notify_mange_setting_success": {
+        "message": "Setting successful."
+    },
+
+    "notify_mange_empty": {
+        "message": "Not any background image"
+    },
+
+    "notify_mange_no_user": {
+        "message": "anonymous"
+    },
+
+    "notify_bm_empty": {
+        "message": "Not any bookmarks."
+    },
+
+    "notify_double_open": {
+        "message": "Please close dialog."
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -257,12 +429,72 @@
         "message": "Fixed: Same UI and logic bug;Optimize UI;Add SimpTab collections; "
     },
 
+    "version_detail_7": {
+        "message": "Add: Subscibe & Favorite manage, Bookmarks, Controlbar - Refresh; "
+    },
+
     "permissions": {
         "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
 
+    "welcome_start_title": {
+        "message": "Welcome"
+    },
+
+    "welcome_start_desc_first": {
+        "message": "Hi, nice to meet you. I hope you have a good mood every time you open New Tab."
+    },
+
+    "welcome_start_desc_update": {
+        "message": "SimpTab has update success."
+    },
+
+    "welcome_feature_1_title": {
+        "message": "Unique photo frame mode"
+    },
+
+    "welcome_feature_1_desc": {
+        "message": "Support browser any size."
+    },
+
+    "welcome_feature_2_title": {
+        "message": "Topsites"
+    },
+
+    "welcome_feature_2_desc": {
+        "message": "Top sites that are displayed on the new tab page."
+    },
+
+    "welcome_end_title": {
+        "message": "More features waiting for you"
+    },
+
+    "welcome_end_desc": {
+        "message": "Minimalistic chrome new tab extension, hope every time open it, you have a good mood."
+    },
+
+    "welcome_152_title_1": {
+        "message": "Subscribe & Favorite"
+    },
+
+    "welcome_152_desc_1": {
+        "message": "New subscribe and favorite manage."
+    },
+
+    "welcome_152_title_2": {
+        "message": "Bookmarks"
+    },
+
+    "welcome_152_desc_2": {
+        "message": "Bookmarks on your new tab."
+    },
+
     "permissions_success": {
-        "message": "All permissions are granted."
+        "message": "All permissions are granted, please refresh."
+    },
+
+    "permissions_disable": {
+        "message": "Bookmarks permissions disable success, please refresh."
     },
 
     "permissions_failed": {

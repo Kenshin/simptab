@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $, Mousetrap, controlbar, i18n, topsites ) {
+define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], function( $, Mousetrap, controlbar, i18n, topsites, message ) {
 
     "use strict";
 
@@ -9,16 +9,20 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         var CONTROL_KEY_MAP, getKey;
 
         CONTROL_KEY_MAP = [
-            { short: "book", long: "bookmarks"},
-            { short: "his",  long: "history"  },
-            { short: "app",  long: "apps"     },
-            { short: "info", long: "info"     },
-            { short: "down", long: "download" },
-            { short: "up",   long: "upload", hiden: true },
-            { short: "set",  long: "setting"  },
-            { short: "fav",  long: "favorite" },
-            { short: "pin",  long: "pin"      },
-            { short: "un",   long: "dislike"  }
+            { short: "1", long: "newtab"   },
+            { short: "2", long: "bookmarks"},
+            { short: "3", long: "history"  },
+            { short: "4", long: "apps"     },
+            { short: "5", long: "info"     },
+            { short: "6", long: "download" },
+            { short: "7", long: "upload", hiden: true },
+            { short: "f", long: "refresh"  },
+            { short: "m", long: "manage"   },
+            { short: "t", long: "about"    },
+            { short: "s", long: "setting"  },
+            { short: "a", long: "favorite" },
+            { short: "n", long: "pin"      },
+            { short: "u", long: "dislike"  },
         ];
 
         getKey = function( type ) {
@@ -28,6 +32,16 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         };
 
         function Keys(){}
+
+        Keys.prototype.GLOBALS_KEY_MAP = [
+            { short: "esc", long: "esc"  },
+            { short: "?",   long: "help" },
+        ];
+
+        Keys.prototype.OTHERS_KEY_MAP = [
+            { short: "b", long: "bookmarks"},
+            { short: "q", long: "quickbar" },
+        ];
 
         Object.defineProperties( Keys.prototype, {
             "CONTROL_KEY_MAP" : {
@@ -55,21 +69,16 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
     })();
 
     function formatShortcut( key ) {
-
         var formatter = "",
             arr       = new Array( key.length );
-
         $.each( arr, function ( idx, value ) {
-
             if ( idx < key.length - 1 ) {
                 formatter += key[idx] + " ";
             }
             else {
                 formatter += key[idx];
             }
-
         });
-
         return formatter;
     }
 
@@ -88,7 +97,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
     }
 
     function listenControl() {
-
         $.each( keys.CONTROL_KEY_MAP, function( idx, shortcut ) {
             var new_key = formatShortcut( shortcut.short );
             Mousetrap.bind( new_key , function() {
@@ -96,7 +104,21 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
                 controlbar.AutoClick( idx );
             });
         });
+    }
 
+    function listenOthers() {
+        var binds = [];
+        keys.OTHERS_KEY_MAP.forEach( function( item ) { binds.push( item.short ) });
+        Mousetrap.bind( binds, function( event, combo ) {
+            switch ( combo ) {
+                case "b":
+                    message.Publish( message.TYPE.OPEN_BOOKMARKS );
+                    break;
+                case "q":
+                    message.Publish( message.TYPE.OPEN_QUICKBAR );
+                    break;
+            }
+        });
     }
 
     function listenCommand() {
@@ -110,11 +132,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
     }
 
     function listenOminbox() {
-
         var prefix = "site:";
-
         chrome.omnibox.setDefaultSuggestion({ description : i18n.GetLang( "shortcuts_default" ) + keys.short.join(", ").replace( ", ,", "," ) + ", site" });
-
         chrome.omnibox.onInputChanged.addListener( function( command, suggest ) {
             var suggestResult = [],
                 command       = command.toLowerCase();
@@ -145,7 +164,6 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
             }
             suggest( suggestResult );
         });
-
         chrome.omnibox.onInputEntered.addListener( function( command ) {
             console.log( "SimpTab command is " + command );
             verifyCurrentTab( function() {
@@ -160,12 +178,79 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites" ], function( $,
         });
     }
 
+    function createKeymapTmpl( title, map, prefix ) {
+        var html = "";
+        $.each( map, function( idx, shortcut ) {
+            var key  = shortcut.short,
+                desc = i18n.GetLang( prefix + shortcut.long ),
+                tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc">' + desc + '</div></div>';
+            html += tmpl;
+        });
+        return '<div><div class="subtitle">' + title + '</div>' + html + '</div>';
+    }
+
+    function open() {
+        setTimeout( function(){
+            $( ".shortcuts" ).css({ "transform": "translateY(0px)", "opacity": 1 });
+        }, 10 );
+    }
+
+    function close() {
+        $( ".shortcuts" ).css({ "transform": "translateY(100px)", "opacity": 0 });
+        setTimeout( function(){
+            $( ".shortcuts" ).remove();
+        }, 500 );
+    }
+
+    function listenHelp() {
+        Mousetrap.bind( "?", function() {
+            if ( $( ".shortcuts" ).children().length > 0 ) {
+                close();
+            } else {
+                var html = createKeymapTmpl( i18n.GetLang( "shortcuts_key_global_title" ),  keys.GLOBALS_KEY_MAP, "shortcuts_key_" );
+                html    += createKeymapTmpl( i18n.GetLang( "shortcuts_key_others_title" ),  keys.OTHERS_KEY_MAP,  "shortcuts_key_" );
+                html    += createKeymapTmpl( i18n.GetLang( "shortcuts_key_control_title" ), keys.CONTROL_KEY_MAP,  "controlbar_"   );
+                $( "body" ).append( '<div class="shortcuts"><div class="title">' + i18n.GetLang( "shortcuts_title" ) + '</div><div class="keymaps">' + html + '</div></div>' );
+                open();
+            }
+        });
+    }
+
+    function listenESC() {
+        Mousetrap.bind( "esc", function() {
+            var cls = $("body").children().last()[0].className.toLowerCase();
+            // hack code
+            switch ( cls ) {
+                case "quickbar-overlay":
+                    $( ".quickbar-overlay" )[0].click();
+                    break;
+                case "dialog-overlay":
+                    $( ".dialog .close" )[0].click();
+                    break;
+                case "shortcuts":
+                    close();
+                    break;
+                case "bm-overlay":
+                    if ( $( ".bm" ).hasClass( "open" ) ) {
+                        $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
+                    } else {
+                        $( ".setting" ).hasClass( "open" ) &&
+                            $( ".controlink .settingicon" ).trigger( "click" );
+                    }
+                    break;
+            }
+        });
+    }
+
     return {
         Init: function () {
             listenCurrentTab();
+            listenOthers();
             listenControl();
             listenCommand();
             listenOminbox();
+            listenHelp();
+            listenESC();
         }
     };
 });
