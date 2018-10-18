@@ -16,7 +16,7 @@
 
 * 有任何問題請看 [幫助中心](http://ksria.com/simptab/docs/#) 或者 加入 **[SimpTab 的討論群](https://gitter.im/Kenshin/simptab)**
 
-* 如果你有 **好的背景想跟大家分享** ，請告訴我，投稿地址 → [谷歌表格](https://goo.gl/forms/j1PuNz4DMAjS0Gj33) · [備用地址](https://wj.qq.com/s/2710075/6108)
+* 如果你有 **好的背景想跟大家分享** ，請告訴我，投稿地址 → [谷歌表格](https://goo.gl/forms/KVyqb80YdkKMFdqK2)
 
 #### 其它語言：
 * [繁體中文](https://github.com/kenshin/simptab/blob/master/README.tw.md) · [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
