@@ -1,7 +1,16 @@
 
-define([ "jquery", "lodash", "notify", "i18n", "vo", "date" ], function( $, _, Notify, i18n, vo, date ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], function( $, Mousetrap, _, Notify, i18n, vo, date ) {
 
     "use strict";
+
+    function shortcuts() {
+        var styles = "";
+        [ "5", "6", "7", "f", "m", "s", "a", "n", "u" ].forEach( function( value ) {
+            styles += ".keycode-" + value + "{text-decoration: line-through!important;}";
+            Mousetrap.unbind( value );
+        });
+        $( "head" ).append( '<style type="text/css">' + styles + '</style>' );
+    }
 
     function timeMode() {
         $( ".clock" ).addClass( "clock-bg-zen-mode" ).addClass( "zen-mode-bg" ).css( "z-index", "initial" );
@@ -42,6 +51,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date" ], function( $, _, N
 
             setTimeout( function() {
                 topSitesMode();
+                shortcuts();
             }, 500 );
         },
 
