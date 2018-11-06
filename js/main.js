@@ -64,7 +64,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     setting.Init();
 
     // get background image
-    background.Get( setting.IsRandom() );
+    localStorage["simptab-zenmode"] != "true" && background.Get( setting.IsRandom() );
 
     // get time
     date.Toggle( setting.Mode( "clockstate" ));
@@ -91,7 +91,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     });
 
     // validation background
-    background.Valid();
+    localStorage["simptab-zenmode"] != "true" && background.Valid();
 
     topsites.Init();
 
