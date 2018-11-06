@@ -45,7 +45,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen ) {
 
     progress.Init();
 
@@ -118,5 +118,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         result && bookmarks.Render();
         result && bookmarks.Listen();
     });
+
+    localStorage["simptab-zenmode"] == "true" && zen.Render();
 
 });
