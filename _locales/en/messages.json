@@ -193,6 +193,10 @@
         "message": "Pin for #1 hours"
     },
 
+    "setting_zen_state": {
+        "message": "Enable Zen mode"
+    },
+
     "setting_contact_weibo": {
         "message": "Share on Weibo"
     },

@@ -193,6 +193,10 @@
         "message": "固定 #1 小時"
     },
 
+    "setting_zen_state": {
+        "message": "啟用 禪模式"
+    },
+
     "setting_contact_weibo": {
         "message": "分享到 微博"
     },
