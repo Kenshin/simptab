@@ -397,6 +397,10 @@
         "message": "請先退出當前模式。"
     },
 
+    "notify_zen_mode": {
+        "message": "刷新當前頁面後生效。"
+    },
+
     "version_detail": {
         "message": ""
     },

@@ -397,6 +397,10 @@
         "message": "Please close dialog."
     },
 
+    "notify_zen_mode": {
+        "message": "Please fresh current new tab."
+    },
+
     "version_detail": {
         "message": ""
     },

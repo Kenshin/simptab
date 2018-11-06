@@ -287,7 +287,7 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
                     $target.removeClass( "lrselected" );
                     zen.Exit();
                 }
-                new Notify().Render( "刷新当前页面后生效。" );
+                new Notify().Render( i18n.GetLang( "notify_zen_mode" ) );
                 localStorage["simptab-zenmode"] = value;
                 event.target.value = value;
             });
