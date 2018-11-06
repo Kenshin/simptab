@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
+define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
 
     "use strict";
 
@@ -281,9 +281,11 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
                 if ( value == "true" ) {
                     $span.removeAttr( "class" ).addClass( "checked" );
                     $target.addClass( "lrselected" );
+                    zen.Render();
                 } else {
                     $span.removeAttr( "class" ).addClass( "unchecked" );
                     $target.removeClass( "lrselected" );
+                    zen.Exit();
                 }
                 localStorage["simptab-zenmode"] = value;
                 event.target.value = value;

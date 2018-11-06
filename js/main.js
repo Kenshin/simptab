@@ -31,6 +31,7 @@ requirejs.config({
       "about"      : "js/about",
       "bookmarks"  : "js/bookmarks",
       "welcome"    : "js/welcome",
+      "zen"        : "js/zen",
       "message"    : "js/message",
     },
     shim: {
