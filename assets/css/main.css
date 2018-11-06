@@ -412,6 +412,11 @@ img {
 .pinstate [data-balloon]:last-child:after {
     margin-left: -31px;
 }
+
+.zenstate .lineradio {
+    background-color: #008962;
+}
+
 .boxradio {
     display: flex!important;
     justify-content:center;
