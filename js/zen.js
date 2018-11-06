@@ -28,11 +28,16 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date" ], function( $, _, N
         $( ".topsites a" ).addClass( "topsites-a-zen-mode" );
     }
 
+    function settingMode() {
+        $( ".controlbar" ).addClass( "controlbar-zen-mode" );
+    }
+
     return {
         Render: function() {
             timeMode();
             dayMode();
             devicesMode();
+            settingMode();
 
             setTimeout( function() {
                 $( "body" ).removeClass( "bgmask" ).removeAttr( "style" );
