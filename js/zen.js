@@ -40,8 +40,6 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date" ], function( $, _, N
             settingMode();
 
             setTimeout( function() {
-                $( "body" ).removeClass( "bgmask" ).removeAttr( "style" );
-                $( ".bgmask-bg" ).remove();
                 topSitesMode();
             }, 500 );
         },
