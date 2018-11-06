@@ -281,12 +281,13 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
                 if ( value == "true" ) {
                     $span.removeAttr( "class" ).addClass( "checked" );
                     $target.addClass( "lrselected" );
-                    zen.Render();
+                    zen.Init();
                 } else {
                     $span.removeAttr( "class" ).addClass( "unchecked" );
                     $target.removeClass( "lrselected" );
                     zen.Exit();
                 }
+                new Notify().Render( "刷新当前页面后生效。" );
                 localStorage["simptab-zenmode"] = value;
                 event.target.value = value;
             });

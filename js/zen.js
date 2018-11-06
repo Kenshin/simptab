@@ -41,8 +41,20 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date" ], function( $, _, N
             }, 500 );
         },
 
+        Init: function() {
+            localStorage["simptab-topsites-backup"] = localStorage["simptab-topsites"];
+            localStorage["simptab-topsites"] = "simple";
+
+            localStorage["simptab-background-clock-backup"] = localStorage["simptab-background-clock"];
+            localStorage["simptab-background-clock"] = "show";
+        },
+
         Exit: function() {
-            
+            localStorage["simptab-topsites"] = localStorage["simptab-topsites-backup"];
+            localStorage.removeItem( "simptab-topsites-backup" );
+
+            localStorage["simptab-background-clock"] = localStorage["simptab-background-clock-backup"];
+            localStorage.removeItem( "simptab-background-clock-backup" );
         }
     }
 
