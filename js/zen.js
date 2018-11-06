@@ -30,6 +30,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date" ], function( $, _, N
 
     function settingMode() {
         $( ".controlbar" ).addClass( "controlbar-zen-mode" );
+        $( ".progress"   ).addClass( "progress-zen-mode" );
     }
 
     return {

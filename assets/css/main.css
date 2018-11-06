@@ -1587,7 +1587,8 @@ img {
     background-color: #19CAAD;
 }
 
-.controlbar-zen-mode {
+.controlbar-zen-mode,
+.progress-zen-mode {
     display: none;
 }
 
