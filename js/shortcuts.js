@@ -183,7 +183,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         $.each( map, function( idx, shortcut ) {
             var key  = shortcut.short,
                 desc = i18n.GetLang( prefix + shortcut.long ),
-                tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc">' + desc + '</div></div>';
+                tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc keycode-' + key + '">' + desc + '</div></div>';
             html += tmpl;
         });
         return '<div><div class="subtitle">' + title + '</div>' + html + '</div>';
