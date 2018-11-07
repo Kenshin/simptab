@@ -19,7 +19,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             };
 
         function Storage() {
-            this.db = localStorage[ key ] || $.extend( {}, _storage );
+            this.db = localStorage[ key ];
+            if ( !this.db ) {
+                this.db = $.extend( {}, _storage );
+                localStorage.setItem( key, JSON.stringify( this.db ));
+            }
             this.themes = _themes;
         }
 
