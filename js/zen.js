@@ -7,9 +7,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         var _themes  = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
             _storage = {
                 theme: "#" + _themes[0],
-                time: { size: "", },
-                day: { size: "", },
-                devices: { size: "", },
+                time: { size: "", color: "" },
+                day: { size: "", color: "" },
+                devices: { size: "", color: "" },
                 css: "",
                 version: "1.0.0",
             },
@@ -89,6 +89,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         }, 500 );
     }
 
+    function readStorage( selector, key ) {
+        var size  = storage.db[ key ].size,
+            color = storage.db[ key ].color;
+        size  && $( selector ).css( "font-size", size );
+        color && $( selector ).css( "color", color );
+    }
+
     function shortcuts() {
         var styles = "";
         [ "5", "6", "7", "f", "m", "s", "a", "n", "u" ].forEach( function( value ) {
@@ -99,14 +106,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     }
 
     function timeMode() {
-        $( ".clock" ).addClass( "clock-bg-zen-mode" ).addClass( "zen-mode-bg" ).css( "z-index", "initial" );
-        $( "#time" ).addClass( "time-zen-mode" );
+        $( ".clock" ).css( "background-color", storage.db.theme );
+        $( ".clock" ).addClass( "clock-bg-zen-mode" ).css( "z-index", "initial" );
+        $( "#time"  ).addClass( "time-zen-mode" );
+        readStorage( "#time", "time" );
     }
 
     function dayMode() {
         var date = new Date(),
             day  = date.toLocaleDateString( navigator.language, { weekday: 'long', month: 'long', day: 'numeric' });
         $( "#time" ).after( '<div class="day-zen-mode">' + day + '</div>' );
+        readStorage( ".day-zen-mode", "day" );
     }
 
     function devicesMode() {
@@ -114,6 +124,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             var network = navigator.onLine ? '≈ ' + navigator.connection.downlink + ' Mbps' : 'Offline',
                 charge  = ( battery.level * 100 ).toFixed() + '% ' + ( battery.charging ? 'Charging' : 'Battery' );
             $( ".day-zen-mode" ).after( '<div class="devices-zen-mode">' + network + ' · ' + charge + '</div>' );
+            readStorage( ".devices-zen-mode", "devices" );
         });
     }
 
