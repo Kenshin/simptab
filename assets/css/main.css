@@ -1643,6 +1643,10 @@ img {
     transition: all 500ms ease;
 }
 
+.setting-trigger-white-zen-mode {
+    background-image: url("../images/zen-mode-white-setting.png");
+}
+
 .setting-trigger-zen-mode:hover {
     opacity: 1;
 }

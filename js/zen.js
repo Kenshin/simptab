@@ -71,6 +71,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                 storage.db.theme = "random";
                 $( ".clock-bg-zen-mode" ).css( "background-color", theme );
                 storage.Set();
+            } else if ( color == "ffffff" ) {
+                var theme = "#" + event.target.attributes.name.value;
+                storage.db.theme = theme;
+                $( ".clock-bg-zen-mode" ).css( "background-color", theme );
+                storage.db.time.color    = "#555";
+                storage.db.day.color     = "#555";
+                storage.db.devices.color = "#555";
+                storage.Set();
             } else if ( color == "custom" ) {
                 // TO-DO
             } else {
@@ -137,13 +145,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     function topSitesMode() {
         $( ".bottom" ).addClass( "bottom-zen-mode" );
         $( ".topsites" ).addClass( "topsites-zen-mode" );
-        $( ".topsites a" ).addClass( "topsites-a-zen-mode" );
+        storage.db.theme == "#ffffff" ?
+            $( ".topsites" ).find( "a" ).css( "color", "#555" ) :
+            $( ".topsites a" ).addClass( "topsites-a-zen-mode" );
     }
 
     function settingMode() {
         $( ".controlbar" ).addClass( "controlbar-zen-mode" );
         $( ".progress"   ).addClass( "progress-zen-mode" );
         $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' )
+        storage.db.theme == "#ffffff" && $( ".setting-trigger-zen-mode" ).addClass( "setting-trigger-white-zen-mode" );
         $( ".setting-trigger-zen-mode" ).on( "click", function( event ) {
             settingTmpl();
             open();
