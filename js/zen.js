@@ -7,8 +7,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         var _themes  = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
             _storage = {
                 theme: "#" + _themes[0],
-                time: { size: "", color: "" },
-                day: { size: "", color: "" },
+                time:    { size: "", color: "" },
+                day:     { size: "", color: "" },
                 devices: { size: "", color: "" },
                 css: "",
                 version: "1.0.0",
