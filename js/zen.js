@@ -40,8 +40,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     function settingMode() {
         $( ".controlbar" ).addClass( "controlbar-zen-mode" );
         $( ".progress"   ).addClass( "progress-zen-mode" );
-        $( ".clock"      ).append( '<div class="setting-zen-mode"></div>' )
-        $( ".setting-zen-mode" ).on( "click", function( event ) {
+        $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' )
+        $( ".setting-trigger-zen-mode" ).on( "click", function( event ) {
             
         });
     }
