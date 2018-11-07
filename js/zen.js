@@ -3,11 +3,51 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     "use strict";
 
+    var storage = ( function() {
+        var _storage = {
+                theme: "19CAAD",
+                time: { size: "", },
+                day: { size: "", },
+                devices: { size: "", },
+                css: "",
+                version: "1.0.0",
+            },
+            _themes = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
+            key     = "simptab-tenmode-option",
+            random  = function( min, max ) {
+                return Math.floor( Math.random() * ( max - min + 1 ) + min );
+            };
+
+        function Storage() {
+            this.db = localStorage[ key ] || $.extend( {}, _storage );
+            this.themes = _themes;
+        }
+
+        Storage.prototype.Set = function() {
+            localStorage.setItem( key, this.db );
+        }
+
+        Storage.prototype.Get = function() {
+            return this.db;
+        }
+
+        Storage.prototype.Clear = function() {
+            localStorage.removeItem( key );
+        }
+
+        Storage.prototype.Random = function() {
+            var idx   = random( 0, this.themes.length - 3 );
+            return this.themes[ idx ];
+        }
+
+        return new Storage();
+
+    })();
+
     function themeMode() {
-        var themes   = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
-            tmpl     = '<div class="theme name-<%- theme %>" name="<%- theme %>" style="background-color:#<%- theme %>;"></div>',
+        var tmpl     = '<div class="theme name-<%- theme %>" name="<%- theme %>" style="background-color:#<%- theme %>;"></div>',
             compiled = _.template( '<% jq.each( themes, function( idx, theme ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
-            html     = compiled({ 'themes': themes });
+            html     = compiled({ 'themes': storage.themes });
         return html;
     }
 
