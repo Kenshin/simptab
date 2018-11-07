@@ -67,25 +67,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
             var color = event.target.attributes.name.value;
             if ( color == "random" ) {
-                var theme = "#" + storage.Random();
-                storage.db.theme = "random";
-                $( ".clock-bg-zen-mode" ).css( "background-color", theme );
-                storage.Set();
+                changAllTheme( "dark", "random" );
             } else if ( color == "ffffff" ) {
                 var theme = "#" + event.target.attributes.name.value;
-                storage.db.theme = theme;
-                $( ".clock-bg-zen-mode" ).css( "background-color", theme );
-                storage.db.time.color    = "#555";
-                storage.db.day.color     = "#555";
-                storage.db.devices.color = "#555";
-                storage.Set();
+                changAllTheme( "light", theme );
             } else if ( color == "custom" ) {
                 // TO-DO
             } else {
                 var theme = "#" + event.target.attributes.name.value;
-                storage.db.theme = theme;
-                $( ".clock-bg-zen-mode" ).css( "background-color", theme );
-                storage.Set();
+                changAllTheme( "dark", theme );
             }
         });
     }
@@ -103,11 +93,33 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         }, 500 );
     }
 
+    function changAllTheme( type, theme ) {
+        var value = type == "light" ? "#555" : "#fff";
+
+        storage.db.theme         = theme;
+        storage.db.time.color    = value;
+        storage.db.day.color     = value;
+        storage.db.devices.color = value;
+        storage.Set();
+
+        theme == "random" && ( theme = "#" + storage.Random() );
+        $( ".clock-bg-zen-mode" ).css( "background-color", theme );
+        readStorage( "#time", "time" );
+        readStorage( ".day-zen-mode", "day" );
+        readStorage( ".devices-zen-mode", "devices" );
+        changeTopsitsTheme( type );
+    }
+
     function readStorage( selector, key ) {
         var size  = storage.db[ key ].size,
             color = storage.db[ key ].color;
         size  && $( selector ).css( "font-size", size );
         color && $( selector ).css( "color", color );
+    }
+
+    function changeTopsitsTheme( type ) {
+        var value = type == "light" ? "#555" : "#fff";
+        $( ".topsites a" ).css( "color", value );
     }
 
     function shortcuts() {
@@ -145,9 +157,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     function topSitesMode() {
         $( ".bottom" ).addClass( "bottom-zen-mode" );
         $( ".topsites" ).addClass( "topsites-zen-mode" );
-        storage.db.theme == "#ffffff" ?
-            $( ".topsites" ).find( "a" ).css( "color", "#555" ) :
-            $( ".topsites a" ).addClass( "topsites-a-zen-mode" );
+        changeTopsitsTheme( storage.db.theme == "#ffffff" ? "light" : "dark" );
     }
 
     function settingMode() {
