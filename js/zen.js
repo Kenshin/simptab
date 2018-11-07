@@ -63,7 +63,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
             var color = event.target.attributes.name.value;
             if ( color == "random" ) {
-                // TO-DO
+                $( ".clock-bg-zen-mode" ).css( "background-color", "#" + storage.Random() );
             } else if ( color == "custom" ) {
                 // TO-DO
             } else {
