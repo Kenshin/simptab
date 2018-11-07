@@ -1679,6 +1679,40 @@ img {
     box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
 }
 
+.setting-zen-mode .title {
+    font-size: 18px;
+    transform: scale(.75);
+    transform-origin: left top 0;
+}
+
+
+.setting-zen-mode .themes .content {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.setting-zen-mode .themes .theme {
+    margin: 5px;
+
+    width: 40px;
+    height: 20px;
+
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.setting-zen-mode .themes .theme.name-random {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url("../images/theme-random.png");
+}
+
+.setting-zen-mode .themes .theme.name-custom {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url("../images/theme-custom.png");
+}
+
 /*
 * media
 */

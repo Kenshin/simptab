@@ -3,11 +3,33 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     "use strict";
 
+    function themeMode() {
+        var themes   = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
+            tmpl     = '<div class="theme name-<%- theme %>" name="<%- theme %>" style="background-color:#<%- theme %>;"></div>',
+            compiled = _.template( '<% jq.each( themes, function( idx, theme ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+            html     = compiled({ 'themes': themes });
+        return html;
+    }
+
     function settingTmpl() {
         var tmpl = '\
                     <div class="setting-zen-mode">\
+                        <div class="themes">\
+                            <div class="title">主题</div>\
+                            <div class="content">' + themeMode() + '</div>\
+                        </div>\
                     </div>';
         $( "body" ).append( tmpl );
+        $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
+            var color = event.target.attributes.name.value;
+            if ( color == "random" ) {
+                // TO-DO
+            } else if ( color == "custom" ) {
+                // TO-DO
+            } else {
+                $( ".clock-bg-zen-mode" ).css( "background-color", "#" + event.target.attributes.name.value );
+            }
+        });
     }
 
     function open() {
