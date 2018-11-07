@@ -3,6 +3,26 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     "use strict";
 
+    function settingTmpl() {
+        var tmpl = '\
+                    <div class="setting-zen-mode">\
+                    </div>';
+        $( "body" ).append( tmpl );
+    }
+
+    function open() {
+        setTimeout( function(){
+            $( ".setting-zen-mode" ).css({ "transform": "translateY(0px)", "opacity": 1 });
+        }, 10 );
+    }
+
+    function close() {
+        $( ".setting-zen-mode" ).css({ "transform": "translateY(100px)", "opacity": 0 });
+        setTimeout( function(){
+            $( ".setting-zen-mode" ).remove();
+        }, 500 );
+    }
+
     function shortcuts() {
         var styles = "";
         [ "5", "6", "7", "f", "m", "s", "a", "n", "u" ].forEach( function( value ) {
@@ -42,7 +62,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".progress"   ).addClass( "progress-zen-mode" );
         $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' )
         $( ".setting-trigger-zen-mode" ).on( "click", function( event ) {
-            
+            settingTmpl();
+            open();
         });
     }
 

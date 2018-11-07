@@ -1651,6 +1651,34 @@ img {
     opacity: 1;
 }
 
+.setting-zen-mode {
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+    right: 10px;
+    bottom: 10px;
+
+    width: 400px;
+    height: 350px;
+
+    padding: 15px;
+
+    text-transform: initial;
+
+    color: #fff;
+    background-color: rgb(47, 52, 55);
+
+    border-radius: 4px;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all .6s ease;
+
+    box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
+}
+
 /*
 * media
 */
