@@ -1613,15 +1613,42 @@ img {
 
 .bottom-zen-mode {
     opacity: 1;
+    pointer-events: none;
 }
 
 .topsites-zen-mode {
     background-color: transparent;
     box-shadow: none;
+    pointer-events: initial;
 }
 
 .topsites-a-zen-mode {
     color: #fff!important;
+}
+
+.setting-zen-mode {
+    position: fixed;
+
+    display: block;
+
+    right: 10px;
+    bottom: 10px;
+
+    width: 16px;
+    height: 16px;
+
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url("../images/zen-mode-setting.png");
+
+    pointer-events: initial;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 500ms ease;
+}
+
+.setting-zen-mode:hover {
+    opacity: 1;
 }
 
 /*
