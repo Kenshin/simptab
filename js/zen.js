@@ -28,7 +28,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         }
 
         Storage.prototype.Set = function() {
-            localStorage.setItem( key, this.db );
+            localStorage.setItem( key, JSON.stringify( this.db ));
         }
 
         Storage.prototype.Get = function() {
@@ -40,7 +40,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         }
 
         Storage.prototype.Random = function() {
-            var idx   = random( 0, this.themes.length - 3 );
+            var idx   = random( 0, this.themes.length - 4 );
             return this.themes[ idx ];
         }
 
@@ -67,11 +67,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
             var color = event.target.attributes.name.value;
             if ( color == "random" ) {
-                $( ".clock-bg-zen-mode" ).css( "background-color", "#" + storage.Random() );
+                var theme = "#" + storage.Random();
+                storage.db.theme = "random";
+                $( ".clock-bg-zen-mode" ).css( "background-color", theme );
+                storage.Set();
             } else if ( color == "custom" ) {
                 // TO-DO
             } else {
-                $( ".clock-bg-zen-mode" ).css( "background-color", "#" + event.target.attributes.name.value );
+                var theme = "#" + event.target.attributes.name.value;
+                storage.db.theme = theme;
+                $( ".clock-bg-zen-mode" ).css( "background-color", theme );
+                storage.Set();
             }
         });
     }
@@ -106,7 +112,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     }
 
     function timeMode() {
-        $( ".clock" ).css( "background-color", storage.db.theme );
+        $( ".clock" ).css( "background-color", storage.db.theme != "random" ? storage.db.theme : "#" + storage.Random() );
         $( ".clock" ).addClass( "clock-bg-zen-mode" ).css( "z-index", "initial" );
         $( "#time"  ).addClass( "time-zen-mode" );
         readStorage( "#time", "time" );
