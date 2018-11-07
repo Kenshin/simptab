@@ -4,15 +4,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     "use strict";
 
     var storage = ( function() {
-        var _storage = {
-                theme: "19CAAD",
+        var _themes  = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
+            _storage = {
+                theme: "#" + _themes[0],
                 time: { size: "", },
                 day: { size: "", },
                 devices: { size: "", },
                 css: "",
                 version: "1.0.0",
             },
-            _themes = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
             key     = "simptab-tenmode-option",
             random  = function( min, max ) {
                 return Math.floor( Math.random() * ( max - min + 1 ) + min );
@@ -23,7 +23,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             if ( !this.db ) {
                 this.db = $.extend( {}, _storage );
                 localStorage.setItem( key, JSON.stringify( this.db ));
-            }
+            } else this.db = JSON.parse( this.db );
             this.themes = _themes;
         }
 

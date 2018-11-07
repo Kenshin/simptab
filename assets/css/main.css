@@ -1583,10 +1583,6 @@ img {
     pointer-events: none;
 }
 
-.zen-mode-bg {
-    background-color: #19CAAD;
-}
-
 .controlbar-zen-mode,
 .progress-zen-mode {
     display: none;
