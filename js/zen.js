@@ -45,7 +45,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         }
 
         Storage.prototype.Random = function() {
-            var idx   = random( 0, this.themes.length - 4 );
+            var idx = random( 0, this.themes.length - 4 );
             return this.themes[ idx ];
         }
 
