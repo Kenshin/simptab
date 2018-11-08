@@ -49,7 +49,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     })();
 
     function themeMode() {
-        var tmpl     = '<div class="theme name-<%- theme %>" name="<%- theme %>" style="background-color:#<%- theme %>;"></div>',
+        var tmpl     = '<div class="theme name-<%- theme %> waves-effect" name="<%- theme %>" style="background-color:#<%- theme %>;"></div>',
             compiled = _.template( '<% jq.each( themes, function( idx, theme ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
             html     = compiled({ 'themes': storage.themes });
         return html;
