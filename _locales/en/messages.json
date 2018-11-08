@@ -401,6 +401,10 @@
         "message": "Please fresh current new tab."
     },
 
+    "notify_zen_mode_theme_random": {
+        "message": "Enable random theme."
+    },
+
     "version_detail": {
         "message": ""
     },

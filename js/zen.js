@@ -67,6 +67,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
             var color = event.target.attributes.name.value;
             if ( color == "random" ) {
+                new Notify().Render( i18n.GetLang( "notify_zen_mode_theme_random" ) );
                 changAllTheme( "dark", "random" );
             } else if ( color == "ffffff" ) {
                 var theme = "#" + event.target.attributes.name.value;
