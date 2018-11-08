@@ -68,17 +68,45 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             var color = event.target.attributes.name.value;
             if ( color == "random" ) {
                 new Notify().Render( i18n.GetLang( "notify_zen_mode_theme_random" ) );
+                customTheme( "remove" );
                 changAllTheme( "dark", "random" );
             } else if ( color == "ffffff" ) {
+                customTheme( "remove" );
                 var theme = "#" + event.target.attributes.name.value;
                 changAllTheme( "light", theme );
             } else if ( color == "custom" ) {
-                // TO-DO
+                customTheme( "add" );
             } else {
+                customTheme( "remove" );
                 var theme = "#" + event.target.attributes.name.value;
                 changAllTheme( "dark", theme );
             }
         });
+        storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 && customTheme( "add" );
+    }
+
+    function customTheme( type ) {
+        var target = ".setting-zen-mode .themes input";
+        if ( type == "add" ) {
+            if ( $(target).length > 0 ) return;
+            $( ".setting-zen-mode .themes .content" ).append( '<input type="text" placeholder="自定义主题背景，仅支持 CSS3 语法"/>' );
+            setTimeout( function() {
+                storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 &&
+                    $(target).val( storage.db.theme );
+                $(target)
+                    .animate({ "opacity": 1 }).on( "keyup", function( event ) {
+                        storage.db.theme = event.target.value;
+                        storage.db.theme == "" && ( storage.db.theme = "#" + storage.themes[ 0 ]);
+                        changAllTheme( "dark", storage.db.theme );
+                });
+            }, 10 );
+        } else {
+            setTimeout( function() {
+                $(target).fadeOut( "slow", function() {
+                    $(target).remove();
+                });
+            }, 10 );
+        }
     }
 
     function open() {
