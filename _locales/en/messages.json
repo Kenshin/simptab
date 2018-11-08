@@ -309,6 +309,14 @@
         "message": "<p style='margin-top: 14px;'>If you have a good work or suitable background, please also tell SimpTab, Submission address 👉 <a href='https://goo.gl/forms/oThieQCP6xk626GU2' target='_blank'>Google Form</a><br> Give me a <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>5-star</a> rating, Send feedback and submit <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>issues</a>, with your help to be more perfect.<br></p>"
     },
 
+    "zen_mode_setting_theme_title": {
+        "message": "Theme"
+    },
+
+    "zen_mode_setting_theme_placeholder": {
+        "message": "Custom theme, only css3 values."
+    },
+
     "version_title": {
         "message": "SimpTab is updated"
     },

@@ -67,7 +67,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         var target = ".setting-zen-mode .themes input";
         if ( type == "add" ) {
             if ( $(target).length > 0 ) return;
-            $( ".setting-zen-mode .themes .content" ).append( '<input type="text" placeholder="自定义主题背景，仅支持 CSS3 语法"/>' );
+            $( ".setting-zen-mode .themes .content" ).append( '<input type="text" placeholder="' + i18n.GetLang( "zen_mode_setting_theme_placeholder" ) + '"/>' );
             setTimeout( function() {
                 storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 &&
                     $(target).val( storage.db.theme );
@@ -124,7 +124,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         var tmpl = '\
                     <div class="setting-zen-mode">\
                         <div class="themes">\
-                            <div class="title">主题</div>\
+                            <div class="title">' + i18n.GetLang( "zen_mode_setting_theme_title" ) + '</div>\
                             <div class="content">' + themeMode() + '</div>\
                         </div>\
                     </div>';
