@@ -52,6 +52,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     })();
 
+    function readStorage( selector, key ) {
+        var size  = storage.db[ key ].size,
+            color = storage.db[ key ].color;
+        size  && $( selector ).css( "font-size", size );
+        color && $( selector ).css( "color", color );
+    }
+
     /*********************************************
      * Theme
      *********************************************/
@@ -122,13 +129,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         readStorage( ".day-zen-mode", "day" );
         readStorage( ".devices-zen-mode", "devices" );
         changeTopsitsTheme( type );
-    }
-
-    function readStorage( selector, key ) {
-        var size  = storage.db[ key ].size,
-            color = storage.db[ key ].color;
-        size  && $( selector ).css( "font-size", size );
-        color && $( selector ).css( "color", color );
     }
 
     function changeTopsitsTheme( type ) {
