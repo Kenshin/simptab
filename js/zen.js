@@ -56,11 +56,31 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      * Theme
      *********************************************/
 
-    function themeMode() {
+    function themeView() {
         var tmpl     = '<div class="theme name-<%- theme %> waves-effect" name="<%- theme %>" style="background-color:#<%- theme %>;"></div>',
             compiled = _.template( '<% jq.each( themes, function( idx, theme ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
             html     = compiled({ 'themes': storage.themes });
         return html;
+    }
+
+    function themeModel() {
+        $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
+            var color = event.target.attributes.name.value;
+            if ( color == "random" ) {
+                new Notify().Render( i18n.GetLang( "notify_zen_mode_theme_random" ) );
+                customTheme( "remove" );
+                changAllTheme( "dark", "random" );
+            } else if ( color == "ffffff" ) {
+                customTheme( "remove" );
+                changAllTheme( "light", "#" + event.target.attributes.name.value );
+            } else if ( color == "custom" ) {
+                customTheme( "add" );
+            } else {
+                customTheme( "remove" );
+                changAllTheme( "dark", "#" + event.target.attributes.name.value );
+            }
+        });
+        storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 && customTheme( "add" );
     }
 
     function customTheme( type ) {
@@ -139,7 +159,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                     <div class="setting-zen-mode">\
                         <div class="themes">\
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_theme_title" ) + '</div>\
-                            <div class="content">' + themeMode() + '</div>\
+                            <div class="content">' + themeView() + '</div>\
                         </div>\
                         <div class="footer">\
                             <div class="waves-effect button exit">退出禅模式</div>\
@@ -147,24 +167,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                         </div>\
                     </div>';
         $( "body" ).append( tmpl );
-        $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
-            var color = event.target.attributes.name.value;
-            if ( color == "random" ) {
-                new Notify().Render( i18n.GetLang( "notify_zen_mode_theme_random" ) );
-                customTheme( "remove" );
-                changAllTheme( "dark", "random" );
-            } else if ( color == "ffffff" ) {
-                customTheme( "remove" );
-                changAllTheme( "light", "#" + event.target.attributes.name.value );
-            } else if ( color == "custom" ) {
-                customTheme( "add" );
-            } else {
-                customTheme( "remove" );
-                changAllTheme( "dark", "#" + event.target.attributes.name.value );
-            }
-        });
-        storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 && customTheme( "add" );
 
+        themeModel();
         footerControl();
     }
 
