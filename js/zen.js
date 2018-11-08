@@ -117,6 +117,20 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     }
 
     /*********************************************
+     * Footer
+     *********************************************/
+
+    function footerControl() {
+        $( ".setting-zen-mode" ).on( "click", ".footer .exit", function( event ) {
+            new Notify().Render( "已退出禅模式，页面刷新后生效。" );
+            exit();
+        });
+        $( ".setting-zen-mode" ).on( "click", ".footer .close", function( event ) {
+            close();
+        });
+    }
+
+    /*********************************************
      * Zen mode Setting
      *********************************************/
 
@@ -126,6 +140,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                         <div class="themes">\
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_theme_title" ) + '</div>\
                             <div class="content">' + themeMode() + '</div>\
+                        </div>\
+                        <div class="footer">\
+                            <div class="waves-effect button exit">退出禅模式</div>\
+                            <div class="waves-effect button close">关闭</div>\
                         </div>\
                     </div>';
         $( "body" ).append( tmpl );
@@ -146,6 +164,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             }
         });
         storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 && customTheme( "add" );
+
+        footerControl();
     }
 
     function open() {
@@ -164,6 +184,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     /*********************************************
      * Modules
      *********************************************/
+
+    function exit() {
+        localStorage["simptab-topsites"] = localStorage["simptab-topsites-backup"];
+        localStorage.removeItem( "simptab-topsites-backup" );
+
+        localStorage["simptab-background-clock"] = localStorage["simptab-background-clock-backup"];
+        localStorage.removeItem( "simptab-background-clock-backup" );
+
+        localStorage["simptab-zenmode"] = "false";
+     }
 
     function shortcuts() {
         var styles = "";
@@ -236,11 +266,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         },
 
         Exit: function() {
-            localStorage["simptab-topsites"] = localStorage["simptab-topsites-backup"];
-            localStorage.removeItem( "simptab-topsites-backup" );
-
-            localStorage["simptab-background-clock"] = localStorage["simptab-background-clock-backup"];
-            localStorage.removeItem( "simptab-background-clock-backup" );
+            exit();
         }
     }
 
