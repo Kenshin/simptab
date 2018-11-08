@@ -1764,6 +1764,38 @@ img {
     background-color: #002eee;
 }
 
+.time-zen-mode-middle {
+    height: 150px!important;
+    line-height: initial!important;
+    font-size: 150px!important;
+}
+
+.day-zen-mode-middle {
+    margin-top: initial!important;
+    font-weight: 100!important;
+    font-size: 45px!important;
+}
+
+.devices-zen-mode-middle {
+    font-size: medium!important;
+}
+
+.time-zen-mode-large {
+    height: 200px!important;
+    line-height: initial!important;
+    font-size: 200px!important;
+}
+
+.day-zen-mode-large {
+    margin-top: initial!important;
+    font-weight: 100!important;
+    font-size: 60px!important;
+}
+
+.devices-zen-mode-large {
+    font-size: large!important;
+}
+
 /*
 * media
 */
