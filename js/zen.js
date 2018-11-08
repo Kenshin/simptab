@@ -140,10 +140,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      * Footer
      *********************************************/
 
-    function footerControl() {
+    function footerModel() {
         $( ".setting-zen-mode" ).on( "click", ".footer .exit", function( event ) {
             new Notify().Render( "已退出禅模式，页面刷新后生效。" );
             exit();
+            close();
         });
         $( ".setting-zen-mode" ).on( "click", ".footer .close", function( event ) {
             close();
@@ -169,7 +170,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( "body" ).append( tmpl );
 
         themeModel();
-        footerControl();
+        footerModel();
     }
 
     function open() {
