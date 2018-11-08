@@ -142,7 +142,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     function footerModel() {
         $( ".setting-zen-mode" ).on( "click", ".footer .exit", function( event ) {
-            new Notify().Render( "已退出禅模式，页面刷新后生效。" );
+            new Notify().Render( i18n.GetLang( "notify_zen_mode_exit" ) );
             exit();
             close();
         });
@@ -163,8 +163,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             <div class="content">' + themeView() + '</div>\
                         </div>\
                         <div class="footer">\
-                            <div class="waves-effect button exit">退出禅模式</div>\
-                            <div class="waves-effect button close">关闭</div>\
+                            <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
+                            <div class="waves-effect button close">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
                         </div>\
                     </div>';
         $( "body" ).append( tmpl );

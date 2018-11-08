@@ -317,6 +317,14 @@
         "message": "Custom theme, only css3 values."
     },
 
+    "zen_mode_setting_exit": {
+        "message": "Exit Zen mode"
+    },
+
+    "zen_mode_setting_close": {
+        "message": "Close"
+    },
+
     "version_title": {
         "message": "SimpTab is updated"
     },
@@ -411,6 +419,10 @@
 
     "notify_zen_mode_theme_random": {
         "message": "Enable random theme."
+    },
+
+    "notify_zen_mode_exit": {
+        "message": "Exit zen mode success, please refresh new tab."
     },
 
     "version_detail": {

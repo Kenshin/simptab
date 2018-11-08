@@ -317,6 +317,14 @@
         "message": "自定义主题背景，仅支持 CSS3 语法"
     },
 
+    "zen_mode_setting_exit": {
+        "message": "退出禅模式"
+    },
+
+    "zen_mode_setting_close": {
+        "message": "关闭"
+    },
+
     "version_title": {
         "message": "简 Tab 版本提示"
     },
@@ -411,6 +419,10 @@
 
     "notify_zen_mode_theme_random": {
         "message": "已选择随机主题，每次打开新标签页都会随机给出一个主题。"
+    },
+
+    "notify_zen_mode_exit": {
+        "message": "已退出禅模式，页面刷新后生效。"
     },
 
     "version_detail": {
