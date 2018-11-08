@@ -3,6 +3,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     "use strict";
 
+    /*********************************************
+     * Data Structure
+     *********************************************/
+
     var storage = ( function() {
         var _themes  = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
             _storage = {
@@ -48,39 +52,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     })();
 
+    /*********************************************
+     * Theme
+     *********************************************/
+
     function themeMode() {
         var tmpl     = '<div class="theme name-<%- theme %> waves-effect" name="<%- theme %>" style="background-color:#<%- theme %>;"></div>',
             compiled = _.template( '<% jq.each( themes, function( idx, theme ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
             html     = compiled({ 'themes': storage.themes });
         return html;
-    }
-
-    function settingTmpl() {
-        var tmpl = '\
-                    <div class="setting-zen-mode">\
-                        <div class="themes">\
-                            <div class="title">主题</div>\
-                            <div class="content">' + themeMode() + '</div>\
-                        </div>\
-                    </div>';
-        $( "body" ).append( tmpl );
-        $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
-            var color = event.target.attributes.name.value;
-            if ( color == "random" ) {
-                new Notify().Render( i18n.GetLang( "notify_zen_mode_theme_random" ) );
-                customTheme( "remove" );
-                changAllTheme( "dark", "random" );
-            } else if ( color == "ffffff" ) {
-                customTheme( "remove" );
-                changAllTheme( "light", "#" + event.target.attributes.name.value );
-            } else if ( color == "custom" ) {
-                customTheme( "add" );
-            } else {
-                customTheme( "remove" );
-                changAllTheme( "dark", "#" + event.target.attributes.name.value );
-            }
-        });
-        storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 && customTheme( "add" );
     }
 
     function customTheme( type ) {
@@ -105,19 +85,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                 });
             }, 10 );
         }
-    }
-
-    function open() {
-        setTimeout( function(){
-            $( ".setting-zen-mode" ).css({ "transform": "translateY(0px)", "opacity": 1 });
-        }, 10 );
-    }
-
-    function close() {
-        $( ".setting-zen-mode" ).css({ "transform": "translateY(100px)", "opacity": 0 });
-        setTimeout( function(){
-            $( ".setting-zen-mode" ).remove();
-        }, 500 );
     }
 
     function changAllTheme( type, theme ) {
@@ -148,6 +115,55 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         var value = type == "light" ? "#555" : "#fff";
         $( ".topsites a" ).css( "color", value );
     }
+
+    /*********************************************
+     * Zen mode Setting
+     *********************************************/
+
+    function settingTmpl() {
+        var tmpl = '\
+                    <div class="setting-zen-mode">\
+                        <div class="themes">\
+                            <div class="title">主题</div>\
+                            <div class="content">' + themeMode() + '</div>\
+                        </div>\
+                    </div>';
+        $( "body" ).append( tmpl );
+        $( ".setting-zen-mode" ).on( "click", ".theme", function( event ) {
+            var color = event.target.attributes.name.value;
+            if ( color == "random" ) {
+                new Notify().Render( i18n.GetLang( "notify_zen_mode_theme_random" ) );
+                customTheme( "remove" );
+                changAllTheme( "dark", "random" );
+            } else if ( color == "ffffff" ) {
+                customTheme( "remove" );
+                changAllTheme( "light", "#" + event.target.attributes.name.value );
+            } else if ( color == "custom" ) {
+                customTheme( "add" );
+            } else {
+                customTheme( "remove" );
+                changAllTheme( "dark", "#" + event.target.attributes.name.value );
+            }
+        });
+        storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 && customTheme( "add" );
+    }
+
+    function open() {
+        setTimeout( function(){
+            $( ".setting-zen-mode" ).css({ "transform": "translateY(0px)", "opacity": 1 });
+        }, 10 );
+    }
+
+    function close() {
+        $( ".setting-zen-mode" ).css({ "transform": "translateY(100px)", "opacity": 0 });
+        setTimeout( function(){
+            $( ".setting-zen-mode" ).remove();
+        }, 500 );
+    }
+
+    /*********************************************
+     * Modules
+     *********************************************/
 
     function shortcuts() {
         var styles = "";
