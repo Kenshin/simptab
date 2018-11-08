@@ -72,14 +72,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                 changAllTheme( "dark", "random" );
             } else if ( color == "ffffff" ) {
                 customTheme( "remove" );
-                var theme = "#" + event.target.attributes.name.value;
-                changAllTheme( "light", theme );
+                changAllTheme( "light", "#" + event.target.attributes.name.value );
             } else if ( color == "custom" ) {
                 customTheme( "add" );
             } else {
                 customTheme( "remove" );
-                var theme = "#" + event.target.attributes.name.value;
-                changAllTheme( "dark", theme );
+                changAllTheme( "dark", "#" + event.target.attributes.name.value );
             }
         });
         storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 && customTheme( "add" );
