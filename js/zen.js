@@ -198,7 +198,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         localStorage.removeItem( "simptab-background-clock-backup" );
 
         localStorage["simptab-zenmode"] = "false";
-     }
+    }
 
     function shortcuts() {
         var styles = "";
