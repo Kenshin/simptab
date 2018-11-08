@@ -53,9 +53,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     })();
 
     function readStorage( selector, key ) {
-        var size  = storage.db[ key ].size,
-            color = storage.db[ key ].color;
-        size  && $( selector ).css( "font-size", size );
+        var color = storage.db[ key ].color;
         color && $( selector ).css( "color", color );
     }
 
