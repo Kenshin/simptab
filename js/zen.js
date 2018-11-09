@@ -195,10 +195,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".setting-zen-mode .module" ).find( "input[id=topsites-cbx]" ).prop( "checked", storage.db.topsites.display == "true" ? true : false );
         $( ".setting-zen-mode" ).on( "change", ".module input", function( event ) {
             var $cb = $(this),
-                key = $cb[0].id.replace( "-cbx", "" );
+                key = $cb[0].id.replace( "-cbx", "" ),
+                selector = "."+ key + "-zen-mode";
             $cb.val( $cb.prop( "checked" ));
             storage.db[key].display = $cb.val();
             storage.Set();
+            storage.db[key].display == "false" ? $( selector ).fadeOut( 500 ) : $( selector ).fadeIn( 500 );
         });
      }
 
