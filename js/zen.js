@@ -12,9 +12,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             _storage = {
                 theme: "#" + _themes[0],
                 size: "",
-                time:    { color: "" },
-                day:     { color: "" },
-                devices: { color: "" },
+                time:    { color: "", display: "true" },
+                day:     { color: "", display: "true" },
+                devices: { color: "", display: "true" },
+                topsites: { display: "true" },
                 css: "",
                 version: "1.0.0",
             },
@@ -186,8 +187,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      }
 
      function moduleModel() {
+        $( ".setting-zen-mode .module" ).find( "input[id=time-cbx]" ).prop( "checked", storage.db.time.display == "true" ? true : false );
+        $( ".setting-zen-mode .module" ).find( "input[id=day-cbx]" ).prop( "checked", storage.db.day.display == "true" ? true : false );
+        $( ".setting-zen-mode .module" ).find( "input[id=devices-cbx]" ).prop( "checked", storage.db.devices.display == "true" ? true : false );
         $( ".setting-zen-mode" ).on( "change", ".module input", function( event ) {
-            
+            var $cb = $(this),
+                key = $cb[0].id.replace( "-cbx", "" );
+            $cb.val( $cb.prop( "checked" ));
+            storage.db[key].display = $cb.val();
+            storage.Set();
         });
      }
 
