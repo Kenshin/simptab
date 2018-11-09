@@ -182,14 +182,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                 </div>\
                 <div class="content">\
                     <div class="label">常用网址</div>\
-                    <div class="group">' + mdCheckbox( "top-cbx" ) + '</div>\
+                    <div class="group">' + mdCheckbox( "topsites-cbx" ) + '</div>\
                 </div>';
      }
 
      function moduleModel() {
-        $( ".setting-zen-mode .module" ).find( "input[id=time-cbx]" ).prop( "checked", storage.db.time.display == "true" ? true : false );
-        $( ".setting-zen-mode .module" ).find( "input[id=day-cbx]" ).prop( "checked", storage.db.day.display == "true" ? true : false );
-        $( ".setting-zen-mode .module" ).find( "input[id=devices-cbx]" ).prop( "checked", storage.db.devices.display == "true" ? true : false );
+        $( ".setting-zen-mode .module" ).find( "input[id=time-cbx]"     ).prop( "checked", storage.db.time.display == "true" ? true : false );
+        $( ".setting-zen-mode .module" ).find( "input[id=day-cbx]"      ).prop( "checked", storage.db.day.display == "true" ? true : false );
+        $( ".setting-zen-mode .module" ).find( "input[id=devices-cbx]"  ).prop( "checked", storage.db.devices.display == "true" ? true : false );
+        $( ".setting-zen-mode .module" ).find( "input[id=topsites-cbx]" ).prop( "checked", storage.db.topsites.display == "true" ? true : false );
         $( ".setting-zen-mode" ).on( "change", ".module input", function( event ) {
             var $cb = $(this),
                 key = $cb[0].id.replace( "-cbx", "" );
