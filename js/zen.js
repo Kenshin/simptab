@@ -298,6 +298,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     function topSitesMode() {
         $( ".bottom" ).addClass( "bottom-zen-mode" );
         $( ".topsites" ).addClass( "topsites-zen-mode" );
+        readStorage( ".topsites", "topsites" );
         changeTopsitsTheme( storage.db.theme == "#ffffff" ? "light" : "dark" );
     }
 
