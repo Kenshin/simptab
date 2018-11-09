@@ -3,13 +3,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     "use strict";
 
-    function mdCheckbox( cls ) {
-        return '<div class="' + cls + '">\
-                    <input type="checkbox" id="' + cls + '" style="display:none;"/>\
-                    <label for="' + cls + '" class="toggle"><span></span></label>\
-                </div>';
-    }
-
     /*********************************************
      * Data Structure
      *********************************************/
@@ -65,6 +58,27 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             size  = storage.db.size;
         color && $( selector ).css( "color", color );
         size != "" && $( selector ).addClass( key + "-zen-mode-" + size );
+    }
+
+    /*********************************************
+     * Module
+     *********************************************/
+
+    function mdCheckbox( cls ) {
+        return '<div class="' + cls + '">\
+                    <input type="checkbox" id="' + cls + '" style="display:none;"/>\
+                    <label for="' + cls + '" class="toggle"><span></span></label>\
+                </div>';
+    }
+
+    function exit() {
+        localStorage["simptab-topsites"] = localStorage["simptab-topsites-backup"];
+        localStorage.removeItem( "simptab-topsites-backup" );
+
+        localStorage["simptab-background-clock"] = localStorage["simptab-background-clock-backup"];
+        localStorage.removeItem( "simptab-background-clock-backup" );
+
+        localStorage["simptab-zenmode"] = "false";
     }
 
     /*********************************************
@@ -233,27 +247,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     }
 
     /*********************************************
-     * Modules
+     * Initialize
      *********************************************/
-
-    function exit() {
-        localStorage["simptab-topsites"] = localStorage["simptab-topsites-backup"];
-        localStorage.removeItem( "simptab-topsites-backup" );
-
-        localStorage["simptab-background-clock"] = localStorage["simptab-background-clock-backup"];
-        localStorage.removeItem( "simptab-background-clock-backup" );
-
-        localStorage["simptab-zenmode"] = "false";
-    }
-
-    function shortcuts() {
-        var styles = "";
-        [ "5", "6", "7", "f", "m", "s", "a", "n", "u" ].forEach( function( value ) {
-            styles += ".keycode-" + value + "{text-decoration: line-through!important;}";
-            Mousetrap.unbind( value );
-        });
-        $( "head" ).append( '<style type="text/css">' + styles + '</style>' );
-    }
 
     function timeMode() {
         $( ".clock" ).css( "background-color", storage.db.theme != "random" ? storage.db.theme : "#" + storage.Random() );
@@ -278,13 +273,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         });
     }
 
-    function topSitesMode() {
-        $( ".bottom" ).addClass( "bottom-zen-mode" );
-        $( ".topsites" ).addClass( "topsites-zen-mode" );
-        changeTopsitsTheme( storage.db.theme == "#ffffff" ? "light" : "dark" );
-    }
-
-    function settingMode() {
+    function ohtersMode() {
         $( ".controlbar" ).addClass( "controlbar-zen-mode" );
         $( ".progress"   ).addClass( "progress-zen-mode" );
         $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' )
@@ -295,12 +284,28 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         });
     }
 
+    function topSitesMode() {
+        $( ".bottom" ).addClass( "bottom-zen-mode" );
+        $( ".topsites" ).addClass( "topsites-zen-mode" );
+        changeTopsitsTheme( storage.db.theme == "#ffffff" ? "light" : "dark" );
+    }
+
+    function shortcuts() {
+        var styles = "";
+        [ "5", "6", "7", "f", "m", "s", "a", "n", "u" ].forEach( function( value ) {
+            styles += ".keycode-" + value + "{text-decoration: line-through!important;}";
+            Mousetrap.unbind( value );
+        });
+        $( "head" ).append( '<style type="text/css">' + styles + '</style>' );
+    }
+
+
     return {
         Render: function() {
             timeMode();
             dayMode();
             devicesMode();
-            settingMode();
+            ohtersMode();
 
             setTimeout( function() {
                 topSitesMode();
