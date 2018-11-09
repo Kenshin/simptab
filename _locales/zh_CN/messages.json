@@ -317,6 +317,42 @@
         "message": "自定义主题背景，仅支持 CSS3 语法"
     },
 
+    "zen_mode_setting_modules": {
+        "message": "模块设置"
+    },
+
+    "zen_mode_setting_modules_size": {
+        "message": "大小"
+    },
+
+    "zen_mode_setting_modules_size_normal": {
+        "message": "正常"
+    },
+
+    "zen_mode_setting_modules_size_middle": {
+        "message": "大"
+    },
+
+    "zen_mode_setting_modules_size_large": {
+        "message": "超大"
+    },
+
+    "zen_mode_setting_modules_time": {
+        "message": "时间"
+    },
+
+    "zen_mode_setting_modules_day": {
+        "message": "日期"
+    },
+
+    "zen_mode_setting_modules_devices": {
+        "message": "状态"
+    },
+
+    "zen_mode_setting_modules_topsizes": {
+        "message": "常用网址"
+    },
+
     "zen_mode_setting_exit": {
         "message": "退出禅模式"
     },

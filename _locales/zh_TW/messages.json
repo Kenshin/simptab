@@ -317,6 +317,42 @@
         "message": "自定義主題背景，僅支持 CSS3 語法"
     },
 
+    "zen_mode_setting_modules": {
+        "message": "模塊設置"
+    },
+
+    "zen_mode_setting_modules_size": {
+        "message": "大小"
+    },
+
+    "zen_mode_setting_modules_size_normal": {
+        "message": "正常"
+    },
+
+    "zen_mode_setting_modules_size_middle": {
+        "message": "大"
+    },
+
+    "zen_mode_setting_modules_size_large": {
+        "message": "超大"
+    },
+
+    "zen_mode_setting_modules_time": {
+        "message": "時間"
+    },
+
+    "zen_mode_setting_modules_day": {
+        "message": "日期"
+    },
+
+    "zen_mode_setting_modules_devices": {
+        "message": "狀態"
+    },
+
+    "zen_mode_setting_modules_topsizes": {
+        "message": "常用網址"
+    },
+
     "zen_mode_setting_exit": {
         "message": "退出禪模式"
     },

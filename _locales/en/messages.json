@@ -317,6 +317,42 @@
         "message": "Custom theme, only css3 values."
     },
 
+    "zen_mode_setting_modules": {
+        "message": "Modules"
+    },
+
+    "zen_mode_setting_modules_size": {
+        "message": "Size"
+    },
+
+    "zen_mode_setting_modules_size_normal": {
+        "message": "Normal"
+    },
+
+    "zen_mode_setting_modules_size_middle": {
+        "message": "Large"
+    },
+
+    "zen_mode_setting_modules_size_large": {
+        "message": "Larger"
+    },
+
+    "zen_mode_setting_modules_time": {
+        "message": "Time"
+    },
+
+    "zen_mode_setting_modules_day": {
+        "message": "Day"
+    },
+
+    "zen_mode_setting_modules_devices": {
+        "message": "Devices"
+    },
+
+    "zen_mode_setting_modules_topsizes": {
+        "message": "Topsites"
+    },
+
     "zen_mode_setting_exit": {
         "message": "Exit Zen mode"
     },

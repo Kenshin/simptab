@@ -207,25 +207,25 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      *********************************************/
 
      function moduleView() {
-        var items = [{ name: "正常", value: "normal" }, { name: "大", value: "middle" }, { name: "超大", value: "large" }];
+        var items = [{ name: i18n.GetLang( "zen_mode_setting_modules_size_normal" ), value: "normal" }, { name: i18n.GetLang( "zen_mode_setting_modules_size_middle" ), value: "middle" }, { name: i18n.GetLang( "zen_mode_setting_modules_size_large" ), value: "large" }];
         return '<div class="content">\
-                    <div class="label">大小</div>\
+                    <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_size" ) + '</div>\
                     <div class="group">' + dropdown( ".setting-zen-mode", "size-dpd", items, storage.db.size ) + '</div>\
                 </div>\
                 <div class="content">\
-                    <div class="label">时间</div>\
+                    <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_time" ) + '</div>\
                     <div class="group">' + mdCheckbox( "time-cbx" ) + '</div>\
                 </div>\
                 <div class="content">\
-                    <div class="label">日期</div>\
+                    <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_day" ) + '</div>\
                     <div class="group">' + mdCheckbox( "day-cbx" ) + '</div>\
                 </div>\
                 <div class="content">\
-                    <div class="label">状态</div>\
+                    <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_devices" ) + '</div>\
                     <div class="group">' + mdCheckbox( "devices-cbx" ) + '</div>\
                 </div>\
                 <div class="content">\
-                    <div class="label">常用网址</div>\
+                    <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_topsizes" ) + '</div>\
                     <div class="group">' + mdCheckbox( "topsites-cbx" ) + '</div>\
                 </div>';
      }
@@ -278,7 +278,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             <div class="content">' + themeView() + '</div>\
                         </div>\
                         <div class="module">\
-                            <div class="title">模块设置</div>\
+                            <div class="title">' + i18n.GetLang( "zen_mode_setting_modules" ) + '</div>\
                             ' + moduleView() + '\
                         </div>\
                         <div class="footer">\
