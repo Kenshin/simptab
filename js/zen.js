@@ -58,6 +58,34 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      * Common
      *********************************************/
 
+    function dropdown( target, cls ) {
+        target = target + " ." + cls;
+        $( document ).on( "click", target, function( event ) {
+            $( target ).find( ".downlist" ).css({ "opacity": 1, transform: "scaleY(1)" });
+        });
+        $( document ).on( "click", target + " .downlist .list-filed", function( event ) {
+            var name  = event.target.textContent,
+                value = $(event.target).attr( "value" );
+            $( target ).find( ".drop .label" ).text( name );
+            $( target ).find( ".downlist" ).css({ "opacity": 0, transform: "scaleY(0)" });
+            var evt  = new Event( "dropdown" );
+            evt.data = { name: name, value: value };
+            $( target )[0].dispatchEvent( evt );
+            event.stopPropagation();
+        });
+        return '<div class="dropdown ' + cls + '">\
+                    <div class="drop">\
+                        <div class="label">正常</div>\
+                        <div class="arrow"></div>\
+                    </div>\
+                    <div class="downlist">\
+                        <div class="list-filed" value="normal">正常</div>\
+                        <div class="list-filed" value="middle">大</div>\
+                        <div class="list-filed" value="large">超大</div>\
+                    </div>\
+                </div>';
+    }
+
     function mdCheckbox( cls ) {
         return '<div class="' + cls + '">\
                     <input type="checkbox" id="' + cls + '" style="display:none;"/>\
@@ -168,7 +196,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      function moduleView() {
         return '<div class="content">\
                     <div class="label">大小</div>\
-                    <div class="group"></div>\
+                    <div class="group">' + dropdown( ".setting-zen-mode", "size-dpd" ) + '</div>\
                 </div>\
                 <div class="content">\
                     <div class="label">时间</div>\
@@ -193,6 +221,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".setting-zen-mode .module" ).find( "input[id=day-cbx]"      ).prop( "checked", storage.db.day.display == "true" ? true : false );
         $( ".setting-zen-mode .module" ).find( "input[id=devices-cbx]"  ).prop( "checked", storage.db.devices.display == "true" ? true : false );
         $( ".setting-zen-mode .module" ).find( "input[id=topsites-cbx]" ).prop( "checked", storage.db.topsites.display == "true" ? true : false );
+        $( ".setting-zen-mode .size-dpd" )[0].addEventListener( "dropdown", function( event ) {
+            console.log( event.data )
+        });
         $( ".setting-zen-mode" ).on( "change", ".module input", function( event ) {
             var $cb = $(this),
                 key = $cb[0].id.replace( "-cbx", "" ),
@@ -253,6 +284,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     }
 
     function close() {
+        $( document ).off( "click", ".setting-zen-mode .size-dpd" );
+        $( document ).off( "click", ".setting-zen-mode .size-dpd .downlist .list-filed" );
         $( ".setting-zen-mode" ).css({ "transform": "translateY(100px)", "opacity": 0 });
         setTimeout( function(){
             $( ".setting-zen-mode" ).remove();
