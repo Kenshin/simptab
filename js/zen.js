@@ -54,17 +54,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     })();
 
-    function readStorage( selector, key ) {
-        var color   = storage.db[ key ].color,
-            display = storage.db[ key ].display,
-            size    = storage.db.size;
-        color && $( selector ).css( "color", color );
-        size != "" && $( selector ).addClass( key + "-zen-mode-" + size );
-        display == "false" && $( selector ).hide();
-    }
-
     /*********************************************
-     * Module
+     * Common
      *********************************************/
 
     function mdCheckbox( cls ) {
@@ -72,6 +63,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                     <input type="checkbox" id="' + cls + '" style="display:none;"/>\
                     <label for="' + cls + '" class="toggle"><span></span></label>\
                 </div>';
+    }
+
+    function readStorage( selector, key ) {
+        var color   = storage.db[ key ].color,
+            display = storage.db[ key ].display,
+            size    = storage.db.size;
+        color && $( selector ).css( "color", color );
+        size != "" && $( selector ).addClass( key + "-zen-mode-" + size );
+        display == "false" && $( selector ).hide();
     }
 
     function exit() {
