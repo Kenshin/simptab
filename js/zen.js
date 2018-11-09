@@ -101,8 +101,18 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             display = storage.db[ key ].display,
             size    = storage.db.size;
         color && $( selector ).css( "color", color );
-        size != "" && $( selector ).addClass( key + "-zen-mode-" + size );
+        size    != "normal" && $( selector ).addClass( key + "-zen-mode-" + size );
         display == "false" && $( selector ).hide();
+    }
+
+    function setModuleSize( type ) {
+        type = type == "normal" ? type = "" : "-" + type;
+        [ "time", "day", "devices" ].forEach( function( item ) {
+            $( "." + item + "-zen-mode" )
+                .removeClass()
+                .addClass( item + "-zen-mode" )
+                .addClass( item + "-zen-mode" + type );
+        });
     }
 
     function exit() {
@@ -226,7 +236,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".setting-zen-mode .module" ).find( "input[id=devices-cbx]"  ).prop( "checked", storage.db.devices.display == "true" ? true : false );
         $( ".setting-zen-mode .module" ).find( "input[id=topsites-cbx]" ).prop( "checked", storage.db.topsites.display == "true" ? true : false );
         $( ".setting-zen-mode .size-dpd" )[0].addEventListener( "dropdown", function( event ) {
-            console.log( event.data )
+            storage.db.size = event.data.value;
+            storage.Set();
+            setModuleSize( storage.db.size );
         });
         $( ".setting-zen-mode" ).on( "change", ".module input", function( event ) {
             var $cb = $(this),
