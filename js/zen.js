@@ -299,7 +299,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( "head" ).append( '<style type="text/css">' + styles + '</style>' );
     }
 
-
     return {
         Render: function() {
             timeMode();
