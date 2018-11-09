@@ -55,10 +55,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     })();
 
     function readStorage( selector, key ) {
-        var color = storage.db[ key ].color,
-            size  = storage.db.size;
+        var color   = storage.db[ key ].color,
+            display = storage.db[ key ].display,
+            size    = storage.db.size;
         color && $( selector ).css( "color", color );
         size != "" && $( selector ).addClass( key + "-zen-mode-" + size );
+        display == "false" && $( selector ).hide();
     }
 
     /*********************************************
