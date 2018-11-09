@@ -11,7 +11,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         var _themes  = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
             _storage = {
                 theme: "#" + _themes[0],
-                size: "",
+                size: "normal",
                 time:    { color: "", display: "true" },
                 day:     { color: "", display: "true" },
                 devices: { color: "", display: "true" },
@@ -58,7 +58,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      * Common
      *********************************************/
 
-    function dropdown( target, cls ) {
+    function dropdown( target, cls, items, label ) {
+        var tmpl     = '<div class="list-filed" value="<%- item.value %>"><%- item.name %></div>',
+            compiled = _.template( '<% jq.each( items, function( idx, item ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+            html     = compiled({ 'items': items }),
+            current  = items.find( function( item ) { return item.value == label });
+
         target = target + " ." + cls;
         $( document ).on( "click", target, function( event ) {
             $( target ).find( ".downlist" ).css({ "opacity": 1, transform: "scaleY(1)" });
@@ -75,13 +80,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         });
         return '<div class="dropdown ' + cls + '">\
                     <div class="drop">\
-                        <div class="label">正常</div>\
+                        <div class="label">' + current.name + '</div>\
                         <div class="arrow"></div>\
                     </div>\
                     <div class="downlist">\
-                        <div class="list-filed" value="normal">正常</div>\
-                        <div class="list-filed" value="middle">大</div>\
-                        <div class="list-filed" value="large">超大</div>\
+                        ' + html + '\
                     </div>\
                 </div>';
     }
@@ -194,9 +197,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      *********************************************/
 
      function moduleView() {
+        var items = [{ name: "正常", value: "normal" }, { name: "大", value: "middle" }, { name: "超大", value: "large" }];
         return '<div class="content">\
                     <div class="label">大小</div>\
-                    <div class="group">' + dropdown( ".setting-zen-mode", "size-dpd" ) + '</div>\
+                    <div class="group">' + dropdown( ".setting-zen-mode", "size-dpd", items, storage.db.size ) + '</div>\
                 </div>\
                 <div class="content">\
                     <div class="label">时间</div>\
