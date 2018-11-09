@@ -3,6 +3,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     "use strict";
 
+    function mdCheckbox( cls ) {
+        return '<div class="' + cls + '">\
+                    <input type="checkbox" id="' + cls + '" style="display:none;"/>\
+                    <label for="' + cls + '" class="toggle"><span></span></label>\
+                </div>';
+    }
+
     /*********************************************
      * Data Structure
      *********************************************/
@@ -138,6 +145,39 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     }
 
     /*********************************************
+     * Module
+     *********************************************/
+
+     function moduleView() {
+        return '<div class="content">\
+                    <div class="label">大小</div>\
+                    <div class="group"></div>\
+                </div>\
+                <div class="content">\
+                    <div class="label">时间</div>\
+                    <div class="group">' + mdCheckbox( "time-cbx" ) + '</div>\
+                </div>\
+                <div class="content">\
+                    <div class="label">日期</div>\
+                    <div class="group">' + mdCheckbox( "day-cbx" ) + '</div>\
+                </div>\
+                <div class="content">\
+                    <div class="label">状态</div>\
+                    <div class="group">' + mdCheckbox( "devices-cbx" ) + '</div>\
+                </div>\
+                <div class="content">\
+                    <div class="label">常用网址</div>\
+                    <div class="group">' + mdCheckbox( "top-cbx" ) + '</div>\
+                </div>';
+     }
+
+     function moduleModel() {
+        $( ".setting-zen-mode" ).on( "change", ".module input", function( event ) {
+            
+        });
+     }
+
+    /*********************************************
      * Footer
      *********************************************/
 
@@ -163,6 +203,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_theme_title" ) + '</div>\
                             <div class="content">' + themeView() + '</div>\
                         </div>\
+                        <div class="module">\
+                            <div class="title">模块设置</div>\
+                            ' + moduleView() + '\
+                        </div>\
                         <div class="footer">\
                             <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
                             <div class="waves-effect button close">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
@@ -171,6 +215,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( "body" ).append( tmpl );
 
         themeModel();
+        moduleModel();
         footerModel();
     }
 
