@@ -1657,7 +1657,7 @@ img {
     bottom: 10px;
 
     width: 400px;
-    height: 450px;
+    height: 465px;
 
     padding: 15px;
 
@@ -1673,6 +1673,9 @@ img {
     transition: all .6s ease;
 
     box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .setting-zen-mode .title {
@@ -1730,17 +1733,19 @@ img {
 }
 
 .setting-zen-mode .footer {
-    position: absolute;
+    /*position: absolute;
 
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
     bottom: 0;
-    left: 0;
+    left: 0;*/
 
+    margin-top: 15px;
     width: 100%;
     height: 40px;
+    text-align: right;
 }
 
 .setting-zen-mode .footer .button {
@@ -1760,7 +1765,8 @@ img {
 }
 
 .setting-zen-mode .footer .close {
-    margin: 0 5px;
+    /*margin: 0 5px;*/
+    margin-left: 5px;
     background-color: #1dba90;
 }
 
@@ -1849,6 +1855,7 @@ img {
     padding: 5px 0 0 5px;
 
     width: 100%;
+    max-width: 395px;
     height: 60px;
 
     color: #fff;
