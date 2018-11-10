@@ -34,6 +34,15 @@ body {
     letter-spacing: .5px;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(139, 137, 134, 0.5);
+}
+
 img {
     margin: 10px;
     padding: 5px;
@@ -103,14 +112,6 @@ img {
     padding: 26px 8px 0px 8px;
 }
 
-.setting::-webkit-scrollbar {
-    width: 10px;
-}
-
-.setting::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: rgba(139, 137, 134, 0.5);
-}
 
 /*
 * control
