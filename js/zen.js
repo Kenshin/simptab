@@ -118,8 +118,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     }
 
     function custom() {
-        if ( storage.db.css == "" ) return;
-        if ( $( "zen-mode-style" ).length >= 0 ) $( "zen-mode-style" ).remove();
+        if ( $( "#zen-mode-style" ).length >= 0 ) $( "#zen-mode-style" ).remove();
         $( "head" ).append( '<style id="zen-mode-style" type="text/css">' + storage.db.css + '</style>' );
     }
 
