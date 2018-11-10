@@ -355,7 +355,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
     function dayMode() {
         var date = new Date(),
-            day  = date.toLocaleDateString( navigator.language, { weekday: 'long', month: 'long', day: 'numeric' });
+            day  = date.toLocaleDateString( i18n.GetShort(), { weekday: 'long', month: 'long', day: 'numeric' });
         $( "#time" ).after( '<div class="day-zen-mode">' + day + '</div>' );
         readStorage( ".day-zen-mode", "day" );
     }
