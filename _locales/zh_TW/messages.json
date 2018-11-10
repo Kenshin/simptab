@@ -353,6 +353,10 @@
         "message": "常用網址"
     },
 
+    "zen_mode_setting_css": {
+        "message": "自定義樣式"
+    },
+
     "zen_mode_setting_exit": {
         "message": "退出禪模式"
     },

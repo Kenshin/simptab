@@ -312,7 +312,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             ' + moduleView() + '\
                         </div>\
                         <div class="css">\
-                            <div class="title">自定义样式</div>\
+                            <div class="title">' + i18n.GetLang( "zen_mode_setting_css" ) + '</div>\
                             ' + cssView() + '\
                         </div>\
                         <div class="footer">\

@@ -353,6 +353,10 @@
         "message": "Topsites"
     },
 
+    "zen_mode_setting_css": {
+        "message": "Custom CSS"
+    },
+
     "zen_mode_setting_exit": {
         "message": "Exit Zen mode"
     },

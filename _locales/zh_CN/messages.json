@@ -353,6 +353,10 @@
         "message": "常用网址"
     },
 
+    "zen_mode_setting_css": {
+        "message": "自定义样式"
+    },
+
     "zen_mode_setting_exit": {
         "message": "退出禅模式"
     },
