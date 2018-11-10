@@ -1811,6 +1811,10 @@ img {
     font-size: 150px!important;
 }
 
+.time-zen-mode-middle-win {
+    height: 160px!important;
+}
+
 .day-zen-mode-middle {
     margin-top: initial!important;
     font-weight: 100!important;
@@ -1825,6 +1829,10 @@ img {
     height: 200px!important;
     line-height: initial!important;
     font-size: 200px!important;
+}
+
+.time-zen-mode-large-win {
+    height: 210px!important;
 }
 
 .day-zen-mode-large {

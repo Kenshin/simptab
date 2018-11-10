@@ -103,6 +103,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         color && $( selector ).css( "color", color );
         size    != "normal" && $( selector ).addClass( key + "-zen-mode-" + size );
         display == "false" && $( selector ).hide();
+        key == "time" && correctWinSize();
     }
 
     function setModuleSize( type ) {
@@ -113,6 +114,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                 .addClass( item + "-zen-mode" )
                 .addClass( item + "-zen-mode" + type );
         });
+        correctWinSize();
+    }
+
+    function correctWinSize() {
+        navigator.platform.toLowerCase() == "win32" && storage.db.size == "middle" && $( "#time" ).addClass( "time-zen-mode-middle-win" );
+        navigator.platform.toLowerCase() == "win32" && storage.db.size == "large"  && $( "#time" ).addClass( "time-zen-mode-large-win" );
     }
 
     function exit() {
