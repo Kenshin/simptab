@@ -117,6 +117,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         correctWinSize();
     }
 
+    function custom() {
+        if ( storage.db.css == "" ) return;
+        if ( $( "zen-mode-style" ).length >= 0 ) $( "zen-mode-style" ).remove();
+        $( "head" ).append( '<style id="zen-mode-style" type="text/css">' + storage.db.css + '</style>' );
+    }
+
     function correctWinSize() {
         navigator.platform.toLowerCase() == "win32" && storage.db.size == "middle" && $( "#time" ).addClass( "time-zen-mode-middle-win" );
         navigator.platform.toLowerCase() == "win32" && storage.db.size == "large"  && $( "#time" ).addClass( "time-zen-mode-large-win" );
@@ -259,6 +265,23 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      }
 
     /*********************************************
+     * Css
+     *********************************************/
+
+    function cssView() {
+        return '<div class="content"><textarea></textarea></div>';
+    }
+
+    function cssModel() {
+        $( ".setting-zen-mode .css textarea" ).val( storage.db.css );
+        $( ".setting-zen-mode" ).on( "keyup", ".css textarea", function( event ) {
+            storage.db.css = event.target.value;
+            storage.Set();
+            custom();
+        });
+    }
+
+    /*********************************************
      * Footer
      *********************************************/
 
@@ -288,6 +311,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_modules" ) + '</div>\
                             ' + moduleView() + '\
                         </div>\
+                        <div class="css">\
+                            <div class="title">自定义样式</div>\
+                            ' + cssView() + '\
+                        </div>\
                         <div class="footer">\
                             <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
                             <div class="waves-effect button close">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
@@ -297,6 +324,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
 
         themeModel();
         moduleModel();
+        cssModel();
         footerModel();
     }
 
@@ -345,7 +373,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     function ohtersMode() {
         $( ".controlbar" ).addClass( "controlbar-zen-mode" );
         $( ".progress"   ).addClass( "progress-zen-mode" );
-        $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' )
+        $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' );
+        custom();
         storage.db.theme == "#ffffff" && $( ".setting-trigger-zen-mode" ).addClass( "setting-trigger-white-zen-mode" );
         $( ".setting-trigger-zen-mode" ).on( "click", function( event ) {
             settingTmpl();
