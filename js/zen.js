@@ -31,6 +31,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                 localStorage.setItem( key, JSON.stringify( this.db ));
             } else this.db = JSON.parse( this.db );
             this.themes = _themes;
+            this.key    = key;
         }
 
         Storage.prototype.Set = function() {
@@ -293,6 +294,36 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         $( ".setting-zen-mode" ).on( "click", ".footer .close", function( event ) {
             close();
         });
+        $( ".setting-zen-mode" ).on( "click", ".footer .export", function( event ) {
+            var data = "data:text/json;charset=utf-8," + encodeURIComponent( localStorage[ storage.key ] ),
+                $a   = $( '<a style="display:none" href='+ data + ' download="simptab-zenmode-config.json"></a>' ).appendTo( "body" );
+            $a[0].click();
+            $a.remove();
+        });
+        $( ".setting-zen-mode" ).on( "click", ".footer .import", function( event ) {
+            var input  = document.createElement( "input" ),
+                $input = $(input),
+                onload = function( event ) {
+                    if ( event && event.target && event.target.result ) {
+                        try {
+                            var json = JSON.parse( event.target.result );
+                            console.log( json )
+                            storage.db = json;
+                            storage.Set();
+                            new Notify().Render( "导入成功，请刷新页面生效。" );
+                        } catch ( error ) {
+                            new Notify().Render( 2, "导入失败，配置文件解析失败，请重新确认。" );
+                        }
+                    }
+                };
+            $input.attr({ type : "file", multiple : "false" })
+                .one( "change", function( event ) {
+                    var reader = new FileReader();
+                    reader.onload = onload;
+                    reader.readAsText( event.target.files[0] );
+            });
+            $input.trigger( "click" );
+        });
     }
 
     /*********************************************
@@ -315,6 +346,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             ' + cssView() + '\
                         </div>\
                         <div class="footer">\
+                            <div class="waves-effect button import">导入配置</div>\
+                            <div class="waves-effect button export">导出配置</div>\
                             <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
                             <div class="waves-effect button close">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
                         </div>\

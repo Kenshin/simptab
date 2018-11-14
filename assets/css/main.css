@@ -1746,13 +1746,15 @@ img {
     margin-top: 15px;
     width: 100%;
     height: 40px;
-    text-align: right;
+    text-align: center;
 }
 
 .setting-zen-mode .footer .button {
     width: 80px;
     height: 28px;
     line-height: 28px;
+
+    margin-left: 5px;
 
     font-weight: bold;
     text-align: center;
@@ -1767,8 +1769,12 @@ img {
 
 .setting-zen-mode .footer .close {
     /*margin: 0 5px;*/
-    margin-left: 5px;
     background-color: #1dba90;
+}
+
+.setting-zen-mode .footer .import,
+.setting-zen-mode .footer .export {
+    background-color: #4DB6AC;
 }
 
 .setting-zen-mode .module {
