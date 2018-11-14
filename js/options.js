@@ -1,10 +1,29 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mousetrap, _, Notify, i18n ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function( $, Mousetrap, _, Notify, i18n, comps ) {
 
     var rTmpl = '\
                 <div class="close"><span class="close"></span></div>\
-                <div class="options"></div>\
+                <div class="options">\
+                    <div class="title">自定义站点（ Topsites ）</div>\
+                    <div class="group custom-tp">' + customTpView() + '</div>\
+                </div>\
                 ';
+
+    function customTpView() {
+        var tmpl = '<div class="label">是否启用自定义站点功能？</div>\
+                    ' + comps.Switches( "custom-tp-cbx" ) + '\
+                   ';
+
+        return tmpl;
+    }
+
+    function customTpModel() {
+        //$( ".options .custom-tp" ).find( "input[id=custom-tp-cbx]" ).prop( "checked", true );
+        $( ".options" ).on( "change", ".custom-tp input", function( event ) {
+            var $cb = $(this);
+            $cb.val( $cb.prop( "checked" ));
+        });
+    }
 
     function close() {
         $( ".dialog .close" ).click( function( event ) {
@@ -21,6 +40,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             setTimeout( function() {
                 $( ".dialog-bg" ).addClass( "dialog-bg-show" );
                 $( ".dialog" ).html( rTmpl );
+                customTpModel();
                 close();
             }, 10 );
         }
