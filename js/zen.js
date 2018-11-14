@@ -231,7 +231,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "comps" ], fun
      *********************************************/
 
     function cssView() {
-        return '<div class="content"><textarea></textarea></div>';
+        return '<div class="content"><textarea class="md-textarea"></textarea></div>';
     }
 
     function cssModel() {

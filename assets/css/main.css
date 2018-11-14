@@ -1899,26 +1899,8 @@ img {
 }
 
 .setting-zen-mode .css textarea {
-    padding: 5px 0 0 5px;
-
-    width: 100%;
     max-width: 395px;
     height: 60px;
-
-    color: #fff;
-    background-color: #505c63;
-
-    font-family: monospace;
-    font-size: 13px;
-
-    border-radius: 4px;
-    border: none;
-}
-
-.setting-zen-mode .css textarea:focus {
-    outline: none !important;
-    border-color: #fff;
-    box-shadow: 0px 0 2px #fff;
 }
 
 /*
@@ -2304,4 +2286,29 @@ img {
 
 .dropdown .downlist .list-filed:hover {
     background-color: #41494e;
+}
+
+/*
+* md-textarea
+*/
+
+.md-textarea {
+    padding: 5px 0 0 5px;
+
+    width: 100%;
+
+    color: #fff;
+    background-color: #505c63;
+
+    font-family: monospace;
+    font-size: 13px;
+
+    border-radius: 4px;
+    border: none;
+}
+
+.md-textarea:focus {
+    outline: none !important;
+    border-color: #fff;
+    box-shadow: 0px 0 2px #fff;
 }
