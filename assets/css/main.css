@@ -1124,9 +1124,17 @@ img {
     width: 100%;
 }
 
-.options .custom-tp {
+.options .custom-tp .switche {
     display: flex;
     flex-direction: row;
+
+    margin: 10px 0;
+}
+
+.options .custom-tp .custom-tp-fields {
+    display: none;
+    max-width: 805px;
+    height: 200px;
 }
 
 /*

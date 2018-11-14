@@ -10,8 +10,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 ';
 
     function customTpView() {
-        var tmpl = '<div class="label">是否启用自定义站点功能？</div>\
-                    ' + comps.Switches( "custom-tp-cbx" ) + '\
+        var tmpl = '<div class="switche">\
+                        <div class="label">是否启用自定义站点功能？</div>\
+                        ' + comps.Switches( "custom-tp-cbx" ) + '\
+                   </div>\
+                   <textarea class="md-textarea custom-tp-fields"></textarea>\
                    ';
 
         return tmpl;
@@ -20,8 +23,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     function customTpModel() {
         //$( ".options .custom-tp" ).find( "input[id=custom-tp-cbx]" ).prop( "checked", true );
         $( ".options" ).on( "change", ".custom-tp input", function( event ) {
-            var $cb = $(this);
-            $cb.val( $cb.prop( "checked" ));
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            value ? $( ".options .custom-tp-fields" ).slideDown() : $( ".options .custom-tp-fields" ).slideUp();
         });
     }
 
