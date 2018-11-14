@@ -1100,6 +1100,17 @@ img {
 }
 
 /*
+* options
+*/
+.about {
+    width: 100%;
+    height: 100%;
+
+    color: rgba(51, 51, 51, 0.87);
+    background: #fff;
+}
+
+/*
 * bookmarks
 */
 .bm-overlay {
