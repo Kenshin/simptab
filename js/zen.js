@@ -306,13 +306,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                 onload = function( event ) {
                     if ( event && event.target && event.target.result ) {
                         try {
-                            var json = JSON.parse( event.target.result );
-                            console.log( json )
-                            storage.db = json;
+                            storage.db = JSON.parse( event.target.result );
                             storage.Set();
-                            new Notify().Render( "导入成功，请刷新页面生效。" );
+                            new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
                         } catch ( error ) {
-                            new Notify().Render( 2, "导入失败，配置文件解析失败，请重新确认。" );
+                            new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_import_failed" ));
                         }
                     }
                 };
@@ -346,8 +344,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             ' + cssView() + '\
                         </div>\
                         <div class="footer">\
-                            <div class="waves-effect button import">导入配置</div>\
-                            <div class="waves-effect button export">导出配置</div>\
+                            <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
+                            <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
                             <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
                             <div class="waves-effect button close">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
                         </div>\

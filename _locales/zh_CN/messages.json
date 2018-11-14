@@ -357,6 +357,14 @@
         "message": "自定义样式"
     },
 
+    "zen_mode_setting_import": {
+        "message": "导入配置"
+    },
+
+    "zen_mode_setting_export": {
+        "message": "导出配置"
+    },
+
     "zen_mode_setting_exit": {
         "message": "退出禅模式"
     },
@@ -459,6 +467,14 @@
 
     "notify_zen_mode_theme_random": {
         "message": "已选择随机主题，每次打开新标签页都会随机给出一个主题。"
+    },
+
+    "notify_zen_mode_import_success": {
+        "message": "导入成功，请刷新页面生效。"
+    },
+
+    "notify_zen_mode_import_failed": {
+        "message": "导入失败，配置文件解析失败，请重新确认。"
     },
 
     "notify_zen_mode_exit": {

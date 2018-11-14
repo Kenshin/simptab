@@ -357,6 +357,14 @@
         "message": "Custom CSS"
     },
 
+    "zen_mode_setting_import": {
+        "message": "Import"
+    },
+
+    "zen_mode_setting_export": {
+        "message": "Export"
+    },
+
     "zen_mode_setting_exit": {
         "message": "Exit Zen mode"
     },
@@ -459,6 +467,14 @@
 
     "notify_zen_mode_theme_random": {
         "message": "Enable random theme."
+    },
+
+    "notify_zen_mode_import_success": {
+        "message": "Import sucessful."
+    },
+
+    "notify_zen_mode_import_failed": {
+        "message": "Import failed, config file parse."
     },
 
     "notify_zen_mode_exit": {

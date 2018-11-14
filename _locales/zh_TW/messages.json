@@ -357,6 +357,14 @@
         "message": "自定義樣式"
     },
 
+    "zen_mode_setting_import": {
+        "message": "導入配置"
+    },
+
+    "zen_mode_setting_export": {
+        "message": "導出配置"
+    },
+
     "zen_mode_setting_exit": {
         "message": "退出禪模式"
     },
@@ -459,6 +467,14 @@
 
     "notify_zen_mode_theme_random": {
         "message": "已選擇隨機主題，每次打開新標籤頁都會隨機給出一個主題。"
+    },
+
+    "notify_zen_mode_import_success": {
+        "message": "導入成功，請刷新頁面生效。"
+    },
+
+    "notify_zen_mode_import_failed": {
+        "message": "導入失敗，配置文件解析失敗，請重新確認。"
     },
 
     "notify_zen_mode_exit": {
