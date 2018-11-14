@@ -7,7 +7,41 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     <div class="title">自定义站点（ Topsites ）</div>\
                     <div class="group custom-tp">' + customTpView() + '</div>\
                 </div>\
-                ';
+                ',
+        storage = ( function () {
+            var key      = "simptab-options",
+                _storage = {
+                    version: "1.0.0",
+                    topsites: {
+                        enable: false,
+                        custom: {},
+                    }
+                };
+
+            function Storage() {
+                this.db = localStorage[ key ];
+                if ( !this.db ) {
+                    this.db = $.extend( {}, _storage );
+                    localStorage.setItem( key, JSON.stringify( this.db ));
+                } else this.db = JSON.parse( this.db );
+                this.key = key;
+            }
+
+            Storage.prototype.Set = function() {
+                localStorage.setItem( key, JSON.stringify( this.db ));
+            }
+
+            Storage.prototype.Get = function() {
+                return this.db;
+            }
+
+            Storage.prototype.Clear = function() {
+                localStorage.removeItem( key );
+            }
+
+            return new Storage();
+
+        })();
 
     function customTpView() {
         var tmpl = '<div class="switche">\
