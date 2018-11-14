@@ -193,6 +193,10 @@
         "message": "Pin for #1 hours"
     },
 
+    "setting_zen_state": {
+        "message": "Enable Zen mode"
+    },
+
     "setting_contact_weibo": {
         "message": "Share on Weibo"
     },
@@ -305,6 +309,70 @@
         "message": "<p style='margin-top: 14px;'>If you have a good work or suitable background, please also tell SimpTab, Submission address 👉 <a href='https://goo.gl/forms/oThieQCP6xk626GU2' target='_blank'>Google Form</a><br> Give me a <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>5-star</a> rating, Send feedback and submit <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>issues</a>, with your help to be more perfect.<br></p>"
     },
 
+    "zen_mode_setting_theme_title": {
+        "message": "Theme"
+    },
+
+    "zen_mode_setting_theme_placeholder": {
+        "message": "Custom theme, only css3 values."
+    },
+
+    "zen_mode_setting_modules": {
+        "message": "Modules"
+    },
+
+    "zen_mode_setting_modules_size": {
+        "message": "Size"
+    },
+
+    "zen_mode_setting_modules_size_normal": {
+        "message": "Normal"
+    },
+
+    "zen_mode_setting_modules_size_middle": {
+        "message": "Large"
+    },
+
+    "zen_mode_setting_modules_size_large": {
+        "message": "Larger"
+    },
+
+    "zen_mode_setting_modules_time": {
+        "message": "Time"
+    },
+
+    "zen_mode_setting_modules_day": {
+        "message": "Day"
+    },
+
+    "zen_mode_setting_modules_devices": {
+        "message": "Devices"
+    },
+
+    "zen_mode_setting_modules_topsizes": {
+        "message": "Topsites"
+    },
+
+    "zen_mode_setting_css": {
+        "message": "Custom CSS"
+    },
+
+    "zen_mode_setting_import": {
+        "message": "Import"
+    },
+
+    "zen_mode_setting_export": {
+        "message": "Export"
+    },
+
+    "zen_mode_setting_exit": {
+        "message": "Exit Zen mode"
+    },
+
+    "zen_mode_setting_close": {
+        "message": "Close"
+    },
+
     "version_title": {
         "message": "SimpTab is updated"
     },
@@ -391,6 +459,26 @@
 
     "notify_double_open": {
         "message": "Please close dialog."
+    },
+
+    "notify_zen_mode": {
+        "message": "Please fresh current new tab."
+    },
+
+    "notify_zen_mode_theme_random": {
+        "message": "Enable random theme."
+    },
+
+    "notify_zen_mode_import_success": {
+        "message": "Import sucessful."
+    },
+
+    "notify_zen_mode_import_failed": {
+        "message": "Import failed, config file parse."
+    },
+
+    "notify_zen_mode_exit": {
+        "message": "Exit zen mode success, please refresh new tab."
     },
 
     "version_detail": {

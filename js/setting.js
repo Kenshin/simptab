@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
+define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
 
     "use strict";
 
@@ -191,6 +191,21 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
         }
     }
 
+    function zendmodeState() {
+        var zen = localStorage["simptab-zenmode"] || "false",
+            $target = $( ".zenstate .lineradio" ), span;
+        if ( zen == "true" ) {
+            span = '<span class="checked"></span>';
+            $target.addClass( "lrselected" );
+        } else {
+            localStorage["simptab-zenmode"] = "false";
+            span = '<span class="unchecked"></span>';
+            $target.removeClass( "lrselected" );
+        }
+        $target.find( "input" ).val( zen );
+        $target.prepend( span );
+    }
+
     return {
         Init: function() {
 
@@ -213,6 +228,9 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
 
             // bookmarks permissions checked
             bookmarksPermissions();
+
+            // zen mode checked
+            zendmodeState();
         },
 
         Listen: function ( callback ) {
@@ -253,6 +271,25 @@ define([ "jquery", "waves", "i18n" ], function( $, Waves, i18n ) {
                 }
                 event.target.value = value;
                 setbookmarksPermissions( value );
+            });
+
+            // listen originstate checkbox button event
+            $( ".zenstate input" ).click( function( event ) {
+                var $target = $( event.target ).parent(),
+                    $span   = $target.find( "span" ),
+                    value   = event.target.value == "false" ? "true" : "false";
+                if ( value == "true" ) {
+                    $span.removeAttr( "class" ).addClass( "checked" );
+                    $target.addClass( "lrselected" );
+                    zen.Init();
+                } else {
+                    $span.removeAttr( "class" ).addClass( "unchecked" );
+                    $target.removeClass( "lrselected" );
+                    zen.Exit();
+                }
+                new Notify().Render( i18n.GetLang( "notify_zen_mode" ) );
+                localStorage["simptab-zenmode"] = value;
+                event.target.value = value;
             });
 
             $( ".lineradio" ).on( "click", function( event ) { Waves.attach( '.lineradio', ['waves-block'] ); });

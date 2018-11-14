@@ -57,6 +57,8 @@ define([ "jquery" ], function( $ ) {
             $(item).attr( "data-balloon", i18n( "setting_pin_tooltip" ).replace( "#1", $(item).attr( "data-balloon" ) ) );
         });
 
+        $($( ".zenstate" ).find("label")).text( i18n( "setting_zen_state" ));
+
     }
 
     function main() {

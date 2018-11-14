@@ -193,6 +193,10 @@
         "message": "固定 #1 小時"
     },
 
+    "setting_zen_state": {
+        "message": "啟用 禪模式"
+    },
+
     "setting_contact_weibo": {
         "message": "分享到 微博"
     },
@@ -305,6 +309,70 @@
         "message": "<p style='margin-top:14px;'>如果你有 <code>好的作品</code> 亦或 <code>適合的背景</code>，也請告訴 簡 Tab，投稿地址 👉 <a href='https://goo.gl/forms/om5r57qk1PkksuNr2' target='_blank'>猛戳這裡</a><br>覺得它還不錯，請幫忙 <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>五星好評</a>，這是對我最大的肯定，有任何問題也請 <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>提交 issues</a>，有你的幫助才能更完美。</p>"
     },
 
+    "zen_mode_setting_theme_title": {
+        "message": "主題"
+    },
+
+    "zen_mode_setting_theme_placeholder": {
+        "message": "自定義主題背景，僅支持 CSS3 語法"
+    },
+
+    "zen_mode_setting_modules": {
+        "message": "模塊設置"
+    },
+
+    "zen_mode_setting_modules_size": {
+        "message": "大小"
+    },
+
+    "zen_mode_setting_modules_size_normal": {
+        "message": "正常"
+    },
+
+    "zen_mode_setting_modules_size_middle": {
+        "message": "大"
+    },
+
+    "zen_mode_setting_modules_size_large": {
+        "message": "超大"
+    },
+
+    "zen_mode_setting_modules_time": {
+        "message": "時間"
+    },
+
+    "zen_mode_setting_modules_day": {
+        "message": "日期"
+    },
+
+    "zen_mode_setting_modules_devices": {
+        "message": "狀態"
+    },
+
+    "zen_mode_setting_modules_topsizes": {
+        "message": "常用網址"
+    },
+
+    "zen_mode_setting_css": {
+        "message": "自定義樣式"
+    },
+
+    "zen_mode_setting_import": {
+        "message": "導入配置"
+    },
+
+    "zen_mode_setting_export": {
+        "message": "導出配置"
+    },
+
+    "zen_mode_setting_exit": {
+        "message": "退出禪模式"
+    },
+
+    "zen_mode_setting_close": {
+        "message": "關閉"
+    },
+
     "version_title": {
         "message": "簡 Tab 版本提示"
     },
@@ -391,6 +459,26 @@
 
     "notify_double_open": {
         "message": "請先退出當前模式。"
+    },
+
+    "notify_zen_mode": {
+        "message": "刷新當前頁面後生效。"
+    },
+
+    "notify_zen_mode_theme_random": {
+        "message": "已選擇隨機主題，每次打開新標籤頁都會隨機給出一個主題。"
+    },
+
+    "notify_zen_mode_import_success": {
+        "message": "導入成功，請刷新頁面生效。"
+    },
+
+    "notify_zen_mode_import_failed": {
+        "message": "導入失敗，配置文件解析失敗，請重新確認。"
+    },
+
+    "notify_zen_mode_exit": {
+        "message": "已退出禪模式，頁面刷新後生效。"
     },
 
     "version_detail": {
