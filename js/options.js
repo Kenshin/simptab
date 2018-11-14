@@ -48,15 +48,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="label">是否启用自定义站点功能？</div>\
                         ' + comps.Switches( "custom-tp-cbx" ) + '\
                    </div>\
-                   <textarea class="md-textarea custom-tp-fields"></textarea>\
-                   <div class="notice">目前仅支持最大 9个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab</div>\
+                   <div class="custom-tp-fields">\
+                        <textarea class="md-textarea"></textarea>\
+                        <div class="notice">目前仅支持最大 9个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab</div>\
+                   </div>\
                    ';
         return tmpl;
     }
 
     function customTpModel() {
         $( ".options .custom-tp" ).find( "input[id=custom-tp-cbx]" ).prop( "checked", storage.db.topsites.enable );
-        storage.db.topsites.enable && $( ".options .custom-tp-fields" ).slideDown();
+        storage.db.topsites.enable && $( ".options .custom-tp-fields" ).show();
         $( ".options" ).on( "change", ".custom-tp input", function( event ) {
             var $cb   = $(this),
                 value = $cb.prop( "checked" );

@@ -1134,7 +1134,10 @@ img {
 .options .custom-tp .custom-tp-fields {
     display: none;
     max-width: 805px;
-    height: 200px;
+    height: 220px;
+}
+.options .custom-tp .custom-tp-fields textarea {
+    height: 100%;
 }
 
 .options .custom-tp .notice {
