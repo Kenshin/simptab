@@ -65,6 +65,10 @@
         "message": "背景管理器"
     },
 
+    "controlbar_options": {
+        "message": "選項"
+    },
+
     "controlbar_about": {
         "message": "關於"
     },

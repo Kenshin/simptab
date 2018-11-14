@@ -65,6 +65,10 @@
         "message": "BG Manage"
     },
 
+    "controlbar_options": {
+        "message": "Options"
+    },
+
     "controlbar_about": {
         "message": "About"
     },

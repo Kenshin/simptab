@@ -191,6 +191,10 @@ img {
     transform: translateX(-120px);
 }
 
+.horz-toolbox-show-3 {
+    transform: translateX(-180px);
+}
+
 .chromelink, .controlink {
     display: block;
 }
@@ -273,6 +277,10 @@ img {
 
 .manageicon {
     background-image: url("../images/manage.png");
+}
+
+.optionsicon {
+    background-image: url("../images/options.png");
 }
 
 .abouticon {
@@ -1360,7 +1368,7 @@ img {
     bottom: 5px;
 
     width: 375px;
-    height: 360px;
+    height: 380px;
 
     padding: 15px;
 
