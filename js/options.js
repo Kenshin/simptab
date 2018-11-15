@@ -66,7 +66,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         $( ".options" ).on( "keyup", ".custom-style textarea", function( event ) {
             storage.db.css = event.target.value;
             storage.Set();
+            custom();
         });
+    }
+
+    function custom() {
+        if ( $( "#simptab-options" ).length >= 0 ) $( "#simptab-options" ).remove();
+        $( "head" ).append( '<style id="simptab-options" type="text/css">' + storage.db.css + '</style>' );
     }
 
     /*********************************************
@@ -124,6 +130,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     return {
+        Init: function() {
+            storage.db.css != "" && custom();
+        },
+
         Render: function() {
             $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog"></div></div></div>' );
             setTimeout( function() {
