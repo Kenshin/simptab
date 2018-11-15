@@ -59,12 +59,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     function customTpModel() {
         $( ".options .custom-tp" ).find( "input[id=custom-tp-cbx]" ).prop( "checked", storage.db.topsites.enable );
         $( ".options .custom-tp" ).find( "textarea" ).text( storage.db.topsites.custom );
-        storage.db.topsites.enable && $( ".options .custom-tp-fields" ).show();
+        storage.db.topsites.enable && $( ".options .custom-tp-fields" ).css( "transform", "scaleY(1)" );
         $( ".options" ).on( "change", ".custom-tp input", function( event ) {
             var $cb   = $(this),
                 value = $cb.prop( "checked" );
             $cb.val( value );
-            value ? $( ".options .custom-tp-fields" ).slideDown() : $( ".options .custom-tp-fields" ).slideUp();
+            value ? $( ".options .custom-tp-fields" ).css( "transform", "scaleY(1)" ) : $( ".options .custom-tp-fields" ).css( "transform", "scaleY(0)" );
             storage.db.topsites.enable = value;
             storage.Set();
         });
