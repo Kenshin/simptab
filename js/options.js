@@ -50,7 +50,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                    </div>\
                    <div class="custom-tp-fields">\
                         <textarea class="md-textarea"></textarea>\
-                        <div class="notice">目前仅支持最大 9个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab</div>\
+                        <div class="notice">目前仅支持最多九个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab</div>\
                    </div>\
                    ';
         return tmpl;
