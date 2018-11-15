@@ -7,19 +7,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
      * Data Structure
      *********************************************/
 
-    var rTmpl = '\
-                <div class="close"><span class="close"></span></div>\
-                <div class="options">\
-                    <div class="content">\
-                        <div class="title">自定义样式（ 全局 ）</div>\
-                        <div class="group custom-style">' + customStyleView() + '</div>\
-                        <div class="title">自定义站点（ Topsites ）</div>\
-                        <div class="group custom-tp">' + customTpView() + '</div>\
-                    </div>\
-                    ' + footerView() + '\
-            </div>\
-                ',
-        storage = ( function () {
+    var storage = ( function () {
             var key      = "simptab-options",
                 _storage = {
                     version: chrome.runtime.getManifest().version,
@@ -172,7 +160,19 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
      *********************************************/
 
     function render() {
-        $( ".dialog" ).html( rTmpl );
+        var tmpl = '\
+                    <div class="close"><span class="close"></span></div>\
+                    <div class="options">\
+                        <div class="content">\
+                            <div class="title">自定义样式（ 全局 ）</div>\
+                            <div class="group custom-style">' + customStyleView() + '</div>\
+                            <div class="title">自定义站点（ Topsites ）</div>\
+                            <div class="group custom-tp">' + customTpView() + '</div>\
+                        </div>\
+                        ' + footerView() + '\
+                    </div>\
+                    ';
+        $( ".dialog" ).html( tmpl );
         customTpModel();
         customStyleModel();
         footerModel();
