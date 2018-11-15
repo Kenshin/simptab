@@ -112,7 +112,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         var tmpl = '<div class="footer">\
                         <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
                         <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
-                        <div class="waves-effect button clear">恢复初始值</div>\
+                        <div class="waves-effect button clear">'  + i18n.GetLang( "options_footer_clear" )    + '</div>\
                    </div>\
                    ';
         return tmpl;

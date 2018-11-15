@@ -329,6 +329,10 @@
         "message": "目前仅支持最多九个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab"
     },
 
+    "options_footer_clear": {
+        "message": "恢复初始值"
+    },
+
     "zen_mode_setting_theme_title": {
         "message": "主题"
     },
