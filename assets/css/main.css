@@ -1115,6 +1115,7 @@ img {
 
 .options .content {
     padding-right: 15px;
+    height: 100%;
     overflow-x: hidden;
 }
 
@@ -1140,7 +1141,7 @@ img {
 
 .options .custom-tp .custom-tp-fields {
     max-width: 805px;
-    height: 220px;
+    height: 150px;
 
     transform: scaleY(0);
     transform-origin: 0 0;
@@ -1170,7 +1171,7 @@ img {
 }
 
 .options .custom-style textarea {
-    height: 220px;
+    height: 150px;
 }
 
 .options .footer {
