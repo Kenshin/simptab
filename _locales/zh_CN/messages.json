@@ -313,6 +313,22 @@
         "message": "<p style='margin-top:14px;'>如果你有 <code>好的作品</code> 亦或 <code>适合的背景</code>，也请告诉 简 Tab，投稿地址 👉 <a href='https://goo.gl/forms/j1PuNz4DMAjS0Gj33' target='_blank'>猛戳这里</a> · <a href='https://wj.qq.com/s/2710075/6108' target='_blank'>备用地址</a><br>觉得它还不错，请帮忙 <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>五星好评</a>，这是对我最大的肯定，有任何问题也请 <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>提交 issues</a>，有你的帮助才能更完美。</p>"
     },
 
+    "options_custom_style": {
+        "message": "自定义样式（ 全局 ）"
+    },
+
+    "options_custom_tp": {
+        "message": "自定义站点（ Topsites ）"
+    },
+
+    "options_custom_tp_cbx": {
+        "message": "是否启用自定义站点功能？"
+    },
+
+    "options_custom_tp_notice": {
+        "message": "目前仅支持最多九个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab"
+    },
+
     "zen_mode_setting_theme_title": {
         "message": "主题"
     },

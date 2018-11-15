@@ -72,12 +72,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
     function customTpView() {
         var tmpl = '<div class="switche">\
-                        <div class="label">是否启用自定义站点功能？</div>\
+                        <div class="label">' + i18n.GetLang( "options_custom_tp_cbx" ) + '</div>\
                         ' + comps.Switches( "custom-tp-cbx" ) + '\
                    </div>\
                    <div class="custom-tp-fields">\
                         <textarea class="md-textarea"></textarea>\
-                        <div class="notice">目前仅支持最多九个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab</div>\
+                        <div class="notice">' + i18n.GetLang( "options_custom_tp_notice" ) + '</div>\
                    </div>\
                    ';
         return tmpl;
@@ -164,9 +164,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     <div class="close"><span class="close"></span></div>\
                     <div class="options">\
                         <div class="content">\
-                            <div class="title">自定义样式（ 全局 ）</div>\
+                            <div class="title">' + i18n.GetLang( "options_custom_style" ) + '</div>\
                             <div class="group custom-style">' + customStyleView() + '</div>\
-                            <div class="title">自定义站点（ Topsites ）</div>\
+                            <div class="title">' + i18n.GetLang( "options_custom_tp" ) + '</div>\
                             <div class="group custom-tp">' + customTpView() + '</div>\
                         </div>\
                         ' + footerView() + '\
