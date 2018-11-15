@@ -1105,10 +1105,13 @@ img {
 .options {
     height: 100%;
 
-    margin: 15px;
+    margin: 30px 15px 15px 15px;
+    padding-right: 15px;
 
     color: #fff;
     text-transform: initial;
+
+    overflow-x: hidden;
 }
 
 .options .title {
@@ -1149,6 +1152,11 @@ img {
     font-size: 11px;
     font-weight: 500;
 }
+
+.options .custom-style textarea {
+    height: 220px;
+}
+
 /*
 * bookmarks
 */

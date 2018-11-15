@@ -10,9 +10,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     var rTmpl = '\
                 <div class="close"><span class="close"></span></div>\
                 <div class="options">\
+                    <div class="title">自定义样式（ 全局 ）</div>\
+                    <div class="group custom-style">' + customStyleView() + '</div>\
                     <div class="title">自定义站点（ Topsites ）</div>\
                     <div class="group custom-tp">' + customTpView() + '</div>\
-                </div>\
+            </div>\
                 ',
         storage = ( function () {
             var key      = "simptab-options",
@@ -21,7 +23,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     topsites: {
                         enable: false,
                         custom: "",
-                    }
+                    },
+                    css: ""
                 };
 
             function Storage() {
@@ -48,6 +51,23 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             return new Storage();
 
         })();
+
+    /*********************************************
+     * Custom style
+     *********************************************/
+
+    function customStyleView() {
+        var tmpl = '<textarea class="md-textarea"></textarea>';
+        return tmpl;
+    }
+
+    function customStyleModel() {
+        $( ".options .custom-style" ).find( "textarea" ).text( storage.db.css );
+        $( ".options" ).on( "keyup", ".custom-style textarea", function( event ) {
+            storage.db.css = event.target.value;
+            storage.Set();
+        });
+    }
 
     /*********************************************
      * Custom topsites
@@ -91,6 +111,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     function render() {
         $( ".dialog" ).html( rTmpl );
         customTpModel();
+        customStyleModel();
     }
 
     function close() {
