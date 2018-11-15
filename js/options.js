@@ -130,6 +130,40 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         return tmpl;
     }
 
+    function footerModel() {
+        $( ".options" ).on( "click", ".footer .import", function( event ) {
+            var input  = document.createElement( "input" ),
+                $input = $(input),
+                onload = function( event ) {
+                    if ( event && event.target && event.target.result ) {
+                        try {
+                            storage.db = JSON.parse( event.target.result );
+                            storage.Set();
+                            new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
+                        } catch ( error ) {
+                            new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_import_failed" ));
+                        }
+                    }
+                };
+            $input.attr({ type : "file", multiple : "false" })
+                .one( "change", function( event ) {
+                    var reader = new FileReader();
+                    reader.onload = onload;
+                    reader.readAsText( event.target.files[0] );
+            });
+            $input.trigger( "click" );
+        });
+        $( ".options" ).on( "click", ".footer .export", function( event ) {
+            var data = "data:text/json;charset=utf-8," + encodeURIComponent( localStorage[ storage.key ] ),
+                $a   = $( '<a style="display:none" href='+ data + ' download="simptab-config.json"></a>' ).appendTo( "body" );
+            $a[0].click();
+            $a.remove();
+        });
+        $( ".options" ).on( "click", ".footer .clear", function( event ) {
+            console.log( "asdasdf3", event.target )
+        });
+    }
+
     /*********************************************
      * Dialog
      *********************************************/
@@ -138,6 +172,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         $( ".dialog" ).html( rTmpl );
         customTpModel();
         customStyleModel();
+        footerModel();
     }
 
     function close() {
