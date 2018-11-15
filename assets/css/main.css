@@ -1153,6 +1153,15 @@ img {
     font-weight: 500;
 }
 
+.options .custom-tp .show {
+    transform: scaleY(1);
+}
+
+.options .custom-tp .hide {
+    transform: scaleY(0);
+    height: 0;
+}
+
 .options .custom-style textarea {
     height: 220px;
 }

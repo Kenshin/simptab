@@ -93,14 +93,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     function customTpModel() {
+        var textareaState = function( state ) {
+            state ? $( ".options .custom-tp-fields" ).removeClass( "hide" ).addClass( "show" ) : $( ".options .custom-tp-fields" ).removeClass( "show" ).addClass( "hide" );
+        };
         $( ".options .custom-tp" ).find( "input[id=custom-tp-cbx]" ).prop( "checked", storage.db.topsites.enable );
         $( ".options .custom-tp" ).find( "textarea" ).text( storage.db.topsites.custom );
-        storage.db.topsites.enable && $( ".options .custom-tp-fields" ).css( "transform", "scaleY(1)" );
+        textareaState( storage.db.topsites.enable );
         $( ".options" ).on( "change", ".custom-tp input", function( event ) {
             var $cb   = $(this),
                 value = $cb.prop( "checked" );
             $cb.val( value );
-            value ? $( ".options .custom-tp-fields" ).css( "transform", "scaleY(1)" ) : $( ".options .custom-tp-fields" ).css( "transform", "scaleY(0)" );
+            textareaState( value );
             storage.db.topsites.enable = value;
             storage.Set();
         });
