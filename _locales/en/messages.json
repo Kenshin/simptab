@@ -481,6 +481,18 @@
         "message": "Please close dialog."
     },
 
+    "notify_options_clear": {
+        "message": "Is the initial value restored?"
+    },
+
+    "notify_options_clear_success": {
+        "message": "Successful, please refresh."
+    },
+
+    "notify_options_agree": {
+        "message": "Agree "
+    },
+
     "notify_zen_mode": {
         "message": "Please fresh current new tab."
     },

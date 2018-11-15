@@ -481,6 +481,18 @@
         "message": "请先退出当前模式。"
     },
 
+    "notify_options_clear": {
+        "message": "是否恢复（只包含上述内容的）初始值？"
+    },
+
+    "notify_options_clear_success": {
+        "message": "已恢复初始值，请刷新本页。"
+    },
+
+    "notify_options_agree": {
+        "message": "同意 "
+    },
+
     "notify_zen_mode": {
         "message": "刷新当前页面后生效。"
     },

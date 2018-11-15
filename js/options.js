@@ -148,9 +148,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             $a.remove();
         });
         $( ".options" ).on( "click", ".footer .clear", function( event ) {
-            new Notify().Render( "snackbar", "是否恢复（只包含上述内容的）初始值？", "同意 ", () => {
+            new Notify().Render( "snackbar", i18n.GetLang( "notify_options_clear" ), i18n.GetLang( "notify_options_agree" ), () => {
                 storage.Clear();
-                new Notify().Render( "已恢复初始值，请刷新本页。");
+                new Notify().Render( i18n.GetLang( "notify_options_clear_success" ));
             });
         });
     }
