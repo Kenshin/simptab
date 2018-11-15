@@ -10,10 +10,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     var rTmpl = '\
                 <div class="close"><span class="close"></span></div>\
                 <div class="options">\
-                    <div class="title">自定义样式（ 全局 ）</div>\
-                    <div class="group custom-style">' + customStyleView() + '</div>\
-                    <div class="title">自定义站点（ Topsites ）</div>\
-                    <div class="group custom-tp">' + customTpView() + '</div>\
+                    <div class="content">\
+                        <div class="title">自定义样式（ 全局 ）</div>\
+                        <div class="group custom-style">' + customStyleView() + '</div>\
+                        <div class="title">自定义站点（ Topsites ）</div>\
+                        <div class="group custom-tp">' + customTpView() + '</div>\
+                    </div>\
+                    ' + footerView() + '\
             </div>\
                 ',
         storage = ( function () {
@@ -111,6 +114,19 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.db.topsites.custom = event.target.value;
             storage.Set();
         });
+    }
+
+    /*********************************************
+     * Footer
+     *********************************************/
+
+    function footerView() {
+        var tmpl = '<div class="footer">\
+                        <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
+                        <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
+                   </div>\
+                   ';
+        return tmpl;
     }
 
     /*********************************************

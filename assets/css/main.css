@@ -1103,14 +1103,18 @@ img {
 * options
 */
 .options {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
 
     margin: 30px 15px 15px 15px;
-    padding-right: 15px;
+    height: 100%;
 
     color: #fff;
     text-transform: initial;
+}
 
+.options .content {
+    padding-right: 15px;
     overflow-x: hidden;
 }
 
@@ -1151,6 +1155,9 @@ img {
     font-style: italic;
     font-size: 11px;
     font-weight: 500;
+
+    /* hack code */
+    margin-bottom: 40px;
 }
 
 .options .custom-tp .show {
@@ -1165,6 +1172,52 @@ img {
 .options .custom-style textarea {
     height: 220px;
 }
+
+.options .footer {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding-right: 15px;
+
+    height: 50px;
+
+    background: rgb(47, 52, 55);
+}
+
+.options .footer .button {
+    width: 80px;
+    height: 28px;
+    line-height: 28px;
+
+    margin-left: 5px;
+
+    font-weight: bold;
+    text-align: center;
+
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.options .footer .exit {
+    background-color: #F44336;
+}
+
+.options .footer .close {
+    background-color: #1dba90;
+}
+
+.options .footer .import,
+.options .footer .export {
+    background-color: #4DB6AC;
+}
+
 
 /*
 * bookmarks
