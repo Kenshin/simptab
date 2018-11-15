@@ -1196,7 +1196,7 @@ img {
     height: 28px;
     line-height: 28px;
 
-    margin-left: 5px;
+    margin-left: 10px;
 
     font-weight: bold;
     text-align: center;
@@ -1205,19 +1205,14 @@ img {
     cursor: pointer;
 }
 
-.options .footer .exit {
+.options .footer .clear {
     background-color: #F44336;
-}
-
-.options .footer .close {
-    background-color: #1dba90;
 }
 
 .options .footer .import,
 .options .footer .export {
     background-color: #4DB6AC;
 }
-
 
 /*
 * bookmarks
