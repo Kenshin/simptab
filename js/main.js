@@ -95,7 +95,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // validation background
     localStorage["simptab-zenmode"] != "true" && background.Valid();
 
-    topsites.Init();
+    options.Init();
+
+    topsites.Init( options.Storage.db.topsites );
 
     // short cuts init
     shortcuts.Init();
@@ -122,7 +124,5 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     });
 
     localStorage["simptab-zenmode"] == "true" && zen.Render();
-
-    options.Init();
 
 });
