@@ -227,7 +227,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "comps" ], fun
      }
 
     /*********************************************
-     * Css
+     * CSS
      *********************************************/
 
     function cssView() {
