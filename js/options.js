@@ -160,7 +160,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             $a.remove();
         });
         $( ".options" ).on( "click", ".footer .clear", function( event ) {
-            console.log( "asdasdf3", event.target )
+            new Notify().Render( "snackbar", "是否恢复（只包含上述内容的）初始值？", "同意 ", () => {
+                storage.Clear();
+                new Notify().Render( "已恢复初始值，请刷新本页。");
+            });
         });
     }
 
