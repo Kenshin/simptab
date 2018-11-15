@@ -1,6 +1,12 @@
 
 define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function( $, Mousetrap, _, Notify, i18n, comps ) {
 
+    "use strict";
+
+    /*********************************************
+     * Data Structure
+     *********************************************/
+
     var rTmpl = '\
                 <div class="close"><span class="close"></span></div>\
                 <div class="options">\
@@ -43,6 +49,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
         })();
 
+    /*********************************************
+     * Custom topsites
+     *********************************************/
+
     function customTpView() {
         var tmpl = '<div class="switche">\
                         <div class="label">是否启用自定义站点功能？</div>\
@@ -73,6 +83,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.Set();
         });
     }
+
+    /*********************************************
+     * Dialog
+     *********************************************/
 
     function render() {
         $( ".dialog" ).html( rTmpl );
