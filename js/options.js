@@ -144,7 +144,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 render();
                 close();
             }, 10 );
-        }
+        },
+
+        Storage: storage,
     }
 
 });
