@@ -74,6 +74,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         });
     }
 
+    function render() {
+        $( ".dialog" ).html( rTmpl );
+        customTpModel();
+    }
+
     function close() {
         $( ".dialog .close" ).click( function( event ) {
             $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
@@ -88,8 +93,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog"></div></div></div>' );
             setTimeout( function() {
                 $( ".dialog-bg" ).addClass( "dialog-bg-show" );
-                $( ".dialog" ).html( rTmpl );
-                customTpModel();
+                render();
                 close();
             }, 10 );
         }
