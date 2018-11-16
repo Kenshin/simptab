@@ -186,7 +186,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         var tmpl = '\
                     <div class="close"><span class="close"></span></div>\
                     <div class="options">\
-                        <div class="head">选项</div>\
+                        <div class="head">' + i18n.GetLang( "options_head" ) + '</div>\
                         <div class="content">\
                             <div class="title">' + i18n.GetLang( "options_custom_style" ) + '</div>\
                             <div class="group custom-style">' + customStyleView() + '</div>\

@@ -313,6 +313,10 @@
         "message": "<p style='margin-top:14px;'>如果你有 <code>好的作品</code> 亦或 <code>適合的背景</code>，也請告訴 簡 Tab，投稿地址 👉 <a href='https://goo.gl/forms/om5r57qk1PkksuNr2' target='_blank'>猛戳這裡</a><br>覺得它還不錯，請幫忙 <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>五星好評</a>，這是對我最大的肯定，有任何問題也請 <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>提交 issues</a>，有你的幫助才能更完美。</p>"
     },
 
+    "options_head": {
+        "message": "選項"
+    },
+
     "options_custom_style": {
         "message": "自定義樣式（ 全局 ）"
     },
