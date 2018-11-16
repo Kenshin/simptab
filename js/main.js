@@ -32,6 +32,8 @@ requirejs.config({
       "bookmarks"  : "js/bookmarks",
       "welcome"    : "js/welcome",
       "zen"        : "js/zen",
+      "options"    : "js/options",
+      "comps"      : "js/components",
       "message"    : "js/message",
     },
     shim: {
@@ -45,7 +47,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options ) {
 
     progress.Init();
 
@@ -93,7 +95,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // validation background
     localStorage["simptab-zenmode"] != "true" && background.Valid();
 
-    topsites.Init();
+    options.Init();
+
+    topsites.Init( options.Storage.db.topsites );
 
     // short cuts init
     shortcuts.Init();

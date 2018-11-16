@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], function( $, Mousetrap, _, Notify, i18n, vo, date ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "comps" ], function( $, Mousetrap, _, Notify, i18n, vo, comps ) {
 
     "use strict";
 
@@ -58,44 +58,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
     /*********************************************
      * Common
      *********************************************/
-
-    function dropdown( target, cls, items, label ) {
-        var tmpl     = '<div class="list-filed" value="<%- item.value %>"><%- item.name %></div>',
-            compiled = _.template( '<% jq.each( items, function( idx, item ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
-            html     = compiled({ 'items': items }),
-            current  = items.find( function( item ) { return item.value == label });
-
-        target = target + " ." + cls;
-        $( document ).on( "click", target, function( event ) {
-            $( target ).find( ".downlist" ).css({ "opacity": 1, transform: "scaleY(1)" });
-        });
-        $( document ).on( "click", target + " .downlist .list-filed", function( event ) {
-            var name  = event.target.textContent,
-                value = $(event.target).attr( "value" );
-            $( target ).find( ".drop .label" ).text( name );
-            $( target ).find( ".downlist" ).css({ "opacity": 0, transform: "scaleY(0)" });
-            var evt  = new Event( "dropdown" );
-            evt.data = { name: name, value: value };
-            $( target )[0].dispatchEvent( evt );
-            event.stopPropagation();
-        });
-        return '<div class="dropdown ' + cls + '">\
-                    <div class="drop">\
-                        <div class="label">' + current.name + '</div>\
-                        <div class="arrow"></div>\
-                    </div>\
-                    <div class="downlist">\
-                        ' + html + '\
-                    </div>\
-                </div>';
-    }
-
-    function mdCheckbox( cls ) {
-        return '<div class="' + cls + '">\
-                    <input type="checkbox" id="' + cls + '" style="display:none;"/>\
-                    <label for="' + cls + '" class="toggle"><span></span></label>\
-                </div>';
-    }
 
     function readStorage( selector, key ) {
         var color   = storage.db[ key ].color,
@@ -223,23 +185,23 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
         var items = [{ name: i18n.GetLang( "zen_mode_setting_modules_size_normal" ), value: "normal" }, { name: i18n.GetLang( "zen_mode_setting_modules_size_middle" ), value: "middle" }, { name: i18n.GetLang( "zen_mode_setting_modules_size_large" ), value: "large" }];
         return '<div class="content">\
                     <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_size" ) + '</div>\
-                    <div class="group">' + dropdown( ".setting-zen-mode", "size-dpd", items, storage.db.size ) + '</div>\
+                    <div class="group">' + comps.Dropdown( ".setting-zen-mode", "size-dpd", items, storage.db.size ) + '</div>\
                 </div>\
                 <div class="content">\
                     <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_time" ) + '</div>\
-                    <div class="group">' + mdCheckbox( "time-cbx" ) + '</div>\
+                    <div class="group">' + comps.Switches( "time-cbx" ) + '</div>\
                 </div>\
                 <div class="content">\
                     <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_day" ) + '</div>\
-                    <div class="group">' + mdCheckbox( "day-cbx" ) + '</div>\
+                    <div class="group">' + comps.Switches( "day-cbx" ) + '</div>\
                 </div>\
                 <div class="content">\
                     <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_devices" ) + '</div>\
-                    <div class="group">' + mdCheckbox( "devices-cbx" ) + '</div>\
+                    <div class="group">' + comps.Switches( "devices-cbx" ) + '</div>\
                 </div>\
                 <div class="content">\
                     <div class="label">' + i18n.GetLang( "zen_mode_setting_modules_topsizes" ) + '</div>\
-                    <div class="group">' + mdCheckbox( "topsites-cbx" ) + '</div>\
+                    <div class="group">' + comps.Switches( "topsites-cbx" ) + '</div>\
                 </div>';
      }
 
@@ -265,11 +227,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
      }
 
     /*********************************************
-     * Css
+     * CSS
      *********************************************/
 
     function cssView() {
-        return '<div class="content"><textarea></textarea></div>';
+        return '<div class="content"><textarea class="md-textarea"></textarea></div>';
     }
 
     function cssModel() {

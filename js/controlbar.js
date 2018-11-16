@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ], function( $, i18n, vo, date, files, setting, manage, about ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", "options" ], function( $, i18n, vo, date, files, setting, manage, about, options ) {
 
     "use strict";
 
@@ -113,13 +113,15 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
             $( ".controlink[url=setting]" ).mouseenter( function( event ) {
                 $( ".controlink[url=setting]" ).prev().addClass( "horz-toolbox-show" );
                 $( ".controlink[url=manage]" ).parent().addClass( "horz-toolbox-show-1" );
-                $( ".controlink[url=about]" ).parent().addClass( "horz-toolbox-show-2" );
+                $( ".controlink[url=options]" ).parent().addClass( "horz-toolbox-show-2" );
+                $( ".controlink[url=about]" ).parent().addClass( "horz-toolbox-show-3" );
             });
 
             $($( ".controlbar li" )[8]).mouseleave( function( event ) {
                 $( ".controlink[url=setting]" ).prev().removeClass( "horz-toolbox-show" );
                 $( ".controlink[url=manage]" ).parent().removeClass( "horz-toolbox-show-1" );
-                $( ".controlink[url=about]" ).parent().removeClass( "horz-toolbox-show-2" );
+                $( ".controlink[url=options]" ).parent().removeClass( "horz-toolbox-show-2" );
+                $( ".controlink[url=about]" ).parent().removeClass( "horz-toolbox-show-3" );
             });
 
             // listen control link
@@ -197,6 +199,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about" ]
                         $( "body" ).find( ".dialog-overlay" ).length == 0 ?
                             manage.Render() :
                             new Notify().Render( i18n.GetLang( "notify_double_open" ) );
+                        break;
+                    case "options":
+                        options.Render();
                         break;
                     case "about":
                         $( "body" ).find( ".dialog-overlay" ).length == 0 ?

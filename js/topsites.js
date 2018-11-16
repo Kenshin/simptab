@@ -157,10 +157,27 @@ define([ "jquery" ], function( $ ) {
         //offestPosition();
     }
 
+    Topsites.prototype.Custom = function( data ) {
+        var result= [],
+            lines = data.split( "\n" );
+        for( var i = 0; i < lines.length; i++ ){
+            var line  = lines[i],
+                arr   = line.split( "," ),
+                title = arr[0],
+                url   = arr[1];
+            result.push({ title: title, url: url });
+        }
+        return result;
+    }
+
     return {
-        Init: function() {
+        Init: function( result ) {
             tp = new Topsites();
-            chrome.topSites.get( topSitesRender );
+            if ( result.enable && result.custom != "" ) {
+                topSitesRender( tp.Custom( result.custom ));
+            } else {
+                chrome.topSites.get( topSitesRender );
+            }
         },
         sites: function() {
             return topsites;

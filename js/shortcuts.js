@@ -18,6 +18,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             { short: "7", long: "upload", hiden: true },
             { short: "f", long: "refresh"  },
             { short: "m", long: "manage"   },
+            { short: "o", long: "options"  },
             { short: "t", long: "about"    },
             { short: "s", long: "setting"  },
             { short: "a", long: "favorite" },
