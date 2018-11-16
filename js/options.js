@@ -21,6 +21,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         '{"key":"b",  "title":"必应搜索",    "query": "https://bing.com/search?q={query}"}',
                         '{"key":"d",  "title":"DuckDuckGo", "query": "https://duckduckgo.com/?q={query}"}',
                         '{"key":"bd", "title":"百度搜索",    "query": "https://www.baidu.com/s?wd={query}"}',
+                        '{"key":"wx", "title":"微信搜素",    "query": "https://weixin.sogou.com/weixin?type=2&s_from=input&query={query}"}',
+                        '{"key":"z", "title":"知乎搜素",     "query": "http://zhihu.sogou.com/zhihu?query={query}"}',
+                        '{"key":"bk", "title":"百科搜索",    "query": "http://www.baike.com/wiki/{query}"}',
+                        '{"key":"wk", "title":"维基百科",    "query": "https://zh.wikipedia.org/wiki/{query}"}',
+                        '{"key":"jd", "title":"京东",       "query": "https://search.jd.com/Search?keyword={query}&enc=utf-8"}',
+                        '{"key":"tb", "title":"淘宝",       "query": "https://s.taobao.com/search?q={query}"}',
+                        '{"key":"v2", "title":"V2EX",      "query": "https://www.sov2ex.com/?q={query}"}',
                     ],
                 };
 
