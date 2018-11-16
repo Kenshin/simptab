@@ -192,12 +192,14 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         return { match: match, html: html };
     }
 
-    function quickSearch( value ) {
+    function quickSearch( value, conditions ) {
         var match = [], html = "";
         bookmarks.search.forEach( function( item ) {
-            item.url = item.query.replace( "{query}", value );
-            match.push( item );
-            html += createResultTmpl( item );
+            if ( !conditions || ( conditions && item.key.indexOf( conditions ) != -1 )) {
+                item.url = item.query.replace( "{query}", value );
+                match.push( item );
+                html += createResultTmpl( item );
+            }
         });
         return { match: match, html: html };
     }
@@ -231,11 +233,20 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
             var value  = event.target.value,
                 result = { match: [], html: "" },
                 searchKey = /^[sS] /,
+                subKey = /^\w+ /,
                 key    = event.keyCode;
             if ( key == 38 || key == 40 || key == 13 ) return;
             if ( searchKey.test( value )) {
-                value  = value.replace( searchKey, "" );
-                result = quickSearch( value );
+                var conditions;
+                value = value.replace( searchKey, "" );
+                if ( subKey.test( value ) ) {
+                    var arr = value.match( subKey );
+                    if ( arr && arr.length > 0 ) {
+                        value      = value.replace( subKey, "" );
+                        conditions = arr[0].trim();
+                    }
+                }
+                result = quickSearch( value, conditions );
             } else if ( value != "" ) {
                 result = bmSearch( event.target.value );
                 $( ".quickbar .search" ).addClass( "fix" );
