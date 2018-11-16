@@ -329,6 +329,10 @@
         "message": "Only supports max 9 web sites, one per line, usage , split → simptab, http://ksria.com/simptab"
     },
 
+    "options_custom_search": {
+        "message": "Custom Search"
+    },
+
     "options_footer_clear": {
         "message": "Clear"
     },
