@@ -181,13 +181,23 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         fileHTML += html;
     }
 
-    function quickSearch( value ) {
+    function bmSearch( value ) {
         var match = [], html = "";
         bookmarks.all.forEach( function( item ) {
             if ( item.title.indexOf( value ) != -1 || item.url.indexOf( value ) != -1 ) {
                 match.push( item );
                 html += createResultTmpl( item );
             }
+        });
+        return { match: match, html: html };
+    }
+
+    function quickSearch( value ) {
+        var match = [], html = "";
+        bookmarks.search.forEach( function( item ) {
+            item.url = item.query.replace( "{query}", value );
+            match.push( item );
+            html += createResultTmpl( item );
         });
         return { match: match, html: html };
     }
@@ -220,10 +230,14 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         $( ".quickbar .search input" ).on( "keyup", function( event ) {
             var value  = event.target.value,
                 result = { match: [], html: "" },
+                searchKey = /^[sS] /,
                 key    = event.keyCode;
             if ( key == 38 || key == 40 || key == 13 ) return;
-            if ( value != "" ) {
-                result = quickSearch( event.target.value );
+            if ( searchKey.test( value )) {
+                value  = value.replace( searchKey, "" );
+                result = quickSearch( value );
+            } else if ( value != "" ) {
+                result = bmSearch( event.target.value );
                 $( ".quickbar .search" ).addClass( "fix" );
             } else {
                 $( ".quickbar .search" ).removeClass( "fix" );
