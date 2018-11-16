@@ -15,7 +15,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         enable: false,
                         custom: "",
                     },
-                    css: ""
+                    css: "",
+                    search: [
+                        'key:"g",  title:"谷歌搜索",    query: "https://www.google.com/search?q={query}"',
+                        'key:"b",  title:"必应搜索",    query: "https://bing.com/search?q={query}"',
+                        'key:"d",  title:"DuckDuckGo", query: "https://duckduckgo.com/?q={query}"',
+                        'key:"bd", title:"百度搜索",    query: "https://www.baidu.com/s?wd={query}"',
+                    ],
                 };
 
             function Storage() {
@@ -105,6 +111,23 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
+     * Custom Search
+     *********************************************/
+
+    function customSearchView() {
+        var tmpl = '<textarea class="md-textarea"></textarea>';
+        return tmpl;
+    }
+
+    function customSearchModel() {
+        $( ".options .custom-search" ).find( "textarea" ).text( storage.db.search.join( "\n" ) );
+        $( ".options" ).on( "keyup", ".custom-search textarea", function( event ) {
+            storage.db.search = event.target.value.split( "\n" );
+            storage.Set();
+        });
+    }
+
+    /*********************************************
      * Footer
      *********************************************/
 
@@ -166,6 +189,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="content">\
                             <div class="title">' + i18n.GetLang( "options_custom_style" ) + '</div>\
                             <div class="group custom-style">' + customStyleView() + '</div>\
+                            <div class="title">自定义搜索</div>\
+                            <div class="group custom-search">' + customSearchView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_tp" ) + '</div>\
                             <div class="group custom-tp">' + customTpView() + '</div>\
                         </div>\
@@ -175,6 +200,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         $( ".dialog" ).html( tmpl );
         customTpModel();
         customStyleModel();
+        customSearchModel();
         footerModel();
     }
 

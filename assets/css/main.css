@@ -1174,6 +1174,10 @@ img {
     height: 150px;
 }
 
+.options .custom-search textarea {
+    height: 150px;
+}
+
 .options .footer {
     position: absolute;
 
