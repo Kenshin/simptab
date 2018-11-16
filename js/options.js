@@ -17,10 +17,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     },
                     css: "",
                     search: [
-                        'key:"g",  title:"谷歌搜索",    query: "https://www.google.com/search?q={query}"',
-                        'key:"b",  title:"必应搜索",    query: "https://bing.com/search?q={query}"',
-                        'key:"d",  title:"DuckDuckGo", query: "https://duckduckgo.com/?q={query}"',
-                        'key:"bd", title:"百度搜索",    query: "https://www.baidu.com/s?wd={query}"',
+                        '{"key":"g",  "title":"谷歌搜索",    "query": "https://www.google.com/search?q={query}"}',
+                        '{"key":"b",  "title":"必应搜索",    "query": "https://bing.com/search?q={query}"}',
+                        '{"key":"d",  "title":"DuckDuckGo", "query": "https://duckduckgo.com/?q={query}"}',
+                        '{"key":"bd", "title":"百度搜索",    "query": "https://www.baidu.com/s?wd={query}"}',
                     ],
                 };
 
