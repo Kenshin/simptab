@@ -1,6 +1,6 @@
 define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves, i18n, message ) {
 
-    var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [] },
+    var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [], search: [] },
         getBgColor = function ( chars ) {
             var idx = bgColors.idx.indexOf( chars.toLowerCase() ),
                 bg  = bgColors.colors[idx];
@@ -124,6 +124,12 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
                     callback && callback();
                 }
             });
+        });
+    }
+
+    function getSearch( data ) {
+        data.forEach( function( item ) {
+            bookmarks.search.push( JSON.parse( item ));
         });
     }
 
@@ -260,10 +266,11 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
     }
 
     return {
-        Render: function() {
+        Render: function( data ) {
             $( "body" ).append( '<div class="bm-overlay"><div class="bm"><div class="folders"></div><div class="files"></div></div></div>' );
             setTimeout( function() {
                 bmListen();
+                getSearch( data );
                 getBookmarks();
                 folderListen();
             }, 10 );
