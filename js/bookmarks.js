@@ -265,7 +265,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
             title   = item.title != "" ? item.title : item.url,
             url     = item.url,
             avatar  = fmtTitle( title ).substr( 0, 1 ),
-            bgColor = getBgColor( avatar ),
+            bgColor = item.color ? item.color : getBgColor( avatar );
             compiled= _.template( tmpl ),
             html    = compiled({ title: title, url: url, avatar: avatar, bgColor: bgColor });
         return html;
