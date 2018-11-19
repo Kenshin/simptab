@@ -188,7 +188,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc keycode-' + key + '">' + desc + '</div></div>';
             html += tmpl;
         });
-        return '<div><div class="subtitle">' + title + '</div>' + html + '</div>';
+        return '<div style="width: 250px;"><div class="subtitle">' + title + '</div>' + html + '</div>';
     }
 
     function open() {
