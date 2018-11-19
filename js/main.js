@@ -119,7 +119,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
-        result && bookmarks.Render();
+        result && bookmarks.Render( options.Storage.db.search );
         result && bookmarks.Listen();
     });
 
