@@ -297,6 +297,10 @@
         "message": "打開/關閉快捷查找"
     },
 
+    "shortcuts_key_topsites": {
+        "message": "打開 Topsites 對應的 1~9 號網址"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

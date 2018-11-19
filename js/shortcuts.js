@@ -42,6 +42,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         Keys.prototype.OTHERS_KEY_MAP = [
             { short: "b", long: "bookmarks"},
             { short: "q", long: "quickbar" },
+            { short: "z", long: "topsites" },
         ];
 
         Object.defineProperties( Keys.prototype, {
@@ -243,6 +244,17 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         });
     }
 
+    function listenTopsites() {
+        [ 1,2,3,4,5,6,7,8,9 ].forEach( function( item ) {
+            Mousetrap.bind( "z " + item, function( event, combo ) {
+                var idx = combo.replace( "z ", "" ) - 1;
+                $( ".topsites" ).length > 0 ?
+                    $( ".topsites" ).find( "a" )[idx].click()
+                    : $( ".senior" ).find( "a" )[idx].click();
+            });
+        });
+    }
+
     return {
         Init: function () {
             listenCurrentTab();
@@ -252,6 +264,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             listenOminbox();
             listenHelp();
             listenESC();
+            listenTopsites();
         }
     };
 });

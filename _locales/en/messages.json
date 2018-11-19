@@ -297,6 +297,10 @@
         "message": "Open/Close Quick bar"
     },
 
+    "shortcuts_key_topsites": {
+        "message": "Open 1~9 Topsite"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
