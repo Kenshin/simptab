@@ -225,8 +225,9 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
                 $target.find( ".result" ).hasClass( "active" ) &&
                     $target.find( ".result.active" ).removeClass( "active" ).prev().addClass( "active" );
             } else if ( key == 13 ) {
-                $target.find( ".result" ).hasClass( "active" ) &&
-                    $target.find( ".result.active" )[0].click();
+                $target.find( ".result" ).hasClass( "active" ) ?
+                    $target.find( ".result.active" )[0].click()
+                    : $target.find( ".result" )[0].click();
             }
         });
         $( ".quickbar .search input" ).on( "keyup", function( event ) {
