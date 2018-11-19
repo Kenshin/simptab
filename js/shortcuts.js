@@ -243,6 +243,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                             $( ".controlink .settingicon" ).trigger( "click" );
                     }
                     break;
+                case "setting-zen-mode":
+                    $( ".setting-zen-mode" ).find( ".footer .close" )[0].click();
+                    break;
             }
         });
     }
