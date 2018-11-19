@@ -9,10 +9,10 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         var CONTROL_KEY_MAP, getKey;
 
         CONTROL_KEY_MAP = [
-            { short: "1", long: "newtab"   },
-            { short: "2", long: "bookmarks"},
-            { short: "3", long: "history"  },
-            { short: "4", long: "apps"     },
+            { short: "1", long: "bookmarks"},
+            { short: "2", long: "history"  },
+            { short: "3", long: "apps"     },
+            { short: "4", long: "newtab"   },
             { short: "5", long: "info"     },
             { short: "6", long: "download" },
             { short: "7", long: "upload", hiden: true },

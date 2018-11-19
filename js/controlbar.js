@@ -124,6 +124,20 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                 $( ".controlink[url=about]" ).parent().removeClass( "horz-toolbox-show-3" );
             });
 
+            $( $( ".controlbar" ).find( "a" )[3] ).mouseenter( function( event ) {
+                $( $( ".controlbar" ).find( "a" )[3] ).prev().addClass( "horz-toolbox-show" );
+                $( $( ".controlbar" ).find( "a" )[0] ).parent().addClass( "horz-toolbox-show-1" );
+                $( $( ".controlbar" ).find( "a" )[1] ).parent().addClass( "horz-toolbox-show-2" );
+                $( $( ".controlbar" ).find( "a" )[2] ).parent().addClass( "horz-toolbox-show-3" );
+            });
+
+            $($( ".controlbar li" )[0]).mouseleave( function( event ) {
+                $( $( ".controlbar" ).find( "a" )[3] ).prev().removeClass( "horz-toolbox-show" );
+                $( $( ".controlbar" ).find( "a" )[0] ).parent().removeClass( "horz-toolbox-show-1" );
+                $( $( ".controlbar" ).find( "a" )[1] ).parent().removeClass( "horz-toolbox-show-2" );
+                $( $( ".controlbar" ).find( "a" )[2] ).parent().removeClass( "horz-toolbox-show-3" );
+            });
+
             // listen control link
             $( ".controlink" ).click( function( event ) {
                 var $target =  $( event.currentTarget ),
