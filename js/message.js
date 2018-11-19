@@ -16,6 +16,7 @@ define([ "jquery" ], function( $ ) {
             "UPDATE_CONTROLBAR": "UPDATE_CONTROLBAR",
             "OPEN_BOOKMARKS"   : "OPEN_BOOKMARKS",
             "OPEN_QUICKBAR"    : "OPEN_QUICKBAR",
+            "OPEN_ZENMODE"    : "OPEN_ZENMODE",
         },
         Subscribe: subscribe,
         Publish  : publish

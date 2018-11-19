@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "comps" ], function( $, Mousetrap, _, Notify, i18n, vo, comps ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ], function( $, Mousetrap, _, Notify, i18n, message, comps ) {
 
     "use strict";
 
@@ -390,6 +390,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "comps" ], fun
         $( "head" ).append( '<style type="text/css">' + styles + '</style>' );
     }
 
+    function subscribe() {
+        message.Subscribe( message.TYPE.OPEN_ZENMODE, function( event ) {
+            $( ".setting-trigger-zen-mode" )[0].click();
+        });
+    }
+
     return {
         Render: function() {
             timeMode();
@@ -400,6 +406,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "comps" ], fun
             setTimeout( function() {
                 topSitesMode();
                 shortcuts();
+                subscribe();
             }, 500 );
         },
 

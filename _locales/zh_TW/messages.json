@@ -301,6 +301,10 @@
         "message": "打開 Topsites 對應的 1~9 號網址"
     },
 
+    "shortcuts_key_zenmode": {
+        "message": "打開禪模式的選項頁"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

@@ -43,6 +43,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             { short: "b", long: "bookmarks"},
             { short: "q", long: "quickbar" },
             { short: "z", long: "topsites" },
+            { short: "c", long: "zenmode" },
         ];
 
         Object.defineProperties( Keys.prototype, {
@@ -118,6 +119,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     break;
                 case "q":
                     message.Publish( message.TYPE.OPEN_QUICKBAR );
+                case "c":
+                    message.Publish( message.TYPE.OPEN_ZENMODE  );
                     break;
             }
         });

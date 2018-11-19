@@ -301,6 +301,10 @@
         "message": "打开 Topsites 对应的 1~9 号网址"
     },
 
+    "shortcuts_key_zenmode": {
+        "message": "打开禅模式的选项页"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

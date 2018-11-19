@@ -301,6 +301,10 @@
         "message": "Open 1~9 Topsite"
     },
 
+    "shortcuts_key_zenmode": {
+        "message": "Open zen mode setting"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
