@@ -690,9 +690,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
         })
         .fail( function( result, error ) {
             SimpError.Clone( result, (!error ? result : error));
+            apis.failed++;
             if ( apis.vo.origin == "today" ) apis.failed = apis.ORIGINS_MAX;
             apis.failed < apis.ORIGINS_MAX - 5 ? init() : dtd.reject( result, error );
-            apis.failed++;
         });
         return dtd;
     }
