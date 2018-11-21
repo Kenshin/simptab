@@ -1943,7 +1943,7 @@ img {
 #day-cbx:checked + .toggle:before,
 #devices-cbx:checked + .toggle:before,
 #topsites-cbx:checked + .toggle:before,
-#custom-unsplash-cbx:checked + .toggle:before 
+#custom-unsplash-cbx:checked + .toggle:before,
 #custom-tp-cbx:checked + .toggle:before {
     background: #4DB6AC;
 }
