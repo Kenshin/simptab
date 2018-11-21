@@ -1939,6 +1939,7 @@ img {
 #day-cbx:checked + .toggle:before,
 #devices-cbx:checked + .toggle:before,
 #topsites-cbx:checked + .toggle:before,
+#custom-unsplash-cbx:checked + .toggle:before 
 #custom-tp-cbx:checked + .toggle:before {
     background: #4DB6AC;
 }
@@ -1947,6 +1948,7 @@ img {
 #day-cbx:checked + .toggle span,
 #devices-cbx:checked + .toggle span,
 #topsites-cbx:checked + .toggle span,
+#custom-unsplash-cbx:checked + .toggle span,
 #custom-tp-cbx:checked + .toggle span {
     background: #00796B;
     transform: translateX(20px);
@@ -1958,6 +1960,7 @@ img {
 #day-cbx:checked + .toggle span:before,
 #devices-cbx:checked + .toggle span:before,
 #topsites-cbx:checked + .toggle span:before,
+#custom-unsplash-cbx:checked + .toggle span:before,
 #custom-tp-cbx:checked + .toggle span:before {
     transform: scale(1);
     opacity: 0;

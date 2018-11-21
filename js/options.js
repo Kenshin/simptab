@@ -32,6 +32,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         '{"key":"fy", "color": "#4285F4", "title":"谷歌翻译",    "query": "https://translate.google.cn/#auto/en/{query}"}',
                     ],
                     unsplash: [ "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ],
+                    subscribe: {
+                        sequence: false,
+                        index: 0
+                    }
                 };
 
             function Storage() {
@@ -65,6 +69,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
     function unsplashView() {
         var tmpl = '<div>\
+                        <div class="switche">\
+                            <div class="label">只显示精选集时是否按照顺序显示背景？</div>\
+                            ' + comps.Switches( "custom-unsplash-cbx" ) + '\
+                        </div>\
                         <div class="label">' + i18n.GetLang( "options_custom_unsplash_label" ) + '</div>\
                         <textarea class="md-textarea custom-unsplash"></textarea>\
                         <div class="notice">' + i18n.GetLang( "options_custom_unsplash_notice" ) + '</div>\
@@ -77,6 +85,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         $( ".options .custom-unsplash" ).find( "textarea" ).text( storage.db.unsplash );
         $( ".options" ).on( "keyup", ".custom-unsplash textarea", function( event ) {
             storage.db.unsplash = event.target.value.split( "," );
+            storage.Set();
+        });
+        $( ".options .custom-unsplash" ).find( "input" ).prop( "checked", storage.db.subscribe.sequence );
+        $( ".options" ).on( "change", ".custom-unsplash input", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            storage.db.subscribe.sequence = value;
             storage.Set();
         });
     }
