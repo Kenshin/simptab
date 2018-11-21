@@ -1125,8 +1125,11 @@ img {
 }
 
 .options .content .title {
+    margin: 0.83em;
     padding-left: 10px;
+    color: rgb(171, 173, 175);
     font-size: 16px;
+    border-left: .25em solid rgb(171, 173, 175);
 }
 
 .options .group {
@@ -1143,6 +1146,7 @@ img {
 
 .options .label {
     width: 100%;
+    color: rgb(213, 214, 215);
 }
 
 .options .notice {
