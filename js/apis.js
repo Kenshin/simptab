@@ -60,7 +60,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
                 else {
                     while ( Verify( code ) == "false"  ||
                             //localStorage[ "simptab-prv-code" ] == code ||
-                            code == 11 || code == 5 || code == 8 || code == 13 ) {
+                            // hiden origins include: flickr 500px nasa holiday
+                            code == 3 || code == 5 || code == 8 || code == 11 || code == 13 ) {
                         code = this.Random( 0, this.ORIGINS_MAX );
                     }
                     localStorage[ "simptab-prv-code" ] = code;
