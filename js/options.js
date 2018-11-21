@@ -31,6 +31,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         '{"key":"db", "color": "#55711C", "title":"豆瓣搜索",    "query": "https://www.douban.com/search?source=suggest&q={query}"}',
                         '{"key":"fy", "color": "#4285F4", "title":"谷歌翻译",    "query": "https://translate.google.cn/#auto/en/{query}"}',
                     ],
+                    unsplash: [ "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ],
                 };
 
             function Storage() {
@@ -57,6 +58,28 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             return new Storage();
 
         })();
+
+    /*********************************************
+     * Custom unsplash
+     *********************************************/
+
+    function unsplashView() {
+        var tmpl = '<div>\
+                        <div class="label">自定义 Unsplash 源</div>\
+                        <textarea class="md-textarea custom-unsplash"></textarea>\
+                        <div class="notice">支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href="https://source.unsplash.com/" target="_blank">Unsplash Source</a></div>\
+                   </div>\
+                   ';
+        return tmpl;
+    }
+
+    function unsplashModel() {
+        $( ".options .custom-unsplash" ).find( "textarea" ).text( storage.db.unsplash );
+        $( ".options" ).on( "keyup", ".custom-unsplash textarea", function( event ) {
+            storage.db.unsplash = event.target.value;
+            storage.Set();
+        });
+    }
 
     /*********************************************
      * Custom style
@@ -197,6 +220,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     <div class="options">\
                         <div class="head">' + i18n.GetLang( "options_head" ) + '</div>\
                         <div class="content">\
+                            <div class="title">背景源</div>\
+                            <div class="group custom-unsplash">' + unsplashView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_style" ) + '</div>\
                             <div class="group custom-style">' + customStyleView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_search" ) + '</div>\
@@ -208,6 +233,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     </div>\
                     ';
         $( ".dialog" ).html( tmpl );
+        unsplashModel();
         customTpModel();
         customStyleModel();
         customSearchModel();

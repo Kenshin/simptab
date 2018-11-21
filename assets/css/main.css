@@ -1138,6 +1138,10 @@ img {
     width: 100%;
 }
 
+.options .custom-unsplash textarea {
+    margin-top: 10px;
+}
+
 .options .custom-tp .switche {
     display: flex;
     flex-direction: row;
@@ -1158,10 +1162,19 @@ img {
     height: 100%;
 }
 
-.options .custom-tp .notice {
+.options .notice {
     font-style: italic;
     font-size: 11px;
     font-weight: 500;
+}
+
+.options .notice a {
+    padding-bottom: 1px;
+
+    color: inherit;
+    text-decoration: none;
+
+    border-bottom: 1px solid #fff;
 }
 
 .options .custom-tp .show {
@@ -1173,12 +1186,18 @@ img {
     height: 0;
 }
 
-.options .custom-style textarea {
-    height: 150px;
+.options .custom-unsplash textarea,
+.options .custom-style textarea,
+.options .custom-search textarea {
+    height: 50px;
+    transition: all .6s ease;
 }
 
-.options .custom-search textarea {
+.options .custom-unsplash textarea:focus,
+.options .custom-style textarea:focus,
+.options .custom-search textarea:focus {
     height: 150px;
+    transition: all .6s ease;
 }
 
 .options .footer {
