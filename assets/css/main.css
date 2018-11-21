@@ -1134,32 +1134,15 @@ img {
     font-size: 14px;
 }
 
-.options .label {
-    width: 100%;
-}
-
-.options .custom-unsplash textarea {
-    margin-top: 10px;
-}
-
-.options .custom-tp .switche {
+.options .switche {
     display: flex;
     flex-direction: row;
 
     margin: 10px 0;
 }
 
-.options .custom-tp .custom-tp-fields {
-    max-width: 805px;
-    height: 150px;
-
-    transform: scaleY(0);
-    transform-origin: 0 0;
-    transition: all .6s ease;
-}
-
-.options .custom-tp .custom-tp-fields textarea {
-    height: 100%;
+.options .label {
+    width: 100%;
 }
 
 .options .notice {
@@ -1175,6 +1158,23 @@ img {
     text-decoration: none;
 
     border-bottom: 1px solid #fff;
+}
+
+.options .custom-unsplash textarea {
+    margin-top: 10px;
+}
+
+.options .custom-tp .custom-tp-fields {
+    max-width: 805px;
+    height: 150px;
+
+    transform: scaleY(0);
+    transform-origin: 0 0;
+    transition: all .6s ease;
+}
+
+.options .custom-tp .custom-tp-fields textarea {
+    height: 100%;
 }
 
 .options .custom-tp .show {
