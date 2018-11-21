@@ -119,6 +119,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     break;
                 case "q":
                     message.Publish( message.TYPE.OPEN_QUICKBAR );
+                    break;
                 case "c":
                     message.Publish( message.TYPE.OPEN_ZENMODE  );
                     break;
