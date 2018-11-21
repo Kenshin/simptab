@@ -65,9 +65,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
     function unsplashView() {
         var tmpl = '<div>\
-                        <div class="label">自定义 Unsplash 源</div>\
+                        <div class="label">' + i18n.GetLang( "options_custom_unsplash_label" ) + '</div>\
                         <textarea class="md-textarea custom-unsplash"></textarea>\
-                        <div class="notice">支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href="https://source.unsplash.com/" target="_blank">Unsplash Source</a></div>\
+                        <div class="notice">' + i18n.GetLang( "options_custom_unsplash_notice" ) + '</div>\
                    </div>\
                    ';
         return tmpl;
@@ -220,7 +220,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     <div class="options">\
                         <div class="head">' + i18n.GetLang( "options_head" ) + '</div>\
                         <div class="content">\
-                            <div class="title">背景源</div>\
+                            <div class="title">' + i18n.GetLang( "options_custom_unsplash" ) + '</div>\
                             <div class="group custom-unsplash">' + unsplashView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_style" ) + '</div>\
                             <div class="group custom-style">' + customStyleView() + '</div>\

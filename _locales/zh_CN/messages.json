@@ -325,6 +325,18 @@
         "message": "选项"
     },
 
+    "options_custom_unsplash": {
+        "message": "背景源"
+    },
+
+    "options_custom_unsplash_label": {
+        "message": "自定义 Unsplash 源"
+    },
+
+    "options_custom_unsplash_notice": {
+        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
+    },
+
     "options_custom_style": {
         "message": "自定义样式（ 全局 ）"
     },

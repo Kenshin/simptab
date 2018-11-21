@@ -325,6 +325,18 @@
         "message": "Options"
     },
 
+    "options_custom_unsplash": {
+        "message": "Background origins"
+    },
+
+    "options_custom_unsplash_label": {
+        "message": "Custom Unsplash origins"
+    },
+
+    "options_custom_unsplash_notice": {
+        "message": "Support custom e.g. https://source.unsplash.com/<b>{xxxx}</b> usage , split about more <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
+    },
+
     "options_custom_style": {
         "message": "Custom global Style"
     },
