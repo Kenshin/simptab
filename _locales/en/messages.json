@@ -329,6 +329,10 @@
         "message": "Background origins"
     },
 
+    "options_custom_unsplash_cbx": {
+        "message": "Does the subscribe show the background in sequence? ( Default is random loading)"
+    },
+
     "options_custom_unsplash_label": {
         "message": "Custom Unsplash origins"
     },

@@ -70,7 +70,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     function unsplashView() {
         var tmpl = '<div>\
                         <div class="switche">\
-                            <div class="label">精选集是否按照顺序显示背景？（默认为随机显示）</div>\
+                            <div class="label">' + i18n.GetLang( "options_custom_unsplash_cbx" ) + '</div>\
                             ' + comps.Switches( "custom-unsplash-cbx" ) + '\
                         </div>\
                         <div class="label">' + i18n.GetLang( "options_custom_unsplash_label" ) + '</div>\

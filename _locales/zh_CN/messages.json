@@ -329,6 +329,10 @@
         "message": "背景源"
     },
 
+    "options_custom_unsplash_cbx": {
+        "message": "精选集是否按照顺序显示背景？（默认为随机显示）"
+    },
+
     "options_custom_unsplash_label": {
         "message": "自定义 Unsplash 源"
     },
