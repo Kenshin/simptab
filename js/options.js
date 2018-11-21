@@ -76,7 +76,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     function unsplashModel() {
         $( ".options .custom-unsplash" ).find( "textarea" ).text( storage.db.unsplash );
         $( ".options" ).on( "keyup", ".custom-unsplash textarea", function( event ) {
-            storage.db.unsplash = event.target.value;
+            storage.db.unsplash = event.target.value.split( "," );
             storage.Set();
         });
     }
