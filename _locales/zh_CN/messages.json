@@ -297,6 +297,14 @@
         "message": "打开/关闭快捷查找"
     },
 
+    "shortcuts_key_topsites": {
+        "message": "打开 Topsites 对应的 1~9 号网址"
+    },
+
+    "shortcuts_key_zenmode": {
+        "message": "打开禅模式的选项页"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },
@@ -315,6 +323,22 @@
 
     "options_head": {
         "message": "选项"
+    },
+
+    "options_custom_unsplash": {
+        "message": "背景源"
+    },
+
+    "options_custom_unsplash_cbx": {
+        "message": "精选集是否按照顺序显示背景？（默认为随机显示）"
+    },
+
+    "options_custom_unsplash_label": {
+        "message": "自定义 Unsplash 源"
+    },
+
+    "options_custom_unsplash_notice": {
+        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
     },
 
     "options_custom_style": {

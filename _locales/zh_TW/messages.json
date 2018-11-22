@@ -297,6 +297,14 @@
         "message": "打開/關閉快捷查找"
     },
 
+    "shortcuts_key_topsites": {
+        "message": "打開 Topsites 對應的 1~9 號網址"
+    },
+
+    "shortcuts_key_zenmode": {
+        "message": "打開禪模式的選項頁"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },
@@ -315,6 +323,22 @@
 
     "options_head": {
         "message": "選項"
+    },
+
+    "options_custom_unsplash": {
+        "message": "背景源"
+    },
+
+    "options_custom_unsplash_cbx": {
+        "message": "精選集是否按照順序顯示背景？（默認為隨機顯示）"
+    },
+
+    "options_custom_unsplash_label": {
+        "message": "自定義 Unsplash 源"
+    },
+
+    "options_custom_unsplash_notice": {
+        "message": "支持自定義源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；詳細說明請訪問 <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
     },
 
     "options_custom_style": {

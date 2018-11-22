@@ -9,10 +9,10 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         var CONTROL_KEY_MAP, getKey;
 
         CONTROL_KEY_MAP = [
-            { short: "1", long: "newtab"   },
-            { short: "2", long: "bookmarks"},
-            { short: "3", long: "history"  },
-            { short: "4", long: "apps"     },
+            { short: "1", long: "bookmarks"},
+            { short: "2", long: "history"  },
+            { short: "3", long: "apps"     },
+            { short: "4", long: "newtab"   },
             { short: "5", long: "info"     },
             { short: "6", long: "download" },
             { short: "7", long: "upload", hiden: true },
@@ -42,6 +42,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         Keys.prototype.OTHERS_KEY_MAP = [
             { short: "b", long: "bookmarks"},
             { short: "q", long: "quickbar" },
+            { short: "z", long: "topsites" },
+            { short: "c", long: "zenmode" },
         ];
 
         Object.defineProperties( Keys.prototype, {
@@ -118,6 +120,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 case "q":
                     message.Publish( message.TYPE.OPEN_QUICKBAR );
                     break;
+                case "c":
+                    message.Publish( message.TYPE.OPEN_ZENMODE  );
+                    break;
             }
         });
     }
@@ -187,7 +192,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc keycode-' + key + '">' + desc + '</div></div>';
             html += tmpl;
         });
-        return '<div><div class="subtitle">' + title + '</div>' + html + '</div>';
+        return '<div style="width: 250px;"><div class="subtitle">' + title + '</div>' + html + '</div>';
     }
 
     function open() {
@@ -239,7 +244,21 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                             $( ".controlink .settingicon" ).trigger( "click" );
                     }
                     break;
+                case "setting-zen-mode":
+                    $( ".setting-zen-mode" ).find( ".footer .close" )[0].click();
+                    break;
             }
+        });
+    }
+
+    function listenTopsites() {
+        [ 1,2,3,4,5,6,7,8,9 ].forEach( function( item ) {
+            Mousetrap.bind( "z " + item, function( event, combo ) {
+                var idx = combo.replace( "z ", "" ) - 1;
+                $( ".topsites" ).length > 0 ?
+                    $( ".topsites" ).find( "a" )[idx].click()
+                    : $( ".senior" ).find( "a" )[idx].click();
+            });
         });
     }
 
@@ -252,6 +271,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             listenOminbox();
             listenHelp();
             listenESC();
+            listenTopsites();
         }
     };
 });

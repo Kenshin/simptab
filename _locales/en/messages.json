@@ -297,6 +297,14 @@
         "message": "Open/Close Quick bar"
     },
 
+    "shortcuts_key_topsites": {
+        "message": "Open 1~9 Topsite"
+    },
+
+    "shortcuts_key_zenmode": {
+        "message": "Open zen mode setting"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
@@ -315,6 +323,22 @@
 
     "options_head": {
         "message": "Options"
+    },
+
+    "options_custom_unsplash": {
+        "message": "Background origins"
+    },
+
+    "options_custom_unsplash_cbx": {
+        "message": "Does the subscribe show the background in sequence? ( Default is random loading)"
+    },
+
+    "options_custom_unsplash_label": {
+        "message": "Custom Unsplash origins"
+    },
+
+    "options_custom_unsplash_notice": {
+        "message": "Support custom e.g. https://source.unsplash.com/<b>{xxxx}</b> usage , split about more <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
     },
 
     "options_custom_style": {

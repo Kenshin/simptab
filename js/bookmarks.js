@@ -45,9 +45,13 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
         $( ".bm-overlay" ).width( "50%" );
         $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
+        if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
+            $(".folders").css( "overflow-y", "auto" );
+        }
     }
 
     function close() {
+        $(".folders").css( "overflow-y", "initial" );
         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
         $( ".bm-overlay" ).removeAttr( "style" );
     }

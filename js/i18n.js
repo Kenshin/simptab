@@ -8,21 +8,23 @@ define([ "jquery" ], function( $ ) {
     }
 
     function controlbar() {
-        $($( ".controlbar" ).children()[0]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_newtab" ));
-        $($( ".controlbar" ).children()[1]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_bookmarks" ));
-        $($( ".controlbar" ).children()[2]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_history" ));
-        $($( ".controlbar" ).children()[3]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_apps" ));
-        $($( ".controlbar" ).children()[4]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_info" ));
-        $($( ".controlbar" ).children()[5]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_download" ));
-        $($( ".controlbar" ).children()[6]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_upload" ));
-        $($( ".controlbar" ).children()[7]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_refresh" ));
-        $($( ".controlbar" ).children()[8]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_setting" ));
+        $($( ".controlbar" ).find( "a[url*=chrome]" )[0]).attr("data-balloon", i18n( "controlbar_bookmarks" ));
+        $($( ".controlbar" ).find( "a[url*=chrome]" )[1]).attr("data-balloon", i18n( "controlbar_history" ));
+        $($( ".controlbar" ).find( "a[url*=chrome]" )[2]).attr("data-balloon", i18n( "controlbar_apps" ));
+        $($( ".controlbar" ).find( "a[url*=chrome]" )[3]).attr("data-balloon", i18n( "controlbar_newtab" ));
+
+        $( ".controlbar" ).find( "a[url=info]" ).attr("data-balloon", i18n( "controlbar_info" ));
+        $( ".controlbar" ).find( "a[url=download]" ).attr("data-balloon", i18n( "controlbar_download" ));
+        $( ".controlbar" ).find( "a[url=upload]" ).attr("data-balloon", i18n( "controlbar_upload" ));
+        $( ".controlbar" ).find( "a[url=refresh]" ).attr("data-balloon", i18n( "controlbar_refresh" ));
+        $( ".controlbar" ).find( "a[url=setting]" ).attr("data-balloon", i18n( "controlbar_setting" ));
+
         $( ".controlbar" ).find( "a[url=manage]" ).attr("data-balloon", i18n( "controlbar_manage" ));
         $( ".controlbar" ).find( "a[url=options]" ).attr("data-balloon", i18n( "controlbar_options" ));
         $( ".controlbar" ).find( "a[url=about]" ).attr("data-balloon", i18n( "controlbar_about" ));
-        $($( ".controlbar" ).children()[9]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_favorite" ));
-        $($( ".controlbar" ).children()[10]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_pin" ));
-        $($( ".controlbar" ).children()[11]).find( "a[data-balloon]" ).attr("data-balloon", i18n( "controlbar_dislike" ));
+        $( ".controlbar" ).find( "a[url=favorite]" ).attr("data-balloon", i18n( "controlbar_favorite" ));
+        $( ".controlbar" ).find( "a[url=pin]" ).attr("data-balloon", i18n( "controlbar_pin" ));
+        $( ".controlbar" ).find( "a[url=dislike]" ).attr("data-balloon", i18n( "controlbar_dislike" ));
     }
 
     function setting() {
