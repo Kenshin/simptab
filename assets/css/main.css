@@ -2412,7 +2412,7 @@ img {
     width: 100%;
 
     color: #fff;
-    background-color: #505c63;
+    background-color: rgb(63, 68, 71);
 
     font-family: monospace;
     font-size: 13px;
@@ -2423,6 +2423,7 @@ img {
 
 .md-textarea:focus {
     outline: none !important;
+    background-color: rgb(109, 112, 115);
     border-color: #fff;
     box-shadow: 0px 0 2px #fff;
 }
