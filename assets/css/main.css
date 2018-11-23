@@ -1714,6 +1714,17 @@ img {
     text-align: center;
 }
 
+.welcome .content a {
+    color: #1dba90;
+    text-decoration: none;
+    border-bottom: 1px dotted #1dba90;
+    transition: color .6s ease-in-out;
+}
+
+.welcome .content a:hover {
+    color: #179b78;
+}
+
 /*
 * zen mode
 */
