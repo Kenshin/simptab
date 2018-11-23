@@ -589,6 +589,10 @@
         "message": "Add: Subscibe & Favorite manage, Bookmarks, Controlbar - Refresh; "
     },
 
+    "version_detail_8": {
+        "message": "Add: Zen mode, Golbal options, Quick bar support multi-search;"
+    },
+
     "permissions": {
         "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
