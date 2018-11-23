@@ -593,10 +593,6 @@
         "message": "Add: Zen mode, Golbal options, Quick bar support multi-search;"
     },
 
-    "permissions": {
-        "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
-    },
-
     "welcome_start_title": {
         "message": "Welcome"
     },
@@ -647,6 +643,10 @@
 
     "welcome_152_desc_2": {
         "message": "Bookmarks on your new tab."
+    },
+
+    "permissions": {
+        "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
 
     "permissions_success": {
