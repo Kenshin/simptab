@@ -338,7 +338,7 @@
     },
 
     "options_custom_unsplash_notice": {
-        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义Unsplash源' target='_blank'>自定义 Unsplash</a>"
+        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>自定义 Unsplash</a>"
     },
 
     "options_custom_style": {
@@ -666,7 +666,7 @@
     },
 
     "welcome_153_desc_3": {
-        "message": "自定义站点，自定义样式，更丰富的 Unsplash <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义Unsplash源' target='_blank'>个性定制化</a>"
+        "message": "自定义站点，自定义样式，更丰富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>个性定制化</a>"
     },
 
     "permissions": {
