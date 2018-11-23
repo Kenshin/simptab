@@ -645,6 +645,30 @@
         "message": "要美景更要效率，效率達人必備之選。"
     },
 
+    "welcome_153_title_1": {
+        "message": "全新的「禪模式」"
+    },
+
+    "welcome_153_desc_1": {
+        "message": "更加專註，更加極簡，多種配色，高度定製化，<a href='http://ksria.com/simptab/docs/#/禅模式' target='_blank'>詳細請看這裡</a>"
+    },
+
+    "welcome_153_title_2": {
+        "message": "「更智能」的快捷搜索"
+    },
+
+    "welcome_153_desc_2": {
+        "message": "內置多種搜索方案，一鍵直達，<a href='http://ksria.com/simptab/docs/#/功能一览?id=快捷搜索' target='_blank'>還可定製化</a>"
+    },
+
+    "welcome_153_title_3": {
+        "message": "選項頁"
+    },
+
+    "welcome_153_desc_3": {
+        "message": "自定義站點，自定義樣式，更豐富的 Unsplash <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义Unsplash源' target='_blank'>個性定製化</a>"
+    },
+
     "permissions": {
         "message": "新版本需要取得新的許可權。"
     },

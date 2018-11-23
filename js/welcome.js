@@ -36,22 +36,22 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                     <div class="carousel-item" id="1.5.3">\
                         <img src="http://st.ksria.cn/welcome-zenmode.png">\
                         <div class="content">\
-                            <h2 class="title">全新的「禅模式」</h2>\
-                            <div class="desc">更加专注，更加极简，多种配色，高度定制化</div>\
+                            <h2 class="title">' + i18n.GetLang( "welcome_153_title_1" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_153_desc_1" ) +'</div>\
                         </div>\
                     </div>\
                     <div class="carousel-item" id="1.5.3">\
                         <img src="http://st.ksria.cn/welcome-quickbar.png">\
                         <div class="content">\
-                            <h2 class="title">「更智能」的快捷搜索</h2>\
-                            <div class="desc">内置多种搜索方案，一键直达，还可定制化</div>\
+                            <h2 class="title">' + i18n.GetLang( "welcome_153_title_2" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_153_desc_2" ) +'</div>\
                         </div>\
                     </div>\
                     <div class="carousel-item" id="1.5.3">\
                         <img src="http://st.ksria.cn/welcome-options.png">\
                         <div class="content">\
-                            <h2 class="title">选项页</h2>\
-                            <div class="desc">自定义站点，自定义样式，更丰富的 Unsplash 个性定制化</div>\
+                            <h2 class="title">' + i18n.GetLang( "welcome_153_title_3" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_153_desc_3" ) +'</div>\
                         </div>\
                     </div>',
         },

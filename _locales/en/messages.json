@@ -645,6 +645,30 @@
         "message": "Bookmarks on your new tab."
     },
 
+    "welcome_153_title_1": {
+        "message": "Zen mode"
+    },
+
+    "welcome_153_desc_1": {
+        "message": "More minimalist, multi-color palette, highly customized"
+    },
+
+    "welcome_153_title_2": {
+        "message": "Quick bar"
+    },
+
+    "welcome_153_desc_2": {
+        "message": "Support multi Search engine"
+    },
+
+    "welcome_153_title_3": {
+        "message": "Options"
+    },
+
+    "welcome_153_desc_3": {
+        "message": "Custom topsites, Custom Style, Custom Unsplash origins"
+    },
+
     "permissions": {
         "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
