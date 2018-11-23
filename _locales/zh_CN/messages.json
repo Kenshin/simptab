@@ -338,7 +338,7 @@
     },
 
     "options_custom_unsplash_notice": {
-        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
+        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义Unsplash源' target='_blank'>自定义 Unsplash</a>"
     },
 
     "options_custom_style": {
