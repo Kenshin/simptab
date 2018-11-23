@@ -132,7 +132,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
     }
 
     function getSearch( data ) {
-        data.forEach( function( item ) {
+        data.length > 1 && data.forEach( function( item ) {
             bookmarks.search.push( JSON.parse( item ));
         });
     }
