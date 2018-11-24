@@ -24,10 +24,10 @@
 #### 截图：
 ![Snapshot](http://st.ksria.cn/start@webstore.png)
 ![Snapshot](http://st.ksria.cn/mask@webstore.png?20181011)  
-![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
 ![Snapshot](http://st.ksria.cn/zenmode@webstore.png)  
 
 <details><summary>更多截图</summary>
+<img src="http://st.ksria.cn/bookmarks@webstore.png">
 <img src="http://st.ksria.cn/subscribe@webstore.png">
 <img src="http://st.ksria.cn/options@webstore.png">
 <img src="http://st.ksria.cn/quickbar@webstore.png">
