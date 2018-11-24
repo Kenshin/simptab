@@ -27,10 +27,10 @@
 ![Snapshot](http://st.ksria.cn/zenmode@webstore.png)  
 
 <details><summary>更多截图</summary>
-<img src="http://st.ksria.cn/bookmarks@webstore.png">
-<img src="http://st.ksria.cn/subscribe@webstore.png">
-<img src="http://st.ksria.cn/options@webstore.png">
-<img src="http://st.ksria.cn/quickbar@webstore.png">
+  <img src="http://st.ksria.cn/bookmarks@webstore.png">
+  <img src="http://st.ksria.cn/subscribe@webstore.png">
+  <img src="http://st.ksria.cn/options@webstore.png">
+  <img src="http://st.ksria.cn/quickbar@webstore.png">
 </details>
 
 #### 主要功能一览：
@@ -75,14 +75,18 @@
 
 - ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏与订阅管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
 
-- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [选项页](http://ksria.com/simptab/docs/#/选项页)；<details><summary>截图</summary>
-  <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [选项页](http://ksria.com/simptab/docs/#/选项页)；
+
+  <details><summary>截图</summary>
+    <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
   </details>
 
-- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禅模式](http://ksria.com/simptab/docs/#/禅模式)；<details><summary>截图</summary>
-  <img src="https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg">
-  <img src="https://i.loli.net/2018/11/23/5bf7a756d6708.jpg">
-  <img src="https://i.loli.net/2018/11/23/5bf7a3625cc20.jpg">
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禅模式](http://ksria.com/simptab/docs/#/禅模式)；
+
+  <details><summary>截图</summary>
+    <img src="https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg">
+    <img src="https://i.loli.net/2018/11/23/5bf7a756d6708.jpg">
+    <img src="https://i.loli.net/2018/11/23/5bf7a3625cc20.jpg">
   </details>
 
 #### 投票：
