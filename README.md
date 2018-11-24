@@ -2,17 +2,17 @@
 <h1 align="center">简 Tab - 极简的 Chrome 新标签页扩展</h1>
 <p align="center">望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。</p>
 <p align="center">
-   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.2-blue.svg"></a>
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.3-blue.svg"></a>
    <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.2/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.3/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
    <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
 </p>
 
 ***
 
 #### 马上使用：
-* [Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
+* [Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.3/simptab.crx)
 
 * 有任何问题请看 [帮助中心](http://ksria.com/simptab/docs/#) 或者 加入 **[SimpTab 的讨论群](https://gitter.im/Kenshin/simptab)**
 
@@ -39,7 +39,7 @@
   * 只显示当前背景：永不更换背景源
 
 - 多种类型的背景源，包括：
-  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `flickr.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
+  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
   * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab 精选集**  
 
@@ -57,7 +57,7 @@
 
 - 支持 `快捷键` / `多功能框` 操作；
 
-- [常用网址](http://ksria.com/simptab/docs/#/功能一览#常用网址)； _包括： `简单` · `高级` · `隐藏` 三种模式_ 
+- [常用网址](http://ksria.com/simptab/docs/#/功能一览#常用网址)； _包括： `简单` · `高级` · `隐藏` 三种模式_ 以及 ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) **[自定义功能](http://ksria.com/simptab/docs/#/选项页?id=自定义站点)**
 
 - 上传 · 收藏 · 下载；
 
@@ -69,6 +69,11 @@
 
 - ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏与订阅管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
 
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [选项页](http://ksria.com/simptab/docs/#/选项页)；
+
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禅模式](http://ksria.com/simptab/docs/#/禅模式)；  
+  ![禅模式](https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg)
+
 #### 投票：
 * 简 Tab 是一个免费并开源的项目，如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
@@ -76,7 +81,7 @@
 * <http://ksria.com/simptab/gallery.html>
 
 #### 全部功能：
-![全部功能：](http://st.ksria.cn/feature%201.5.2.png)
+![全部功能：](http://st.ksria.cn/feature%201.5.3.png)
 
 #### 相关链接：
 * [更新日志](http://ksria.com/simptab/docs/#/CHANGELOG)
