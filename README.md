@@ -77,6 +77,8 @@
 
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [选项页](http://ksria.com/simptab/docs/#/选项页)；
 
+  > 包括： **精选集按照顺序加载** 以及 [自定义 Unsplash 源](http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash) · 自定义搜索 · 自定义站点 · 自定义样式等。
+
   <details><summary>截图</summary>
     <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
   </details>
