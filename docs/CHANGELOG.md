@@ -1,3 +1,38 @@
+#### 1.5.3
+
+> 2018-11-25
+
+- :sparkles: 新增 [禅模式](http://ksria.com/simptab/docs/#/禅模式)；
+
+  > 包含了：多种主题 · 模块化 · 自定义样式 等，适合喜欢纯色背景且无干扰界面的用户。
+
+  ![禅模式](https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg)
+
+- :sparkles: 新增 [选项页](http://ksria.com/simptab/docs/#/选项页)；
+
+  ![选项页](https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg)
+
+  > 包括以下几个重要功能：
+
+  - [自定义Unsplash](http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%e8%87%aa%e5%ae%9a%e4%b9%89unsplash) 以及 精选集背景的顺序显示；
+  - 快捷搜索栏接入多种搜索引擎并可定制化； [#47](https://github.com/Kenshin/simptab/issues/47)
+
+  - Topsites 在 `简单模式 · 高级模式` 的基础上增加了自定义的功能；
+
+  - 全局化的自定义样式； [#43](https://github.com/Kenshin/simptab/issues/43)
+
+- :sparkles: 新增 自定义站点的 快捷键支持，触发键为 z ~ `<1-9>` 号，详细请看 [自定义站点](http://ksria.com/simptab/docs/#/%E9%80%89%E9%A1%B9%E9%A1%B5?id=%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ab%99%e7%82%b9)  [#19](https://github.com/Kenshin/simptab/issues/19)
+
+- � 优化了  `Bookmark` `History` `Apps` 合并为一个横向 icon bar [#46](https://github.com/Kenshin/simptab/issues/46)
+
+  ![Xnip2018-11-24_16-42-13.jpg](https://i.loli.net/2018/11/24/5bf90f0077050.jpg)
+
+- � 去掉了 已失效的背景源 `flickr.com`；
+
+- � 修复了 [#40](https://github.com/Kenshin/simptab/issues/40) [#41](https://github.com/Kenshin/simptab/issues/41) [#46](https://github.com/Kenshin/simptab/issues/46) 错误；
+
+***
+
 #### 1.5.2
 
 > 2018-10-14

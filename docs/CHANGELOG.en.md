@@ -1,3 +1,37 @@
+#### 1.5.3
+
+> 2018-11-25
+
+- :sparkles: Add [Zen mode](http://ksria.com/simptab/docs/#/禅模式);
+
+  ![禅模式](https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg)
+
+- :sparkles: Add [Options](http://ksria.com/simptab/docs/#/选项页);
+
+  ![Options](https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg)
+
+  > Include some important feature:
+
+  - [Custom Unsplash](http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%e8%87%aa%e5%ae%9a%e4%b9%89unsplash) and **subscribe background in sequence**;
+
+  - Quick bar add multi-search;[#47](https://github.com/Kenshin/simptab/issues/47)
+
+  - Custom Topsites;
+
+  - Custom Golbal CSS; [#43](https://github.com/Kenshin/simptab/issues/43)
+
+- :lipstick: Add Custom Topsites shortcuts, trigger key is z ~ `<1-9>`, more about [Custom Topsites](http://ksria.com/simptab/docs/#/%E9%80%89%E9%A1%B9%E9%A1%B5?id=%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ab%99%e7%82%b9)  [#19](https://github.com/Kenshin/simptab/issues/19)
+
+- � Optimize Merge `Bookmark` `History` `Apps` [#46](https://github.com/Kenshin/simptab/issues/46)
+
+  ![Xnip2018-11-24_16-42-13.jpg](https://i.loli.net/2018/11/24/5bf90f0077050.jpg)
+
+- � Remove failed origins: `flickr.com`;
+
+- � Fix [#40](https://github.com/Kenshin/simptab/issues/40) [#41](https://github.com/Kenshin/simptab/issues/41) [#46](https://github.com/Kenshin/simptab/issues/46) Bug;
+
+***
+
 #### 1.5.2
 
 > 2018-10-14
