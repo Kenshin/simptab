@@ -44,7 +44,7 @@
 
   * 只显示当前背景：永不更换背景源
 
-- 多种类型的背景源，包括：
+- [多种类型的背景源](http://ksria.com/simptab/docs/#/多种背景源)，包括：
   * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
   * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab 精选集**  
