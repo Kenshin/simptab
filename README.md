@@ -77,8 +77,15 @@
 
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [选项页](http://ksria.com/simptab/docs/#/选项页)；
 
+  <details><summary>截图</summary>
+  <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
+  </details>
+
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禅模式](http://ksria.com/simptab/docs/#/禅模式)；  
-  ![禅模式](https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg)
+
+  <details><summary>截图</summary>
+  <img src="https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg">
+  </details>
 
 #### 投票：
 * 简 Tab 是一个免费并开源的项目，如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
