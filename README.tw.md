@@ -1,18 +1,18 @@
-<p align="center"><img src="http://st.ksria.cn/logo@192.png" /></p>
+<p align="center"><img src="http://st.ksria.cn/logo@384.png" /></p>
 <h1 align="center">簡 Tab - 極簡的 Chrome 新標籤頁擴展</h1>
 <p align="center">望你每次打開都有好心情；去除多餘功能，只關註標簽頁呈現效果。</p>
 <p align="center">
-   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.2-blue.svg"></a>
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.3-blue.svg"></a>
    <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.2/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.3/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
    <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
 </p>
 
 ***
 
 #### 馬上使用：
-* [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
+* [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.3/simptab.crx)
 
 * 有任何問題請看 [幫助中心](http://ksria.com/simptab/docs/#) 或者 加入 **[SimpTab 的討論群](https://gitter.im/Kenshin/simptab)**
 
@@ -23,9 +23,15 @@
 
 #### 截圖：
 ![Snapshot](http://st.ksria.cn/start@webstore.png)
-![Snapshot](http://st.ksria.cn/subscribe@webstore.png)  
 ![Snapshot](http://st.ksria.cn/mask@webstore.png?20181011)  
-![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
+![Snapshot](http://st.ksria.cn/zenmode@webstore.png)  
+
+<details><summary>更多截圖</summary>
+  <img src="http://st.ksria.cn/bookmarks@webstore.png">
+  <img src="http://st.ksria.cn/subscribe@webstore.png">
+  <img src="http://st.ksria.cn/options@webstore.png">
+  <img src="http://st.ksria.cn/quickbar@webstore.png">
+</details>
 
 #### 主要功能一覽：
 
@@ -38,8 +44,8 @@
 
   * 只顯示當前背景：永不更換背景源
 
-- 多種類型的背景源，包括：
-  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `flickr.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
+- [多種類型的背景源](http://ksria.com/simptab/docs/#/多种背景源)，包括：
+  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
   * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab 精選集**  
 
@@ -57,7 +63,7 @@
 
 - 支持 `快捷鍵` / `多功能框` 操作；
 
-- [常用網址](http://ksria.com/simptab/docs/#/功能一览#常用网址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 
+- [常用網址](http://ksria.com/simptab/docs/#/功能一览#常用网址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 以及 ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) **[自定義功能](http://ksria.com/simptab/docs/#/选项页?id=自定义站点)**
 
 - 上傳 · 收藏 · 下載；
 
@@ -69,6 +75,22 @@
 
 - ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏與訂閱管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
 
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [選項頁](http://ksria.com/simptab/docs/#/选项页)；
+
+  > 包括： **精選集按照順序載入** 以及 [自定義 Unsplash 源](http://ksria.com/simptab/docs/#/多種背景源?id=自定義Unsplash) · 自定義搜索 · 自定義站點 · 自定義樣式等。
+
+  <details><summary>截圖</summary>
+    <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
+  </details>
+
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禪模式](http://ksria.com/simptab/docs/#/禅模式)；
+
+  <details><summary>截圖</summary>
+    <img src="https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg">
+    <img src="https://i.loli.net/2018/11/23/5bf7a756d6708.jpg">
+    <img src="https://i.loli.net/2018/11/23/5bf7a3625cc20.jpg">
+  </details>
+
 #### 投票：
 * 簡 Tab 是一個免費並開源的項目，如果覺得不錯，請給我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
@@ -76,7 +98,7 @@
 * <http://ksria.com/simptab/gallery.html>
 
 #### 全部功能：
-![全部功能：](http://st.ksria.cn/feature%201.5.2.png)
+![全部功能：](http://st.ksria.cn/feature%201.5.3.png)
 
 #### 相關鏈接：
 * [更新日誌](http://ksria.com/simptab/docs/#/CHANGELOG)
