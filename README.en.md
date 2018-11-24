@@ -66,13 +66,13 @@
 
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [Options](http://ksria.com/simptab/docs/#/选项页)；
 
-  > Includes: **the subscribe show the background in sequence** and [Custom Unsplash](http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash) · Custom Search · Custom Topsites · Custome CSS。
+  > Includes: **the subscribe background in sequence** and [Custom Unsplash](http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash) · Custom Search · Custom Topsites · Custome CSS.
 
   <details><summary>Snapshot</summary>
     <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
   </details>
 
-- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [Zen　Mode](http://ksria.com/simptab/docs/#/禅模式)；
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [Zen Mode](http://ksria.com/simptab/docs/#/禅模式)；
 
   <details><summary>Snapshot</summary>
     <img src="https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg">
