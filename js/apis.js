@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function( $, i18n, setting, vo, date, SimpError, cdns ) {
+define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ], function( $, i18n, setting, vo, date, SimpError, cdns, options ) {
 
     "use strict";
 
@@ -60,7 +60,8 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
                 else {
                     while ( Verify( code ) == "false"  ||
                             //localStorage[ "simptab-prv-code" ] == code ||
-                            code == 11 || code == 5 || code == 8 || code == 13 ) {
+                            // hiden origins include: flickr 500px nasa holiday
+                            code == 3 || code == 5 || code == 8 || code == 11 || code == 13 ) {
                         code = this.Random( 0, this.ORIGINS_MAX );
                     }
                     localStorage[ "simptab-prv-code" ] = code;
@@ -219,12 +220,13 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
       console.log( "=== Unsplash.com call ===" );
 
-      var unsplash_ids = [ "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ];
+      var unsplash_ids = options.Storage.db.unsplash;
       try {
           var dtd    = $.Deferred(),
               max    = unsplash_ids.length - 1,
               id     = unsplash_ids[ apis.Random( 0, max ) ],
               url    = "https://source.unsplash.com/" + id + "/2560×1600";
+          max == 0 && ( url = "https://source.unsplash.com/random" );
           apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
           dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
       }
@@ -643,8 +645,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
 
                 if ( type == "special" ) {
                     var arr = result.collections;
-                    max     = arr.length - 1;
-                    random  = apis.Random( 0, max );
+                    if ( options.Storage.db.subscribe.sequence ) {
+                        options.Storage.db.subscribe.index++;
+                        options.Storage.db.subscribe.index == arr.length && ( options.Storage.db.subscribe.index = 0 );
+                        options.Storage.Set();
+                        random = options.Storage.db.subscribe.index;
+                    } else {
+                        max     = arr.length - 1;
+                        random  = apis.Random( 0, max );
+                    }
                     data    = arr[ random ];
                     hdurl   = data.url;
                     type    = i18n.GetLang( "controlbar_special" );
@@ -690,9 +699,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns" ], function(
         })
         .fail( function( result, error ) {
             SimpError.Clone( result, (!error ? result : error));
+            apis.failed++;
             if ( apis.vo.origin == "today" ) apis.failed = apis.ORIGINS_MAX;
             apis.failed < apis.ORIGINS_MAX - 5 ? init() : dtd.reject( result, error );
-            apis.failed++;
         });
         return dtd;
     }

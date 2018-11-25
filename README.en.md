@@ -1,11 +1,11 @@
-<p align="center"><img src="http://st.ksria.cn/logo@192.png" /></p>
+<p align="center"><img src="http://st.ksria.cn/logo@384.png" /></p>
 <h1 align="center">SimpTab - Minimalist Chrome new tab extension</h1>
 <p align="center">Hope to improve your mood every time you open a new tab. Clear & simple, focused on beautiful background images.</p>
 <p align="center">
-   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.2-blue.svg"></a>
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.3-blue.svg"></a>
    <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.2/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.3/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
    <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
 </p>
 </p>
@@ -13,7 +13,7 @@
 ***
 
 #### Download:
-* [Chrome Webstore](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) · [Offline Download](http://ksria.com/simptab/crx/1.5.2/simptab.crx)
+* [Chrome Webstore](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) · [Offline Download](http://ksria.com/simptab/crx/1.5.3/simptab.crx)
 
 * If you have a good background and would like to share with you, please tell me and submission address → [Google Form](https://goo.gl/forms/oThieQCP6xk626GU2)
 
@@ -22,9 +22,15 @@
 
 #### Snapshot:
 ![Snapshot](http://st.ksria.cn/start@webstore.png)
-![Snapshot](http://st.ksria.cn/subscribe@webstore.png)  
 ![Snapshot](http://st.ksria.cn/mask@webstore.png?20181011)  
-![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)  
+![Snapshot](http://st.ksria.cn/zenmode@webstore.png)  
+
+<details><summary>About more</summary>
+  <img src="http://st.ksria.cn/bookmarks@webstore.png">
+  <img src="http://st.ksria.cn/subscribe@webstore.png">
+  <img src="http://st.ksria.cn/options@webstore.png">
+  <img src="http://st.ksria.cn/quickbar@webstore.png">
+</details>
 
 #### Features Details:
 - Automatically recognize the preferred language. ( Simplified & Traditional Chinese, English.
@@ -32,7 +38,7 @@
 - Change the background daily/randomly/no-changed on new tab
 
 - Multiples type background origins:
-  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `flickr.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
+  * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
   * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab Subscribe** origins  
 
@@ -57,6 +63,22 @@
 - ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Bookmarks](http://ksria.com/simptab/docs/#/功能一览#主要功能之一) ;
 
 - ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Background Manage](http://ksria.com/simptab/docs/#/功能一览#主要功能之二) ;
+
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [Options](http://ksria.com/simptab/docs/#/选项页)；
+
+  > Includes: **the subscribe background in sequence** and [Custom Unsplash](http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash) · Custom Search · Custom Topsites · Custome CSS.
+
+  <details><summary>Snapshot</summary>
+    <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
+  </details>
+
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [Zen Mode](http://ksria.com/simptab/docs/#/禅模式)；
+
+  <details><summary>Snapshot</summary>
+    <img src="https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg">
+    <img src="https://i.loli.net/2018/11/23/5bf7a756d6708.jpg">
+    <img src="https://i.loli.net/2018/11/23/5bf7a3625cc20.jpg">
+  </details>
 
 #### Vote:
 * If you like this application, please [Rate](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) it

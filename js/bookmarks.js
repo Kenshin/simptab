@@ -1,6 +1,6 @@
 define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves, i18n, message ) {
 
-    var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [] },
+    var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [], search: [] },
         getBgColor = function ( chars ) {
             var idx = bgColors.idx.indexOf( chars.toLowerCase() ),
                 bg  = bgColors.colors[idx];
@@ -45,9 +45,13 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
         $( ".bm-overlay" ).width( "50%" );
         $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
+        if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
+            $(".folders").css( "overflow-y", "auto" );
+        }
     }
 
     function close() {
+        $(".folders").css( "overflow-y", "initial" );
         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
         $( ".bm-overlay" ).removeAttr( "style" );
     }
@@ -127,6 +131,12 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         });
     }
 
+    function getSearch( data ) {
+        data.length > 1 && data.forEach( function( item ) {
+            bookmarks.search.push( JSON.parse( item ));
+        });
+    }
+
     function fmtBookmarks( result, is_parent ) {
         result.forEach( function( item ) {
             if ( item.children ) {
@@ -175,10 +185,22 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         fileHTML += html;
     }
 
-    function quickSearch( value ) {
+    function bmSearch( value ) {
         var match = [], html = "";
         bookmarks.all.forEach( function( item ) {
             if ( item.title.indexOf( value ) != -1 || item.url.indexOf( value ) != -1 ) {
+                match.push( item );
+                html += createResultTmpl( item );
+            }
+        });
+        return { match: match, html: html };
+    }
+
+    function quickSearch( value, conditions ) {
+        var match = [], html = "";
+        bookmarks.search.forEach( function( item ) {
+            if ( !conditions || ( conditions && item.key.indexOf( conditions ) != -1 )) {
+                item.url = item.query.replace( "{query}", value );
                 match.push( item );
                 html += createResultTmpl( item );
             }
@@ -207,17 +229,31 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
                 $target.find( ".result" ).hasClass( "active" ) &&
                     $target.find( ".result.active" ).removeClass( "active" ).prev().addClass( "active" );
             } else if ( key == 13 ) {
-                $target.find( ".result" ).hasClass( "active" ) &&
-                    $target.find( ".result.active" )[0].click();
+                $target.find( ".result" ).hasClass( "active" ) ?
+                    $target.find( ".result.active" )[0].click()
+                    : $target.find( ".result" )[0].click();
             }
         });
         $( ".quickbar .search input" ).on( "keyup", function( event ) {
             var value  = event.target.value,
                 result = { match: [], html: "" },
+                searchKey = /^[sS] /,
+                subKey = /^\w /,
                 key    = event.keyCode;
             if ( key == 38 || key == 40 || key == 13 ) return;
-            if ( value != "" ) {
-                result = quickSearch( event.target.value );
+            if ( searchKey.test( value )) {
+                var conditions;
+                value = value.replace( searchKey, "" );
+                if ( subKey.test( value ) ) {
+                    var arr = value.match( subKey );
+                    if ( arr && arr.length > 0 ) {
+                        value      = value.replace( subKey, "" );
+                        conditions = arr[0].trim();
+                    }
+                }
+                result = quickSearch( value, conditions );
+            } else if ( value != "" ) {
+                result = bmSearch( event.target.value );
                 $( ".quickbar .search" ).addClass( "fix" );
             } else {
                 $( ".quickbar .search" ).removeClass( "fix" );
@@ -234,7 +270,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
             title   = item.title != "" ? item.title : item.url,
             url     = item.url,
             avatar  = fmtTitle( title ).substr( 0, 1 ),
-            bgColor = getBgColor( avatar ),
+            bgColor = item.color ? item.color : getBgColor( avatar );
             compiled= _.template( tmpl ),
             html    = compiled({ title: title, url: url, avatar: avatar, bgColor: bgColor });
         return html;
@@ -260,10 +296,11 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
     }
 
     return {
-        Render: function() {
+        Render: function( data ) {
             $( "body" ).append( '<div class="bm-overlay"><div class="bm"><div class="folders"></div><div class="files"></div></div></div>' );
             setTimeout( function() {
                 bmListen();
+                getSearch( data );
                 getBookmarks();
                 folderListen();
             }, 10 );

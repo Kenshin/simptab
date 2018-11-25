@@ -32,6 +32,28 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                             <div class="desc">' + i18n.GetLang( "welcome_152_desc_2" ) +'</div>\
                         </div>\
                     </div>',
+            "1.5.3": '\
+                    <div class="carousel-item" id="1.5.3">\
+                        <img src="http://st.ksria.cn/welcome-zenmode.png">\
+                        <div class="content">\
+                            <h2 class="title">' + i18n.GetLang( "welcome_153_title_1" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_153_desc_1" ) +'</div>\
+                        </div>\
+                    </div>\
+                    <div class="carousel-item" id="1.5.3">\
+                        <img src="http://st.ksria.cn/welcome-quickbar.png">\
+                        <div class="content">\
+                            <h2 class="title">' + i18n.GetLang( "welcome_153_title_2" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_153_desc_2" ) +'</div>\
+                        </div>\
+                    </div>\
+                    <div class="carousel-item" id="1.5.3">\
+                        <img src="http://st.ksria.cn/welcome-options.png">\
+                        <div class="content">\
+                            <h2 class="title">' + i18n.GetLang( "welcome_153_title_3" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_153_desc_3" ) +'</div>\
+                        </div>\
+                    </div>',
         },
         welcomeTmpl = '\
                     <div class="welcome-overlay">\

@@ -65,6 +65,10 @@
         "message": "BG Manage"
     },
 
+    "controlbar_options": {
+        "message": "Options"
+    },
+
     "controlbar_about": {
         "message": "About"
     },
@@ -193,6 +197,10 @@
         "message": "Pin for #1 hours"
     },
 
+    "setting_zen_state": {
+        "message": "Enable Zen mode"
+    },
+
     "setting_contact_weibo": {
         "message": "Share on Weibo"
     },
@@ -289,6 +297,14 @@
         "message": "Open/Close Quick bar"
     },
 
+    "shortcuts_key_topsites": {
+        "message": "Open 1~9 Topsite"
+    },
+
+    "shortcuts_key_zenmode": {
+        "message": "Open zen mode setting"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
@@ -303,6 +319,114 @@
 
     "about_content_end": {
         "message": "<p style='margin-top: 14px;'>If you have a good work or suitable background, please also tell SimpTab, Submission address 👉 <a href='https://goo.gl/forms/oThieQCP6xk626GU2' target='_blank'>Google Form</a><br> Give me a <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>5-star</a> rating, Send feedback and submit <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>issues</a>, with your help to be more perfect.<br></p>"
+    },
+
+    "options_head": {
+        "message": "Options"
+    },
+
+    "options_custom_unsplash": {
+        "message": "Background origins"
+    },
+
+    "options_custom_unsplash_cbx": {
+        "message": "Does the subscribe show the background in sequence? ( Default is random loading)"
+    },
+
+    "options_custom_unsplash_label": {
+        "message": "Custom Unsplash origins"
+    },
+
+    "options_custom_unsplash_notice": {
+        "message": "Support custom e.g. https://source.unsplash.com/<b>{xxxx}</b> usage , split about more <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
+    },
+
+    "options_custom_style": {
+        "message": "Custom global Style"
+    },
+
+    "options_custom_tp": {
+        "message": "Custom Topsites"
+    },
+
+    "options_custom_tp_cbx": {
+        "message": "Enable custom topsites?"
+    },
+
+    "options_custom_tp_notice": {
+        "message": "Only supports max 9 web sites, one per line, usage , split → simptab, http://ksria.com/simptab"
+    },
+
+    "options_custom_search": {
+        "message": "Custom Search"
+    },
+
+    "options_footer_clear": {
+        "message": "Clear"
+    },
+
+    "zen_mode_setting_theme_title": {
+        "message": "Theme"
+    },
+
+    "zen_mode_setting_theme_placeholder": {
+        "message": "Custom theme, only css3 values."
+    },
+
+    "zen_mode_setting_modules": {
+        "message": "Modules"
+    },
+
+    "zen_mode_setting_modules_size": {
+        "message": "Size"
+    },
+
+    "zen_mode_setting_modules_size_normal": {
+        "message": "Normal"
+    },
+
+    "zen_mode_setting_modules_size_middle": {
+        "message": "Large"
+    },
+
+    "zen_mode_setting_modules_size_large": {
+        "message": "Larger"
+    },
+
+    "zen_mode_setting_modules_time": {
+        "message": "Time"
+    },
+
+    "zen_mode_setting_modules_day": {
+        "message": "Day"
+    },
+
+    "zen_mode_setting_modules_devices": {
+        "message": "Devices"
+    },
+
+    "zen_mode_setting_modules_topsizes": {
+        "message": "Topsites"
+    },
+
+    "zen_mode_setting_css": {
+        "message": "Custom CSS"
+    },
+
+    "zen_mode_setting_import": {
+        "message": "Import"
+    },
+
+    "zen_mode_setting_export": {
+        "message": "Export"
+    },
+
+    "zen_mode_setting_exit": {
+        "message": "Exit Zen mode"
+    },
+
+    "zen_mode_setting_close": {
+        "message": "Close"
     },
 
     "version_title": {
@@ -393,6 +517,38 @@
         "message": "Please close dialog."
     },
 
+    "notify_options_clear": {
+        "message": "Is the initial value restored?"
+    },
+
+    "notify_options_clear_success": {
+        "message": "Successful, please refresh."
+    },
+
+    "notify_options_agree": {
+        "message": "Agree "
+    },
+
+    "notify_zen_mode": {
+        "message": "Please fresh current new tab."
+    },
+
+    "notify_zen_mode_theme_random": {
+        "message": "Enable random theme."
+    },
+
+    "notify_zen_mode_import_success": {
+        "message": "Import sucessful."
+    },
+
+    "notify_zen_mode_import_failed": {
+        "message": "Import failed, config file parse."
+    },
+
+    "notify_zen_mode_exit": {
+        "message": "Exit zen mode success, please refresh new tab."
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -433,8 +589,8 @@
         "message": "Add: Subscibe & Favorite manage, Bookmarks, Controlbar - Refresh; "
     },
 
-    "permissions": {
-        "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
+    "version_detail_8": {
+        "message": "Add: Zen mode, Golbal options, Quick bar support multi-search;"
     },
 
     "welcome_start_title": {
@@ -487,6 +643,34 @@
 
     "welcome_152_desc_2": {
         "message": "Bookmarks on your new tab."
+    },
+
+    "welcome_153_title_1": {
+        "message": "Zen mode"
+    },
+
+    "welcome_153_desc_1": {
+        "message": "More minimalist, multi-color palette, highly customized"
+    },
+
+    "welcome_153_title_2": {
+        "message": "Quick bar"
+    },
+
+    "welcome_153_desc_2": {
+        "message": "Support multi Search engine"
+    },
+
+    "welcome_153_title_3": {
+        "message": "Options"
+    },
+
+    "welcome_153_desc_3": {
+        "message": "Custom topsites, Custom Style, Custom Unsplash origins"
+    },
+
+    "permissions": {
+        "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
 
     "permissions_success": {

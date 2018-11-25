@@ -65,6 +65,10 @@
         "message": "背景管理器"
     },
 
+    "controlbar_options": {
+        "message": "选项"
+    },
+
     "controlbar_about": {
         "message": "关于"
     },
@@ -193,6 +197,10 @@
         "message": "固定 #1 小时"
     },
 
+    "setting_zen_state": {
+        "message": "启用 禅模式"
+    },
+
     "setting_contact_weibo": {
         "message": "分享到 微博"
     },
@@ -289,6 +297,14 @@
         "message": "打开/关闭快捷查找"
     },
 
+    "shortcuts_key_topsites": {
+        "message": "打开 Topsites 对应的 1~9 号网址"
+    },
+
+    "shortcuts_key_zenmode": {
+        "message": "打开禅模式的选项页"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },
@@ -303,6 +319,114 @@
 
     "about_content_end": {
         "message": "<p style='margin-top:14px;'>如果你有 <code>好的作品</code> 亦或 <code>适合的背景</code>，也请告诉 简 Tab，投稿地址 👉 <a href='https://goo.gl/forms/j1PuNz4DMAjS0Gj33' target='_blank'>猛戳这里</a> · <a href='https://wj.qq.com/s/2710075/6108' target='_blank'>备用地址</a><br>觉得它还不错，请帮忙 <a href='https://chrome.google.com/webstore/detail/%E7%AE%80-tab-simptab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/kbgmbmkhepchmmcnbdbclpkpegbgikjc' target='_blank'>五星好评</a>，这是对我最大的肯定，有任何问题也请 <a href='https://github.com/Kenshin/simptab/issues/new' target='_blank'>提交 issues</a>，有你的帮助才能更完美。</p>"
+    },
+
+    "options_head": {
+        "message": "选项"
+    },
+
+    "options_custom_unsplash": {
+        "message": "背景源"
+    },
+
+    "options_custom_unsplash_cbx": {
+        "message": "精选集是否按照顺序显示背景？（默认为随机显示）"
+    },
+
+    "options_custom_unsplash_label": {
+        "message": "自定义 Unsplash 源"
+    },
+
+    "options_custom_unsplash_notice": {
+        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>自定义 Unsplash</a>"
+    },
+
+    "options_custom_style": {
+        "message": "自定义样式（ 全局 ）"
+    },
+
+    "options_custom_tp": {
+        "message": "自定义站点（ Topsites ）"
+    },
+
+    "options_custom_tp_cbx": {
+        "message": "是否启用自定义站点功能？"
+    },
+
+    "options_custom_tp_notice": {
+        "message": "目前仅支持最多九个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab"
+    },
+
+    "options_custom_search": {
+        "message": "自定义搜索"
+    },
+
+    "options_footer_clear": {
+        "message": "恢复初始值"
+    },
+
+    "zen_mode_setting_theme_title": {
+        "message": "主题"
+    },
+
+    "zen_mode_setting_theme_placeholder": {
+        "message": "自定义主题背景，仅支持 CSS3 语法"
+    },
+
+    "zen_mode_setting_modules": {
+        "message": "模块设置"
+    },
+
+    "zen_mode_setting_modules_size": {
+        "message": "大小"
+    },
+
+    "zen_mode_setting_modules_size_normal": {
+        "message": "正常"
+    },
+
+    "zen_mode_setting_modules_size_middle": {
+        "message": "大"
+    },
+
+    "zen_mode_setting_modules_size_large": {
+        "message": "超大"
+    },
+
+    "zen_mode_setting_modules_time": {
+        "message": "时间"
+    },
+
+    "zen_mode_setting_modules_day": {
+        "message": "日期"
+    },
+
+    "zen_mode_setting_modules_devices": {
+        "message": "状态"
+    },
+
+    "zen_mode_setting_modules_topsizes": {
+        "message": "常用网址"
+    },
+
+    "zen_mode_setting_css": {
+        "message": "自定义样式"
+    },
+
+    "zen_mode_setting_import": {
+        "message": "导入配置"
+    },
+
+    "zen_mode_setting_export": {
+        "message": "导出配置"
+    },
+
+    "zen_mode_setting_exit": {
+        "message": "退出禅模式"
+    },
+
+    "zen_mode_setting_close": {
+        "message": "关闭"
     },
 
     "version_title": {
@@ -393,6 +517,38 @@
         "message": "请先退出当前模式。"
     },
 
+    "notify_options_clear": {
+        "message": "是否恢复（只包含上述内容的）初始值？"
+    },
+
+    "notify_options_clear_success": {
+        "message": "已恢复初始值，请刷新本页。"
+    },
+
+    "notify_options_agree": {
+        "message": "同意 "
+    },
+
+    "notify_zen_mode": {
+        "message": "刷新当前页面后生效。"
+    },
+
+    "notify_zen_mode_theme_random": {
+        "message": "已选择随机主题，每次打开新标签页都会随机给出一个主题。"
+    },
+
+    "notify_zen_mode_import_success": {
+        "message": "导入成功，请刷新页面生效。"
+    },
+
+    "notify_zen_mode_import_failed": {
+        "message": "导入失败，配置文件解析失败，请重新确认。"
+    },
+
+    "notify_zen_mode_exit": {
+        "message": "已退出禅模式，页面刷新后生效。"
+    },
+
     "version_detail": {
         "message": ""
     },
@@ -431,6 +587,10 @@
 
     "version_detail_7": {
         "message": "新增：订阅和收藏管理，书签栏，下一张，重构了页面结构等；"
+    },
+
+    "version_detail_8": {
+        "message": "新增：全新的禅模式，全局选项页，快捷搜索栏接入多种搜索引擎等；"
     },
 
     "welcome_start_title": {
@@ -483,6 +643,30 @@
 
     "welcome_152_desc_2": {
         "message": "要美景更要效率，效率达人必备之选。"
+    },
+
+    "welcome_153_title_1": {
+        "message": "全新的「禅模式」"
+    },
+
+    "welcome_153_desc_1": {
+        "message": "更加专注，更加极简，多种配色，高度定制化，<a href='http://ksria.com/simptab/docs/#/禅模式' target='_blank'>详细请看这里</a>"
+    },
+
+    "welcome_153_title_2": {
+        "message": "「更智能」的快捷搜索"
+    },
+
+    "welcome_153_desc_2": {
+        "message": "内置多种搜索方案，一键直达，<a href='http://ksria.com/simptab/docs/#/功能一览?id=快捷搜索栏' target='_blank'>还可定制化</a>"
+    },
+
+    "welcome_153_title_3": {
+        "message": "选项页"
+    },
+
+    "welcome_153_desc_3": {
+        "message": "自定义站点，自定义样式，更丰富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>个性定制化</a>"
     },
 
     "permissions": {
