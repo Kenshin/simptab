@@ -219,7 +219,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             $a.remove();
         });
         $( ".options" ).on( "click", ".footer .clear", function( event ) {
-            new Notify().Render( "snackbar", i18n.GetLang( "notify_options_clear" ), i18n.GetLang( "notify_options_agree" ), () => {
+            new Notify().Render( "snackbar", i18n.GetLang( "notify_options_clear" ), i18n.GetLang( "notify_options_agree" ), function() {
                 storage.Clear();
                 new Notify().Render( i18n.GetLang( "notify_options_clear_success" ));
             });

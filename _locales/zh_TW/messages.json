@@ -338,7 +338,7 @@
     },
 
     "options_custom_unsplash_notice": {
-        "message": "支持自定義源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；詳細說明請訪問 <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
+        "message": "支持自定義源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>自定義 Unsplash</a>"
     },
 
     "options_custom_style": {
@@ -589,6 +589,10 @@
         "message": "新增：訂閱和收藏管理，書籤欄，下一張，重構了頁面結構等；"
     },
 
+    "version_detail_8": {
+        "message": "新增：全新的禪模式，全局選項頁，快捷搜索欄接入多種搜索引擎等；"
+    },
+
     "welcome_start_title": {
         "message": "歡迎使用"
     },
@@ -639,6 +643,30 @@
 
     "welcome_152_desc_2": {
         "message": "要美景更要效率，效率達人必備之選。"
+    },
+
+    "welcome_153_title_1": {
+        "message": "全新的「禪模式」"
+    },
+
+    "welcome_153_desc_1": {
+        "message": "更加專註，更加極簡，多種配色，高度定製化，<a href='http://ksria.com/simptab/docs/#/禅模式' target='_blank'>詳細請看這裡</a>"
+    },
+
+    "welcome_153_title_2": {
+        "message": "「更智能」的快捷搜索"
+    },
+
+    "welcome_153_desc_2": {
+        "message": "內置多種搜索方案，一鍵直達，<a href='http://ksria.com/simptab/docs/#/功能一览?id=快捷搜索栏' target='_blank'>還可定製化</a>"
+    },
+
+    "welcome_153_title_3": {
+        "message": "選項頁"
+    },
+
+    "welcome_153_desc_3": {
+        "message": "自定義站點，自定義樣式，更豐富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>個性定製化</a>"
     },
 
     "permissions": {

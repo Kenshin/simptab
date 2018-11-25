@@ -17,7 +17,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                 devices: { color: "", display: "true" },
                 topsites: { display: "true" },
                 css: "",
-                version: "1.0.0",
+                version: chrome.runtime.getManifest().version,
             },
             key     = "simptab-tenmode-option",
             random  = function( min, max ) {

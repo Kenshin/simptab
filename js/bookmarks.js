@@ -132,7 +132,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
     }
 
     function getSearch( data ) {
-        data.forEach( function( item ) {
+        data.length > 1 && data.forEach( function( item ) {
             bookmarks.search.push( JSON.parse( item ));
         });
     }
@@ -238,7 +238,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
             var value  = event.target.value,
                 result = { match: [], html: "" },
                 searchKey = /^[sS] /,
-                subKey = /^\w+ /,
+                subKey = /^\w /,
                 key    = event.keyCode;
             if ( key == 38 || key == 40 || key == 13 ) return;
             if ( searchKey.test( value )) {
