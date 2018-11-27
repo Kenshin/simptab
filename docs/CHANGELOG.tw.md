@@ -23,13 +23,13 @@
 
 - :sparkles: 新增 自定義站點的 快捷鍵支持，觸發鍵為 z ~ `<1-9>` 號，詳細請看 [自定義站點](http://ksria.com/simptab/docs/#/%E9%80%89%E9%A1%B9%E9%A1%B5?id=%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ab%99%e7%82%b9)  [#19](https://github.com/Kenshin/simptab/issues/19)
 
-- � 優化了  `Bookmark` `History` `Apps` 合并為一個橫向 icon bar [#46](https://github.com/Kenshin/simptab/issues/46)
+- :lipstick: 優化了  `Bookmark` `History` `Apps` 合并為一個橫向 icon bar [#46](https://github.com/Kenshin/simptab/issues/46)
 
   ![Xnip2018-11-24_16-42-13.jpg](https://i.loli.net/2018/11/24/5bf90f0077050.jpg)
 
-- � 去掉了 已失效的背景源 `flickr.com`；
+- :fire: 去掉了 已失效的背景源 `flickr.com`；
 
-- � 修復了 [#40](https://github.com/Kenshin/simptab/issues/40) [#41](https://github.com/Kenshin/simptab/issues/41) [#46](https://github.com/Kenshin/simptab/issues/46) 錯誤；
+- :bug: 修復了 [#40](https://github.com/Kenshin/simptab/issues/40) [#41](https://github.com/Kenshin/simptab/issues/41) [#46](https://github.com/Kenshin/simptab/issues/46) 錯誤；
 
 ***
 
