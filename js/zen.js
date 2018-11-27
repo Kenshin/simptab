@@ -369,8 +369,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         custom();
         storage.db.theme == "#ffffff" && $( ".setting-trigger-zen-mode" ).addClass( "setting-trigger-white-zen-mode" );
         $( ".setting-trigger-zen-mode" ).on( "click", function( event ) {
-            settingTmpl();
-            open();
+            if ( $( "body" ).find( ".setting-zen-mode" ).length > 0 ) {
+                $( ".setting-zen-mode .footer .close" )[0].click();
+            } else {
+                settingTmpl();
+                open();
+            }
         });
     }
 
