@@ -215,7 +215,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                             new Notify().Render( i18n.GetLang( "notify_double_open" ) );
                         break;
                     case "options":
-                        options.Render();
+                        $( "body" ).find( ".dialog-overlay" ).length == 0 ?
+                            options.Render() :
+                            new Notify().Render( i18n.GetLang( "notify_double_open" ) );
                         break;
                     case "about":
                         $( "body" ).find( ".dialog-overlay" ).length == 0 ?
