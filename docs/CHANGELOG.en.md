@@ -1,3 +1,13 @@
+#### 1.5.3.1127
+
+> 2018-11-27
+
+- :bug: First into Zen mode can't find option bug; [#51](https://github.com/Kenshin/simptab/issues/51)
+
+- :bug: Global options and Zen mode options can be multiple open bug;
+
+***
+
 #### 1.5.3
 
 > 2018-11-25
