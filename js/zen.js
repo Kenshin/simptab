@@ -17,7 +17,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                 devices: { color: "", display: "true" },
                 topsites: { display: "true" },
                 css: "",
-                version: chrome.runtime.getManifest().version,
+                version: chrome.runtime.getManifest().version.replace( /.\d{2,}/, "" ),
             },
             key     = "simptab-tenmode-option",
             random  = function( min, max ) {
@@ -396,12 +396,20 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         });
     }
 
+    function notify() {
+        localStorage["simptab-zenmode-notify"] != "false" &&
+            new Notify().Render({ content: "欢迎来到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禅模式</a>，使用快捷键 c 或者鼠标移动右下角弹出选项卡。", action: "不再提示", callback:function (){
+                localStorage["simptab-zenmode-notify"] = false;
+            }});
+    }
+
     return {
         Render: function() {
             timeMode();
             dayMode();
             devicesMode();
             ohtersMode();
+            notify();
 
             setTimeout( function() {
                 topSitesMode();

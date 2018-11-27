@@ -10,7 +10,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     var storage = ( function () {
             var key      = "simptab-options",
                 _storage = {
-                    version: chrome.runtime.getManifest().version,
+                    version: chrome.runtime.getManifest().version.replace( /.\d{2,}/, "" ),
                     topsites: {
                         enable: false,
                         custom: "",
