@@ -17,7 +17,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                 devices: { color: "", display: "true" },
                 topsites: { display: "true" },
                 css: "",
-                version: chrome.runtime.getManifest().version,
+                version: chrome.runtime.getManifest().version.replace( /.\d{2,}/, "" ),
             },
             key     = "simptab-tenmode-option",
             random  = function( min, max ) {
@@ -369,8 +369,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         custom();
         storage.db.theme == "#ffffff" && $( ".setting-trigger-zen-mode" ).addClass( "setting-trigger-white-zen-mode" );
         $( ".setting-trigger-zen-mode" ).on( "click", function( event ) {
-            settingTmpl();
-            open();
+            if ( $( "body" ).find( ".setting-zen-mode" ).length > 0 ) {
+                $( ".setting-zen-mode .footer .close" )[0].click();
+            } else {
+                settingTmpl();
+                open();
+            }
         });
     }
 
@@ -396,12 +400,20 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         });
     }
 
+    function notify() {
+        localStorage["simptab-zenmode-notify"] != "false" &&
+            new Notify().Render({ content: i18n.GetLang( "notify_zen_mode_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
+                localStorage["simptab-zenmode-notify"] = false;
+            }});
+    }
+
     return {
         Render: function() {
             timeMode();
             dayMode();
             devicesMode();
             ohtersMode();
+            notify();
 
             setTimeout( function() {
                 topSitesMode();
