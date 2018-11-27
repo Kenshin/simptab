@@ -93,7 +93,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         }
 
         function Version() {
-            this.new = chrome.runtime.getManifest().version;
+            this.new = chrome.runtime.getManifest().version.replace( /.\d{2,}/, "" );
             this.cur = localStorage['simptab-version'];
             this.permissions = [];
         }

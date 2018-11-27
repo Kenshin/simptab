@@ -549,6 +549,14 @@
         "message": "Exit zen mode success, please refresh new tab."
     },
 
+    "notify_zen_mode_tips": {
+        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
+    },
+
+    "notify_zen_mode_tips_confirm": {
+        "message": "Confirm"
+    },
+
     "version_detail": {
         "message": ""
     },
