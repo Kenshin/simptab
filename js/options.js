@@ -32,7 +32,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         '{"key":"fy", "color": "#4285F4", "title":"谷歌翻译",    "query": "https://translate.google.cn/#auto/en/{query}"}',
                     ],
                     unsplash: [ "collection/3593484", "collection/3593482", "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ],
-                    unsplash_screen: "2560x1440",
+                    unsplash_screen: "",
                     subscribe: {
                         sequence: false,
                         index: 0
