@@ -220,15 +220,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
 
         console.log( "=== Unsplash.com call ===" );
 
-        var unsplash_ids = options.Storage.db.unsplash;
+        var unsplash_ids = options.Storage.db.unsplash,
+            screen       = /\d+x\d+/.test( options.Storage.db.unsplash_screen ) ? options.Storage.db.unsplash_screen : "2560x1440";
         try {
             var dtd    = $.Deferred(),
                 max    = unsplash_ids.length,
                 id     = unsplash_ids[ apis.Random( 0, max - 1 ) ],
-                screen = "/" + "2560x1440",
                 url    = "https://source.unsplash.com/" + id;
             max == 0 && ( url = "https://source.unsplash.com/random" );
-            !/\/\d+x\d+$/.test( url ) && ( url += screen );
+            !/\/\d+x\d+$/.test( url ) && ( url += "/" + screen );
             apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
             dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
         }
