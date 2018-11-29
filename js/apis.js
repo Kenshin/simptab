@@ -218,23 +218,23 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
     */
     apis.Stack[ apis.ORIGINS[1] ] = function() {
 
-      console.log( "=== Unsplash.com call ===" );
+        console.log( "=== Unsplash.com call ===" );
 
-      var unsplash_ids = options.Storage.db.unsplash;
-      try {
-          var dtd    = $.Deferred(),
-              max    = unsplash_ids.length,
-              id     = unsplash_ids[ apis.Random( 0, max ) ],
-              url    = "https://source.unsplash.com/" + id;
-          max == 0 && ( url = "https://source.unsplash.com/random" );
-          apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
-          dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
-      }
-      catch ( error ) {
-        dtd.reject( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
-      }
-      return dtd;
-    }
+        var unsplash_ids = options.Storage.db.unsplash;
+        try {
+            var dtd    = $.Deferred(),
+                max    = unsplash_ids.length,
+                id     = unsplash_ids[ apis.Random( 0, max ) ],
+                url    = "https://source.unsplash.com/" + id;
+            max == 0 && ( url = "https://source.unsplash.com/random" );
+            apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
+            dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
+        }
+        catch ( error ) {
+            dtd.reject( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
+        }
+        return dtd;
+}
 
     /*
     * Unsplash.IT
