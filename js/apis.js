@@ -224,9 +224,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
         try {
             var dtd    = $.Deferred(),
                 max    = unsplash_ids.length,
-                id     = unsplash_ids[ apis.Random( 0, max ) ],
+                id     = unsplash_ids[ apis.Random( 0, max - 1 ) ],
+                screen = "/" + "2560x1440",
                 url    = "https://source.unsplash.com/" + id;
             max == 0 && ( url = "https://source.unsplash.com/random" );
+            !/\/\d+x\d+$/.test( url ) && ( url += screen );
             apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
             dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
         }
