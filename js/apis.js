@@ -223,9 +223,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
       var unsplash_ids = options.Storage.db.unsplash;
       try {
           var dtd    = $.Deferred(),
-              max    = unsplash_ids.length - 1,
+              max    = unsplash_ids.length,
               id     = unsplash_ids[ apis.Random( 0, max ) ],
-              url    = "https://source.unsplash.com/" + id + "/2560×1600";
+              url    = "https://source.unsplash.com/" + id;
           max == 0 && ( url = "https://source.unsplash.com/random" );
           apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
           dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
