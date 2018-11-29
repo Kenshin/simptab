@@ -19,6 +19,7 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
         var origins = ( function() {
             try {
                 var origins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
+                [ 3, 5, 8, 11 ].forEach( function( item ) { origins[item] = item + ":false"; });
             }
             catch ( error ) {
                 origins = defaultOrigins;
