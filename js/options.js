@@ -77,9 +77,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="label">' + i18n.GetLang( "options_custom_unsplash_label" ) + '</div>\
                         <textarea class="md-textarea custom-unsplash"></textarea>\
                         <div class="notice">' + i18n.GetLang( "options_custom_unsplash_notice" ) + '</div>\
-                        <div class="label" style="margin-top:10px;">更改 Unsplash 源分辨率</div>\
-                        <input class="md-input custom-unsplash-screen" type="text" placeholder="默认分辨率为：2k( 2560 * 1440 )"/>\
-                        <div class="notice" style="margin-top:2px;">可更改为适合自己的分辨率，格式：widthxheigh 如： 3200x1800 详细说明请访问 <a href="http://ksria.com/simptab/docs/#/多种背景源?id=自定义分辨率" target="_blank">自定义分辨率</a></div>\
+                        <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_unsplash_screen_label" ) + '</div>\
+                        <input class="md-input custom-unsplash-screen" type="text" placeholder="' + i18n.GetLang( "options_custom_unsplash_screen_placeholder" ) + '"/>\
+                        <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_unsplash_screen_notice" ) + '</div>\
                    </div>\
                    ';
         return tmpl;

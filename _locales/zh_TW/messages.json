@@ -341,6 +341,18 @@
         "message": "支持自定義源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>自定義 Unsplash</a>"
     },
 
+    "options_custom_unsplash_screen_label": {
+        "message": "更改 Unsplash 源解析度"
+    },
+
+    "options_custom_unsplash_screen_placeholder": {
+        "message": "默認解析度為：2k( 2560 * 1440 )"
+    },
+
+    "options_custom_unsplash_screen_notice": {
+        "message": "可更改為適合自己的解析度，格式：widthxheigh 如： 3200x1800 詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多種背景源?id=自定義解析度' target='_blank'>自定義解析度</a>"
+    },
+
     "options_custom_style": {
         "message": "自定義樣式（ 全局 ）"
     },
