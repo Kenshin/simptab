@@ -315,7 +315,7 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
             return value.split(":")[1];
         },
 
-        Only: function() {
+        EmptyOrigins: function() {
             var empty = true;
             setting.origins.forEach( function( origin, idx ) {
                 if ( origin.endsWith( "true" ) && ( idx != 3 && idx != 5 && idx != 8 && idx != 11 ) ) {

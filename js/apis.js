@@ -5,7 +5,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
 
     var deferred      = new $.Deferred(),
         SIMP_API_HOST = "http://st.ksria.cn/",
-        apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify, Only ) {
+        apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify, EmptyOrigins ) {
 
             /*
             *
@@ -47,7 +47,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
 
                 // verify background every day && is today is new day
                 // Verify( 13 ) == true && background every time && today is new day
-                if ( Only() ) {
+                if ( EmptyOrigins() ) {
                     new SimpError( "empty code", "Not selected any origins" );
                     return;
                 }
@@ -70,7 +70,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
                     }
                     //localStorage[ "simptab-prv-code" ] = code;
                 }
-                //code == this.ORIGINS_MAX && ( code = Only() );
+                //code == this.ORIGINS_MAX && ( code = EmptyOrigins() );
 
                 // add test code
                 // code = 9;
@@ -114,7 +114,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
             }
 
             return new APIS;
-    })( jQuery, date.IsNewDay, date.Today, isHoliday, setting.IsRandom, setting.Verify, setting.Only );
+    })( jQuery, date.IsNewDay, date.Today, isHoliday, setting.IsRandom, setting.Verify, setting.EmptyOrigins );
 
     /*
     * Bing( today )
