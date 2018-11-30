@@ -31,7 +31,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         '{"key":"db", "color": "#55711C", "title":"豆瓣搜索",    "query": "https://www.douban.com/search?source=suggest&q={query}"}',
                         '{"key":"fy", "color": "#4285F4", "title":"谷歌翻译",    "query": "https://translate.google.cn/#auto/en/{query}"}',
                     ],
-                    unsplash: [ "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ],
+                    unsplash: [ "collection/3593484", "collection/3593482", "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ],
+                    unsplash_screen: "",
                     subscribe: {
                         sequence: false,
                         index: 0
@@ -76,6 +77,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="label">' + i18n.GetLang( "options_custom_unsplash_label" ) + '</div>\
                         <textarea class="md-textarea custom-unsplash"></textarea>\
                         <div class="notice">' + i18n.GetLang( "options_custom_unsplash_notice" ) + '</div>\
+                        <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_unsplash_screen_label" ) + '</div>\
+                        <input class="md-input custom-unsplash-screen" type="text" placeholder="' + i18n.GetLang( "options_custom_unsplash_screen_placeholder" ) + '"/>\
+                        <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_unsplash_screen_notice" ) + '</div>\
                    </div>\
                    ';
         return tmpl;
@@ -87,12 +91,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.db.unsplash = event.target.value.split( "," );
             storage.Set();
         });
-        $( ".options .custom-unsplash" ).find( "input" ).prop( "checked", storage.db.subscribe.sequence );
-        $( ".options" ).on( "change", ".custom-unsplash input", function( event ) {
+        $( ".options .custom-unsplash .custom-unsplash-cbx" ).find( "input" ).prop( "checked", storage.db.subscribe.sequence );
+        $( ".options .custom-unsplash .custom-unsplash-screen" ).val( storage.db.unsplash_screen );
+        $( ".options" ).on( "change", ".custom-unsplash .custom-unsplash-cbx input", function( event ) {
             var $cb   = $(this),
                 value = $cb.prop( "checked" );
             $cb.val( value );
             storage.db.subscribe.sequence = value;
+            storage.Set();
+        });
+        $( ".options" ).on( "keyup", ".custom-unsplash .custom-unsplash-screen", function( event ) {
+            storage.db.unsplash_screen = event.target.value;
             storage.Set();
         });
     }

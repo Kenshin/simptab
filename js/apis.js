@@ -5,7 +5,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
 
     var deferred      = new $.Deferred(),
         SIMP_API_HOST = "http://st.ksria.cn/",
-        apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify, Only ) {
+        apis          = (function( $, IsNewDay, Today, isHoliday, IsRandom, Verify, EmptyOrigins ) {
 
             /*
             *
@@ -42,11 +42,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
 
             APIS.prototype.New = function() {
                 var is_today = false,
-                    code     = this.Random( 0, this.ORIGINS_MAX );
+                    code     = this.Random( 0, this.ORIGINS_MAX - 1 );
                 this.defer   = new $.Deferred();
 
                 // verify background every day && is today is new day
                 // Verify( 13 ) == true && background every time && today is new day
+                if ( EmptyOrigins() ) {
+                    new SimpError( "empty code", "Not selected any origins" );
+                    return;
+                }
                 if ( IsNewDay( Today(), true ) ) { is_today = true; }
                 if ( ( is_today && !IsRandom() ) || 
                      ( is_today &&  IsRandom() && Verify( 13 ) == "true" ) ) {
@@ -62,11 +66,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
                             //localStorage[ "simptab-prv-code" ] == code ||
                             // hiden origins include: flickr 500px nasa holiday
                             code == 3 || code == 5 || code == 8 || code == 11 || code == 13 ) {
-                        code = this.Random( 0, this.ORIGINS_MAX );
+                        code = this.Random( 0, this.ORIGINS_MAX - 1 );
                     }
-                    localStorage[ "simptab-prv-code" ] = code;
+                    //localStorage[ "simptab-prv-code" ] = code;
                 }
-                code == this.ORIGINS_MAX && ( code = Only() );
+                //code == this.ORIGINS_MAX && ( code = EmptyOrigins() );
 
                 // add test code
                 // code = 9;
@@ -110,7 +114,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
             }
 
             return new APIS;
-    })( jQuery, date.IsNewDay, date.Today, isHoliday, setting.IsRandom, setting.Verify, setting.Only );
+    })( jQuery, date.IsNewDay, date.Today, isHoliday, setting.IsRandom, setting.Verify, setting.EmptyOrigins );
 
     /*
     * Bing( today )
@@ -218,23 +222,25 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
     */
     apis.Stack[ apis.ORIGINS[1] ] = function() {
 
-      console.log( "=== Unsplash.com call ===" );
+        console.log( "=== Unsplash.com call ===" );
 
-      var unsplash_ids = options.Storage.db.unsplash;
-      try {
-          var dtd    = $.Deferred(),
-              max    = unsplash_ids.length - 1,
-              id     = unsplash_ids[ apis.Random( 0, max ) ],
-              url    = "https://source.unsplash.com/" + id + "/2560×1600";
-          max == 0 && ( url = "https://source.unsplash.com/random" );
-          apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
-          dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
-      }
-      catch ( error ) {
-        dtd.reject( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
-      }
-      return dtd;
-    }
+        var unsplash_ids = options.Storage.db.unsplash,
+            screen       = /\d+x\d+/.test( options.Storage.db.unsplash_screen ) ? options.Storage.db.unsplash_screen : "2560x1440";
+        try {
+            var dtd    = $.Deferred(),
+                max    = unsplash_ids.length,
+                id     = unsplash_ids[ apis.Random( 0, max - 1 ) ],
+                url    = "https://source.unsplash.com/" + id;
+            max == 0 && ( url = "https://source.unsplash.com/random" );
+            !/\/\d+x\d+$/.test( url ) && ( url += "/" + screen );
+            apis.Update({ url : url, method: "apis.unsplashCOM()", dataType : "image" });
+            dtd.resolve( url, url, "Unsplash.com Image", "#", date.Now(), "Unsplash.com Image", apis.vo.origin, apis.vo );
+        }
+        catch ( error ) {
+            dtd.reject( new SimpError( apis.vo.method , "Parse unsplash.com error, url is " + url, apis.vo ), error );
+        }
+        return dtd;
+}
 
     /*
     * Unsplash.IT
