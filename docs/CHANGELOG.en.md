@@ -1,3 +1,18 @@
+#### 1.5.3.1129
+
+> 2018-11-29
+
+- :sparkles: Add Custom Unsplash resolution;
+  ![Xnip2018-11-30_11-45-10.jpg](https://i.loli.net/2018/11/30/5c00b254426b3.jpg)
+
+- :bug: Fix `Custom Unsplash origin` bug;
+
+- :bug:  Fix  disable origin can be work bug;
+
+- :bug: Fix all origins disable logic bug;
+
+***
+
 #### 1.5.3.1127
 
 > 2018-11-27
