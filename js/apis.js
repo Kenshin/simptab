@@ -42,11 +42,15 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
 
             APIS.prototype.New = function() {
                 var is_today = false,
-                    code     = this.Random( 0, this.ORIGINS_MAX );
+                    code     = this.Random( 0, this.ORIGINS_MAX - 1 );
                 this.defer   = new $.Deferred();
 
                 // verify background every day && is today is new day
                 // Verify( 13 ) == true && background every time && today is new day
+                if ( Only() ) {
+                    new SimpError( "empty code", "Not selected any origins" );
+                    return;
+                }
                 if ( IsNewDay( Today(), true ) ) { is_today = true; }
                 if ( ( is_today && !IsRandom() ) || 
                      ( is_today &&  IsRandom() && Verify( 13 ) == "true" ) ) {
@@ -62,11 +66,11 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
                             //localStorage[ "simptab-prv-code" ] == code ||
                             // hiden origins include: flickr 500px nasa holiday
                             code == 3 || code == 5 || code == 8 || code == 11 || code == 13 ) {
-                        code = this.Random( 0, this.ORIGINS_MAX );
+                        code = this.Random( 0, this.ORIGINS_MAX - 1 );
                     }
-                    localStorage[ "simptab-prv-code" ] = code;
+                    //localStorage[ "simptab-prv-code" ] = code;
                 }
-                code == this.ORIGINS_MAX && ( code = Only() );
+                //code == this.ORIGINS_MAX && ( code = Only() );
 
                 // add test code
                 // code = 9;

@@ -19,7 +19,6 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
         var origins = ( function() {
             try {
                 var origins = JSON.parse(localStorage["simptab-background-origin"] || "[]" );
-                origins.length > 0 && [ 3, 5, 8, 11 ].forEach( function( item ) { origins[item] = item + ":false"; });
             }
             catch ( error ) {
                 origins = defaultOrigins;
@@ -317,13 +316,13 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
         },
 
         Only: function() {
-            var code = 14;
-            setting.origins.forEach( function( origin, index ) {
-                if ( origin.endsWith( "true" ) && index != 13 ) {
-                    code = origin.split(":")[0];
+            var empty = true;
+            setting.origins.forEach( function( origin, idx ) {
+                if ( origin.endsWith( "true" ) && ( idx != 3 && idx != 5 && idx != 8 && idx != 11 ) ) {
+                    empty = false;
                 }
             });
-            return code;
+            return empty;
        },
 
         TogglePinState: function( state ) {
