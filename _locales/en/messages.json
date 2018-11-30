@@ -341,6 +341,18 @@
         "message": "Support custom e.g. https://source.unsplash.com/<b>{xxxx}</b> usage , split about more <a href='https://source.unsplash.com/' target='_blank'>Unsplash Source</a>"
     },
 
+    "options_custom_unsplash_screen_label": {
+        "message": "Custom Unsplash resolution"
+    },
+
+    "options_custom_unsplash_screen_placeholder": {
+        "message": "Default resolution is: 2k( 2560 * 1440 )"
+    },
+
+    "options_custom_unsplash_screen_notice": {
+        "message": "Custom resolution: widthxheigh e.g 3200x1800 4096x2160"
+    },
+
     "options_custom_style": {
         "message": "Custom global Style"
     },

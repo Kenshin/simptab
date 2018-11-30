@@ -135,7 +135,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         var target = ".setting-zen-mode .themes input";
         if ( type == "add" ) {
             if ( $(target).length > 0 ) return;
-            $( ".setting-zen-mode .themes .content" ).append( '<input type="text" placeholder="' + i18n.GetLang( "zen_mode_setting_theme_placeholder" ) + '"/>' );
+            $( ".setting-zen-mode .themes .content" ).append( '<input class="md-input" type="text" placeholder="' + i18n.GetLang( "zen_mode_setting_theme_placeholder" ) + '"/>' );
             setTimeout( function() {
                 storage.themes.indexOf( storage.db.theme.replace( "#", "" ) ) == -1 &&
                     $(target).val( storage.db.theme );
