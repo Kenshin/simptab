@@ -228,7 +228,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         var notify = new Notify().Render({ content: i18n.GetLang( "notify_mobile_send" ), state: "loading" });
                         $.ajax({
                             type       : "POST",
-                            url        : "http://192.168.31.57:3100",
+                            url        : options.Storage.db.mobile_host,
                             data       : vo.cur.hdurl,
                         }).then( function( result ) {
                             if ( result.status == 200 ) {

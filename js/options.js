@@ -36,7 +36,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     subscribe: {
                         sequence: false,
                         index: 0
-                    }
+                    },
+                    mobile_host: "",
                 };
 
             function Storage() {
@@ -80,6 +81,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_unsplash_screen_label" ) + '</div>\
                         <input class="md-input custom-unsplash-screen" type="text" placeholder="' + i18n.GetLang( "options_custom_unsplash_screen_placeholder" ) + '"/>\
                         <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_unsplash_screen_notice" ) + '</div>\
+                        <div class="label" style="margin-top:10px;">自定义监听地址</div>\
+                        <input class="md-input custom-mobile" type="text" placeholder="请输入正确的格式，包括端口号，如 http://192.168.31.233:3100"/>\
+                        <div class="notice" style="margin-top:2px;">此功能需要在 iOS 端安装 JSBox，详细说明请访问 <a href="http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端" target="_blank">发送到手机端</a></div>\
                    </div>\
                    ';
         return tmpl;
@@ -92,6 +96,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.Set();
         });
         $( ".options .custom-unsplash .custom-unsplash-cbx" ).find( "input" ).prop( "checked", storage.db.subscribe.sequence );
+        $( ".options .custom-unsplash .custom-mobile"          ).val( storage.db.mobile_host );
         $( ".options .custom-unsplash .custom-unsplash-screen" ).val( storage.db.unsplash_screen );
         $( ".options" ).on( "change", ".custom-unsplash .custom-unsplash-cbx input", function( event ) {
             var $cb   = $(this),
@@ -102,6 +107,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         });
         $( ".options" ).on( "keyup", ".custom-unsplash .custom-unsplash-screen", function( event ) {
             storage.db.unsplash_screen = event.target.value;
+            storage.Set();
+        });
+        $( ".options" ).on( "keyup", ".custom-unsplash .custom-mobile", function( event ) {
+            storage.db.mobile_host = event.target.value;
             storage.Set();
         });
     }
