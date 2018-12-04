@@ -287,6 +287,10 @@ img {
     background-image: url("../images/about.png");
 }
 
+.mobileicon {
+    background-image: url("../images/mobile.png");
+}
+
 /*
 * clock
 */
@@ -1513,7 +1517,7 @@ img {
     bottom: 5px;
 
     width: 500px;
-    height: 380px;
+    height: 400px;
 
     padding: 15px;
 

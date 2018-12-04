@@ -73,6 +73,10 @@
         "message": "關於"
     },
 
+    "controlbar_mobile": {
+        "message": "發送到手機端"
+    },
+
     "controlbar_favorite": {
         "message": "收藏"
     },

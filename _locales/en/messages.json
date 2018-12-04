@@ -73,6 +73,10 @@
         "message": "About"
     },
 
+    "controlbar_mobile": {
+        "message": "Send to Mobile"
+    },
+
     "controlbar_favorite": {
         "message": "Like"
     },

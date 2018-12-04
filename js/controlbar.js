@@ -224,6 +224,22 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                             about.Render() :
                             new Notify().Render( i18n.GetLang( "notify_double_open" ) );
                         break;
+                    case "mobile":
+                        var notify = new Notify().Render({ content: "正在发送，请稍等...", state: "loading" });
+                        $.ajax({
+                            type       : "POST",
+                            url        : "http://192.168.31.57:3100",
+                            data       : vo.cur.hdurl,
+                        }).then( function( result ) {
+                            if ( result.status == 200 ) {
+                                notify.complete();
+                                new Notify().Render( "已成功发送到 " + result.name );
+                            } else new Notify().Render( 2, "发错失败，请稍后再试。" );
+                        } , function( jqXHR, textStatus, errorThrown ) {
+                            notify.complete();
+                            new Notify().Render( 2, "发错失败，请稍后再试。" );
+                        });
+                        break;
                 }
             });
         },
