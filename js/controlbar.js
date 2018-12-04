@@ -225,6 +225,10 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                             new Notify().Render( i18n.GetLang( "notify_double_open" ) );
                         break;
                     case "mobile":
+                        if ( !/http:\/\/(\d{1,3}.){4}:\d+/ig.test( options.Storage.db.mobile_host ) ) {
+                            new Notify().Render( 2, i18n.GetLang( "notify_mobile_host_failed" ) );
+                            return;
+                        }
                         var notify = new Notify().Render({ content: i18n.GetLang( "notify_mobile_send" ), state: "loading" });
                         $.ajax({
                             type       : "POST",

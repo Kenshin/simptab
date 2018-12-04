@@ -597,6 +597,10 @@
         "message": "發錯失敗，請稍後再試。"
     },
 
+    "notify_mobile_host_failed": {
+        "message": "輸入的監聽地址不清楚，請重新輸入。"
+    },
+
     "version_detail": {
         "message": ""
     },

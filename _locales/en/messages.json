@@ -597,6 +597,10 @@
         "message": "Send failed."
     },
 
+    "notify_mobile_host_failed": {
+        "message": "Host IP Address error, please re-input again."
+    },
+
     "version_detail": {
         "message": ""
     },
