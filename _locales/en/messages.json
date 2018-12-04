@@ -573,6 +573,18 @@
         "message": "Confirm"
     },
 
+    "notify_mobile_send": {
+        "message": "Send to mobile..."
+    },
+
+    "notify_mobile_send_success": {
+        "message": "Send sucessful "
+    },
+
+    "notify_mobile_send_failed": {
+        "message": "Send failed."
+    },
+
     "version_detail": {
         "message": ""
     },

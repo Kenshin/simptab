@@ -573,6 +573,18 @@
         "message": "不再提示"
     },
 
+    "notify_mobile_send": {
+        "message": "正在發送，請稍等..."
+    },
+
+    "notify_mobile_send_success": {
+        "message": "已成功發送到 "
+    },
+
+    "notify_mobile_send_failed": {
+        "message": "發錯失敗，請稍後再試。"
+    },
+
     "version_detail": {
         "message": ""
     },
