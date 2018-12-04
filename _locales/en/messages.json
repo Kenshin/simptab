@@ -357,6 +357,18 @@
         "message": "Custom resolution: widthxheigh e.g 3200x1800 4096x2160"
     },
 
+    "options_custom_mobile_lable": {
+        "message": "Add JSBox host"
+    },
+
+    "options_custom_mobile_placeholder": {
+        "message": "Please enter the correct format, including port number, such as http://192.168.31.233:3100"
+    },
+
+    "options_custom_mobile_notice": {
+        "message": "First JSBox is required to be installed on iOS, for details <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>Send to mobile</a>"
+    },
+
     "options_custom_style": {
         "message": "Custom global Style"
     },

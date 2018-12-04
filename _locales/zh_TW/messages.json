@@ -357,6 +357,18 @@
         "message": "可更改為適合自己的解析度，格式：widthxheigh 如： 3200x1800 詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多種背景源?id=自定義解析度' target='_blank'>自定義解析度</a>"
     },
 
+    "options_custom_mobile_lable": {
+        "message": "自定義監聽地址"
+    },
+
+    "options_custom_mobile_placeholder": {
+        "message": "請輸入正確的格式，包含埠號，如 http://192.168.31.233:3100"
+    },
+
+    "options_custom_mobile_notice": {
+        "message": "此功能需要在 iOS 端安裝 JSBox，詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>發送到手機端</a>"
+    },
+
     "options_custom_style": {
         "message": "自定義樣式（ 全局 ）"
     },

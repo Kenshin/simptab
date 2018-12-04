@@ -81,9 +81,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_unsplash_screen_label" ) + '</div>\
                         <input class="md-input custom-unsplash-screen" type="text" placeholder="' + i18n.GetLang( "options_custom_unsplash_screen_placeholder" ) + '"/>\
                         <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_unsplash_screen_notice" ) + '</div>\
-                        <div class="label" style="margin-top:10px;">自定义监听地址</div>\
-                        <input class="md-input custom-mobile" type="text" placeholder="请输入正确的格式，包括端口号，如 http://192.168.31.233:3100"/>\
-                        <div class="notice" style="margin-top:2px;">此功能需要在 iOS 端安装 JSBox，详细说明请访问 <a href="http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端" target="_blank">发送到手机端</a></div>\
+                        <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_mobile_lable" ) + '</div>\
+                        <input class="md-input custom-mobile" type="text" placeholder="' + i18n.GetLang( "options_custom_mobile_placeholder" ) + '"/>\
+                        <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_mobile_notice" ) + '</div>\
                    </div>\
                    ';
         return tmpl;
