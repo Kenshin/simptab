@@ -233,7 +233,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         $.ajax({
                             type       : "POST",
                             url        : options.Storage.db.mobile_host,
-                            data       : vo.cur.hdurl,
+                            data       : files.DataURI(),
                         }).then( function( result ) {
                             if ( result.status == 200 ) {
                                 notify.complete();
