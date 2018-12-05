@@ -10,29 +10,6 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         $target.parent().find( ".tooltip" ).text( vo.cur.type == "upload" ? "Upload image" : vo.cur.type );
     }
 
-    function setDownloadURL() {
-
-        /*
-        if ( vo.cur.info.search( "https://unsplash.com" ) == 0 ) {
-            $( ".controlink[url='download']" ).attr({
-                "href"     : vo.cur.hdurl,
-                "target"   : "_blank",
-            }).removeAttr( "url" );
-        } else {
-            var shortname = vo.cur.shortname;
-            if ( shortname == "#" ) {
-                shortname = vo.cur.name;
-            }
-            $( ".controlink[url='download']" ).attr({
-                "title"    : vo.cur.name,
-                "href"     : vo.cur.hdurl,
-                "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
-            });
-        }
-        */
-
-    }
-
     function setBackground( url ) {
         if ( localStorage[ "simptab-background-update" ] == "true" ) return;
         $("body").css({ "background-image": "url(" + url + ")" });
@@ -272,7 +249,6 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
             is_default ? vo.cur = vo.Clone( vo.Create( vo.constructor.DEFAULT_BACKGROUND, vo.constructor.DEFAULT_BACKGROUND, "Wallpaper", "#", date.Now(), "Wallpaper", "default", {} )) : setCurBackgroundURI();
 
             setInfoURL();
-            setDownloadURL();
             setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
             setBackgroundPosition();
             setUploadState( setting.IsRandom() );
