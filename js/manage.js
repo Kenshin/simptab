@@ -121,6 +121,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
             type == "subscribe" && new Notify().Render( i18n.GetLang( "notify_mange_setting" ) );
             // save url to background.jpg
             files.GetDataURI( url ).then( function( result ) {
+                files.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) { console.log( "Write process:", result ); })
                     .fail(     function( result ) { console.log( "Write error: ", result );  })
