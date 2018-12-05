@@ -203,7 +203,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         DataURI: function( result ) {
-            return curURI = curURI || result;
+            return curURI = result || curURI;
         },
 
         VerifyUploadFile: function( arr ) {
