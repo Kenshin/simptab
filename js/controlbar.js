@@ -12,6 +12,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
 
     function setDownloadURL() {
 
+        /*
         if ( vo.cur.info.search( "https://unsplash.com" ) == 0 ) {
             $( ".controlink[url='download']" ).attr({
                 "href"     : vo.cur.hdurl,
@@ -28,6 +29,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                 "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
             });
         }
+        */
 
     }
 
@@ -180,10 +182,12 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         callBack( url, is_favorite );
                         break;
                     case "download":
-                        // hack code( when 'unsplash.com' or 'nasa.gov' image download, new tab happen crash error. )
-                        //if ( vo.cur.type != "unsplash.com" && vo.cur.type != "nasa.gov" ) {
-                        //event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
-                        //}
+                        files.DownloadfromURI( "download", files.DataURI() )
+                            .progress( function( result ) { console.log( "Write process:", result ); })
+                            .fail(     function( result ) { console.log( "Write error: ", result );  })
+                            .done( function( result ) {
+                                files.Download( result, "simptab-wallpaper-" + date.Now() + ".png" );
+                            });
                         break;
                     case "upload":
                         var input  = document.createElement("input"),
