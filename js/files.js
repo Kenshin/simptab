@@ -288,7 +288,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
             $a.remove();
         },
 
-        // hack code
+        // hack code source from Add()
         DownloadfromURI: function( file_name, uri ) {
 
             var path = file_name + ".jpg";
