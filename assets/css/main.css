@@ -1138,7 +1138,7 @@ img {
 }
 
 .options .group {
-    margin: 10px 0 10px 10px;
+    margin: 10px 0 10px 25px;
     font-size: 14px;
 }
 
@@ -1156,7 +1156,10 @@ img {
 }
 
 .options .notice {
-    font-style: italic;
+    margin: 5px 0;
+
+    color: #ADADAD;
+
     font-size: 11px;
     font-weight: 500;
 }
@@ -1164,10 +1167,8 @@ img {
 .options .notice a {
     padding-bottom: 1px;
 
-    color: inherit;
+    color: #327ED6;
     text-decoration: none;
-
-    border-bottom: 1px solid #fff;
 }
 
 .options .custom-unsplash textarea {
@@ -2420,7 +2421,7 @@ img {
 
     font-size: 14px;
 
-    color: #fff;
+    color: #cccccc;
     background-color: rgb(63, 68, 71);
     caret-color: #fff;
 
@@ -2436,7 +2437,7 @@ img {
 
     width: 100%;
 
-    color: #fff;
+    color: #cccccc;
     background-color: rgb(63, 68, 71);
 
     font-family: monospace;
@@ -2450,6 +2451,7 @@ img {
 
 .md-input:focus,
 .md-textarea:focus {
+    color: #fff;
     outline: none !important;
     background-color: rgb(109, 112, 115);
     border-color: #fff;
