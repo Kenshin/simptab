@@ -38,6 +38,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         index: 0
                     },
                     mobile_host: "",
+                    carousel: "-1",
                 };
 
             function Storage() {
@@ -70,6 +71,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
      *********************************************/
 
     function unsplashView() {
+        var items = [{name:"不自动播放", value: "-1" },{name:"每隔 5 分钟", value: "5" },{name:"每隔 10 分钟", value: "10" },{name:"每隔 30 分钟", value: "30" },{name:"每隔 1 小时", value: "60" }];
         var tmpl = '<div>\
                         <div class="switche">\
                             <div class="label">' + i18n.GetLang( "options_custom_unsplash_cbx" ) + '</div>\
@@ -84,7 +86,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_mobile_lable" ) + '</div>\
                         <input class="md-input custom-mobile" type="text" placeholder="' + i18n.GetLang( "options_custom_mobile_placeholder" ) + '"/>\
                         <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_mobile_notice" ) + '</div>\
-                   </div>\
+                        <div class="switche" style="margin-bottom:0;">\
+                            <div class="label">背景是否自动播放（显示下一张）？</div>\
+                            ' + comps.Dropdown( ".options .content", "size-carousel", items, "-1" ) + '\
+                        </div>\
+                        <div class="notice" style="margin-top:2px;">当自动播放时，不建议关闭标签页，并配合白噪音效果更好。</div>\
+                    </div>\
                    ';
         return tmpl;
     }
@@ -111,6 +118,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         });
         $( ".options" ).on( "keyup", ".custom-unsplash .custom-mobile", function( event ) {
             storage.db.mobile_host = event.target.value;
+            storage.Set();
+        });
+        $( ".options .size-carousel" )[0].addEventListener( "dropdown", function( event ) {
+            storage.db.carousel = event.data.value;
             storage.Set();
         });
     }
