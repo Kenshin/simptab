@@ -601,6 +601,10 @@
         "message": "Host IP Address error, please re-input again."
     },
 
+    "notify_carousel": {
+        "message": "Set successful, please refresh."
+    },
+
     "version_detail": {
         "message": ""
     },

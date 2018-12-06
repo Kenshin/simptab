@@ -123,7 +123,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         $( ".options .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
             storage.db.carousel = event.data.value;
             storage.Set();
-            new Notify().Render( "已设置成功，刷新后生效。" );
+            new Notify().Render( i18n.GetLang( "notify_carousel" ) );
         });
     }
 

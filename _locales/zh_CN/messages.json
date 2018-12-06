@@ -601,6 +601,10 @@
         "message": "输入的监听地址不清楚，请重新输入。"
     },
 
+    "notify_carousel": {
+        "message": "已设置成功，刷新后生效。"
+    },
+
     "version_detail": {
         "message": ""
     },

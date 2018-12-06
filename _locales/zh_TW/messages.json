@@ -601,6 +601,10 @@
         "message": "輸入的監聽地址不清楚，請重新輸入。"
     },
 
+    "notify_carousel": {
+        "message": "已設置成功，刷新後生效。"
+    },
+
     "version_detail": {
         "message": ""
     },
