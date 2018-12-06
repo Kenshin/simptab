@@ -159,7 +159,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         callBack( url, is_favorite );
                         break;
                     case "download":
-                        files.DownloadfromURI( "download", files.DataURI() )
+                        files.SaveBgfromURI( "download", files.DataURI() )
                             .progress( function( result ) { console.log( "Write process:", result ); })
                             .fail(     function( result ) { console.log( "Write error: ", result );  })
                             .done( function( result ) {

@@ -289,7 +289,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         // hack code source from Add()
-        DownloadfromURI: function( file_name, uri ) {
+        SaveBgfromURI: function( file_name, uri ) {
 
             var path = file_name + ".jpg";
             var def  = $.Deferred();
