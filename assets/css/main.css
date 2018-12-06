@@ -2341,7 +2341,7 @@ img {
 
     padding: 5px;
 
-    width: 100px;
+    min-width: 100px;
 
     color: #fff;
     background-color: #505c63;
