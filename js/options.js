@@ -88,7 +88,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_mobile_notice" ) + '</div>\
                         <div class="switche" style="margin-bottom:0;">\
                             <div class="label">背景是否自动播放（显示下一张）？</div>\
-                            ' + comps.Dropdown( ".options .content", "size-carousel", items, "-1" ) + '\
+                            ' + comps.Dropdown( ".options .content", "size-carousel", items, storage.db.carousel ) + '\
                         </div>\
                         <div class="notice" style="margin-top:2px;">当自动播放时，不建议关闭标签页，并配合白噪音效果更好。</div>\
                     </div>\
