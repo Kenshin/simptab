@@ -369,6 +369,34 @@
         "message": "此功能需要在 iOS 端安裝 JSBox，詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>發送到手機端</a>"
     },
 
+    "options_carousel_label": {
+        "message": "背景是否自動播放（顯示下一張）？"
+    },
+
+    "options_carousel_value_1": {
+        "message": "不自動播放"
+    },
+
+    "options_carousel_value_5": {
+        "message": "每隔 5 分鐘"
+    },
+
+    "options_carousel_value_10": {
+        "message": "每隔 10 分鐘"
+    },
+
+    "options_carousel_value_30": {
+        "message": "每隔 30 分鐘"
+    },
+
+    "options_carousel_value_60": {
+        "message": "每隔 60 分鐘"
+    },
+
+    "options_carousel_notice": {
+        "message": "當自動播放時，不建議關閉標籤頁，並配合 <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>白噪音</a> 效果更好。"
+    },
+
     "options_custom_style": {
         "message": "自定義樣式（ 全局 ）"
     },
