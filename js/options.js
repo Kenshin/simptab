@@ -88,7 +88,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_mobile_notice" ) + '</div>\
                         <div class="switche" style="margin-bottom:0;">\
                             <div class="label">背景是否自动播放（显示下一张）？</div>\
-                            ' + comps.Dropdown( ".options .content", "size-carousel", items, storage.db.carousel ) + '\
+                            ' + comps.Dropdown( ".options", "size-carousel", items, storage.db.carousel ) + '\
                         </div>\
                         <div class="notice" style="margin-top:2px;">当自动播放时，不建议关闭标签页，并配合白噪音效果更好。</div>\
                     </div>\
@@ -123,6 +123,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         $( ".options .size-carousel" )[0].addEventListener( "dropdown", function( event ) {
             storage.db.carousel = event.data.value;
             storage.Set();
+            new Notify().Render( "已设置成功，刷新后生效。" );
         });
     }
 
@@ -287,6 +288,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
     function close() {
         $( ".dialog .close" ).click( function( event ) {
+            $( document ).off( "click", ".options .size-carousel" );
+            $( document ).off( "click", ".options .size-carousel .downlist .list-filed" );
             $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
             setTimeout( function() {
                 $( ".dialog-overlay" ).remove();
