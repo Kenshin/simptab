@@ -260,6 +260,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
             setDislikeIcon();
             setting.TogglePinState( vo.cur.pin != -1 );
         },
+
+        AutoPlay: function() {
+            options.Storage.db.carousel != -1 &&
+                setInterval(function() {
+                    $(".controlbar").find("a[url=refresh]")[0].click();
+                }, 1000 * 60 * parseInt( options.Storage.db.carousel ));
+        },
+
         SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
         SetFavorteState   : setFavorteState,

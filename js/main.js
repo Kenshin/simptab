@@ -71,6 +71,8 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // get time
     date.Toggle( setting.Mode( "clockstate" ));
 
+    controlbar.AutoPlay();
+
     // listen
     controlbar.Listen( function( type, result ) {
         switch ( type) {
