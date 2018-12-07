@@ -77,20 +77,25 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                             <div class="label">' + i18n.GetLang( "options_custom_unsplash_cbx" ) + '</div>\
                             ' + comps.Switches( "custom-unsplash-cbx" ) + '\
                         </div>\
+                        <div class="division"></div>\
                         <div class="label">' + i18n.GetLang( "options_custom_unsplash_label" ) + '</div>\
                         <textarea class="md-textarea custom-unsplash"></textarea>\
                         <div class="notice">' + i18n.GetLang( "options_custom_unsplash_notice" ) + '</div>\
+                        <div class="division"></div>\
                         <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_unsplash_screen_label" ) + '</div>\
                         <input class="md-input custom-unsplash-screen" type="text" placeholder="' + i18n.GetLang( "options_custom_unsplash_screen_placeholder" ) + '"/>\
                         <div class="notice">' + i18n.GetLang( "options_custom_unsplash_screen_notice" ) + '</div>\
+                        <div class="division"></div>\
                         <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_mobile_lable" ) + '</div>\
                         <input class="md-input custom-mobile" type="text" placeholder="' + i18n.GetLang( "options_custom_mobile_placeholder" ) + '"/>\
                         <div class="notice">' + i18n.GetLang( "options_custom_mobile_notice" ) + '</div>\
+                        <div class="division"></div>\
                         <div class="switche" style="margin-bottom:0;">\
                             <div class="label">' + i18n.GetLang( "options_carousel_label" ) + '</div>\
                             ' + comps.Dropdown( ".options", "carousel-dpd", items, storage.db.carousel ) + '\
                         </div>\
                         <div class="notice">' + i18n.GetLang( "options_carousel_notice" ) + '</div>\
+                        <div class="division"></div>\
                     </div>\
                    ';
         return tmpl;
