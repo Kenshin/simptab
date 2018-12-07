@@ -1169,6 +1169,7 @@ img {
 
     color: #327ED6;
     text-decoration: none;
+    transform: scale(.9) translateX(-43px);
 }
 
 .options .custom-unsplash textarea {
