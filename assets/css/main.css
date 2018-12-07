@@ -1171,6 +1171,7 @@ img {
 
     font-size: 11px;
     font-weight: 500;
+    transform: scale(.9) translateX(-43px);
 }
 
 .options .notice a {
@@ -1178,7 +1179,6 @@ img {
 
     color: #327ED6;
     text-decoration: none;
-    transform: scale(.9) translateX(-43px);
 }
 
 .options .custom-unsplash textarea {
