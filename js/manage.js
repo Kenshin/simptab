@@ -11,10 +11,12 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                 <div class="tabs">\
                     <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
                     <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
+                    <div class="tab" idx="2">探索</div>\
                 </div>\
                 <div class="albums">\
                     <div class="album favorite album-active"><div class="empty">Loading...</div></div>\
                     <div class="album subscribe"><div class="empty">Loading...</div></div>\
+                    <div class="album explore"><div class="empty">Loading...</div></div>\
                 </div>',
         favTmpl = '\
                 <div class="photograph">\
@@ -234,6 +236,11 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
         $( ".manage .albums" ).scroll( function() {
             checkImg();
         })
+        $(".albums").on("scroll", function() {
+            if( $(this).scrollTop() + Math.floor( $(this).innerHeight() ) >= $(this)[0].scrollHeight - 1 ) {
+                console.log('end reached');
+            }
+        });
     }
 
     function observerImg( ioes ) {

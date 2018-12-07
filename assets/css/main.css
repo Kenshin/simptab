@@ -830,7 +830,8 @@ img {
     border-bottom-left-radius: 3px;
 }
 
-.manage .tab:nth-child(2) {
+.manage .tab:nth-child(3) {
+    border-left: none;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
