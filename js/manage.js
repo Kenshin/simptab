@@ -229,6 +229,10 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
     }
 
     function getExploreTmpl() {
+        if ( !options.Storage.db.unsplash || ( options.Storage.db.unsplash.length == 1 && options.Storage.db.unsplash[0] == "" )) {
+            $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+            return;
+        }
         var COUNT  = 10,
             items  = [],
             CLIENT = "86ec05bcde52b196fe41f4e5602d35219fdaeb54fd73508c61ec93e24225c94a",
