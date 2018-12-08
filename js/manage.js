@@ -241,32 +241,35 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 return Math.floor( Math.random() * ( max - min + 1 ) + min );
             },
             collection = options.Storage.db.unsplash[ random( 0, options.Storage.db.unsplash.length - 1 ) ],
-            url    = "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "/photos?client_id=" + CLIENT + "&per_page=10";
-        $.ajax({
-            type       : "GET",
-            url        : url,
-            dataType   : "json"
-        }).then( function( result ) {
-            if ( result && result.length >= COUNT ) {
-                for( var i = 0; i < COUNT; i++ ) {
-                    var item = result[i];
-                    items.push({
-                        thumb: item.urls.thumb,
-                        url: "https://source.unsplash.com/" + item.id + "/" + screen,
-                        name: item.user.name,
-                        contact: item.user.links.html,
-                        link: item.links.html,
-                        down: item.urls.full,
-                    });
-                }
-                var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + exploreTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
-                html         = compiled({ 'albums': items });
-                $( ".manage .albums .explore .empty" ).remove();
-                $( ".manage .albums .explore" ).append( html );
-            } else $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
-        }, function( jqXHR, textStatus, errorThrown ) {
-            $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
-        });
+            getPhotos = function( page ) {
+                var url = "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "/photos?client_id=" + CLIENT + "&page=" + page;
+                $.ajax({
+                    type       : "GET",
+                    url        : url,
+                    dataType   : "json"
+                }).then( function( result ) {
+                    if ( result && result.length >= COUNT ) {
+                        for( var i = 0; i < COUNT; i++ ) {
+                            var item = result[i];
+                            items.push({
+                                thumb: item.urls.thumb,
+                                url: "https://source.unsplash.com/" + item.id + "/" + screen,
+                                name: item.user.name,
+                                contact: item.user.links.html,
+                                link: item.links.html,
+                                down: item.urls.full,
+                            });
+                        }
+                        var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + exploreTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+                        html         = compiled({ 'albums': items });
+                        $( ".manage .albums .explore .empty" ).remove();
+                        $( ".manage .albums .explore" ).append( html );
+                    } else $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+                }, function( jqXHR, textStatus, errorThrown ) {
+                    $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+                });
+            };
+        getPhotos( 1 );
     }
 
     function albumLoadListenEvent() {
