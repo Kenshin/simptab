@@ -106,12 +106,10 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                     setBackground( url, name, new_vo );
                     break;
                 case "downicon":
-                    var title = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" );
                     if ( type == "explore" ) {
-                        url   = $( event.target ).attr( "url" );
-                        title = "simptab-wallpaper-" + date.Now() + ".png";
+                        url = $( event.target ).attr( "url" );
                     }
-                    files.Download( url, title );
+                    files.Download( url, "simptab-wallpaper-" + date.Now() + ".png" );
                     break;
                 case "removeicon":
                     files.Delete( name, function( result ) {
