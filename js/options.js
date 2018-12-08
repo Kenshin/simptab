@@ -92,7 +92,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="division"></div>\
                         <div class="switche" style="margin-bottom:0;">\
                             <div class="label">' + i18n.GetLang( "options_carousel_label" ) + '</div>\
-                            ' + comps.Dropdown( ".options", "carousel-dpd", items, storage.db.carousel ) + '\
+                            ' + comps.Dropdown( ".options", "carousel-dpd", items, !storage.db.carousel ? "-1" : storage.db.carousel ) + '\
                         </div>\
                         <div class="notice">' + i18n.GetLang( "options_carousel_notice" ) + '</div>\
                         <div class="division"></div>\

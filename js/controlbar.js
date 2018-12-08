@@ -262,7 +262,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         },
 
         AutoPlay: function() {
-            options.Storage.db.carousel != -1 &&
+            options.Storage.db.carousel && options.Storage.db.carousel != -1 &&
                 setInterval(function() {
                     $(".controlbar").find("a[url=refresh]")[0].click();
                 }, 1000 * 60 * parseInt( options.Storage.db.carousel ));
