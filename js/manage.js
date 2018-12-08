@@ -236,10 +236,11 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
             random = function( min, max ) {
                 return Math.floor( Math.random() * ( max - min + 1 ) + min );
             },
-            collection = options.Storage.db.unsplash[ random( 0, options.Storage.db.unsplash.length - 1 ) ];
+            collection = options.Storage.db.unsplash[ random( 0, options.Storage.db.unsplash.length - 1 ) ],
+            url    = "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "/photos?client_id=" + CLIENT + "&per_page=10";
         $.ajax({
             type       : "GET",
-            url        : "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "/photos?client_id=" + CLIENT + "&per_page=10",
+            url        : url,
             dataType   : "json"
         }).then( function( result ) {
             if ( result && result.length >= COUNT ) {
