@@ -609,6 +609,10 @@
         "message": "欢迎来到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禅模式</a>，使用快捷键 c 或者鼠标移动右下角弹出选项卡。"
     },
 
+    "notify_explore_tips": {
+        "message": "向下滚动即可加载更多，显示速度取决于你的网速，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/功能一览?id=探索'>探索</a> 。"
+    },
+
     "notify_zen_mode_tips_confirm": {
         "message": "不再提示"
     },

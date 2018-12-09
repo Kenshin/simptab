@@ -88,7 +88,13 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
             $( ".manage .album" ).removeClass( "album-active" );
             $( $( ".manage .album" )[idx] ).addClass( "album-active" );
 
-            $( ".tabs .tab-active").attr("idx") == "2" && $( ".albums .explore").find(".photograph").length == 12 && getExploreTmpl();
+            if ( $( ".tabs .tab-active").attr("idx") == "2" ) {
+                $( ".albums .explore").find(".photograph").length == 12 && getExploreTmpl();
+                localStorage["simptab-explore-notify"] != "false" &&
+                    new Notify().Render({ content: i18n.GetLang( "notify_explore_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
+                        localStorage["simptab-explore-notify"] = false;
+                    }});
+            }
         });
     }
 

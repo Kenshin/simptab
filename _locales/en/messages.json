@@ -609,6 +609,10 @@
         "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
     },
 
+    "notify_explore_tips": {
+        "message": "Scroll down to load more, background loading depending on your network speed."
+    },
+
     "notify_zen_mode_tips_confirm": {
         "message": "Confirm"
     },
