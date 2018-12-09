@@ -233,7 +233,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
             $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
             return;
         }
-        var COUNT  = 10,
+        var COUNT  = 12,
             items  = [],
             CLIENT = "86ec05bcde52b196fe41f4e5602d35219fdaeb54fd73508c61ec93e24225c94a",
             screen = /\d+x\d+/.test( options.Storage.db.unsplash_screen ) ? options.Storage.db.unsplash_screen : "2560x1440",
@@ -258,7 +258,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 });
             },
             getPhotos = function( page ) {
-                var url = "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "/photos?client_id=" + CLIENT + "&page=" + page;
+                var url = "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "/photos?client_id=" + CLIENT + "&page=" + page + "&per_page=" + COUNT;
                 $.ajax({
                     type       : "GET",
                     url        : url,
