@@ -241,6 +241,10 @@
         "message": "Collections"
     },
 
+    "manage_tab_explore": {
+        "message": "Explore"
+    },
+
     "manage_toolbar_use": {
         "message": "Set current Background"
     },

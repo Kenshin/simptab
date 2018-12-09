@@ -241,6 +241,10 @@
         "message": "精选集"
     },
 
+    "manage_tab_explore": {
+        "message": "探索"
+    },
+
     "manage_toolbar_use": {
         "message": "使用当前背景"
     },

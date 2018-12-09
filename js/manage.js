@@ -11,7 +11,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 <div class="tabs">\
                     <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
                     <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
-                    <div class="tab" idx="2">探索</div>\
+                    <div class="tab" idx="2">' + i18n.GetLang( "manage_tab_explore" ) + '</div>\
                 </div>\
                 <div class="albums">\
                     <div class="album favorite album-active"><div class="empty">Loading...</div></div>\
