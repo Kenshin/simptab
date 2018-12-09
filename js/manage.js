@@ -247,10 +247,8 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                     url        : "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "?client_id=" + CLIENT,
                     dataType   : "json"
                 }).then( function( result ) {
-                    console.log( result )
                     if ( result && result.total_photos > 0 ) {
                         var page = random( 1, Math.ceil( result.total_photos / COUNT ));
-                        console.log( page )
                         getPhotos( page );
                     }
                 }, function( jqXHR, textStatus, errorThrown ) {
@@ -285,7 +283,6 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                     getCollection();
                 });
             };
-        //getPhotos( 1 );
         getCollection();
     }
 
