@@ -66,14 +66,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         });
     }
 
-    function update( url ) {
+    function update( url, info ) {
         // change background
         $( "body" ).css( "background-image", 'url("' + url + '")' );
         // change background mask
         $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
         $( "body" ).find( ".bgmask-bg > img" ).attr( "src", url );
         // change conntrolbar download url and info
-        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
+        $($( ".controlbar" ).find( "a" )[4]).attr( "href", info == undefined ? "#" : info );
         $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
         // change favorite
         setFavorteIcon();

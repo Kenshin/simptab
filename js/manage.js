@@ -157,7 +157,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                         vo.Set( vo.cur );
                         console.log( "======= Current background download success.", vo )
                         // add url to custom event
-                        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url });
+                        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url, info: vo.cur.info });
                         // complete notify
                         notify && notify.complete();
                         new Notify().Render( i18n.GetLang( "notify_mange_setting_success" ) );
@@ -272,7 +272,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                                 url: "https://source.unsplash.com/" + item.id + "/" + screen,
                                 name: item.user.name,
                                 contact: item.user.links.html,
-                                link: item.links.html,
+                                info: item.links.html,
                                 down: item.urls.full,
                             });
                         }
