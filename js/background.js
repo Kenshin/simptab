@@ -113,6 +113,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             progress.Set( "loading" );
 
             files.GetDataURI( url ).then( function( result ) {
+                localStorage[ "simptab-background-update" ] == "true" && files.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) {
                         if ( typeof result != "undefined" && !$.isEmptyObject( result )) {

@@ -71,6 +71,8 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // get time
     date.Toggle( setting.Mode( "clockstate" ));
 
+    controlbar.AutoPlay();
+
     // listen
     controlbar.Listen( function( type, result ) {
         switch ( type) {
@@ -115,7 +117,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
 
     // global event handler
     message.Subscribe( message.TYPE.UPDATE_CONTROLBAR, function( event ) {
-        controlbar.Update( event.data.url );
+        controlbar.Update( event.data.url, event.data.info );
     });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {

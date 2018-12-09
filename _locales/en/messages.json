@@ -73,6 +73,10 @@
         "message": "About"
     },
 
+    "controlbar_mobile": {
+        "message": "Send to Mobile"
+    },
+
     "controlbar_favorite": {
         "message": "Like"
     },
@@ -237,6 +241,10 @@
         "message": "Collections"
     },
 
+    "manage_tab_explore": {
+        "message": "Explore"
+    },
+
     "manage_toolbar_use": {
         "message": "Set current Background"
     },
@@ -351,6 +359,46 @@
 
     "options_custom_unsplash_screen_notice": {
         "message": "Custom resolution: widthxheigh e.g 3200x1800 4096x2160"
+    },
+
+    "options_custom_mobile_lable": {
+        "message": "Add JSBox host"
+    },
+
+    "options_custom_mobile_placeholder": {
+        "message": "Please enter the correct format, including port number, such as http://192.168.31.233:3100"
+    },
+
+    "options_custom_mobile_notice": {
+        "message": "First JSBox is required to be installed on iOS, for details <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>Send to mobile</a>"
+    },
+
+    "options_carousel_label": {
+        "message": "Usage play automatically show next background?"
+    },
+
+    "options_carousel_value_1": {
+        "message": "Nothing"
+    },
+
+    "options_carousel_value_5": {
+        "message": "Every five minutes"
+    },
+
+    "options_carousel_value_10": {
+        "message": "Every ten minutes"
+    },
+
+    "options_carousel_value_30": {
+        "message": "Every 30 minutes"
+    },
+
+    "options_carousel_value_60": {
+        "message": "Every 60 minutes"
+    },
+
+    "options_carousel_notice": {
+        "message": "When playing automatically, it is not recommended to close the TAB, and <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>white noise</a> effect is better."
     },
 
     "options_custom_style": {
@@ -565,8 +613,32 @@
         "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
     },
 
+    "notify_explore_tips": {
+        "message": "Scroll down to load more, background loading depending on your network speed."
+    },
+
     "notify_zen_mode_tips_confirm": {
         "message": "Confirm"
+    },
+
+    "notify_mobile_send": {
+        "message": "Send to mobile..."
+    },
+
+    "notify_mobile_send_success": {
+        "message": "Send sucessful "
+    },
+
+    "notify_mobile_send_failed": {
+        "message": "Send failed."
+    },
+
+    "notify_mobile_host_failed": {
+        "message": "Host IP Address error, please re-input again."
+    },
+
+    "notify_carousel": {
+        "message": "Set successful, please refresh."
     },
 
     "version_detail": {

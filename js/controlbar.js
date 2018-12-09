@@ -10,27 +10,6 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         $target.parent().find( ".tooltip" ).text( vo.cur.type == "upload" ? "Upload image" : vo.cur.type );
     }
 
-    function setDownloadURL() {
-
-        if ( vo.cur.info.search( "https://unsplash.com" ) == 0 ) {
-            $( ".controlink[url='download']" ).attr({
-                "href"     : vo.cur.hdurl,
-                "target"   : "_blank",
-            }).removeAttr( "url" );
-        } else {
-            var shortname = vo.cur.shortname;
-            if ( shortname == "#" ) {
-                shortname = vo.cur.name;
-            }
-            $( ".controlink[url='download']" ).attr({
-                "title"    : vo.cur.name,
-                "href"     : vo.cur.hdurl,
-                "download" : "SimpTab-" + date.Now() + "-" + shortname + ".jpg"
-            });
-        }
-
-    }
-
     function setBackground( url ) {
         if ( localStorage[ "simptab-background-update" ] == "true" ) return;
         $("body").css({ "background-image": "url(" + url + ")" });
@@ -87,14 +66,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         });
     }
 
-    function update( url ) {
+    function update( url, info ) {
         // change background
         $( "body" ).css( "background-image", 'url("' + url + '")' );
         // change background mask
         $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
         $( "body" ).find( ".bgmask-bg > img" ).attr( "src", url );
         // change conntrolbar download url and info
-        $($( ".controlbar" ).find( "a" )[4]).attr( "href", url );
+        $($( ".controlbar" ).find( "a" )[4]).attr( "href", info == undefined ? "#" : info );
         $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
         // change favorite
         setFavorteIcon();
@@ -180,10 +159,12 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         callBack( url, is_favorite );
                         break;
                     case "download":
-                        // hack code( when 'unsplash.com' or 'nasa.gov' image download, new tab happen crash error. )
-                        //if ( vo.cur.type != "unsplash.com" && vo.cur.type != "nasa.gov" ) {
-                        //event.currentTarget.href = files.DataURI() || vo.cur.hdurl;
-                        //}
+                        files.SaveBgfromURI( "download", files.DataURI() )
+                            .progress( function( result ) { console.log( "Write process:", result ); })
+                            .fail(     function( result ) { console.log( "Write error: ", result );  })
+                            .done( function( result ) {
+                                files.Download( result, "simptab-wallpaper-" + date.Now() + ".png" );
+                            });
                         break;
                     case "upload":
                         var input  = document.createElement("input"),
@@ -224,6 +205,26 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                             about.Render() :
                             new Notify().Render( i18n.GetLang( "notify_double_open" ) );
                         break;
+                    case "mobile":
+                        if ( !/http:\/\/(\d{1,3}.){4}:\d+/ig.test( options.Storage.db.mobile_host ) ) {
+                            new Notify().Render( 2, i18n.GetLang( "notify_mobile_host_failed" ) );
+                            return;
+                        }
+                        var notify = new Notify().Render({ content: i18n.GetLang( "notify_mobile_send" ), state: "loading" });
+                        $.ajax({
+                            type       : "POST",
+                            url        : options.Storage.db.mobile_host,
+                            data       : files.DataURI(),
+                        }).then( function( result ) {
+                            if ( result.status == 200 ) {
+                                notify.complete();
+                                new Notify().Render( i18n.GetLang( "notify_mobile_send_success" ) + result.name );
+                            } else new Notify().Render( 2, i18n.GetLang( "notify_mobile_send_failed" ) );
+                        } , function( jqXHR, textStatus, errorThrown ) {
+                            notify.complete();
+                            new Notify().Render( 2, i18n.GetLang( "notify_mobile_send_failed" ) );
+                        });
+                        break;
                 }
             });
         },
@@ -248,7 +249,6 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
             is_default ? vo.cur = vo.Clone( vo.Create( vo.constructor.DEFAULT_BACKGROUND, vo.constructor.DEFAULT_BACKGROUND, "Wallpaper", "#", date.Now(), "Wallpaper", "default", {} )) : setCurBackgroundURI();
 
             setInfoURL();
-            setDownloadURL();
             setBackground( is_default ? vo.constructor.DEFAULT_BACKGROUND: vo.constructor.CURRENT_BACKGROUND );
             setBackgroundPosition();
             setUploadState( setting.IsRandom() );
@@ -260,6 +260,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
             setDislikeIcon();
             setting.TogglePinState( vo.cur.pin != -1 );
         },
+
+        AutoPlay: function() {
+            options.Storage.db.carousel && options.Storage.db.carousel != -1 &&
+                setInterval(function() {
+                    $(".controlbar").find("a[url=refresh]")[0].click();
+                }, 1000 * 60 * parseInt( options.Storage.db.carousel ));
+        },
+
         SetBgPosition     : setBackgroundPosition,
         SetFavorteIcon    : setFavorteIcon,
         SetFavorteState   : setFavorteState,

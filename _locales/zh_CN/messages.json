@@ -73,6 +73,10 @@
         "message": "关于"
     },
 
+    "controlbar_mobile": {
+        "message": "发送到手机端"
+    },
+
     "controlbar_favorite": {
         "message": "收藏"
     },
@@ -237,6 +241,10 @@
         "message": "精选集"
     },
 
+    "manage_tab_explore": {
+        "message": "探索"
+    },
+
     "manage_toolbar_use": {
         "message": "使用当前背景"
     },
@@ -351,6 +359,46 @@
 
     "options_custom_unsplash_screen_notice": {
         "message": "可更改为适合自己的分辨率，格式：widthxheigh 如： 3200x1800 详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义分辨率' target='_blank'>自定义分辨率</a>"
+    },
+
+    "options_custom_mobile_lable": {
+        "message": "自定义监听地址"
+    },
+
+    "options_custom_mobile_placeholder": {
+        "message": "请输入正确的格式，包含端口号，如 http://192.168.31.233:3100"
+    },
+
+    "options_custom_mobile_notice": {
+        "message": "此功能需要在 iOS 端安装 JSBox，详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>发送到手机端</a>"
+    },
+
+    "options_carousel_label": {
+        "message": "背景是否自动播放（显示下一张）？"
+    },
+
+    "options_carousel_value_1": {
+        "message": "不自动播放"
+    },
+
+    "options_carousel_value_5": {
+        "message": "每隔 5 分钟"
+    },
+
+    "options_carousel_value_10": {
+        "message": "每隔 10 分钟"
+    },
+
+    "options_carousel_value_30": {
+        "message": "每隔 30 分钟"
+    },
+
+    "options_carousel_value_60": {
+        "message": "每隔 60 分钟"
+    },
+
+    "options_carousel_notice": {
+        "message": "当自动播放时，不建议关闭标签页，并配合 <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>白噪音</a> 效果更好。"
     },
 
     "options_custom_style": {
@@ -565,8 +613,32 @@
         "message": "欢迎来到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禅模式</a>，使用快捷键 c 或者鼠标移动右下角弹出选项卡。"
     },
 
+    "notify_explore_tips": {
+        "message": "向下滚动即可加载更多，显示速度取决于你的网速，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/功能一览?id=探索'>探索</a> 。"
+    },
+
     "notify_zen_mode_tips_confirm": {
         "message": "不再提示"
+    },
+
+    "notify_mobile_send": {
+        "message": "正在发送，请稍等..."
+    },
+
+    "notify_mobile_send_success": {
+        "message": "已成功发送到 "
+    },
+
+    "notify_mobile_send_failed": {
+        "message": "发错失败，请稍后再试。"
+    },
+
+    "notify_mobile_host_failed": {
+        "message": "输入的监听地址不清楚，请重新输入。"
+    },
+
+    "notify_carousel": {
+        "message": "已设置成功，刷新后生效。"
     },
 
     "version_detail": {
