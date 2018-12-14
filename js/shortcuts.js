@@ -253,7 +253,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     $( ".setting-zen-mode" ).find( ".footer .close" )[0].click();
                     break;
                 case "noise-mode":
-                    //$( ".noise-mode" ).find( ".close" )[0].click();
+                    $( ".noise-mode" ).find( ".close" )[0].click();
                     break;
             }
         });

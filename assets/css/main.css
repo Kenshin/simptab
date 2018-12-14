@@ -2069,6 +2069,23 @@ img {
     overflow-y: auto;
 }
 
+.noise-mode .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    display: block;
+
+    width: 14px;
+    height: 14px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../images/remove.png");
+
+    cursor: pointer;
+}
+
 .noise-mode .action {
     display: block;
 

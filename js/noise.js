@@ -20,6 +20,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     function render() {
         var tmpl = '\
                     <div class="noise-mode">\
+                        <span class="close"></span>\
                         <div class="action play waves-effect waves-circle"></div>\
                         <div class="volume"></div>\
                         <div class="scene">\
@@ -52,7 +53,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     }
 
     function close() {
-        // TO-DO
+        $( ".noise-mode .close" ).click( function( event ) {
+            $( ".noise-mode" ).css({ "transform": "translateY(100px)", "opacity": 0 });
+            setTimeout( function(){
+                $( ".noise-mode" ).remove();
+            }, 500 );
+        });
     }
 
     return {
@@ -60,6 +66,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
                 render();
                 open();
+                close();
             });
         }
     }
