@@ -64,9 +64,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     return {
         Init: function() {
             message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
-                render();
-                open();
-                close();
+                if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
+                    $( ".noise-mode .close" )[0].click();
+                } else {
+                    render();
+                    open();
+                    close();
+                }
             });
         }
     }
