@@ -20,15 +20,34 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     function render() {
         var tmpl = '\
                     <div class="noise-mode">\
-                        White Noise\
+                        <div class="action play waves-effect waves-circle"></div>\
+                        <div class="volume"></div>\
+                        <div class="scene">\
+                            <span class="mode active">安静的咖啡馆</span>\
+                            <span class="mode">露天咖啡馆</span>\
+                            <span class="mode">酒吧</span>\
+                            <span class="mode">嘈杂的咖啡馆</span>\
+                        </div>\
                     </div>';
         $( "body" ).append( tmpl );
+
+        model();
+    }
+
+    function model() {
+        $( ".noise-mode .action" ).on( "click", function( event ) {
+            var $target = $( event.target );
+            if ( $target.hasClass( "play" )) {
+                $target.removeClass( "play" ).addClass( "pause" );
+            } else {
+                $target.removeClass( "pause" ).addClass( "play" );
+            }
+        });
     }
 
     function open() {
         setTimeout( function(){
             $( ".noise-mode" ).css({ "transform": "translateY(0px)", "opacity": 1 });
-            sound();
         }, 10 );
     }
 

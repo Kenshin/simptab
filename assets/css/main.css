@@ -2041,12 +2041,14 @@ img {
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     right: 10px;
     bottom: 10px;
 
     width: 400px;
-    height: 200px;
+    height: 150px;
 
     padding: 15px;
 
@@ -2067,6 +2069,48 @@ img {
     overflow-y: auto;
 }
 
+.noise-mode .action {
+    display: block;
+
+    width: 70px;
+    height: 70px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: .7;
+}
+
+.noise-mode .action.play {
+    background-image: url("../images/play.png");
+}
+
+.noise-mode .action.pause {
+    background-image: url("../images/pause.png");
+}
+
+.noise-mode .scene {
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    color: rgb(213, 214, 215, .7);
+    font-size: 11px;
+}
+
+.noise-mode .scene .mode {
+    margin: 5px 10px;
+    cursor: not-allowed;
+}
+
+.noise-mode .scene .mode.active {
+    color: rgb(213, 214, 215);
+    cursor: pointer;
+}
 
 /*
 * media
