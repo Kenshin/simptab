@@ -313,6 +313,10 @@
         "message": "打開禪模式的選項頁"
     },
 
+    "shortcuts_key_noise": {
+        "message": "開啟白噪音模式"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

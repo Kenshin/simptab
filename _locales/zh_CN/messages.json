@@ -313,6 +313,10 @@
         "message": "打开禅模式的选项页"
     },
 
+    "shortcuts_key_noise": {
+        "message": "开启白噪音模式"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },

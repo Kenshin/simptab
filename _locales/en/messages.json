@@ -313,6 +313,10 @@
         "message": "Open zen mode setting"
     },
 
+    "shortcuts_key_noise": {
+        "message": "Open White noise"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
