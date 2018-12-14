@@ -3,6 +3,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
 
     "use strict";
 
+    var noise = {
+        "cafe001": "http://st.ksria.cn/noise/cafe001.mp3",
+        "jazz001": "http://st.ksria.cn/noise/jazz001.mp3",
+        "rain001": "http://st.ksria.cn/noise/rain001.mp3",
+    }, sounds = {};
+
+    /*
     function sound() {
         var cafe = new Audio( "http://st.ksria.cn/noise/cafe001.mp3" );
         var jazz = new Audio( "http://st.ksria.cn/noise/jazz001.mp3" );
@@ -16,6 +23,23 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
         rain.volume = 0.5;
         rain.loop = true;
     }
+    */
+
+    function play() {
+        var cls = $( ".noise-mode .scene" ).find( ".active" ).attr( "class" ),
+            key = cls.replace( "mode", "" ).replace( "active", "" ).trim(),
+            url = noise[ key ];
+        sounds[ key ]      = new Audio( url );
+        sounds[ key ].loop = true;
+        sounds[ key ].play();
+    }
+
+    function pause() {
+        Object.keys( sounds ).forEach( function( key ) {
+            sounds[key].pause();
+            delete sounds[key];
+        });
+    }
 
     function render() {
         var tmpl = '\
@@ -24,7 +48,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                         <div class="action play waves-effect waves-circle"></div>\
                         <div class="volume"></div>\
                         <div class="scene">\
-                            <span class="mode active">安静的咖啡馆</span>\
+                            <span class="mode cafe001 active">安静的咖啡馆</span>\
                             <span class="mode">露天咖啡馆</span>\
                             <span class="mode">酒吧</span>\
                             <span class="mode">嘈杂的咖啡馆</span>\
@@ -40,7 +64,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             var $target = $( event.target );
             if ( $target.hasClass( "play" )) {
                 $target.removeClass( "play" ).addClass( "pause" );
+                play();
             } else {
+                pause();
                 $target.removeClass( "pause" ).addClass( "play" );
             }
         });
