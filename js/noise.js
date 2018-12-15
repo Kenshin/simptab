@@ -57,7 +57,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                             <span class="mode">更多场景</span>\
                         </div>\
                         <div class="sfx">\
-                            <span class="exit"></span>\
                             <div class="waves-effect waves-block effect jazz">\
                                 <div class="avatar"></div>\
                                 <div class="label">JAZZ</div>\
@@ -79,6 +78,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                                     ' + comps.Slider( 0, 100, 50, "wind" ) + '\
                                 </div>\
                             </div>\
+                            <span class="exit"></span>\
                         </div>\
                     </div>';
         $( "body" ).append( tmpl );
