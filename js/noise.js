@@ -25,12 +25,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     }
     */
 
-    function play() {
+    function play( volume ) {
         var cls = $( ".noise-mode .scene" ).find( ".active" ).attr( "class" ),
             key = cls.replace( "mode", "" ).replace( "active", "" ).trim(),
             url = noise[ key ];
-        sounds[ key ]      = new Audio( url );
-        sounds[ key ].loop = true;
+        sounds[ key ]        = new Audio( url );
+        sounds[ key ].loop   = true;
+        sounds[ key ].volume = volume / 100;
         sounds[ key ].play();
     }
 
@@ -66,7 +67,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             var $target = $( event.target );
             if ( $target.hasClass( "play" )) {
                 $target.removeClass( "play" ).addClass( "pause" ).next().css( "opacity", 1 );
-                play();
+                play( $target.next().find( "input" ).val() );
             } else {
                 pause();
                 $target.removeClass( "pause" ).addClass( "play" ).next().css( "opacity", 0 );
