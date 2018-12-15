@@ -46,7 +46,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                     <div class="noise-mode">\
                         <span class="close"></span>\
                         <div class="action play waves-effect waves-circle"></div>\
-                        <div class="volume"></div>\
+                        <div class="volumes">\
+                        ' + comps.Slider( 0, 100, 50, "volume" ) + '\
+                        </div>\
                         <div class="scene">\
                             <span class="mode cafe001 active">安静的咖啡馆</span>\
                             <span class="mode">露天咖啡馆</span>\
@@ -63,12 +65,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
         $( ".noise-mode .action" ).on( "click", function( event ) {
             var $target = $( event.target );
             if ( $target.hasClass( "play" )) {
-                $target.removeClass( "play" ).addClass( "pause" );
+                $target.removeClass( "play" ).addClass( "pause" ).next().css( "opacity", 1 );
                 play();
             } else {
                 pause();
-                $target.removeClass( "pause" ).addClass( "play" );
+                $target.removeClass( "pause" ).addClass( "play" ).next().css( "opacity", 0 );
             }
+        });
+        $( ".noise-mode .md-slider-root .volume" )[0].addEventListener( "slider", function( event ) {
+            sounds[ "cafe001" ] && ( sounds[ "cafe001" ].volume = event.data / 100 );
         });
     }
 

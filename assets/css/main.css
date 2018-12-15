@@ -2107,10 +2107,13 @@ img {
     background-image: url("../images/pause.png");
 }
 
-.noise-mode .volume {
+.noise-mode .volumes {
     margin-top: 5px;
     width: 317px;
     text-align: center;
+
+    opacity: 0;
+    transition: all .5s ease;
 }
 
 .noise-mode .scene {
