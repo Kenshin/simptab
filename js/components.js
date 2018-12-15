@@ -53,6 +53,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                     value == max && ( width = maxWidth - 20 );
                     $target.next().width( width );
                 },
+                onChanged= function( $target, value, event ) {
+                    lineWidth( $target, value );
+                    var evt  = new Event( "slider" );
+                    evt.data = value;
+                    $( target )[0].dispatchEvent( evt );
+                    event.stopPropagation();
+                },
                 isDrag = false;
 
             setTimeout( function () {
@@ -62,15 +69,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             $( document ).on( "mousedown", target, function( event ) { isDrag = true  });
             $( document ).on( "mouseup",   target, function( event ) { isDrag = false });
             $( document ).on( "mousemove", target, function( event ) {
-                isDrag && lineWidth( $( target ), $( target ).val() );
+                isDrag && onChanged( $( target ), $( target ).val(), event );
             });
             $( document ).on( "change",    target, function( event ) {
-                lineWidth( $( event.target ), event.target.value );
-
-                var evt  = new Event( "slider" );
-                evt.data = event.target.value;
-                $( target )[0].dispatchEvent( evt );
-                event.stopPropagation();
+                onChanged( $( event.target ), event.target.value, event );
             });
 
             return '<div class="md-slider-root">\
