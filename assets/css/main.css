@@ -2065,8 +2065,7 @@ img {
 
     box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
 
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     z-index: 200;
 }
 
@@ -2134,9 +2133,99 @@ img {
     cursor: not-allowed;
 }
 
+.noise-mode .scene .mode:last-child {
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
 .noise-mode .scene .mode.active {
     color: rgb(213, 214, 215);
     cursor: pointer;
+}
+
+.noise-mode .sfx {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 0;
+
+    background-color: rgb(47, 52, 55);
+
+    opacity: 0;
+    transition: all .6s ease;
+}
+
+.noise-mode .sfx .exit {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    display: block;
+
+    width: 14px;
+    height: 14px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../images/noise-sfx-close.png");
+
+    cursor: pointer;
+}
+
+.noise-mode .sfx .effect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+
+    opacity: .7;
+    transition: all .6s ease;
+}
+
+.noise-mode .sfx .effect:hover {
+    background-color: rgb(63, 68, 71);
+}
+
+.noise-mode .sfx .effect .avatar {
+    display: block;
+
+    width: 60px;
+    height: 60px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.noise-mode .sfx .effect.jazz .avatar {
+    background-image: url("../images/jazz.png");
+}
+
+.noise-mode .sfx .effect.rain .avatar {
+    background-image: url("../images/rain.png");
+}
+
+.noise-mode .sfx .effect.wind .avatar {
+    background-image: url("../images/wind.png");
+}
+
+.noise-mode .sfx .effect .label {
+    margin: 10px;
+    font-size: 14px;
+}
+
+.noise-mode .sfx .effect .volum {
+    width: 50%;
 }
 
 /*
