@@ -2107,6 +2107,12 @@ img {
     background-image: url("../images/pause.png");
 }
 
+.noise-mode .volume {
+    margin-top: 5px;
+    width: 317px;
+    text-align: center;
+}
+
 .noise-mode .scene {
     position: absolute;
     bottom: 0;
@@ -2564,4 +2570,50 @@ img {
     background-color: rgb(109, 112, 115);
     border-color: #fff;
     box-shadow: 0px 0 2px #fff;
+}
+
+/*
+* md-textarea/slide
+*/
+
+.md-slider-root {
+    position: relative;
+}
+
+.md-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #c2c0c2;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.md-slider:hover {
+    opacity: 1;
+}
+
+.md-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #00796B;
+    cursor: pointer;
+}
+
+.md-slider-bar {
+    position: absolute;
+    left: 2px;
+    bottom: 3px;
+
+    height: 5px;
+
+    border-radius: 5px;
+    background-color: #00796B;
+    pointer-events: none;
 }

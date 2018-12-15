@@ -39,6 +39,44 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             ' + html + '\
                         </div>\
                     </div>';
+        },
+
+        Slider: function( min, max, value, cls ) {
+            var target   = ".md-slider-root ." + cls,
+                tmpl     = '<input type="range" min="<%- min %>" max="<%- max %>" value="<%- value %>" class="md-slider <%- cls %>" id="<%- cls %>">',
+                compiled = _.template( tmpl );
+                html     = compiled({ min: min, max: max, value: value, cls: cls }),
+                lineWidth= function ( $target, value ) {
+                    var maxWidth = $target.width(),
+                        perc     = ( max - value ) / ( max - min ),
+                        width    = maxWidth - ( maxWidth * perc );
+                    value == max && ( width = maxWidth - 20 );
+                    $target.next().width( width );
+                },
+                isDrag = false;
+
+            setTimeout( function () {
+                lineWidth( $( target ), value );
+            }, 100 );
+
+            $( document ).on( "mousedown", target, function( event ) { isDrag = true  });
+            $( document ).on( "mouseup",   target, function( event ) { isDrag = false });
+            $( document ).on( "mousemove", target, function( event ) {
+                isDrag && lineWidth( $( target ), $( target ).val() );
+            });
+            $( document ).on( "change",    target, function( event ) {
+                lineWidth( $( event.target ), event.target.value );
+
+                var evt  = new Event( "slider" );
+                evt.data = event.target.value;
+                $( target )[0].dispatchEvent( evt );
+                event.stopPropagation();
+            });
+
+            return '<div class="md-slider-root">\
+                       ' + html + '\
+                       <div class="md-slider-bar"></div>\
+                   </div>';
         }
     }
 });
