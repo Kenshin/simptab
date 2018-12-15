@@ -81,9 +81,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     function close() {
         $( ".noise-mode .close" ).click( function( event ) {
             $( ".noise-mode" ).css({ "transform": "translateY(100px)", "opacity": 0 });
-            setTimeout( function(){
-                $( ".noise-mode" ).remove();
-            }, 500 );
         });
     }
 
@@ -91,7 +88,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
         Init: function() {
             message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
                 if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
-                    $( ".noise-mode .close" )[0].click();
+                    open();
                 } else {
                     render();
                     open();
