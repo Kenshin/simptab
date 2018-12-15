@@ -57,7 +57,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                     lineWidth( $target, value );
                     var evt  = new Event( "slider" );
                     evt.data = value;
-                    $( target )[0].dispatchEvent( evt );
+                    $target[0].dispatchEvent( evt );
                     event.stopPropagation();
                 },
                 isDrag = false;
@@ -69,7 +69,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
             $( document ).on( "mousedown", target, function( event ) { isDrag = true  });
             $( document ).on( "mouseup",   target, function( event ) { isDrag = false });
             $( document ).on( "mousemove", target, function( event ) {
-                isDrag && onChanged( $( target ), $( target ).val(), event );
+                isDrag && onChanged( $( event.target ), $( event.target ).val(), event );
             });
             $( document ).on( "change",    target, function( event ) {
                 onChanged( $( event.target ), event.target.value, event );
