@@ -97,7 +97,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             if ( sounds[key] ) {
                 pause( key );
                 $volume.css( "opacity", 0 );
-                $parent.css({ "background-color": "initial", "opacity": 0 });
+                $parent.css({ "background-color": "initial", "opacity": 0.5 });
             } else {
                 play( key, volume );
                 $volume.css( "opacity", 1 );
