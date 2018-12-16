@@ -2047,7 +2047,7 @@ img {
     right: 10px;
     bottom: 10px;
 
-    width: 400px;
+    width: 500px;
     height: 150px;
 
     padding: 15px;
@@ -2086,64 +2086,6 @@ img {
     cursor: pointer;
 }
 
-.noise-mode .action {
-    display: block;
-
-    width: 70px;
-    height: 70px;
-
-    background-position: center;
-    background-repeat: no-repeat;
-
-    opacity: .7;
-}
-
-.noise-mode .action.play {
-    background-image: url("../images/play.png");
-}
-
-.noise-mode .action.pause {
-    background-image: url("../images/pause.png");
-}
-
-.noise-mode .volumes {
-    margin-top: 5px;
-    width: 317px;
-    text-align: center;
-
-    opacity: 0;
-    transition: all .5s ease;
-}
-
-.noise-mode .scene {
-    position: absolute;
-    bottom: 0;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    color: rgb(213, 214, 215, .7);
-    font-size: 11px;
-}
-
-.noise-mode .scene .mode {
-    margin: 5px 10px;
-    cursor: not-allowed;
-}
-
-.noise-mode .scene .mode:last-child {
-    color: #fff;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.noise-mode .scene .mode.active {
-    color: rgb(213, 214, 215);
-    cursor: pointer;
-}
-
 .noise-mode .sfx {
     position: absolute;
 
@@ -2156,11 +2098,11 @@ img {
     justify-content: space-around;
     align-items: center;
 
-    height: 0;
+    height: 100%;
 
     background-color: rgb(47, 52, 55);
 
-    opacity: 0;
+    /*opacity: 0;*/
     transition: all .6s ease;
 }
 
@@ -2215,6 +2157,10 @@ img {
     background-repeat: no-repeat;
 
     cursor: pointer;
+}
+
+.noise-mode .sfx .effect[type="cafe001"] .avatar {
+    background-image: url("../images/cafe.png");
 }
 
 .noise-mode .sfx .effect[type="jazz001"] .avatar {

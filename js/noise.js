@@ -9,6 +9,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             "rain001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/rain001.mp3",
             "wind001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/wind001.mp3",
         },  colors = {
+            "cafe001": "#753F40",
             "jazz001": "#3D5AFE",
             "rain001": "#ff932b",
             "wind001": "#f3294d",
@@ -31,18 +32,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     function render() {
         var tmpl = '\
                     <div class="noise-mode">\
-                        <span class="close"></span>\
-                        <div class="action play waves-effect waves-circle"></div>\
-                        <div class="volumes">\
-                        ' + comps.Slider( 0, 100, 50, "volume" ) + '\
-                        </div>\
-                        <div class="scene">\
-                            <span class="mode cafe001 active">安静的咖啡馆</span>\
-                            <span class="mode">露天咖啡馆</span>\
-                            <span class="mode">酒吧</span>\
-                            <span class="mode">更多场景</span>\
-                        </div>\
                         <div class="sfx">\
+                            <div class="waves-effect waves-block effect" type="cafe001">\
+                                <div class="avatar"></div>\
+                                <div class="label">CAFE</div>\
+                                <div class="volum">\
+                                    ' + comps.Slider( 0, 100, 50, "cafe001" ) + '\
+                                </div>\
+                            </div>\
                             <div class="waves-effect waves-block effect" type="jazz001">\
                                 <div class="avatar"></div>\
                                 <div class="label">JAZZ</div>\
@@ -64,8 +61,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                                     ' + comps.Slider( 0, 100, 50, "wind001" ) + '\
                                 </div>\
                             </div>\
-                            <span class="exit"></span>\
                         </div>\
+                        <span class="close"></span>\
                     </div>';
         $( "body" ).append( tmpl );
 
@@ -73,25 +70,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     }
 
     function model() {
-        $( ".noise-mode .action" ).on( "click", function( event ) {
-            var $target = $( event.target ),
-                cls     = $( ".noise-mode .scene" ).find( ".active" ).attr( "class" ),
-                key     = cls.replace( "mode", "" ).replace( "active", "" ).trim();
-            if ( $target.hasClass( "play" )) {
-                $target.removeClass( "play" ).addClass( "pause" ).next().css( "opacity", 1 );
-                play( key, $target.next().find( "input" ).val() );
-            } else {
-                pause( key );
-                $target.removeClass( "pause" ).addClass( "play" ).next().css( "opacity", 0 );
-            }
-        });
-        $( ".noise-mode .scene" ).find( ".mode:last" ).on( "click", function( event ) {
-            $( ".noise-mode .sfx" ).css({ "opacity": "1", "height": "100%", "pointer-events": "initial" });
-        });
-        $( ".noise-mode .sfx .exit" ).on( "click", function( event ) {
-            $( ".noise-mode .sfx" ).css({ "opacity": "0", "height": "0", "pointer-events": "none" });
-        });
-        $( ".noise-mode .sfx .effect .avatar" ).on( "click", function( event ) {
+       $( ".noise-mode .sfx .effect .avatar" ).on( "click", function( event ) {
             var $parent = $( event.target ).parent(),
                 key     = $parent.attr( "type" ),
                 $volume = $parent.find( ".volum" ),
@@ -106,7 +85,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                 $parent.css({ "background-color": colors[key], "opacity": 1 });
             }
         });
-        $( ".noise-mode .md-slider-root .volume" )[0].addEventListener( "slider", function( event ) {
+        $( ".md-slider-root .cafe001" )[0].addEventListener( "slider", function( event ) {
             sounds[ "cafe001" ] && ( sounds[ "cafe001" ].volume = event.data / 100 );
         });
         $( ".md-slider-root .jazz001" )[0].addEventListener( "slider", function( event ) {
