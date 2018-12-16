@@ -4,10 +4,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     "use strict";
 
     var noise = {
-        "cafe001": "http://st.ksria.cn/noise/cafe001.mp3",
-        "jazz001": "http://st.ksria.cn/noise/jazz001.mp3",
-        "rain001": "http://st.ksria.cn/noise/rain001.mp3",
-    }, sounds = {};
+            "cafe001": "http://st.ksria.cn/noise/cafe001.mp3",
+            "jazz001": "http://st.ksria.cn/noise/jazz001.mp3",
+            "rain001": "http://st.ksria.cn/noise/rain001.mp3",
+        },  colors = {
+            "jazz001": "#7CA6ED",
+            "rain001": "#D2A24A",
+        },
+        sounds = {};
 
     function play( key, volume ) {
         var url = noise[ key ];
@@ -96,9 +100,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             if ( sounds[key] ) {
                 pause( key );
                 $volume.css( "opacity", 0 );
+                $parent.css({ "background-color": "initial", "opacity": 0 });
             } else {
                 play( key, volume );
                 $volume.css( "opacity", 1 );
+                $parent.css({ "background-color": colors[key], "opacity": 1 });
             }
         });
         $( ".md-slider-root .jazz" )[0].addEventListener( "slider", function( event ) {
