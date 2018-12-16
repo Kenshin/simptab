@@ -2171,8 +2171,8 @@ img {
     background-image: url("../images/rain001.png");
 }
 
-.noise-mode .sfx .effect[type="wind001"] .avatar {
-    background-image: url("../images/wind001.png");
+.noise-mode .sfx .effect[type="thun001"] .avatar {
+    background-image: url("../images/thun001.png");
 }
 
 .noise-mode .sfx .effect .label {

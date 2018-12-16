@@ -505,8 +505,8 @@
         "message": "下雨天"
     },
 
-    "noise_mode_wind001": {
-        "message": "风声"
+    "noise_mode_thun001": {
+        "message": "雷声"
     },
 
     "version_title": {

@@ -7,12 +7,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             "cafe001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/cafe001.mp3",
             "jazz001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/jazz001.mp3",
             "rain001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/rain001.mp3",
-            "wind001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/wind001.mp3",
+            "thun001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/thun001.mp3",
         },  colors = {
             "cafe001": "#753F40",
             "jazz001": "#3D5AFE",
             "rain001": "#ff932b",
-            "wind001": "#f3294d",
+            "thun001": "#f3294d",
         },
         sounds = {};
 
@@ -54,11 +54,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                                     ' + comps.Slider( 0, 100, 50, "rain001" ) + '\
                                 </div>\
                             </div>\
-                            <div class="waves-effect waves-block effect" type="wind001">\
+                            <div class="waves-effect waves-block effect" type="thun001">\
                                 <div class="avatar"></div>\
-                                <div class="label">' + i18n.GetLang( "noise_mode_wind001" ) + '</div>\
+                                <div class="label">' + i18n.GetLang( "noise_mode_thun001" ) + '</div>\
                                 <div class="volum">\
-                                    ' + comps.Slider( 0, 100, 50, "wind001" ) + '\
+                                    ' + comps.Slider( 0, 100, 50, "thun001" ) + '\
                                 </div>\
                             </div>\
                         </div>\
@@ -94,8 +94,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
         $( ".md-slider-root .rain001" )[0].addEventListener( "slider", function( event ) {
             sounds[ "rain001" ] && ( sounds[ "rain001" ].volume = event.data / 100 );
         });
-        $( ".md-slider-root .wind001" )[0].addEventListener( "slider", function( event ) {
-            sounds[ "wind001" ] && ( sounds[ "wind001" ].volume = event.data / 100 );
+        $( ".md-slider-root .thun001" )[0].addEventListener( "slider", function( event ) {
+            sounds[ "thun001" ] && ( sounds[ "thun001" ].volume = event.data / 100 );
         });
     }
 

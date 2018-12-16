@@ -505,8 +505,8 @@
         "message": "RAIN"
     },
 
-    "noise_mode_wind001": {
-        "message": "WIND"
+    "noise_mode_thun001": {
+        "message": "THUNDER"
     },
 
     "version_title": {
