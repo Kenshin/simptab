@@ -83,9 +83,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                 $target.removeClass( "pause" ).addClass( "play" ).next().css( "opacity", 0 );
             }
         });
-        $( ".noise-mode .md-slider-root .volume" )[0].addEventListener( "slider", function( event ) {
-            sounds[ "cafe001" ] && ( sounds[ "cafe001" ].volume = event.data / 100 );
-        });
         $( ".noise-mode .scene" ).find( ".mode:last" ).on( "click", function( event ) {
             $( ".noise-mode .sfx" ).css({ "opacity": "1", "height": "100%", "pointer-events": "initial" });
         });
@@ -106,6 +103,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                 $volume.css( "opacity", 1 );
                 $parent.css({ "background-color": colors[key], "opacity": 1 });
             }
+        });
+        $( ".noise-mode .md-slider-root .volume" )[0].addEventListener( "slider", function( event ) {
+            sounds[ "cafe001" ] && ( sounds[ "cafe001" ].volume = event.data / 100 );
         });
         $( ".md-slider-root .jazz" )[0].addEventListener( "slider", function( event ) {
             sounds[ "jazz001" ] && ( sounds[ "jazz001" ].volume = event.data / 100 );
