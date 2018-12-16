@@ -493,6 +493,22 @@
         "message": "Close"
     },
 
+    "noise_mode_cafe001": {
+        "message": "CAFE"
+    },
+
+    "noise_mode_jazz001": {
+        "message": "JAZZ"
+    },
+
+    "noise_mode_rain001": {
+        "message": "RAIN"
+    },
+
+    "noise_mode_wind001": {
+        "message": "WIND"
+    },
+
     "version_title": {
         "message": "SimpTab is updated"
     },

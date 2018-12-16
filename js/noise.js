@@ -35,28 +35,28 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                         <div class="sfx">\
                             <div class="waves-effect waves-block effect" type="cafe001">\
                                 <div class="avatar"></div>\
-                                <div class="label">CAFE</div>\
+                                <div class="label">' + i18n.GetLang( "noise_mode_cafe001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "cafe001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="jazz001">\
                                 <div class="avatar"></div>\
-                                <div class="label">JAZZ</div>\
+                                <div class="label">' + i18n.GetLang( "noise_mode_jazz001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "jazz001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="rain001">\
                                 <div class="avatar"></div>\
-                                <div class="label">RAIN</div>\
+                                <div class="label">' + i18n.GetLang( "noise_mode_rain001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "rain001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="wind001">\
                                 <div class="avatar"></div>\
-                                <div class="label">WIND</div>\
+                                <div class="label">' + i18n.GetLang( "noise_mode_wind001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "wind001" ) + '\
                                 </div>\

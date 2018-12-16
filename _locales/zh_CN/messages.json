@@ -493,6 +493,22 @@
         "message": "关闭"
     },
 
+    "noise_mode_cafe001": {
+        "message": "咖啡馆"
+    },
+
+    "noise_mode_jazz001": {
+        "message": "爵士乐"
+    },
+
+    "noise_mode_rain001": {
+        "message": "下雨天"
+    },
+
+    "noise_mode_wind001": {
+        "message": "风声"
+    },
+
     "version_title": {
         "message": "简 Tab 版本提示"
     },
