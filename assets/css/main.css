@@ -2164,6 +2164,11 @@ img {
     transition: all .6s ease;
 }
 
+.noise-mode .sfx .md-slider-bar,
+.noise-mode .sfx .md-slider::-webkit-slider-thumb {
+    background-color: #fff;
+}
+
 .noise-mode .sfx .exit {
     position: absolute;
     top: 5px;
@@ -2187,13 +2192,15 @@ img {
     justify-content: center;
     align-items: center;
 
+    width: 100%;
     height: 100%;
 
-    opacity: .7;
+    opacity: .5;
     transition: all .6s ease;
 }
 
 .noise-mode .sfx .effect:hover {
+    opacity: 1;
     background-color: rgb(63, 68, 71);
 }
 
@@ -2225,7 +2232,11 @@ img {
 }
 
 .noise-mode .sfx .effect .volum {
+    position: absolute;
+    bottom: 20px;
     width: 50%;
+
+    opacity: 0;
 }
 
 /*
