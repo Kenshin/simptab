@@ -101,10 +101,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             sounds[ "cafe001" ] && ( sounds[ "cafe001" ].volume = event.data / 100 );
         });
         $( ".noise-mode .scene" ).find( ".mode:last" ).on( "click", function( event ) {
-            $( ".noise-mode .sfx" ).css( "opacity", "1" ).css( "height", "100%" );
+            $( ".noise-mode .sfx" ).css({ "opacity": "1", "height": "100%", "pointer-events": "initial" });
         });
         $( ".noise-mode .sfx .exit" ).on( "click", function( event ) {
-            $( ".noise-mode .sfx" ).css( "opacity", "0" ).css( "height", "0" );
+            $( ".noise-mode .sfx" ).css({ "opacity": "0", "height": "0", "pointer-events": "none" });
         });
         $( ".md-slider-root .jazz" )[0].addEventListener( "slider", function( event ) {
             // TO-DO
