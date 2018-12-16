@@ -2197,6 +2197,7 @@ img {
 
     opacity: .5;
     transition: all .6s ease;
+    cursor: initial;
 }
 
 .noise-mode .sfx .effect:hover {
@@ -2212,17 +2213,19 @@ img {
 
     background-position: center;
     background-repeat: no-repeat;
+
+    cursor: pointer;
 }
 
-.noise-mode .sfx .effect.jazz .avatar {
+.noise-mode .sfx .effect[type="jazz"] .avatar {
     background-image: url("../images/jazz.png");
 }
 
-.noise-mode .sfx .effect.rain .avatar {
+.noise-mode .sfx .effect[type="rain"] .avatar {
     background-image: url("../images/rain.png");
 }
 
-.noise-mode .sfx .effect.wind .avatar {
+.noise-mode .sfx .effect[type="wind"] .avatar {
     background-image: url("../images/wind.png");
 }
 
@@ -2237,6 +2240,7 @@ img {
     width: 50%;
 
     opacity: 0;
+    transition: all .6s ease;
 }
 
 /*

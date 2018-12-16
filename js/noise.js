@@ -9,37 +9,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
         "rain001": "http://st.ksria.cn/noise/rain001.mp3",
     }, sounds = {};
 
-    /*
-    function sound() {
-        var cafe = new Audio( "http://st.ksria.cn/noise/cafe001.mp3" );
-        var jazz = new Audio( "http://st.ksria.cn/noise/jazz001.mp3" );
-        var rain = new Audio( "http://st.ksria.cn/noise/rain001.mp3" );
-        cafe.play();
-        cafe.loop = true;
-        jazz.play();
-        jazz.loop = true;
-        jazz.volume = 0.5;
-        rain.play();
-        rain.volume = 0.5;
-        rain.loop = true;
-    }
-    */
-
-    function play( volume ) {
-        var cls = $( ".noise-mode .scene" ).find( ".active" ).attr( "class" ),
-            key = cls.replace( "mode", "" ).replace( "active", "" ).trim(),
-            url = noise[ key ];
+    function play( key, volume ) {
+        var url = noise[ key ];
         sounds[ key ]        = new Audio( url );
         sounds[ key ].loop   = true;
         sounds[ key ].volume = volume / 100;
         sounds[ key ].play();
     }
 
-    function pause() {
-        Object.keys( sounds ).forEach( function( key ) {
-            sounds[key].pause();
-            delete sounds[key];
-        });
+    function pause( key ) {
+       sounds[ key ] && sounds[key].pause();
+       delete sounds[key];
     }
 
     function render() {
@@ -57,21 +37,21 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                             <span class="mode">更多场景</span>\
                         </div>\
                         <div class="sfx">\
-                            <div class="waves-effect waves-block effect jazz">\
+                            <div class="waves-effect waves-block effect" type="jazz">\
                                 <div class="avatar"></div>\
                                 <div class="label">JAZZ</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "jazz" ) + '\
                                 </div>\
                             </div>\
-                            <div class="waves-effect waves-block effect rain">\
+                            <div class="waves-effect waves-block effect" type="rain">\
                                 <div class="avatar"></div>\
                                 <div class="label">RAIN</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "rain" ) + '\
                                 </div>\
                             </div>\
-                            <div class="waves-effect waves-block effect wind">\
+                            <div class="waves-effect waves-block effect" type="wind">\
                                 <div class="avatar"></div>\
                                 <div class="label">WIND</div>\
                                 <div class="volum">\
@@ -88,12 +68,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
 
     function model() {
         $( ".noise-mode .action" ).on( "click", function( event ) {
-            var $target = $( event.target );
+            var $target = $( event.target ),
+                cls     = $( ".noise-mode .scene" ).find( ".active" ).attr( "class" ),
+                key     = cls.replace( "mode", "" ).replace( "active", "" ).trim();
             if ( $target.hasClass( "play" )) {
                 $target.removeClass( "play" ).addClass( "pause" ).next().css( "opacity", 1 );
-                play( $target.next().find( "input" ).val() );
+                play( key, $target.next().find( "input" ).val() );
             } else {
-                pause();
+                pause( key );
                 $target.removeClass( "pause" ).addClass( "play" ).next().css( "opacity", 0 );
             }
         });
@@ -106,14 +88,27 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
         $( ".noise-mode .sfx .exit" ).on( "click", function( event ) {
             $( ".noise-mode .sfx" ).css({ "opacity": "0", "height": "0", "pointer-events": "none" });
         });
+        $( ".noise-mode .sfx .effect .avatar" ).on( "click", function( event ) {
+            var $parent = $( event.target ).parent(),
+                key     = $parent.attr( "type" ) + "001",
+                $volume = $parent.find( ".volum" ),
+                volume  = $parent.find( ".md-slider-root input" ).val();
+            if ( sounds[key] ) {
+                pause( key );
+                $volume.css( "opacity", 0 );
+            } else {
+                play( key, volume );
+                $volume.css( "opacity", 1 );
+            }
+        });
         $( ".md-slider-root .jazz" )[0].addEventListener( "slider", function( event ) {
-            // TO-DO
+            sounds[ "jazz001" ] && ( sounds[ "jazz001" ].volume = event.data / 100 );
         });
         $( ".md-slider-root .rain" )[0].addEventListener( "slider", function( event ) {
-            // TO-DO
+            sounds[ "rain001" ] && ( sounds[ "rain001" ].volume = event.data / 100 );
         });
         $( ".md-slider-root .wind" )[0].addEventListener( "slider", function( event ) {
-            // TO-DO
+            sounds[ "wind001" ] && ( sounds[ "wind001" ].volume = event.data / 100 );
         });
     }
 
