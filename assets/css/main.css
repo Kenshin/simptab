@@ -2160,19 +2160,19 @@ img {
 }
 
 .noise-mode .sfx .effect[type="cafe001"] .avatar {
-    background-image: url("../images/cafe.png");
+    background-image: url("../images/cafe001.png");
 }
 
 .noise-mode .sfx .effect[type="jazz001"] .avatar {
-    background-image: url("../images/jazz.png");
+    background-image: url("../images/jazz001.png");
 }
 
 .noise-mode .sfx .effect[type="rain001"] .avatar {
-    background-image: url("../images/rain.png");
+    background-image: url("../images/rain001.png");
 }
 
 .noise-mode .sfx .effect[type="wind001"] .avatar {
-    background-image: url("../images/wind.png");
+    background-image: url("../images/wind001.png");
 }
 
 .noise-mode .sfx .effect .label {
