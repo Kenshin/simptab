@@ -78,11 +78,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
             if ( sounds[key] ) {
                 pause( key );
                 $volume.css( "opacity", 0 );
-                $parent.css({ "background-color": "initial", "opacity": 0.5 });
+                $parent.removeAttr( "style" ).css({ "opacity": 0.5 });
             } else {
                 play( key, volume );
                 $volume.css( "opacity", 1 );
-                $parent.css({ "background-color": colors[key], "opacity": 1 });
+                $parent.removeAttr( "style" ).css({ "background-color": colors[key], "opacity": 1 });
             }
         });
         $( ".md-slider-root .cafe001" )[0].addEventListener( "slider", function( event ) {
