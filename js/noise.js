@@ -4,12 +4,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     "use strict";
 
     var noise = {
-            "cafe001": "http://st.ksria.cn/noise/cafe001.mp3",
-            "jazz001": "http://st.ksria.cn/noise/jazz001.mp3",
-            "rain001": "http://st.ksria.cn/noise/rain001.mp3",
+            "cafe001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/cafe001.mp3",
+            "jazz001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/jazz001.mp3",
+            "rain001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/rain001.mp3",
+            "wind001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/wind001.mp3",
         },  colors = {
-            "jazz001": "#7CA6ED",
-            "rain001": "#D2A24A",
+            "jazz001": "#3D5AFE",
+            "rain001": "#ff932b",
+            "wind001": "#f3294d",
         },
         sounds = {};
 
