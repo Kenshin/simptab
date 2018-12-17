@@ -713,6 +713,45 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
     }
 
     return {
-      Init: init
+        Init: init,
+
+        Earth: function ( callback ) {
+            var size = 550,
+                urls = [
+                    "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2018/12/17/095000_0_0.png",
+                    "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2018/12/17/095000_0_1.png",
+                    "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2018/12/17/095000_1_0.png",
+                    "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2018/12/17/095000_1_1.png",
+                ],
+                poisition = [{ x:0, y: 0 },{ x:0, y: size },{ x:size, y: 0 },{ x:size, y: size }],
+                imgLoad   = function( i, poisition, url, context ) {
+                    var dtd = $.Deferred(),
+                        img = new Image();
+                    img.src = url;
+                    img.onload = function() {
+                        context.drawImage( img, poisition.x, poisition.y, size, size );
+                        dtd.resolve( i );
+                    };
+                    return dtd;
+                },
+                imgOnLoad = function ( result ) {
+                    if ( result < urls.length - 1 ) {
+                        i++;
+                        imgLoad( i, poisition[i], urls[i], context ).done( imgOnLoad );
+                    } else complete();
+                },
+                complete = function() {
+                    callback( canvas.toDataURL( "image/png" ));
+                },
+                canvas, context, i = 0;
+
+            canvas        = document.createElement( "canvas" );
+            canvas.width  = size * 2;
+            canvas.height = size * 2;
+            context       = canvas.getContext( "2d" );
+            context.rect( 0 , 0 , canvas.width , canvas.height );
+
+            imgLoad( i, poisition[i], urls[i], context ).done( imgOnLoad );
+        }
     };
 });
