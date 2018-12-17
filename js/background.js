@@ -29,6 +29,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                         def.resolve(3);
                     } else if ( setting.Mode( "changestate" ) == "none" ) {
                         def.resolve(4);
+                    } else if ( setting.Mode( "changestate" ) == "earth" ) {
+                        def.resolve(4);
                     } else if ( setting.Mode( "changestate" ) == "day" && !date.IsNewDay( date.Today() ) ) {
                         def.resolve(4);
                     } else if ( date.IsNewDay( date.Today() ) || ( !is_random && date.Today() != vo.cur.enddate ) ) {
@@ -453,6 +455,30 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 this.Get( true );
                 //}
             }
+        },
+
+        Earth: function () {
+            apis.Earth( function ( base64 ) {
+                $( "body" ).css( "background-image", "url(" + base64 + ")" )
+                           .addClass( "bgearth" );
+                files.DataURI( base64 );
+                files
+                    .Add( vo.constructor.BACKGROUND, files.DataURI() )
+                    .progress( function( result ) { console.log( "Write process:", result ); })
+                    .fail(     function( result ) { console.log( "Write error: ", result );  })
+                    .done( function( result ) {
+                        console.log( "Write completed: ", result );
+                        vo.new.type     = "earth";
+                        vo.new.hdurl    = "http://himawari8.nict.go.jp/";
+                        vo.new.url      = "http://himawari8.nict.go.jp/";
+                        vo.new.info     = "http://himawari8.nict.go.jp/";
+                        vo.new.name     = "himawari8.nict.go.jp";
+                        vo.new.favorite = -1;
+                        vo.new.version  = vo.cur.version;
+                        vo.Set( vo.new );
+                        console.log( "======= Current background success.", vo )
+                });
+            });
         }
     };
 });

@@ -675,6 +675,12 @@ img {
     background-position: center center;
 }
 
+.bgearth {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
 .bgmask::before {
     content: '';
     position: absolute;
