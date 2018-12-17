@@ -665,6 +665,10 @@
         "message": "Set successful, please refresh."
     },
 
+    "notify_eartch_mode": {
+        "message": "when Earth every moment mode, can't usage this feature."
+    },
+
     "version_detail": {
         "message": ""
     },

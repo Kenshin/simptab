@@ -665,6 +665,10 @@
         "message": "已设置成功，刷新后生效。"
     },
 
+    "notify_eartch_mode": {
+        "message": "「地球每刻」模式下无法使用此功能！"
+    },
+
     "version_detail": {
         "message": ""
     },
