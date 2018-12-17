@@ -313,6 +313,10 @@
         "message": "打开禅模式的选项页"
     },
 
+    "shortcuts_key_noise": {
+        "message": "开启白噪音模式"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },
@@ -487,6 +491,22 @@
 
     "zen_mode_setting_close": {
         "message": "关闭"
+    },
+
+    "noise_mode_cafe001": {
+        "message": "咖啡馆"
+    },
+
+    "noise_mode_jazz001": {
+        "message": "爵士乐"
+    },
+
+    "noise_mode_rain001": {
+        "message": "下雨天"
+    },
+
+    "noise_mode_thun001": {
+        "message": "雷声"
     },
 
     "version_title": {

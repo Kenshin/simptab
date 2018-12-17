@@ -44,7 +44,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             { short: "b", long: "bookmarks"},
             { short: "q", long: "quickbar" },
             { short: "z", long: "topsites" },
-            { short: "c", long: "zenmode" },
+            { short: "c", long: "zenmode"  },
+            { short: "w", long: "noise"    },
         ];
 
         Object.defineProperties( Keys.prototype, {
@@ -123,6 +124,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     break;
                 case "c":
                     message.Publish( message.TYPE.OPEN_ZENMODE  );
+                    break;
+                case "w":
+                    message.Publish( message.TYPE.OPEN_NOISE   );
                     break;
             }
         });
@@ -247,6 +251,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     break;
                 case "setting-zen-mode":
                     $( ".setting-zen-mode" ).find( ".footer .close" )[0].click();
+                    break;
+                case "noise-mode":
+                    $( ".noise-mode" ).find( ".close" )[0].click();
                     break;
             }
         });

@@ -313,6 +313,10 @@
         "message": "Open zen mode setting"
     },
 
+    "shortcuts_key_noise": {
+        "message": "Open White noise"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
@@ -487,6 +491,22 @@
 
     "zen_mode_setting_close": {
         "message": "Close"
+    },
+
+    "noise_mode_cafe001": {
+        "message": "CAFE"
+    },
+
+    "noise_mode_jazz001": {
+        "message": "JAZZ"
+    },
+
+    "noise_mode_rain001": {
+        "message": "RAIN"
+    },
+
+    "noise_mode_thun001": {
+        "message": "THUNDER"
     },
 
     "version_title": {

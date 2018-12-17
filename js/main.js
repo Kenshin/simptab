@@ -33,6 +33,7 @@ requirejs.config({
       "welcome"    : "js/welcome",
       "zen"        : "js/zen",
       "options"    : "js/options",
+      "noise"      : "js/noise",
       "comps"      : "js/components",
       "message"    : "js/message",
     },
@@ -47,7 +48,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise ) {
 
     progress.Init();
 
@@ -126,5 +127,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     });
 
     localStorage["simptab-zenmode"] == "true" && zen.Render();
+
+    noise.Init();
 
 });

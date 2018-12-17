@@ -446,12 +446,12 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         UpdateBg: function( type ) {
             if ( type == "none" ) writePinBackground();
             if ( type == "time" ) {
-                if ( localStorage[ "simptab-background-state" ] == "loading" || localStorage[ "simptab-background-state" ] == "pending" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
-                else {
-                    localStorage[ "simptab-background-update" ] = "true";
-                    bgeffect( "add" );
-                    this.Get( true );
-                }
+                //if ( localStorage[ "simptab-background-state" ] == "loading" || localStorage[ "simptab-background-state" ] == "pending" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
+                //else {
+                localStorage[ "simptab-background-update" ] = "true";
+                bgeffect( "add" );
+                this.Get( true );
+                //}
             }
         }
     };
