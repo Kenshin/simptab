@@ -109,6 +109,10 @@
         "message": "只显示当前背景"
     },
 
+    "setting_background_earth": {
+        "message": "地球每刻"
+    },
+
     "setting_background_position_center": {
         "message": "背景居中对齐"
     },

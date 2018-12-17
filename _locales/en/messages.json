@@ -109,6 +109,10 @@
         "message": "Not Change background"
     },
 
+    "setting_background_earth": {
+        "message": "Earth every moment"
+    },
+
     "setting_background_position_center": {
         "message": "Align to the center"
     },

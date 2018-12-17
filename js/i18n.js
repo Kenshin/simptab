@@ -33,6 +33,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".changestate" ).find("label")[0]).text( i18n( "setting_background_every_day" ));
         $($( ".changestate" ).find("label" )[1]).text( i18n( "setting_background_every_time" ));
         $($( ".changestate" ).find("label" )[2]).text( i18n( "setting_background_forever" ));
+        $($( ".changestate" ).find("label" )[3]).text( i18n( "setting_background_earth" ));
 
         $($( ".positionstate" ).find("label:first")).text( i18n( "setting_background_position_center" ));
         $($( ".positionstate" ).find("label" )[1]).text( i18n( "setting_background_position_corner" ));
