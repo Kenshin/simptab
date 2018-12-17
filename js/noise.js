@@ -101,13 +101,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
 
     function open() {
         setTimeout( function(){
-            $( ".noise-mode" ).css({ "transform": "translateY(0px)", "opacity": 1 });
+            $( ".noise-mode" ).css({ "transform": "translateY(0px)", "opacity": 1, "pointer-events": "inherit" });
         }, 10 );
     }
 
     function close() {
         $( ".noise-mode .close" ).click( function( event ) {
-            $( ".noise-mode" ).css({ "transform": "translateY(100px)", "opacity": 0 });
+            $( ".noise-mode" ).css({ "transform": "translateY(100px)", "opacity": 0, "pointer-events": "none" });
         });
     }
 
