@@ -468,33 +468,33 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 is_notify && new Notify().Render( "此功能每隔一小时才会刷新一次，请勿多次调用。" );
                 return;
             }
-            var notify = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" });
-            var getEarth = function () {
-                apis.Earth( function ( base64 ) {
-                    notify.complete();
-                    $( "body" ).css( "background-image", "url(" + base64 + ")" )
-                               .addClass( "bgearth" );
-                    files.DataURI( base64 );
-                    files
-                        .Add( vo.constructor.BACKGROUND, files.DataURI() )
-                        .progress( function( result ) { console.log( "Write process:", result ); })
-                        .fail(     function( result ) { console.log( "Write error: ", result );  })
-                        .done( function( result ) {
-                            console.log( "Write completed: ", result );
-                            vo.new.type     = "earth";
-                            vo.new.hdurl    = "http://himawari8.nict.go.jp/";
-                            vo.new.url      = "http://himawari8.nict.go.jp/";
-                            vo.new.info     = "http://himawari8.nict.go.jp/";
-                            vo.new.name     = "himawari8.nict.go.jp";
-                            vo.new.favorite = -1;
-                            vo.new.pin      = -1;
-                            vo.new.dislike  = -1;
-                            vo.new.enddate  = date.Now();
-                            vo.new.version  = vo.cur.version;
-                            vo.Set( vo.new );
-                            console.log( "======= Current background success.", vo )
+            var notify   = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" }),
+                getEarth = function () {
+                    apis.Earth( function ( base64 ) {
+                        notify.complete();
+                        $( "body" ).css( "background-image", "url(" + base64 + ")" )
+                                .addClass( "bgearth" );
+                        files.DataURI( base64 );
+                        files
+                            .Add( vo.constructor.BACKGROUND, files.DataURI() )
+                            .progress( function( result ) { console.log( "Write process:", result ); })
+                            .fail(     function( result ) { console.log( "Write error: ", result );  })
+                            .done( function( result ) {
+                                console.log( "Write completed: ", result );
+                                vo.new.type     = "earth";
+                                vo.new.hdurl    = "http://himawari8.nict.go.jp/";
+                                vo.new.url      = "http://himawari8.nict.go.jp/";
+                                vo.new.info     = "http://himawari8.nict.go.jp/";
+                                vo.new.name     = "himawari8.nict.go.jp";
+                                vo.new.favorite = -1;
+                                vo.new.pin      = -1;
+                                vo.new.dislike  = -1;
+                                vo.new.enddate  = date.Now();
+                                vo.new.version  = vo.cur.version;
+                                vo.Set( vo.new );
+                                console.log( "======= Current background success.", vo )
+                        });
                     });
-                });
             };
             getEarth();
         }
