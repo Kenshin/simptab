@@ -30,6 +30,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     } else if ( setting.Mode( "changestate" ) == "none" ) {
                         def.resolve(4);
                     } else if ( setting.Mode( "changestate" ) == "earth" ) {
+                        if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate > 9000 ) {
+                            message.Publish( message.TYPE.UPDATE_EARTH );
+                        }
                         def.resolve(4);
                     } else if ( setting.Mode( "changestate" ) == "day" && !date.IsNewDay( date.Today() ) ) {
                         def.resolve(4);

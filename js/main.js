@@ -121,6 +121,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     message.Subscribe( message.TYPE.UPDATE_CONTROLBAR, function( event ) {
         controlbar.Update( event.data.url, event.data.info );
     });
+    message.Subscribe( message.TYPE.UPDATE_EARTH, function() {
+        background.Earth();
+    });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
         result && bookmarks.Render( options.Storage.db.search );
