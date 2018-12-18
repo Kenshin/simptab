@@ -718,10 +718,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
         Earth: function ( callback ) {
             var size = 550,
                 urls = [
-                    "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2018/12/18/012000_0_0.png",
-                    "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2018/12/18/012000_0_1.png",
-                    "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2018/12/18/012000_1_0.png",
-                    "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2018/12/18/012000_1_1.png",
+                    "https://simptab.herokuapp.com/earth/0_0.png",
+                    "https://simptab.herokuapp.com/earth/0_1.png",
+                    "https://simptab.herokuapp.com/earth/1_0.png",
+                    "https://simptab.herokuapp.com/earth/1_1.png",
                 ],
                 poisition = [{ x:0, y: 0 },{ x:0, y: size },{ x:size, y: 0 },{ x:size, y: size }],
                 imgLoad   = function( i, poisition, url, context ) {
