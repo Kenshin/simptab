@@ -456,6 +456,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     bgeffect( "add" );
                     this.Get( true );
                 }
+                $( "body" ).removeClass( "bgearth" );
             }
         },
 
@@ -482,6 +483,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                             .done( function( result ) {
                                 console.log( "Write completed: ", result );
                                 vo.Set( vo.new );
+                                localStorage[ "simptab-background-position" ] == "mask" && new Notify().Render( "刷新后生效！" );
                                 console.log( "======= Current background success.", vo )
                         });
                     });

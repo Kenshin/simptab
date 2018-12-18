@@ -48,7 +48,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo ) {
 
     progress.Init();
 
@@ -92,6 +92,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "changestate"  :
                 result == "none" && background.UpdateBg( result );
                 result == "earth"&& background.Earth( true );
+                result == "time" && vo.cur.type == "earth" && background.UpdateBg( result );
                 break;
         }
     });
