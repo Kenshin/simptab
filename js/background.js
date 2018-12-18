@@ -481,16 +481,6 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                             .fail(     function( result ) { console.log( "Write error: ", result );  })
                             .done( function( result ) {
                                 console.log( "Write completed: ", result );
-                                vo.new.type     = "earth";
-                                vo.new.hdurl    = "http://himawari8.nict.go.jp/";
-                                vo.new.url      = "http://himawari8.nict.go.jp/";
-                                vo.new.info     = "http://himawari8.nict.go.jp/";
-                                vo.new.name     = "himawari8.nict.go.jp";
-                                vo.new.favorite = -1;
-                                vo.new.pin      = -1;
-                                vo.new.dislike  = -1;
-                                vo.new.enddate  = date.Now();
-                                vo.new.version  = vo.cur.version;
                                 vo.Set( vo.new );
                                 console.log( "======= Current background success.", vo )
                         });

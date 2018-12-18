@@ -741,6 +741,16 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
                     } else complete();
                 },
                 complete = function() {
+                    vo.new.type     = "earth";
+                    vo.new.hdurl    = "http://himawari8.nict.go.jp/";
+                    vo.new.url      = "http://himawari8.nict.go.jp/";
+                    vo.new.info     = "http://himawari8.nict.go.jp/";
+                    vo.new.name     = "himawari8.nict.go.jp";
+                    vo.new.favorite = -1;
+                    vo.new.pin      = -1;
+                    vo.new.dislike  = -1;
+                    vo.new.enddate  = date.Now();
+                    vo.new.version  = vo.cur.version;
                     callback( canvas.toDataURL( "image/png" ));
                 },
                 canvas, context, i = 0;
