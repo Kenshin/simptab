@@ -674,7 +674,11 @@
     },
 
     "notify_eartch_loading": {
-        "message": "獲取中，請稍等..."
+        "message": "地球影像獲取中，請稍等..."
+    },
+
+    "notify_eartch_update_failed": {
+        "message": "此功能每隔一小時才會刷新一次，請勿多次調用。"
     },
 
     "version_detail": {

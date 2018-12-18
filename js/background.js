@@ -465,7 +465,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                         localStorage["simptab-earth-notify"] = false;
                     }});
             if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 10000 ) {
-                is_notify && new Notify().Render( "此功能每隔一小时才会刷新一次，请勿多次调用。" );
+                is_notify && new Notify().Render( i18n.GetLang( "notify_eartch_update_failed" ) );
                 return;
             }
             var notify   = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" }),

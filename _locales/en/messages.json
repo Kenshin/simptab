@@ -677,6 +677,10 @@
         "message": "Earth background loading..."
     },
 
+    "notify_eartch_update_failed": {
+        "message": "Update background image only once every hour, don't call it many times."
+    },
+
     "version_detail": {
         "message": ""
     },
