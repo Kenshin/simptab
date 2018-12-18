@@ -459,7 +459,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         },
 
         Earth: function () {
+            var notify = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" });
             apis.Earth( function ( base64 ) {
+                notify.complete();
                 $( "body" ).css( "background-image", "url(" + base64 + ")" )
                            .addClass( "bgearth" );
                 files.DataURI( base64 );

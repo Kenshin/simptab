@@ -669,6 +669,10 @@
         "message": "「地球每刻」模式下无法使用此功能！"
     },
 
+    "notify_eartch_loading": {
+        "message": "获取中，请稍等..."
+    },
+
     "version_detail": {
         "message": ""
     },

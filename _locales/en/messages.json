@@ -669,6 +669,10 @@
         "message": "when Earth every moment mode, can't usage this feature."
     },
 
+    "notify_eartch_loading": {
+        "message": "Earth background loading..."
+    },
+
     "version_detail": {
         "message": ""
     },
