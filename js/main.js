@@ -91,7 +91,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "positionstate": controlbar.SetBgPosition( true ); break;
             case "changestate"  :
                 result == "none" && background.UpdateBg( result );
-                result == "earth"&& background.Earth();
+                result == "earth"&& background.Earth( true );
                 break;
         }
     });
