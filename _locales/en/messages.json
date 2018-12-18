@@ -641,6 +641,10 @@
         "message": "Scroll down to load more, background loading depending on your network speed."
     },
 
+    "notify_earth_tips": {
+        "message": "Welcome to Earth every moment, earth background come from <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> ."
+    },
+
     "notify_zen_mode_tips_confirm": {
         "message": "Confirm"
     },

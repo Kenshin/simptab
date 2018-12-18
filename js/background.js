@@ -459,6 +459,10 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         },
 
         Earth: function () {
+            localStorage["simptab-earth-notify"] != "false" &&
+                    new Notify().Render({ content: i18n.GetLang( "notify_earth_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
+                        localStorage["simptab-earth-notify"] = false;
+                    }});
             var notify = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" });
             apis.Earth( function ( base64 ) {
                 notify.complete();
