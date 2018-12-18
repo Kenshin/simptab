@@ -462,14 +462,14 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         },
 
         Earth: function () {
-            if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 9000 ) {
-                new Notify().Render( "此功能每隔一小时才会刷新一次，请勿多次调用。" );
-                return;
-            }
             localStorage["simptab-earth-notify"] != "false" &&
                     new Notify().Render({ content: i18n.GetLang( "notify_earth_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
                         localStorage["simptab-earth-notify"] = false;
                     }});
+            if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 9000 ) {
+                new Notify().Render( "此功能每隔一小时才会刷新一次，请勿多次调用。" );
+                return;
+            }
             var notify = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" });
             var getEarth = function () {
                 apis.Earth( function ( base64 ) {
