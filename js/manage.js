@@ -144,6 +144,10 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
     }
 
     function setBackground( url, name, new_vo ) {
+        if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
+            new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
+            return;
+        }
         // set vo.cur, include: favorite, subscribe
         var type = new_vo == undefined ? "favorite" : "subscribe";
         // when new_vo is undefined is favorite call
