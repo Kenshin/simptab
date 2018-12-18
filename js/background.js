@@ -481,6 +481,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                         vo.new.info     = "http://himawari8.nict.go.jp/";
                         vo.new.name     = "himawari8.nict.go.jp";
                         vo.new.favorite = -1;
+                        vo.new.pin      = -1;
+                        vo.new.dislike  = -1;
+                        vo.new.enddate  = date.Now();
                         vo.new.version  = vo.cur.version;
                         vo.Set( vo.new );
                         console.log( "======= Current background success.", vo )
