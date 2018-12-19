@@ -405,6 +405,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 adapter.bind( null, i, filelist[i].name.replace( /\.(jpg|jpge|png|gif|bmp)$/ig, "" ) )();
             }
         },
+
         Dislike: function( type ) {
             try {
                 var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
@@ -428,6 +429,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 console.error( "background.Dislike(), Parse 'simptab-dislike' error.", error );
             }
         },
+
         Pin: function( is_pinned ) {
             console.log("Current background is pinned? ", is_pinned)
             if ( is_pinned ) {
@@ -446,6 +448,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
             Waves.attach( '.icon', ['waves-circle'] );
         },
+
         UpdateBg: function( type, is_refresh ) {
             if ( is_refresh && vo.cur.type == "earth" ) {
                 new Notify().Render( i18n.GetLang( "notify_eartch_mode" ) );
