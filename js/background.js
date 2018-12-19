@@ -480,8 +480,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 getEarth = function () {
                     apis.Earth( function ( base64 ) {
                         notify.complete();
-                        $( "body" ).css( "background-image", "url(" + base64 + ")" )
-                                .addClass( "bgearth" );
+                        $( "body" ).css( "background-image", "url(" + base64 + ")" ).addClass( "bgearth" );
                         files.DataURI( base64 );
                         files
                             .Add( vo.constructor.BACKGROUND, files.DataURI() )
