@@ -446,8 +446,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
             Waves.attach( '.icon', ['waves-circle'] );
         },
-        UpdateBg: function( type ) {
-            if ( vo.cur.type == "earth" ) {
+        UpdateBg: function( type, is_refresh ) {
+            if ( is_refresh && vo.cur.type == "earth" ) {
                 new Notify().Render( i18n.GetLang( "notify_eartch_mode" ) );
                 return;
             }

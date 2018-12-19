@@ -81,7 +81,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "favorite": background.Favorite( result ); break;
             case "dislike" : background.Dislike( result );  break;
             case "pin"     : background.Pin( result );      break;
-            case "refresh" : background.UpdateBg( result ); break;
+            case "refresh" : background.UpdateBg( result, true ); break;
         }
     });
     setting.Listen( function( type, result ) {
@@ -92,7 +92,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "changestate"  :
                 result == "none" && background.UpdateBg( result );
                 result == "earth"&& background.Earth( true );
-                result == "time" && vo.cur.type == "earth" && background.UpdateBg( result );
+                result == "time" && background.UpdateBg( result );
                 break;
         }
     });
