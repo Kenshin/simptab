@@ -18,6 +18,7 @@ define([ "jquery" ], function( $ ) {
             "OPEN_QUICKBAR"    : "OPEN_QUICKBAR",
             "OPEN_ZENMODE"     : "OPEN_ZENMODE",
             "OPEN_NOISE"       : "OPEN_NOISE",
+            "UPDATE_EARTH"     : "UPDATE_EARTH",
         },
         Subscribe: subscribe,
         Publish  : publish

@@ -48,7 +48,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo ) {
 
     progress.Init();
 
@@ -81,7 +81,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "favorite": background.Favorite( result ); break;
             case "dislike" : background.Dislike( result );  break;
             case "pin"     : background.Pin( result );      break;
-            case "refresh" : background.UpdateBg( result ); break;
+            case "refresh" : background.Update( result, true ); break;
         }
     });
     setting.Listen( function( type, result ) {
@@ -90,7 +90,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "clockstate"   : date.Toggle( result );      break;
             case "positionstate": controlbar.SetBgPosition( true ); break;
             case "changestate"  :
-                result == "none" && background.UpdateBg( result );
+                result == "none" && background.Update( result );
+                result == "earth"&& background.Earth( true );
+                result == "time" && background.Update( result );
                 break;
         }
     });
@@ -119,6 +121,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // global event handler
     message.Subscribe( message.TYPE.UPDATE_CONTROLBAR, function( event ) {
         controlbar.Update( event.data.url, event.data.info );
+    });
+    message.Subscribe( message.TYPE.UPDATE_EARTH, function() {
+        background.Earth();
     });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {

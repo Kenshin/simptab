@@ -69,7 +69,7 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
                 "changestate" : {
                     value  : getLS( "simptab-background-mode" ),
                     type   : "simptab-background-mode",
-                    vals   : [ "day", "time", "none" ],
+                    vals   : [ "day", "time", "none", "earth" ],
                     default: 1
                 },
                 "positionstate" : {

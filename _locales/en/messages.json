@@ -109,6 +109,10 @@
         "message": "Not Change background"
     },
 
+    "setting_background_earth": {
+        "message": "Earth every moment"
+    },
+
     "setting_background_position_center": {
         "message": "Align to the center"
     },
@@ -637,6 +641,10 @@
         "message": "Scroll down to load more, background loading depending on your network speed."
     },
 
+    "notify_earth_tips": {
+        "message": "Welcome to Earth every moment, earth background come from <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> ."
+    },
+
     "notify_zen_mode_tips_confirm": {
         "message": "Confirm"
     },
@@ -659,6 +667,18 @@
 
     "notify_carousel": {
         "message": "Set successful, please refresh."
+    },
+
+    "notify_eartch_mode": {
+        "message": "when Earth every moment mode, can't usage this feature."
+    },
+
+    "notify_eartch_loading": {
+        "message": "Earth background loading..."
+    },
+
+    "notify_eartch_update_failed": {
+        "message": "Update background image only once every hour, don't call it many times."
     },
 
     "version_detail": {

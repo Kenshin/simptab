@@ -109,6 +109,10 @@
         "message": "只显示当前背景"
     },
 
+    "setting_background_earth": {
+        "message": "地球每刻"
+    },
+
     "setting_background_position_center": {
         "message": "背景居中对齐"
     },
@@ -637,6 +641,10 @@
         "message": "向下滚动即可加载更多，显示速度取决于你的网速，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/功能一览?id=探索'>探索</a> 。"
     },
 
+    "notify_earth_tips": {
+        "message": "欢迎使用地球每刻，感谢 <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> 提供，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻'>地球每刻</a> 。"
+    },
+
     "notify_zen_mode_tips_confirm": {
         "message": "不再提示"
     },
@@ -659,6 +667,18 @@
 
     "notify_carousel": {
         "message": "已设置成功，刷新后生效。"
+    },
+
+    "notify_eartch_mode": {
+        "message": "「地球每刻」模式下无法使用此功能！"
+    },
+
+    "notify_eartch_loading": {
+        "message": "地球影像获取中，请稍等..."
+    },
+
+    "notify_eartch_update_failed": {
+        "message": "此功能每隔一小时才会刷新一次，请勿多次调用。"
     },
 
     "version_detail": {

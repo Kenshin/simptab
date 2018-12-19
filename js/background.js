@@ -29,6 +29,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                         def.resolve(3);
                     } else if ( setting.Mode( "changestate" ) == "none" ) {
                         def.resolve(4);
+                    } else if ( setting.Mode( "changestate" ) == "earth" ) {
+                        message.Publish( message.TYPE.UPDATE_EARTH );
+                        def.resolve(4);
                     } else if ( setting.Mode( "changestate" ) == "day" && !date.IsNewDay( date.Today() ) ) {
                         def.resolve(4);
                     } else if ( date.IsNewDay( date.Today() ) || ( !is_random && date.Today() != vo.cur.enddate ) ) {
@@ -402,6 +405,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 adapter.bind( null, i, filelist[i].name.replace( /\.(jpg|jpge|png|gif|bmp)$/ig, "" ) )();
             }
         },
+
         Dislike: function( type ) {
             try {
                 var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
@@ -425,6 +429,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 console.error( "background.Dislike(), Parse 'simptab-dislike' error.", error );
             }
         },
+
         Pin: function( is_pinned ) {
             console.log("Current background is pinned? ", is_pinned)
             if ( is_pinned ) {
@@ -443,16 +448,53 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
             Waves.attach( '.icon', ['waves-circle'] );
         },
-        UpdateBg: function( type ) {
+
+        Update: function( type, is_refresh ) {
+            if ( is_refresh && vo.cur.type == "earth" ) {
+                new Notify().Render( i18n.GetLang( "notify_eartch_mode" ) );
+                return;
+            }
             if ( type == "none" ) writePinBackground();
             if ( type == "time" ) {
-                //if ( localStorage[ "simptab-background-state" ] == "loading" || localStorage[ "simptab-background-state" ] == "pending" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
-                //else {
-                localStorage[ "simptab-background-update" ] = "true";
-                bgeffect( "add" );
-                this.Get( true );
-                //}
+                if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
+                    new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
+                } else {
+                    localStorage[ "simptab-background-update" ] = "true";
+                    bgeffect( "add" );
+                    this.Get( true );
+                }
+                $( "body" ).removeClass( "bgearth" );
             }
+        },
+
+        Earth: function( is_notify ) {
+            localStorage["simptab-earth-notify"] != "false" &&
+                    new Notify().Render({ content: i18n.GetLang( "notify_earth_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
+                        localStorage["simptab-earth-notify"] = false;
+                    }});
+            if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 10000 ) {
+                is_notify && new Notify().Render( i18n.GetLang( "notify_eartch_update_failed" ) );
+                return;
+            }
+            var notify   = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" }),
+                getEarth = function () {
+                    apis.Earth( function ( base64 ) {
+                        notify.complete();
+                        $( "body" ).css( "background-image", "url(" + base64 + ")" ).addClass( "bgearth" );
+                        files.DataURI( base64 );
+                        files
+                            .Add( vo.constructor.BACKGROUND, files.DataURI() )
+                            .progress( function( result ) { console.log( "Write process:", result ); })
+                            .fail(     function( result ) { console.log( "Write error: ", result );  })
+                            .done( function( result ) {
+                                console.log( "Write completed: ", result );
+                                vo.Set( vo.new );
+                                localStorage[ "simptab-background-position" ] == "mask" && new Notify().Render( i18n.GetLang( "notify_carousel" ) );
+                                console.log( "======= Current background success.", vo )
+                        });
+                    });
+            };
+            getEarth();
         }
     };
 });
