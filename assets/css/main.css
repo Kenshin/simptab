@@ -2202,10 +2202,6 @@ img {
     .controlbar {
         zoom: .9;
     }
-
-    .clock {
-        right: 60px;
-    }
 }
 
 /*
@@ -2214,10 +2210,6 @@ img {
 @media screen and (max-height:749px) {
     .controlbar {
         zoom: .8;
-    }
-
-    .clock {
-        right: 50px;
     }
 }
 
