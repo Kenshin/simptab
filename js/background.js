@@ -447,6 +447,10 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             Waves.attach( '.icon', ['waves-circle'] );
         },
         UpdateBg: function( type ) {
+            if ( vo.cur.type == "earth" ) {
+                new Notify().Render( i18n.GetLang( "notify_eartch_mode" ) );
+                return;
+            }
             if ( type == "none" ) writePinBackground();
             if ( type == "time" ) {
                 if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
