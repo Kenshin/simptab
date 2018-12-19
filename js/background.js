@@ -449,7 +449,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             Waves.attach( '.icon', ['waves-circle'] );
         },
 
-        UpdateBg: function( type, is_refresh ) {
+        Update: function( type, is_refresh ) {
             if ( is_refresh && vo.cur.type == "earth" ) {
                 new Notify().Render( i18n.GetLang( "notify_eartch_mode" ) );
                 return;
