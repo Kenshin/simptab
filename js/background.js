@@ -116,6 +116,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             progress.Set( "loading" );
 
             files.GetDataURI( url ).then( function( result ) {
+                sessionStorage.setItem( "base64", result );
                 localStorage[ "simptab-background-update" ] == "true" && files.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) {
@@ -176,6 +177,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
+            localStorage[ "simptab-background-mode" ] == "time" && history();
         }
     }
 
@@ -256,6 +258,21 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 $( ".bgeffect" ).remove();
             });
         }
+    }
+
+    function history() {
+        var MAX     = 5,
+            history = JSON.parse( localStorage[ "simptab-history" ] || '{"pointer":-1, "items":[]}' );
+        history.pointer++;
+        history.items[history.pointer % MAX ] = vo.new;
+        localStorage[ "simptab-history" ] = JSON.stringify( history );
+        files
+            .SaveBgfromURI( "history" + history.pointer % MAX, sessionStorage.getItem( "base64" ) )
+            .progress( function( result ) { console.log( "Write process:", result ); })
+            .fail(     function( result ) { console.log( "Write error: ", result );  })
+            .done( function( result ) {
+                console.log( "History background saved complete." )
+            });
     }
 
     return {
