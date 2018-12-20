@@ -512,6 +512,10 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     });
             };
             getEarth();
+        },
+
+        History: function ( type ) {
+            console.log( "adsfadsf", type )
         }
     };
 });

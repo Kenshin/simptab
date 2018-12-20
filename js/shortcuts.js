@@ -46,6 +46,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             { short: "z", long: "topsites" },
             { short: "c", long: "zenmode"  },
             { short: "w", long: "noise"    },
+            { short: "left", long: "previous" },
+            { short: "right", long: "next"     },
         ];
 
         Object.defineProperties( Keys.prototype, {
@@ -126,7 +128,13 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     message.Publish( message.TYPE.OPEN_ZENMODE  );
                     break;
                 case "w":
-                    message.Publish( message.TYPE.OPEN_NOISE   );
+                    message.Publish( message.TYPE.OPEN_NOISE    );
+                    break;
+                case "left":
+                    message.Publish( message.TYPE.HISTORY, combo );
+                    break;
+                case "right":
+                    message.Publish( message.TYPE.HISTORY, combo );
                     break;
             }
         });
@@ -192,6 +200,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
     function createKeymapTmpl( title, map, prefix ) {
         var html = "";
         $.each( map, function( idx, shortcut ) {
+            shortcut.short == "left"  && ( shortcut.short = "←" );
+            shortcut.short == "right" && ( shortcut.short = "→" );
             var key  = shortcut.short,
                 desc = i18n.GetLang( prefix + shortcut.long ),
                 tmpl = '<div class="keymap"><div class="map"><div class="key">' + key + '</div></div><div class="desc keycode-' + key + '">' + desc + '</div></div>';

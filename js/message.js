@@ -19,6 +19,7 @@ define([ "jquery" ], function( $ ) {
             "OPEN_ZENMODE"     : "OPEN_ZENMODE",
             "OPEN_NOISE"       : "OPEN_NOISE",
             "UPDATE_EARTH"     : "UPDATE_EARTH",
+            "HISTORY"          : "HISTORY",
         },
         Subscribe: subscribe,
         Publish  : publish
