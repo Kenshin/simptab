@@ -515,7 +515,40 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         },
 
         History: function ( type ) {
-            console.log( "adsfadsf", type )
+            var MAX       = 5,
+                idx       = !sessionStorage.getItem( "pointer" ) ? MAX : sessionStorage.getItem( "pointer" ),
+                history   = JSON.parse( localStorage[ "simptab-history" ] ),
+                saveImg   = function( url, info ) {
+                    files.GetDataURI( url ).then( function( result ) {
+                        files.DataURI( result );
+                        files.Add( vo.constructor.BACKGROUND, result )
+                            .progress( function( result ) { console.log( "Write process:", result ); })
+                            .fail(     function( result ) { console.log( "Write error: ", result );  })
+                            .done( function( result ) {
+                                console.log( "Write completed: ", result );
+                                message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url, info: info });
+                                console.log( "======= Current background download success.", vo )
+                            });
+                    });
+                };
+            type == "left" ? idx-- : idx++;
+            if ( idx < 0 ) {
+                idx = 0;
+                new Notify().Render( "当前已经是最后一张了。" );
+                sessionStorage.setItem( "pointer", idx );
+                return;
+            }
+            if ( idx > 4 ) {
+                idx = 4;
+                new Notify().Render( "当前已经是最新一张了。" );
+                sessionStorage.setItem( "pointer", idx );
+                return;
+            }
+            console.log( "sadfasdf", idx )
+            var item = history.items[ idx ],
+                url  = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history' + idx + '.jpg';
+            saveImg( url, item.info );
+            sessionStorage.setItem( "pointer", idx );
         }
     };
 });
