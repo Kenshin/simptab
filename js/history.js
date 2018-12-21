@@ -81,7 +81,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
 
         Get: function( type ) {
             current  = $( ".history" ).find( "img.active" ).attr( "data-idx" );
-            !current && ( current = $( ".history" ).find( "img" ).length - 1 );
+            !current && ( current = $( ".history" ).find( "img[id=" + vo.cur.enddate + "]" ).attr("data-idx") );
             type == "left" ? current-- : current++;
             console.log( current )
             if ( current < 0 ) {
