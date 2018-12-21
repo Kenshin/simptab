@@ -38,6 +38,8 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                 url     = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + item.enddate + '.jpg';
             saveImg( url, item.info );
             current = idx;
+            $( ".history img" ).removeClass( "active" );
+            $( event.target ).addClass( "active" );
         });
     }
 
@@ -76,6 +78,20 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
         },
 
         Get: function( type ) {
+            current  = $( ".history" ).find( "img.active" ).attr( "data-idx" );
+            !current && ( current = $( ".history" ).find( "img" ).length - 1 );
+            type == "left" ? current-- : current++;
+            console.log( current )
+            if ( current < 0 ) {
+                new Notify().Render( "当前已经是最后一张了。" );
+                return;
+            }
+            if ( current > 4 ) {
+                new Notify().Render( "当前已经是最新一张了。" );
+                return;
+            }
+            $( ".history img" )[current].click();
+            /*
             var history = JSON.parse( localStorage[ "simptab-history" ] ),
                 idx     = current == undefined ? MAX : current;
             type == "left" ? idx-- : idx++;
@@ -93,6 +109,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                 url  = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + item.enddate + '.jpg';
             saveImg( url, item.info );
             current = idx;
+            */
         },
 
         Init: function () {
