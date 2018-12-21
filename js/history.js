@@ -2,7 +2,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
 
     var current, base64,
         MAX     = 5,
-        saveImg = function( url, info ) {
+        saveImg = function( url, cur_vo ) {
             files.GetDataURI( url ).then( function( result ) {
                 files.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
@@ -10,7 +10,9 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                     .fail(     function( result ) { console.log( "Write error: ", result );  })
                     .done( function( result ) {
                         console.log( "Write completed: ", result );
-                        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url, info: info });
+                        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url, info: cur_vo.info });
+                        vo.cur = vo.Clone( cur_vo );
+                        vo.Set( vo.cur );
                         console.log( "======= Current background download success.", vo )
                     });
             });
@@ -36,7 +38,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                 idx     = event.target.dataset.idx,
                 item    = history[ idx ],
                 url     = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + item.enddate + '.jpg';
-            saveImg( url, item.info );
+            saveImg( url, item );
             current = idx;
             $( ".history img" ).removeClass( "active" );
             $( event.target ).addClass( "active" );
