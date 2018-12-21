@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves", "message" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves, message ) {
+define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves", "message", "history" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves, message, history ) {
 
     "use strict";
 
@@ -116,7 +116,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             progress.Set( "loading" );
 
             files.GetDataURI( url ).then( function( result ) {
-                sessionStorage.setItem( "base64", result );
+                //sessionStorage.setItem( "base64", result );
+                history.DataURI( result );
                 localStorage[ "simptab-background-update" ] == "true" && files.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) {
@@ -177,7 +178,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
-            localStorage[ "simptab-background-mode" ] == "time" && history();
+            localStorage[ "simptab-background-mode" ] == "time" && history.Add();
         }
     }
 
@@ -260,6 +261,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         }
     }
 
+    /*
     function history() {
         var MAX     = 5,
             history = JSON.parse( localStorage[ "simptab-history" ] || '[]' ),
@@ -281,6 +283,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 console.log( "History background saved complete." )
             });
     }
+    */
 
     return {
         Get: function( is_random ) {
@@ -521,6 +524,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             getEarth();
         },
 
+        /*
         History: function ( type ) {
             var MAX       = 5,
                 history   = JSON.parse( localStorage[ "simptab-history" ] ),
@@ -556,5 +560,6 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             saveImg( url, item.info );
             sessionStorage.setItem( "pointer", idx );
         }
+        */
     };
 });
