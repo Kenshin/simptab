@@ -93,25 +93,6 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                 return;
             }
             $( ".history img" )[current].click();
-            /*
-            var history = JSON.parse( localStorage[ "simptab-history" ] ),
-                idx     = current == undefined ? MAX : current;
-            type == "left" ? idx-- : idx++;
-            if ( idx < 0 ) {
-                current = 0;
-                new Notify().Render( "当前已经是最后一张了。" );
-                return;
-            }
-            if ( idx > 4 ) {
-                current = 4;
-                new Notify().Render( "当前已经是最新一张了。" );
-                return;
-            }
-            var item = history[ idx ],
-                url  = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + item.enddate + '.jpg';
-            saveImg( url, item.info );
-            current = idx;
-            */
         },
 
         Init: function () {
