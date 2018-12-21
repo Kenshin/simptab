@@ -1,6 +1,7 @@
 define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], function( $, _, Notify, i18n, files, vo, message ) {
 
     var current, base64,
+        MAX     = 5,
         saveImg = function( url, info ) {
             files.GetDataURI( url ).then( function( result ) {
                 files.DataURI( result );
@@ -54,8 +55,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
         },
 
         Add: function () {
-            var MAX     = 5,
-                history = JSON.parse( localStorage[ "simptab-history" ] || '[]' );
+            var history = JSON.parse( localStorage[ "simptab-history" ] || '[]' );
             if ( history.length == MAX ) {
                 var del = history[0].enddate;
                 history = history.slice( 1 );
@@ -76,8 +76,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
         },
 
         Get: function( type ) {
-            var MAX     = 5,
-                history = JSON.parse( localStorage[ "simptab-history" ] ),
+            var history = JSON.parse( localStorage[ "simptab-history" ] ),
                 idx     = current == undefined ? MAX : current;
             type == "left" ? idx-- : idx++;
             if ( idx < 0 ) {
