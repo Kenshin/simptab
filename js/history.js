@@ -9,8 +9,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
 
         Add: function () {
             var MAX     = 5,
-                history = JSON.parse( localStorage[ "simptab-history" ] || '[]' ),
-                idx     = vo.new.enddate;
+                history = JSON.parse( localStorage[ "simptab-history" ] || '[]' );
             if ( history.length == MAX ) {
                 var del = history[0].enddate;
                 history = history.slice( 1 );
@@ -24,7 +23,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                 .SaveBgfromURI( "history-" + vo.new.enddate, base64 )
                 .progress( function( result ) { console.log( "Write process:", result ); })
                 .fail(     function( result ) { console.log( "Write error: ", result );  })
-                .done( function( result ) {
+                .done( function() {
                     console.log( "History background saved complete." )
                 });
         },
