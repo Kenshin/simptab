@@ -116,7 +116,6 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             progress.Set( "loading" );
 
             files.GetDataURI( url ).then( function( result ) {
-                //sessionStorage.setItem( "base64", result );
                 history.DataURI( result );
                 localStorage[ "simptab-background-update" ] == "true" && files.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
@@ -260,30 +259,6 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             });
         }
     }
-
-    /*
-    function history() {
-        var MAX     = 5,
-            history = JSON.parse( localStorage[ "simptab-history" ] || '[]' ),
-            idx     = vo.new.enddate;
-        if ( history.length == MAX ) {
-            var del = history[0].enddate;
-            history = history.slice( 1 );
-            files.DeleteAny( "history-" + del + ".jpg", function( url ) {
-                console.log( "History old background removed complete.", url )
-            });
-        }
-        history.push( vo.new );
-        localStorage[ "simptab-history" ] = JSON.stringify( history );
-        files
-            .SaveBgfromURI( "history-" + vo.new.enddate, sessionStorage.getItem( "base64" ) )
-            .progress( function( result ) { console.log( "Write process:", result ); })
-            .fail(     function( result ) { console.log( "Write error: ", result );  })
-            .done( function( result ) {
-                console.log( "History background saved complete." )
-            });
-    }
-    */
 
     return {
         Get: function( is_random ) {
@@ -524,42 +499,5 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             getEarth();
         },
 
-        /*
-        History: function ( type ) {
-            var MAX       = 5,
-                history   = JSON.parse( localStorage[ "simptab-history" ] ),
-                idx       = !sessionStorage.getItem( "pointer" ) ? MAX : sessionStorage.getItem( "pointer" ),
-                saveImg   = function( url, info ) {
-                    files.GetDataURI( url ).then( function( result ) {
-                        files.DataURI( result );
-                        files.Add( vo.constructor.BACKGROUND, result )
-                            .progress( function( result ) { console.log( "Write process:", result ); })
-                            .fail(     function( result ) { console.log( "Write error: ", result );  })
-                            .done( function( result ) {
-                                console.log( "Write completed: ", result );
-                                message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url, info: info });
-                                console.log( "======= Current background download success.", vo )
-                            });
-                    });
-                };
-            type == "left" ? idx-- : idx++;
-            if ( idx < 0 ) {
-                idx = 0;
-                new Notify().Render( "当前已经是最后一张了。" );
-                sessionStorage.setItem( "pointer", idx );
-                return;
-            }
-            if ( idx > 4 ) {
-                idx = 4;
-                new Notify().Render( "当前已经是最新一张了。" );
-                sessionStorage.setItem( "pointer", idx );
-                return;
-            }
-            var item = history[ idx ],
-                url  = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + item.enddate + '.jpg';
-            saveImg( url, item.info );
-            sessionStorage.setItem( "pointer", idx );
-        }
-        */
     };
 });
