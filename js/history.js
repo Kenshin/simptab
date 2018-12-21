@@ -1,7 +1,7 @@
 define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], function( $, _, Notify, i18n, files, vo, message ) {
 
     var current, base64,
-        saveImg   = function( url, info ) {
+        saveImg = function( url, info ) {
             files.GetDataURI( url ).then( function( result ) {
                 files.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
@@ -76,22 +76,9 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
         },
 
         Get: function( type ) {
-            var MAX       = 5,
-                history   = JSON.parse( localStorage[ "simptab-history" ] ),
-                idx       = current == undefined ? MAX : current,
-                saveImg   = function( url, info ) {
-                    files.GetDataURI( url ).then( function( result ) {
-                        files.DataURI( result );
-                        files.Add( vo.constructor.BACKGROUND, result )
-                            .progress( function( result ) { console.log( "Write process:", result ); })
-                            .fail(     function( result ) { console.log( "Write error: ", result );  })
-                            .done( function( result ) {
-                                console.log( "Write completed: ", result );
-                                message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url, info: info });
-                                console.log( "======= Current background download success.", vo )
-                            });
-                    });
-                };
+            var MAX     = 5,
+                history = JSON.parse( localStorage[ "simptab-history" ] ),
+                idx     = current == undefined ? MAX : current;
             type == "left" ? idx-- : idx++;
             if ( idx < 0 ) {
                 current = 0;
