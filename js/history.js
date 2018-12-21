@@ -1,6 +1,52 @@
 define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], function( $, _, Notify, i18n, files, vo, message ) {
 
-    var current, base64;
+    var current, base64,
+        saveImg   = function( url, info ) {
+            files.GetDataURI( url ).then( function( result ) {
+                files.DataURI( result );
+                files.Add( vo.constructor.BACKGROUND, result )
+                    .progress( function( result ) { console.log( "Write process:", result ); })
+                    .fail(     function( result ) { console.log( "Write error: ", result );  })
+                    .done( function( result ) {
+                        console.log( "Write completed: ", result );
+                        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url, info: info });
+                        console.log( "======= Current background download success.", vo )
+                    });
+            });
+        };
+
+    function open() {
+        $( ".history" ).css({ "transform": "translateY(0px)", "opacity": 0.8 }).addClass( "open" );
+    }
+
+    function close() {
+        $( ".history" ).css({ "transform": "translateY(-300px)", "opacity": 0 }).removeClass( "open" );
+    }
+
+    function listen() {
+        $( ".history-overlay" ).mouseenter( function() {
+            open();
+        });
+        $( ".history" ).mouseleave( function() {
+            close();
+        });
+        $( ".history" ).on( "click", "img", function( event ) {
+            var history = JSON.parse( localStorage[ "simptab-history" ] ),
+                idx     = event.target.dataset.idx,
+                item    = history[ idx ],
+                url     = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + item.enddate + '.jpg';
+            saveImg( url, item.info );
+            current = idx;
+        });
+    }
+
+    function render() {
+        var history = JSON.parse( localStorage[ "simptab-history" ] || '[]' ),
+            tmpl    = '<img data-idx="<%=idx%>" id="<%= history.enddate%>" src="filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + '<%= history.enddate %>.jpg">',
+            compiled = _.template( '<% jq.each( historys, function( idx, history ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+            html     = compiled({ 'historys': history });
+        $( ".history" ).html( html );
+    }
 
     return {
         DataURI: function( value ) {
@@ -25,6 +71,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                 .fail(     function( result ) { console.log( "Write error: ", result );  })
                 .done( function() {
                     console.log( "History background saved complete." )
+                    render();
                 });
         },
 
@@ -60,6 +107,14 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                 url  = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + item.enddate + '.jpg';
             saveImg( url, item.info );
             current = idx;
+        },
+
+        Init: function () {
+            $( "body" ).append( '<div class="history-overlay"><div class="history"></div></div>' );
+            setTimeout( function() {
+                render();
+                listen();
+            }, 10 );
         }
     }
 });

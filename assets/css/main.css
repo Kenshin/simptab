@@ -2196,6 +2196,61 @@ img {
 }
 
 /*
+* history
+*/
+
+.history-overlay {
+    position: fixed;
+
+    left: 30%;
+    right: 30%;
+    top: 0;
+
+    height: 100px;
+}
+
+.history {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100px;
+
+    background: rgba(0, 0, 0, .3);
+    opacity: 0;
+    transform: translateY(-300px);
+    transition: all .6s ease;
+}
+
+.history img {
+    padding: 2px;
+
+    max-width: 100px;
+    height: auto;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 10px;
+
+    opacity: .5;
+    transition: all .6s ease;
+    cursor: pointer;
+}
+
+
+.history img:hover {
+    opacity: 1;
+}
+
+/*
 * media
 */
 @media screen and (max-height:768px) {

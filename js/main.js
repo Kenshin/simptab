@@ -139,4 +139,6 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
 
     noise.Init();
 
+    localStorage[ "simptab-background-mode" ] == "time" && history.Init();
+
 });
