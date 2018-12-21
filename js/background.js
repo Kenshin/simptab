@@ -262,12 +262,19 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
     function history() {
         var MAX     = 5,
-            history = JSON.parse( localStorage[ "simptab-history" ] || '{"pointer":-1, "items":[]}' );
-        history.pointer++;
-        history.items[history.pointer % MAX ] = vo.new;
+            history = JSON.parse( localStorage[ "simptab-history" ] || '[]' ),
+            idx     = vo.new.enddate;
+        if ( history.length == MAX ) {
+            var del = history[0].enddate;
+            history = history.slice( 1 );
+            files.DeleteAny( "history-" + del + ".jpg", function( url ) {
+                console.log( "History old background removed complete.", url )
+            });
+        }
+        history.push( vo.new );
         localStorage[ "simptab-history" ] = JSON.stringify( history );
         files
-            .SaveBgfromURI( "history" + history.pointer % MAX, sessionStorage.getItem( "base64" ) )
+            .SaveBgfromURI( "history-" + vo.new.enddate, sessionStorage.getItem( "base64" ) )
             .progress( function( result ) { console.log( "Write process:", result ); })
             .fail(     function( result ) { console.log( "Write error: ", result );  })
             .done( function( result ) {
@@ -516,8 +523,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
         History: function ( type ) {
             var MAX       = 5,
-                idx       = !sessionStorage.getItem( "pointer" ) ? MAX : sessionStorage.getItem( "pointer" ),
                 history   = JSON.parse( localStorage[ "simptab-history" ] ),
+                idx       = !sessionStorage.getItem( "pointer" ) ? MAX : sessionStorage.getItem( "pointer" ),
                 saveImg   = function( url, info ) {
                     files.GetDataURI( url ).then( function( result ) {
                         files.DataURI( result );
@@ -544,9 +551,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 sessionStorage.setItem( "pointer", idx );
                 return;
             }
-            console.log( "sadfasdf", idx )
-            var item = history.items[ idx ],
-                url  = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history' + idx + '.jpg';
+            var item = history[ idx ],
+                url  = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + item.enddate + '.jpg';
             saveImg( url, item.info );
             sessionStorage.setItem( "pointer", idx );
         }
