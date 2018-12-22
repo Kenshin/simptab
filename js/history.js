@@ -46,8 +46,8 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
     }
 
     function render() {
-        var history = JSON.parse( localStorage[ "simptab-history" ] || '[]' ),
-            tmpl    = '<img data-idx="<%=idx%>" id="<%= history.enddate%>" src="filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + '<%= history.enddate %>.jpg">',
+        var history  = JSON.parse( localStorage[ "simptab-history" ] || '[]' ),
+            tmpl     = '<img data-idx="<%=idx%>" id="<%= history.enddate%>" src="filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + '<%= history.enddate %>.jpg">',
             compiled = _.template( '<% jq.each( historys, function( idx, history ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
             html     = compiled({ 'historys': history });
         history.length == 0 && ( html = "暂时没有任何历史记录" )
