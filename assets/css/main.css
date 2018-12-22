@@ -951,7 +951,7 @@ img {
 }
 
 .manage .album.subscribe .photograph img {
-    padding: 5px;
+    margin: 17px;
 }
 
 .manage .album.subscribe .photos .title {
@@ -962,7 +962,7 @@ img {
 .manage .album.subscribe .photos .title,
 .manage .album.subscribe .photos .desc,
 .manage .album.subscribe .photos .author {
-    padding-left: 15px;
+    padding-left: 19px;
 }
 
 .manage .album.subscribe .photos .title,
