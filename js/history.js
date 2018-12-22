@@ -86,7 +86,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
             !current && ( current = $( ".history" ).find( "img[id=" + vo.cur.enddate + "]" ).attr("data-idx") );
             !current && ( current = 0 );
             type == "left" ? current-- : current++;
-            console.log( current )
+            console.log( "History current is ", current )
             if ( current < 0 ) {
                 new Notify().Render( i18n.GetLang( "notify_history_min" ) );
                 return;
