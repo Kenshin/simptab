@@ -1,5 +1,5 @@
 
-define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files", "message", "unveil" ], function( $, _, Notify, i18n, vo, date, options, files, message, unveil ) {
+define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files", "message", "unveil", "history" ], function( $, _, Notify, i18n, vo, date, options, files, message, unveil, history ) {
 
     "use strict";
 
@@ -139,7 +139,11 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
         vo.cur.url   = new_vo.url;
         vo.cur.info  = new_vo.info;
         vo.cur.name  = new_vo.origin;
+        vo.cur.pin   = -1;
+        vo.cur.dislike  = -1;
         vo.cur.favorite = -1;
+        vo.cur.enddate  = date.Now();
+        vo.cur.version  = "2.2";
         delete vo.cur.apis_vo;
     }
 
@@ -157,6 +161,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
             // save url to background.jpg
             files.GetDataURI( url ).then( function( result ) {
                 files.DataURI( result );
+                history.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) { console.log( "Write process:", result ); })
                     .fail(     function( result ) { console.log( "Write error: ", result );  })
@@ -171,6 +176,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                         // complete notify
                         notify && notify.complete();
                         new Notify().Render( i18n.GetLang( "notify_mange_setting_success" ) );
+                        history.Add( vo.cur );
                     });
             });
         }

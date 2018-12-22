@@ -321,6 +321,14 @@
         "message": "开启白噪音模式"
     },
 
+    "shortcuts_key_left": {
+        "message": "向前一张历史背景"
+    },
+
+    "shortcuts_key_right": {
+        "message": "向后一张历史背景"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },
@@ -407,6 +415,14 @@
 
     "options_carousel_notice": {
         "message": "当自动播放时，不建议关闭标签页，并配合 <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>白噪音</a> 效果更好。"
+    },
+
+    "options_history_label": {
+        "message": "是否启用历史记录功能？"
+    },
+
+    "options_history_notice": {
+        "message": "启用后会自动记录最多五张的历史记录，并且只在「随机更换壁纸」模型下使用，详细请看 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=历史记录' target='_blank'>历史记录</a>"
     },
 
     "options_custom_style": {
@@ -511,6 +527,10 @@
 
     "noise_mode_thun001": {
         "message": "雷声"
+    },
+
+    "history_empty": {
+        "message": "暂时没有任何历史记录"
     },
 
     "version_title": {
@@ -679,6 +699,14 @@
 
     "notify_eartch_update_failed": {
         "message": "此功能每隔一小时才会刷新一次，请勿多次调用。"
+    },
+
+    "notify_history_min": {
+        "message": "当前已经是最后一张历史记录了。"
+    },
+
+    "notify_history_max": {
+        "message": "当前已经是最新一张历史记录了。"
     },
 
     "version_detail": {

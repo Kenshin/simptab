@@ -165,6 +165,14 @@ define([ "jquery", "vo" ], function( $, vo ) {
             }, errorBack );
         },
 
+        DeleteAny: function ( url, callback, errorBack ) {
+            fs.root.getFile( url , { create: false }, function( fileEntry ) {
+                fileEntry.remove( function() {
+                    callback( url );
+                }, errorBack );
+              }, errorBack );
+        },
+
         List: function( callback ) {
             fs.root.getDirectory( FOLDER_NAME, {}, function( dirEntry ) {
             var dirReader = dirEntry.createReader();

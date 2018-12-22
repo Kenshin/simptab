@@ -34,6 +34,7 @@ requirejs.config({
       "zen"        : "js/zen",
       "options"    : "js/options",
       "noise"      : "js/noise",
+      "history"    : "js/history",
       "comps"      : "js/components",
       "message"    : "js/message",
     },
@@ -48,7 +49,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo", "history" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo, history ) {
 
     progress.Init();
 
@@ -125,6 +126,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     message.Subscribe( message.TYPE.UPDATE_EARTH, function() {
         background.Earth();
     });
+    message.Subscribe( message.TYPE.HISTORY, function( event ) {
+        options.Storage.db.history && history.Get( event.data );
+    });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
         result && bookmarks.Render( options.Storage.db.search );
@@ -134,5 +138,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     localStorage["simptab-zenmode"] == "true" && zen.Render();
 
     noise.Init();
+
+    localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
 });

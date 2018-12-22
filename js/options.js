@@ -39,6 +39,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     },
                     mobile_host: "",
                     carousel: "-1",
+                    history: false,
                 };
 
             function Storage() {
@@ -96,6 +97,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         </div>\
                         <div class="notice">' + i18n.GetLang( "options_carousel_notice" ) + '</div>\
                         <div class="division"></div>\
+                        <div class="switche">\
+                            <div class="label">' + i18n.GetLang( "options_history_label" ) + '</div>\
+                            ' + comps.Switches( "history-cbx" ) + '\
+                        </div>\
+                        <div class="notice">' + i18n.GetLang( "options_history_notice" ) + '</div>\
+                        <div class="division"></div>\
                     </div>\
                    ';
         return tmpl;
@@ -110,6 +117,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         $( ".options .custom-unsplash .custom-unsplash-cbx" ).find( "input" ).prop( "checked", storage.db.subscribe.sequence );
         $( ".options .custom-unsplash .custom-mobile"          ).val( storage.db.mobile_host );
         $( ".options .custom-unsplash .custom-unsplash-screen" ).val( storage.db.unsplash_screen );
+        $( ".options .custom-unsplash .history-cbx" ).find( "input" ).prop( "checked", storage.db.history );
         $( ".options" ).on( "change", ".custom-unsplash .custom-unsplash-cbx input", function( event ) {
             var $cb   = $(this),
                 value = $cb.prop( "checked" );
@@ -129,6 +137,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.db.carousel = event.data.value;
             storage.Set();
             new Notify().Render( i18n.GetLang( "notify_carousel" ) );
+        });
+        $( ".options" ).on( "change", ".history-cbx input", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            storage.db.history = value;
+            storage.Set();
         });
     }
 

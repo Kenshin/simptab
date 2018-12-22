@@ -321,6 +321,14 @@
         "message": "Open White noise"
     },
 
+    "shortcuts_key_left": {
+        "message": "Previous histor background"
+    },
+
+    "shortcuts_key_right": {
+        "message": "Next histor background"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
@@ -407,6 +415,14 @@
 
     "options_carousel_notice": {
         "message": "When playing automatically, it is not recommended to close the TAB, and <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>white noise</a> effect is better."
+    },
+
+    "options_history_label": {
+        "message": "History background is enabled?"
+    },
+
+    "options_history_notice": {
+        "message": "When enabled, up to five history background records and only used by 'Change background randomly' model."
     },
 
     "options_custom_style": {
@@ -511,6 +527,10 @@
 
     "noise_mode_thun001": {
         "message": "THUNDER"
+    },
+
+    "history_empty": {
+        "message": "There is no any history."
     },
 
     "version_title": {
@@ -679,6 +699,14 @@
 
     "notify_eartch_update_failed": {
         "message": "Update background image only once every hour, don't call it many times."
+    },
+
+    "notify_history_min": {
+        "message": "This is the first history background."
+    },
+
+    "notify_history_max": {
+        "message": "This is the latest history background."
     },
 
     "version_detail": {
