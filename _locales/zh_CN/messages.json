@@ -521,6 +521,10 @@
         "message": "雷声"
     },
 
+    "history_empty": {
+        "message": "暂时没有任何历史记录"
+    },
+
     "version_title": {
         "message": "简 Tab 版本提示"
     },
@@ -687,6 +691,14 @@
 
     "notify_eartch_update_failed": {
         "message": "此功能每隔一小时才会刷新一次，请勿多次调用。"
+    },
+
+    "notify_history_min": {
+        "message": "当前已经是最后一张历史记录了。"
+    },
+
+    "notify_history_max": {
+        "message": "当前已经是最新一张历史记录了。"
     },
 
     "version_detail": {
