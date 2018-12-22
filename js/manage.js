@@ -89,7 +89,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
             $( $( ".manage .album" )[idx] ).addClass( "album-active" );
 
             if ( $( ".tabs .tab-active").attr("idx") == "2" ) {
-                $( ".albums .explore").find(".photograph").length == 12 && getExploreTmpl();
+                getExploreTmpl();
                 localStorage["simptab-explore-notify"] != "false" &&
                     new Notify().Render({ content: i18n.GetLang( "notify_explore_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
                         localStorage["simptab-explore-notify"] = false;
@@ -251,7 +251,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
             $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
             return;
         }
-        var COUNT  = 12,
+        var COUNT  = 16,
             items  = [],
             CLIENT = "86ec05bcde52b196fe41f4e5602d35219fdaeb54fd73508c61ec93e24225c94a",
             screen = /\d+x\d+/.test( options.Storage.db.unsplash_screen ) ? options.Storage.db.unsplash_screen : "2560x1440",
@@ -361,7 +361,6 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 albumLoadListenEvent();
                 getFavoriteTmpl();
                 getSubscribeTmpl();
-                getExploreTmpl();
                 toolbarListenEvent();
                 scrollListenEvent();
             }, 10 );
