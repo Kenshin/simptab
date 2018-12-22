@@ -265,6 +265,10 @@
         "message": "Not any background image"
     },
 
+    "mange_explore_loading": {
+        "message": "Loading..."
+    },
+
     "bm_foder_search": {
         "message": "Search"
     },

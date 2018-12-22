@@ -251,7 +251,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
             $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
             return;
         }
-        $( ".albums .explore").find(".photograph").length == 0 && $( ".manage .album .empty" ).text( "加载中，请稍等..." );
+        $( ".albums .explore").find(".photograph").length == 0 && $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_loading" ) );
         var COUNT  = 16,
             items  = [],
             CLIENT = "86ec05bcde52b196fe41f4e5602d35219fdaeb54fd73508c61ec93e24225c94a",
@@ -297,6 +297,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                         html         = compiled({ 'albums': items });
                         $( ".manage .albums .explore .empty" ).remove();
                         $( ".manage .albums .explore" ).append( html );
+                        $( ".manage .albums .explore").scroll()
                     } else $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
                 }).fail( function( jqXHR, textStatus, errorThrown ) {
                     getCollection();

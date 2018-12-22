@@ -265,6 +265,10 @@
         "message": "暫時沒有任何背景"
     },
 
+    "mange_explore_loading": {
+        "message": "載入中，請稍等..."
+    },
+
     "bm_foder_search": {
         "message": "搜索"
     },
