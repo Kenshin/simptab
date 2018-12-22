@@ -679,6 +679,7 @@ img {
     background-size: contain;
     background-repeat: no-repeat;
     background-color: black;
+    background-position: center;
 }
 
 .bgmask::before {
