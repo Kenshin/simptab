@@ -219,7 +219,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
 
     function getSubscribeTmpl() {
         getSubscribe( function( albums, category, error ) {
-            if ( error ) $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+            if ( error ) $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
             else {
                 var html = "";
                 Object.keys( albums ).forEach( function( idx ) {
@@ -251,6 +251,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
             $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
             return;
         }
+        $( ".albums .explore").find(".photograph").length == 0 && $( ".manage .album .empty" ).text( "加载中，请稍等..." );
         var COUNT  = 16,
             items  = [],
             CLIENT = "86ec05bcde52b196fe41f4e5602d35219fdaeb54fd73508c61ec93e24225c94a",

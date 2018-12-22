@@ -261,6 +261,10 @@
         "message": "Remove Background"
     },
 
+    "mange_explore_empty": {
+        "message": "Not any background image"
+    },
+
     "bm_foder_search": {
         "message": "Search"
     },
@@ -603,10 +607,6 @@
 
     "notify_mange_setting_success": {
         "message": "Setting successful."
-    },
-
-    "notify_mange_empty": {
-        "message": "Not any background image"
     },
 
     "notify_mange_no_user": {

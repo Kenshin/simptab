@@ -261,6 +261,10 @@
         "message": "刪除"
     },
 
+    "mange_explore_empty": {
+        "message": "暫時沒有任何背景"
+    },
+
     "bm_foder_search": {
         "message": "搜索"
     },
@@ -603,10 +607,6 @@
 
     "notify_mange_setting_success": {
         "message": "設置成功。"
-    },
-
-    "notify_mange_empty": {
-        "message": "暫時沒有任何背景"
     },
 
     "notify_mange_no_user": {
