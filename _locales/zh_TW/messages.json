@@ -697,6 +697,10 @@
         "message": "地球影像獲取中，請稍等..."
     },
 
+    "notify_eartch_update_success": {
+        "message": "獲取成功，2秒後，自動刷新本頁才能生效。"
+    },
+
     "notify_eartch_update_failed": {
         "message": "此功能每隔一小時才會刷新一次，請勿多次調用。"
     },

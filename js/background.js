@@ -493,6 +493,12 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                                 vo.Set( vo.new );
                                 localStorage[ "simptab-background-position" ] == "mask" && new Notify().Render( i18n.GetLang( "notify_carousel" ) );
                                 console.log( "======= Current background success.", vo )
+                                if ( is_notify ) {
+                                    new Notify().Render( i18n.GetLang( "notify_eartch_update_success" ) );
+                                    setTimeout( function () {
+                                        window.location.reload();
+                                    }, 2000 );
+                                }
                         });
                     });
             };

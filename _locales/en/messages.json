@@ -697,6 +697,10 @@
         "message": "Earth background loading..."
     },
 
+    "notify_eartch_update_success": {
+        "message": "Earth background loading success, will refresh automatically after 2 seconds."
+    },
+
     "notify_eartch_update_failed": {
         "message": "Update background image only once every hour, don't call it many times."
     },
