@@ -1,4 +1,4 @@
-define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], function( $, _, Notify, i18n, files, vo, message ) {
+define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "options" ], function( $, _, Notify, i18n, files, vo, message, options ) {
 
     var current, base64,
         MAX     = 5,
@@ -60,6 +60,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
         },
 
         Add: function( cur_vo ) {
+            if ( !options.Storage.db.history ) { return; }
             var history = JSON.parse( localStorage[ "simptab-history" ] || '[]' );
             if ( history.length == MAX ) {
                 var del = history[0].enddate;
