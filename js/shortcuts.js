@@ -46,8 +46,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             { short: "z", long: "topsites" },
             { short: "c", long: "zenmode"  },
             { short: "w", long: "noise"    },
-            { short: "left", long: "previous" },
-            { short: "right", long: "next"     },
+            { short: "left",  long: "left" },
+            { short: "right", long: "right"},
         ];
 
         Object.defineProperties( Keys.prototype, {

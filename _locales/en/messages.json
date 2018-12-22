@@ -321,6 +321,14 @@
         "message": "Open White noise"
     },
 
+    "shortcuts_key_left": {
+        "message": "Previous histor background"
+    },
+
+    "shortcuts_key_right": {
+        "message": "Next histor background"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },

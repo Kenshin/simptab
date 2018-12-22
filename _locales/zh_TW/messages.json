@@ -321,6 +321,14 @@
         "message": "開啟白噪音模式"
     },
 
+    "shortcuts_key_left": {
+        "message": "向前一張歷史背景"
+    },
+
+    "shortcuts_key_right": {
+        "message": "向後一張歷史背景"
+    },
+
     "about_content_more": {
         "message": "查看更多..."
     },
