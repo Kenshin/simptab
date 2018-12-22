@@ -50,6 +50,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
             tmpl    = '<img data-idx="<%=idx%>" id="<%= history.enddate%>" src="filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/history-' + '<%= history.enddate %>.jpg">',
             compiled = _.template( '<% jq.each( historys, function( idx, history ) { %>' + tmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
             html     = compiled({ 'historys': history });
+        history.length == 0 && ( html = "暂时没有任何历史记录" )
         $( ".history" ).html( html );
     }
 
@@ -82,13 +83,14 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
         Get: function( type ) {
             current  = $( ".history" ).find( "img.active" ).attr( "data-idx" );
             !current && ( current = $( ".history" ).find( "img[id=" + vo.cur.enddate + "]" ).attr("data-idx") );
+            !current && ( current = 0 );
             type == "left" ? current-- : current++;
             console.log( current )
             if ( current < 0 ) {
                 new Notify().Render( "当前已经是最后一张了。" );
                 return;
             }
-            if ( current > 4 ) {
+            if ( current > $( ".history" ).find( "img" ).length - 1 ) {
                 new Notify().Render( "当前已经是最新一张了。" );
                 return;
             }
