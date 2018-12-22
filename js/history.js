@@ -59,7 +59,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
             base64 = value;
         },
 
-        Add: function () {
+        Add: function( cur_vo ) {
             var history = JSON.parse( localStorage[ "simptab-history" ] || '[]' );
             if ( history.length == MAX ) {
                 var del = history[0].enddate;
@@ -68,10 +68,10 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message" ], funct
                     console.log( "History old background removed complete.", url )
                 });
             }
-            history.push( vo.new );
+            history.push( cur_vo );
             localStorage[ "simptab-history" ] = JSON.stringify( history );
             files
-                .SaveBgfromURI( "history-" + vo.new.enddate, base64 )
+                .SaveBgfromURI( "history-" + cur_vo.enddate, base64 )
                 .progress( function( result ) { console.log( "Write process:", result ); })
                 .fail(     function( result ) { console.log( "Write error: ", result );  })
                 .done( function() {

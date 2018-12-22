@@ -177,7 +177,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
-            localStorage[ "simptab-background-mode" ] == "time" && history.Add();
+            localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
         }
     }
 
