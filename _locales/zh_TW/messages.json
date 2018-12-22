@@ -417,6 +417,14 @@
         "message": "當自動播放時，不建議關閉標籤頁，並配合 <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>白噪音</a> 效果更好。"
     },
 
+    "options_history_label": {
+        "message": "是否啟用歷史記錄功能？"
+    },
+
+    "options_history_notice": {
+        "message": "啟用後會自動記錄最多五張的歷史記錄，並且只在「隨機更換壁紙」模型下使用，詳細請看 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=历史记录' target='_blank'>歷史記錄</a>"
+    },
+
     "options_custom_style": {
         "message": "自定義樣式（ 全局 ）"
     },

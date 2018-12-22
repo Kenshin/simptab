@@ -98,10 +98,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="notice">' + i18n.GetLang( "options_carousel_notice" ) + '</div>\
                         <div class="division"></div>\
                         <div class="switche">\
-                            <div class="label">是否启用历史记录功能？</div>\
+                            <div class="label">' + i18n.GetLang( "options_history_label" ) + '</div>\
                             ' + comps.Switches( "history-cbx" ) + '\
                         </div>\
-                        <div class="notice">启用后会自动记录最多五张的历史记录，并且只在「随机更换壁纸」模型下使用，详细请看 <a href="http://ksria.com/simptab/docs/#/多种背景源?id=历史记录" target="_blank">历史记录</a></div>\
+                        <div class="notice">' + i18n.GetLang( "options_history_notice" ) + '</div>\
                         <div class="division"></div>\
                     </div>\
                    ';

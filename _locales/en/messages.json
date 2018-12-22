@@ -417,6 +417,14 @@
         "message": "When playing automatically, it is not recommended to close the TAB, and <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>white noise</a> effect is better."
     },
 
+    "options_history_label": {
+        "message": "History background is enabled?"
+    },
+
+    "options_history_notice": {
+        "message": "When enabled, up to five history background records and only used by 'Change background randomly' model."
+    },
+
     "options_custom_style": {
         "message": "Custom global Style"
     },
