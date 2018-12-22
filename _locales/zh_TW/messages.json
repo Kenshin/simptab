@@ -757,6 +757,10 @@
         "message": "新增：全新的禪模式，全局選項頁，快捷搜索欄接入多種搜索引擎等；"
     },
 
+    "version_detail_9": {
+        "message": "新增：地球每刻，白噪音，JSBox 版，探索頻道等；"
+    },
+
     "welcome_start_title": {
         "message": "歡迎使用"
     },

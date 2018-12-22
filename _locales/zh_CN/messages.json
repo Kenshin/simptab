@@ -757,6 +757,10 @@
         "message": "新增：全新的禅模式，全局选项页，快捷搜索栏接入多种搜索引擎等；"
     },
 
+    "version_detail_9": {
+        "message": "新增：地球每刻，白噪音，JSBox 版，探索频道等；"
+    },
+
     "welcome_start_title": {
         "message": "欢迎使用"
     },
