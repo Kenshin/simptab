@@ -127,7 +127,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         background.Earth();
     });
     message.Subscribe( message.TYPE.HISTORY, function( event ) {
-        history.Get( event.data );
+        options.Storage.db.history && history.Get( event.data );
     });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
