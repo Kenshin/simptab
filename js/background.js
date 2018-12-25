@@ -464,8 +464,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     localStorage[ "simptab-background-update" ] = "true";
                     bgeffect( "add" );
                     this.Get( true );
+                    $( "body" ).removeClass( "bgearth" );
                 }
-                $( "body" ).removeClass( "bgearth" );
             }
         },
 
