@@ -63,6 +63,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 localStorage.removeItem( key );
             }
 
+            Storage.prototype.Verify = function( target ) {
+                if ( target.version == "1.5.3" ) {
+                    target.mobile_host = "";
+                    target.carousel    = "-1";
+                    target.history     = false;
+                    target.version     = "1.5.4";
+                }
+                return target;
+            }
+
             return new Storage();
 
         })();
@@ -246,7 +256,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 onload = function( event ) {
                     if ( event && event.target && event.target.result ) {
                         try {
-                            storage.db = JSON.parse( event.target.result );
+                            storage.db = storage.Verify( JSON.parse( event.target.result ) );
                             storage.Set();
                             new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
                         } catch ( error ) {
