@@ -721,6 +721,10 @@
         "message": "當前已經是最新一張歷史記錄了。"
     },
 
+    "notify_favorite_empty": {
+        "message": "收藏夾背景源暫無任何內容，已自動設置默認背景。"
+    },
+
     "version_detail": {
         "message": ""
     },

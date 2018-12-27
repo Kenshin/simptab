@@ -721,6 +721,10 @@
         "message": "当前已经是最新一张历史记录了。"
     },
 
+    "notify_favorite_empty": {
+        "message": "收藏夹背景源暂无任何内容，已自动设置默认背景。"
+    },
+
     "version_detail": {
         "message": ""
     },

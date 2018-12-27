@@ -721,6 +721,10 @@
         "message": "This is the latest history background."
     },
 
+    "notify_favorite_empty": {
+        "message": "Favorite origin is empty, re-set default background."
+    },
+
     "version_detail": {
         "message": ""
     },

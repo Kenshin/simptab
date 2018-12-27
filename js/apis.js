@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ], function( $, i18n, setting, vo, date, SimpError, cdns, options ) {
+define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options", "notify" ], function( $, i18n, setting, vo, date, SimpError, cdns, options, notify ) {
 
     "use strict";
 
@@ -583,6 +583,7 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
                 arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
                 //dtd.reject( new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo ));
+                new Notify().Render( i18n.GetLang( "notify_favorite_empty" ) );
                 dtd.resolve( vo.Create( vo.constructor.DEFAULT_BACKGROUND, vo.constructor.DEFAULT_BACKGROUND, "Wallpaper", "#", date.Now(), "Wallpaper", "default", {} ));
                 return dtd;
             }
