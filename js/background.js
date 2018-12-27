@@ -178,6 +178,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
             localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
+            localStorage[ "simptab-background-mode" ] == "time" && $( "body" ).hasClass("bgearth") && $( "body" ).removeClass( "bgearth" );
         }
     }
 
@@ -464,7 +465,6 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     localStorage[ "simptab-background-update" ] = "true";
                     bgeffect( "add" );
                     this.Get( true );
-                    $( "body" ).removeClass( "bgearth" );
                 }
             }
         },
