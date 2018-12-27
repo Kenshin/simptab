@@ -188,7 +188,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + favTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
                     html     = compiled({ 'albums': result });
                 $( ".manage .albums .favorite" ).html( html );
-            } else $( ".manage .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+            } else $( ".manage .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
         });
     }
 
@@ -248,7 +248,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
 
     function getExploreTmpl() {
         if ( !options.Storage.db.unsplash || ( options.Storage.db.unsplash.length == 1 && options.Storage.db.unsplash[0] == "" )) {
-            $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+            $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
             return;
         }
         $( ".albums .explore").find(".photograph").length == 0 && $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_loading" ) );
@@ -271,7 +271,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                         getPhotos( page );
                     }
                 }, function( jqXHR, textStatus, errorThrown ) {
-                    $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+                    $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
                 });
             },
             getPhotos = function( page ) {
@@ -298,7 +298,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                         $( ".manage .albums .explore .empty" ).remove();
                         $( ".manage .albums .explore" ).append( html );
                         $( ".manage .albums .explore").scroll()
-                    } else $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+                    } else $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
                 }).fail( function( jqXHR, textStatus, errorThrown ) {
                     getCollection();
                 });
