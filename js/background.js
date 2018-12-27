@@ -97,7 +97,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     console.log( "=== Current background image url: " + result.hdurl )
                     console.log( "=== Current background vo.new   : ", vo.new        )
                     // when result.hdurl == vo.constructor.DEFAULT_BACKGROUND, version.hdurl verify failed, re-set vo.new is vo.cur
-                    result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );
+                    // result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );
+                    def.resolve( true, result.hdurl );
                 });
         }
         else {
