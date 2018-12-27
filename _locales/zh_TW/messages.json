@@ -549,6 +549,26 @@
         "message": "安裝到 最新版本 #1，#4詳細請看 #2更新日誌#3"
     },
 
+    "notify_zen_mode_tips": {
+        "message": "歡迎來到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禪模式</a>，使用快捷鍵 c 或者滑鼠移動右下角彈出選項卡。"
+    },
+
+    "notify_explore_tips": {
+        "message": "向下滾動即可載入更多，顯示速度取決於你的網速，詳細請看 <a target='_blank' href='http://ksria.com/simptab/docs/#/功能一览?id=探索'>探索</a> 。"
+    },
+
+    "notify_earth_tips": {
+        "message": "歡迎使用地球每刻，感謝 <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> 提供，詳細請看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻'>地球每刻</a> 。"
+    },
+
+    "notify_favorite_tips": {
+        "message": "當收藏夾沒有任何內容並僅啟用收藏夾源的情況下會出現錯誤。"
+    },
+
+    "notify_zen_mode_tips_confirm": {
+        "message": "不再提示"
+    },
+
     "notify_upload_complete": {
         "message": "背景上傳完畢。"
     },
@@ -655,26 +675,6 @@
 
     "notify_zen_mode_exit": {
         "message": "已退出禪模式，頁面刷新後生效。"
-    },
-
-    "notify_zen_mode_tips": {
-        "message": "歡迎來到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禪模式</a>，使用快捷鍵 c 或者滑鼠移動右下角彈出選項卡。"
-    },
-
-    "notify_explore_tips": {
-        "message": "向下滾動即可載入更多，顯示速度取決於你的網速，詳細請看 <a target='_blank' href='http://ksria.com/simptab/docs/#/功能一览?id=探索'>探索</a> 。"
-    },
-
-    "notify_earth_tips": {
-        "message": "歡迎使用地球每刻，感謝 <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> 提供，詳細請看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻'>地球每刻</a> 。"
-    },
-
-    "notify_favorite_tips": {
-        "message": "當收藏夾沒有任何內容並僅啟用收藏夾源的情況下會出現錯誤。"
-    },
-
-    "notify_zen_mode_tips_confirm": {
-        "message": "不再提示"
     },
 
     "notify_mobile_send": {

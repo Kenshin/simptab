@@ -549,6 +549,26 @@
         "message": "Current version: #1. #4To learn more, please visit #2CHANGELOG#3."
     },
 
+    "notify_zen_mode_tips": {
+        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
+    },
+
+    "notify_explore_tips": {
+        "message": "Scroll down to load more, background loading depending on your network speed."
+    },
+
+    "notify_earth_tips": {
+        "message": "Welcome to Earth every moment, earth background come from <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> ."
+    },
+
+    "notify_favorite_tips": {
+        "message": "When favorite empty and only usage favorite origin will be errors."
+    },
+
+    "notify_zen_mode_tips_confirm": {
+        "message": "Confirm"
+    },
+
     "notify_upload_complete": {
         "message": "Background image uploaded successfully."
     },
@@ -655,26 +675,6 @@
 
     "notify_zen_mode_exit": {
         "message": "Exit zen mode success, please refresh new tab."
-    },
-
-    "notify_zen_mode_tips": {
-        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
-    },
-
-    "notify_explore_tips": {
-        "message": "Scroll down to load more, background loading depending on your network speed."
-    },
-
-    "notify_earth_tips": {
-        "message": "Welcome to Earth every moment, earth background come from <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> ."
-    },
-
-    "notify_favorite_tips": {
-        "message": "When favorite empty and only usage favorite origin will be errors."
-    },
-
-    "notify_zen_mode_tips_confirm": {
-        "message": "Confirm"
     },
 
     "notify_mobile_send": {
