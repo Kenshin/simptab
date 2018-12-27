@@ -28,10 +28,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             this.db = localStorage[ key ];
             if ( !this.db ) {
                 this.db = $.extend( {}, _storage );
-                localStorage.setItem( key, JSON.stringify( this.db ));
             } else this.db = this.Verify( JSON.parse( this.db ));
             this.themes = _themes;
             this.key    = key;
+            localStorage.setItem( key, JSON.stringify( this.db ));
         }
 
         Storage.prototype.Set = function() {
@@ -51,11 +51,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             return this.themes[ idx ];
         }
 
-        Storage.prototype.Verify = function( target, is_save ) {
+        Storage.prototype.Verify = function( target ) {
             if ( target.version == "1.5.3" ) {
                 target.version = "1.5.4";
             }
-            is_save && this.Set();
             return target;
         }
 

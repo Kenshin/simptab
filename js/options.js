@@ -46,9 +46,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 this.db = localStorage[ key ];
                 if ( !this.db ) {
                     this.db = $.extend( {}, _storage );
-                    localStorage.setItem( key, JSON.stringify( this.db ));
-                } else this.db = this.Verify( JSON.parse( this.db ), true );
+                } else this.db = this.Verify( JSON.parse( this.db ));
                 this.key = key;
+                localStorage.setItem( key, JSON.stringify( this.db ));
             }
 
             Storage.prototype.Set = function() {
@@ -63,14 +63,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 localStorage.removeItem( key );
             }
 
-            Storage.prototype.Verify = function( target, is_save ) {
+            Storage.prototype.Verify = function( target ) {
                 if ( target.version == "1.5.3" ) {
                     target.mobile_host = "";
                     target.carousel    = "-1";
                     target.history     = false;
                     target.version     = "1.5.4";
                 }
-                is_save && this.Set();
                 return target;
             }
 
