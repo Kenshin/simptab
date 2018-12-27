@@ -47,7 +47,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 if ( !this.db ) {
                     this.db = $.extend( {}, _storage );
                     localStorage.setItem( key, JSON.stringify( this.db ));
-                } else this.db = this.Verify( JSON.parse( this.db ));
+                } else this.db = this.Verify( JSON.parse( this.db ), true );
                 this.key = key;
             }
 
@@ -63,13 +63,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 localStorage.removeItem( key );
             }
 
-            Storage.prototype.Verify = function( target ) {
+            Storage.prototype.Verify = function( target, is_save ) {
                 if ( target.version == "1.5.3" ) {
                     target.mobile_host = "";
                     target.carousel    = "-1";
                     target.history     = false;
                     target.version     = "1.5.4";
                 }
+                is_save && this.Set();
                 return target;
             }
 

@@ -35,7 +35,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         }
 
         Storage.prototype.Set = function() {
-            localStorage.setItem( key, JSON.stringify( this.db ));
+            localStorage.setItem( key, JSON.stringify( this.db ), true );
         }
 
         Storage.prototype.Get = function() {
@@ -51,10 +51,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             return this.themes[ idx ];
         }
 
-        Storage.prototype.Verify = function( target ) {
+        Storage.prototype.Verify = function( target, is_save ) {
             if ( target.version == "1.5.3" ) {
                 target.version = "1.5.4";
             }
+            is_save && this.Set();
             return target;
         }
 
