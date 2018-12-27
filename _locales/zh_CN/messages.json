@@ -686,7 +686,7 @@
     },
 
     "notify_mobile_host_failed": {
-        "message": "输入的监听地址不清楚，请重新输入。"
+        "message": "输入的监听地址不正确，请重新输入。"
     },
 
     "notify_carousel": {

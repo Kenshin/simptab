@@ -686,7 +686,7 @@
     },
 
     "notify_mobile_host_failed": {
-        "message": "輸入的監聽地址不清楚，請重新輸入。"
+        "message": "輸入的監聽地址不正確，請重新輸入。"
     },
 
     "notify_carousel": {
