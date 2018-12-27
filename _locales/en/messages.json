@@ -669,6 +669,10 @@
         "message": "Welcome to Earth every moment, earth background come from <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> ."
     },
 
+    "notify_favorite_tips": {
+        "message": "When favorite empty and only usage favorite origin will be errors."
+    },
+
     "notify_zen_mode_tips_confirm": {
         "message": "Confirm"
     },
