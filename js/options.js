@@ -47,7 +47,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 if ( !this.db ) {
                     this.db = $.extend( {}, _storage );
                     localStorage.setItem( key, JSON.stringify( this.db ));
-                } else this.db = JSON.parse( this.db );
+                } else this.db = this.Verify( JSON.parse( this.db ));
                 this.key = key;
             }
 
