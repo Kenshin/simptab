@@ -409,7 +409,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
 
     function notify() {
         localStorage["simptab-zenmode-notify"] != "false" &&
-            new Notify().Render({ content: i18n.GetLang( "notify_zen_mode_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
+            new Notify().Render({ content: i18n.GetLang( "tips_zen_mode" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
                 localStorage["simptab-zenmode-notify"] = false;
             }});
     }

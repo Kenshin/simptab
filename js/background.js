@@ -472,7 +472,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
         Earth: function( is_notify ) {
             localStorage["simptab-earth-notify"] != "false" &&
-                    new Notify().Render({ content: i18n.GetLang( "notify_earth_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
+                    new Notify().Render({ content: i18n.GetLang( "tips_earth" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
                         localStorage["simptab-earth-notify"] = false;
                     }});
             if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 10000 ) {
