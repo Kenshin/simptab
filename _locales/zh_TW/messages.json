@@ -74,7 +74,7 @@
     },
 
     "controlbar_mobile": {
-        "message": "發送到手機端"
+        "message": "發送到手機"
     },
 
     "controlbar_favorite": {
@@ -394,7 +394,7 @@
     },
 
     "options_custom_mobile_notice": {
-        "message": "此功能需要在 iOS 端安裝 JSBox，詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>發送到手機端</a>"
+        "message": "此功能需要在 iOS 端安裝 JSBox，詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/发送到手机' target='_blank'>發送到手機</a>"
     },
 
     "options_carousel_label": {

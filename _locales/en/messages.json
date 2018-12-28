@@ -394,7 +394,7 @@
     },
 
     "options_custom_mobile_notice": {
-        "message": "First JSBox is required to be installed on iOS, for details <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>Send to mobile</a>"
+        "message": "First JSBox is required to be installed on iOS, for details <a href='http://ksria.com/simptab/docs/#/发送到手机' target='_blank'>Send to mobile</a>"
     },
 
     "options_carousel_label": {
