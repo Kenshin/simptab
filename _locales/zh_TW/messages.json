@@ -565,6 +565,10 @@
         "message": "當收藏夾沒有任何內容並僅啟用收藏夾源的情況下會出現錯誤。"
     },
 
+    "tips_noise": {
+        "message": "歡迎使用白噪音，快捷鍵 w 即可打開，更多細節請訪問 <a target='_blank' href='http://ksria.com/simptab/docs/#/白噪音'>白噪音</a> 。"
+    },
+
     "tips_confirm": {
         "message": "不再提示"
     },

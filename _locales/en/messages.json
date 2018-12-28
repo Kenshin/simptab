@@ -565,6 +565,10 @@
         "message": "When favorite empty and only usage favorite origin will be errors."
     },
 
+    "tips_noise": {
+        "message": "Welcome usage White noise, shortcuts w startup it."
+    },
+
     "tips_confirm": {
         "message": "Confirm"
     },

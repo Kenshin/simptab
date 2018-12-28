@@ -114,6 +114,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     return {
         Init: function() {
             message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
+                localStorage["simptab-noise-notify"] != "false" &&
+                new Notify().Render({ content: i18n.GetLang( "tips_noise" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
+                    localStorage["simptab-noise-notify"] = false;
+                }});
                 if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
                     open();
                 } else {
