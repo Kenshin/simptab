@@ -40,7 +40,7 @@
 - Multiples type background origins:
   * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
-  * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab Subscribe** origins  
+  * SimpTab Subscribe origins  
 
   * Favorite origins
 
@@ -62,9 +62,9 @@
 
 - Dislike; ( Prevent the background from appearing again )
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Bookmarks](http://ksria.com/simptab/docs/#/功能一览#主要功能之一) ;
+- [Bookmarks](http://ksria.com/simptab/docs/#/功能一览#主要功能之一) ;
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [Background Manage](http://ksria.com/simptab/docs/#/功能一览#主要功能之二) ;
+- [Background Manage](http://ksria.com/simptab/docs/#/功能一览#主要功能之二) ;
 
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [Options](http://ksria.com/simptab/docs/#/选项页)；
 
