@@ -49,7 +49,7 @@
 - [多種類型的背景源](http://ksria.com/simptab/docs/#/多种背景源)，包括：
   * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
-  * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab 精選集**  
+  * SimpTab 精選集  
 
     > 獨有功能，每周一期，每期 【一 ~ 九】 張手工採集精選壁紙，類似 iOS App 的做法，獲取往期壁紙，請關注 簡 Tab 精選集小秘 → https://weibo.com/u/6632928109
 
@@ -77,9 +77,9 @@
 
 - 不再顯示（刪除）功能；
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [書籤欄](http://ksria.com/simptab/docs/#/功能一览#主要功能之一)；
+- [書籤欄](http://ksria.com/simptab/docs/#/功能一览#主要功能之一)；
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏與訂閱管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
+- [收藏與訂閱管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
 
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [選項頁](http://ksria.com/simptab/docs/#/选项页)；
 
