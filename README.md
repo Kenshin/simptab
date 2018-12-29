@@ -57,7 +57,7 @@
 
     > 点击 控制栏「收藏」后的背景集合
 
-  * [探索](http://ksria.com/simptab/docs/#/多种背景源?id=探索)
+  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [探索](http://ksria.com/simptab/docs/#/多种背景源?id=探索)
 
     > 来自 Unsplash 的精美背景合辑
 
