@@ -44,6 +44,8 @@
 
   * 只顯示當前背景：永不更換背景源
 
+  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) 地球每刻：得益於 [向日葵-8號](http://himawari8.nict.go.jp/) 現在可以在新標籤頁顯示地球自拍照了，詳細請看 [地球每刻](http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻)
+
 - [多種類型的背景源](http://ksria.com/simptab/docs/#/多种背景源)，包括：
   * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
@@ -54,6 +56,10 @@
   * 收藏
 
     > 點擊 控制欄「收藏」後的背景集合
+
+  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [探索](http://ksria.com/simptab/docs/#/多种背景源?id=探索)
+
+    > 来自 Unsplash 的精美背景合辑
 
 - 多種布局；
 
@@ -90,6 +96,12 @@
     <img src="https://i.loli.net/2018/11/23/5bf7a756d6708.jpg">
     <img src="https://i.loli.net/2018/11/23/5bf7a3625cc20.jpg">
   </details>
+
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [歷史記錄](http://ksria.com/simptab/docs/#/多种背景源?id=历史记录)
+
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [白噪音](http://ksria.com/simptab/docs/#/白噪音)
+
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [發送到手機](http://ksria.com/simptab/docs/#/发送到手机)
 
 #### 投票：
 * 簡 Tab 是一個免費並開源的項目，如果覺得不錯，請給我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
