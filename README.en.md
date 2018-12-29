@@ -35,7 +35,7 @@
 #### Features Details:
 - Automatically recognize the preferred language. ( Simplified & Traditional Chinese, English.
 
-- Change the background daily/randomly/no-changed on new tab
+- Change the background daily/randomly/no-changed/earth every moment on new tab
 
 - Multiples type background origins:
   * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
@@ -43,6 +43,8 @@
   * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab Subscribe** origins  
 
   * Favorite origins
+
+  * Explore
 
 - Multiple layouts; (picture frame effect, top left aligned, center aligned)
 
@@ -79,6 +81,12 @@
     <img src="https://i.loli.net/2018/11/23/5bf7a756d6708.jpg">
     <img src="https://i.loli.net/2018/11/23/5bf7a3625cc20.jpg">
   </details>
+
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) History background image
+
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) White noise
+
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) Send to phone
 
 #### Vote:
 * If you like this application, please [Rate](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) it
