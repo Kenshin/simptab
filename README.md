@@ -110,7 +110,7 @@
 * <http://ksria.com/simptab/gallery.html>
 
 #### 全部功能：
-![全部功能：](http://st.ksria.cn/feature%201.5.3.png)
+![全部功能](http://st.ksria.cn/feature%201.5.4.png)
 
 #### 相关链接：
 * [更新日志](http://ksria.com/simptab/docs/#/CHANGELOG)
