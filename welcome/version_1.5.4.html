@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Kenshin"/>
+    
+    <meta name="description" content="简 Tab (SimpTab) - 极简的 Chrome 新标签页扩展，望你每次打开都有好心情" />
+    <meta name="keywords" content="Chrome 扩展, 新标签页, 新标签页扩展, Chrome extension, New Tab, New tab page, Minimalistic"/>
+    
+    <meta name="thumbnail" content="http://st.ksria.cn/introduce.png"/>
+    
+    <meta property="og:title" content="简 Tab (SimpTab) - 极简的 Chrome 新标签页扩展，望你每次打开都有好心情"/>
+    <meta property="og:type" content="website">
+    <meta property="og:local" content="zh_CN"/>
+    <meta property="og:url" content="http://ksria.com/simptab"/>
+    
+    <meta property="og:image" content="http://st.ksria.cn/introduce.png"/>
+    <meta property="og:image:type" content="image/png"/>
+    <meta property="og:image:width" content="960"/>
+    <meta property="og:image:height" content="355"/>
+    
+    <meta property="og:site_name" content="http://ksria.com/simptab"/>
+    <meta property="og:description" content="简 Tab (SimpTab) - 极简的 Chrome 新标签页扩展，望你每次打开都有好心情"/>
+    
+    <meta property='fb:app_id' content="1528743474024441"/>
+    
+    <title>更新说明 | 简 Tab (SimpTab) - 极简的 Chrome 新标签页扩展，望你每次打开都有好心情</title>
+
+    <meta name="width" content="1500">
+    <meta name="min_height" content="100">
+    <meta name="background" content="#1dba90">
+    <meta name="image_type" content="png">
+    <meta name="image_delay" content="1">
+
+
+    <meta name="interface" content='[
+        {
+            "spacing": 30,
+            "children":[
+                {
+                    "type": "font",
+                    "key": "font_family",
+                    "label": "Font",
+                    "default": "Helvetica"
+                },
+                {
+                    "type": "color",
+                    "key": "secondary_color",
+                    "label": "SecondaryColor",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "color",
+                    "key": "font_color",
+                    "label": "FontColor",
+                    "default": "#333333"
+                }
+
+
+
+            ]
+        },
+        {
+            "spacing": 30,
+            "children":[
+                {
+                    "type": "input",
+                    "key": "icon",
+                    "label": "Icon",
+                    "default": "ion-md-list"
+                },
+                {
+                    "type": "input",
+                    "key": "title_signature",
+                    "label": "TitleSignature",
+                    "default": "更新说明"
+                }
+            ]
+        },
+        {
+            "type": "textarea",
+            "key": "title",
+            "label": "Title",
+            "height": 55,
+            "default": "简 Tab 1.5.4 更新介绍"
+        },
+        {
+            "type": "textarea",
+            "key": "signature",
+            "label": "Signature",
+            "height": 55,
+            "default": "极简的 Chrome 新标签页扩展，望你每次打开都有好心情。"
+        },
+        {
+            "type": "textarea",
+            "key": "author",
+            "label": "Author",
+            "height": 55,
+            "default": "SimpTab"
+        }
+    ]'>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="http://ksria.com/simptab/assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://ksria.com/simptab/assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://ksria.com/simptab/assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://ksria.com/simptab/assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://ksria.com/simptab/assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://ksria.com/simptab/assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://ksria.com/simptab/assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://ksria.com/simptab/assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://ksria.com/simptab/assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="http://ksria.com/simptab/assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://ksria.com/simptab/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="http://ksria.com/simptab/assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://ksria.com/simptab/assets/favicon/favicon-16x16.png">
+    <link href="file:///Applications/Text2Image.app/Contents/Resources/resources/lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+
+    <style>
+        html {
+            font: 300 16px/1.4 -apple-system,PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;
+            font-size: 62.5%;
+            text-rendering: optimizelegibility;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            background: #1dba90;
+            font-family: "PingFang SC"
+        }
+
+        .toc_caption{
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .toc_caption h1{
+            margin: 70px auto 60px auto;
+            position: relative;
+            font-size: 40px;
+            letter-spacing: 1px;
+            font-weight: normal;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .toc_caption small{
+            position: absolute;
+            height: 100%;
+            right: 60px;
+            font-size: 30px;
+            top: 15px;
+            color: rgba(0,0,0,0.07);
+            letter-spacing: 0;
+        }
+
+        .toc_caption h1 .logo{
+            display: block;
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            background-repeat: no-repeat;
+            background-position:center;
+            background-image: url("https://i.loli.net/2018/12/29/5c26f08dbdd2d.png");
+        }
+
+        .toc_content {
+            background: #ffffff;
+            margin: 0 50px 50px 50px;
+            font-size: 24px;
+            padding: 20px 20px;
+
+            box-shadow:-10px 0px 20px rgba(0,0,0,0.1), 0px -10px 20px rgba(0,0,0,0.05), 10px 0px 20px rgba(0,0,0,0.1), 0px 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .toc_content a {
+            color: initial;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(51,51,51,.6);
+        }
+
+        .toc_content h2 {
+            color: #333333;
+            font-size: 32px;
+            padding-left: 150px;
+        }
+
+        .toc_content h2 b{
+            font-size: 20px;
+            background: #1dba90;
+            color: #ffffff;
+            padding: 6px 20px;
+            position: absolute;
+            display: block;
+            margin-left: -150px;
+            letter-spacing: 1px;
+        }
+
+        .toc_content h2 b:before{
+            content: "◤";
+            color: #ffffff;
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            font-size: 16px;
+        }
+
+        .toc_content ul{
+            list-style: circle;
+            padding-left: 175px;
+        }
+        .toc_content li {
+            color: #1dba90;
+
+            line-height: 1.5;
+            margin: 20px auto;
+        }
+
+        .toc_content li span {
+            color: #333333;
+        }
+
+        .toc_content li small{
+            font-size: 80%;
+            color: #999999;
+        }
+
+
+        .toc_content h2{
+            padding-top: 50px;
+            border-top: 2px dashed #eee;
+        }
+
+        .toc_content > ul{
+            margin-bottom: 50px;
+        }
+
+        .toc_content .md_first_h{
+            border-top: none;
+        }
+
+        .toc_content .captions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .toc_content img {
+            max-width: 1000px;
+        }
+
+        .toc_tail{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .toc_tail .signature{
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        .toc_tail .author{
+            margin-top: 20px;
+            font-size: 38px;
+            color: rgba(0, 0, 0, 0.2)
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            margin: 0 50px;
+
+            height: 80px;
+        }
+
+        .footer .line {
+            width: 100%;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer .copywrite {
+            margin: 10px 0 20px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .footer .copywrite a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba( 255, 255, 255,.6);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="toc_caption">
+        <h1><span class="logo"></span> 简 Tab 1.5.4 更新说明 <small></small></h1>
+    </div>
+
+    <div class="toc_content">
+        <h2 id="toc_0" class="h16 md_first_h"><b>地球每刻</b>　　</h2>
+
+<blockquote class="blockquote_lines_1">
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"> <a href="http://http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%e5%9c%b0%e7%90%83%e6%af%8f%e5%88%bb" target="_blank">地球每刻</a> 的照片均来自向 <a href="http://himawari8.nict.go.jp/" target="_blank">向日葵-8號</a>，由于不愿过多消耗向日葵-8號的带宽，通过简 Tab 访问并获取到的地球照片均来在于自建的服务，每小时更新一次。</span>
+</p>
+
+</blockquote>
+<div class="captions"><img src="https://i.loli.net/2018/12/28/5c25c57aa4589.jpg"></div>
+<h2 id="toc_1" class="h16"><b>背景自动更新</b>　　</h2>
+
+<blockquote class="blockquote_lines_1">
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">从现在开始，简 Tab 希望可以让你在新标签页多停留一会。借助此功能，你可以在拥有副屏的环境下，将新标签页变成自动更换美景的相册，详细请看 <a href="http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%e8%83%8c%e6%99%af%e8%87%aa%e5%8a%a8%e6%9b%b4%e6%96%b0" target="_blank">这里</a></span>
+</p>
+
+</blockquote>
+<h2 id="toc_2" class="h16"><b>历史记录</b>　　</h2>
+
+<blockquote class="blockquote_lines_1">
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">你是不是遇到过美图来不及收藏就一闪而过的情况？现在简 Tab 可以最多记录五张 <a href="http://ksria.com/simptab/docs/#/多种背景源?id=历史记录" target="_blank">历史背景</a> 了，此功能专治「手慢无」的用户。</span>
+</p>
+
+</blockquote>
+<div class="captions"><img src="https://i.loli.net/2018/12/28/5c25bfb86f655.jpg"></div>
+<h2 id="toc_3" class="h16"><b>探索</b>　　</h2>
+
+<blockquote class="blockquote_lines_1">
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">背景管理器增加了全新的探索频道，其中的背景全部来自于 <a href="http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%e8%87%aa%e5%ae%9a%e4%b9%89unsplash" target="_blank">自定义 Unsplash</a> ，你可以在这里找心仪的背景找到手抽筋，选择性障碍者误入~</span>
+</p>
+
+</blockquote>
+<div class="captions"><img src="https://i.loli.net/2018/12/28/5c25cae536adb.jpg"></div>
+<h2 id="toc_4" class="h16"><b>白噪音</b>　　</h2>
+
+<blockquote class="blockquote_lines_1">
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">借助 <strong>背景自动更换</strong> 功能，你可以在新标签页停留更多时间，听听 <a href="http://ksria.com/simptab/docs/#/白噪音" target="_blank">白噪音</a> 也是不错的。</span>
+</p>
+
+</blockquote>
+<div class="captions"><img src="https://i.loli.net/2018/12/28/5c25c7c50db43.jpg"></div>
+<h2 id="toc_5" class="h16"><b>发送到手机</b>　　</h2>
+
+<blockquote class="blockquote_lines_2">
+<p class="md_block">
+    <span class="md_line md_line_start">将新标签页的背景通过 JSBox <a href="http://ksria.com/simptab/docs/#/发送到手机" target="_blank">一键传送到手机</a>。<br /></span>
+    <span class="md_line md_line_dom_embed md_line_end"><!--blockquote--></span>
+</p>
+
+</blockquote>
+    </div>
+
+    
+    <div class="toc_tail">
+        
+        <div class="signature">
+            ~ 极简的 Chrome 新标签页扩展，望你每次打开都有好心情 ~
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <div class="line"></div>
+        <div class="copywrite">本文由 <a href="https://www.yige.app/apps/text2image" target="blank">Text2Image</a> 生成，感谢这么 ❤ 的工具。</div>
+    </div>
+
+
+</body>
+</html>
