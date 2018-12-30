@@ -31,7 +31,6 @@
   <img src="http://st.ksria.cn/subscribe@webstore.png">
   <img src="http://st.ksria.cn/options@webstore.png">
   <img src="http://st.ksria.cn/quickbar@webstore.png">
-  <img src="https://i.loli.net/2018/12/30/5c2841e3aef3f.png">
 </details>
 
 #### 主要功能一覽：
@@ -65,6 +64,10 @@
   * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [探索](http://ksria.com/simptab/docs/#/多种背景源?id=探索)
 
     > 来自 Unsplash 的精美背景合辑
+
+    <details><summary>截圖</summary>
+      <img src="https://i.loli.net/2018/12/30/5c2841e3aef3f.png">
+    </details>
 
 - 多種布局；
 
