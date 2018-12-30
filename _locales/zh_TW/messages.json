@@ -853,6 +853,30 @@
         "message": "自定義站點，自定義樣式，更豐富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>個性定製化</a>"
     },
 
+    "welcome_154_title_1": {
+        "message": "地球每刻"
+    },
+
+    "welcome_154_desc_1": {
+        "message": "來自 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%9C%B0%E7%90%83%E6%AF%8F%E5%88%BB'>向日葵-8號</a> 的地球自拍照，讓你更愛這顆星球"
+    },
+
+    "welcome_154_title_2": {
+        "message": "白噪音"
+    },
+
+    "welcome_154_desc_2": {
+        "message": "從現在開始，內置 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%99%BD%E5%99%AA%E9%9F%B3'>白噪音</a> 的 簡 Tab 會讓你更加專註的工作、學習"
+    },
+
+    "welcome_154_title_3": {
+        "message": "豈止是一點點"
+    },
+
+    "welcome_154_desc_3": {
+        "message": "<a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95'>歷史記錄</a> · 精選自你的 Unsplash 源的 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E6%8E%A2%E7%B4%A2'>探索頻道</a> · <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%8F%91%E9%80%81%E5%88%B0%E6%89%8B%E6%9C%BA'>發送背景到手機</a>"
+    },
+
     "permissions": {
         "message": "新版本需要取得新的許可權。"
     },

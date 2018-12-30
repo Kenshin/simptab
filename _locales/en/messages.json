@@ -853,6 +853,30 @@
         "message": "Custom topsites, Custom Style, Custom Unsplash origins"
     },
 
+    "welcome_154_title_1": {
+        "message": "Earth every moment"
+    },
+
+    "welcome_154_desc_1": {
+        "message": "Earth background image via <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%9C%B0%E7%90%83%E6%AF%8F%E5%88%BB'>向日葵-8號</a>"
+    },
+
+    "welcome_154_title_2": {
+        "message": "White Noise"
+    },
+
+    "welcome_154_desc_2": {
+        "message": ""
+    },
+
+    "welcome_154_title_3": {
+        "message": "Background History & Explore"
+    },
+
+    "welcome_154_desc_3": {
+        "message": "Record max five background image history and background manage add explore tab"
+    },
+
     "permissions": {
         "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },

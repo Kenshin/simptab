@@ -56,10 +56,24 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                     </div>',
             "1.5.4": '\
                     <div class="carousel-item" id="1.5.4">\
-                        <img src="http://st.ksria.cn/welcome-options.png">\
+                        <img src="http://st.ksria.cn/welcome-earth.png?201812301148">\
                         <div class="content">\
-                            <h2 class="title">' + i18n.GetLang( "welcome_153_title_3" ) +'</h2>\
-                            <div class="desc">' + i18n.GetLang( "welcome_153_desc_3" ) +'</div>\
+                            <h2 class="title">' + i18n.GetLang( "welcome_154_title_1" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_154_desc_1" ) +'</div>\
+                        </div>\
+                    </div>\
+                    <div class="carousel-item" id="1.5.4">\
+                        <img src="http://st.ksria.cn/welcome-noise.png?201812301148">\
+                        <div class="content">\
+                            <h2 class="title">' + i18n.GetLang( "welcome_154_title_2" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_154_desc_2" ) +'</div>\
+                        </div>\
+                    </div>\
+                    <div class="carousel-item" id="1.5.4">\
+                        <img src="http://st.ksria.cn/welcome-explore.png?201812301148">\
+                        <div class="content">\
+                            <h2 class="title">' + i18n.GetLang( "welcome_154_title_3" ) +'</h2>\
+                            <div class="desc">' + i18n.GetLang( "welcome_154_desc_3" ) +'</div>\
                         </div>\
                     </div>',
         },
