@@ -31,6 +31,8 @@
   <img src="http://st.ksria.cn/subscribe@webstore.png">
   <img src="http://st.ksria.cn/options@webstore.png">
   <img src="http://st.ksria.cn/quickbar@webstore.png">
+  <img src="https://i.loli.net/2018/12/30/5c2841e3144ab.png">
+  <img src="https://i.loli.net/2018/12/30/5c2841e3aef3f.png">
 </details>
 
 #### 主要功能一览：
@@ -100,6 +102,10 @@
 - ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [历史记录](http://ksria.com/simptab/docs/#/多种背景源?id=历史记录)
 
 - ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [白噪音](http://ksria.com/simptab/docs/#/白噪音)
+
+  <details><summary>截图</summary>
+    <img src="https://i.loli.net/2018/12/30/5c2841e2dac04.png">
+  </details>
 
 - ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [发送到手机](http://ksria.com/simptab/docs/#/发送到手机)
 
