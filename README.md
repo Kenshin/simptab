@@ -31,7 +31,6 @@
   <img src="http://st.ksria.cn/subscribe@webstore.png">
   <img src="http://st.ksria.cn/options@webstore.png">
   <img src="http://st.ksria.cn/quickbar@webstore.png">
-  <img src="https://i.loli.net/2018/12/30/5c2841e3144ab.png">
   <img src="https://i.loli.net/2018/12/30/5c2841e3aef3f.png">
 </details>
 
@@ -47,6 +46,10 @@
   * 只显示当前背景：永不更换背景源
 
   * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) 地球每刻：得益于 [向日葵-8號](http://himawari8.nict.go.jp/) 现在可以在新标签页显示地球自拍照了，详细请看 [地球每刻](http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻)
+
+  <details><summary>截图</summary>
+    <img src="https://i.loli.net/2018/12/30/5c2841e3144ab.png">
+  </details>
 
 - [多种类型的背景源](http://ksria.com/simptab/docs/#/多种背景源)，包括：
   * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
