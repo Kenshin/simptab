@@ -36,16 +36,19 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     subscribe: {
                         sequence: false,
                         index: 0
-                    }
+                    },
+                    mobile_host: "",
+                    carousel: "-1",
+                    history: false,
                 };
 
             function Storage() {
                 this.db = localStorage[ key ];
                 if ( !this.db ) {
                     this.db = $.extend( {}, _storage );
-                    localStorage.setItem( key, JSON.stringify( this.db ));
-                } else this.db = JSON.parse( this.db );
+                } else this.db = this.Verify( JSON.parse( this.db ));
                 this.key = key;
+                localStorage.setItem( key, JSON.stringify( this.db ));
             }
 
             Storage.prototype.Set = function() {
@@ -60,6 +63,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 localStorage.removeItem( key );
             }
 
+            Storage.prototype.Verify = function( target ) {
+                if ( target.version == "1.5.3" ) {
+                    target.mobile_host = "";
+                    target.carousel    = "-1";
+                    target.history     = false;
+                    target.version     = "1.5.4";
+                }
+                return target;
+            }
+
             return new Storage();
 
         })();
@@ -69,18 +82,38 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
      *********************************************/
 
     function unsplashView() {
+        var items = [{name: i18n.GetLang( "options_carousel_value_1" ), value: "-1" },{name: i18n.GetLang( "options_carousel_value_5" ), value: "5" },{name:i18n.GetLang( "options_carousel_value_10" ) , value: "10" },{name: i18n.GetLang( "options_carousel_value_30" ), value: "30" },{name:i18n.GetLang( "options_carousel_value_60" ), value: "60" }];
         var tmpl = '<div>\
                         <div class="switche">\
                             <div class="label">' + i18n.GetLang( "options_custom_unsplash_cbx" ) + '</div>\
                             ' + comps.Switches( "custom-unsplash-cbx" ) + '\
                         </div>\
+                        <div class="division"></div>\
                         <div class="label">' + i18n.GetLang( "options_custom_unsplash_label" ) + '</div>\
                         <textarea class="md-textarea custom-unsplash"></textarea>\
                         <div class="notice">' + i18n.GetLang( "options_custom_unsplash_notice" ) + '</div>\
+                        <div class="division"></div>\
                         <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_unsplash_screen_label" ) + '</div>\
                         <input class="md-input custom-unsplash-screen" type="text" placeholder="' + i18n.GetLang( "options_custom_unsplash_screen_placeholder" ) + '"/>\
-                        <div class="notice" style="margin-top:2px;">' + i18n.GetLang( "options_custom_unsplash_screen_notice" ) + '</div>\
-                   </div>\
+                        <div class="notice">' + i18n.GetLang( "options_custom_unsplash_screen_notice" ) + '</div>\
+                        <div class="division"></div>\
+                        <div class="label" style="margin-top:10px;">' + i18n.GetLang( "options_custom_mobile_lable" ) + '</div>\
+                        <input class="md-input custom-mobile" type="text" placeholder="' + i18n.GetLang( "options_custom_mobile_placeholder" ) + '"/>\
+                        <div class="notice">' + i18n.GetLang( "options_custom_mobile_notice" ) + '</div>\
+                        <div class="division"></div>\
+                        <div class="switche" style="margin-bottom:0;">\
+                            <div class="label">' + i18n.GetLang( "options_carousel_label" ) + '</div>\
+                            ' + comps.Dropdown( ".options", "carousel-dpd", items, !storage.db.carousel ? "-1" : storage.db.carousel ) + '\
+                        </div>\
+                        <div class="notice">' + i18n.GetLang( "options_carousel_notice" ) + '</div>\
+                        <div class="division"></div>\
+                        <div class="switche">\
+                            <div class="label">' + i18n.GetLang( "options_history_label" ) + '</div>\
+                            ' + comps.Switches( "history-cbx" ) + '\
+                        </div>\
+                        <div class="notice">' + i18n.GetLang( "options_history_notice" ) + '</div>\
+                        <div class="division"></div>\
+                    </div>\
                    ';
         return tmpl;
     }
@@ -92,7 +125,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.Set();
         });
         $( ".options .custom-unsplash .custom-unsplash-cbx" ).find( "input" ).prop( "checked", storage.db.subscribe.sequence );
+        $( ".options .custom-unsplash .custom-mobile"          ).val( storage.db.mobile_host );
         $( ".options .custom-unsplash .custom-unsplash-screen" ).val( storage.db.unsplash_screen );
+        $( ".options .custom-unsplash .history-cbx" ).find( "input" ).prop( "checked", storage.db.history );
         $( ".options" ).on( "change", ".custom-unsplash .custom-unsplash-cbx input", function( event ) {
             var $cb   = $(this),
                 value = $cb.prop( "checked" );
@@ -102,6 +137,22 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         });
         $( ".options" ).on( "keyup", ".custom-unsplash .custom-unsplash-screen", function( event ) {
             storage.db.unsplash_screen = event.target.value;
+            storage.Set();
+        });
+        $( ".options" ).on( "keyup", ".custom-unsplash .custom-mobile", function( event ) {
+            storage.db.mobile_host = event.target.value;
+            storage.Set();
+        });
+        $( ".options .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
+            storage.db.carousel = event.data.value;
+            storage.Set();
+            new Notify().Render( i18n.GetLang( "notify_carousel" ) );
+        });
+        $( ".options" ).on( "change", ".history-cbx input", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            storage.db.history = value;
             storage.Set();
         });
     }
@@ -205,7 +256,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 onload = function( event ) {
                     if ( event && event.target && event.target.result ) {
                         try {
-                            storage.db = JSON.parse( event.target.result );
+                            storage.db = storage.Verify( JSON.parse( event.target.result ) );
                             storage.Set();
                             new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
                         } catch ( error ) {
@@ -267,6 +318,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
     function close() {
         $( ".dialog .close" ).click( function( event ) {
+            $( document ).off( "click", ".options .carousel-dpd" );
+            $( document ).off( "click", ".options .carousel-dpd .downlist .list-filed" );
             $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
             setTimeout( function() {
                 $( ".dialog-overlay" ).remove();

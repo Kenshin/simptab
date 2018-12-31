@@ -73,6 +73,10 @@
         "message": "About"
     },
 
+    "controlbar_mobile": {
+        "message": "Send to Mobile"
+    },
+
     "controlbar_favorite": {
         "message": "Like"
     },
@@ -103,6 +107,10 @@
 
     "setting_background_forever": {
         "message": "Not Change background"
+    },
+
+    "setting_background_earth": {
+        "message": "Earth every moment"
     },
 
     "setting_background_position_center": {
@@ -237,6 +245,10 @@
         "message": "Collections"
     },
 
+    "manage_tab_explore": {
+        "message": "Explore"
+    },
+
     "manage_toolbar_use": {
         "message": "Set current Background"
     },
@@ -247,6 +259,14 @@
 
     "manage_toolbar_remove": {
         "message": "Remove Background"
+    },
+
+    "mange_explore_empty": {
+        "message": "Not any background image"
+    },
+
+    "mange_explore_loading": {
+        "message": "Loading..."
     },
 
     "bm_foder_search": {
@@ -305,6 +325,18 @@
         "message": "Open zen mode setting"
     },
 
+    "shortcuts_key_noise": {
+        "message": "Open White noise"
+    },
+
+    "shortcuts_key_left": {
+        "message": "Previous histor background"
+    },
+
+    "shortcuts_key_right": {
+        "message": "Next histor background"
+    },
+
     "about_content_more": {
         "message": "More about..."
     },
@@ -351,6 +383,54 @@
 
     "options_custom_unsplash_screen_notice": {
         "message": "Custom resolution: widthxheigh e.g 3200x1800 4096x2160"
+    },
+
+    "options_custom_mobile_lable": {
+        "message": "Add JSBox host"
+    },
+
+    "options_custom_mobile_placeholder": {
+        "message": "Please enter the correct format, including port number, such as http://192.168.31.233:3100"
+    },
+
+    "options_custom_mobile_notice": {
+        "message": "First JSBox is required to be installed on iOS, for details <a href='http://ksria.com/simptab/docs/#/发送到手机' target='_blank'>Send to mobile</a>"
+    },
+
+    "options_carousel_label": {
+        "message": "Usage play automatically show next background?"
+    },
+
+    "options_carousel_value_1": {
+        "message": "Nothing"
+    },
+
+    "options_carousel_value_5": {
+        "message": "Every five minutes"
+    },
+
+    "options_carousel_value_10": {
+        "message": "Every ten minutes"
+    },
+
+    "options_carousel_value_30": {
+        "message": "Every 30 minutes"
+    },
+
+    "options_carousel_value_60": {
+        "message": "Every 60 minutes"
+    },
+
+    "options_carousel_notice": {
+        "message": "When playing automatically, it is not recommended to close the TAB, and <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>white noise</a> effect is better."
+    },
+
+    "options_history_label": {
+        "message": "History background is enabled?"
+    },
+
+    "options_history_notice": {
+        "message": "When enabled, up to five history background records and only used by 'Change background randomly' model."
     },
 
     "options_custom_style": {
@@ -441,12 +521,56 @@
         "message": "Close"
     },
 
+    "noise_mode_cafe001": {
+        "message": "CAFE"
+    },
+
+    "noise_mode_jazz001": {
+        "message": "JAZZ"
+    },
+
+    "noise_mode_rain001": {
+        "message": "RAIN"
+    },
+
+    "noise_mode_thun001": {
+        "message": "THUNDER"
+    },
+
+    "history_empty": {
+        "message": "There is no any history."
+    },
+
     "version_title": {
         "message": "SimpTab is updated"
     },
 
     "version_content": {
         "message": "Current version: #1. #4To learn more, please visit #2CHANGELOG#3."
+    },
+
+    "tips_zen_mode": {
+        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
+    },
+
+    "tips_explore": {
+        "message": "Scroll down to load more, background loading depending on your network speed."
+    },
+
+    "tips_earth": {
+        "message": "Welcome to Earth every moment, earth background come from <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> ."
+    },
+
+    "tips_favorite": {
+        "message": "When favorite empty and only usage favorite origin will be errors."
+    },
+
+    "tips_noise": {
+        "message": "Welcome usage White noise, shortcuts w startup it."
+    },
+
+    "tips_confirm": {
+        "message": "Confirm"
     },
 
     "notify_upload_complete": {
@@ -513,10 +637,6 @@
         "message": "Setting successful."
     },
 
-    "notify_mange_empty": {
-        "message": "Not any background image"
-    },
-
     "notify_mange_no_user": {
         "message": "anonymous"
     },
@@ -561,12 +681,52 @@
         "message": "Exit zen mode success, please refresh new tab."
     },
 
-    "notify_zen_mode_tips": {
-        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
+    "notify_mobile_send": {
+        "message": "Send to mobile..."
     },
 
-    "notify_zen_mode_tips_confirm": {
-        "message": "Confirm"
+    "notify_mobile_send_success": {
+        "message": "Send sucessful "
+    },
+
+    "notify_mobile_send_failed": {
+        "message": "Send failed."
+    },
+
+    "notify_mobile_host_failed": {
+        "message": "Host IP Address error, please re-input again."
+    },
+
+    "notify_carousel": {
+        "message": "Set successful, please refresh."
+    },
+
+    "notify_eartch_mode": {
+        "message": "when Earth every moment mode, can't usage this feature."
+    },
+
+    "notify_eartch_loading": {
+        "message": "Earth background loading..."
+    },
+
+    "notify_eartch_update_success": {
+        "message": "Earth background loading success, will refresh automatically after 2 seconds."
+    },
+
+    "notify_eartch_update_failed": {
+        "message": "Update background image only once every hour, don't call it many times."
+    },
+
+    "notify_history_min": {
+        "message": "This is the first history background."
+    },
+
+    "notify_history_max": {
+        "message": "This is the latest history background."
+    },
+
+    "notify_favorite_empty": {
+        "message": "Favorite origin is empty, re-set default background."
     },
 
     "version_detail": {
@@ -611,6 +771,10 @@
 
     "version_detail_8": {
         "message": "Add: Zen mode, Golbal options, Quick bar support multi-search;"
+    },
+
+    "version_detail_9": {
+        "message": "Add: Earth every moment, White noise, Background explore;"
     },
 
     "welcome_start_title": {
@@ -687,6 +851,30 @@
 
     "welcome_153_desc_3": {
         "message": "Custom topsites, Custom Style, Custom Unsplash origins"
+    },
+
+    "welcome_154_title_1": {
+        "message": "Earth every moment"
+    },
+
+    "welcome_154_desc_1": {
+        "message": "Earth background image via <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%9C%B0%E7%90%83%E6%AF%8F%E5%88%BB'>向日葵-8號</a>"
+    },
+
+    "welcome_154_title_2": {
+        "message": "White Noise"
+    },
+
+    "welcome_154_desc_2": {
+        "message": ""
+    },
+
+    "welcome_154_title_3": {
+        "message": "Background History & Explore"
+    },
+
+    "welcome_154_desc_3": {
+        "message": "Record max five background image history and background manage add explore tab"
     },
 
     "permissions": {

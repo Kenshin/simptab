@@ -2,17 +2,17 @@
 <h1 align="center">简 Tab - 极简的 Chrome 新标签页扩展</h1>
 <p align="center">望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。</p>
 <p align="center">
-   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.3-blue.svg"></a>
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.4-blue.svg"></a>
    <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.3/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.4/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
    <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
 </p>
 
 ***
 
 #### 马上使用：
-* [Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.3/simptab.crx)
+* [Chrome 应用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [离线下载](http://ksria.com/simptab/crx/1.5.4/simptab.crx)
 
 * 有任何问题请看 [帮助中心](http://ksria.com/simptab/docs/#) 或者 加入 **[SimpTab 的讨论群](https://gitter.im/Kenshin/simptab)**
 
@@ -44,16 +44,30 @@
 
   * 只显示当前背景：永不更换背景源
 
+  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) 地球每刻：得益于 [向日葵-8號](http://himawari8.nict.go.jp/) 现在可以在新标签页显示地球自拍照了，详细请看 [地球每刻](http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻)
+
+    <details><summary>截图</summary>
+      <img src="https://i.loli.net/2018/12/30/5c2841e3144ab.png">
+    </details>
+
 - [多种类型的背景源](http://ksria.com/simptab/docs/#/多种背景源)，包括：
   * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
-  * ![1.5.1](https://img.shields.io/badge/1.5.1-red.svg) **SimpTab 精选集**  
+  * SimpTab 精选集  
 
     > 独有功能，每周一期，每期 【一 ~ 九】 张手工采集精选壁纸，类似 iOS App 的做法，获取往期壁纸，请关注 简 Tab 精选集小秘 → https://weibo.com/u/6632928109
 
   * 收藏
 
     > 点击 控制栏「收藏」后的背景集合
+
+  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [探索](http://ksria.com/simptab/docs/#/多种背景源?id=探索)
+
+    > 来自 Unsplash 的精美背景合辑
+
+    <details><summary>截图</summary>
+      <img src="https://i.loli.net/2018/12/30/5c2841e3aef3f.png">
+    </details>
 
 - 多种布局；
 
@@ -71,9 +85,9 @@
 
 - 不再显示（删除）功能；
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [书签栏](http://ksria.com/simptab/docs/#/功能一览#主要功能之一)；
+- [书签栏](http://ksria.com/simptab/docs/#/功能一览#主要功能之一)；
 
-- ![1.5.2](https://img.shields.io/badge/1.5.2-red.svg) [收藏与订阅管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
+- [收藏与订阅管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
 
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [选项页](http://ksria.com/simptab/docs/#/选项页)；
 
@@ -91,6 +105,16 @@
     <img src="https://i.loli.net/2018/11/23/5bf7a3625cc20.jpg">
   </details>
 
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [历史记录](http://ksria.com/simptab/docs/#/多种背景源?id=历史记录)
+
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [白噪音](http://ksria.com/simptab/docs/#/白噪音)
+
+  <details><summary>截图</summary>
+    <img src="https://i.loli.net/2018/12/30/5c2841e2dac04.png">
+  </details>
+
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [发送到手机](http://ksria.com/simptab/docs/#/发送到手机)
+
 #### 投票：
 * 简 Tab 是一个免费并开源的项目，如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
@@ -98,7 +122,7 @@
 * <http://ksria.com/simptab/gallery.html>
 
 #### 全部功能：
-![全部功能：](http://st.ksria.cn/feature%201.5.3.png)
+![全部功能](http://st.ksria.cn/feature%201.5.4.png)
 
 #### 相关链接：
 * [更新日志](http://ksria.com/simptab/docs/#/CHANGELOG)

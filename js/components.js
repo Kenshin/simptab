@@ -39,6 +39,46 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "vo", "date" ], func
                             ' + html + '\
                         </div>\
                     </div>';
+        },
+
+        Slider: function( min, max, value, cls ) {
+            var target   = ".md-slider-root ." + cls,
+                tmpl     = '<input type="range" min="<%- min %>" max="<%- max %>" value="<%- value %>" class="md-slider <%- cls %>" id="<%- cls %>">',
+                compiled = _.template( tmpl );
+                html     = compiled({ min: min, max: max, value: value, cls: cls }),
+                lineWidth= function ( $target, value ) {
+                    var maxWidth = $target.width(),
+                        perc     = ( max - value ) / ( max - min ),
+                        width    = maxWidth - ( maxWidth * perc );
+                    value == max && ( width = maxWidth - 20 );
+                    $target.next().width( width );
+                },
+                onChanged= function( $target, value, event ) {
+                    lineWidth( $target, value );
+                    var evt  = new Event( "slider" );
+                    evt.data = value;
+                    $target[0].dispatchEvent( evt );
+                    event.stopPropagation();
+                },
+                isDrag = false;
+
+            setTimeout( function () {
+                lineWidth( $( target ), value );
+            }, 100 );
+
+            $( document ).on( "mousedown", target, function( event ) { isDrag = true  });
+            $( document ).on( "mouseup",   target, function( event ) { isDrag = false });
+            $( document ).on( "mousemove", target, function( event ) {
+                isDrag && onChanged( $( event.target ), $( event.target ).val(), event );
+            });
+            $( document ).on( "change",    target, function( event ) {
+                onChanged( $( event.target ), event.target.value, event );
+            });
+
+            return '<div class="md-slider-root">\
+                       ' + html + '\
+                       <div class="md-slider-bar"></div>\
+                   </div>';
         }
     }
 });

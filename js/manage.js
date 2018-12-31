@@ -1,5 +1,5 @@
 
-define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "message", "unveil" ], function( $, _, Notify, i18n, vo, date, SimpError, files, message, unveil ) {
+define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files", "message", "unveil", "history" ], function( $, _, Notify, i18n, vo, date, options, files, message, unveil, history ) {
 
     "use strict";
 
@@ -11,10 +11,12 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                 <div class="tabs">\
                     <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
                     <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
+                    <div class="tab" idx="2">' + i18n.GetLang( "manage_tab_explore" ) + '</div>\
                 </div>\
                 <div class="albums">\
                     <div class="album favorite album-active"><div class="empty">Loading...</div></div>\
                     <div class="album subscribe"><div class="empty">Loading...</div></div>\
+                    <div class="album explore"><div class="empty">Loading...</div></div>\
                 </div>',
         favTmpl = '\
                 <div class="photograph">\
@@ -35,6 +37,20 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                             <%= images %>\
                         </div>\
                     </div>\
+                </div>',
+        exploreTmpl = '\
+                <div class="photograph">\
+                    <img src="' + oriImg + '" data-src=<%- album.thumb %>>\
+                    <ul class="toolbox">\
+                        <li>\
+                            <a href="<%= album.contact %>" target="_blank">\
+                                <span data-balloon="<%= album.name %>" data-balloon-pos="up" class="authoricon"></span>\
+                            </a>\
+                        </li>\
+                        <li><a href="<%= album.link %>" target="_blank"><span class="linkicon"></span></a></li>\
+                        <li><span type="explore" data-vo="<%= encodeURI(JSON.stringify( album )) %>" data-balloon="' + i18n.GetLang( "manage_toolbar_use" ) + '" data-balloon-pos="up" class="useicon"></span></li>\
+                        <li><span type="explore" data-balloon="' + i18n.GetLang( "manage_toolbar_down" ) + '" data-balloon-pos="up" class="downicon" url="<%= album.down %>" ></span></li>\
+                    </ul>\
                 </div>',
         imgTmpl = '\
                 <div class="image">\
@@ -71,6 +87,14 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
 
             $( ".manage .album" ).removeClass( "album-active" );
             $( $( ".manage .album" )[idx] ).addClass( "album-active" );
+
+            if ( $( ".tabs .tab-active").attr("idx") == "2" ) {
+                getExploreTmpl();
+                localStorage["simptab-explore-notify"] != "false" &&
+                    new Notify().Render({ content: i18n.GetLang( "tips_explore" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
+                        localStorage["simptab-explore-notify"] = false;
+                    }});
+            }
         });
     }
 
@@ -78,15 +102,22 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
         $( "body" ).on( "click", ".manage .toolbox span", function( event ) {
             var url    = $( event.target ).parent().parent().prev().attr( "src" ),
                 new_vo = $( event.target ).attr( "data-vo" ),
-                name   = url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
+                type   = $( event.target ).attr( "type" ),
+                name   = url && url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
             switch( event.target.className ) {
                 case "useicon":
                     new_vo && ( new_vo = JSON.parse( decodeURI( new_vo )) );
+                    if ( type == "explore" ) {
+                        url  = new_vo.url;
+                        name = new_vo.name;
+                    }
                     setBackground( url, name, new_vo );
                     break;
                 case "downicon":
-                    var title = "SimpTab-Favorite-" + url.replace( vo.constructor.FAVORITE, "" );
-                    files.Download( url, title );
+                    if ( type == "explore" ) {
+                        url = $( event.target ).attr( "url" );
+                    }
+                    files.Download( url, "simptab-wallpaper-" + date.Now() + ".png" );
                     break;
                 case "removeicon":
                     files.Delete( name, function( result ) {
@@ -108,19 +139,29 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
         vo.cur.url   = new_vo.url;
         vo.cur.info  = new_vo.info;
         vo.cur.name  = new_vo.origin;
+        vo.cur.pin   = -1;
+        vo.cur.dislike  = -1;
         vo.cur.favorite = -1;
+        vo.cur.enddate  = date.Now();
+        vo.cur.version  = "2.2";
         delete vo.cur.apis_vo;
     }
 
     function setBackground( url, name, new_vo ) {
+        if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
+            new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
+            return;
+        }
         // set vo.cur, include: favorite, subscribe
         var type = new_vo == undefined ? "favorite" : "subscribe";
         // when new_vo is undefined is favorite call
         new_vo == undefined && ( new_vo = files.FindFavorite( files.FavoriteVO(), name ));
         if ( new_vo ) {
-            type == "subscribe" && new Notify().Render( i18n.GetLang( "notify_mange_setting" ) );
+            if ( type == "subscribe" ) { var notify = new Notify().Render({ content: i18n.GetLang( "notify_mange_setting" ), state: "loading" } ); }
             // save url to background.jpg
             files.GetDataURI( url ).then( function( result ) {
+                files.DataURI( result );
+                history.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) { console.log( "Write process:", result ); })
                     .fail(     function( result ) { console.log( "Write error: ", result );  })
@@ -131,9 +172,11 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                         vo.Set( vo.cur );
                         console.log( "======= Current background download success.", vo )
                         // add url to custom event
-                        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url });
+                        message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: url, info: vo.cur.info });
                         // complete notify
+                        notify && notify.complete();
                         new Notify().Render( i18n.GetLang( "notify_mange_setting_success" ) );
+                        history.Add( vo.cur );
                     });
             });
         }
@@ -145,7 +188,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                 var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + favTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
                     html     = compiled({ 'albums': result });
                 $( ".manage .albums .favorite" ).html( html );
-            } else $( ".manage .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+            } else $( ".manage .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
         });
     }
 
@@ -176,7 +219,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
 
     function getSubscribeTmpl() {
         getSubscribe( function( albums, category, error ) {
-            if ( error ) $( ".manage .album .empty" ).text( i18n.GetLang( "notify_mange_empty" ) );
+            if ( error ) $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
             else {
                 var html = "";
                 Object.keys( albums ).forEach( function( idx ) {
@@ -201,6 +244,66 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
                 $( ".manage .albums .subscribe" ).html( html );
             }
         });
+    }
+
+    function getExploreTmpl() {
+        if ( !options.Storage.db.unsplash || ( options.Storage.db.unsplash.length == 1 && options.Storage.db.unsplash[0] == "" )) {
+            $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
+            return;
+        }
+        $( ".albums .explore").find(".photograph").length == 0 && $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_loading" ) );
+        var COUNT  = 16,
+            items  = [],
+            CLIENT = "86ec05bcde52b196fe41f4e5602d35219fdaeb54fd73508c61ec93e24225c94a",
+            screen = /\d+x\d+/.test( options.Storage.db.unsplash_screen ) ? options.Storage.db.unsplash_screen : "2560x1440",
+            random = function( min, max ) {
+                return Math.floor( Math.random() * ( max - min + 1 ) + min );
+            },
+            collection = options.Storage.db.unsplash[ random( 0, options.Storage.db.unsplash.length - 1 ) ],
+            getCollection = function() {
+                $.ajax({
+                    type       : "GET",
+                    url        : "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "?client_id=" + CLIENT,
+                    dataType   : "json"
+                }).then( function( result ) {
+                    if ( result && result.total_photos > 0 ) {
+                        var page = random( 1, Math.ceil( result.total_photos / COUNT ));
+                        getPhotos( page );
+                    }
+                }, function( jqXHR, textStatus, errorThrown ) {
+                    $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
+                });
+            },
+            getPhotos = function( page ) {
+                var url = "https://api.unsplash.com/" + collection.replace( "collection", "collections" ) + "/photos?client_id=" + CLIENT + "&page=" + page + "&per_page=" + COUNT;
+                $.ajax({
+                    type       : "GET",
+                    url        : url,
+                    dataType   : "json"
+                }).done( function( result ) {
+                    if ( result && result.length >= COUNT ) {
+                        for( var i = 0; i < COUNT; i++ ) {
+                            var item = result[i];
+                            items.push({
+                                thumb: item.urls.thumb,
+                                url: "https://source.unsplash.com/" + item.id + "/" + screen,
+                                name: item.user.name,
+                                contact: item.user.links.html,
+                                info: item.links.html,
+                                down: item.urls.full,
+                            });
+                        }
+                        var compiled = _.template( '<% jq.each( albums, function( idx, album ) { %>' + exploreTmpl + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+                        html         = compiled({ 'albums': items });
+                        $( ".manage .albums .explore .empty" ).remove();
+                        $( ".manage .albums .explore" ).append( html );
+                        $( ".manage .albums .explore").scroll()
+                    } else $( ".manage .album .empty" ).text( i18n.GetLang( "mange_explore_empty" ) );
+                }).fail( function( jqXHR, textStatus, errorThrown ) {
+                    getCollection();
+                });
+            };
+        getCollection();
     }
 
     function albumLoadListenEvent() {
@@ -233,6 +336,11 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "error", "files", "
         $( ".manage .albums" ).scroll( function() {
             checkImg();
         })
+        $(".albums").on("scroll", function() {
+            if( $(this).scrollTop() + Math.floor( $(this).innerHeight() ) >= $(this)[0].scrollHeight - 1 ) {
+                $( ".tabs .tab-active").attr("idx") == "2" && getExploreTmpl();
+            }
+        });
     }
 
     function observerImg( ioes ) {

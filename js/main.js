@@ -33,6 +33,8 @@ requirejs.config({
       "welcome"    : "js/welcome",
       "zen"        : "js/zen",
       "options"    : "js/options",
+      "noise"      : "js/noise",
+      "history"    : "js/history",
       "comps"      : "js/components",
       "message"    : "js/message",
     },
@@ -47,7 +49,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo", "history" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo, history ) {
 
     progress.Init();
 
@@ -71,6 +73,8 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // get time
     date.Toggle( setting.Mode( "clockstate" ));
 
+    controlbar.AutoPlay();
+
     // listen
     controlbar.Listen( function( type, result ) {
         switch ( type) {
@@ -78,7 +82,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "favorite": background.Favorite( result ); break;
             case "dislike" : background.Dislike( result );  break;
             case "pin"     : background.Pin( result );      break;
-            case "refresh" : background.UpdateBg( result ); break;
+            case "refresh" : background.Update( result, true ); break;
         }
     });
     setting.Listen( function( type, result ) {
@@ -87,7 +91,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
             case "clockstate"   : date.Toggle( result );      break;
             case "positionstate": controlbar.SetBgPosition( true ); break;
             case "changestate"  :
-                result == "none" && background.UpdateBg( result );
+                result == "none" && background.Update( result );
+                result == "earth"&& background.Earth( true );
+                result == "time" && background.Update( result );
                 break;
         }
     });
@@ -115,7 +121,13 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
 
     // global event handler
     message.Subscribe( message.TYPE.UPDATE_CONTROLBAR, function( event ) {
-        controlbar.Update( event.data.url );
+        controlbar.Update( event.data.url, event.data.info );
+    });
+    message.Subscribe( message.TYPE.UPDATE_EARTH, function() {
+        background.Earth();
+    });
+    message.Subscribe( message.TYPE.HISTORY, function( event ) {
+        options.Storage.db.history && history.Get( event.data );
     });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
@@ -124,5 +136,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     });
 
     localStorage["simptab-zenmode"] == "true" && zen.Render();
+
+    noise.Init();
+
+    localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
 });

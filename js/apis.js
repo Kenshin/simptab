@@ -1,5 +1,5 @@
 
-define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ], function( $, i18n, setting, vo, date, SimpError, cdns, options ) {
+define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options", "notify" ], function( $, i18n, setting, vo, date, SimpError, cdns, options, notify ) {
 
     "use strict";
 
@@ -582,7 +582,9 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
             var dtd = $.Deferred(),
                 arr = JSON.parse( localStorage[ "simptab-favorites" ] || "[]" );
             if ( !Array.isArray( arr ) || arr.length == 0 ) {
-                dtd.reject( new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo ));
+                //dtd.reject( new SimpError( "favorite", "Local storge 'simptab-favorites' not exist.", apis.vo ));
+                new Notify().Render( i18n.GetLang( "notify_favorite_empty" ) );
+                dtd.resolve( vo.Create( vo.constructor.DEFAULT_BACKGROUND, vo.constructor.DEFAULT_BACKGROUND, "Wallpaper", "#", date.Now(), "Wallpaper", "default", {} ));
                 return dtd;
             }
 
@@ -713,6 +715,55 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options" ]
     }
 
     return {
-      Init: init
+        Init: init,
+
+        Earth: function ( callback ) {
+            var size = 550,
+                urls = [
+                    "https://simptab.herokuapp.com/earth/0_0.png",
+                    "https://simptab.herokuapp.com/earth/0_1.png",
+                    "https://simptab.herokuapp.com/earth/1_0.png",
+                    "https://simptab.herokuapp.com/earth/1_1.png",
+                ],
+                poisition = [{ x:0, y: 0 },{ x:0, y: size },{ x:size, y: 0 },{ x:size, y: size }],
+                imgLoad   = function( i, poisition, url, context ) {
+                    var dtd = $.Deferred(),
+                        img = new Image();
+                    img.src = url;
+                    img.onload = function() {
+                        context.drawImage( img, poisition.x, poisition.y, size, size );
+                        dtd.resolve( i );
+                    };
+                    return dtd;
+                },
+                imgOnLoad = function ( result ) {
+                    if ( result < urls.length - 1 ) {
+                        i++;
+                        imgLoad( i, poisition[i], urls[i], context ).done( imgOnLoad );
+                    } else complete();
+                },
+                complete = function() {
+                    vo.new.type     = "earth";
+                    vo.new.hdurl    = "http://himawari8.nict.go.jp/";
+                    vo.new.url      = "http://himawari8.nict.go.jp/";
+                    vo.new.info     = "http://himawari8.nict.go.jp/";
+                    vo.new.name     = "himawari8.nict.go.jp";
+                    vo.new.favorite = -1;
+                    vo.new.pin      = -1;
+                    vo.new.dislike  = -1;
+                    vo.new.enddate  = date.Now();
+                    vo.new.version  = vo.cur.version;
+                    callback( canvas.toDataURL( "image/png" ));
+                },
+                canvas, context, i = 0;
+
+            canvas        = document.createElement( "canvas" );
+            canvas.width  = size * 2;
+            canvas.height = size * 2;
+            context       = canvas.getContext( "2d" );
+            context.rect( 0 , 0 , canvas.width , canvas.height );
+
+            imgLoad( i, poisition[i], urls[i], context ).done( imgOnLoad );
+        }
     };
 });

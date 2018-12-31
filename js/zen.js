@@ -10,14 +10,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     var storage = ( function() {
         var _themes  = [ "19CAAD", "8CC7B5", "A0EEE1", "BEE7E9", "BEEDC7", "D6D5B7", "D1BA74", "E6CEAC", "ECAD9E", "F4606C", "3D5AFE", "363b40", "222222", "ffffff", "random", "custom" ],
             _storage = {
-                theme: "#" + _themes[0],
-                size: "normal",
-                time:    { color: "", display: "true" },
-                day:     { color: "", display: "true" },
-                devices: { color: "", display: "true" },
+                theme   : "#" + _themes[0],
+                size    : "normal",
+                time    : { color: "", display: "true" },
+                day     : { color: "", display: "true" },
+                devices : { color: "", display: "true" },
                 topsites: { display: "true" },
-                css: "",
-                version: chrome.runtime.getManifest().version.replace( /.\d{2,}/, "" ),
+                css     : "",
+                version : chrome.runtime.getManifest().version.replace( /.\d{2,}/, "" ),
             },
             key     = "simptab-tenmode-option",
             random  = function( min, max ) {
@@ -28,14 +28,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             this.db = localStorage[ key ];
             if ( !this.db ) {
                 this.db = $.extend( {}, _storage );
-                localStorage.setItem( key, JSON.stringify( this.db ));
-            } else this.db = JSON.parse( this.db );
+            } else this.db = this.Verify( JSON.parse( this.db ));
             this.themes = _themes;
             this.key    = key;
+            localStorage.setItem( key, JSON.stringify( this.db ));
         }
 
         Storage.prototype.Set = function() {
-            localStorage.setItem( key, JSON.stringify( this.db ));
+            localStorage.setItem( key, JSON.stringify( this.db ), true );
         }
 
         Storage.prototype.Get = function() {
@@ -49,6 +49,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         Storage.prototype.Random = function() {
             var idx = random( 0, this.themes.length - 4 );
             return this.themes[ idx ];
+        }
+
+        Storage.prototype.Verify = function( target ) {
+            if ( target.version == "1.5.3" ) {
+                target.version = "1.5.4";
+            }
+            return target;
         }
 
         return new Storage();
@@ -268,7 +275,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                 onload = function( event ) {
                     if ( event && event.target && event.target.result ) {
                         try {
-                            storage.db = JSON.parse( event.target.result );
+                            storage.db = storage.Verify( JSON.parse( event.target.result ) );
                             storage.Set();
                             new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
                         } catch ( error ) {
@@ -402,7 +409,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
 
     function notify() {
         localStorage["simptab-zenmode-notify"] != "false" &&
-            new Notify().Render({ content: i18n.GetLang( "notify_zen_mode_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
+            new Notify().Render({ content: i18n.GetLang( "tips_zen_mode" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
                 localStorage["simptab-zenmode-notify"] = false;
             }});
     }

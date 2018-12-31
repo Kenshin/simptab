@@ -1,5 +1,5 @@
 
-define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves", "message" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves, message ) {
+define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar", "error", "notify", "progress", "waves", "message", "history" ], function( $, date, i18n, setting, apis, vo, files, controlbar, SimpError, Notify, progress, Waves, message, history ) {
 
     "use strict";
 
@@ -28,6 +28,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     if ( localStorage[ "simptab-background-update" ] == "true" ) {
                         def.resolve(3);
                     } else if ( setting.Mode( "changestate" ) == "none" ) {
+                        def.resolve(4);
+                    } else if ( setting.Mode( "changestate" ) == "earth" ) {
+                        message.Publish( message.TYPE.UPDATE_EARTH );
                         def.resolve(4);
                     } else if ( setting.Mode( "changestate" ) == "day" && !date.IsNewDay( date.Today() ) ) {
                         def.resolve(4);
@@ -94,7 +97,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     console.log( "=== Current background image url: " + result.hdurl )
                     console.log( "=== Current background vo.new   : ", vo.new        )
                     // when result.hdurl == vo.constructor.DEFAULT_BACKGROUND, version.hdurl verify failed, re-set vo.new is vo.cur
-                    result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );
+                    // result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );
+                    def.resolve( true, result.hdurl );
                 });
         }
         else {
@@ -113,6 +117,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             progress.Set( "loading" );
 
             files.GetDataURI( url ).then( function( result ) {
+                history.DataURI( result );
+                localStorage[ "simptab-background-update" ] == "true" && files.DataURI( result );
                 files.Add( vo.constructor.BACKGROUND, result )
                     .progress( function( result ) {
                         if ( typeof result != "undefined" && !$.isEmptyObject( result )) {
@@ -172,6 +178,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
+            localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
+            localStorage[ "simptab-background-mode" ] == "time" && $( "body" ).hasClass("bgearth") && $( "body" ).removeClass( "bgearth" );
         }
     }
 
@@ -401,6 +409,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 adapter.bind( null, i, filelist[i].name.replace( /\.(jpg|jpge|png|gif|bmp)$/ig, "" ) )();
             }
         },
+
         Dislike: function( type ) {
             try {
                 var dislikelist = JSON.parse( localStorage["simptab-dislike"] || "[]" ),
@@ -424,6 +433,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 console.error( "background.Dislike(), Parse 'simptab-dislike' error.", error );
             }
         },
+
         Pin: function( is_pinned ) {
             console.log("Current background is pinned? ", is_pinned)
             if ( is_pinned ) {
@@ -442,16 +452,59 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             vo.cur.type != "upload" && vo.cur.favorite == -1 && controlbar.SetDislikeState( is_pinned );
             Waves.attach( '.icon', ['waves-circle'] );
         },
-        UpdateBg: function( type ) {
+
+        Update: function( type, is_refresh ) {
+            if ( is_refresh && vo.cur.type == "earth" ) {
+                new Notify().Render( i18n.GetLang( "notify_eartch_mode" ) );
+                return;
+            }
             if ( type == "none" ) writePinBackground();
             if ( type == "time" ) {
-                if ( localStorage[ "simptab-background-state" ] == "loading" || localStorage[ "simptab-background-state" ] == "pending" ) new Notify().Render( i18n.GetLang( "notify_refresh" ) )
-                else {
+                if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
+                    new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
+                } else {
                     localStorage[ "simptab-background-update" ] = "true";
                     bgeffect( "add" );
                     this.Get( true );
                 }
             }
-        }
+        },
+
+        Earth: function( is_notify ) {
+            localStorage["simptab-earth-notify"] != "false" &&
+                    new Notify().Render({ content: i18n.GetLang( "tips_earth" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
+                        localStorage["simptab-earth-notify"] = false;
+                    }});
+            if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 10000 ) {
+                is_notify && new Notify().Render( i18n.GetLang( "notify_eartch_update_failed" ) );
+                return;
+            }
+            var notify   = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" }),
+                getEarth = function () {
+                    apis.Earth( function ( base64 ) {
+                        notify.complete();
+                        $( "body" ).css( "background-image", "url(" + base64 + ")" ).addClass( "bgearth" );
+                        files.DataURI( base64 );
+                        files
+                            .Add( vo.constructor.BACKGROUND, files.DataURI() )
+                            .progress( function( result ) { console.log( "Write process:", result ); })
+                            .fail(     function( result ) { console.log( "Write error: ", result );  })
+                            .done( function( result ) {
+                                console.log( "Write completed: ", result );
+                                vo.Set( vo.new );
+                                localStorage[ "simptab-background-position" ] == "mask" && new Notify().Render( i18n.GetLang( "notify_carousel" ) );
+                                console.log( "======= Current background success.", vo )
+                                if ( is_notify ) {
+                                    new Notify().Render( i18n.GetLang( "notify_eartch_update_success" ) );
+                                    setTimeout( function () {
+                                        window.location.reload();
+                                    }, 2000 );
+                                }
+                        });
+                    });
+            };
+            getEarth();
+        },
+
     };
 });

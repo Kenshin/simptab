@@ -165,6 +165,14 @@ define([ "jquery", "vo" ], function( $, vo ) {
             }, errorBack );
         },
 
+        DeleteAny: function ( url, callback, errorBack ) {
+            fs.root.getFile( url , { create: false }, function( fileEntry ) {
+                fileEntry.remove( function() {
+                    callback( url );
+                }, errorBack );
+              }, errorBack );
+        },
+
         List: function( callback ) {
             fs.root.getDirectory( FOLDER_NAME, {}, function( dirEntry ) {
             var dirReader = dirEntry.createReader();
@@ -203,7 +211,7 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         DataURI: function( result ) {
-            return curURI = curURI || result;
+            return curURI = result || curURI;
         },
 
         VerifyUploadFile: function( arr ) {
@@ -286,6 +294,43 @@ define([ "jquery", "vo" ], function( $, vo ) {
             const $a = $( '<a style="display:none" href=' + url + ' download="' + name + '"></a>' ).appendTo( "body" );
             $a[0].click();
             $a.remove();
-        }
+        },
+
+        // hack code source from Add()
+        SaveBgfromURI: function( file_name, uri ) {
+
+            var path = file_name + ".jpg";
+            var def  = $.Deferred();
+
+            fs.root.getFile( path, { create : true }, function( fileEntry ) {
+                    fileEntry.createWriter( function( fileWriter ) {
+                        console.log("fileEntry.toURL() = " + fileEntry.toURL());
+                        fileWriter.onwritestart  = function(e) { def.notify( e ); };
+                        fileWriter.onprogress    = function(e) { def.notify( e ); };
+                        fileWriter.onwriteend    = unBindEvent;
+                        fileWriter.onabort       = unBindEvent;
+                        fileWriter.onerror       = unBindEvent;
+                        fileWriter.write( dataURItoBlob( uri ));
+
+                        function unBindEvent(e) {
+                            fileWriter.onwritestart = null;
+                            fileWriter.onprogress   = null;
+                            fileWriter.onabort      = null;
+                            fileWriter.onerror      = null;
+                            fileWriter.onwriteend   = null;
+                            e && e.type == "writeend" ? def.resolve( fileEntry.toURL() ) : def.reject( e );
+                        };
+                    }, function( error ) {
+                        console.log( "Save background fail, error is", error );
+                        def.reject( error );
+                    });
+                },
+                function( error ) {
+                        console.log( "Get background fail, error is", error );
+                        def.reject( error );
+                });
+
+            return def.promise();
+        },
     };
 });
