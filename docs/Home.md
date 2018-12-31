@@ -8,6 +8,7 @@
    <a href="http://ksria.com/simptab/crx/1.5.3/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
    <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
 </p>
+
 ***
 
 简 Tab - 帮助中心

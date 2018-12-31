@@ -1,3 +1,34 @@
+#### 1.5.4
+
+> 2018-12-31
+
+- :sparkles: Add Earth every moment;
+
+  > Earth every moment image via [向日葵-8號](http://himawari8.nict.go.jp/)
+
+  ![Xnip2018-12-28_14-33-18.jpg](https://i.loli.net/2018/12/28/5c25c57aa4589.jpg)
+
+- :sparkles: Add auto play background;
+
+- :sparkles: Add History background image record;
+
+  ![Xnip2018-12-28_14-12-53.jpg](https://i.loli.net/2018/12/28/5c25bfb86f655.jpg)
+
+- :sparkles: Add Explore;
+
+- :sparkles: Add White noise;
+
+  ![Xnip2018-12-28_14-50-20.jpg](https://i.loli.net/2018/12/28/5c25c7c50db43.jpg)
+
+- :sparkles: Add Send background image to iOS devices;
+
+- :lipstick: Optimize background download logic;
+
+- :lipstick: Optimize options UI;
+
+- :memo: 1.5.4 All Feature
+  ![SimpTab 1.5.4](https://i.loli.net/2018/12/29/5c270d58131ea.png)
+
 #### 1.5.3.1129
 
 > 2018-11-29
