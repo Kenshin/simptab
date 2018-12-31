@@ -50,6 +50,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                 $( ".dialog" ).html( rTmpl );
                 closeListenEvent();
                 moreAbout();
+                localStorage["simptab-background-mode"] == "earth" && $( ".dialog" ).width( 800 );
             }, 10 );
         }
     }

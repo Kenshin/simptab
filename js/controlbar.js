@@ -11,7 +11,8 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
     }
 
     function setBackground( url ) {
-        if ( localStorage[ "simptab-background-update" ] == "true" ) return;
+        // hack code
+        if ( $("body").css( "background-image" ) != "none" && localStorage[ "simptab-background-update" ] == "true" ) return;
         $("body").css({ "background-image": "url(" + url + ")" });
     }
 

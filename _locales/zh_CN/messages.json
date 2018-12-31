@@ -74,7 +74,7 @@
     },
 
     "controlbar_mobile": {
-        "message": "发送到手机端"
+        "message": "发送到手机"
     },
 
     "controlbar_favorite": {
@@ -261,6 +261,14 @@
         "message": "删除"
     },
 
+    "mange_explore_empty": {
+        "message": "暂时没有任何背景"
+    },
+
+    "mange_explore_loading": {
+        "message": "加载中，请稍等..."
+    },
+
     "bm_foder_search": {
         "message": "搜索"
     },
@@ -386,7 +394,7 @@
     },
 
     "options_custom_mobile_notice": {
-        "message": "此功能需要在 iOS 端安装 JSBox，详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>发送到手机端</a>"
+        "message": "此功能需要在 iOS 端安装 JSBox，详细说明请访问 <a href='http://ksria.com/simptab/docs/#/发送到手机' target='_blank'>发送到手机</a>"
     },
 
     "options_carousel_label": {
@@ -541,6 +549,30 @@
         "message": "安装到 最新版本 #1，#4详细请看 #2更新日志#3"
     },
 
+    "tips_zen_mode": {
+        "message": "欢迎来到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禅模式</a>，使用快捷键 c 或者鼠标移动右下角弹出选项卡。"
+    },
+
+    "tips_explore": {
+        "message": "向下滚动即可加载更多，显示速度取决于你的网速，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=探索'>探索</a> 。"
+    },
+
+    "tips_earth": {
+        "message": "欢迎使用地球每刻，感谢 <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> 提供，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻'>地球每刻</a> 。"
+    },
+
+    "tips_favorite": {
+        "message": "当收藏夹没有任何内容并仅启用收藏夹源的情况下会出现错误。"
+    },
+
+    "tips_noise": {
+        "message": "欢迎使用白噪音，快捷键 w 即可打开，更多细节请访问 <a target='_blank' href='http://ksria.com/simptab/docs/#/白噪音'>白噪音</a> 。"
+    },
+
+    "tips_confirm": {
+        "message": "不再提示"
+    },
+
     "notify_upload_complete": {
         "message": "背景上传完毕。"
     },
@@ -605,10 +637,6 @@
         "message": "设置成功。"
     },
 
-    "notify_mange_empty": {
-        "message": "暂时没有任何背景"
-    },
-
     "notify_mange_no_user": {
         "message": "暂无"
     },
@@ -653,22 +681,6 @@
         "message": "已退出禅模式，页面刷新后生效。"
     },
 
-    "notify_zen_mode_tips": {
-        "message": "欢迎来到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禅模式</a>，使用快捷键 c 或者鼠标移动右下角弹出选项卡。"
-    },
-
-    "notify_explore_tips": {
-        "message": "向下滚动即可加载更多，显示速度取决于你的网速，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/功能一览?id=探索'>探索</a> 。"
-    },
-
-    "notify_earth_tips": {
-        "message": "欢迎使用地球每刻，感谢 <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> 提供，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻'>地球每刻</a> 。"
-    },
-
-    "notify_zen_mode_tips_confirm": {
-        "message": "不再提示"
-    },
-
     "notify_mobile_send": {
         "message": "正在发送，请稍等..."
     },
@@ -682,7 +694,7 @@
     },
 
     "notify_mobile_host_failed": {
-        "message": "输入的监听地址不清楚，请重新输入。"
+        "message": "输入的监听地址不正确，请重新输入。"
     },
 
     "notify_carousel": {
@@ -697,6 +709,10 @@
         "message": "地球影像获取中，请稍等..."
     },
 
+    "notify_eartch_update_success": {
+        "message": "获取成功，2秒后，自动刷新本页才能生效。"
+    },
+
     "notify_eartch_update_failed": {
         "message": "此功能每隔一小时才会刷新一次，请勿多次调用。"
     },
@@ -707,6 +723,10 @@
 
     "notify_history_max": {
         "message": "当前已经是最新一张历史记录了。"
+    },
+
+    "notify_favorite_empty": {
+        "message": "收藏夹背景源暂无任何内容，已自动设置默认背景。"
     },
 
     "version_detail": {
@@ -751,6 +771,10 @@
 
     "version_detail_8": {
         "message": "新增：全新的禅模式，全局选项页，快捷搜索栏接入多种搜索引擎等；"
+    },
+
+    "version_detail_9": {
+        "message": "新增：地球每刻，白噪音，发送到手机，探索频道等；"
     },
 
     "welcome_start_title": {
@@ -827,6 +851,30 @@
 
     "welcome_153_desc_3": {
         "message": "自定义站点，自定义样式，更丰富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>个性定制化</a>"
+    },
+
+    "welcome_154_title_1": {
+        "message": "地球每刻"
+    },
+
+    "welcome_154_desc_1": {
+        "message": "来自 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%9C%B0%E7%90%83%E6%AF%8F%E5%88%BB'>向日葵-8號</a> 的地球自拍照，让你更爱这颗星球"
+    },
+
+    "welcome_154_title_2": {
+        "message": "白噪音"
+    },
+
+    "welcome_154_desc_2": {
+        "message": "从现在开始，内置 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%99%BD%E5%99%AA%E9%9F%B3'>白噪音</a> 的 简 Tab 会让你更加专注的工作、学习"
+    },
+
+    "welcome_154_title_3": {
+        "message": "岂止是一点点"
+    },
+
+    "welcome_154_desc_3": {
+        "message": "<a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95'>历史记录</a> · 精选自你的 Unsplash 源的 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E6%8E%A2%E7%B4%A2'>探索频道</a> · <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%8F%91%E9%80%81%E5%88%B0%E6%89%8B%E6%9C%BA'>发送背景到手机</a> "
     },
 
     "permissions": {

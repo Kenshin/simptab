@@ -4,10 +4,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     "use strict";
 
     var noise = {
-            "cafe001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/cafe001.mp3",
-            "jazz001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/jazz001.mp3",
-            "rain001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/rain001.mp3",
-            "thun001": "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/noise/thun001.mp3",
+            "cafe001": "https://simptab-1254315611.file.myqcloud.com/noise/cafe001.mp3",
+            "jazz001": "https://simptab-1254315611.file.myqcloud.com/noise/jazz001.mp3",
+            "rain001": "https://simptab-1254315611.file.myqcloud.com/noise/rain001.mp3",
+            "thun001": "https://simptab-1254315611.file.myqcloud.com/noise/thun001.mp3",
         },  colors = {
             "cafe001": "#753F40",
             "jazz001": "#3D5AFE",
@@ -114,6 +114,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
     return {
         Init: function() {
             message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
+                localStorage["simptab-noise-notify"] != "false" &&
+                new Notify().Render({ content: i18n.GetLang( "tips_noise" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
+                    localStorage["simptab-noise-notify"] = false;
+                }});
                 if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
                     open();
                 } else {

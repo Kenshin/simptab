@@ -261,6 +261,14 @@
         "message": "Remove Background"
     },
 
+    "mange_explore_empty": {
+        "message": "Not any background image"
+    },
+
+    "mange_explore_loading": {
+        "message": "Loading..."
+    },
+
     "bm_foder_search": {
         "message": "Search"
     },
@@ -386,7 +394,7 @@
     },
 
     "options_custom_mobile_notice": {
-        "message": "First JSBox is required to be installed on iOS, for details <a href='http://ksria.com/simptab/docs/#/多种背景源?id=发送到手机端' target='_blank'>Send to mobile</a>"
+        "message": "First JSBox is required to be installed on iOS, for details <a href='http://ksria.com/simptab/docs/#/发送到手机' target='_blank'>Send to mobile</a>"
     },
 
     "options_carousel_label": {
@@ -541,6 +549,30 @@
         "message": "Current version: #1. #4To learn more, please visit #2CHANGELOG#3."
     },
 
+    "tips_zen_mode": {
+        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
+    },
+
+    "tips_explore": {
+        "message": "Scroll down to load more, background loading depending on your network speed."
+    },
+
+    "tips_earth": {
+        "message": "Welcome to Earth every moment, earth background come from <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> ."
+    },
+
+    "tips_favorite": {
+        "message": "When favorite empty and only usage favorite origin will be errors."
+    },
+
+    "tips_noise": {
+        "message": "Welcome usage White noise, shortcuts w startup it."
+    },
+
+    "tips_confirm": {
+        "message": "Confirm"
+    },
+
     "notify_upload_complete": {
         "message": "Background image uploaded successfully."
     },
@@ -605,10 +637,6 @@
         "message": "Setting successful."
     },
 
-    "notify_mange_empty": {
-        "message": "Not any background image"
-    },
-
     "notify_mange_no_user": {
         "message": "anonymous"
     },
@@ -653,22 +681,6 @@
         "message": "Exit zen mode success, please refresh new tab."
     },
 
-    "notify_zen_mode_tips": {
-        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
-    },
-
-    "notify_explore_tips": {
-        "message": "Scroll down to load more, background loading depending on your network speed."
-    },
-
-    "notify_earth_tips": {
-        "message": "Welcome to Earth every moment, earth background come from <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> ."
-    },
-
-    "notify_zen_mode_tips_confirm": {
-        "message": "Confirm"
-    },
-
     "notify_mobile_send": {
         "message": "Send to mobile..."
     },
@@ -697,6 +709,10 @@
         "message": "Earth background loading..."
     },
 
+    "notify_eartch_update_success": {
+        "message": "Earth background loading success, will refresh automatically after 2 seconds."
+    },
+
     "notify_eartch_update_failed": {
         "message": "Update background image only once every hour, don't call it many times."
     },
@@ -707,6 +723,10 @@
 
     "notify_history_max": {
         "message": "This is the latest history background."
+    },
+
+    "notify_favorite_empty": {
+        "message": "Favorite origin is empty, re-set default background."
     },
 
     "version_detail": {
@@ -751,6 +771,10 @@
 
     "version_detail_8": {
         "message": "Add: Zen mode, Golbal options, Quick bar support multi-search;"
+    },
+
+    "version_detail_9": {
+        "message": "Add: Earth every moment, White noise, Background explore;"
     },
 
     "welcome_start_title": {
@@ -827,6 +851,30 @@
 
     "welcome_153_desc_3": {
         "message": "Custom topsites, Custom Style, Custom Unsplash origins"
+    },
+
+    "welcome_154_title_1": {
+        "message": "Earth every moment"
+    },
+
+    "welcome_154_desc_1": {
+        "message": "Earth background image via <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%9C%B0%E7%90%83%E6%AF%8F%E5%88%BB'>向日葵-8號</a>"
+    },
+
+    "welcome_154_title_2": {
+        "message": "White Noise"
+    },
+
+    "welcome_154_desc_2": {
+        "message": ""
+    },
+
+    "welcome_154_title_3": {
+        "message": "Background History & Explore"
+    },
+
+    "welcome_154_desc_3": {
+        "message": "Record max five background image history and background manage add explore tab"
     },
 
     "permissions": {

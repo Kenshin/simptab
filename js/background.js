@@ -97,7 +97,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     console.log( "=== Current background image url: " + result.hdurl )
                     console.log( "=== Current background vo.new   : ", vo.new        )
                     // when result.hdurl == vo.constructor.DEFAULT_BACKGROUND, version.hdurl verify failed, re-set vo.new is vo.cur
-                    result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );
+                    // result.hdurl != vo.constructor.DEFAULT_BACKGROUND ? def.resolve( true, result.hdurl ) : vo.new = vo.Clone( vo.cur );
+                    def.resolve( true, result.hdurl );
                 });
         }
         else {
@@ -178,6 +179,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
             localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
+            localStorage[ "simptab-background-mode" ] == "time" && $( "body" ).hasClass("bgearth") && $( "body" ).removeClass( "bgearth" );
         }
     }
 
@@ -465,13 +467,12 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     bgeffect( "add" );
                     this.Get( true );
                 }
-                $( "body" ).removeClass( "bgearth" );
             }
         },
 
         Earth: function( is_notify ) {
             localStorage["simptab-earth-notify"] != "false" &&
-                    new Notify().Render({ content: i18n.GetLang( "notify_earth_tips" ), action: i18n.GetLang( "notify_zen_mode_tips_confirm" ), callback:function (){
+                    new Notify().Render({ content: i18n.GetLang( "tips_earth" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
                         localStorage["simptab-earth-notify"] = false;
                     }});
             if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 10000 ) {
@@ -493,6 +494,12 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                                 vo.Set( vo.new );
                                 localStorage[ "simptab-background-position" ] == "mask" && new Notify().Render( i18n.GetLang( "notify_carousel" ) );
                                 console.log( "======= Current background success.", vo )
+                                if ( is_notify ) {
+                                    new Notify().Render( i18n.GetLang( "notify_eartch_update_success" ) );
+                                    setTimeout( function () {
+                                        window.location.reload();
+                                    }, 2000 );
+                                }
                         });
                     });
             };
