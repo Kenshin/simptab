@@ -291,6 +291,10 @@ img {
     background-image: url("../images/mobile.png");
 }
 
+.desktopicon {
+    background-image: url("../images/desktop.png");
+}
+
 /*
 * clock
 */

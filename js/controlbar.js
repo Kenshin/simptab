@@ -120,6 +120,16 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                 $( $( ".controlbar" ).find( "a" )[2] ).parent().removeClass( "horz-toolbox-show-3" );
             });
 
+            $( ".controlink[url=mobile]" ).mouseenter( function( event ) {
+                $( ".controlink[url=mobile]" ).prev().addClass( "horz-toolbox-show" );
+                $( ".controlink[url=desktop]" ).parent().addClass( "horz-toolbox-show-1" );
+            });
+
+            $($( ".controlbar li" )[12]).mouseleave( function( event ) {
+                $( ".controlink[url=mobile]" ).prev().removeClass( "horz-toolbox-show" );
+                $( ".controlink[url=desktop]" ).parent().removeClass( "horz-toolbox-show-1" );
+            });
+
             // listen control link
             $( ".controlink" ).click( function( event ) {
                 var $target =  $( event.currentTarget ),
@@ -228,6 +238,20 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                             new Notify().Render( 2, i18n.GetLang( "notify_mobile_send_failed" ) );
                         });
                         break;
+                    case "desktop":
+                        $.ajax({
+                            type       : "POST",
+                            url        : "http://localhost:56789/save",
+                            data       : files.DataURI(),
+                        }).then( function( result ) {
+                            result = JSON.parse( result );
+                            if ( result && result.code == 200 ) {
+                                new Notify().Render( "已成功发送到本地。" );
+                            }
+                        } , function( jqXHR, textStatus, errorThrown ) {
+                            console.log( jqXHR, textStatus, errorThrown )
+                        });
+                    break;
                 }
             });
         },
