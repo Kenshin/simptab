@@ -94,12 +94,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     }
 
     function run() {
-        var func = function ( source ) {
-            window.Notify   = Notify;
-            window.template = _.template;
-            return '( function ( $$version, Notify, template ) {' + source + '})( "0.0.1", Notify, template );'
-        };
-        new Function( func( storage.db.script ) )();
+        try {
+            var func = function ( source ) {
+                window.Notify   = Notify;
+                window.template = _.template;
+                return '( function ( $$version, Notify, template ) {' + source + '})( "0.0.1", Notify, template );'
+            };
+            new Function( func( storage.db.script ) )();
+        } catch ( error ) {
+            console.error( error )
+        }
     }
 
     function correctWinSize() {
