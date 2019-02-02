@@ -77,6 +77,10 @@
         "message": "發送到手機"
     },
 
+    "controlbar_desktop": {
+        "message": "設為桌面背景"
+    },
+
     "controlbar_favorite": {
         "message": "收藏"
     },
