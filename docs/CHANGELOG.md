@@ -8,6 +8,9 @@
 - :bug: 修复 `书签栏` 与 `发送到手机` 快捷键重复的问题， `发送到手机` 改为 快捷键 `e`
 - :sparkles: 新增 禅模式 `自定义脚本`，通过此功能，只需要使用简单的 JavaScript 可以让禅模式拥有更多 **玩法**  👉 <https://github.com/Kenshin/simptab/labels/script>
 
+  ![Xnip2019-02-02_15-28-19.jpg](https://i.loli.net/2019/02/02/5c55469fdb4a1.jpg)
+
+
 #### 1.5.4
 
 > 2018-12-31

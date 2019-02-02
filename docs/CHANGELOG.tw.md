@@ -7,6 +7,8 @@
 - :bug: 修復 `書籤欄` 與 `發送到手機` 快捷鍵重複的問題， `發送到手機` 改為 快捷鍵 `e`
 - :sparkles: 新增 禪模式 `自定義腳本`，通過此功能，只需要使用簡單的 JavaScript 可以讓禪模式擁有更多 **玩法**  👉 <https://github.com/Kenshin/simptab/labels/script>
 
+  ![Xnip2019-02-02_15-28-19.jpg](https://i.loli.net/2019/02/02/5c55469fdb4a1.jpg)
+
 #### 1.5.4
 
 > 2018-12-31
