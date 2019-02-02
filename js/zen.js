@@ -339,7 +339,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                             ' + cssView() + '\
                         </div>\
                         <div class="script" style="margin-top: 15px;">\
-                            <div class="title">自定义脚本</div>\
+                            <div class="title">' + i18n.GetLang( "zen_mode_setting_script" ) + '</div>\
                             ' + scriptView() + '\
                         </div>\
                         <div class="footer">\

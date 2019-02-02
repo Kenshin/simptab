@@ -509,6 +509,10 @@
         "message": "自定义样式"
     },
 
+    "zen_mode_setting_script": {
+        "message": "自定义脚本"
+    },
+
     "zen_mode_setting_import": {
         "message": "导入配置"
     },
