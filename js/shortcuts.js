@@ -22,7 +22,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             { short: "t", long: "about"    },
             { short: "s", long: "setting"  },
             { short: "d", long: "desktop"  },
-            { short: "b", long: "mobile"   },
+            { short: "e", long: "mobile"   },
             { short: "a", long: "favorite" },
             { short: "n", long: "pin"      },
             { short: "u", long: "dislike"  },
