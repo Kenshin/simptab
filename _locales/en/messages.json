@@ -509,6 +509,10 @@
         "message": "Custom CSS"
     },
 
+    "zen_mode_setting_script": {
+        "message": "Custom Script"
+    },
+
     "zen_mode_setting_import": {
         "message": "Import"
     },
