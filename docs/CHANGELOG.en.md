@@ -1,3 +1,11 @@
+
+#### 1.5.4.202
+
+> 2019-02-02
+
+- :bug: Fix `Bookmark` & `Send to mobile` shortcuts repeated questions;
+- :sparkles: Add `Custom Script` via Zen mode, you can usage js write zen-mode;
+
 #### 1.5.4
 
 > 2018-12-31
