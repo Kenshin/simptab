@@ -291,6 +291,10 @@ img {
     background-image: url("../images/mobile.png");
 }
 
+.desktopicon {
+    background-image: url("../images/desktop.png");
+}
+
 /*
 * clock
 */
@@ -1547,7 +1551,7 @@ img {
     bottom: 5px;
 
     width: 500px;
-    height: 400px;
+    height: 420px;
 
     padding: 15px;
 
@@ -1856,7 +1860,7 @@ img {
     bottom: 10px;
 
     width: 400px;
-    height: 465px;
+    height: 575px;
 
     padding: 15px;
 
@@ -2048,7 +2052,8 @@ img {
     font-size: large!important;
 }
 
-.setting-zen-mode .css textarea {
+.setting-zen-mode .css textarea,
+.setting-zen-mode .script textarea {
     max-width: 395px;
     height: 60px;
 }

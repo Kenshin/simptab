@@ -17,6 +17,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                 devices : { color: "", display: "true" },
                 topsites: { display: "true" },
                 css     : "",
+                script  : "",
                 version : chrome.runtime.getManifest().version.replace( /.\d{2,}/, "" ),
             },
             key     = "simptab-tenmode-option",
@@ -90,6 +91,19 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     function custom() {
         if ( $( "#zen-mode-style" ).length >= 0 ) $( "#zen-mode-style" ).remove();
         $( "head" ).append( '<style id="zen-mode-style" type="text/css">' + storage.db.css + '</style>' );
+    }
+
+    function run() {
+        try {
+            var func = function ( source ) {
+                window.Notify   = Notify;
+                window.template = _.template;
+                return '( function ( $$version, Notify, template ) {' + source + '})( "0.0.1", Notify, template );'
+            };
+            new Function( func( storage.db.script ) )();
+        } catch ( error ) {
+            console.error( error )
+        }
     }
 
     function correctWinSize() {
@@ -251,6 +265,22 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     }
 
     /*********************************************
+     * Script
+     *********************************************/
+
+    function scriptView() {
+        return '<div class="content"><textarea class="md-textarea"></textarea></div>';
+    }
+
+    function scriptModel() {
+        $( ".setting-zen-mode .script textarea" ).val( storage.db.script );
+        $( ".setting-zen-mode" ).on( "keyup", ".script textarea", function( event ) {
+            storage.db.script = event.target.value;
+            storage.Set();
+        });
+    }
+
+    /*********************************************
      * Footer
      *********************************************/
 
@@ -312,6 +342,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_css" ) + '</div>\
                             ' + cssView() + '\
                         </div>\
+                        <div class="script" style="margin-top: 15px;">\
+                            <div class="title">' + i18n.GetLang( "zen_mode_setting_script" ) + '</div>\
+                            ' + scriptView() + '\
+                        </div>\
                         <div class="footer">\
                             <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
                             <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
@@ -324,6 +358,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         themeModel();
         moduleModel();
         cssModel();
+        scriptModel();
         footerModel();
     }
 
@@ -373,6 +408,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         $( ".controlbar" ).addClass( "controlbar-zen-mode" );
         $( ".progress"   ).addClass( "progress-zen-mode" );
         $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' );
+        storage.db.script != "" && run();
         custom();
         storage.db.theme == "#ffffff" && $( ".setting-trigger-zen-mode" ).addClass( "setting-trigger-white-zen-mode" );
         $( ".setting-trigger-zen-mode" ).on( "click", function( event ) {

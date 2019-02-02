@@ -77,6 +77,10 @@
         "message": "Send to Mobile"
     },
 
+    "controlbar_desktop": {
+        "message": "Set wallpaper"
+    },
+
     "controlbar_favorite": {
         "message": "Like"
     },
@@ -503,6 +507,10 @@
 
     "zen_mode_setting_css": {
         "message": "Custom CSS"
+    },
+
+    "zen_mode_setting_script": {
+        "message": "Custom Script"
     },
 
     "zen_mode_setting_import": {

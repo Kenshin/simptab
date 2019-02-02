@@ -180,6 +180,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             console.log( "======= New Background Obj is ", vo );
             localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
             localStorage[ "simptab-background-mode" ] == "time" && $( "body" ).hasClass("bgearth") && $( "body" ).removeClass( "bgearth" );
+            // test code
+            //localStorage[ "simptab-background-mode" ] == "time" && $( ".controlink[url=desktop]" )[0].click();
         }
     }
 

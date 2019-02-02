@@ -77,6 +77,10 @@
         "message": "发送到手机"
     },
 
+    "controlbar_desktop": {
+        "message": "设为桌面背景"
+    },
+
     "controlbar_favorite": {
         "message": "收藏"
     },
@@ -503,6 +507,10 @@
 
     "zen_mode_setting_css": {
         "message": "自定义样式"
+    },
+
+    "zen_mode_setting_script": {
+        "message": "自定义脚本"
     },
 
     "zen_mode_setting_import": {
