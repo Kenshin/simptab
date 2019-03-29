@@ -278,6 +278,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             storage.db.script = event.target.value;
             storage.Set();
         });
+        $( ".setting-zen-mode" ).on( "click", ".script .subtitle span", function( event ) {
+            // TO-DO
+        });
     }
 
     /*********************************************
@@ -345,6 +348,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                         <div class="script" style="margin-top: 15px;">\
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_script" ) + '</div>\
                             ' + scriptView() + '\
+                            <div class="subtitle"><a href="http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F?id=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%84%9A%E6%9C%AC" target="_blank">' + i18n.GetLang( "zen_mode_setting_script_howto" ) + '</a> & <span>' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</span></div>\
                         </div>\
                         <div class="footer">\
                             <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
