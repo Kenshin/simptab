@@ -955,6 +955,14 @@ img {
     align-items: flex-start;
 }
 
+.manage .album.subscribe .photograph .photos {
+    margin-top: 25px;
+}
+
+.manage .album.subscribe .photograph:nth-child(1) .photos {
+    margin-top: 0;
+}
+
 .manage .album.subscribe .photograph img {
     margin: 17px;
 }
