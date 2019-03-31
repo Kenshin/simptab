@@ -279,7 +279,29 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             storage.Set();
         });
         $( ".setting-zen-mode" ).on( "click", ".script .subtitle span", function( event ) {
-            // TO-DO
+            var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || "{}" ),
+                runat  = function() {
+                    close();
+                    new Function( manage.script )();
+                };
+            if ( $.isEmptyObject( manage )) {
+                $.ajax({
+                    type       : "GET",
+                    url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/manage.json?" + Math.round(+new Date()),
+                    dataType   : "json"
+                }).then( function( result ) {
+                    if ( result && result.version == "" ) {
+                        new Notify().Render( "此功能将会马上推出。" );
+                    } else if ( result && result.version ) {
+                        manage = result;
+                        localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( manage );
+                        new Notify().Render( "已成功加载脚本管理器。" );
+                        runat();
+                    }
+                }, function( jqXHR, textStatus, errorThrown ) {
+                    new Notify().Render( 2, "当前网络发生了一些问题，请稍后再试。" );
+                });
+            } else runat();
         });
     }
 
