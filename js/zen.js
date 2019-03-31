@@ -291,15 +291,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                     dataType   : "json"
                 }).then( function( result ) {
                     if ( result && result.version == "" ) {
-                        new Notify().Render( "此功能将会马上推出。" );
+                        new Notify().Render( i18n.GetLang( "notify_zen_mode_script_loader_none" ) );
                     } else if ( result && result.version ) {
                         manage = result;
                         localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( manage );
-                        new Notify().Render( "已成功加载脚本管理器。" );
+                        new Notify().Render( i18n.GetLang( "notify_zen_mode_script_loader_success" ) );
                         runat();
                     }
                 }, function( jqXHR, textStatus, errorThrown ) {
-                    new Notify().Render( 2, "当前网络发生了一些问题，请稍后再试。" );
+                    new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
                 });
             } else runat();
         });

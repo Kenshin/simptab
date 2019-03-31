@@ -693,6 +693,18 @@
         "message": "导入失败，配置文件解析失败，请重新确认。"
     },
 
+    "notify_zen_mode_script_loader_none": {
+        "message": "此功能将会马上推出。"
+    },
+
+    "notify_zen_mode_script_loader_success": {
+        "message": "已成功加载脚本管理器。"
+    },
+
+    "notify_zen_mode_script_loader_failed": {
+        "message": "当前网络发生了一些问题，请稍后再试。"
+    },
+
     "notify_zen_mode_exit": {
         "message": "已退出禅模式，页面刷新后生效。"
     },
