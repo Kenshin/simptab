@@ -1,4 +1,12 @@
 
+#### 1.5.4.303
+
+> 2019-03-31
+
+- :bug: Fix `Zen mode` background auto play bug;
+- :bug: Fix `Zen mode` Histroy can be usage bug;
+- :bug: Fix `Background Manage` style bug;
+
 #### 1.5.4.202
 
 > 2019-02-02
@@ -156,7 +164,7 @@
 
 - :hammer: Unified `bookmarks` 与 `setting` Effect;
 
-- :hammer: Rework `Topsites - senior` UI; 
+- :hammer: Rework `Topsites - senior` UI;
 
 - :memo: 1.5.2 All feature
   ![SimpTab 1.5.2](https://i.loli.net/2018/10/11/5bbf2d08da9c1.png)
