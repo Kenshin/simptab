@@ -513,6 +513,14 @@
         "message": "自定義腳本"
     },
 
+    "zen_mode_setting_script_howto": {
+        "message": "如何使用"
+    },
+
+    "zen_mode_setting_script_manage": {
+        "message": "腳本管理器"
+    },
+
     "zen_mode_setting_import": {
         "message": "導入配置"
     },
@@ -683,6 +691,18 @@
 
     "notify_zen_mode_import_failed": {
         "message": "導入失敗，配置文件解析失敗，請重新確認。"
+    },
+
+    "notify_zen_mode_script_loader_none": {
+        "message": "此功能將會馬上推出。"
+    },
+
+    "notify_zen_mode_script_loader_success": {
+        "message": "已成功載入腳本管理器。"
+    },
+
+    "notify_zen_mode_script_loader_failed": {
+        "message": "當前網路發生了一些問題，請稍後再試。"
     },
 
     "notify_zen_mode_exit": {

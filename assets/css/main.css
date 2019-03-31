@@ -955,6 +955,14 @@ img {
     align-items: flex-start;
 }
 
+.manage .album.subscribe .photograph .photos {
+    margin-top: 25px;
+}
+
+.manage .album.subscribe .photograph:nth-child(1) .photos {
+    margin-top: 0;
+}
+
 .manage .album.subscribe .photograph img {
     margin: 17px;
 }
@@ -1860,7 +1868,7 @@ img {
     bottom: 10px;
 
     width: 400px;
-    height: 575px;
+    height: 605px;
 
     padding: 15px;
 
@@ -1887,6 +1895,28 @@ img {
     transform-origin: left top 0;
 }
 
+.setting-zen-mode .subtitle {
+    margin-top: 5px;
+    font-size: 18px;
+    transform: scale(.75);
+    transform-origin: left top 0;
+}
+
+.setting-zen-mode .subtitle a {
+    color: inherit;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+.setting-zen-mode .subtitle a:hover,
+.setting-zen-mode .subtitle span:hover {
+    font-weight: bold;
+}
+
+.setting-zen-mode .subtitle span {
+    cursor: pointer;
+    transition: all .3s ease;
+}
 
 .setting-zen-mode .themes .content {
     display: flex;

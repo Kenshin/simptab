@@ -513,6 +513,14 @@
         "message": "自定义脚本"
     },
 
+    "zen_mode_setting_script_howto": {
+        "message": "如何使用"
+    },
+
+    "zen_mode_setting_script_manage": {
+        "message": "脚本管理器"
+    },
+
     "zen_mode_setting_import": {
         "message": "导入配置"
     },
@@ -683,6 +691,18 @@
 
     "notify_zen_mode_import_failed": {
         "message": "导入失败，配置文件解析失败，请重新确认。"
+    },
+
+    "notify_zen_mode_script_loader_none": {
+        "message": "此功能将会马上推出。"
+    },
+
+    "notify_zen_mode_script_loader_success": {
+        "message": "已成功加载脚本管理器。"
+    },
+
+    "notify_zen_mode_script_loader_failed": {
+        "message": "当前网络发生了一些问题，请稍后再试。"
     },
 
     "notify_zen_mode_exit": {
