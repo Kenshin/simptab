@@ -73,7 +73,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // get time
     date.Toggle( setting.Mode( "clockstate" ));
 
-    controlbar.AutoPlay();
+    localStorage["simptab-zenmode"] != "true" && controlbar.AutoPlay();
 
     // listen
     controlbar.Listen( function( type, result ) {
@@ -127,7 +127,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         background.Earth();
     });
     message.Subscribe( message.TYPE.HISTORY, function( event ) {
-        options.Storage.db.history && history.Get( event.data );
+        localStorage["simptab-zenmode"] != "true" && options.Storage.db.history && history.Get( event.data );
     });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
@@ -139,6 +139,6 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
 
     noise.Init();
 
-    localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
+    localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
 });

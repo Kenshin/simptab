@@ -278,6 +278,31 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             storage.db.script = event.target.value;
             storage.Set();
         });
+        $( ".setting-zen-mode" ).on( "click", ".script .subtitle span", function( event ) {
+            var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || "{}" ),
+                runat  = function() {
+                    close();
+                    new Function( manage.script )();
+                };
+            if ( $.isEmptyObject( manage )) {
+                $.ajax({
+                    type       : "GET",
+                    url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/manage.json?" + Math.round(+new Date()),
+                    dataType   : "json"
+                }).then( function( result ) {
+                    if ( result && result.version == "" ) {
+                        new Notify().Render( i18n.GetLang( "notify_zen_mode_script_loader_none" ) );
+                    } else if ( result && result.version ) {
+                        manage = result;
+                        localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( manage );
+                        new Notify().Render( i18n.GetLang( "notify_zen_mode_script_loader_success" ) );
+                        runat();
+                    }
+                }, function( jqXHR, textStatus, errorThrown ) {
+                    new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
+                });
+            } else runat();
+        });
     }
 
     /*********************************************
@@ -345,6 +370,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                         <div class="script" style="margin-top: 15px;">\
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_script" ) + '</div>\
                             ' + scriptView() + '\
+                            <div class="subtitle"><a href="http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F?id=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%84%9A%E6%9C%AC" target="_blank">' + i18n.GetLang( "zen_mode_setting_script_howto" ) + '</a> & <span>' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</span></div>\
                         </div>\
                         <div class="footer">\
                             <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\

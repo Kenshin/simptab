@@ -513,6 +513,14 @@
         "message": "Custom Script"
     },
 
+    "zen_mode_setting_script_howto": {
+        "message": "How to use"
+    },
+
+    "zen_mode_setting_script_manage": {
+        "message": "Script Loader"
+    },
+
     "zen_mode_setting_import": {
         "message": "Import"
     },
@@ -683,6 +691,18 @@
 
     "notify_zen_mode_import_failed": {
         "message": "Import failed, config file parse."
+    },
+
+    "notify_zen_mode_script_loader_none": {
+        "message": "This feature will be come soon."
+    },
+
+    "notify_zen_mode_script_loader_success": {
+        "message": "Script manage loading success."
+    },
+
+    "notify_zen_mode_script_loader_failed": {
+        "message": "Script manage loading failed."
     },
 
     "notify_zen_mode_exit": {
