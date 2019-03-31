@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name"            : "__MSG_extension_name__",
     "short_name"      : "SimpTab",
-    "version"         : "1.5.4.202",
+    "version"         : "1.5.4.330",
     "default_locale"  : "zh_CN",
     "description"     : "__MSG_extension_desc__",
     "author"          : "Kenshin",
