@@ -720,10 +720,10 @@ define([ "jquery", "i18n", "setting", "vo", "date", "error", "cdns", "options", 
         Earth: function ( callback ) {
             var size = 550,
                 urls = [
-                    "https://simptab.herokuapp.com/earth/0_0.png",
-                    "https://simptab.herokuapp.com/earth/0_1.png",
-                    "https://simptab.herokuapp.com/earth/1_0.png",
-                    "https://simptab.herokuapp.com/earth/1_1.png",
+                    "https://simptab.now.sh/earth/0_0.png",
+                    "https://simptab.now.sh/earth/0_1.png",
+                    "https://simptab.now.sh/earth/1_0.png",
+                    "https://simptab.now.sh/earth/1_1.png",
                 ],
                 poisition = [{ x:0, y: 0 },{ x:0, y: size },{ x:size, y: 0 },{ x:size, y: size }],
                 imgLoad   = function( i, poisition, url, context ) {
