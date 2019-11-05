@@ -473,6 +473,14 @@
         "message": "Support text and (function(){xxxx})()"
     },
 
+    "options_custom_hour": {
+        "message": "12/24 Hours"
+    },
+
+    "options_custom_hour_notice": {
+        "message": "Default is 24 hours, changed to 12 hours?"
+    },
+
     "options_footer_clear": {
         "message": "Clear"
     },

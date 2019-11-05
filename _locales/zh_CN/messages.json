@@ -473,6 +473,14 @@
         "message": "自定义新标签页的标题，支持 文本 或 自执行语句，详细请看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义标题' target='_blank'>自定义标题</a>"
     },
 
+    "options_custom_hour": {
+        "message": "12/24 小时制"
+    },
+
+    "options_custom_hour_notice": {
+        "message": "默认为 24小时制，是否启用 12 小时制"
+    },
+
     "options_footer_clear": {
         "message": "恢复初始值"
     },

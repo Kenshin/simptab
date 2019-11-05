@@ -2041,7 +2041,8 @@ img {
 #topsites-cbx:checked + .toggle:before,
 #custom-unsplash-cbx:checked + .toggle:before,
 #custom-tp-cbx:checked + .toggle:before,
-#history-cbx:checked + .toggle:before {
+#history-cbx:checked + .toggle:before,
+#custom-hour-cbx:checked + .toggle:before {
     background: #4DB6AC;
 }
 
@@ -2051,7 +2052,8 @@ img {
 #topsites-cbx:checked + .toggle span,
 #custom-unsplash-cbx:checked + .toggle span,
 #custom-tp-cbx:checked + .toggle span,
-#history-cbx:checked + .toggle span {
+#history-cbx:checked + .toggle span,
+#custom-hour-cbx:checked + .toggle span {
     background: #00796B;
     transform: translateX(20px);
     transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
@@ -2064,7 +2066,8 @@ img {
 #topsites-cbx:checked + .toggle span:before,
 #custom-unsplash-cbx:checked + .toggle span:before,
 #custom-tp-cbx:checked + .toggle span:before,
-#history-cbx:checked + .toggle span:before {
+#history-cbx:checked + .toggle span:before,
+#custom-hour-cbx:checked + .toggle span:before {
     transform: scale(1);
     opacity: 0;
     transition: all 0.4s ease;

@@ -40,6 +40,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     },
                     mobile_host: "",
                     carousel: "-1",
+                    hour12: false,
                     history: false,
                 };
 
@@ -257,6 +258,30 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
+     * Custom hour
+     *********************************************/
+
+    function customHourView() {
+        var tmpl = '<div class="switche">\
+                        <div class="label">' + i18n.GetLang( "options_custom_hour_notice" ) + '</div>\
+                        ' + comps.Switches( "custom-hour-cbx" ) + '\
+                   </div>\
+                   ';
+        return tmpl;
+    }
+
+    function customHourModel() {
+        $( ".options .custom-hour" ).find( "input[id=custom-hour-cbx]" ).prop( "checked", storage.db.hour12 );
+        $( ".options" ).on( "change", ".custom-hour input", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            storage.db.hour12 = value;
+            storage.Set();
+        });
+    }
+
+    /*********************************************
      * Footer
      *********************************************/
 
@@ -327,6 +352,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                             <div class="group custom-tp">' + customTpView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_title" ) + '</div>\
                             <div class="group custom-title">' + customTitleView() + '</div>\
+                            <div class="title">' + i18n.GetLang( "options_custom_hour" ) + '</div>\
+                            <div class="group custom-hour">' + customHourView() + '</div>\
                         </div>\
                         ' + footerView() + '\
                     </div>\
@@ -337,6 +364,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         customStyleModel();
         customSearchModel();
         customTitleModel();
+        customHourModel();
         footerModel();
     }
 
