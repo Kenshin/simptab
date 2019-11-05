@@ -441,6 +441,10 @@
         "message": "自定義樣式（ 全局 ）"
     },
 
+    "options_custom_style_notice": {
+        "message": "與 <a href='http://ksria.com/simptab/docs/#/禅模式?id=自定义样式' target='_blank'>禅模式 · 自定义样式</a> 的區別在於前者只應用於禪模式；此自定樣式屬於全局，詳細請看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义样式' target='_blank'>自定义样式</a><"
+    },
+
     "options_custom_tp": {
         "message": "自定義站點（ Topsites ）"
     },

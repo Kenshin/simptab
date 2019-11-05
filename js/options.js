@@ -162,7 +162,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
      *********************************************/
 
     function customStyleView() {
-        var tmpl = '<textarea class="md-textarea"></textarea>';
+        var tmpl = '<textarea class="md-textarea"></textarea>\
+                    <div class="notice">' + i18n.GetLang( "options_custom_style_notice" ) + '</div>';
         return tmpl;
     }
 

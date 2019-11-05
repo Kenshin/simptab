@@ -441,6 +441,10 @@
         "message": "Custom global Style"
     },
 
+    "options_custom_style_notice": {
+        "message": "Custom global Style"
+    },
+
     "options_custom_tp": {
         "message": "Custom Topsites"
     },
