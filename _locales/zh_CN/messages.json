@@ -450,7 +450,7 @@
     },
 
     "options_custom_tp_notice": {
-        "message": "目前仅支持最多九个网址，每行一个用小写 , 分隔 → simptab, http://ksria.com/simptab"
+        "message": "目前仅支持最多九个网址，每行一个，详细请看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义站点' target='_blank'>自定义站点</a>"
     },
 
     "options_custom_search": {
