@@ -457,6 +457,10 @@
         "message": "自定义搜索"
     },
 
+    "options_custom_search_notice": {
+        "message": "使用快捷键 q 打开 快捷搜索栏，再使用 s 触发搜索，详细请看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义搜索' target='_blank'>自定义搜索</a>"
+    },
+
     "options_footer_clear": {
         "message": "恢复初始值"
     },

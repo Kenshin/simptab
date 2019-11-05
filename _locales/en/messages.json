@@ -457,6 +457,10 @@
         "message": "Custom Search"
     },
 
+    "options_custom_search_notice": {
+        "message": "Usage shortcuts q s Open"
+    },
+
     "options_footer_clear": {
         "message": "Clear"
     },
