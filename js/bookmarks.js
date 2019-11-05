@@ -30,13 +30,16 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         },
         folderHTML = '\
                     <div class="folder special search" data-balloon="' + i18n.GetLang( "bm_foder_search" ) + '" data-balloon-pos="right">\
-                        <span id="search" class="waves-effect waves-block"><icon id="search"></icon></span>\
+                        <span class="name" id="search" class="waves-effect waves-block"><icon id="search"></icon></span>\
+                        <span class="full">' + i18n.GetLang( "bm_foder_search" ) + '</span>\
                     </div>\
                     <div class="folder special root" data-balloon="' + i18n.GetLang( "bm_foder_root" ) + '" data-balloon-pos="right">\
-                        <span id="root" class="active waves-effect waves-block"><icon id="root"></icon></span>\
+                        <span class="name" id="root" class="active waves-effect waves-block"><icon id="root"></icon></span>\
+                        <span class="full">' + i18n.GetLang( "bm_foder_root" ) + '</span>\
                     </div>\
                     <div class="folder special recent" data-balloon="' + i18n.GetLang( "bm_foder_recent" ) + '" data-balloon-pos="right">\
-                        <span id="recent" class="waves-effect waves-block"><icon id="recent"></icon></span>\
+                        <span class="name" id="recent" class="waves-effect waves-block"><icon id="recent"></icon></span>\
+                        <span class="full">' + i18n.GetLang( "bm_foder_recent" ) + '</span>\
                     </div>\
                     ',
         fileHTML = "";
@@ -70,16 +73,15 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
     }
 
     function folderListen() {
-        $( "body" ).on( "click", ".bm .folders .folder span", function( event ) {
-            var id      = event.target.id,
-                $target = $( event.target ),
-                tag     = event.target.tagName.toLowerCase();
+        $( "body" ).on( "click", ".bm .folders .folder", function( event ) {
+            var $target = $( event.currentTarget ),
+                id      = $target.find( 'span.name' ).attr( "id" ),
+                tag     = event.currentTarget.tagName.toLowerCase();
 
             if ( id != "search" ) {
                 $( ".bm .folders .folder span" ).removeClass( "active" );
-                tag == "span" ?
-                    $target.addClass( "active" ) :
-                    $target.parent().addClass( "active" );
+                $( ".bm .folders .folder" ).removeClass( "active" );
+                $target.addClass( 'active' ).find( 'span.name' ).addClass( 'active' );
             }
 
             if ( id == "search" ) {
@@ -112,6 +114,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
             if ( result && result.length > 0 && result[0].children && result[0].children.length > 0 ) {
                 bookmarks.origin = result[0].children[0].children;
                 fmtBookmarks( bookmarks.origin, true );
+                countMaxWith();
             } else {
                 new Notify().Render( i18n.GetLang( "notify_bm_empty" ));
                 $( ".bm-overlay" ).remove();
@@ -160,7 +163,8 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
             title = folder.title.substr( 0, 1 ),
             tmpl  = '\
                     <div class="folder normal" data-balloon="' + folder.title + '" data-balloon-pos="right">\
-                        <span id="' + id + '" class="waves-effect waves-block" style="background-color: ' + getBgColor( title ) + '">' + title + '</span>\
+                        <span class="name" id="' + id + '" class="waves-effect waves-block" style="background-color: ' + getBgColor( title ) + '">' + title + '</span>\
+                        <span class="full">' + folder.title + '</span>\
                     </div>';
         folderHTML += tmpl;
         $( ".bm .folders" ).html( folderHTML );
@@ -183,6 +187,18 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         var compiled= _.template( fileTmpl ),
             html    = compiled({ title: title, url: url, avatar: avatar, bgColor: bgColor });
         fileHTML += html;
+    }
+
+    function countMaxWith() {
+        var width = 0;
+        $( '.folders .folder .full' ).map( function( idx, item ) {
+            if ( $(item).text().length > width ) {
+                width = $(item).text().length;
+            }
+        });
+        var max = $('.folder').width() + width * 26;
+        max > 450 && ( max = 450 );
+        $( 'head' ).append( '<style type="text/css">.bm .folders:hover{width: '+ max +'px;}</style>' );
     }
 
     function bmSearch( value ) {

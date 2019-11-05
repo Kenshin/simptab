@@ -1323,9 +1323,18 @@ img {
 }
 
 .bm .folders {
-    width: 70px;
+    width: 53px;
     height: 100%;
     background: rgb(238, 238, 238);
+    transition: all 500ms ease;
+}
+
+.bm .folders:hover {
+    max-width: 450px;
+}
+
+.bm .folders:hover .folder .full {
+    opacity: 1;
 }
 
 .bm .folders .folder:first-child {
@@ -1334,7 +1343,7 @@ img {
 
 .bm .folders .folder {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     width: 100%;
@@ -1348,6 +1357,10 @@ img {
 
 .bm .folders .folder:hover {
     background-color: rgb(189, 189, 189);
+}
+
+.bm .folders .folder.active {
+    background-color: rgba(189, 189, 189, .7);
 }
 
 .bm .folders .folder span {
@@ -1367,6 +1380,21 @@ img {
     border-radius: 4px;
 
     cursor: pointer;
+}
+
+.bm .folders .folder .full {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    color: #000;
+    background-color: transparent!important;
+
+    font-size: 12px;
+    font-weight: 300;
+
+    opacity: 0;
+    transition: all 500ms ease;
 }
 
 .bm .folders .folder span.active {
