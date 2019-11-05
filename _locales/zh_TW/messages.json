@@ -465,6 +465,14 @@
         "message": "使用快捷鍵 q 打開 快捷搜索欄，再使用 s 觸發搜索，詳細請看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义搜索' target='_blank'>自定義搜索</a>"
     },
 
+    "options_custom_title": {
+        "message": "自定義標題"
+    },
+
+    "options_custom_title_notice": {
+        "message": "自定義新標籤頁的標題，支持 文本 或 自執行語句，詳細請看 <a href='http://ksria.com/simptab/docs/#/選項頁?id=自定义标题' target='_blank'>自定義標題</a>"
+    },
+
     "options_footer_clear": {
         "message": "恢復初始值"
     },

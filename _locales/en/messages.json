@@ -465,6 +465,14 @@
         "message": "Usage shortcuts q s Open"
     },
 
+    "options_custom_title": {
+        "message": "Custom New Tab title"
+    },
+
+    "options_custom_title_notice": {
+        "message": "Support text and (function(){xxxx})()"
+    },
+
     "options_footer_clear": {
         "message": "Clear"
     },

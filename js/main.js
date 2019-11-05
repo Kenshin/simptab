@@ -108,6 +108,10 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // short cuts init
     shortcuts.Init();
 
+    // custom title
+    if ( options.Storage.db.title.startsWith( '(function()' ) ) new Function( options.Storage.db.title )();
+    else options.Storage.db.title && ( document.title = options.Storage.db.title );
+
     version.Init( function( ver ) {
         welcome.Render( ver );
     });

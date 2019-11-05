@@ -16,6 +16,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         custom: "",
                     },
                     css: "",
+                    title: "",
                     search: [
                         '{"key":"g",  "color": "#4285F4", "title":"谷歌搜索",    "query": "https://www.google.com/search?q={query}"}',
                         '{"key":"b",  "color": "#0C8484", "title":"必应搜索",    "query": "https://bing.com/search?q={query}"}',
@@ -238,6 +239,24 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
+     * Custom Title
+     *********************************************/
+
+    function customTitleView() {
+        var tmpl = '<input class="md-input" type="text" placeholder=""/>\
+                    <div class="notice">' + i18n.GetLang( "options_custom_title_notice" ) + '</div>';
+        return tmpl;
+    }
+
+    function customTitleModel() {
+        $( ".options .custom-title" ).find( "input" ).val( storage.db.title );
+        $( ".options" ).on( "keyup", ".custom-title input", function( event ) {
+            storage.db.title = event.target.value;
+            storage.Set();
+        });
+    }
+
+    /*********************************************
      * Footer
      *********************************************/
 
@@ -306,6 +325,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                             <div class="group custom-search">' + customSearchView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_tp" ) + '</div>\
                             <div class="group custom-tp">' + customTpView() + '</div>\
+                            <div class="title">' + i18n.GetLang( "options_custom_title" ) + '</div>\
+                            <div class="group custom-title">' + customTitleView() + '</div>\
                         </div>\
                         ' + footerView() + '\
                     </div>\
@@ -315,6 +336,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         customTpModel();
         customStyleModel();
         customSearchModel();
+        customTitleModel();
         footerModel();
     }
 
