@@ -450,7 +450,7 @@
     },
 
     "options_custom_tp_notice": {
-        "message": "目前僅支持最多九個網址，每行一個用小寫 , 分隔 → simptab, http://ksria.com/simptab"
+        "message": "目前僅支持最多九個網址，每行一個，詳細請看，<a href='http://ksria.com/simptab/docs/#/选项页?id=自定义站点' target='_blank'>自定义站点</a>"
     },
 
     "options_custom_search": {
