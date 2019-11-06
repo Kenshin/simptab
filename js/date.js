@@ -15,7 +15,7 @@ define([ "jquery", "options" ], function( $, options ) {
             if ( type == "show" ) {
                 $( "#time" ).fadeIn( 500 );
                 var date = new Date(),
-                    time = new Date().toLocaleString('en-US',{ hour12: options.Storage.db.hour12 }).replace( /[\d/,]+ /i, '' ).replace( /:\d+( PM)?$/i, '' );
+                    time = new Date().toLocaleString('en-US',{ hour12: options.Storage.db.hour12 }).replace( /[\d/,]+ /i, '' ).replace( /:\d+( AM| PM)?$/i, '' );
 
                 // set date
                 $( "#time" ).attr("data-balloon", date.getFullYear() + "-" + ( date.getUTCMonth() + 1 ) + "-" + date.getDate() );
@@ -27,7 +27,7 @@ define([ "jquery", "options" ], function( $, options ) {
                 }
                 $( "#time" ).text( time + sufix );
                 setInterval(function() {
-                    time = new Date().toLocaleString('en-US',{ hour12: options.Storage.db.hour12 }).replace( /[\d/,]+ /i, '' ).replace( /:\d+( PM)?$/i, '' );
+                    time = new Date().toLocaleString('en-US',{ hour12: options.Storage.db.hour12 }).replace( /[\d/,]+ /i, '' ).replace( /:\d+( AM| PM)?$/i, '' );
                     var sufix = '';
                     if ( options.Storage.db.hour12 ) {
                         sufix = new Date().getHours() > 11 ? ' PM' : ' AM';
