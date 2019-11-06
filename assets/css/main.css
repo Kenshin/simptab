@@ -1,7 +1,5 @@
-@font-face {
-    src: url("../fonts/clock.ttf");
-    font-family: "clock";
-}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100&display=swap');
 
 /*
 * global
@@ -299,13 +297,19 @@ img {
 * clock
 */
 .clock {
+    font-family: 'Montserrat', -apple-system, PingFang SC, Microsoft Yahei, Lantinghei SC, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+
     position: absolute;
 
     right: 10px;
     bottom: 10px;
 
     color: #fff;
-    font-family: "clock";
+
+    font-weight: 100;
+    text-rendering: optimizelegibility;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
 
     z-index: 2;
 }
