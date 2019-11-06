@@ -14,7 +14,7 @@ define([ "jquery", "options" ], function( $, options ) {
         Toggle: function( type ) {
             if ( type == "show" ) {
                 $( "#time" ).fadeIn( 500 );
-                var date   = new Date(),
+                var date    = new Date(),
                     getTime = function() {
                         var time  = new Date().toLocaleString('en-US',{ hour12: options.Storage.db.hour12 }).replace( /[\d/,]+ /i, '' ).replace( /:\d+( AM| PM)?$/i, '' ),
                             sufix = '';
