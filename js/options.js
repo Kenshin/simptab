@@ -344,16 +344,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="content">\
                             <div class="title">' + i18n.GetLang( "options_custom_unsplash" ) + '</div>\
                             <div class="group custom-unsplash">' + unsplashView() + '</div>\
+                            <div class="title">' + i18n.GetLang( "options_custom_title" ) + '</div>\
+                            <div class="group custom-title">' + customTitleView() + '</div>\
+                            <div class="title">' + i18n.GetLang( "options_custom_hour" ) + '</div>\
+                            <div class="group custom-hour">' + customHourView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_style" ) + '</div>\
                             <div class="group custom-style">' + customStyleView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_search" ) + '</div>\
                             <div class="group custom-search">' + customSearchView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_tp" ) + '</div>\
                             <div class="group custom-tp">' + customTpView() + '</div>\
-                            <div class="title">' + i18n.GetLang( "options_custom_title" ) + '</div>\
-                            <div class="group custom-title">' + customTitleView() + '</div>\
-                            <div class="title">' + i18n.GetLang( "options_custom_hour" ) + '</div>\
-                            <div class="group custom-hour">' + customHourView() + '</div>\
                         </div>\
                         ' + footerView() + '\
                     </div>\
