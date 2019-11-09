@@ -13,6 +13,7 @@ define([ "jquery" ], function( $ ) {
 
     return {
         TYPE     : {
+            "SET_BACKGROUND"   : "SET_BACKGROUND",
             "UPDATE_CONTROLBAR": "UPDATE_CONTROLBAR",
             "OPEN_BOOKMARKS"   : "OPEN_BOOKMARKS",
             "OPEN_QUICKBAR"    : "OPEN_QUICKBAR",
