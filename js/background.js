@@ -283,7 +283,6 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             if ( data.mode == 'earch' ) {
                 $( ".background" ).addClass( "bgearth" );
             } else if ( data.mode == 'update' ) {
-                $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + data.url + ')}</style>' );
                 $( "body" ).find( ".bgmask-bg > img" ).attr( "src", data.url );
             }
         },
@@ -296,12 +295,10 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     height    = $( "body" ).height(),
                     earth     = vo.cur.type == "earth" ? "background-size: contain;background-repeat: no-repeat;background-color: black;" : "";
                 $( ".background" ).addClass( "bgmask" ).after( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
-                $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')' + earth + '}</style>' );
                 height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
             } else {
                 $( ".background" ).removeClass( "bgmask" );
                 $( ".bgmask-bg" ).remove();
-                $( ".bgmask-filter" ).remove();
                 vo.cur.type == "default" || !value || value == "center" ? $( ".background" ).addClass( "bgcenter" ) : $( ".background" ).removeClass( "bgcenter" );
                 vo.cur.type == "earth" && $( ".background" ).addClass( "bgearth" );
             }
