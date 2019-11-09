@@ -16,8 +16,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         message.Publish( message.TYPE.SET_BACKGROUND, { url: url });
     }
 
-    function setBackgroundPosition( is_settingclick ) {
-        if ( !is_settingclick && $( "body" ).find( ".bgmask-bg" ).length > 0 ) return;
+    function setBackgroundPosition() {
         var value = localStorage[ "simptab-background-position" ];
         if ( value == "mask" ) {
             var url       = vo.cur.type == "default" ? vo.cur.hdurl : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
