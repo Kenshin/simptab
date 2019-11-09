@@ -192,7 +192,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
         // re-set simptab-background-update
         localStorage[ "simptab-background-update" ] = "false";
-        bgeffect( "delete" );
+        //bgeffect( "delete" );
 
         // when bing.com( today ) remote failed, set vo.new == vo.cur and refresh current backgrond
         if ( error.data.apis_vo && error.data.apis_vo.origin == "today" && vo.cur && vo.cur.type != "default" ) {
@@ -244,11 +244,12 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         // update controlbar
         message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() });
         // remove effect
-        bgeffect( "delete" );
+        //bgeffect( "delete" );
         // re-set simptab-background-update
         localStorage[ "simptab-background-update" ] = "false";
     }
 
+    /*
     function bgeffect( type ) {
         var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date();
         if ( type == "add" ) {
@@ -263,6 +264,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             });
         }
     }
+    */
 
     return {
         Set: function( data ) {
@@ -502,7 +504,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
                 } else {
                     localStorage[ "simptab-background-update" ] = "true";
-                    bgeffect( "add" );
+                    //bgeffect( "add" );
                     this.Get( true );
                 }
             }
