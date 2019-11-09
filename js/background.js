@@ -270,7 +270,10 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         Set: function( data ) {
             if ( $( ".background" ).css( "background-image" ) != "none" ) {
                 $( '.background' ).css({ filter: "blur(50px)" });
-                setTimeout( () => $( ".background" ).css({ "background-image": 'url("' + data.url + '")', filter: "blur(0px)" }), 200 );
+                setTimeout( () => {
+                    var filter = $( ".background.bgmask" ).length == 0 ? 'filter: "blur(0px)"' : "";
+                    $( ".background" ).css({ "background-image": 'url("' + data.url + '")', filter });
+                }, 200 );
             } else {
                 $( ".background" ).css( "background-image", 'url("' + data.url + '")' );
                 setTimeout( () => $( '.background' ).css({ opacity: 1 }), 150 );
@@ -281,7 +284,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 $( ".background" ).addClass( "bgearth" );
             } else if ( data.mode == 'update' ) {
                 $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + data.url + ')}</style>' );
-                $( ".background" ).find( ".bgmask-bg > img" ).attr( "src", data.url );
+                $( "body" ).find( ".bgmask-bg > img" ).attr( "src", data.url );
             }
         },
 
@@ -292,11 +295,12 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     maxHeight = 800,
                     height    = $( "body" ).height(),
                     earth     = vo.cur.type == "earth" ? "background-size: contain;background-repeat: no-repeat;background-color: black;" : "";
-                $( ".background" ).addClass( "bgmask" ).prepend( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
+                $( ".background" ).addClass( "bgmask" ).after( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
                 $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')' + earth + '}</style>' );
                 height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
             } else {
-                $( ".background" ).removeClass( "bgmask" ).find( ".bgmask-bg" ).remove();
+                $( ".background" ).removeClass( "bgmask" );
+                $( ".bgmask-bg" ).remove();
                 $( ".bgmask-filter" ).remove();
                 vo.cur.type == "default" || !value || value == "center" ? $( ".background" ).addClass( "bgcenter" ) : $( ".background" ).removeClass( "bgcenter" );
                 vo.cur.type == "earth" && $( ".background" ).addClass( "bgearth" );

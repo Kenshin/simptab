@@ -683,10 +683,9 @@ img {
     position: fixed;
 
     top: 0;
+    bottom: 0;
     left: 0;
-
-    width: 100%;
-    height: 100%;
+    right: 0;
 
     background-position: 50% 50%;
     background-size: cover;
@@ -706,6 +705,17 @@ img {
     background-position: center;
 }
 
+.bgmask {
+    right: -10px;
+    bottom: -10px;
+
+    margin: -30px;
+
+    filter: blur(20px);
+    -webkit-filter: blur(20px);
+}
+
+/*
 .bgmask::before {
     content: '';
     position: absolute;
@@ -724,6 +734,7 @@ img {
 
     z-index: -1;
 }
+*/
 
 .bgmask-bg {
     position: fixed;
