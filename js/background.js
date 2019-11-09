@@ -267,9 +267,10 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     return {
         Set: function( data ) {
             $( "body" ).css( "background-image", 'url("' + data.url + '")' );
-            data.mode == "earch" && $( "body" ).addClass( "bgearth" );
             // change background mask real time
-            if ( data.mode == 'update' ) {
+            if ( data.mode == 'earch' ) {
+                ( "body" ).addClass( "bgearth" );
+            } else if ( data.mode == 'update' ) {
                 $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + data.url + ')}</style>' );
                 $( "body" ).find( ".bgmask-bg > img" ).attr( "src", data.url );
             }
