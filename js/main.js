@@ -133,6 +133,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     message.Subscribe( message.TYPE.HISTORY, function( event ) {
         localStorage["simptab-zenmode"] != "true" && options.Storage.db.history && history.Get( event.data );
     });
+    message.Subscribe( message.TYPE.SET_BACKGROUND, function( event ) {
+        background.Set( event.data );
+    });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
         result && bookmarks.Render( options.Storage.db.search );

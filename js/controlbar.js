@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", "options" ], function( $, i18n, vo, date, files, setting, manage, about, options ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", "options", "message" ], function( $, i18n, vo, date, files, setting, manage, about, options, message ) {
 
     "use strict";
 
@@ -13,7 +13,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
     function setBackground( url ) {
         // hack code
         if ( $("body").css( "background-image" ) != "none" && localStorage[ "simptab-background-update" ] == "true" ) return;
-        $("body").css({ "background-image": "url(" + url + ")" });
+        message.Publish( message.TYPE.SET_BACKGROUND, { url: url });
     }
 
     function setBackgroundPosition( is_settingclick ) {
@@ -71,10 +71,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
 
     function update( url, info ) {
         // change background
-        $( "body" ).css( "background-image", 'url("' + url + '")' );
-        // change background mask
-        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-        $( "body" ).find( ".bgmask-bg > img" ).attr( "src", url );
+        message.Publish( message.TYPE.SET_BACKGROUND, { url: url, mode: 'update' });
         // change conntrolbar download url and info
         $($( ".controlbar" ).find( "a" )[4]).attr( "href", info == undefined ? "#" : info );
         $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );

@@ -265,6 +265,16 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     }
 
     return {
+        Set: function( data ) {
+            $( "body" ).css( "background-image", 'url("' + data.url + '")' );
+            data.mode == "earch" && $( "body" ).addClass( "bgearth" );
+            // change background mask real time
+            if ( data.mode == 'update' ) {
+                $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + data.url + ')}</style>' );
+                $( "body" ).find( ".bgmask-bg > img" ).attr( "src", data.url );
+            }
+        },
+
         Get: function( is_random ) {
 
             progress.Set( "ready" );
@@ -485,7 +495,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 getEarth = function () {
                     apis.Earth( function ( base64 ) {
                         notify.complete();
-                        $( "body" ).css( "background-image", "url(" + base64 + ")" ).addClass( "bgearth" );
+                        message.Publish( message.TYPE.SET_BACKGROUND, { url: base64, mode: 'earch' });
                         files.DataURI( base64 );
                         files
                             .Add( vo.constructor.BACKGROUND, files.DataURI() )
