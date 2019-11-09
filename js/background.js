@@ -267,7 +267,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     return {
         Set: function( data ) {
             $( "body" ).css( "background-image", 'url("' + data.url + '")' );
-            // change background mask real time
+            // change background real time
             if ( data.mode == 'earch' ) {
                 ( "body" ).addClass( "bgearth" );
             } else if ( data.mode == 'update' ) {
