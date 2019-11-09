@@ -275,6 +275,24 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             }
         },
 
+        SetPosition: function() {
+            var value = localStorage[ "simptab-background-position" ];
+            if ( value == "mask" ) {
+                var url       = vo.cur.type == "default" ? vo.cur.hdurl : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
+                    maxHeight = 800,
+                    height    = $( "body" ).height(),
+                    earth     = vo.cur.type == "earth" ? "background-size: contain;background-repeat: no-repeat;background-color: black;" : "";
+                $( "body" ).addClass( "bgmask" ).prepend( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
+                $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')' + earth + '}</style>' );
+                height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
+            } else {
+                $( "body" ).removeClass( "bgmask" ).find( ".bgmask-bg" ).remove();
+                $( ".bgmask-filter" ).remove();
+                vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
+                vo.cur.type == "earth" && $( "body" ).addClass( "bgearth" );
+            }
+        },
+
         Get: function( is_random ) {
 
             progress.Set( "ready" );
