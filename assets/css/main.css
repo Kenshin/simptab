@@ -679,6 +679,22 @@ img {
 /*
 * background mode
 */
+.background {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-position: 50% 50%;
+    background-size: cover;
+
+    opacity: 0;
+    transition: all .25s ease-out;
+}
+
 .bgcenter {
     background-position: center center;
 }

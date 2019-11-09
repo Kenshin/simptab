@@ -179,7 +179,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
             localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
-            localStorage[ "simptab-background-mode" ] == "time" && $( "body" ).hasClass("bgearth") && $( "body" ).removeClass( "bgearth" );
+            localStorage[ "simptab-background-mode" ] == "time" && $( ".background" ).hasClass("bgearth") && $( ".background" ).removeClass( "bgearth" );
             // test code
             //localStorage[ "simptab-background-mode" ] == "time" && $( ".controlink[url=desktop]" )[0].click();
         }
@@ -252,9 +252,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     function bgeffect( type ) {
         var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date();
         if ( type == "add" ) {
-            $( "body" ).append( '<div class="bgeffect" style="background-image: url(' + url +');"></div>' );
+            $( ".background" ).append( '<div class="bgeffect" style="background-image: url(' + url +');"></div>' );
             setTimeout( function() {
-                $( "body" ).find( ".bgeffect" ).css( 'filter', 'blur(50px)' );
+                $( ".background" ).find( ".bgeffect" ).css( 'filter', 'blur(50px)' );
             }, 1 );
         } else {
             $( ".bgeffect" ).css( 'background-image', 'url(' + url +')' );
@@ -266,13 +266,20 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
     return {
         Set: function( data ) {
-            $( "body" ).css( "background-image", 'url("' + data.url + '")' );
+            if ( $( ".background" ).css( "background-image" ) != "none" ) {
+                $( '.background' ).css({ filter: "blur(50px)" });
+                setTimeout( () => $( ".background" ).css({ "background-image": 'url("' + data.url + '")', filter: "blur(0px)" }), 200 );
+            } else {
+                $( ".background" ).css( "background-image", 'url("' + data.url + '")' );
+                setTimeout( () => $( '.background' ).css({ opacity: 1 }), 150 );
+            }
+
             // change background real time
             if ( data.mode == 'earch' ) {
-                ( "body" ).addClass( "bgearth" );
+                $( ".background" ).addClass( "bgearth" );
             } else if ( data.mode == 'update' ) {
                 $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + data.url + ')}</style>' );
-                $( "body" ).find( ".bgmask-bg > img" ).attr( "src", data.url );
+                $( ".background" ).find( ".bgmask-bg > img" ).attr( "src", data.url );
             }
         },
 
@@ -283,14 +290,14 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     maxHeight = 800,
                     height    = $( "body" ).height(),
                     earth     = vo.cur.type == "earth" ? "background-size: contain;background-repeat: no-repeat;background-color: black;" : "";
-                $( "body" ).addClass( "bgmask" ).prepend( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
+                $( ".background" ).addClass( "bgmask" ).prepend( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
                 $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')' + earth + '}</style>' );
                 height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
             } else {
-                $( "body" ).removeClass( "bgmask" ).find( ".bgmask-bg" ).remove();
+                $( ".background" ).removeClass( "bgmask" ).find( ".bgmask-bg" ).remove();
                 $( ".bgmask-filter" ).remove();
-                vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
-                vo.cur.type == "earth" && $( "body" ).addClass( "bgearth" );
+                vo.cur.type == "default" || !value || value == "center" ? $( ".background" ).addClass( "bgcenter" ) : $( ".background" ).removeClass( "bgcenter" );
+                vo.cur.type == "earth" && $( ".background" ).addClass( "bgearth" );
             }
         },
 
@@ -311,7 +318,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
         Valid: function() {
             setTimeout( function() {
-                if ( $("body").css( "background-image" ) == "none" ) {
+                if ( $( ".background" ).css( "background-image" ) == "none" ) {
                     controlbar.Set( true );
                 }
             }, 5 * 1000 );
