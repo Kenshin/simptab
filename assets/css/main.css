@@ -753,6 +753,7 @@ img {
     transition: all .25s ease-out;
 }
 
+/*
 .bgeffect {
     position: absolute;
     background-size: cover;
@@ -767,6 +768,7 @@ img {
 
     overflow: hidden;
 }
+*/
 
 /*
 * dialog
