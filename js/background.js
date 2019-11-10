@@ -271,18 +271,17 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             if ( $( ".background" ).css( "background-image" ) != "none" ) {
                 // no-reload( update call )
                 data.mode == 'earch' && $( ".background" ).addClass( "bgearth" );
-                $( ".background"      ).css({ filter: "blur(50px)" });
-                $( ".bgmask-bg > img" ).removeAttr( "style" );
+                $( ".background"      ).addClass( "bghidden" );
+                $( ".bgmask-bg > img" ).removeClass( "bgshow" );
                 setTimeout( () => {
-                    var filter = $( ".background.bgmask" ).length > 0 ? "" : "blur(0px)";
-                    $( ".background"      ).css({ "background-image": 'url("' + data.url + '")', filter: filter });
+                    $( ".background"      ).css({ "background-image": 'url("' + data.url + '")' }).removeClass( "bghidden" );
                     $( ".bgmask-bg > img" ).attr( "src", data.url );
-                    setTimeout( () => $( ".bgmask-bg > img" ).css({ opacity: 1 }), 150 );
+                    setTimeout( () => $( ".bgmask-bg > img" ).addClass( "bgshow" ), 150 );
                 }, 200 );
             } else {
                 // re-load
                 $( ".background" ).css( "background-image", 'url("' + data.url + '")' );
-                setTimeout( () => $( '.background' ).css({ opacity: 1 }), 150 );
+                setTimeout( () => $( '.background' ).addClass( "bgshow" ), 150 );
             }
         },
 
@@ -295,7 +294,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     earth     = vo.cur.type == "earth" ? "background-size: contain;background-repeat: no-repeat;background-color: black;" : "";
                 $( ".background" ).addClass( "bgmask" ).after( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
                 height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
-                setTimeout( () => $( ".bgmask-bg > img" ).css({ opacity: 1 }), 150 );
+                setTimeout( () => $( ".bgmask-bg > img" ).addClass( "bgshow" ), 150 );
             } else {
                 $( ".background" ).removeClass( "bgmask" );
                 $( ".bgmask-bg" ).remove();
