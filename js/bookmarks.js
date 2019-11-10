@@ -319,7 +319,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
                 getSearch( data );
                 getBookmarks();
                 folderListen();
-            }, 10 );
+            }, 300 );
         },
 
         Listen: function() {

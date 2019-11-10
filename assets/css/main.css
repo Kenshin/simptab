@@ -1385,7 +1385,7 @@ img {
     width: 53px;
     height: 100%;
     background: rgb(238, 238, 238);
-    transition: all 500ms ease;
+    transition: width .15s cubic-bezier(.4,0,.2,1);
 }
 
 .bm .folders:hover {
