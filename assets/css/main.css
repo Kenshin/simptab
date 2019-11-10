@@ -37,8 +37,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
     border-radius: 10px;
-    background-color: rgba(139, 137, 134, 0.5);
+    border: 2px solid transparent;
+    background-color: rgba(255,255,255,.3);
 }
 
 img {
