@@ -365,7 +365,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 getSubscribeTmpl();
                 toolbarListenEvent();
                 scrollListenEvent();
-            }, 10 );
+            }, 300 );
         }
     };
 });

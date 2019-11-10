@@ -390,7 +390,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 $( ".dialog-bg" ).addClass( "dialog-bg-show" );
                 render();
                 close();
-            }, 10 );
+            }, 450 );
         },
 
         Storage: storage,

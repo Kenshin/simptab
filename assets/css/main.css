@@ -821,7 +821,7 @@ img {
 
     opacity: 0;
     transform: translateY( 20% );
-    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transition: all .35s cubic-bezier(.4,0,.2,1);
 }
 
 .dialog-bg-show {
@@ -1268,7 +1268,7 @@ img {
 .options .notice a {
     padding-bottom: 1px;
 
-    color: #327ED6;
+    color: #4DB6AC;
     text-decoration: none;
 }
 
