@@ -123,10 +123,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         var width = parseInt( i18n.GetSettingWidth() );
                         if ( !$target.hasClass( "close" )) {
                             $( ".setting" ).css({ "transform": "translateX(0px)", "opacity": 0.8 });
-                            $( ".sidebar" ).animate({ right: width }, 500, function() {
-                                $target.addClass( "close" );
-                                $( ".setting" ).addClass( "open" );
-                            });
+                            $( ".sidebar" ).css({ right: width });
+                            $target.addClass( "close" );
+                            $( ".setting" ).addClass( "open" );
 
                             //$( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
@@ -143,10 +142,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         }
                         else {
                            $( ".setting" ).css({ "transform": "translateX(" + width + "px)", "opacity": 0 });
-                           $( ".sidebar" ).animate({ right: 0 }, 600, function() {
-                                $target.removeClass( "close" );
-                                $( ".setting" ).removeClass( "open" );
-                            });
+                           $( ".sidebar" ).css({ right: 0 });
+                            $target.removeClass( "close" );
+                            $( ".setting" ).removeClass( "open" );
                             //$( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
                         break;
