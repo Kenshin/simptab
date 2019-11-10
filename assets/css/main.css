@@ -748,6 +748,11 @@ img {
     height: 100%;
 }
 
+.bgmask-bg img {
+    opacity: 0;
+    transition: all .25s ease-out;
+}
+
 .bgeffect {
     position: absolute;
     background-size: cover;
