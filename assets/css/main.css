@@ -837,7 +837,7 @@ img {
     height: 600px;
 
     color: rgb(202, 204, 206);
-    background: rgb(47, 52, 55);
+    background: rgba(15,15,15,0.8);
 
     box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
 }
@@ -1322,8 +1322,6 @@ img {
     padding-right: 8px;
 
     height: 52px;
-
-    background: rgb(47, 52, 55);
 }
 
 .options .footer .button {
@@ -1652,7 +1650,7 @@ img {
     text-transform: initial;
 
     color: #fff;
-    background-color: rgb(47, 52, 55);
+    background-color: rgba(15,15,15,0.8);
 
     border-radius: 4px;
 
@@ -1707,7 +1705,7 @@ img {
     line-height: 10px;
     vertical-align: middle;
 
-    color: rgb(47, 52, 55);
+    color: rgba(15,15,15,0.8);
     background-color: #fafbfc;
 
     /*border: 1px solid #c6cbd1;
@@ -1963,7 +1961,7 @@ img {
     text-transform: initial;
 
     color: #fff;
-    background-color: rgb(47, 52, 55);
+    background-color: rgba(15,15,15,0.8);
 
     border-radius: 4px;
 
@@ -2201,7 +2199,7 @@ img {
     text-transform: initial;
 
     color: #fff;
-    background-color: rgb(47, 52, 55);
+    background-color: rgba(15,15,15,0.8);
 
     border-radius: 4px;
 
@@ -2246,7 +2244,7 @@ img {
 
     height: 100%;
 
-    background-color: rgb(47, 52, 55);
+    background-color: rgba(15,15,15,0.8);
 
     /*opacity: 0;*/
     transition: all .6s ease;
@@ -2782,7 +2780,7 @@ img {
     font-size: 14px;
 
     color: #cccccc;
-    background-color: rgb(63, 68, 71);
+    background-color: rgba(255,255,255,.25);
     caret-color: #fff;
 
     outline: none;
@@ -2798,7 +2796,7 @@ img {
     width: 100%;
 
     color: #cccccc;
-    background-color: rgb(63, 68, 71);
+    background-color: rgba(255,255,255,.25);
 
     font-family: monospace;
     font-size: 13px;
@@ -2813,7 +2811,7 @@ img {
 .md-textarea:focus {
     color: #fff;
     outline: none !important;
-    background-color: rgb(109, 112, 115);
+    background-color: rgba(255,255,255,.45);
     border-color: #fff;
     box-shadow: 0px 0 2px #fff;
 }
