@@ -269,7 +269,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
     return {
         Set: function( data ) {
             if ( $( ".background" ).css( "background-image" ) != "none" ) {
-                // no-refresh( update call )
+                // no-reload( update call )
                 data.mode == 'earch' && $( ".background" ).addClass( "bgearth" );
                 $( ".background"      ).css({ filter: "blur(50px)" });
                 $( ".bgmask-bg > img" ).removeAttr( "style" );
@@ -280,7 +280,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     setTimeout( () => $( ".bgmask-bg > img" ).css({ opacity: 1 }), 150 );
                 }, 200 );
             } else {
-                // refresh
+                // re-load
                 $( ".background" ).css( "background-image", 'url("' + data.url + '")' );
                 setTimeout( () => $( '.background' ).css({ opacity: 1 }), 150 );
             }
