@@ -1991,9 +1991,10 @@ img {
 }
 
 .setting-zen-mode .subtitle a {
-    color: inherit;
+    color: #1dba90;
     text-decoration: none;
     transition: all .3s ease;
+    cursor: help;
 }
 
 .setting-zen-mode .subtitle a:hover,
@@ -2004,6 +2005,11 @@ img {
 .setting-zen-mode .subtitle span {
     cursor: pointer;
     transition: all .3s ease;
+}
+
+.setting-zen-mode .subtitle span:last-child {
+    color: #1dba90;
+    cursor: help;
 }
 
 .setting-zen-mode .themes .content {
@@ -2093,6 +2099,52 @@ img {
     display: flex;
     justify-content: flex-end;
     width: 100%;
+}
+
+.srcmange .scripts {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.srcmange .scripts .script {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin: 10px;
+}
+
+.srcmange .scripts .script a {
+    color: inherit;
+}
+
+.srcmange .scripts .script img {
+    padding: 2px;
+    max-width: 150px;
+    height: auto;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+}
+
+.srcmange .scripts .script .toolbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-right: 28px;
+    justify-content: flex-end;
+}
+
+.srcmange .scripts .script i {
+    padding-left: 8px;
 }
 
 #time-cbx:checked + .toggle:before,

@@ -287,11 +287,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             if ( $.isEmptyObject( manage )) {
                 $.ajax({
                     type       : "GET",
-                    url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/manage.json?" + Math.round(+new Date()),
+                    url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/config.json?" + Math.round(+new Date()),
                     dataType   : "json"
                 }).then( function( result ) {
-                    if ( result && result.version == "" ) {
-                        new Notify().Render( i18n.GetLang( "notify_zen_mode_script_loader_none" ) );
+                    if ( result && result.length > 0 ) {
+                        scriptManage( result );
                     } else if ( result && result.version ) {
                         manage = result;
                         localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( manage );
@@ -303,6 +303,47 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                 });
             } else runat();
         });
+    }
+
+    function scriptManage( result ) {
+        var html = '<div class="script">\
+                        <img src="<%- item.snap %>" alt=""/>\
+                        <div class="toolbar">\
+                            <div class="title"     data-balloon-pos="up" data-balloon="<%- item.title %>"><i class="fab fa-readme waves-effect"></i></i></div>\
+                            <div class="desc"      data-balloon-pos="up" data-balloon="<%- item.desc || "暂无描述" %>"><i class="fas fa-eye waves-effect"></i></div>\
+                            <a   class="user"      data-balloon-pos="up" data-balloon="<%- item.author.name %>" href="<%- item.author.contact %>" target="_blank"><i class="fas fa-user waves-effect"></i></a>\
+                            <a   class="home"      data-balloon-pos="up" data-balloon="主页" href="<%- item.link %>" target="_blank"><i class="fas fa-home waves-effect"></i></a>\
+                            <div class="version"   data-balloon-pos="up" data-balloon="<%- item.version %>"><i class="fas fa-code-branch waves-effect"></i></div>\
+                            <div class="download"  data-balloon-pos="up" data-balloon="安装" data-src="<%- item.download %>"><i class="fas fa-cloud-download-alt waves-effect"></i></div>\
+                        </div>\
+                    </div>',
+            scrComp  = _.template( '<% jq.each( items, function( idx, item ) { %>' + html + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+            srcHtml  = scrComp({ 'items': result }),
+            tmpl     = '\
+                      <div class="close"><span class="close"></span></div>\
+                        <div class="scripts">\
+                            ' + srcHtml + '\
+                        </div>\
+                      </div>';
+        $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog srcmange"></div></div></div>' );
+        setTimeout( function() {
+            $( ".dialog-bg" ).addClass( "dialog-bg-show" );
+            $( ".dialog" ).html( tmpl );
+            $( ".srcmange .close" ).click( function( event ) {
+                $( "body" ).off( "click", ".srcmange .toolbox span" );
+                $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
+                setTimeout( function() {
+                    $( ".dialog-overlay" ).remove();
+                }, 400 );
+            });
+            $( ".srcmange .toolbar .download i" ).on( "click", function( event ) {
+                $.get( $(event.currentTarget).parent().attr("data-src"), function( result ) {
+                    storage.db = storage.Verify( JSON.parse( result ) );
+                    storage.Set();
+                    new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
+                });
+            });
+        }, 300 );
     }
 
     /*********************************************
