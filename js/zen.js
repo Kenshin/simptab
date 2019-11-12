@@ -307,6 +307,27 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         });
     }
 
+    function getScriptVersion() {
+        $.ajax({
+            type       : "GET",
+            url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/version.json?" + Math.round(+new Date()),
+            dataType   : "json"
+        }).then( function( result ) {
+            if ( result && result.version ) {
+                var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || {} );
+                if ( manage.version != result.version ) {
+                    var notify = new Notify().Render({ state: "loading", content: "正在更新最新脚本管理器，请稍等..." });
+                    getScriptConfig( function( result ) {
+                        notify.complete();
+                        new Notify().Render( '已更新到最新版本，请重新进入！' );
+                    });
+                } else new Notify().Render( '当前已是最新版本，无需更新。' );
+            }
+        }, function( jqXHR, textStatus, errorThrown ) {
+            new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
+        });
+    }
+
     function scriptManage( result ) {
         var html = '<div class="script">\
                         <img src="<%- item.snap %>" alt=""/>\
@@ -349,6 +370,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                     storage.Set();
                     new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
                 });
+            });
+            $( ".srcmange .footer .update" ).on( "click", function( event ) {
+                getScriptVersion();
             });
         }, 450 );
     }
