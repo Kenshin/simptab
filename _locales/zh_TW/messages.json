@@ -801,6 +801,22 @@
         "message": "收藏夾背景源暫無任何內容，已自動設置默認背景。"
     },
 
+    "notify_snippets": {
+        "message": "正在載入腳本管理器，請稍等..."
+    },
+
+    "notify_snippets_update": {
+        "message": "正在更新最新腳本管理器，請稍等..."
+    },
+
+    "notify_snippets_update_success": {
+        "message": "已更新到最新版本，請重新進入！"
+    },
+
+    "notify_snippets_update_none": {
+        "message": "當前已是最新版本，無需更新。"
+    },
+
     "version_detail": {
         "message": ""
     },

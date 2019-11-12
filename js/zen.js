@@ -293,7 +293,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     }
 
     function getScriptConfig( callback ) {
-        var notify = new Notify().Render({ state: "loading", content: "正在加载脚本管理器，请稍等..." });
+        var notify = new Notify().Render({ state: "loading", content: i18n.GetLang( "notify_snippets" ) });
         $.ajax({
             type       : "GET",
             url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/config.json?" + Math.round(+new Date()),
@@ -311,7 +311,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     }
 
     function getScriptVersion() {
-        var notify = new Notify().Render({ state: "loading", content: "正在更新最新脚本管理器，请稍等..." });
+        var notify = new Notify().Render({ state: "loading", content: i18n.GetLang( "notify_snippets_update" ) });
         $.ajax({
             type       : "GET",
             url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/version.json?" + Math.round(+new Date()),
@@ -322,9 +322,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                 var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || {} );
                 if ( manage.version != result.version ) {
                     getScriptConfig( function() {
-                        new Notify().Render( '已更新到最新版本，请重新进入！' );
+                        new Notify().Render( i18n.GetLang( "notify_snippets_update_success" ) );
                     });
-                } else new Notify().Render( '当前已是最新版本，无需更新。' );
+                } else new Notify().Render( i18n.GetLang( "notify_snippets_update_none" ) );
             }
         }, function( jqXHR, textStatus, errorThrown ) {
             notify.complete();

@@ -801,6 +801,22 @@
         "message": "Favorite origin is empty, re-set default background."
     },
 
+    "notify_snippets": {
+        "message": "Loading snippets manger..."
+    },
+
+    "notify_snippets_update": {
+        "message": "Update snippets manager..."
+    },
+
+    "notify_snippets_update_success": {
+        "message": "Update success, please re-open."
+    },
+
+    "notify_snippets_update_none": {
+        "message": "No update."
+    },
+
     "version_detail": {
         "message": ""
     },
