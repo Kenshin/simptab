@@ -339,7 +339,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                     new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
                 });
             });
-        }, 300 );
+        }, 450 );
     }
 
     /*********************************************
