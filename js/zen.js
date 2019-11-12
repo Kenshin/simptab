@@ -577,6 +577,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
 
         Exit: function() {
             exit();
+        },
+
+        ESC: function() {
+            new Notify().Render({ content: i18n.GetLang( "notify_zen_mode_esc" ), action: i18n.GetLang( "notify_zen_mode_esc_confirm" ), cancel: i18n.GetLang( "notify_zen_mode_esc_cancel" ), callback: function( type ) {
+                type == "action" && exit();
+                type == "action" && new Notify().Render( i18n.GetLang( "notify_zen_mode_exit" ) );
+            }});
         }
     }
 

@@ -729,6 +729,18 @@
         "message": "Please fresh current new tab."
     },
 
+    "notify_zen_mode_esc": {
+        "message": "is Exist zen mode?"
+    },
+
+    "notify_zen_mode_esc_confirm": {
+        "message": "YES"
+    },
+
+    "notify_zen_mode_esc_cancel": {
+        "message": "NO"
+    },
+
     "notify_zen_mode_theme_random": {
         "message": "Enable random theme."
     },

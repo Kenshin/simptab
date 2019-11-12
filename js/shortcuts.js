@@ -257,9 +257,10 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 case "bm-overlay":
                     if ( $( ".bm" ).hasClass( "open" ) ) {
                         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
+                    } else if ( $( ".setting" ).hasClass( "open" )) {
+                        $( ".controlink .settingicon" ).trigger( "click" );
                     } else {
-                        $( ".setting" ).hasClass( "open" ) &&
-                            $( ".controlink .settingicon" ).trigger( "click" );
+                        localStorage["simptab-zenmode"] == "true" && message.Publish( message.TYPE.CLOSE_ZENMODE );
                     }
                     break;
                 case "setting-zen-mode":

@@ -139,6 +139,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     message.Subscribe( message.TYPE.SET_BACKGROUND_POSITION, function( event ) {
         background.SetPosition( event.data );
     });
+    message.Subscribe( message.TYPE.CLOSE_ZENMODE, function( event ) {
+        zen.ESC();
+    });
 
     chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
         result && bookmarks.Render( options.Storage.db.search );

@@ -19,6 +19,7 @@ define([ "jquery" ], function( $ ) {
             "OPEN_BOOKMARKS"   : "OPEN_BOOKMARKS",
             "OPEN_QUICKBAR"    : "OPEN_QUICKBAR",
             "OPEN_ZENMODE"     : "OPEN_ZENMODE",
+            "CLOSE_ZENMODE"    : "CLOSE_ZENMODE",
             "OPEN_NOISE"       : "OPEN_NOISE",
             "UPDATE_EARTH"     : "UPDATE_EARTH",
             "HISTORY"          : "HISTORY",

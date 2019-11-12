@@ -726,7 +726,19 @@
     },
 
     "notify_zen_mode": {
-        "message": "刷新当前页面后生效。"
+        "message": "刷新页面后进入禅模式。"
+    },
+
+    "notify_zen_mode_esc": {
+        "message": "是否退出禅模式？"
+    },
+
+    "notify_zen_mode_esc_confirm": {
+        "message": "确认"
+    },
+
+    "notify_zen_mode_esc_cancel": {
+        "message": "取消"
     },
 
     "notify_zen_mode_theme_random": {
