@@ -537,10 +537,6 @@
         "message": "Custom Script"
     },
 
-    "zen_mode_setting_script_howto": {
-        "message": "How to use"
-    },
-
     "zen_mode_setting_script_manage": {
         "message": "Script Loader"
     },
@@ -559,6 +555,10 @@
 
     "zen_mode_setting_close": {
         "message": "Close"
+    },
+
+    "zen_mode_setting_script_howto": {
+        "message": "How to use"
     },
 
     "noise_mode_cafe001": {

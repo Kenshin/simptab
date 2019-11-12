@@ -537,10 +537,6 @@
         "message": "自定義腳本"
     },
 
-    "zen_mode_setting_script_howto": {
-        "message": "如何使用"
-    },
-
     "zen_mode_setting_script_manage": {
         "message": "腳本管理器"
     },
@@ -559,6 +555,10 @@
 
     "zen_mode_setting_close": {
         "message": "關閉"
+    },
+
+    "zen_mode_setting_script_howto": {
+        "message": "如何使用"
     },
 
     "noise_mode_cafe001": {
