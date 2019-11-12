@@ -2050,7 +2050,8 @@ img {
     text-align: center;
 }
 
-.setting-zen-mode .footer .button {
+.setting-zen-mode .footer .button,
+.srcmange .footer .button {
     width: 80px;
     height: 28px;
     line-height: 28px;
@@ -2064,7 +2065,8 @@ img {
     cursor: pointer;
 }
 
-.setting-zen-mode .footer .exit {
+.setting-zen-mode .footer .exit,
+.srcmange         .footer .exit {
     background-color: #F44336;
 }
 
@@ -2073,7 +2075,11 @@ img {
 }
 
 .setting-zen-mode .footer .import,
-.setting-zen-mode .footer .export {
+.setting-zen-mode .footer .export,
+.srcmange         .footer .help,
+.srcmange         .footer .update {
+    color: inherit;
+    text-decoration: none;
     background-color: #4DB6AC;
 }
 
@@ -2101,10 +2107,16 @@ img {
     width: 100%;
 }
 
+.srcmange .close {
+    opacity: 0;
+}
+
 .srcmange .scripts {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+
+    margin-bottom: 56px;
 
     width: 100%;
     height: 100%;
@@ -2145,6 +2157,36 @@ img {
 
 .srcmange .scripts .script i {
     padding-left: 8px;
+}
+
+.srcmange .footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding-right: 20px;
+
+    height: 56px;
+
+    color: #fff;
+    background-color: rgba(15,15,15,1);
+}
+
+.srcmange .footer .version {
+    position: absolute;
+    left: 15px;
+}
+
+.srcmange .footer .help,
+.srcmange .footer .update,
+.srcmange .footer .exit {
+    margin-left: 10px;
 }
 
 #time-cbx:checked + .toggle:before,

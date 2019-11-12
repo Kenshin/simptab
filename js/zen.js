@@ -281,7 +281,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         $( ".setting-zen-mode" ).on( "click", ".script .subtitle span", function( event ) {
             var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || "{}" ),
                 runat  = function() {
-                    scriptManage( manage.items );
+                    scriptManage( manage );
                 };
             if ( $.isEmptyObject( manage )) {
                 $.ajax({
@@ -314,18 +314,23 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                         </div>\
                     </div>',
             scrComp  = _.template( '<% jq.each( items, function( idx, item ) { %>' + html + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
-            srcHtml  = scrComp({ 'items': result }),
+            srcHtml  = scrComp({ 'items': result.items }),
             tmpl     = '\
-                      <div class="close"><span class="close"></span></div>\
+                        <div class="close"><span class="close"></span></div>\
                         <div class="scripts">\
                             ' + srcHtml + '\
                         </div>\
-                      </div>';
+                        <div class="footer">\
+                            <div class="waves-effect version">当前版本：' + result.version + '</div>\
+                            <a   class="waves-effect button help" href="http://ksria.com/simptab/docs/#/禅模式?id=自定义脚本" target="_blank">' + i18n.GetLang( "zen_mode_setting_script_howto" ) + '</a>\
+                            <div class="waves-effect button update">检查更新</div>\
+                            <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
+                        </div>';
         $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog srcmange"></div></div></div>' );
         setTimeout( function() {
             $( ".dialog-bg" ).addClass( "dialog-bg-show" );
             $( ".dialog" ).html( tmpl );
-            $( ".srcmange .close" ).click( function( event ) {
+            $( ".srcmange .exit, .srcmange .close" ).click( function( event ) {
                 $( "body" ).off( "click", ".srcmange .toolbox span" );
                 $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
                 setTimeout( function() {
@@ -407,7 +412,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                         <div class="script" style="margin-top: 15px;">\
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_script" ) + '</div>\
                             ' + scriptView() + '\
-                            <div class="subtitle"><a href="http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F?id=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%84%9A%E6%9C%AC" target="_blank">' + i18n.GetLang( "zen_mode_setting_script_howto" ) + '</a> & <span>' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</span></div>\
+                            <div class="subtitle"><span>' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</span></div>\
                         </div>\
                         <div class="footer">\
                             <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
