@@ -532,7 +532,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
 
     function shortcuts() {
         var styles = "";
-        [ "5", "6", "7", "f", "m", "s", "a", "n", "u" ].forEach( function( value ) {
+        [ "5", "6", "7", "f", "m", "a", "n", "u", "d", "e", "←", "→" ].forEach( function( value ) {
             styles += ".keycode-" + value + "{text-decoration: line-through!important;}";
             Mousetrap.unbind( value );
         });
