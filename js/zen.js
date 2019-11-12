@@ -293,16 +293,19 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     }
 
     function getScriptConfig( callback ) {
+        var notify = new Notify().Render({ state: "loading", content: "正在加载脚本管理器，请稍等..." });
         $.ajax({
             type       : "GET",
             url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/config.json?" + Math.round(+new Date()),
             dataType   : "json"
         }).then( function( result ) {
+            notify.complete();
             if ( result && result.items.length > 0 ) {
                 localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( result );
                 callback( result );
             } else new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
         }, function( jqXHR, textStatus, errorThrown ) {
+            notify.complete();
             new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
         });
     }
@@ -324,6 +327,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                 } else new Notify().Render( '当前已是最新版本，无需更新。' );
             }
         }, function( jqXHR, textStatus, errorThrown ) {
+            notify.complete();
             new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
         });
     }
