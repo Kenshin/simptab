@@ -557,8 +557,28 @@
         "message": "Close"
     },
 
-    "zen_mode_setting_script_howto": {
+    "zen_mode_setting_snippets_toolbar_desc": {
+        "message": "No description"
+    },
+
+    "zen_mode_setting_snippets_toolbar_home": {
+        "message": "Homepage"
+    },
+
+    "zen_mode_setting_snippets_toolbar_download": {
+        "message": "Install"
+    },
+
+    "zen_mode_setting_snippets_footer_version": {
+        "message": "Current version:"
+    },
+
+    "zen_mode_setting_snippets_footer_howto": {
         "message": "How to use"
+    },
+
+    "zen_mode_setting_snippets_footer_update": {
+        "message": "Update"
     },
 
     "noise_mode_cafe001": {

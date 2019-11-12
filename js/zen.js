@@ -337,11 +337,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                         <img src="<%- root + item.snap %>" alt=""/>\
                         <div class="toolbar">\
                             <div class="title"     data-balloon-pos="up" data-balloon="<%- item.title %>"><i class="fab fa-readme waves-effect"></i></i></div>\
-                            <div class="desc"      data-balloon-pos="up" data-balloon="<%- item.desc || "暂无描述" %>"><i class="fas fa-eye waves-effect"></i></div>\
+                            <div class="desc"      data-balloon-pos="up" data-balloon="<%- item.desc || "' + i18n.GetLang( "zen_mode_setting_snippets_toolbar_desc" ) + '" %>"><i class="fas fa-eye waves-effect"></i></div>\
                             <a   class="user"      data-balloon-pos="up" data-balloon="<%- item.author.name %>" href="<%- item.author.contact %>" target="_blank"><i class="fas fa-user waves-effect"></i></a>\
-                            <a   class="home"      data-balloon-pos="up" data-balloon="主页" href="<%- item.link %>" target="_blank"><i class="fas fa-home waves-effect"></i></a>\
+                            <a   class="home"      data-balloon-pos="up" data-balloon="' + i18n.GetLang( "zen_mode_setting_snippets_toolbar_home" ) + '" href="<%- item.link %>" target="_blank"><i class="fas fa-home waves-effect"></i></a>\
                             <div class="version"   data-balloon-pos="up" data-balloon="<%- item.version %>"><i class="fas fa-code-branch waves-effect"></i></div>\
-                            <div class="download"  data-balloon-pos="up" data-balloon="安装" data-src="<%- root + item.download %>"><i class="fas fa-cloud-download-alt waves-effect"></i></div>\
+                            <div class="download"  data-balloon-pos="up" data-balloon="' + i18n.GetLang( "zen_mode_setting_snippets_toolbar_download" ) + '" data-src="<%- root + item.download %>"><i class="fas fa-cloud-download-alt waves-effect"></i></div>\
                         </div>\
                     </div>',
             scrComp  = _.template( '<% jq.each( items, function( idx, item ) { %>' + html + '<% }); %>', { 'imports': { 'jq': jQuery, 'root': result.root }} ),
@@ -352,9 +352,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                             ' + srcHtml + '\
                         </div>\
                         <div class="footer">\
-                            <div class="waves-effect version">当前版本：' + result.version + '</div>\
-                            <a   class="waves-effect button help" href="http://ksria.com/simptab/docs/#/禅模式?id=自定义脚本" target="_blank">' + i18n.GetLang( "zen_mode_setting_script_howto" ) + '</a>\
-                            <div class="waves-effect button update">检查更新</div>\
+                            <div class="waves-effect version">' + i18n.GetLang( "zen_mode_setting_snippets_footer_version" ) + result.version + '</div>\
+                            <a   class="waves-effect button help" href="http://ksria.com/simptab/docs/#/禅模式?id=自定义脚本" target="_blank">' + i18n.GetLang( "zen_mode_setting_snippets_footer_howto" ) + '</a>\
+                            <div class="waves-effect button update">' + i18n.GetLang( "zen_mode_setting_snippets_footer_update" ) + '</div>\
                             <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
                         </div>';
         $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog snippets"></div></div></div>' );

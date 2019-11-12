@@ -557,8 +557,28 @@
         "message": "关闭"
     },
 
-    "zen_mode_setting_script_howto": {
+    "zen_mode_setting_snippets_toolbar_desc": {
+        "message": "暂无描述"
+    },
+
+    "zen_mode_setting_snippets_toolbar_home": {
+        "message": "主页"
+    },
+
+    "zen_mode_setting_snippets_toolbar_download": {
+        "message": "安装"
+    },
+
+    "zen_mode_setting_snippets_footer_version": {
+        "message": "当前版本："
+    },
+
+    "zen_mode_setting_snippets_footer_howto": {
         "message": "如何使用"
+    },
+
+    "zen_mode_setting_snippets_footer_update": {
+        "message": "检查更新"
     },
 
     "noise_mode_cafe001": {
