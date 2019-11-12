@@ -451,8 +451,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                             <div class="waves-effect button manage">' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</div>\
                             <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
                             <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
-                            <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
                             <div class="waves-effect button close">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
+                            <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
                         </div>\
                     </div>';
         $( "body" ).append( tmpl );
