@@ -39,6 +39,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         Keys.prototype.GLOBALS_KEY_MAP = [
             { short: "esc", long: "esc"  },
             { short: "?",   long: "help" },
+            { short: "s",   long: "opt"  },
         ];
 
         Keys.prototype.OTHERS_KEY_MAP = [
@@ -109,7 +110,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             var new_key = formatShortcut( shortcut.short );
             Mousetrap.bind( new_key , function() {
                 console.log("click = " + shortcut.short.replace( / /g, "" ) );
-                controlbar.AutoClick( idx );
+                if ( shortcut.short == "s" && localStorage["simptab-zenmode"] == "true" ) message.Publish( message.TYPE.OPEN_ZENMODE );
+                else controlbar.AutoClick( idx );
             });
         });
     }

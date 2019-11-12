@@ -313,6 +313,10 @@
         "message": "Open/Close Keymaps"
     },
 
+    "shortcuts_key_opt": {
+        "message": "Open/Close zen mode or photograph option"
+    },
+
     "shortcuts_key_bookmarks": {
         "message": "Open/Close Bookmarks"
     },

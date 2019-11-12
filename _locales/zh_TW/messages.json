@@ -313,6 +313,10 @@
         "message": "打開/關閉快捷鍵一覽"
     },
 
+    "shortcuts_key_opt": {
+        "message": "打開/關閉禪模式或圖模式的設置欄"
+    },
+
     "shortcuts_key_bookmarks": {
         "message": "打開/關閉書籤欄"
     },
