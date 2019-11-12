@@ -334,7 +334,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
 
     function scriptManage( result ) {
         var html = '<div class="script">\
-                        <img src="<%- root + item.snap %>" alt=""/>\
+                        <div class="cover waves-effect"><div class="img" style="background-image: url(<%- root + item.snap %>)"></div></div>\
                         <div class="toolbar">\
                             <div class="title"     data-balloon-pos="up" data-balloon="<%- item.title %>"><i class="fab fa-readme waves-effect"></i></i></div>\
                             <div class="desc"      data-balloon-pos="up" data-balloon="<%- item.desc || "' + i18n.GetLang( "zen_mode_setting_snippets_toolbar_desc" ) + '" %>"><i class="fas fa-eye waves-effect"></i></div>\
