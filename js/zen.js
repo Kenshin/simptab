@@ -284,20 +284,26 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                     scriptManage( manage );
                 };
             if ( $.isEmptyObject( manage )) {
-                $.ajax({
-                    type       : "GET",
-                    url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/config.json?" + Math.round(+new Date()),
-                    dataType   : "json"
-                }).then( function( result ) {
-                    if ( result && result.items.length > 0 ) {
-                        manage = result;
-                        localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( manage );
-                        runat();
-                    } else new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
-                }, function( jqXHR, textStatus, errorThrown ) {
-                    new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
+                getScriptConfig( function( result ) {
+                    manage = result;
+                    runat();
                 });
             } else runat();
+        });
+    }
+
+    function getScriptConfig( callback ) {
+        $.ajax({
+            type       : "GET",
+            url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/config.json?" + Math.round(+new Date()),
+            dataType   : "json"
+        }).then( function( result ) {
+            if ( result && result.items.length > 0 ) {
+                localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( result );
+                callback( result );
+            } else new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
+        }, function( jqXHR, textStatus, errorThrown ) {
+            new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
         });
     }
 
