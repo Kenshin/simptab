@@ -281,8 +281,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         $( ".setting-zen-mode" ).on( "click", ".script .subtitle span", function( event ) {
             var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || "{}" ),
                 runat  = function() {
-                    close();
-                    new Function( manage.script )();
+                    scriptManage( manage.items );
                 };
             if ( $.isEmptyObject( manage )) {
                 $.ajax({
@@ -290,14 +289,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                     url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/config.json?" + Math.round(+new Date()),
                     dataType   : "json"
                 }).then( function( result ) {
-                    if ( result && result.length > 0 ) {
-                        scriptManage( result );
-                    } else if ( result && result.version ) {
+                    if ( result && result.items.length > 0 ) {
                         manage = result;
                         localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( manage );
-                        new Notify().Render( i18n.GetLang( "notify_zen_mode_script_loader_success" ) );
                         runat();
-                    }
+                    } else new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
                 }, function( jqXHR, textStatus, errorThrown ) {
                     new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
                 });
