@@ -2051,7 +2051,7 @@ img {
 }
 
 .setting-zen-mode .footer .button,
-.srcmange .footer .button {
+.snippets .footer .button {
     width: 80px;
     height: 28px;
     line-height: 28px;
@@ -2066,7 +2066,7 @@ img {
 }
 
 .setting-zen-mode .footer .exit,
-.srcmange         .footer .exit {
+.snippets         .footer .exit {
     background-color: #F44336;
 }
 
@@ -2076,8 +2076,8 @@ img {
 
 .setting-zen-mode .footer .import,
 .setting-zen-mode .footer .export,
-.srcmange         .footer .help,
-.srcmange         .footer .update {
+.snippets         .footer .help,
+.snippets         .footer .update {
     color: inherit;
     text-decoration: none;
     background-color: #4DB6AC;
@@ -2107,11 +2107,11 @@ img {
     width: 100%;
 }
 
-.srcmange .close {
+.snippets .close {
     opacity: 0;
 }
 
-.srcmange .scripts {
+.snippets .scripts {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -2125,7 +2125,7 @@ img {
     overflow-y: auto;
 }
 
-.srcmange .scripts .script {
+.snippets .scripts .script {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2134,11 +2134,11 @@ img {
     margin: 10px;
 }
 
-.srcmange .scripts .script a {
+.snippets .scripts .script a {
     color: inherit;
 }
 
-.srcmange .scripts .script img {
+.snippets .scripts .script img {
     padding: 2px;
     max-width: 150px;
     height: auto;
@@ -2147,7 +2147,7 @@ img {
     border-radius: 10px;
 }
 
-.srcmange .scripts .script .toolbar {
+.snippets .scripts .script .toolbar {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -2155,11 +2155,11 @@ img {
     justify-content: flex-end;
 }
 
-.srcmange .scripts .script i {
+.snippets .scripts .script i {
     padding-left: 8px;
 }
 
-.srcmange .footer {
+.snippets .footer {
     position: absolute;
     left: 0;
     right: 0;
@@ -2178,14 +2178,14 @@ img {
     background-color: rgba(15,15,15,1);
 }
 
-.srcmange .footer .version {
+.snippets .footer .version {
     position: absolute;
     left: 15px;
 }
 
-.srcmange .footer .help,
-.srcmange .footer .update,
-.srcmange .footer .exit {
+.snippets .footer .help,
+.snippets .footer .update,
+.snippets .footer .exit {
     margin-left: 10px;
 }
 

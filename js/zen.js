@@ -353,25 +353,25 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                             <div class="waves-effect button update">检查更新</div>\
                             <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
                         </div>';
-        $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog srcmange"></div></div></div>' );
+        $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog snippets"></div></div></div>' );
         setTimeout( function() {
             $( ".dialog-bg" ).addClass( "dialog-bg-show" );
             $( ".dialog" ).html( tmpl );
-            $( ".srcmange .exit, .srcmange .close" ).click( function( event ) {
-                $( "body" ).off( "click", ".srcmange .toolbox span" );
+            $( ".snippets .exit, .snippets .close" ).click( function( event ) {
+                $( "body" ).off( "click", ".snippets .toolbox span" );
                 $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
                 setTimeout( function() {
                     $( ".dialog-overlay" ).remove();
                 }, 400 );
             });
-            $( ".srcmange .toolbar .download i" ).on( "click", function( event ) {
+            $( ".snippets .toolbar .download i" ).on( "click", function( event ) {
                 $.get( $(event.currentTarget).parent().attr("data-src"), function( result ) {
                     storage.db = storage.Verify( JSON.parse( result ) );
                     storage.Set();
                     new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
                 });
             });
-            $( ".srcmange .footer .update" ).on( "click", function( event ) {
+            $( ".snippets .footer .update" ).on( "click", function( event ) {
                 getScriptVersion();
             });
         }, 450 );
