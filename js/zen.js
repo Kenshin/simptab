@@ -278,7 +278,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             storage.db.script = event.target.value;
             storage.Set();
         });
-        $( ".setting-zen-mode" ).on( "click", ".script .subtitle span", function( event ) {
+        $( ".setting-zen-mode" ).on( "click", ".footer .manage", function( event ) {
             var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || "{}" ),
                 runat  = function() {
                     scriptManage( manage );
@@ -446,9 +446,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                         <div class="script" style="margin-top: 15px;">\
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_script" ) + '</div>\
                             ' + scriptView() + '\
-                            <div class="subtitle"><span>' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</span></div>\
                         </div>\
                         <div class="footer">\
+                            <div class="waves-effect button manage">' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</div>\
                             <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
                             <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
                             <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\

@@ -1955,8 +1955,8 @@ img {
     right: 10px;
     bottom: 10px;
 
-    width: 400px;
-    height: 605px;
+    width: 455px;
+    height: 575px;
 
     padding: 15px;
 
@@ -2074,6 +2074,7 @@ img {
     background-color: #1dba90;
 }
 
+.setting-zen-mode .footer .manage,
 .setting-zen-mode .footer .import,
 .setting-zen-mode .footer .export,
 .snippets         .footer .help,
@@ -2269,7 +2270,7 @@ img {
 
 .setting-zen-mode .css textarea,
 .setting-zen-mode .script textarea {
-    max-width: 395px;
+    max-width: 450px;
     height: 60px;
 }
 
