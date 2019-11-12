@@ -334,17 +334,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
 
     function scriptManage( result ) {
         var html = '<div class="script">\
-                        <img src="<%- item.snap %>" alt=""/>\
+                        <img src="<%- root + item.snap %>" alt=""/>\
                         <div class="toolbar">\
                             <div class="title"     data-balloon-pos="up" data-balloon="<%- item.title %>"><i class="fab fa-readme waves-effect"></i></i></div>\
                             <div class="desc"      data-balloon-pos="up" data-balloon="<%- item.desc || "暂无描述" %>"><i class="fas fa-eye waves-effect"></i></div>\
                             <a   class="user"      data-balloon-pos="up" data-balloon="<%- item.author.name %>" href="<%- item.author.contact %>" target="_blank"><i class="fas fa-user waves-effect"></i></a>\
                             <a   class="home"      data-balloon-pos="up" data-balloon="主页" href="<%- item.link %>" target="_blank"><i class="fas fa-home waves-effect"></i></a>\
                             <div class="version"   data-balloon-pos="up" data-balloon="<%- item.version %>"><i class="fas fa-code-branch waves-effect"></i></div>\
-                            <div class="download"  data-balloon-pos="up" data-balloon="安装" data-src="<%- item.download %>"><i class="fas fa-cloud-download-alt waves-effect"></i></div>\
+                            <div class="download"  data-balloon-pos="up" data-balloon="安装" data-src="<%- root + item.download %>"><i class="fas fa-cloud-download-alt waves-effect"></i></div>\
                         </div>\
                     </div>',
-            scrComp  = _.template( '<% jq.each( items, function( idx, item ) { %>' + html + '<% }); %>', { 'imports': { 'jq': jQuery }} ),
+            scrComp  = _.template( '<% jq.each( items, function( idx, item ) { %>' + html + '<% }); %>', { 'imports': { 'jq': jQuery, 'root': result.root }} ),
             srcHtml  = scrComp({ 'items': result.items }),
             tmpl     = '\
                         <div class="close"><span class="close"></span></div>\
