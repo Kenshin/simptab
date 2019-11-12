@@ -308,17 +308,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     }
 
     function getScriptVersion() {
+        var notify = new Notify().Render({ state: "loading", content: "正在更新最新脚本管理器，请稍等..." });
         $.ajax({
             type       : "GET",
             url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/version.json?" + Math.round(+new Date()),
             dataType   : "json"
         }).then( function( result ) {
             if ( result && result.version ) {
+                notify.complete();
                 var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || {} );
                 if ( manage.version != result.version ) {
-                    var notify = new Notify().Render({ state: "loading", content: "正在更新最新脚本管理器，请稍等..." });
-                    getScriptConfig( function( result ) {
-                        notify.complete();
+                    getScriptConfig( function() {
                         new Notify().Render( '已更新到最新版本，请重新进入！' );
                     });
                 } else new Notify().Render( '当前已是最新版本，无需更新。' );
