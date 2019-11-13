@@ -13,6 +13,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             { short: "2", long: "history"  },
             { short: "3", long: "apps"     },
             { short: "4", long: "newtab"   },
+            { short: "",  long: "up"       },
             { short: "5", long: "info"     },
             { short: "6", long: "download" },
             { short: "7", long: "upload", hiden: true },
@@ -209,6 +210,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
     function createKeymapTmpl( title, map, prefix ) {
         var html = "";
         $.each( map, function( idx, shortcut ) {
+            if ( shortcut.short == "" ) return true;
             shortcut.short == "up"    && ( shortcut.short = "↑" );
             shortcut.short == "left"  && ( shortcut.short = "←" );
             shortcut.short == "right" && ( shortcut.short = "→" );
