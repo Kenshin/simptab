@@ -509,7 +509,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     function ohtersMode() {
         $( ".controlbar" ).addClass( "controlbar-zen-mode" );
         $( ".progress"   ).addClass( "progress-zen-mode" );
-        $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' );
+        $( "body"        ).append( '<div class="setting-trigger-zen-mode"><i class="fas fa-cog"></i></div>' );
         storage.db.script != "" && run();
         custom();
         storage.db.theme == "#ffffff" && $( ".setting-trigger-zen-mode" ).addClass( "setting-trigger-white-zen-mode" );
