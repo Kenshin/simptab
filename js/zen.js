@@ -540,7 +540,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     }
 
     function subscribe() {
-        message.Subscribe( message.TYPE.OPEN_ZENMODE, function( event ) {
+        message.Subscribe( message.TYPE.OPEN_ZENMODE_OPTIONS, function( event ) {
             $( ".setting-trigger-zen-mode" )[0].click();
         });
     }

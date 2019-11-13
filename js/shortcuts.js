@@ -39,6 +39,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         Keys.prototype.GLOBALS_KEY_MAP = [
             { short: "esc", long: "esc"  },
             { short: "?",   long: "help" },
+            { short: "`",   long: "zen"  },
             { short: "s",   long: "opt"  },
         ];
 
@@ -110,7 +111,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             var new_key = formatShortcut( shortcut.short );
             Mousetrap.bind( new_key , function() {
                 console.log("click = " + shortcut.short.replace( / /g, "" ) );
-                if ( shortcut.short == "s" && localStorage["simptab-zenmode"] == "true" ) message.Publish( message.TYPE.OPEN_ZENMODE );
+                if ( shortcut.short == "s" && localStorage["simptab-zenmode"] == "true" ) message.Publish( message.TYPE.OPEN_ZENMODE_OPTIONS );
                 else controlbar.AutoClick( idx );
             });
         });
@@ -128,7 +129,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     message.Publish( message.TYPE.OPEN_QUICKBAR );
                     break;
                 case "c":
-                    message.Publish( message.TYPE.OPEN_ZENMODE  );
+                    message.Publish( message.TYPE.OPEN_ZENMODE_OPTIONS  );
                     break;
                 case "w":
                     message.Publish( message.TYPE.OPEN_NOISE    );
@@ -237,6 +238,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 $( "body" ).append( '<div class="shortcuts"><div class="title">' + i18n.GetLang( "shortcuts_title" ) + '</div><div class="keymaps">' + html + '</div></div>' );
                 open();
             }
+        });
+        Mousetrap.bind( "`", function() {
+            message.Publish( localStorage["simptab-zenmode"] == "true" ? message.TYPE.CLOSE_ZENMODE : message.TYPE.OPEN_ZENMODE );
         });
     }
 

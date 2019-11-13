@@ -139,6 +139,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     message.Subscribe( message.TYPE.SET_BACKGROUND_POSITION, function( event ) {
         background.SetPosition( event.data );
     });
+    message.Subscribe( message.TYPE.OPEN_ZENMODE, function( event ) {
+        $( ".zenstate input" ).click();
+    });
     message.Subscribe( message.TYPE.CLOSE_ZENMODE, function( event ) {
         zen.ESC();
     });

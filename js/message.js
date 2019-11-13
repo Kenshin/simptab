@@ -20,6 +20,7 @@ define([ "jquery" ], function( $ ) {
             "OPEN_QUICKBAR"    : "OPEN_QUICKBAR",
             "OPEN_ZENMODE"     : "OPEN_ZENMODE",
             "CLOSE_ZENMODE"    : "CLOSE_ZENMODE",
+            "OPEN_ZENMODE_OPTIONS" : "OPEN_ZENMODE_OPTIONS",
             "OPEN_NOISE"       : "OPEN_NOISE",
             "UPDATE_EARTH"     : "UPDATE_EARTH",
             "HISTORY"          : "HISTORY",

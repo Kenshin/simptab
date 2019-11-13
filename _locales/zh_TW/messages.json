@@ -317,6 +317,10 @@
         "message": "打開/關閉禪模式或圖模式的設置欄"
     },
 
+    "shortcuts_key_zen": {
+        "message": "打開/關閉禪模式"
+    },
+
     "shortcuts_key_bookmarks": {
         "message": "打開/關閉書籤欄"
     },
