@@ -98,7 +98,7 @@ img {
     opacity: 0;
     transition: all .35s cubic-bezier(.4,0,.2,1);
 
-    box-shadow: -2px 0 4px rgba(0,0,0,.5);
+    box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
 
     overflow: auto;
     overflow-x: hidden;
@@ -605,7 +605,7 @@ img {
 
     background-color: rgba( 255, 255, 255, .7 );
 
-    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
+    box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
 
     border-radius: 4px;
 }
@@ -2495,9 +2495,12 @@ img {
     height: 100px;
 
     background: rgba(255, 255, 255, .3);
+
     opacity: 0;
     transform: translateY(-300px);
     transition: all .35s cubic-bezier(.4,0,.2,1);
+
+    box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
 }
 
 .history img {
