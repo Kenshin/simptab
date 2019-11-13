@@ -993,10 +993,6 @@ img {
     overflow: initial;
 }
 
-.manage .close span.close {
-    background-image: url("../images/remove.png");
-}
-
 .manage .album .photograph img {
     padding: 2px;
 
