@@ -269,6 +269,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 case "shortcuts":
                     close();
                     break;
+                case "noise-mode":
                 case "bm-overlay":
                     if ( $( ".history" ).hasClass( "open" ) ) {
                         $( ".history" ).css({ "transform": "translateY(-300px)", "opacity": 0 }).removeClass( "open" );
@@ -283,7 +284,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 case "setting-zen-mode":
                     $( ".setting-zen-mode" ).find( ".footer .close" )[0].click();
                     break;
-                case "noise-mode":
+                case "noise-mode active":
                     $( ".noise-mode" ).find( ".close" )[0].click();
                     break;
             }
