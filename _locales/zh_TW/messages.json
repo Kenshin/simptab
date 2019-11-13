@@ -41,6 +41,10 @@
         "message": "應用"
     },
 
+    "controlbar_fullscreen": {
+        "message": "全屏"
+    },
+
     "controlbar_info": {
         "message": "詳細信息"
     },

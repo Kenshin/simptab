@@ -13,6 +13,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".controlbar" ).find( "a[url*=chrome]" )[2]).attr("data-balloon", i18n( "controlbar_apps" ));
         $($( ".controlbar" ).find( "a[url*=chrome]" )[3]).attr("data-balloon", i18n( "controlbar_newtab" ));
 
+        $( ".controlbar" ).find( "a[url=fullscreen]" ).attr("data-balloon", i18n( "controlbar_fullscreen" ));
         $( ".controlbar" ).find( "a[url=info]" ).attr("data-balloon", i18n( "controlbar_info" ));
         $( ".controlbar" ).find( "a[url=download]" ).attr("data-balloon", i18n( "controlbar_download" ));
         $( ".controlbar" ).find( "a[url=upload]" ).attr("data-balloon", i18n( "controlbar_upload" ));

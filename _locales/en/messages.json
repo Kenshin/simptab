@@ -41,6 +41,10 @@
         "message": "Apps"
     },
 
+    "controlbar_fullscreen": {
+        "message": "Full Screen"
+    },
+
     "controlbar_info": {
         "message": "Information"
     },

@@ -232,6 +232,14 @@ img {
     background-image: url("../images/apps.png");
 }
 
+.fullscreenicon {
+    background-image: url("../images/fullscreen.png");
+}
+
+.fullscreenicon.exit {
+    background-image: url("../images/fullscreen_exit.png");
+}
+
 .infoicon {
     background-image: url("../images/info.png");
 }

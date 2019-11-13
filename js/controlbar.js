@@ -82,7 +82,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                 $( ".controlink[url=about]" ).parent().addClass( "horz-toolbox-show-3" );
             });
 
-            $($( ".controlbar li" )[8]).mouseleave( function( event ) {
+            $($( ".controlbar li" )[9]).mouseleave( function( event ) {
                 $( ".controlink[url=setting]" ).prev().removeClass( "horz-toolbox-show" );
                 $( ".controlink[url=manage]" ).parent().removeClass( "horz-toolbox-show-1" );
                 $( ".controlink[url=options]" ).parent().removeClass( "horz-toolbox-show-2" );
@@ -147,6 +147,10 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                             $( ".setting" ).removeClass( "open" );
                             //$( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
+                        break;
+                    case "fullscreen":
+                        $target.find( "span" ).hasClass( 'exit' ) ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+                        $target.find( "span" ).toggleClass( 'exit' );
                         break;
                     case "favorite":
                         var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
