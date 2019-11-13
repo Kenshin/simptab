@@ -104,6 +104,9 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
                 render();
                 listen();
             }, 10 );
+            message.Subscribe( message.TYPE.OPEN_HISTORY, function( event ) {
+                !$( ".history" ).hasClass( "open" ) ? open() : close();
+            });
         }
     }
 });

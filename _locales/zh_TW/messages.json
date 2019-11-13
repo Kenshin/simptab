@@ -321,6 +321,10 @@
         "message": "打開/關閉禪模式"
     },
 
+    "shortcuts_key_history": {
+        "message": "打開/關閉歷史記錄"
+    },
+
     "shortcuts_key_bookmarks": {
         "message": "打開/關閉書籤欄"
     },

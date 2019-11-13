@@ -321,6 +321,10 @@
         "message": "Open/Close zen mode"
     },
 
+    "shortcuts_key_history": {
+        "message": "Open/Close History"
+    },
+
     "shortcuts_key_bookmarks": {
         "message": "Open/Close Bookmarks"
     },

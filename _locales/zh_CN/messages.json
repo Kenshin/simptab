@@ -321,6 +321,10 @@
         "message": "打开/关闭禅模式"
     },
 
+    "shortcuts_key_history": {
+        "message": "打开/关闭历史记录"
+    },
+
     "shortcuts_key_bookmarks": {
         "message": "打开/关闭书签栏"
     },

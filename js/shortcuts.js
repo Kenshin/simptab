@@ -44,6 +44,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         ];
 
         Keys.prototype.OTHERS_KEY_MAP = [
+            { short: "h", long: "history"},
             { short: "b", long: "bookmarks"},
             { short: "q", long: "quickbar" },
             { short: "z", long: "topsites" },
@@ -122,6 +123,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         keys.OTHERS_KEY_MAP.forEach( function( item ) { binds.push( item.short ) });
         Mousetrap.bind( binds, function( event, combo ) {
             switch ( combo ) {
+                case "h":
+                    message.Publish( message.TYPE.OPEN_HISTORY );
+                    break;
                 case "b":
                     message.Publish( message.TYPE.OPEN_BOOKMARKS );
                     break;
