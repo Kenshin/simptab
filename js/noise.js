@@ -101,13 +101,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
 
     function open() {
         setTimeout( function(){
-            $( ".noise-mode" ).css({ "transform": "translateY(0px)", "opacity": 1, "pointer-events": "inherit" });
+            $( ".noise-mode" ).addClass( "active" );
         }, 10 );
     }
 
     function close() {
         $( ".noise-mode .close" ).click( function( event ) {
-            $( ".noise-mode" ).css({ "transform": "translateY(100px)", "opacity": 0, "pointer-events": "none" });
+            $( ".noise-mode" ).toggleClass( "active" );
         });
     }
 
@@ -119,7 +119,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                     localStorage["simptab-noise-notify"] = false;
                 }});
                 if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
-                    open();
+                    $( ".noise-mode .close" ).click();
                 } else {
                     render();
                     open();

@@ -2352,6 +2352,13 @@ img {
 
     overflow: hidden;
     z-index: 200;
+    pointer-events: none;
+}
+
+.noise-mode.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: inherit;
 }
 
 .noise-mode .close {
