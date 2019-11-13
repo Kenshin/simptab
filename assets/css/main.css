@@ -1455,32 +1455,21 @@ img {
     width: 24px;
     height: 24px;
 
-    background-position: center;
-    background-repeat: no-repeat;
+    line-height: 24px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .bm .folders .folder.search span {
     background-color: #FF5252;
 }
 
-.bm .folders .folder.search span icon {
-    background-image: url("../images/search.png");
-}
-
 .bm .folders .folder.root span {
     background-color: #179b78;
 }
 
-.bm .folders .folder.root span icon {
-    background-image: url("../images/root.png");
-}
-
 .bm .folders .folder.recent span {
     background-color: rgb(66, 66, 66);
-}
-
-.bm .folders .folder.recent span icon {
-    background-image: url("../images/recent.png");
 }
 
 .bm .files {
