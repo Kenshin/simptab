@@ -7,7 +7,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
         io     = new IntersectionObserver( observerImg ),
         oriImg = chrome.extension.getURL( "/assets/images/loading.gif" ),
         rTmpl  = '\
-                <div class="close"><span class="close"></span></div>\
+                <div class="close"><span class="waves-effect close"><i class="fas fa-times-circle"></i></span></div>\
                 <div class="tabs">\
                     <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
                     <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\

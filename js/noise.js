@@ -62,7 +62,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                                 </div>\
                             </div>\
                         </div>\
-                        <span class="close"></span>\
+                        <span class="waves-effect close"><i class="fas fa-times-circle"></i></span>\
                     </div>';
         $( "body" ).append( tmpl );
 

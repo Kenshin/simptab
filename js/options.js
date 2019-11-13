@@ -338,7 +338,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
     function render() {
         var tmpl = '\
-                    <div class="close"><span class="close"></span></div>\
+                    <div class="close"><span class="waves-effect close"><i class="fas fa-times-circle"></i></span></div>\
                     <div class="options">\
                         <div class="head">' + i18n.GetLang( "options_head" ) + '</div>\
                         <div class="content">\
