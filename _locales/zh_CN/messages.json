@@ -317,6 +317,10 @@
         "message": "打开/关闭快捷键一览"
     },
 
+    "shortcuts_key_up": {
+        "message": "全屏"
+    },
+
     "shortcuts_key_opt": {
         "message": "打开/关闭禅模式或图模式的设置栏"
     },

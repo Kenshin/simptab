@@ -39,6 +39,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         Keys.prototype.GLOBALS_KEY_MAP = [
             { short: "esc", long: "esc"  },
             { short: "?",   long: "help" },
+            { short: "up",  long: "up"   },
             { short: "`",   long: "zen"  },
             { short: "s",   long: "opt"  },
         ];
@@ -208,6 +209,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
     function createKeymapTmpl( title, map, prefix ) {
         var html = "";
         $.each( map, function( idx, shortcut ) {
+            shortcut.short == "up"    && ( shortcut.short = "↑" );
             shortcut.short == "left"  && ( shortcut.short = "←" );
             shortcut.short == "right" && ( shortcut.short = "→" );
             var key  = shortcut.short,
@@ -242,6 +244,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 $( "body" ).append( '<div class="shortcuts"><div class="title">' + i18n.GetLang( "shortcuts_title" ) + '</div><div class="keymaps">' + html + '</div></div>' );
                 open();
             }
+        });
+        Mousetrap.bind( "up", function() {
+            $( ".controlbar li a[url=fullscreen]" ).find( "span" ).click();
         });
         Mousetrap.bind( "`", function() {
             message.Publish( localStorage["simptab-zenmode"] == "true" ? message.TYPE.CLOSE_ZENMODE : message.TYPE.OPEN_ZENMODE );

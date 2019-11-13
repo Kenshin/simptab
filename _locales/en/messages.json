@@ -317,6 +317,10 @@
         "message": "Open/Close Keymaps"
     },
 
+    "shortcuts_key_up": {
+        "message": "Full Screen"
+    },
+
     "shortcuts_key_opt": {
         "message": "Open/Close zen mode or photograph option"
     },
