@@ -34,28 +34,28 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                     <div class="noise-mode">\
                         <div class="sfx">\
                             <div class="waves-effect waves-block effect" type="cafe001">\
-                                <div class="avatar"></div>\
+                                <div class="avatar"><i class="fas fa-coffee"></i></div>\
                                 <div class="label">' + i18n.GetLang( "noise_mode_cafe001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "cafe001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="jazz001">\
-                                <div class="avatar"></div>\
+                                <div class="avatar"><i class="fas fa-compact-disc"></i></div>\
                                 <div class="label">' + i18n.GetLang( "noise_mode_jazz001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "jazz001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="rain001">\
-                                <div class="avatar"></div>\
+                                <div class="avatar"><i class="fas fa-umbrella"></i></div>\
                                 <div class="label">' + i18n.GetLang( "noise_mode_rain001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "rain001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="thun001">\
-                                <div class="avatar"></div>\
+                                <div class="avatar"><i class="fas fa-bolt"></i></div>\
                                 <div class="label">' + i18n.GetLang( "noise_mode_thun001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "thun001" ) + '\
@@ -71,7 +71,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
 
     function model() {
        $( ".noise-mode .sfx .effect .avatar" ).on( "click", function( event ) {
-            var $parent = $( event.target ).parent(),
+            var $parent = $( event.currentTarget ).parent(),
                 key     = $parent.attr( "type" ),
                 $volume = $parent.find( ".volum" ),
                 volume  = $parent.find( ".md-slider-root input" ).val();

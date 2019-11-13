@@ -2382,23 +2382,6 @@ img {
     background-color: #fff;
 }
 
-.noise-mode .sfx .exit {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-
-    display: block;
-
-    width: 14px;
-    height: 14px;
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url("../images/noise-sfx-close.png");
-
-    cursor: pointer;
-}
-
 .noise-mode .sfx .effect {
     display: flex;
     flex-direction: column;
@@ -2424,26 +2407,11 @@ img {
     width: 60px;
     height: 60px;
 
-    background-position: center;
-    background-repeat: no-repeat;
+    line-height: 60px;
+    font-size: 50px;
+    text-align: center;
 
     cursor: pointer;
-}
-
-.noise-mode .sfx .effect[type="cafe001"] .avatar {
-    background-image: url("../images/cafe001.png");
-}
-
-.noise-mode .sfx .effect[type="jazz001"] .avatar {
-    background-image: url("../images/jazz001.png");
-}
-
-.noise-mode .sfx .effect[type="rain001"] .avatar {
-    background-image: url("../images/rain001.png");
-}
-
-.noise-mode .sfx .effect[type="thun001"] .avatar {
-    background-image: url("../images/thun001.png");
 }
 
 .noise-mode .sfx .effect .label {
