@@ -268,7 +268,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     close();
                     break;
                 case "bm-overlay":
-                    if ( $( ".bm" ).hasClass( "open" ) ) {
+                    if ( $( ".history" ).hasClass( "open" ) ) {
+                        $( ".history" ).css({ "transform": "translateY(-300px)", "opacity": 0 }).removeClass( "open" );
+                    } else if ( $( ".bm" ).hasClass( "open" ) ) {
                         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
                     } else if ( $( ".setting" ).hasClass( "open" )) {
                         $( ".controlink .settingicon" ).trigger( "click" );
