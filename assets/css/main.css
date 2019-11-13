@@ -993,24 +993,6 @@ img {
     overflow: initial;
 }
 
-/*
-.manage .album .photograph ul li span.useicon {
-    background-image: url("../images/use.png");
-}
-
-.manage .album .photograph ul li span.downicon {
-    background-image: url("../images/down.png");
-}
-
-.manage .album .photograph ul li span.authoricon {
-    background-image: url("../images/author.png");
-}
-
-.manage .album .photograph ul li span.linkicon {
-    background-image: url("../images/link.png");
-}
-*/
-
 .manage .close span.close {
     background-image: url("../images/remove.png");
 }
