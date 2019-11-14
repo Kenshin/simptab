@@ -290,7 +290,7 @@
     },
 
     "quickbar_input_placeholder": {
-        "message": "搜索内容包括：书签栏与最近常用网址"
+        "message": "包括：书签栏与最近常用网址，并接入多种搜索引擎，快捷键 s + 空格"
     },
 
     "shortcuts_title": {

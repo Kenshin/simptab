@@ -290,7 +290,7 @@
     },
 
     "quickbar_input_placeholder": {
-        "message": "搜索內容包括：書籤欄與最近常用網址"
+        "message": "包括：書籤欄與最近常用網址，並接入多種搜索引擎，快捷鍵 s + 空格"
     },
 
     "shortcuts_title": {
