@@ -240,10 +240,12 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
                     $target.find( ".result:first-child" ).addClass( "active" );
                 } else {
                     $target.find( ".result.active" ).removeClass( "active" ).next().addClass( "active" );
+                    !$target.find( ".result" ).hasClass( "active" ) && $target.find( ".result:first-child" ).addClass( "active" );
                 }
             } else if ( key == 38 ) {
                 $target.find( ".result" ).hasClass( "active" ) &&
                     $target.find( ".result.active" ).removeClass( "active" ).prev().addClass( "active" );
+                !$target.find( ".result" ).hasClass( "active" ) && $target.find( ".result:last-child" ).addClass( "active" );
             } else if ( key == 13 ) {
                 $target.find( ".result" ).hasClass( "active" ) ?
                     $target.find( ".result.active" )[0].click()
