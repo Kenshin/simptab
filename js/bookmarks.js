@@ -234,6 +234,8 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         });
         $( ".quickbar .search input" ).on( "keydown", function( event ) {
             var key     = event.keyCode,
+                input   = event.currentTarget,
+                cursor  = event.target.selectionStart,
                 $target = $( ".quickbar .results" );
             if ( key == 40 ) {
                 if ( !$target.find( ".result" ).hasClass( "active" )) {
@@ -242,10 +244,12 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
                     $target.find( ".result.active" ).removeClass( "active" ).next().addClass( "active" );
                     !$target.find( ".result" ).hasClass( "active" ) && $target.find( ".result:first-child" ).addClass( "active" );
                 }
+                setTimeout( () => input.setSelectionRange( cursor, cursor ), 5 );
             } else if ( key == 38 ) {
                 $target.find( ".result" ).hasClass( "active" ) &&
                     $target.find( ".result.active" ).removeClass( "active" ).prev().addClass( "active" );
                 !$target.find( ".result" ).hasClass( "active" ) && $target.find( ".result:last-child" ).addClass( "active" );
+                setTimeout( () => input.setSelectionRange( cursor, cursor ), 5 );
             } else if ( key == 13 ) {
                 $target.find( ".result" ).hasClass( "active" ) ?
                     $target.find( ".result.active" )[0].click()
