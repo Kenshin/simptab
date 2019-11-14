@@ -1611,6 +1611,10 @@ img {
     overflow-x: hidden;
 }
 
+.quickbar .results::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.2);
+}
+
 /*
 * shortcuts
 */
