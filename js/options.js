@@ -20,7 +20,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     search: [
                         '{"key":"g",  "color": "#4285F4", "title":"谷歌搜索",    "query": "https://www.google.com/search?q={query}"}',
                         '{"key":"b",  "color": "#0C8484", "title":"必应搜索",    "query": "https://bing.com/search?q={query}"}',
+                        '{"key":"dj", "color": "#AC525C", "title":"多吉翻译",    "query": "https://www.dogedoge.com/results?q={query}"}',
                         '{"key":"d",  "color": "#DE5833", "title":"DuckDuckGo", "query": "https://duckduckgo.com/?q={query}"}',
+                        '{"key":"mg", "color": "#26262A", "title":"Magi",       "query": "https://magi.com/search?q={query}"}',
                         '{"key":"bd", "color": "#2319DC", "title":"百度搜索",    "query": "https://www.baidu.com/s?wd={query}"}',
                         '{"key":"wx", "color": "#1AAD19", "title":"微信搜索",    "query": "https://weixin.sogou.com/weixin?type=2&s_from=input&query={query}"}',
                         '{"key":"z",  "color": "#0084FF", "title":"知乎搜索",    "query": "http://zhihu.sogou.com/zhihu?query={query}"}',
@@ -30,7 +32,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         '{"key":"tb", "color": "#FF692F", "title":"淘宝",       "query": "https://s.taobao.com/search?q={query}"}',
                         '{"key":"v2", "color": "#333344", "title":"V2EX",      "query": "https://www.sov2ex.com/?q={query}"}',
                         '{"key":"db", "color": "#55711C", "title":"豆瓣搜索",    "query": "https://www.douban.com/search?source=suggest&q={query}"}',
-                        '{"key":"fy", "color": "#4285F4", "title":"谷歌翻译",    "query": "https://translate.google.cn/#auto/en/{query}"}',
                     ],
                     unsplash: [ "collection/3593484", "collection/3593482", "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ],
                     unsplash_screen: "",
