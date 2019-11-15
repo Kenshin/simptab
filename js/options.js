@@ -270,7 +270,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
-     * Custom hour
+     * Custom Hour
      *********************************************/
 
     function customHourView() {
