@@ -466,11 +466,11 @@
     },
 
     "options_custom_tp": {
-        "message": "自定義站點（ Topsites ）"
+        "message": "常用網址"
     },
 
     "options_custom_tp_cbx": {
-        "message": "是否啟用自定義站點功能？"
+        "message": "是否自定義常用網址？"
     },
 
     "options_custom_tp_notice": {
