@@ -128,7 +128,8 @@ img {
 }
 
 .setting .tsstate,
-.setting .clockstate {
+.setting .clockstate,
+.setting .bmstate {
     display: none;
 }
 
