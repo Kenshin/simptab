@@ -465,6 +465,18 @@
         "message": "Custom global Style"
     },
 
+    "options_bookmarks": {
+        "message": "Bookmarks"
+    },
+
+    "options_bookmarks_label": {
+        "message": "Enable Bookmarks?"
+    },
+
+    "options_bookmarks_notice": {
+        "message": "Default disable Bookmarks, if enable, please enable Bookmarks permissions."
+    },
+
     "options_custom_tp": {
         "message": "Topsites"
     },

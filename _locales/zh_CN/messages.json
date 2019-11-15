@@ -465,6 +465,18 @@
         "message": "与 <a href='http://ksria.com/simptab/docs/#/禅模式?id=自定义样式' target='_blank'>禅模式 · 自定义样式</a> 的区别在于前者只应用于禅模式；此自定样式属于全局，详细请看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义样式' target='_blank'>自定义样式</a>"
     },
 
+    "options_bookmarks": {
+        "message": "书签栏"
+    },
+
+    "options_bookmarks_label": {
+        "message": "是否启用书签栏？"
+    },
+
+    "options_bookmarks_notice": {
+        "message": "默认不启用书签栏，启用时需要申请权限"
+    },
+
     "options_custom_tp": {
         "message": "常用网址"
     },

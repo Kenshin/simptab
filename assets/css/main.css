@@ -2264,7 +2264,8 @@ img {
 #custom-tp-cbx:checked + .toggle:before,
 #history-cbx:checked + .toggle:before,
 #custom-hour-cbx:checked + .toggle:before,
-#custom-hour-state-cbx:checked + .toggle:before {
+#custom-hour-state-cbx:checked + .toggle:before,
+#bookmarks-cbx:checked + .toggle:before {
     background: #4DB6AC;
 }
 
@@ -2276,7 +2277,8 @@ img {
 #custom-tp-cbx:checked + .toggle span,
 #history-cbx:checked + .toggle span,
 #custom-hour-cbx:checked + .toggle span,
-#custom-hour-state-cbx:checked + .toggle span {
+#custom-hour-state-cbx:checked + .toggle span,
+#bookmarks-cbx:checked + .toggle span {
     background: #00796B;
     transform: translateX(20px);
     transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
@@ -2291,7 +2293,8 @@ img {
 #custom-tp-cbx:checked + .toggle span:before,
 #history-cbx:checked + .toggle span:before,
 #custom-hour-cbx:checked + .toggle span:before,
-#custom-hour-state-cbx:checked + .toggle span:before {
+#custom-hour-state-cbx:checked + .toggle span:before,
+#bookmarks-cbx:checked + .toggle span:before {
     transform: scale(1);
     opacity: 0;
     transition: all 0.4s ease;

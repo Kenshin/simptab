@@ -270,6 +270,30 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
+     * Custom Bookmarks
+     *********************************************/
+
+    function customBookmarksView() {
+        var tmpl = '<div class="switche">\
+                        <div class="label">' + i18n.GetLang( "options_bookmarks_label" ) + '</div>\
+                        ' + comps.Switches( "bookmarks-cbx" ) + '\
+                    </div>\
+                    <div class="notice">' + i18n.GetLang( "options_bookmarks_notice" ) + '</div>\
+                    ';
+        return tmpl;
+    }
+
+    function customBookmarksModel() {
+        $( ".options .bookmarks" ).find( "input[id=bookmarks-cbx]" ).prop( "checked", $(".bmstate").find("span.checked").length > 0 ? true : false );
+        $( ".options" ).on( "change", ".bookmarks #bookmarks-cbx", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            $( ".bmstate" ).find("input").click();
+        });
+    }
+
+    /*********************************************
      * Custom Hour
      *********************************************/
 
@@ -396,6 +420,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                             <div class="group custom-search">' + customSearchView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_script" ) + '</div>\
                             <div class="group custom-script">' + customScriptView() + '</div>\
+                            <div class="title">' + i18n.GetLang( "options_bookmarks" ) + '</div>\
+                            <div class="group bookmarks">' + customBookmarksView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_tp" ) + '</div>\
                             <div class="group custom-tp">' + customTpView() + '</div>\
                         </div>\
@@ -410,6 +436,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         customScriptModel();
         customTitleModel();
         customHourModel();
+        customBookmarksModel();
         footerModel();
     }
 
