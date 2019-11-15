@@ -87,7 +87,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     });
     setting.Listen( function( type, result ) {
         switch ( type) {
-            //case "tsstate"      : topsites.Refresh( result ); break;
+            case "tsstate"      : topsites.Refresh( result ); break;
             case "clockstate"   : date.Toggle( result );      break;
             case "positionstate": controlbar.SetBgPosition( true ); break;
             case "changestate"  :

@@ -50,9 +50,9 @@ define([ "jquery" ], function( $ ) {
 
         $($( ".bmstate" ).find("label")).text( i18n( "setting_bm_state" ));
 
-        //$($( ".tsstate" ).find("label:eq(0)")).text( i18n( "setting_ts_state_normal" ));
-        //$($( ".tsstate" ).find("label:eq(1)")).text( i18n( "setting_ts_state_simple" ));
-        //$($( ".tsstate" ).find("label:eq(2)")).text( i18n( "setting_ts_state_senior" ));
+        $($( ".tsstate" ).find("label:eq(0)")).text( i18n( "setting_ts_state_normal" ));
+        $($( ".tsstate" ).find("label:eq(1)")).text( i18n( "setting_ts_state_simple" ));
+        $($( ".tsstate" ).find("label:eq(2)")).text( i18n( "setting_ts_state_senior" ));
 
         $($(".setting .contact").find("a")[0]).attr( "title", i18n( "setting_contact_weibo" ));
         $($(".setting .contact").find("a")[1]).attr( "title", i18n( "setting_contact_twitter" ));
