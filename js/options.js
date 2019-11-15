@@ -82,7 +82,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         })();
 
     /*********************************************
-     * Custom unsplash
+     * Custom Unsplash
      *********************************************/
 
     function unsplashView() {
@@ -162,7 +162,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
-     * Custom style
+     * Custom Style
      *********************************************/
 
     function customStyleView() {
