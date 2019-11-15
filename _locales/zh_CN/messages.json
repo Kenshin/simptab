@@ -514,7 +514,7 @@
     },
 
     "options_footer_notice": {
-        "message": "修改后，自动保存，刷新页面生效。"
+        "message": "自动保存，刷新页面生效。"
     },
 
     "options_footer_clear": {

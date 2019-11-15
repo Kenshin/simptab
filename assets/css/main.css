@@ -1331,7 +1331,7 @@ img {
     font-weight: bold;
 
     border-left: .25em solid rgba(255, 255, 255, 0.9);
-    transform: scale(.9) translate(-14px, 0px);
+    transform: scale(.9) translate(-9px, 0px);
 }
 
 .options .footer .button {
