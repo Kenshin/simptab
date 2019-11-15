@@ -288,12 +288,13 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
                     $span.removeAttr( "class" ).addClass( "checked" );
                     $target.addClass( "lrselected" );
                     zen.Init();
+                    new Notify().Render( i18n.GetLang( "notify_zen_mode" ) );
+                    setTimeout( function() { location.reload(); }, 2000 );
                 } else {
                     $span.removeAttr( "class" ).addClass( "unchecked" );
                     $target.removeClass( "lrselected" );
                     zen.Exit();
                 }
-                new Notify().Render( i18n.GetLang( "notify_zen_mode" ) );
                 localStorage["simptab-zenmode"] = value;
                 event.target.value = value;
             });

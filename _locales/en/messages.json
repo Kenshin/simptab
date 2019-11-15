@@ -754,7 +754,7 @@
     },
 
     "notify_zen_mode": {
-        "message": "Please fresh current new tab."
+        "message": "2's, auto re-fresh current new tab."
     },
 
     "notify_zen_mode_esc": {

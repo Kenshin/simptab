@@ -754,7 +754,7 @@
     },
 
     "notify_zen_mode": {
-        "message": "刷新頁面後進入禪模式。"
+        "message": "2秒後，刷新頁面後進入禪模式。"
     },
 
     "notify_zen_mode_esc": {
