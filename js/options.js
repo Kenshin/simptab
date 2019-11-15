@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function( $, Mousetrap, _, Notify, i18n, comps ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "topsites" ], function( $, Mousetrap, _, Notify, i18n, comps, topsites ) {
 
     "use strict";
 
@@ -107,7 +107,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="division"></div>\
                         <div class="switche" style="margin-bottom:0;">\
                             <div class="label">' + i18n.GetLang( "options_carousel_label" ) + '</div>\
-                            ' + comps.Dropdown( ".options", "carousel-dpd", items, !storage.db.carousel ? "-1" : storage.db.carousel ) + '\
+                            ' + comps.Dropdown( ".options .custom-unsplash", "carousel-dpd", items, !storage.db.carousel ? "-1" : storage.db.carousel ) + '\
                         </div>\
                         <div class="notice">' + i18n.GetLang( "options_carousel_notice" ) + '</div>\
                         <div class="division"></div>\
@@ -147,7 +147,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.db.mobile_host = event.target.value;
             storage.Set();
         });
-        $( ".options .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
+        $( ".options .custom-unsplash .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
             storage.db.carousel = event.data.value;
             storage.Set();
             new Notify().Render( i18n.GetLang( "notify_carousel" ) );
@@ -190,7 +190,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
      *********************************************/
 
     function customTpView() {
-        var tmpl = '<div class="switche">\
+        var tp    = localStorage["simptab-topsites"] || "simple";
+        var items = [{name: i18n.GetLang( "setting_ts_state_normal" ), value: "normal" },{name: i18n.GetLang( "setting_ts_state_simple" ), value: "simple" },{name:i18n.GetLang( "setting_ts_state_senior" ) , value: "senior" }];
+        var tmpl = '<div class="switche" style="margin-bottom:0;">\
+                        <div class="label">' + i18n.GetLang( "options_carousel_label" ) + '</div>\
+                        ' + comps.Dropdown( ".options .custom-tp", "carousel-dpd", items, tp ) + '\
+                    </div>\
+                    <div class="switche">\
                         <div class="label">' + i18n.GetLang( "options_custom_tp_cbx" ) + '</div>\
                         ' + comps.Switches( "custom-tp-cbx" ) + '\
                    </div>\
@@ -220,6 +226,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         $( ".options" ).on( "keyup", ".custom-tp textarea", function( event ) {
             storage.db.topsites.custom = event.target.value;
             storage.Set();
+        });
+        $( ".options .custom-tp .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
+            localStorage["simptab-topsites"] = event.data.value;
+            topsites.Refresh( event.data.value );
         });
     }
 
