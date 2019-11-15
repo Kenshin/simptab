@@ -273,15 +273,15 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 data.mode == 'earch' && $( ".background" ).addClass( "bgearth" );
                 $( ".background"      ).addClass( "bghidden" );
                 $( ".bgmask-bg > img" ).removeClass( "bgshow" );
-                setTimeout( () => {
+                setTimeout( function() {
                     $( ".background"      ).css({ "background-image": 'url("' + data.url + '")' }).removeClass( "bghidden" );
                     $( ".bgmask-bg > img" ).attr( "src", data.url );
-                    setTimeout( () => $( ".bgmask-bg > img" ).addClass( "bgshow" ), 150 );
+                    setTimeout( function() { $( ".bgmask-bg > img" ).addClass( "bgshow" )}, 150 );
                 }, 200 );
             } else {
                 // re-load
                 $( ".background" ).css( "background-image", 'url("' + data.url + '")' );
-                setTimeout( () => $( '.background' ).addClass( "bgshow" ), 150 );
+                setTimeout( function() { $( '.background' ).addClass( "bgshow" )}, 150 );
             }
         },
 
@@ -294,7 +294,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                     earth     = vo.cur.type == "earth" ? "background-size: contain;background-repeat: no-repeat;background-color: black;" : "";
                 $( ".background" ).addClass( "bgmask" ).after( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
                 height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
-                setTimeout( () => $( ".bgmask-bg > img" ).addClass( "bgshow" ), 150 );
+                setTimeout( function() { $( ".bgmask-bg > img" ).addClass( "bgshow" )}, 150 );
             } else {
                 $( ".background" ).removeClass( "bgmask" );
                 $( ".bgmask-bg" ).remove();
