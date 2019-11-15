@@ -501,6 +501,10 @@
         "message": "Default is 24 hours, changed to 12 hours?"
     },
 
+    "options_footer_notice": {
+        "message": "Auto saved, please refresh new tab."
+    },
+
     "options_footer_clear": {
         "message": "Clear"
     },

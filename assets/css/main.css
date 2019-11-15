@@ -1315,6 +1315,19 @@ img {
     height: 52px;
 }
 
+.options span {
+    position: absolute;
+    left: 25px;
+
+    padding-left: 10px;
+    padding-bottom: 2px;
+
+    font-weight: bold;
+
+    border-left: .25em solid rgba(255, 255, 255, 0.9);
+    transform: scale(.9) translate(-14px, 0px);
+}
+
 .options .footer .button {
     width: 80px;
     height: 28px;

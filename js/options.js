@@ -288,6 +288,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
     function footerView() {
         var tmpl = '<div class="footer">\
+                        <span>' + i18n.GetLang( "options_footer_notice" ) + '</span>\
                         <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
                         <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
                         <div class="waves-effect button clear">'  + i18n.GetLang( "options_footer_clear" )    + '</div>\

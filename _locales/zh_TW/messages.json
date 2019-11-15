@@ -501,6 +501,10 @@
         "message": "默認為 24小時制，是否啟用 12 小時制"
     },
 
+    "options_footer_notice": {
+        "message": "修改後，自動保存，刷新頁面生效。"
+    },
+
     "options_footer_clear": {
         "message": "恢復初始值"
     },
