@@ -794,7 +794,7 @@
     },
 
     "notify_zen_mode_exit": {
-        "message": "Exit zen mode success, please refresh new tab."
+        "message": "Exit zen mode success, 2's after auto refresh."
     },
 
     "notify_mobile_send": {

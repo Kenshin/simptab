@@ -794,7 +794,7 @@
     },
 
     "notify_zen_mode_exit": {
-        "message": "已退出禅模式，页面刷新后生效。"
+        "message": "已退出禅模式，2秒后，页面自动刷新。"
     },
 
     "notify_mobile_send": {
