@@ -127,6 +127,10 @@ img {
     background-color: #555;
 }
 
+.setting .clockstate {
+    display: none;
+}
+
 /*
 * control
 */

@@ -300,7 +300,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "topsites" 
             var $cb   = $(this),
                 value = $cb.prop( "checked" );
             $cb.val( value );
-            localStorage["simptab-background-clock"] = value ? "show" : "hide" ;
+            $($( ".clockstate" ).children()[ value ? 0 : 1]).find("input").click();
         });
     }
 
