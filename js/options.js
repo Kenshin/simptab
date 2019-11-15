@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "topsites" ], function( $, Mousetrap, _, Notify, i18n, comps, topsites ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function( $, Mousetrap, _, Notify, i18n, comps ) {
 
     "use strict";
 
@@ -229,7 +229,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "topsites" 
         });
         $( ".options .custom-tp .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
             localStorage["simptab-topsites"] = event.data.value;
-            topsites.Refresh( event.data.value );
+            $( ".tsstate" ).find("input[value=" + event.data.value + "]").click();
         });
     }
 
