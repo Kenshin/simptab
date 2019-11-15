@@ -193,7 +193,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "topsites" 
         var tp    = localStorage["simptab-topsites"] || "simple";
         var items = [{name: i18n.GetLang( "setting_ts_state_normal" ), value: "normal" },{name: i18n.GetLang( "setting_ts_state_simple" ), value: "simple" },{name:i18n.GetLang( "setting_ts_state_senior" ) , value: "senior" }];
         var tmpl = '<div class="switche" style="margin-bottom:0;">\
-                        <div class="label">' + i18n.GetLang( "options_carousel_label" ) + '</div>\
+                        <div class="label">' + i18n.GetLang( "options_custom_tp_carousel_label" ) + '</div>\
                         ' + comps.Dropdown( ".options .custom-tp", "carousel-dpd", items, tp ) + '\
                     </div>\
                     <div class="switche">\

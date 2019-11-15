@@ -469,6 +469,10 @@
         "message": "Topsites"
     },
 
+    "options_custom_tp_carousel_label": {
+        "message": "Pleas select topsites mode"
+    },
+
     "options_custom_tp_cbx": {
         "message": "Enable custom topsites?"
     },

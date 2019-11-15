@@ -469,6 +469,10 @@
         "message": "常用网址"
     },
 
+    "options_custom_tp_carousel_label": {
+        "message": "请选择常用工具栏的显示方式"
+    },
+
     "options_custom_tp_cbx": {
         "message": "是否自定义常用网址？"
     },
