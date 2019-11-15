@@ -1981,6 +1981,8 @@ img {
 
     overflow-x: hidden;
     overflow-y: auto;
+
+    z-index: 4000;
 }
 
 .setting-zen-mode .title {
