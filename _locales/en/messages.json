@@ -485,6 +485,14 @@
         "message": "Usage shortcuts q s Open"
     },
 
+    "options_custom_script": {
+        "message": "Custom script"
+    },
+
+    "options_custom_script_notice": {
+        "message": "This is script is global, so can usage zen-mode."
+    },
+
     "options_custom_title": {
         "message": "Custom New Tab title"
     },

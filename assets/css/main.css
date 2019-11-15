@@ -1293,14 +1293,16 @@ img {
 
 .options .custom-unsplash textarea,
 .options .custom-style textarea,
-.options .custom-search textarea {
+.options .custom-search textarea,
+.options .custom-script textarea {
     height: 50px;
     transition: all .6s ease;
 }
 
 .options .custom-unsplash textarea:focus,
 .options .custom-style textarea:focus,
-.options .custom-search textarea:focus {
+.options .custom-search textarea:focus,
+.options .custom-script textarea:focus {
     height: 150px;
     transition: all .6s ease;
 }

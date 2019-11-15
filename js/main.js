@@ -157,4 +157,10 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
 
     localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
+    try {
+        options.Storage.db.script != "" && setTimeout( function() { new Function( options.Storage.db.script )(); }, 1000 );
+    } catch ( error ) {
+        console.error( '此脚本运行时出现错误，错误信息 ', error )
+    }
+
 });

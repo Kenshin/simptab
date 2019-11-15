@@ -43,6 +43,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     carousel: "-1",
                     hour12: false,
                     history: false,
+                    script: "",
                 };
 
             function Storage() {
@@ -283,6 +284,24 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
+     * Custom Script
+     *********************************************/
+
+    function customScriptView() {
+        var tmpl = '<textarea class="md-textarea"></textarea>\
+                    <div class="notice">' + i18n.GetLang( "options_custom_script_notice" ) + '</div>';
+        return tmpl;
+    }
+
+    function customScriptModel() {
+        $( ".options .custom-script" ).find( "textarea" ).text( storage.db.script );
+        $( ".options" ).on( "keyup", ".custom-script textarea", function( event ) {
+            storage.db.script = event.target.value;
+            storage.Set();
+        });
+    }
+
+    /*********************************************
      * Footer
      *********************************************/
 
@@ -354,6 +373,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                             <div class="group custom-style">' + customStyleView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_search" ) + '</div>\
                             <div class="group custom-search">' + customSearchView() + '</div>\
+                            <div class="title">' + i18n.GetLang( "options_custom_script" ) + '</div>\
+                            <div class="group custom-script">' + customScriptView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_tp" ) + '</div>\
                             <div class="group custom-tp">' + customTpView() + '</div>\
                         </div>\
@@ -365,6 +386,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         customTpModel();
         customStyleModel();
         customSearchModel();
+        customScriptModel();
         customTitleModel();
         customHourModel();
         footerModel();
