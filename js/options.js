@@ -275,6 +275,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "topsites" 
 
     function customHourView() {
         var tmpl = '<div class="switche">\
+                        <div class="label">' + i18n.GetLang( "options_custom_hour_state_notice" ) + '</div>\
+                        ' + comps.Switches( "custom-hour-state-cbx" ) + '\
+                    </div>\
+                    <div class="switche">\
                         <div class="label">' + i18n.GetLang( "options_custom_hour_notice" ) + '</div>\
                         ' + comps.Switches( "custom-hour-cbx" ) + '\
                    </div>\
@@ -284,12 +288,19 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "topsites" 
 
     function customHourModel() {
         $( ".options .custom-hour" ).find( "input[id=custom-hour-cbx]" ).prop( "checked", storage.db.hour12 );
-        $( ".options" ).on( "change", ".custom-hour input", function( event ) {
+        $( ".options" ).on( "change", ".custom-hour #custom-hour-cbx", function( event ) {
             var $cb   = $(this),
                 value = $cb.prop( "checked" );
             $cb.val( value );
             storage.db.hour12 = value;
             storage.Set();
+        });
+        $( ".options .custom-hour" ).find( "input[id=custom-hour-state-cbx]" ).prop( "checked", localStorage["simptab-background-clock"] == "hide" ? false : true );
+        $( ".options" ).on( "change", ".custom-hour #custom-hour-state-cbx", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            localStorage["simptab-background-clock"] = value ? "show" : "hide" ;
         });
     }
 

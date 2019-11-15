@@ -506,11 +506,15 @@
     },
 
     "options_custom_hour": {
-        "message": "12/24 小时制"
+        "message": "时间"
+    },
+
+    "options_custom_hour_state_notice": {
+        "message": "是否在右下角显示时间？"
     },
 
     "options_custom_hour_notice": {
-        "message": "默认为 24小时制，是否启用 12 小时制"
+        "message": "默认为 24 小时制，是否启用 12 小时制？"
     },
 
     "options_footer_notice": {

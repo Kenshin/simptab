@@ -506,7 +506,11 @@
     },
 
     "options_custom_hour": {
-        "message": "12/24 Hours"
+        "message": "Clock"
+    },
+
+    "options_custom_hour_state_notice": {
+        "message": "Show clock at the right-bottom corner?"
     },
 
     "options_custom_hour_notice": {
