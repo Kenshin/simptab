@@ -84,12 +84,12 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
                     vals   : [ "show", "hide" ],
                     default: 0
                 },
-                "tsstate"  : {
-                    value  : getLS( "simptab-topsites" ),
-                    type   : "simptab-topsites",
-                    vals   : [ "normal", "simple", "senior" ],
-                    default: 1
-                },
+                //"tsstate"  : {
+                //    value  : getLS( "simptab-topsites" ),
+                //    type   : "simptab-topsites",
+                //    vals   : [ "normal", "simple", "senior" ],
+                //    default: 1
+                //},
                 "pinstate"  : {
                     value  : getLS( "simptab-pin" ),
                     type   : "simptab-pin",
