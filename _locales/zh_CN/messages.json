@@ -198,15 +198,15 @@
     },
 
     "setting_ts_state_normal": {
-        "message": "常用网址（隐藏模式）"
+        "message": "不显示"
     },
 
     "setting_ts_state_simple": {
-        "message": "常用网址（简单模式）"
+        "message": "简单模式"
     },
 
     "setting_ts_state_senior": {
-        "message": "常用网址（高级模式）"
+        "message": "高级模式"
     },
 
     "setting_pin_tooltip": {

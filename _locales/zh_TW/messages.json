@@ -198,15 +198,15 @@
     },
 
     "setting_ts_state_normal": {
-        "message": "常用網址（隱藏模式）"
+        "message": "不啟用"
     },
 
     "setting_ts_state_simple": {
-        "message": "常用網址（簡單模式）"
+        "message": "簡單模式"
     },
 
     "setting_ts_state_senior": {
-        "message": "常用網址（高級模式）"
+        "message": "高級模式"
     },
 
     "setting_pin_tooltip": {

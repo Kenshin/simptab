@@ -202,11 +202,11 @@
     },
 
     "setting_ts_state_simple": {
-        "message": "Show Top Sites at the bottom"
+        "message": "Simple mode"
     },
 
     "setting_ts_state_senior": {
-        "message": "Show Top Sites in the center"
+        "message": "Senior mode"
     },
 
     "setting_pin_tooltip": {
