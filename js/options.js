@@ -186,7 +186,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
-     * Custom topsites
+     * Custom Topsites
      *********************************************/
 
     function customTpView() {
