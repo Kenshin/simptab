@@ -1306,12 +1306,12 @@ img {
 }
 
 .options .show {
-    transform: scaleY(1);
+    transform: scaleY(1)!important;
 }
 
 .options .hide {
-    transform: scaleY(0);
-    height: 0;
+    transform: scaleY(0)!important;
+    height: 0!important;
 }
 
 .options .custom-unsplash textarea,
