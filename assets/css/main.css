@@ -1409,10 +1409,11 @@ img {
 }
 
 .bm .folders {
-    width: 53px;
+    width: 61px;
     height: 100%;
     background: rgb(238, 238, 238);
     transition: width .35s cubic-bezier(.4,0,.2,1);
+    overflow-x: hidden;
 }
 
 .bm .folders:hover {

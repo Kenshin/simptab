@@ -49,12 +49,11 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         $( ".bm-overlay" ).width( "50%" );
         $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
         if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
-            //$(".folders").css( "overflow-y", "auto" );
+            $(".folders").css( "width", "71px" );
         }
     }
 
     function close() {
-        //$(".folders").css( "overflow-y", "initial" );
         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
         $( ".bm-overlay" ).removeAttr( "style" );
     }
@@ -198,7 +197,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         });
         var max = $('.folder').width() + width * 26;
         max > 450 && ( max = 450 );
-        $( 'head' ).append( '<style type="text/css">.bm .folders:hover{width: '+ max +'px;overflow-y: auto!important;}</style>' );
+        $( 'head' ).append( '<style type="text/css">.bm .folders:hover{width: '+ max +'px!important;overflow-y: auto!important;}</style>' );
     }
 
     function bmSearch( value ) {
