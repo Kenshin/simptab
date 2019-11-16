@@ -1305,11 +1305,11 @@ img {
     height: 100%;
 }
 
-.options .custom-tp .show {
+.options .show {
     transform: scaleY(1);
 }
 
-.options .custom-tp .hide {
+.options .hide {
     transform: scaleY(0);
     height: 0;
 }
