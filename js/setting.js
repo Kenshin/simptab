@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves", "i18n", "zen", "permissions" ], function( $, Waves, i18n, zen, permissions ) {
+define([ "jquery", "waves", "i18n", "zen", "permissions", "options" ], function( $, Waves, i18n, zen, permissions, options ) {
 
     "use strict";
 
@@ -204,6 +204,35 @@ define([ "jquery", "waves", "i18n", "zen", "permissions" ], function( $, Waves, 
         $target.prepend( span );
     }
 
+    function autoState() {
+        var message = options.Storage.db.carousel == -1 ? i18n.GetLang( "options_carousel_value_1" ) : i18n.GetLang( "options_carousel_value_" + options.Storage.db.carousel ),
+            suffix  = options.Storage.db.carousel == -1 ? "" : i18n.GetLang( "options_carousel_value_suffix" ),
+            html    = '<div class="downlist">\
+                        <span class="list-field" value="-1">' + i18n.GetLang( "options_carousel_value_1" )  + '</span>\
+                        <span class="list-field" value="5">'  + i18n.GetLang( "options_carousel_value_5" )  + '</span>\
+                        <span class="list-field" value="10">' + i18n.GetLang( "options_carousel_value_10" ) + '</span>\
+                        <span class="list-field" value="30">' + i18n.GetLang( "options_carousel_value_30" ) + '</span>\
+                        <span class="list-field" value="60">' + i18n.GetLang( "options_carousel_value_60" ) + '</span>\
+                      </div>';
+        $( ".autostate" ).append( html ).find( "label" ).text( i18n.GetLang( "options_custom_unsplash" ) + message + suffix );
+        $( ".autostate .downlist .list-field[value=" + options.Storage.db.carousel + "]" ).addClass( "lrselected" );
+        $( ".autostate .dropdown" ).on( "click", function() {
+            $( ".autostate .downlist" ).addClass( "show" );
+        });
+        $( ".autostate .downlist .list-field" ).on( "click", function( event ) {
+            const $target = $( event.currentTarget ),
+                  value   = $target.attr( "value" ),
+                  text    = $target.text();
+            $( ".autostate .downlist .list-field" ).removeClass( "lrselected" );
+            $target.addClass( "lrselected" );
+            options.Storage.db.carousel = value;
+            options.Storage.Set();
+            $( ".autostate .downlist" ).removeClass( "show" );
+            var suffix = value == -1 ? "" : i18n.GetLang( "options_carousel_value_suffix" );
+            $( ".autostate .dropdown label" ).text( i18n.GetLang( "options_custom_unsplash" ) + text + suffix );
+        });
+    }
+
     return {
         Init: function() {
 
@@ -229,6 +258,9 @@ define([ "jquery", "waves", "i18n", "zen", "permissions" ], function( $, Waves, 
 
             // zen mode checked
             zendmodeState();
+
+            // auto changed backgrounds
+            autoState();
         },
 
         Listen: function ( callback ) {

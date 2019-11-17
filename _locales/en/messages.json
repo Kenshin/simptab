@@ -382,7 +382,7 @@
     },
 
     "options_custom_unsplash": {
-        "message": "Background origins"
+        "message": "Backgrounds"
     },
 
     "options_custom_unsplash_cbx": {
@@ -430,11 +430,11 @@
     },
 
     "options_carousel_value_5": {
-        "message": "Every five minutes"
+        "message": "Every 5 minutes"
     },
 
     "options_carousel_value_10": {
-        "message": "Every ten minutes"
+        "message": "Every 10 minutes"
     },
 
     "options_carousel_value_30": {
@@ -443,6 +443,10 @@
 
     "options_carousel_value_60": {
         "message": "Every 60 minutes"
+    },
+
+    "options_carousel_value_suffix": {
+        "message": "changed"
     },
 
     "options_carousel_notice": {
