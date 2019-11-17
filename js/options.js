@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function( $, Mousetrap, _, Notify, i18n, comps ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permissions" ], function( $, Mousetrap, _, Notify, i18n, comps, permissions ) {
 
     "use strict";
 
@@ -44,6 +44,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     hour12: false,
                     history: false,
                     script: "",
+                    download: "",
                 };
 
             function Storage() {
@@ -117,6 +118,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         </div>\
                         <div class="notice">' + i18n.GetLang( "options_history_notice" ) + '</div>\
                         <div class="division"></div>\
+                        <div class="switche">\
+                            <div class="label">' + i18n.GetLang( "options_download_label" ) + '</div>\
+                            ' + comps.Switches( "custom-download-cbx" ) + '\
+                        </div>\
+                        <div class="notice">' + i18n.GetLang( "options_download_notice" ) + '</div>\
+                        <div class="custom-download-fields hide">\
+                            <input class="md-input custom-download" type="text" placeholder="' + i18n.GetLang( "options_download_placeholder" ) + '"/>\
+                        </div>\
+                        <div class="division"></div>\
                     </div>\
                    ';
         return tmpl;
@@ -158,6 +168,35 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             $cb.val( value );
             storage.db.history = value;
             storage.Set();
+        });
+        permissions.Verify( [ "downloads" ], function( result ) {
+            if ( !result ) return;
+            $( ".options .custom-unsplash .custom-download-cbx" ).find( "input" ).prop( "checked", true );
+            $( ".options" ).find( ".custom-unsplash .custom-download-fields" ).removeClass( "hide" );
+            $( ".options" ).find( ".custom-unsplash .custom-download" ).val( storage.db.download );
+        });
+        $( ".options" ).on( "change", ".custom-unsplash .custom-download-cbx input", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            if ( value ) {
+                permissions.Request( [ "downloads" ], function( result ) {
+                    if ( !result ) return;
+                    $cb.val( value );
+                    $( ".options" ).find( ".custom-unsplash .custom-download-fields" ).removeClass( "hide" );
+                    $( ".options" ).find( ".custom-unsplash .custom-download" ).val( storage.db.download || "" );
+                });
+            } else {
+                permissions.Remove( [ "downloads" ], function( result ) {
+                    if ( !result ) return;
+                    $cb.val( value );
+                    $( ".options" ).find( ".custom-unsplash .custom-download-fields" ).addClass( "hide" );
+                    $( ".options" ).find( ".custom-unsplash .custom-download" ).val( "" );
+                });
+            }
+        });
+        $( ".options" ).on( "keyup", ".custom-unsplash .custom-download", function( event ) {
+            storage.db.download = event.target.value;
+            storage.db.download != "" && storage.Set();
         });
     }
 

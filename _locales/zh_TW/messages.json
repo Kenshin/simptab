@@ -457,6 +457,18 @@
         "message": "啟用後會自動記錄最多五張的歷史記錄，並且只在「隨機更換壁紙」模型下使用，詳細請看 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=历史记录' target='_blank'>歷史記錄</a>"
     },
 
+    "options_download_label": {
+        "message": "是否啟用自定義下載位置功能？"
+    },
+
+    "options_download_notice": {
+        "message": "配合 Haze 或 Automator 等方式可實現在 PC 端自動播放背景，詳細請看 <a href='http://ksria.com/simptab/docs/#/多種背景源?id=自定義下載位置' target='_blank'>自定義下載位置</a>"
+    },
+
+    "options_download_placeholder": {
+        "message": "默認為 Chrome 設定的下載位置，填寫後可下載到對應文件夾中"
+    },
+
     "options_custom_style": {
         "message": "全局 · 自定義樣式"
     },

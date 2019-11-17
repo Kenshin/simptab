@@ -457,6 +457,18 @@
         "message": "When enabled, up to five history background records and only used by 'Change background randomly' model."
     },
 
+    "options_download_label": {
+        "message": "Enabel Custom download folder?"
+    },
+
+    "options_download_notice": {
+        "message": "Usage mklink / ln / Haze / Automatorz Automatic download background image."
+    },
+
+    "options_download_placeholder": {
+        "message": "Default Chrome download path"
+    },
+
     "options_custom_style": {
         "message": "Custom global Style"
     },

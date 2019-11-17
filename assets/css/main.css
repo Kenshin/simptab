@@ -1292,6 +1292,11 @@ img {
     margin: 10px 0 0 0;
 }
 
+.options .custom-unsplash .custom-download-fields {
+    transform-origin: 0 0;
+    transition: all .6s ease;
+}
+
 .options .custom-tp .custom-tp-fields {
     max-width: 805px;
     height: 150px;
@@ -2267,6 +2272,7 @@ img {
 #custom-unsplash-cbx:checked + .toggle:before,
 #custom-tp-cbx:checked + .toggle:before,
 #history-cbx:checked + .toggle:before,
+#custom-download-cbx:checked + .toggle:before,
 #custom-hour-cbx:checked + .toggle:before,
 #custom-hour-state-cbx:checked + .toggle:before,
 #bookmarks-cbx:checked + .toggle:before {
@@ -2280,6 +2286,7 @@ img {
 #custom-unsplash-cbx:checked + .toggle span,
 #custom-tp-cbx:checked + .toggle span,
 #history-cbx:checked + .toggle span,
+#custom-download-cbx:checked + .toggle span,
 #custom-hour-cbx:checked + .toggle span,
 #custom-hour-state-cbx:checked + .toggle span,
 #bookmarks-cbx:checked + .toggle span {
@@ -2296,6 +2303,7 @@ img {
 #custom-unsplash-cbx:checked + .toggle span:before,
 #custom-tp-cbx:checked + .toggle span:before,
 #history-cbx:checked + .toggle span:before,
+#custom-download-cbx:checked + .toggle span:before,
 #custom-hour-cbx:checked + .toggle span:before,
 #custom-hour-state-cbx:checked + .toggle span:before,
 #bookmarks-cbx:checked + .toggle span:before {
