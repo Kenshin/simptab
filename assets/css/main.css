@@ -1284,6 +1284,14 @@ img {
     text-decoration: none;
 }
 
+.options input::-webkit-input-placeholder {
+    color: #ADADAD;
+}
+
+.options input:focus::-webkit-input-placeholder {
+    color: #fff;
+}
+
 .options .custom-unsplash textarea {
     margin-top: 10px;
 }
