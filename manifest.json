@@ -18,6 +18,7 @@
     "content_security_policy": "script-src 'self' https://*.flickr.com 'unsafe-eval'; object-src 'self'",
     "optional_permissions": [
         "bookmarks",
+        "downloads",
         "https://*.unsplash.com/",
         "https://*.unsplash.it/",
         "http://*.wallhaven.cc/",
