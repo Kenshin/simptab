@@ -422,11 +422,11 @@
     },
 
     "options_carousel_label": {
-        "message": "背景是否自动播放（显示下一张）？"
+        "message": "背景是否自动更换（显示下一张）？"
     },
 
     "options_carousel_value_1": {
-        "message": "不自动播放"
+        "message": "不自动更换"
     },
 
     "options_carousel_value_5": {
