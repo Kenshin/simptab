@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
+define([ "jquery", "waves", "i18n", "zen", "permissions" ], function( $, Waves, i18n, zen, permissions ) {
 
     "use strict";
 
@@ -161,9 +161,7 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
     }
 
     function bookmarksPermissions() {
-        chrome.permissions.contains({
-            permissions: [ 'bookmarks' ],
-        }, function( result ) {
+        permissions.Verify( [ 'bookmarks' ], function( result ) {
             var $target = $( ".bmstate .lineradio" ), span;
             if ( result ) {
                 span = '<span class="checked"></span>';
@@ -181,13 +179,13 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
 
     function setbookmarksPermissions( type ) {
         if ( type == "true" ) {
-            chrome.permissions.request({ permissions: [ 'bookmarks' ]}, function( result ) {
-                new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
+            permissions.Request([ 'bookmarks' ], function( result ) {
+                //TO-DO
             });
         } else {
-            chrome.permissions.remove({ permissions: [ 'bookmarks' ]}, function( result ) {
-                new Notify().Render( result ? i18n.GetLang( "permissions_disable" ) : i18n.GetLang( "permissions_failed" ) );
-          });
+            permissions.Remove([ 'bookmarks' ], function( result ) {
+                //TO-DO
+            });
         }
     }
 
