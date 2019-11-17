@@ -37,6 +37,7 @@ requirejs.config({
       "history"    : "js/history",
       "comps"      : "js/components",
       "message"    : "js/message",
+      "permissions": "js/permissions",
     },
     shim: {
         "mousetrap"    : {
