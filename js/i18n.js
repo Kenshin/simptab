@@ -60,11 +60,11 @@ define([ "jquery" ], function( $ ) {
         $($(".setting .contact").find("a")[3]).attr( "title", i18n( "setting_contact_gplus" ));
         $($(".setting .contact").find("a")[4]).attr( "title", i18n( "setting_contact_me" ));
 
+        $($( ".zenstate" ).find("label")).text( i18n( "setting_zen_state" ));
+
         //$.each( $(".pinstate section"), function( idx, item ) {
         //    $(item).attr( "data-balloon", i18n( "setting_pin_tooltip" ).replace( "#1", $(item).attr( "data-balloon" ) ) );
         //});
-
-        $($( ".zenstate" ).find("label")).text( i18n( "setting_zen_state" ));
 
     }
 
