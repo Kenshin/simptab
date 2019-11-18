@@ -169,7 +169,7 @@ img {
     transition: opacity .35s cubic-bezier(.4,0,.2,1);
     -webkit-transition: opacity .35s cubic-bezier(.4,0,.2,1);
 
-    z-index: 500000;
+    z-index: 150;
 }
 
 .controlbar:hover {
