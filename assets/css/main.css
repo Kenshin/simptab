@@ -106,6 +106,10 @@ img {
     z-index: 100;
 }
 
+.setting:hover {
+    opacity: 1!important;
+}
+
 .setting div {
     padding: 0px 8px;
 }
