@@ -11,6 +11,7 @@ requirejs.config({
       "notify"     : "vender/notify/notify.min",
       "waves"      : "vender/waves/waves.min",
       "carousel"   : "vender/carousel/carousel",
+      "intro"      : "vender/intro/intro.min",
 
       "main"       : "js/main",
       "background" : "js/background",
@@ -38,6 +39,7 @@ requirejs.config({
       "comps"      : "js/components",
       "message"    : "js/message",
       "permissions": "js/permissions",
+      "guide"      : "js/guide",
     },
     shim: {
         "mousetrap"    : {
@@ -50,7 +52,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo", "history", "permissions" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo, history, permissions ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo", "history", "permissions", "guide", "intro" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo, history, permissions, guide, introJs ) {
 
     progress.Init();
 
@@ -157,6 +159,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     noise.Init();
 
     localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
+
+    guide.Init( introJs );
+    //guide.Render();
 
     try {
         options.Storage.db.script != "" && setTimeout( function() { new Function( options.Storage.db.script )(); }, 1000 );
