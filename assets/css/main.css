@@ -502,26 +502,6 @@ img {
 
 .pinstate {
     padding-top: 0!important;
-    /*
-    display: -webkit-flex;
-    flex-flow: row nowrap;
-    justify-content:space-between;
-
-    margin: 5px 0px 26px 0px;
-    */
-}
-
-.pinstate .boxradio {
-    padding: 0;
-    min-width: 28px;
-}
-
-.pinstate [data-balloon]:first-child:after {
-    margin-left: 31px;
-}
-
-.pinstate [data-balloon]:last-child:after {
-    margin-left: -31px;
 }
 
 .zenstate {
