@@ -217,6 +217,10 @@
         "message": "禪模式"
     },
 
+    "setting_other_state_options": {
+        "message": "更多設置選項..."
+    },
+
     "setting_contact_weibo": {
         "message": "分享到 微博"
     },

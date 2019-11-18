@@ -217,6 +217,10 @@
         "message": "Zen mode"
     },
 
+    "setting_other_state_options": {
+        "message": "More options..."
+    },
+
     "setting_contact_weibo": {
         "message": "Share on Weibo"
     },

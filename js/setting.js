@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves", "i18n", "zen", "permissions", "options" ], function( $, Waves, i18n, zen, permissions, options ) {
+define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap" ], function( $, Waves, i18n, zen, permissions, options, Mousetrap ) {
 
     "use strict";
 
@@ -260,6 +260,14 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options" ], function(
         });
     }
 
+    function otherState() {
+        $( ".otherstate label" ).on( "click", function( event ) {
+            const $target = $( event.currentTarget ),
+                  id      = $target.attr( "for" );
+            id == "shortcuts" ? Mousetrap.trigger( "?" ) : $( ".controlbar" ).find( "a[url=" + id + "]" ).click();
+        });
+    }
+
     return {
         Init: function() {
 
@@ -291,6 +299,9 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options" ], function(
 
             // pin state
             pinState();
+
+            // ohter state
+            otherState();
         },
 
         Listen: function ( callback ) {
