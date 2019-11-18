@@ -114,6 +114,10 @@ img {
     padding: 26px 8px 0px 8px;
 }
 
+.setting div[class$=state]:last-child {
+    padding-bottom: 8px;
+}
+
 .setting:hover::-webkit-scrollbar {
     width: 10px;
 }
