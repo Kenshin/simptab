@@ -221,6 +221,10 @@
         "message": "More options..."
     },
 
+    "setting_other_state_help": {
+        "message": "Help & Getting started"
+    },
+
     "setting_contact_weibo": {
         "message": "Share on Weibo"
     },

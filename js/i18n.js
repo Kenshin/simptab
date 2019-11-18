@@ -65,6 +65,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".otherstate" ).find( "label[for=options]"   )).text( i18n( "setting_other_state_options" ));
         $($( ".otherstate" ).find( "label[for=manage]"    )).text( i18n( "controlbar_manage" ));
         $($( ".otherstate" ).find( "label[for=shortcuts]" )).text( i18n( "shortcuts_title" ));
+        $($( ".otherstate" ).find( "label[for=help]"      )).text( i18n( "setting_other_state_help" ));
 
         //$.each( $(".pinstate section"), function( idx, item ) {
         //    $(item).attr( "data-balloon", i18n( "setting_pin_tooltip" ).replace( "#1", $(item).attr( "data-balloon" ) ) );

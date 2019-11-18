@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap" ], function( $, Waves, i18n, zen, permissions, options, Mousetrap ) {
+define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap", "guide" ], function( $, Waves, i18n, zen, permissions, options, Mousetrap, guide ) {
 
     "use strict";
 
@@ -264,7 +264,11 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap"
         $( ".otherstate label" ).on( "click", function( event ) {
             const $target = $( event.currentTarget ),
                   id      = $target.attr( "for" );
-            id == "shortcuts" ? Mousetrap.trigger( "?" ) : $( ".controlbar" ).find( "a[url=" + id + "]" ).click();
+            if ( id == "shortcuts" ) {
+                Mousetrap.trigger( "?" );
+            } else if ( id == "help" ) {
+                guide.Render();
+            } else $( ".controlbar" ).find( "a[url=" + id + "]" ).click();
         });
     }
 

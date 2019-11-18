@@ -221,6 +221,10 @@
         "message": "更多設置選項..."
     },
 
+    "setting_other_state_help": {
+        "message": "幫助與新手入門"
+    },
+
     "setting_contact_weibo": {
         "message": "分享到 微博"
     },
