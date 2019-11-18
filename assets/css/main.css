@@ -133,8 +133,13 @@ img {
     display: none;
 }
 
-.setting .autostate {
+.setting .autostate,
+.setting .pinstate {
     position: relative;
+}
+
+.setting .autostate .downlist {
+    margin-top: 31px!important;
 }
 
 /*
@@ -440,7 +445,7 @@ img {
     display: flex;
     flex-direction: column;
 
-    margin: 31px 8px 8px 8px;
+    margin: 5px 8px 8px 8px;
     padding: 0;
 
     color: #fff;
@@ -496,11 +501,14 @@ img {
 }
 
 .pinstate {
+    padding-top: 0!important;
+    /*
     display: -webkit-flex;
     flex-flow: row nowrap;
     justify-content:space-between;
 
     margin: 5px 0px 26px 0px;
+    */
 }
 
 .pinstate .boxradio {

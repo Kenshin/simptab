@@ -90,12 +90,12 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options" ], function(
                     vals   : [ "normal", "simple", "senior" ],
                     default: 1
                 },
-                "pinstate"  : {
-                    value  : getLS( "simptab-pin" ),
-                    type   : "simptab-pin",
-                    vals   : [ "30", "60", "120", "240", "480" ],
-                    default: 0
-                }
+                //"pinstate"  : {
+                //    value  : getLS( "simptab-pin" ),
+                //    type   : "simptab-pin",
+                //    vals   : [ "30", "60", "120", "240", "480" ],
+                //    default: 0
+                //}
             });
 
         }
@@ -233,6 +233,33 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options" ], function(
         });
     }
 
+    function pinState() {
+        var ls      = localStorage["simptab-pin"] || 0,
+            message = i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", ls / 60 ),
+            html    = '<div class="downlist">\
+                        <span class="list-field" value="30">'  + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "0.5" )  + '</span>\
+                        <span class="list-field" value="60">'  + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "1" )  + '</span>\
+                        <span class="list-field" value="120">' + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "2" ) + '</span>\
+                        <span class="list-field" value="240">' + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "4" ) + '</span>\
+                        <span class="list-field" value="480">' + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "8" ) + '</span>\
+                      </div>';
+        $( ".pinstate" ).append( html ).find( "label" ).text( i18n.GetLang( "options_custom_unsplash" ) + message );
+        $( ".pinstate .downlist .list-field[value=" + ls + "]" ).addClass( "lrselected" );
+        $( ".pinstate .dropdown" ).on( "click", function() {
+            $( ".pinstate .downlist" ).addClass( "show" );
+        });
+        $( ".pinstate .downlist .list-field" ).on( "click", function( event ) {
+            const $target = $( event.currentTarget ),
+                  value   = $target.attr( "value" ),
+                  text    = $target.text();
+            $( ".pinstate .downlist .list-field" ).removeClass( "lrselected" );
+            $target.addClass( "lrselected" );
+            localStorage["simptab-pin"] = value;
+            $( ".pinstate .downlist" ).removeClass( "show" );
+            $( ".pinstate .dropdown label" ).text( i18n.GetLang( "options_custom_unsplash" ) + text );
+        });
+    }
+
     return {
         Init: function() {
 
@@ -261,6 +288,9 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options" ], function(
 
             // auto changed backgrounds
             autoState();
+
+            // pin state
+            pinState();
         },
 
         Listen: function ( callback ) {
