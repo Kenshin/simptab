@@ -66,10 +66,36 @@
     font-size: 14px;
 }
 
+.introjs-tooltiptext em:after {
+    position: absolute;
+    top: 0.65em;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+  }
+  
+
 .introjs-tooltiptext a {
     color: #fff;
     font-weight: 400;
-    text-decoration: underline;
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+.introjs-tooltiptext kbd {
+    display: inline-block;
+
+    padding: 3px 5px;
+
+    color: rgba(15,15,15,0.8);
+    background-color: #fafbfc;
+
+    font-size: 11px;
+    line-height: 10px;
+
+    border-radius: 4px;
 }
 
 .introjs-bullets ul li a.active {
