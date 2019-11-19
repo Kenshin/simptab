@@ -62,6 +62,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             },
             {
                 intro: '设置栏，主要针对背景源的一些常规设置，包括：更改背景源显示方式、开启/禁用多种背景源、进入禅模式等。'
+            },
+            {
+                element: $( ".changestate" )[0],
+                intro: '背景源的各种显示方案，简 Tab的几个特色都在这里，如： <a href="" target="_blank">相册模式</a> <a href="" target="_blank">地球每刻</a> <a href="" target="_blank">禅模式</a>',
+                tooltipPosition: 'right'
             }
         ];
 
@@ -70,6 +75,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
         $( ".controlbar" ).attr( "data-hits", "controlbar" );
         $( $( ".controlbar" ).find( "li" )[0] ).attr( "data-hits", "controlbar-system" );
         $( ".controlbar" ).find( "li a[url=setting]" ).parent().attr( "data-hits", "controlbar-setting" );
+        $( ".clock"   ).attr( "data-hits", "clock" );
+        $( ".setting" ).attr( "data-hits", "setting" );
     }
 
     function render() {
@@ -85,17 +92,31 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             steps: steps,
         });
         intros.onbeforechange( function( target ) {
-            const id = $( target ).data().hits;
+            var id = $( target ).data().hits;
             if ( id == "controlbar" ) {
                 $(target).css({ "opacity": 1, width: "initial" });
             } else if ( id == "controlbar-system" ) {
                 $( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseenter" );
             } else if ( id == "controlbar-setting" ) {
                 $( ".controlink[url=setting]" ).trigger( "mouseenter" );
+            } else if ( id == "clock" ) {
+                $( ".controlbar" ).removeAttr( "style" );
+                $( ".controlink[url=setting]" ).trigger( "mouseleave" );
+                $( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseleave" );
+            } else if ( id == undefined && $( "a[role=button].active" ).attr( "data-stepnumber" ) == "15" ) {
+                Mousetrap.trigger( "s" );
             }
         });
         intros.onexit( function() {
             $( ".controlbar" ).removeAttr( "style" );
+            $( ".controlink[url=setting]" ).trigger( "mouseleave" );
+            $( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseleave" );
+
+            $( ".controlbar" ).removeAttr( "data-hits" );
+            $( $( ".controlbar" ).find( "li" )[0] ).removeAttr( "data-hits" );
+            $( ".controlbar" ).find( "li a[url=setting]" ).parent().removeAttr( "data-hits" );
+            $( ".clock"   ).removeAttr( "data-hits" );
+            $( ".setting" ).removeAttr( "data-hits" );
         });
         /*
         intros.onchange( function( target ) {
