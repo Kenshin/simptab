@@ -55,6 +55,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             {
                 element: $( ".controlbar" ).find( "li > a[url=dislike]" ).parent()[0],
                 intro: '控制栏 - 不喜欢：若不喜欢当前背景的话，选中后不再显示当前背景。'
+            },
+            {
+                element: $( ".clock" )[0],
+                intro: '界面上唯一可一直显示的元素，可隐藏，且可更改 12/24 小时制。'
+            },
+            {
+                intro: '设置栏，主要针对背景源的一些常规设置，包括：更改背景源显示方式、开启/禁用多种背景源、进入禅模式等。'
             }
         ];
 
