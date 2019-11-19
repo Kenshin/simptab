@@ -82,6 +82,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
         },
 
         Get: function( type ) {
+            if ( $( ".introjs-overlay" ).length > 0 ) return;
             current  = $( ".history" ).find( "img.active" ).attr( "data-idx" );
             !current && ( current = $( ".history" ).find( "img[id=" + vo.cur.enddate + "]" ).attr("data-idx") );
             !current && ( current = 0 );
