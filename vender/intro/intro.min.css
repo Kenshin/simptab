@@ -38,7 +38,7 @@
 
 .introjs-button {
     color: #fff;
-    background-color: rgba(15,15,15,0.8);
+    background-color: transparent;
     background-image: initial;
 
     font-size: 13px;
