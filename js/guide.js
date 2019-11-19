@@ -6,68 +6,38 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     var intros,
         steps = [
             {
-                intro: '简 Tab 是一个纯粹、极简的新标签页扩展。<br>它的设计哲学: <b>只呈现美图，无任何干扰</b>，但这并以意味它仅代表简单，它的功能包含：<br><br>- <a href="" target="_blank">多种背景源</a>；<br>- <a href="" target="_blank">常用网址</a>；<br>- <a href="" target="_blank">书签栏</a>；<br>- <a href="" target="_blank">快捷搜索栏</a>；<br>- <a href="" target="_blank">白噪音</a>；<br>- <a href="" target="_blank">禅模式</a>；'
+                intro: '简 Tab 是一个纯粹、极简的新标签页扩展。<br>它的设计哲学：<b>只呈现美图，无任何干扰</b>，但这并不意味它仅代表简单，它的功能包含：<br><br>- <a href="" target="_blank">多种背景源</a>；<br>- <a href="" target="_blank">常用网址</a>；<br>- <a href="" target="_blank">书签栏</a>；<br>- <a href="" target="_blank">快捷搜索栏</a>；<br>- <a href="" target="_blank">白噪音</a>；<br>- <a href="" target="_blank">禅模式</a>；'
+            },
+            {
+                intro: '为了极简，所以 简 Tab 隐藏了绝大多数 <b>干扰元素</b>，但这些功能均可通过快捷键呼出。<br><br>请记住快捷键 <kbd>?</kbd>'
             },
             {
                 element: $( '.controlbar' )[0],
-                intro: '控制栏：包含了对背景图的大部分操作，如：上传、下载、固定、不喜欢等。<br>此栏无法用快捷键呼出，鼠标 <b>右移到标签页</b> 自动显示，同时其中的功能 <b>支持快捷键</b> 操作；'
-            },
-            {
-                element: $( ".controlbar" ).find( "li" )[0],
-                intro: '控制栏 - 系统信息，包含了：打开默认便签页、历史记录、下载地址、应用三个子项；'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=fullscreen]" ).parent()[0],
-                intro: '控制栏 - 全屏：可将新标签页全屏、配合 <a href="" target="_blank">自动更换背景</a> 与 <a href="" target="_blank">白噪音</a>，可获得如同音乐相册的体验；'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=info]" ).parent()[0],
-                intro: '控制栏 - 背景源信息：某些背景源具有源地址，如： Google Art / SimpTab 订阅源等，可查看这个美图背后的故事。'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=download]" ).parent()[0],
-                intro: '控制栏 - 下载：可将背景下载，并可 <a href="" target="_blank">指定位置</a>。'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=upload]" ).parent()[0],
-                intro: '控制栏 - 上传：可将本地图片上传到 简 Tab 的收藏夹，以供自动更换时使用。注意：简 Tab 上传的图片均保存在 Chrome 本地的安全沙箱中。'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=refresh]" ).parent()[0],
-                intro: '控制栏 - 下一张：通过快捷键 <kbd>f</kbd> 即可在不关闭标签页的情况下自动更新为下一张图片。'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=setting]" ).parent()[0],
-                intro: '控制栏 - 选项页：简 Tab 的可定制化中心，包括了：打开设置定栏、背景管理器、关于 三个功能。'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=mobile]" ).parent()[0],
-                intro: '控制栏 - 发送到手机端：配合 <a href="" target="_blank">JSBox 小插件</a>，可将当前背景一键发送到你的 iPhone。'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=favorite]" ).parent()[0],
-                intro: '控制栏 - 收藏：与上传类似，可将当前背景收藏到 Chrome 本地的安全沙箱中。'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=pin]" ).parent()[0],
-                intro: '控制栏 - 固定：可将当前背景固定若干时间。'
-            },
-            {
-                element: $( ".controlbar" ).find( "li > a[url=dislike]" ).parent()[0],
-                intro: '控制栏 - 不喜欢：若不喜欢当前背景的话，选中后不再显示当前背景。'
+                intro: '<a href="" target="_blank">控制栏</a> 默认只能通过鼠标右移显示，它集成了绝大多数与背景有关的操作，如：上传、下载、固定、不喜欢等。<br><br>这里的操作均支持 <a href="" target="_blank">快捷键</a>。'
             },
             {
                 element: $( ".clock" )[0],
                 intro: '界面上唯一可一直显示的元素，可隐藏，且可更改 12/24 小时制。'
             },
             {
-                intro: '设置栏，主要针对背景源的一些常规设置，包括：更改背景源显示方式、开启/禁用多种背景源、进入禅模式等。'
+                intro: '<a href="" target="_blank">设置栏</a> 主要针对背景源的一些常规设置，包括：<br><br>- <a href="" target="_blank">地球每刻模式</a>；<br>- <a href="" target="_blank">随机更换背景源</a>；<br>- <a href="" target="_blank">相册模式</a>；<br>- 开启/禁用 <a href="" target="_blank">多种背景源</a>；<br>- 进入 <a href="" target="_blank">禅模式</a> 等。<br><br>请使用快捷键 <kbd>s</kbd> 开启/关闭'
             },
             {
-                element: $( ".changestate" )[0],
-                intro: '背景源的各种显示方案，简 Tab的几个特色都在这里，如： <a href="" target="_blank">相册模式</a> <a href="" target="_blank">地球每刻</a> <a href="" target="_blank">禅模式</a>',
-                tooltipPosition: 'right'
-            }
+                element: $( ".bottom" )[0],
+                intro: '<a href="" target="_blank">常用网址</a> 与 Chrome 默认标签页一样的常用网址，支持 简单模式 / 九宫格模式 / 隐藏。<br>同时支持 <a href="" target="_blank">自定义常用网址</a> 功能。'
+            },
+            {
+                intro: '<a href="" target="_blank">选项页</a> 包含了大量的可定制选项，如：标题栏 | 全局自定义样式 | 全局性的自定义脚本 | 更灵活的 Unsplash 背景源选项 等。<br><br>快捷键 <kbd>o</kbd> 开启。'
+            },
+            {
+                intro: '<a href="" target="_blank">书签栏</a> 简洁直观的二级平铺目录，书签再多也不怕。<br><br>快捷键 <kbd>b</kbd> 开启/关闭。<br><br><b>注意：</b> 因为要申请新的权限，所以书签栏 <b>默认关闭</b>，请 <b>手动</b> 在选项页中选择开启此功能。'
+            },
+            {
+                intro: '<a href="" target="_blank">快捷搜索栏</a> 开启书签栏后，即可使用快捷搜索栏，支持关键字搜索书签，并默认接入多种 <a href="" target="_blank">搜索引擎</a>。<br><br>快捷键 <kbd>q</kbd> 开启/关闭。'
+            },
+            {
+                intro: '<a href="" target="_blank">白噪音</a> 也是 简 Tab 独有的功能，辅以 全屏化 + 自动更换背景，可获得 音乐相册级的 视听享受。。<br><br>快捷键 <kbd>w</kbd> 开启/关闭<br><br><b>注意：</b> 在任何界面中都没有白噪音的开启方式，只能选择通过快捷键操作。'
+            },
         ];
 
     function init( introJs ) {
@@ -76,7 +46,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
         $( $( ".controlbar" ).find( "li" )[0] ).attr( "data-hits", "controlbar-system" );
         $( ".controlbar" ).find( "li a[url=setting]" ).parent().attr( "data-hits", "controlbar-setting" );
         $( ".clock"   ).attr( "data-hits", "clock" );
-        $( ".setting" ).attr( "data-hits", "setting" );
+        $( ".bottom" ).attr( "data-hits", "bottom" );
     }
 
     function render() {
@@ -89,6 +59,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             hidePrev: true,
             hideNext: true,
             tooltipPosition: "auto",
+            exitOnEsc: false,
+            exitOnOverlayClick: false,
             steps: steps,
         });
         intros.onbeforechange( function( target ) {
@@ -103,8 +75,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 $( ".controlbar" ).removeAttr( "style" );
                 $( ".controlink[url=setting]" ).trigger( "mouseleave" );
                 $( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseleave" );
-            } else if ( id == undefined && $( "a[role=button].active" ).attr( "data-stepnumber" ) == "15" ) {
-                Mousetrap.trigger( "s" );
+            } else if ( id == "bottom" ) {
+                $(target).css({ "opacity": 1 });
             }
         });
         intros.onexit( function() {
@@ -116,7 +88,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             $( $( ".controlbar" ).find( "li" )[0] ).removeAttr( "data-hits" );
             $( ".controlbar" ).find( "li a[url=setting]" ).parent().removeAttr( "data-hits" );
             $( ".clock"   ).removeAttr( "data-hits" );
-            $( ".setting" ).removeAttr( "data-hits" );
+            $( ".bottom"   ).removeAttr( "data-hits" ).removeAttr( "style" );
         });
         /*
         intros.onchange( function( target ) {
