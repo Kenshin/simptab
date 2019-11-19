@@ -10,7 +10,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             },
             {
                 element: $( '.controlbar' )[0],
-                intro: '控制栏：包含了对背景图的大部分操作，如：上传、下载、更换背景源、更改背景模式等等；'
+                intro: '控制栏：包含了对背景图的大部分操作，如：上传、下载、固定、不喜欢等。<br>此栏无法用快捷键呼出，鼠标 <b>右移到标签页</b> 自动显示，同时其中的功能 <b>支持快捷键</b> 操作；'
             },
             {
                 element: $( ".controlbar" ).find( "li" )[0],
@@ -38,7 +38,23 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             },
             {
                 element: $( ".controlbar" ).find( "li > a[url=setting]" ).parent()[0],
-                intro: '控制栏 - 选项页，简 Tab 的可定制化中心，包括了：打开设置定栏、背景管理器、关于 三个功能。'
+                intro: '控制栏 - 选项页：简 Tab 的可定制化中心，包括了：打开设置定栏、背景管理器、关于 三个功能。'
+            },
+            {
+                element: $( ".controlbar" ).find( "li > a[url=mobile]" ).parent()[0],
+                intro: '控制栏 - 发送到手机端：配合 <a href="" target="_blank">JSBox 小插件</a>，可将当前背景一键发送到你的 iPhone。'
+            },
+            {
+                element: $( ".controlbar" ).find( "li > a[url=favorite]" ).parent()[0],
+                intro: '控制栏 - 收藏：与上传类似，可将当前背景收藏到 Chrome 本地的安全沙箱中。'
+            },
+            {
+                element: $( ".controlbar" ).find( "li > a[url=pin]" ).parent()[0],
+                intro: '控制栏 - 固定：可将当前背景固定若干时间。'
+            },
+            {
+                element: $( ".controlbar" ).find( "li > a[url=dislike]" ).parent()[0],
+                intro: '控制栏 - 不喜欢：若不喜欢当前背景的话，选中后不再显示当前背景。'
             }
         ];
 
