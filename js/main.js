@@ -161,7 +161,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
     guide.Init( introJs );
-    //guide.Render();
+    guide.Render();
 
     try {
         options.Storage.db.script != "" && setTimeout( function() { new Function( options.Storage.db.script )(); }, 1000 );
