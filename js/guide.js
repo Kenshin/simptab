@@ -29,8 +29,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 intro: '控制栏 - 下载：可将背景下载，并可 <a href="" target="_blank">指定位置</a>。'
             },
             {
-                element: $( ".controlbar" ).find( "li > a[url=download]" ).parent()[0],
-                intro: '控制栏 - 下载：可将背景下载，并可 <a href="" target="_blank">指定位置</a>。'
+                element: $( ".controlbar" ).find( "li > a[url=upload]" ).parent()[0],
+                intro: '控制栏 - 上传：可将本地图片上传到 简 Tab 的收藏夹，以供自动更换时使用。注意：简 Tab 上传的图片均保存在 Chrome 本地的安全沙箱中。'
+            },
+            {
+                element: $( ".controlbar" ).find( "li > a[url=refresh]" ).parent()[0],
+                intro: '控制栏 - 下一张：通过快捷键 <kbd>f</kbd> 即可在不关闭标签页的情况下自动更新为下一张图片。'
+            },
+            {
+                element: $( ".controlbar" ).find( "li > a[url=setting]" ).parent()[0],
+                intro: '控制栏 - 选项页，简 Tab 的可定制化中心，包括了：打开设置定栏、背景管理器、关于 三个功能。'
             }
         ];
 
@@ -38,7 +46,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
         intros = introJs();
         $( ".controlbar" ).attr( "data-hits", "controlbar" );
         $( $( ".controlbar" ).find( "li" )[0] ).attr( "data-hits", "controlbar-system" );
-        $( $( ".controlbar" ).find( "li" )[1] ).attr( "data-hits", "controlbar-info" );
+        $( ".controlbar" ).find( "li a[url=setting]" ).parent().attr( "data-hits", "controlbar-setting" );
     }
 
     function render() {
@@ -59,8 +67,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 $(target).css({ "opacity": 1, width: "initial" });
             } else if ( id == "controlbar-system" ) {
                 $( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseenter" );
-            } else if ( id == "controlbar-info" ) {
-                //$( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseenter" );
+            } else if ( id == "controlbar-setting" ) {
+                $( ".controlink[url=setting]" ).trigger( "mouseenter" );
             }
         });
         intros.onexit( function() {
