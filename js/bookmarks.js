@@ -51,10 +51,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $,
         if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
             $(".folders").css( "width", "71px" );
         }
-        if ( guide.FirstLoad.bookmarks ) {
-            guide.FirstLoad.bookmarks = false;
-            guide.Tips( "bookmarks" );
-        }
+        guide.Tips( "bookmarks" );
     }
 
     function close() {

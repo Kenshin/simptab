@@ -126,10 +126,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                             $( ".sidebar" ).css({ right: width });
                             $target.addClass( "close" );
                             $( ".setting" ).addClass( "open" );
-                            if ( guide.FirstLoad.setting ) {
-                                guide.FirstLoad.setting = false;
-                                guide.Tips( "setting" );
-                            }
+                            guide.Tips( "setting" );
                             //$( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
                             // 116-simptab-optimize-layout
