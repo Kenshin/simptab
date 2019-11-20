@@ -61,7 +61,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 {
                     intro: '<a href="" target="_blank">快捷搜索栏</a> 开启书签栏后，即可使用快捷搜索栏，支持关键字搜索书签，并默认接入多种 <a href="" target="_blank">搜索引擎</a>。<br><br>快捷键 <kbd>q</kbd> 开启/关闭'
                 },
-            ]
+            ],
+            setting: [
+                {
+                    intro: '<a href="" target="_blank">设置栏</a> 主要针对背景源的一些常规设置，包括：<br><br>- 背景图显示方式<br>- 背景显示形式<br>- 开启/禁用 <a href="" target="_blank">多种背景源</a><br>- 背景源随便更换频率 等<br><br>请使用快捷键 <kbd>s</kbd> 开启/关闭'
+                },
+            ],
         };
 
     function init( introJs ) {
