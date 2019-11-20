@@ -709,8 +709,8 @@
         "message": "欢迎首次使用设定，请看下面的提示信息。"
     },
 
-    "tips_zen_mode": {
-        "message": "欢迎来到 <a target='_blank' href='http://ksria.com/simptab/docs/#/禅模式'>禅模式</a>，使用快捷键 c 或者鼠标移动右下角弹出选项卡。"
+    "tips_zenmode": {
+        "message": "欢迎首次使用禅模式，请看下面的提示信息。"
     },
 
     "tips_confirm": {
