@@ -9,6 +9,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             setting  : true,
             zenmode  : true,
             history  : true,
+            favorite : true,
         },
         intros,
         steps = {
@@ -72,6 +73,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             setting: [
                 {
                     intro: '<a href="" target="_blank">设置栏</a> 主要针对背景源的一些常规设置，包括：<br><br>- 背景图显示方式<br>- 背景显示形式<br>- 开启/禁用 <a href="" target="_blank">多种背景源</a><br>- 背景源随便更换频率 等<br><br>请使用快捷键 <kbd>s</kbd> 开启/关闭'
+                },
+            ],
+            favorite: [
+                {
+                    intro: '关于收藏的使用，请留意以下几点：<br><br>- 上传的图片均保存在 Chrome 本地的安全沙箱中<br>- 当收藏夹 <b>没有任何内容并只启用收藏夹源</b> 时会出现错误<br>- 上传的本地图片也保存在收藏夹里面<br>- 请在 <a href="" target="_blank">背景管理器</a> 中收藏夹的图片<br>- 请记住对应的快捷键 <kbd>7</kbd>'
                 },
             ],
         };
