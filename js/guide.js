@@ -80,11 +80,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 $(target).css({ "opacity": 1 });
             }
         });
+        /*
         intros.onexit( function() {
             $( ".controlbar" ).removeAttr( "data-hits" );
             $( ".clock"      ).removeAttr( "data-hits" );
             $( ".bottom"     ).removeAttr( "data-hits" ).removeAttr( "style" );
         });
+        */
         /*
         intros.onchange( function( target ) {
             const id = $( target ).data().hits;
