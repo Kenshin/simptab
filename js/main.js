@@ -118,7 +118,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     version.Init( function( ver ) {
         welcome.Render( ver, function() { guide.Render( !ver.first ); });
     });
-    welcome.Render({ first: true, update: "1.5.2" }, function() { guide.Render(); });
+    //welcome.Render({ first: true, update: "1.5.2" }, function() { guide.Render(); });
 
     // waves config
     Waves.attach( '.icon',      [ 'waves-circle']);
