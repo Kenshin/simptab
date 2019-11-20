@@ -46,10 +46,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     function init( introJs ) {
         intros = introJs();
         $( ".controlbar" ).attr( "data-hits", "controlbar" );
-        $( $( ".controlbar" ).find( "li" )[0] ).attr( "data-hits", "controlbar-system" );
-        $( ".controlbar" ).find( "li a[url=setting]" ).parent().attr( "data-hits", "controlbar-setting" );
-        $( ".clock"   ).attr( "data-hits", "clock" );
-        $( ".bottom" ).attr( "data-hits", "bottom" );
+        $( ".clock"      ).attr( "data-hits", "clock" );
+        $( ".bottom"     ).attr( "data-hits", "bottom" );
     }
 
     function render() {
@@ -70,28 +68,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             var id = $( target ).data().hits;
             if ( id == "controlbar" ) {
                 $(target).css({ "opacity": 1, width: "initial" });
-            } else if ( id == "controlbar-system" ) {
-                $( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseenter" );
-            } else if ( id == "controlbar-setting" ) {
-                $( ".controlink[url=setting]" ).trigger( "mouseenter" );
             } else if ( id == "clock" ) {
                 $( ".controlbar" ).removeAttr( "style" );
-                $( ".controlink[url=setting]" ).trigger( "mouseleave" );
-                $( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseleave" );
             } else if ( id == "bottom" ) {
                 $(target).css({ "opacity": 1 });
             }
         });
         intros.onexit( function() {
-            $( ".controlbar" ).removeAttr( "style" );
-            $( ".controlink[url=setting]" ).trigger( "mouseleave" );
-            $( $( ".controlbar" ).find( "a" )[3] ).trigger( "mouseleave" );
-
             $( ".controlbar" ).removeAttr( "data-hits" );
-            $( $( ".controlbar" ).find( "li" )[0] ).removeAttr( "data-hits" );
-            $( ".controlbar" ).find( "li a[url=setting]" ).parent().removeAttr( "data-hits" );
-            $( ".clock"   ).removeAttr( "data-hits" );
-            $( ".bottom"   ).removeAttr( "data-hits" ).removeAttr( "style" );
+            $( ".clock"      ).removeAttr( "data-hits" );
+            $( ".bottom"     ).removeAttr( "data-hits" ).removeAttr( "style" );
         });
         /*
         intros.onchange( function( target ) {
