@@ -113,9 +113,21 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
         intros.start();
     }
 
+    function tips( id ) {
+        var notify = "simptab-" + id + "-notify",
+            tip    = "tips_"    + id;
+        if ( localStorage[ notify ] != "false" ) {
+            new Notify().Render({ content: i18n.GetLang( tip ), action: i18n.GetLang( "tips_confirm" ), callback:function () {
+                localStorage[ notify ] = false;
+            }});
+            setTimeout( function() { render( id ); }, 1000 );
+        }
+    }
+
     return {
         Init: init,
         Render: render,
+        Tips: tips,
     }
 
 });
