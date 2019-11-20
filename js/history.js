@@ -1,4 +1,4 @@
-define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "options" ], function( $, _, Notify, i18n, files, vo, message, options ) {
+define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "options", "guide" ], function( $, _, Notify, i18n, files, vo, message, options, guide ) {
 
     var current, base64,
         MAX     = 5,
@@ -20,6 +20,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
 
     function open() {
         $( ".history" ).css({ "transform": "translateY(0px)", "opacity": 0.8 }).addClass( "open" );
+        guide.Tips( "history" );
     }
 
     function close() {
