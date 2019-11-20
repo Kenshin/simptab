@@ -93,7 +93,8 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
         prev_paging = '\
                 <a class="waves-effect waves-circle" href="#">\
                     <span class="prev"><?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="prev" t="1539314235448" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3570" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25"><defs><style type="text/css"></style></defs><path d="M959.936 545.536H122.432l401.728 401.728-46.08 44.544-478.144-478.144L481.536 32.192l44.544 44.48L122.432 481.92h837.504v63.616z" p-id="3571" fill="#ffffff"></path></svg></span>\
-                </a>';
+                </a>',
+        callback;
 
     function getDetails( ver ) {
         var detail = "";
@@ -113,6 +114,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
         $( ".welcome" ).css({ "transform": "translateY(100px)", "opacity": 0 });
         setTimeout( function() {
             $( ".welcome-overlay" ).remove();
+            callback && callback();
         }, 500 );
     }
 
@@ -136,7 +138,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
     }
 
     return {
-        Render: function( ver ) {
+        Render: function( ver, cb ) {
             var tmpl = '<div class="carousel-item" id="start">\
                             <img src="../assets/images/welcome-start.webp">\
                             <div class="content">\
@@ -154,6 +156,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                         </div>';
             var compiled = _.template( welcomeTmpl ),
                 html     = compiled({ prev: prev_paging, next: next_paging, welcome: tmpl });
+            callback     = cb;
             $( "body" ).append( html );
             setTimeout( function() {
                 open();
