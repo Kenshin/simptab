@@ -127,6 +127,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
 
     function tips( id ) {
         if ( !firstload[id] ) return;
+        if ( $( ".introjs-overlay" ).length > 0 ) return;
         var notify = "simptab-" + id + "-notify",
             tip    = "tips_"    + id;
         if ( localStorage[ notify ] != "false" ) {
