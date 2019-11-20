@@ -9,10 +9,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 intro: '<a href="" target="_blank">简 Tab</a> 是一个纯粹、极简的 新标签页扩展。<br>它的设计哲学：<b>只呈现美图，无任何干扰</b>，但这并不意味它仅代表简单，它的功能包含：<br><br>- <a href="" target="_blank">多种背景源</a><br>- 丰富的 <a href="" target="_blank">定制化选项</a><br>- <a href="" target="_blank">常用网址</a><br>- <a href="" target="_blank">书签栏</a><br>- <a href="" target="_blank">快捷搜索栏</a><br>- <a href="" target="_blank">白噪音</a><br>- <a href="" target="_blank">禅模式</a>'
             },
             {
-                intro: '同样主打极简体验，与其它同类产品不同，简 Tab 隐藏了绝大多数 <b>干扰元素</b>，但这些功能均可通过快捷键呼出。<br><br>请记住快捷键 <kbd>?</kbd>'
+                intro: '同样主打极简体验，与其它同类产品不同，简 Tab 隐藏了绝大多数 <b>干扰元素</b>，但这些功能均可通过快捷键呼出。<br><br>请记住快捷键 <kbd>?</kbd><br>同时，绝大多数界面均支持 <kbd>esc</kbd> 退出。'
             },
             {
-                intro: '接下来介绍几个经常需要使用的功能，包括：<br><br>- 控制栏<br>- 时钟<br>- 设置栏<br>- 常用网址<br>- 书签栏<br>- 快捷搜索栏<br>- 白噪音<br>- 选项页'
+                intro: '接下来介绍几个经常需要使用的功能，包括：<br><br>- 控制栏<br>- 时钟<br>- 设置栏<br>- 常用网址<br>- 白噪音<br>- 书签栏<br>- 快捷搜索栏<br>- 选项页'
             },
             {
                 element: $( '.controlbar' )[0],
