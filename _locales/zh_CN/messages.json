@@ -781,6 +781,10 @@
         "message": "当前环境并未有任何书签。"
     },
 
+    "notify_bm_permissions": {
+        "message": "当前未授权获取书签栏的权限，是否授权？"
+    },
+
     "notify_double_open": {
         "message": "请先退出当前模式。"
     },

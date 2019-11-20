@@ -781,6 +781,10 @@
         "message": "Not any bookmarks."
     },
 
+    "notify_bm_permissions": {
+        "message": "Bookmarks need permissions, is it permissions?"
+    },
+
     "notify_double_open": {
         "message": "Please close dialog."
     },

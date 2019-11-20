@@ -781,6 +781,10 @@
         "message": "當前環境並未有任何書籤。"
     },
 
+    "notify_bm_permissions": {
+        "message": "當前未授權獲取書籤欄的許可權，是否授權？"
+    },
+
     "notify_double_open": {
         "message": "請先退出當前模式。"
     },
