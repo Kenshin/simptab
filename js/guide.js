@@ -53,6 +53,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 {
                     intro: '<a href="" target="_blank">白噪音</a> 也是 简 Tab 独有的功能，辅以 <a href="" target="_blank">全屏化</a> + <a href="" target="_blank">自动更换背景</a>，可获得 <b>音乐相册级的</b> 视听享受。<br><br>快捷键 <kbd>w</kbd> 开启/关闭<br><br><b>注意：</b> 在任何界面中都没有白噪音的开启方式，只能选择通过快捷键操作。'
                 },
+            ],
+            bookmarks: [
+                {
+                    intro: '<a href="" target="_blank">书签栏</a> 简洁直观的二级平铺目录，书签再多也不怕。<br><br>快捷键 <kbd>b</kbd> 开启/关闭<br><br>'
+                },
+                {
+                    intro: '<a href="" target="_blank">快捷搜索栏</a> 开启书签栏后，即可使用快捷搜索栏，支持关键字搜索书签，并默认接入多种 <a href="" target="_blank">搜索引擎</a>。<br><br>快捷键 <kbd>q</kbd> 开启/关闭'
+                },
             ]
         };
 
