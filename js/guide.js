@@ -53,7 +53,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
         $( ".bottom"     ).attr( "data-hits", "bottom" );
     }
 
-    function render() {
+    function render( auto_close ) {
         intros.setOptions({
             hintButtonLabel: "确认",
             nextLabel: "下一条 →",
@@ -63,8 +63,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             hidePrev: true,
             hideNext: true,
             tooltipPosition: "auto",
-            exitOnEsc: false,
-            exitOnOverlayClick: false,
+            exitOnEsc: auto_close || false,
+            exitOnOverlayClick: auto_close || false,
             steps: steps,
         });
         intros.onbeforechange( function( target ) {
