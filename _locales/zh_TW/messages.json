@@ -686,7 +686,7 @@
     },
 
     "tips_zen_mode": {
-        "message": "歡迎來到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禪模式</a>，使用快捷鍵 c 或者滑鼠移動右下角彈出選項卡。"
+        "message": "歡迎來到 <a target='_blank' href='http://ksria.com/simptab/docs/#/禪模式'>禪模式</a>，使用快捷鍵 c 或者滑鼠移動右下角彈出選項卡。"
     },
 
     "tips_explore": {

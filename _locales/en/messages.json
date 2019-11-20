@@ -686,7 +686,7 @@
     },
 
     "tips_zen_mode": {
-        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
+        "message": "Welcome to zen mode, shortcuts <kbd>`</kbd> startup it."
     },
 
     "tips_explore": {
