@@ -125,9 +125,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     }
 
     return {
-        Init: init,
-        Render: render,
-        Tips: tips,
+        Init      : init,
+        Render    : render,
+        Tips      : tips,
+        FirstLoad : {
+            bookmarks: true,
+            noise    : true,
+            setting  : true,
+            zenmode  : true,
+            history  : true,
+        }
     }
 
 });
