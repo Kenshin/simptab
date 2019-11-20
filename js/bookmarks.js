@@ -328,9 +328,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         },
 
         Listen: function() {
-            message.Subscribe( message.TYPE.OPEN_BOOKMARKS, function( event ) {
-                !$( ".bm" ).hasClass( "open" ) ? open() : close();
-            });
+            !$( ".bm" ).hasClass( "open" ) ? open() : close();
             message.Subscribe( message.TYPE.OPEN_QUICKBAR, function( event ) {
                 openQuickbar();
             });
