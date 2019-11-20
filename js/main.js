@@ -116,9 +116,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     else options.Storage.db.title && ( document.title = options.Storage.db.title );
 
     version.Init( function( ver ) {
-        welcome.Render( ver );
+        welcome.Render( ver, function() { guide.Render( !ver.first ); });
     });
-    // welcome.Render({ first: false, update: "1.5.2" });
+    welcome.Render({ first: true, update: "1.5.2" }, function() { guide.Render(); });
 
     // waves config
     Waves.attach( '.icon',      [ 'waves-circle']);
@@ -161,7 +161,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
     guide.Init( introJs );
-    guide.Render();
+    //guide.Render();
 
     try {
         options.Storage.db.script != "" && setTimeout( function() { new Function( options.Storage.db.script )(); }, 1000 );
