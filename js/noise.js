@@ -114,11 +114,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message", 
     return {
         Init: function() {
             message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
-                localStorage["simptab-noise-notify"] != "false" &&
-                new Notify().Render({ content: i18n.GetLang( "tips_noise" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
-                    localStorage["simptab-noise-notify"] = false;
-                }});
-                localStorage["simptab-noise-notify"] != "false" && setTimeout( function() { guide.Render( "noise" );}, 1000 );
+                if ( guide.FirstLoad.noise ) {
+                    guide.FirstLoad.noise = false;
+                    guide.Tips( "noise" );
+                }
                 if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
                     $( ".noise-mode .close" ).click();
                 } else {
