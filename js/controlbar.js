@@ -155,6 +155,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                     case "favorite":
                         var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
                         callBack( url, is_favorite );
+                        guide.Tips( "favorite" );
                         break;
                     case "download":
                         files.SaveBgfromURI( "download", files.DataURI() )
