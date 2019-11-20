@@ -705,6 +705,10 @@
         "message": "Welcome usage White noise, shortcuts <kbd>w</kbd> startup it."
     },
 
+    "tips_bookmarks": {
+        "message": "Welcome usage Bookmarks, shortcuts <kbd>b</kbd> startup it."
+    },
+
     "tips_confirm": {
         "message": "Confirm"
     },
