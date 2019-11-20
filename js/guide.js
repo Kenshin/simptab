@@ -39,7 +39,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 intro: '<img src="http://st.ksria.cn/welcome-quickbar.png"><br><a href="" target="_blank">快捷搜索栏</a> 开启书签栏后，即可使用快捷搜索栏，支持关键字搜索书签，并默认接入多种 <a href="" target="_blank">搜索引擎</a>。<br><br>快捷键 <kbd>q</kbd> 开启/关闭'
             },
             {
-                intro: '<img src="http://st.ksria.cn/welcome-options.png"><br><a href="" target="_blank">选项页</a> 包含了大量的可定制选项，如：标题栏 · 全局自定义样式 · 全局性的自定义脚本 · 更灵活的 Unsplash 背景源选项 等。<br><br>快捷键 <kbd>o</kbd> 开启。'
+                intro: '<img src="http://st.ksria.cn/welcome-options.png"><br><a href="" target="_blank">选项页</a> 包含了大量的可定制选项，如：标题栏 · 全局自定义样式 · 全局性的自定义脚本 · 更灵活的 Unsplash 背景源选项 等。<br><br>快捷键 <kbd>o</kbd> 开启/关闭'
+            },
+            {
+                intro: '<img src="http://st.ksria.cn/welcome-zenmode.png"><br><a href="" target="_blank">禅模式</a> 与图模式相反，它追求的是 <b>极简的高度定制化</b> 效果。<br>界面上任意元素均可定制，并包含了 <a href="" target="_blank">脚本管理器</a>。<br><br>快捷键 <kbd>`</kbd> 开启/关闭'
             },
             {
                 intro: '<img src="chrome-extension://neodnhemjgeklgmialkjdmifbdbampia/assets/images/welcome-start.webp"><br>以上就是关于简 Tab 的大部分功能介绍，更详细的介绍请看 <a href="" target="_blank">帮助文档</a>。'
