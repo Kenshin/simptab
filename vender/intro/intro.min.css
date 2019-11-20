@@ -76,8 +76,14 @@
     overflow: hidden;
     white-space: nowrap;
     content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
-  }
-  
+}
+
+.introjs-tooltiptext img {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+}
 
 .introjs-tooltiptext a {
     color: #fff;
