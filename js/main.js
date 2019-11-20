@@ -168,6 +168,8 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     guide.Init( introJs );
     //guide.Render();
 
+    localStorage[ "simptab-background-mode" ] == "earth" && guide.Tips( "earth" );
+
     try {
         options.Storage.db.script != "" && setTimeout( function() { new Function( options.Storage.db.script )(); }, 1000 );
     } catch ( error ) {
