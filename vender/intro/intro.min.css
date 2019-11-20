@@ -117,3 +117,20 @@
 .introjs-helperNumberLayer {
     display: none;
 }
+
+.introjs-hint {
+    top: 0;
+    right: -17px;
+
+    transform-origin: right;
+    transform: scale(.7);
+}
+
+.introjs-hint-pulse {
+    background-color: #F44336;
+    border: 5px solid #F44336;
+}
+
+.introjs-hint-dot {
+    border: 10px solid #F44336;
+}
