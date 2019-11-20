@@ -41,6 +41,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             {
                 intro: '<a href="" target="_blank">选项页</a> 包含了大量的可定制选项，如：标题栏 · 全局自定义样式 · 全局性的自定义脚本 · 更灵活的 Unsplash 背景源选项 等。<br><br>快捷键 <kbd>o</kbd> 开启。'
             },
+            {
+                intro: '以上就是关于简 Tab 的大部分功能介绍，更详细的介绍请看 <a href="" target="_blank">帮助文档</a>。'
+            },
         ];
 
     function init( introJs ) {
