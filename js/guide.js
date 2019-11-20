@@ -3,7 +3,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
 
     "use strict";
 
-    var intros,
+    var firstload = {
+            bookmarks: true,
+            noise    : true,
+            setting  : true,
+            zenmode  : true,
+            history  : true,
+        },
+        intros,
         steps = {
             all : [
                 {
@@ -119,6 +126,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     }
 
     function tips( id ) {
+        if ( !firstload[id] ) return;
         var notify = "simptab-" + id + "-notify",
             tip    = "tips_"    + id;
         if ( localStorage[ notify ] != "false" ) {
@@ -127,19 +135,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             }});
             setTimeout( function() { render( id ); }, 1000 );
         }
+        firstload[id] = false;
     }
 
     return {
         Init      : init,
         Render    : render,
         Tips      : tips,
-        FirstLoad : {
-            bookmarks: true,
-            noise    : true,
-            setting  : true,
-            zenmode  : true,
-            history  : true,
-        }
+        FirstLoad : firstload,
     }
 
 });
