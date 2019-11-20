@@ -1,4 +1,4 @@
-define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves, i18n, message ) {
+define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $, _, Waves, i18n, message, guide ) {
 
     var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [], search: [] },
         getBgColor = function ( chars ) {
@@ -50,6 +50,10 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
         if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
             $(".folders").css( "width", "71px" );
+        }
+        if ( guide.FirstLoad.bookmarks ) {
+            guide.FirstLoad.bookmarks = false;
+            guide.Tips( "bookmarks" );
         }
     }
 
