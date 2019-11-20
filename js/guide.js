@@ -10,6 +10,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             zenmode  : true,
             history  : true,
             favorite : true,
+            earth    : true,
         },
         intros,
         steps = {
@@ -86,6 +87,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 },
 
             ],
+            earth: [
+                {
+                    intro: '感谢 <a target="_blank" href="http://himawari8.nict.go.jp/">向日葵-8號</a> 提供，详细请看 <a target="_blank" href="http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻">地球每刻</a><br><br>- 此模式下 <b>无法使用</b> <a href="" target="_blank">多种背景源</a> <a href="" target="_blank">历史记录</a> <a href="" target="_blank">自动播放</a> 功能<br>- 地球每刻的照片 <b>每小时更新一次</b>'
+                },
+            ]
         };
 
     function init( introJs ) {
