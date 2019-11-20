@@ -702,7 +702,7 @@
     },
 
     "tips_noise": {
-        "message": "Welcome usage White noise, shortcuts w startup it."
+        "message": "Welcome usage White noise, shortcuts <kbd>w</kbd> startup it."
     },
 
     "tips_confirm": {

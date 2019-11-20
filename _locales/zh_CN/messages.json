@@ -702,7 +702,7 @@
     },
 
     "tips_noise": {
-        "message": "欢迎使用白噪音，快捷键 w 即可打开，更多细节请访问 <a target='_blank' href='http://ksria.com/simptab/docs/#/白噪音'>白噪音</a> 。"
+        "message": "欢迎首次使用白噪音，请看下面的提示信息。"
     },
 
     "tips_confirm": {
