@@ -713,6 +713,10 @@
         "message": "Welcome to zen mode, shortcuts <kbd>`</kbd> startup it."
     },
 
+    "tips_history": {
+        "message": "Welcome to zen mode, shortcuts <kbd>h</kbd> startup it."
+    },
+
     "tips_confirm": {
         "message": "Confirm"
     },

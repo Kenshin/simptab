@@ -713,6 +713,10 @@
         "message": "欢迎首次使用禅模式，请看下面的提示信息。"
     },
 
+    "tips_history": {
+        "message": "欢迎首次使用历史记录，请看下面的提示信息。"
+    },
+
     "tips_confirm": {
         "message": "不再提示"
     },
