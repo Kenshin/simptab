@@ -709,6 +709,10 @@
         "message": "歡迎首次使用書籤欄，請看下面的提示信息。"
     },
 
+    "tips_setting": {
+        "message": "歡迎首次使用設定，請看下面的提示信息。"
+    },
+
     "tips_confirm": {
         "message": "不再提示"
     },

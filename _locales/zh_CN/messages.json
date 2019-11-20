@@ -709,6 +709,10 @@
         "message": "欢迎首次使用书签栏，请看下面的提示信息。"
     },
 
+    "tips_setting": {
+        "message": "欢迎首次使用设定，请看下面的提示信息。"
+    },
+
     "tips_confirm": {
         "message": "不再提示"
     },

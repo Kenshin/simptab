@@ -709,6 +709,10 @@
         "message": "Welcome usage Bookmarks, shortcuts <kbd>b</kbd> startup it."
     },
 
+    "tips_setting": {
+        "message": "Welcome usage Setting, shortcuts <kbd>s</kbd> startup it."
+    },
+
     "tips_confirm": {
         "message": "Confirm"
     },
