@@ -685,10 +685,6 @@
         "message": "安裝到 最新版本 #1，#4詳細請看 #2更新日誌#3"
     },
 
-    "tips_zen_mode": {
-        "message": "歡迎來到 <a target='_blank' href='http://ksria.com/simptab/docs/#/禪模式'>禪模式</a>，使用快捷鍵 c 或者滑鼠移動右下角彈出選項卡。"
-    },
-
     "tips_explore": {
         "message": "向下滾動即可載入更多，顯示速度取決於你的網速，詳細請看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=探索'>探索</a> 。"
     },
@@ -711,6 +707,10 @@
 
     "tips_setting": {
         "message": "歡迎首次使用設定，請看下面的提示信息。"
+    },
+
+    "tips_zen_mode": {
+        "message": "歡迎來到 <a target='_blank' href='http://ksria.com/simptab/docs/#/禪模式'>禪模式</a>，使用快捷鍵 c 或者滑鼠移動右下角彈出選項卡。"
     },
 
     "tips_confirm": {

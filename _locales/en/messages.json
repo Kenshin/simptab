@@ -685,10 +685,6 @@
         "message": "Current version: #1. #4To learn more, please visit #2CHANGELOG#3."
     },
 
-    "tips_zen_mode": {
-        "message": "Welcome to zen mode, shortcuts <kbd>`</kbd> startup it."
-    },
-
     "tips_explore": {
         "message": "Scroll down to load more, background loading depending on your network speed."
     },
@@ -711,6 +707,10 @@
 
     "tips_setting": {
         "message": "Welcome usage Setting, shortcuts <kbd>s</kbd> startup it."
+    },
+
+    "tips_zen_mode": {
+        "message": "Welcome to zen mode, shortcuts <kbd>`</kbd> startup it."
     },
 
     "tips_confirm": {
