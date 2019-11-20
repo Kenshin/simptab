@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ], function( $, Mousetrap, _, Notify, i18n, message, comps ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps", "guide" ], function( $, Mousetrap, _, Notify, i18n, message, comps, guide ) {
 
     "use strict";
 
@@ -546,12 +546,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         });
     }
 
+    /*
     function notify() {
         localStorage["simptab-zenmode-notify"] != "false" &&
             new Notify().Render({ content: i18n.GetLang( "tips_zen_mode" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
                 localStorage["simptab-zenmode-notify"] = false;
             }});
     }
+    */
 
     return {
         Render: function() {
@@ -559,7 +561,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             dayMode();
             devicesMode();
             ohtersMode();
-            notify();
+            guide.Tips( "zenmode" );
 
             setTimeout( function() {
                 topSitesMode();
