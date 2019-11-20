@@ -54,6 +54,11 @@ img {
     border: 1px solid #bbb;
 }
 
+div[version-tips] {
+    position: relative;
+    color: rgba(244, 67, 54, .8)!important;
+}
+
 .progress {
     position: fixed;
     left: 5px;
