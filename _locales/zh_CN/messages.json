@@ -690,7 +690,7 @@
     },
 
     "tips_earth": {
-        "message": "欢迎使用地球每刻，感谢 <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> 提供，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻'>地球每刻</a> 。"
+        "message": "欢迎首次使用地球每刻，请看下面的提示信息。"
     },
 
     "tips_favorite": {
