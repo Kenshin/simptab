@@ -870,7 +870,7 @@
     },
 
     "notify_eartch_update_success": {
-        "message": "获取成功，2秒后，自动刷新本页才能生效。"
+        "message": "获取成功，2秒后自动刷新本页才能生效。"
     },
 
     "notify_eartch_update_failed": {
