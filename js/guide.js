@@ -162,10 +162,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
         firstload[id] = false;
     }
 
+    function hints( root ) {
+        $( root ).find( "div[version-tips]" ).map( function( idx, item ) {
+            $( item ).append( '<a role="button" tabindex="0" class="introjs-hint"><div class="introjs-hint-dot"></div><div class="introjs-hint-pulse"></div></a>' );
+        });
+    }
+
     return {
         Init      : init,
         Render    : render,
         Tips      : tips,
+        Hints     : hints,
         FirstLoad : firstload,
     }
 
