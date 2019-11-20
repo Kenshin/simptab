@@ -511,10 +511,6 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         },
 
         Earth: function( is_notify ) {
-            localStorage["simptab-earth-notify"] != "false" &&
-                    new Notify().Render({ content: i18n.GetLang( "tips_earth" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
-                        localStorage["simptab-earth-notify"] = false;
-                    }});
             if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 10000 ) {
                 is_notify && new Notify().Render( i18n.GetLang( "notify_eartch_update_failed" ) );
                 return;
