@@ -91,6 +91,11 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 {
                     intro: '感谢 <a target="_blank" href="http://himawari8.nict.go.jp/">向日葵-8號</a> 提供，详细请看 <a target="_blank" href="http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻">地球每刻</a><br><br>- 此模式下 <b>无法使用</b> <a href="" target="_blank">多种背景源</a> <a href="" target="_blank">历史记录</a> <a href="" target="_blank">自动播放</a> 功能<br>- 地球每刻的照片 <b>每小时更新一次</b>'
                 },
+            ],
+            history: [
+                {
+                    intro: '<a href="" target="_blank">历史记录</a> 是 简 Tab 独有功能，包含了以下几个特点：<br><br>- 最多可以记录 <b>五组</b> 之前的背景图片<br>- 鼠标移到新标签页上方中部即可自动打开历史记录列表<br><br>支持快捷键 <kbd>→</kbd> <kbd>←</kbd> 翻页 <br>支持快捷键 <kbd>h</kbd> 开启/关闭'
+                },
             ]
         };
 
