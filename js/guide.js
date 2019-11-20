@@ -80,6 +80,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                     intro: '关于收藏的使用，请留意以下几点：<br><br>- 上传的图片均保存在 Chrome 本地的安全沙箱中<br>- 当收藏夹 <b>没有任何内容并只启用收藏夹源</b> 时会出现错误<br>- 上传的本地图片也保存在收藏夹里面<br>- 请在 <a href="" target="_blank">背景管理器</a> 中收藏夹的图片<br>- 请记住对应的快捷键 <kbd>7</kbd>'
                 },
             ],
+            zenmode: [
+                {
+                    intro: '<a href="" target="_blank">禅模式</a> 与图模式相反，它追求的是 <b>极简的高度定制化</b> 效果。<br>界面上任意元素均可定制，并包含了 <a href="" target="_blank">脚本管理器</a><br><br>快捷键 <kbd>`</kbd> 开启/关闭<br>快捷键 <kbd>s</kbd> 开启/关闭禅模式的选项页'
+                },
+
+            ],
         };
 
     function init( introJs ) {
