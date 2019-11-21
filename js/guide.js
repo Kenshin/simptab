@@ -55,7 +55,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                     intro: '<img src="http://st.ksria.cn/welcome-zenmode.png"><br><a href="" target="_blank">禅模式</a> 与图模式相反，它追求的是 <b>极简的高度定制化</b> 效果。<br>界面上任意元素均可定制，并包含了 <a href="" target="_blank">脚本管理器</a>。<br><br>快捷键 <kbd>`</kbd> 开启/关闭'
                 },
                 {
-                    intro: '<img src="chrome-extension://neodnhemjgeklgmialkjdmifbdbampia/assets/images/welcome-start.webp"><br>以上就是关于简 Tab 的大部分功能介绍，更详细的介绍请看 <a href="" target="_blank">帮助文档</a>。'
+                    intro: '<img src="../assets/images/welcome-start.webp"><br>以上就是关于简 Tab 的大部分功能介绍，更详细的介绍请看 <a href="" target="_blank">帮助文档</a>。'
                 },
             ],
             noise: [
