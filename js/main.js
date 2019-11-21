@@ -116,7 +116,11 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     else options.Storage.db.title && ( document.title = options.Storage.db.title );
 
     version.Init( function( ver ) {
-        welcome.Render( ver, function() { guide.Render( !ver.first ); });
+        welcome.Render( ver, function() {
+            new Notify().Render({ content: i18n.GetLang( "notify_getting_started" ), action: i18n.GetLang( "notify_zen_mode_esc_confirm" ), cancel: i18n.GetLang( "notify_zen_mode_esc_cancel" ), callback:function ( type ) {
+                type == "action" && guide.Render( !ver.first );
+            }});
+        });
     });
     //welcome.Render({ first: true, update: "1.5.2" }, function() { guide.Render(); });
 

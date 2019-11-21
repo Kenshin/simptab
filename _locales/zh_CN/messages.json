@@ -809,6 +809,10 @@
         "message": "已恢复初始值，请刷新本页。"
     },
 
+    "notify_getting_started": {
+        "message": "为了完美呈现美景，所以隐藏了大多数操作，是否看下入门操作？"
+    },
+
     "notify_options_agree": {
         "message": "同意 "
     },

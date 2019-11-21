@@ -809,6 +809,10 @@
         "message": "Successful, please refresh."
     },
 
+    "notify_getting_started": {
+        "message": "Getting started"
+    },
+
     "notify_options_agree": {
         "message": "Agree "
     },
