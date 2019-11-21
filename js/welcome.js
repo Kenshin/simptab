@@ -126,7 +126,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
     }
 
     function listen() {
-        $( ".welcome .close" ).on( "click", function() {
+        $( ".welcome span.close" ).on( "click", function() {
             close();
         });
         $( ".welcome .paging a span" ).on( "click", function( event ) {
