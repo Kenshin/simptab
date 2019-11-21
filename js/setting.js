@@ -267,7 +267,7 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap"
             if ( id == "shortcuts" ) {
                 Mousetrap.trigger( "?" );
             } else if ( id == "help" ) {
-                guide.Render( true );
+                guide.Render( "all", true );
             } else $( ".controlbar" ).find( "a[url=" + id + "]" ).click();
         });
     }
