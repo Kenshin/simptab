@@ -289,6 +289,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "unveil", "i18n", "message",
                     runat();
                 });
             } else runat();
+            close();
         });
     }
 
