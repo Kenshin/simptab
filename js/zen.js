@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps", "guide" ], function( $, Mousetrap, _, Notify, i18n, message, comps, guide ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "unveil", "i18n", "message", "comps", "guide" ], function( $, Mousetrap, _, Notify, unveil, i18n, message, comps, guide ) {
 
     "use strict";
 
@@ -333,8 +333,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps", 
     }
 
     function scriptManage( result ) {
-        var html = '<div class="script">\
-                        <div class="cover waves-effect"><div class="img" style="background-image: url(<%- root + item.snap %>)"></div></div>\
+        var oriImg = chrome.extension.getURL( "/assets/images/loading.gif" ),
+            html = '<div class="script">\
+                        <img src="' + oriImg + '" data-src=<%- root + item.snap %>>\
                         <div class="toolbar">\
                             <div class="title"     data-balloon-pos="up" data-balloon="<%- item.title %>"><i class="fab fa-readme waves-effect"></i></i></div>\
                             <div class="desc"      data-balloon-pos="up" data-balloon="<%- item.desc || "' + i18n.GetLang( "zen_mode_setting_snippets_toolbar_desc" ) + '" %>"><i class="fas fa-eye waves-effect"></i></div>\
@@ -378,6 +379,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps", 
             $( ".snippets .footer .update" ).on( "click", function( event ) {
                 getScriptVersion();
             });
+            setTimeout( function() {
+                $( ".snippets .script" ).find( "img" ).each( function( idx, item ) {
+                    var $target = $( item ),
+                        lazy    = $target.attr( "data-src" );
+                    lazy && $target.unveil( 200, function() {
+                        $( this ).removeAttr( "data-src" );
+                    });
+                })
+            }, 400 );
         }, 450 );
     }
 

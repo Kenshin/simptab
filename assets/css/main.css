@@ -2240,41 +2240,6 @@ div[version-tips] {
     color: inherit;
 }
 
-.snippets .scripts .script .cover {
-    margin: 10px;
-    padding: 2px;
-
-    width: 154px;
-    height: 109px;
-
-    border: none;
-    border-radius: 10px;
-
-    overflow: hidden;
-}
-
-.snippets .scripts .script .cover .img {
-    width: 154px;
-    height: 109px;
-
-    border: none;
-
-    background-size: cover;
-    background-position: center;
-
-    transform: scale(1.5);
-    transition: all 0.35s cubic-bezier(0.8, 0.4, 0.3, 1.25);
-
-    cursor: pointer;
-}
-
-.snippets .scripts .script .cover .img:hover {
-    transform: scale(1);
-    transition: all 0.35s cubic-bezier(0.8, 0.4, 0.3, 1.25);
-    background-position: center;
-}
-
-/*
 .snippets .scripts .script img {
     padding: 2px;
     max-width: 150px;
@@ -2283,7 +2248,6 @@ div[version-tips] {
     border: none;
     border-radius: 10px;
 }
-*/
 
 .snippets .scripts .script .toolbar {
     display: flex;
