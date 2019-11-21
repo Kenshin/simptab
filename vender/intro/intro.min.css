@@ -28,6 +28,10 @@
     border-left-color: rgba(15,15,15,0.8);
 }
 
+.introjs-arrow.bottom-right {
+    border-top-color: rgba(15,15,15,0.8);
+}
+
 .introjs-tooltip {
     min-width: 350px;
     color: #ffffff;
