@@ -150,14 +150,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     function tips( id ) {
         if ( !firstload[id] ) return;
         if ( $( ".introjs-overlay" ).length > 0 ) return;
-        var notify = "simptab-" + id + "-notify",
-            tip    = "tips_"    + id;
-        if ( localStorage[ notify ] != "false" ) {
-            new Notify().Render({ content: i18n.GetLang( tip ), action: i18n.GetLang( "tips_confirm" ), callback:function () {
-                localStorage[ notify ] = false;
-            }});
-            setTimeout( function() { render( id ); }, 1000 );
-        }
+        setTimeout( function() {
+            var notify = "simptab-" + id + "-notify",
+                tip    = "tips_"    + id;
+            if ( localStorage[ notify ] != "false" ) {
+                new Notify().Render({ content: i18n.GetLang( tip ), action: i18n.GetLang( "tips_confirm" ), callback:function () {
+                    localStorage[ notify ] = false;
+                }});
+                setTimeout( function() { render( id ); }, 1000 );
+            }
+        }, 200 );
         firstload[id] = false;
     }
 
