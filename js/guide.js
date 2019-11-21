@@ -84,7 +84,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                 {
                     intro: '<a href="" target="_blank">禅模式</a> 与图模式相反，它追求的是 <b>极简的高度定制化</b> 效果。<br>界面上任意元素均可定制，并包含了 <a href="" target="_blank">脚本管理器</a><br><br>快捷键 <kbd>`</kbd> 开启/关闭<br>快捷键 <kbd>s</kbd> 开启/关闭禅模式的选项页'
                 },
-
             ],
             earth: [
                 {
