@@ -36,8 +36,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                     intro: '<a href="" target="_blank">设置栏</a> 主要针对背景源的一些常规设置，包括：<br><br>- <a href="" target="_blank">地球每刻模式</a><br>- <a href="" target="_blank">随机更换背景源</a><br>- <a href="" target="_blank">相册模式</a><br>- <a href="" target="_blank">禅模式</a><br>- 开启/禁用 <a href="" target="_blank">多种背景源</a><br><br>请使用快捷键 <kbd>s</kbd> 开启/关闭'
                 },
                 {
-                    element: $( ".bottom" )[0],
-                    intro: '<a href="" target="_blank">常用网址</a> 与 Chrome 默认标签页一样。<br>但支持 简单模式 · 九宫格模式 · 隐藏 三种模式。<br>并拥有 <a href="" target="_blank">自定义</a> 功能。'
+                    intro: '<img src="http://st.ksria.cn/guide/guide-topsites.gif"><br><a href="" target="_blank">常用网址</a> 与 Chrome 默认标签页一样。<br>支持 简单模式 · 九宫格模式 · 隐藏 三种模式。<br>并拥有 <a href="" target="_blank">自定义</a> 功能。'
                 },
                 {
                     intro: '<img src="http://st.ksria.cn/welcome-noise.png?201812301148"><br><a href="" target="_blank">白噪音</a> 也是 简 Tab 独有的功能，辅以 <a href="" target="_blank">全屏化</a> + <a href="" target="_blank">自动更换背景</a>，可获得 <b>音乐相册级的</b> 视听享受。<br><br>快捷键 <kbd>w</kbd> 开启/关闭<br><br><b>注意：</b> 在任何界面中都没有白噪音的开启方式，只能选择通过快捷键操作。'
