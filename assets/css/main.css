@@ -54,10 +54,6 @@ img {
     border: 1px solid #bbb;
 }
 
-div[version-tips] {
-    position: relative;
-}
-
 .progress {
     position: fixed;
     left: 5px;
