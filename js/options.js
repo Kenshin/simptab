@@ -392,9 +392,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
     function footerView() {
         var tmpl = '<div class="footer">\
                         <span>' + i18n.GetLang( "options_footer_notice" ) + '</span>\
-                        <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
-                        <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
-                        <div class="waves-effect button clear">'  + i18n.GetLang( "options_footer_clear" )    + '</div>\
+                        <div class="waves-effect button collapse">' + i18n.GetLang( "options_footer_collapse" ) + '</div>\
+                        <div class="waves-effect button import">'   + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
+                        <div class="waves-effect button export">'   + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
+                        <div class="waves-effect button clear">'    + i18n.GetLang( "options_footer_clear"    ) + '</div>\
                    </div>\
                    ';
         return tmpl;
@@ -434,6 +435,16 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
                 storage.Clear();
                 new Notify().Render( i18n.GetLang( "notify_options_clear_success" ));
             });
+        });
+        $( ".options" ).on( "click", ".footer .collapse", function( event ) {
+            if ( !$( event.currentTarget ).hasClass( "open" ) ) {
+                $( ".options .group:not(.active)" ).addClass( "active" );
+                $( event.currentTarget ).text( i18n.GetLang( "options_footer_collapse_no" ) );
+            } else {
+                $( ".options .group.active" ).removeClass( "active" );
+                $( event.currentTarget ).text( i18n.GetLang( "options_footer_collapse" ) );
+            }
+            $( event.currentTarget ).toggleClass( "open" );
         });
     }
 

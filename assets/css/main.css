@@ -1453,7 +1453,8 @@ div[version-tips] {
 }
 
 .options .footer .import,
-.options .footer .export {
+.options .footer .export,
+.options .footer .collapse {
     background-color: #4DB6AC;
 }
 

@@ -557,6 +557,14 @@
         "message": "自动保存，刷新页面生效。"
     },
 
+    "options_footer_collapse": {
+        "message": "全部展开"
+    },
+
+    "options_footer_collapse_no": {
+        "message": "全部缩进"
+    },
+
     "options_footer_clear": {
         "message": "恢复初始值"
     },

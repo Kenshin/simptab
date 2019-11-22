@@ -557,6 +557,14 @@
         "message": "Auto saved, please refresh new tab."
     },
 
+    "options_footer_collapse": {
+        "message": "Collapsible"
+    },
+
+    "options_footer_collapse_no": {
+        "message": "Collapsible"
+    },
+
     "options_footer_clear": {
         "message": "Clear"
     },
