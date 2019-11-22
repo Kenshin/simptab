@@ -123,11 +123,8 @@
 }
 
 .introjs-hint {
-    top: 0;
-    right: -17px;
-
-    transform-origin: right;
-    transform: scale(.7);
+    transform-origin: center;
+    transform: scale(.5) translate(0px, 5px);
 }
 
 .introjs-hint-pulse {
