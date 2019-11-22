@@ -1295,6 +1295,11 @@ div[version-tips] {
 
 .options .content .title i {
     margin-right: 5px;
+    transition: all 0.1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.options .content .title i.active {
+    transform: rotate(90deg);
 }
 
 .options .group {
@@ -1304,7 +1309,7 @@ div[version-tips] {
     font-size: 14px;
 
     transform: scaleY(0);
-    transition: all 0.1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;;
+    transition: all 0.1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
     transform-origin: left top;
 }
 

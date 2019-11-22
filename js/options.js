@@ -439,10 +439,12 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
         $( ".options" ).on( "click", ".footer .collapse", function( event ) {
             if ( !$( event.currentTarget ).hasClass( "open" ) ) {
                 $( ".options .group:not(.active)" ).addClass( "active" );
+                $( ".options .title i:not(.active)" ).addClass( "active" );
                 $( event.currentTarget ).text( i18n.GetLang( "options_footer_collapse_no" ) );
             } else {
                 $( ".options .group.active" ).removeClass( "active" );
                 $( event.currentTarget ).text( i18n.GetLang( "options_footer_collapse" ) );
+                $( ".options .title i" ).removeClass( "active" );
             }
             $( event.currentTarget ).toggleClass( "open" );
         });
@@ -496,6 +498,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
         $( ".options .title" ).prepend( '<i class="fas fa-caret-right"></i>' );
         $( ".options .title" ).on( "click", function( event ) {
             $( event.currentTarget ).next().toggleClass( "active" );
+            $( event.currentTarget ).find( "i" ).toggleClass( "active" );
         });
     }
 
