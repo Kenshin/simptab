@@ -33,25 +33,25 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                     intro: '界面上唯一可一直显示的元素，可选择隐藏且可修改 12/24 小时制。'
                 },
                 {
-                    intro: '<img src="http://st.ksria.cn/guide/guide-setting.gif" style="height:150px"><br><a href="" target="_blank">设置栏</a> 主要针对背景源的一些常规设置，包括：<br><br>- <a href="" target="_blank">地球每刻模式</a><br>- <a href="" target="_blank">随机更换背景源</a><br>- <a href="" target="_blank">相册模式</a><br>- <a href="" target="_blank">禅模式</a><br>- 开启/禁用 <a href="" target="_blank">多种背景源</a><br><br>请使用快捷键 <kbd>s</kbd> 开启/关闭'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/setting.gif" style="height:150px"><br><a href="" target="_blank">设置栏</a> 主要针对背景源的一些常规设置，包括：<br><br>- <a href="" target="_blank">地球每刻模式</a><br>- <a href="" target="_blank">随机更换背景源</a><br>- <a href="" target="_blank">相册模式</a><br>- <a href="" target="_blank">禅模式</a><br>- 开启/禁用 <a href="" target="_blank">多种背景源</a><br><br>请使用快捷键 <kbd>s</kbd> 开启/关闭'
                 },
                 {
-                    intro: '<img src="http://st.ksria.cn/guide/guide-topsites.gif"><br><a href="" target="_blank">常用网址</a> 与 Chrome 默认标签页一样。<br>支持 简单模式 · 九宫格模式 · 隐藏 三种模式。<br>并拥有 <a href="" target="_blank">自定义</a> 功能。'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/topsites.gif"><br><a href="" target="_blank">常用网址</a> 与 Chrome 默认标签页一样。<br>支持 简单模式 · 九宫格模式 · 隐藏 三种模式。<br>并拥有 <a href="" target="_blank">自定义</a> 功能。'
                 },
                 {
-                    intro: '<img src="http://st.ksria.cn/guide/guide-noise.gif"><br><a href="" target="_blank">白噪音</a> 也是 简 Tab 独有的功能，辅以 <a href="" target="_blank">全屏化</a> + <a href="" target="_blank">自动更换背景</a>，可获得 <b>音乐相册级的</b> 视听享受。<br><br>快捷键 <kbd>w</kbd> 开启/关闭<br><br><b>注意：</b> 在任何界面中都没有白噪音的开启方式，只能选择通过快捷键操作。'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/noise.gif"><br><a href="" target="_blank">白噪音</a> 也是 简 Tab 独有的功能，辅以 <a href="" target="_blank">全屏化</a> + <a href="" target="_blank">自动更换背景</a>，可获得 <b>音乐相册级的</b> 视听享受。<br><br>快捷键 <kbd>w</kbd> 开启/关闭<br><br><b>注意：</b> 在任何界面中都没有白噪音的开启方式，只能选择通过快捷键操作。'
                 },
                 {
-                    intro: '<img src="http://st.ksria.cn/guide/guide-bookmarks.gif"><br><a href="" target="_blank">书签栏</a> 简洁直观的二级平铺目录，书签再多也不怕。<br><br>快捷键 <kbd>b</kbd> 开启/关闭<br><br><b>注意：</b> 因为要申请新的权限，所以书签栏 <b>默认关闭</b>，请 <b>手动</b> 在选项页中选择开启此功能。'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif"><br><a href="" target="_blank">书签栏</a> 简洁直观的二级平铺目录，书签再多也不怕。<br><br>快捷键 <kbd>b</kbd> 开启/关闭<br><br><b>注意：</b> 因为要申请新的权限，所以书签栏 <b>默认关闭</b>，请 <b>手动</b> 在选项页中选择开启此功能。'
                 },
                 {
-                    intro: '<img src="http://st.ksria.cn/guide/guide-quickbar.gif"><br><a href="" target="_blank">快捷搜索栏</a> 开启书签栏后，即可使用快捷搜索栏，支持关键字搜索书签，并默认接入多种 <a href="" target="_blank">搜索引擎</a>。<br><br>快捷键 <kbd>q</kbd> 开启/关闭'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/quickbar.gif"><br><a href="" target="_blank">快捷搜索栏</a> 开启书签栏后，即可使用快捷搜索栏，支持关键字搜索书签，并默认接入多种 <a href="" target="_blank">搜索引擎</a>。<br><br>快捷键 <kbd>q</kbd> 开启/关闭'
                 },
                 {
-                    intro: '<img src="http://st.ksria.cn/guide/guide-options.png"><br><a href="" target="_blank">选项页</a> 包含了大量的可定制选项，如：标题栏 · 全局自定义样式 · 全局性的自定义脚本 · 更灵活的 Unsplash 背景源选项 等。<br><br>快捷键 <kbd>o</kbd> 开启/关闭'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/options.png"><br><a href="" target="_blank">选项页</a> 包含了大量的可定制选项，如：标题栏 · 全局自定义样式 · 全局性的自定义脚本 · 更灵活的 Unsplash 背景源选项 等。<br><br>快捷键 <kbd>o</kbd> 开启/关闭'
                 },
                 {
-                    intro: '<img src="http://st.ksria.cn/guide/guide-zenmode.png"><br><a href="" target="_blank">禅模式</a> 与图模式相反，它追求的是 <b>极简的高度定制化</b> 效果。<br>界面上任意元素均可定制，并包含了 <a href="" target="_blank">脚本管理器</a>。<br><br>快捷键 <kbd>`</kbd> 开启/关闭'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/zenmode.png"><br><a href="" target="_blank">禅模式</a> 与图模式相反，它追求的是 <b>极简的高度定制化</b> 效果。<br>界面上任意元素均可定制，并包含了 <a href="" target="_blank">脚本管理器</a>。<br><br>快捷键 <kbd>`</kbd> 开启/关闭'
                 },
                 {
                     intro: '<img src="../assets/images/welcome-start.webp"><br>以上就是关于简 Tab 的大部分功能介绍，更详细的介绍请看 <a href="" target="_blank">帮助文档</a>。'
