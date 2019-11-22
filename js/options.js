@@ -468,6 +468,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
                     </div>\
                     ';
         $( ".dialog" ).html( tmpl );
+        collapse();
         unsplashModel();
         customTpModel();
         customStyleModel();
@@ -478,6 +479,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
         customBookmarksModel();
         footerModel();
         guide.Hints( ".options" );
+    }
+
+    function collapse() {
+        $( ".options .title" ).prepend( '<i class="fas fa-caret-right"></i>' );
+        $( ".options .title" ).on( "click", function( event ) {
+            $( event.currentTarget ).next().toggleClass( "active" );
+        });
     }
 
     function close() {
