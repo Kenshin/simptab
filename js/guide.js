@@ -163,8 +163,24 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     }
 
     function hints( root ) {
-        $( root ).find( "div[version-tips]" ).map( function( idx, item ) {
-            $( item ).append( '<a role="button" tabindex="0" class="introjs-hint"><div class="introjs-hint-dot"></div><div class="introjs-hint-pulse"></div></a>' );
+        $( root ).find( "div[version]" ).map( function( idx, item ) {
+            $( item ).addClass( "new" ).append( '<a role="button" tabindex="0" class="introjs-hint"><div class="introjs-hint-dot"></div><div class="introjs-hint-pulse"></div></a>' );
+        });
+        $( root ).find( "div.new[version]" ).on( "click", function( event ) {
+            var $target = $( event.currentTarget );
+            if ( !$target.hasClass( "new" ) ) return;
+            var text    = $target.text(),
+                version = $target.attr( "version" ),
+                id      = $target.attr( "version-item" );
+            $target.removeClass( "new" ).find( "a[role=button]" ).remove();
+
+            var tips = JSON.parse( localStorage["simptab-version-tips"] || "{}" );
+            if ( $.isEmptyObject( tips ) ) {
+                localStorage["simptab-version-tips"] = JSON.stringify({ version: version, items: [ id ] });
+            } else {
+                tips.items.push( id );
+                localStorage["simptab-version-tips"] = JSON.stringify( tips );
+            }
         });
     }
 
