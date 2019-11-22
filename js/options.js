@@ -462,7 +462,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
                         <div class="content">\
                             <div class="title">' + i18n.GetLang( "options_custom_unsplash" ) + '</div>\
                             <div class="group custom-unsplash">' + unsplashView() + '</div>\
-                            <div class="title" version-tips="1.5.4">' + i18n.GetLang( "options_custom_title" ) + '</div>\
+                            <div class="title" version-item="custom-title" version="1.5.4">' + i18n.GetLang( "options_custom_title" ) + '</div>\
                             <div class="group custom-title">' + customTitleView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_hour" ) + '</div>\
                             <div class="group custom-hour">' + customHourView() + '</div>\
@@ -470,7 +470,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
                             <div class="group custom-style">' + customStyleView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_search" ) + '</div>\
                             <div class="group custom-search">' + customSearchView() + '</div>\
-                            <div class="title" version-tips="1.5.4">' + i18n.GetLang( "options_custom_script" ) + '</div>\
+                            <div class="title" version-item="custom-script" version="1.5.4">' + i18n.GetLang( "options_custom_script" ) + '</div>\
                             <div class="group custom-script">' + customScriptView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_bookmarks" ) + '</div>\
                             <div class="group bookmarks">' + customBookmarksView() + '</div>\
