@@ -117,7 +117,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             tooltipPosition: "auto",
             exitOnEsc: auto_close || false,
             exitOnOverlayClick: auto_close || false,
-            overlayOpacity: id ? 0 : 0.8,
+            overlayOpacity: 0.8,
             steps: steps[ id || "all" ],
         });
         intros.onbeforechange( function( target ) {
