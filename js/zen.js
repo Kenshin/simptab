@@ -56,6 +56,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "unveil", "i18n", "message",
             if ( target.version == "1.5.3" ) {
                 target.version = "1.5.4";
             }
+            if ( target.version == "1.5.4" ) {
+                target.version = "1.5.5";
+            }
             return target;
         }
 

@@ -84,6 +84,12 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 details : i18n.GetLang( "version_detail_9" ),
                 permissions: [],
                 removePermissions : []
+            },
+            "1.5.5" : {
+                level   : 11,
+                details : i18n.GetLang( "version_detail_10" ),
+                permissions: [],
+                removePermissions : []
             }
         };
 

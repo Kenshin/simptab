@@ -75,6 +75,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
                     target.history     = false;
                     target.version     = "1.5.4";
                 }
+                if ( target.version == "1.5.4" ) {
+                    target.title       = "";
+                    target.hour12      = false;
+                    target.script      = "";
+                    target.download    = ""
+                    target.search.push( '{"key":"dj", "color": "#AC525C", "title":"多吉翻译",    "query": "https://www.dogedoge.com/results?q={query}"}' );
+                    target.search.push( '{"key":"mg", "color": "#26262A", "title":"Magi",       "query": "https://magi.com/search?q={query}"}' );
+                    target.version     = "1.5.5";
+                }
                 return target;
             }
 
@@ -119,7 +128,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
                         <div class="notice">' + i18n.GetLang( "options_history_notice" ) + '</div>\
                         <div class="division"></div>\
                         <div class="switche">\
-                            <div class="label">' + i18n.GetLang( "options_download_label" ) + '</div>\
+                            <div class="label" version-item="custom-download" version="1.5.5">' + i18n.GetLang( "options_download_label" ) + '</div>\
                             ' + comps.Switches( "custom-download-cbx" ) + '\
                         </div>\
                         <div class="notice">' + i18n.GetLang( "options_download_notice" ) + '</div>\
@@ -462,15 +471,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permission
                         <div class="content">\
                             <div class="title">' + i18n.GetLang( "options_custom_unsplash" ) + '</div>\
                             <div class="group custom-unsplash">' + unsplashView() + '</div>\
-                            <div class="title" version-item="custom-title" version="1.5.4">' + i18n.GetLang( "options_custom_title" ) + '</div>\
+                            <div class="title" version-item="custom-title" version="1.5.5">' + i18n.GetLang( "options_custom_title" ) + '</div>\
                             <div class="group custom-title">' + customTitleView() + '</div>\
-                            <div class="title">' + i18n.GetLang( "options_custom_hour" ) + '</div>\
+                            <div class="title" version-item="hour12" version="1.5.5">' + i18n.GetLang( "options_custom_hour" ) + '</div>\
                             <div class="group custom-hour">' + customHourView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_style" ) + '</div>\
                             <div class="group custom-style">' + customStyleView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_search" ) + '</div>\
                             <div class="group custom-search">' + customSearchView() + '</div>\
-                            <div class="title" version-item="custom-script" version="1.5.4">' + i18n.GetLang( "options_custom_script" ) + '</div>\
+                            <div class="title" version-item="custom-script" version="1.5.5">' + i18n.GetLang( "options_custom_script" ) + '</div>\
                             <div class="group custom-script">' + customScriptView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_bookmarks" ) + '</div>\
                             <div class="group bookmarks">' + customBookmarksView() + '</div>\
