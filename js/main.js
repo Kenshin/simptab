@@ -157,11 +157,10 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         result && bookmarks.Render( options.Storage.db.search );
         message.Subscribe( message.TYPE.OPEN_BOOKMARKS, function( event ) {
             result ? bookmarks.Listen() : new Notify().Render({ content: i18n.GetLang( "notify_bm_permissions" ), action: i18n.GetLang( "notify_options_agree" ), cancel: i18n.GetLang( "notify_zen_mode_esc_cancel" ), callback:function ( type ) {
-                    type == "action" && permissions.Request( [ "bookmarks" ], function( result ) {
-                });
+                    type == "action" && permissions.Request( [ "bookmarks" ], function( result ) { });
             }});
         });
-    });
+    });ß
 
     localStorage["simptab-zenmode"] == "true" && zen.Render();
 
