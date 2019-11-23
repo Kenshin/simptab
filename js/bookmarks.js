@@ -330,9 +330,10 @@ define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $,
 
         Listen: function() {
             !$( ".bm" ).hasClass( "open" ) ? open() : close();
-            message.Subscribe( message.TYPE.OPEN_QUICKBAR, function( event ) {
-                openQuickbar();
-            });
+        },
+
+        QuickbarListen: function() {
+            openQuickbar();
         }
     }
 });
