@@ -155,7 +155,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
 
         render( id );
         setTimeout( function() {
-            $( ".introjs-tooltipbuttons" ).append( '<a class="introjs-button introjs-notshowbutton" role="button" tabindex="0">不再显示</a>' );
+            $( ".introjs-tooltipbuttons" ).append( '<a class="introjs-button introjs-notshowbutton" role="button" tabindex="0">' + i18n.GetLang( "tips_confirm" ) + '</a>' );
             $( ".introjs-tooltipbuttons .introjs-notshowbutton" ).on( "click", function( evnt ) {
                 localStorage[ "simptab-" + id + "-notify" ] = false;
                 intros.exit();
