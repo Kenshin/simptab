@@ -163,24 +163,26 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     }
 
     function hints( root ) {
-        $( root ).find( "div[version]" ).map( function( idx, item ) {
-            $( item ).addClass( "new" ).append( '<a role="button" tabindex="0" class="introjs-hint"><div class="introjs-hint-dot"></div><div class="introjs-hint-pulse"></div></a>' );
+        var details = JSON.parse( localStorage["simptab-version-details"] || "{}" );
+        if (  details.first ) return;
+        if ( !details.items ) {
+            details.items = [];
+        }
+
+        $( root ).find( 'div[version="' + details.update + '"]' ).map( function( idx, item ) {
+            var $target = $( item ),
+                id      = $target.attr( "version-item" );
+            !details.items.includes( id ) &&
+                $target.addClass( "new" ).append( '<a role="button" tabindex="0" class="introjs-hint"><div class="introjs-hint-dot"></div><div class="introjs-hint-pulse"></div></a>' );
         });
-        $( root ).find( "div.new[version]" ).on( "click", function( event ) {
+        $( root ).find( 'div[version="' + details.update + '"]' ).on( "click", function( event ) {
             var $target = $( event.currentTarget );
             if ( !$target.hasClass( "new" ) ) return;
-            var text    = $target.text(),
-                version = $target.attr( "version" ),
-                id      = $target.attr( "version-item" );
+            var id      = $target.attr( "version-item" );
             $target.removeClass( "new" ).find( "a[role=button]" ).remove();
 
-            var tips = JSON.parse( localStorage["simptab-version-tips"] || "{}" );
-            if ( $.isEmptyObject( tips ) ) {
-                localStorage["simptab-version-tips"] = JSON.stringify({ version: version, items: [ id ] });
-            } else {
-                tips.items.push( id );
-                localStorage["simptab-version-tips"] = JSON.stringify( tips );
-            }
+            details.items.push( id );
+            localStorage["simptab-version-details"] = JSON.stringify( details );
         });
     }
 
