@@ -105,6 +105,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     }
 
     function render( id, auto_close ) {
+        if ( i18n.GetShort() == "en" ) return;
         intros.setOptions({
             hintButtonLabel: "确认",
             nextLabel: "下一条 →",
@@ -147,6 +148,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     }
 
     function tips( id ) {
+        if ( i18n.GetShort() == "en" ) return;
         if ( !firstload[id] ) return;
         if ( $( ".introjs-overlay" ).length > 0 ) return;
         setTimeout( function() {
@@ -163,6 +165,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
     }
 
     function hints( root ) {
+        if ( i18n.GetShort() == "en" ) return;
         var details = JSON.parse( localStorage["simptab-version-details"] || "{}" );
         if (  details.first ) return;
         if ( !details.items ) {
