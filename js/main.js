@@ -118,7 +118,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     version.Init( function( ver ) {
         welcome.Render( ver, function() {
             new Notify().Render({ content: i18n.GetLang( "notify_getting_started" ), action: i18n.GetLang( "notify_zen_mode_esc_confirm" ), cancel: i18n.GetLang( "notify_zen_mode_esc_cancel" ), callback:function ( type ) {
-                type == "action" && guide.Render( !ver.first );
+                type == "action" && guide.Render( "all", !ver.first );
             }});
         });
     });
