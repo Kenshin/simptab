@@ -160,6 +160,9 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
                 type == "action" && permissions.Request( [ "bookmarks" ], function( result ) { });
             }});
         });
+        message.Subscribe( message.TYPE.OPEN_QUICKBAR, function( event ) {
+            result && bookmarks.QuickbarListen();
+        });
     });
 
     localStorage["simptab-zenmode"] == "true" && zen.Render();
