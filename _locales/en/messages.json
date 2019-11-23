@@ -981,6 +981,10 @@
         "message": "Add: Earth every moment, White noise, Background explore;"
     },
 
+    "version_detail_10": {
+        "message": "Add: Zen mode scripts manage, Custom titile,Custom download path;"
+    },
+
     "welcome_start_title": {
         "message": "Welcome"
     },
@@ -1079,6 +1083,14 @@
 
     "welcome_154_desc_3": {
         "message": "Record max five background image history and background manage add explore tab"
+    },
+
+    "welcome_155_title_1": {
+        "message": "Zen mode | Scripts manage"
+    },
+
+    "welcome_155_desc_1": {
+        "message": "Scripts Manage, custom New Tab title, custom download path"
     },
 
     "permissions": {
