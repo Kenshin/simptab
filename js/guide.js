@@ -151,15 +151,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
         if ( i18n.GetShort() == "en" ) return;
         if ( !firstload[id] ) return;
         if ( $( ".introjs-overlay" ).length > 0 ) return;
+        if ( localStorage[ "simptab-" + id + "-notify" ] == "false" ) return;
+
+        render( id );
         setTimeout( function() {
-            var notify = "simptab-" + id + "-notify",
-                tip    = "tips_"    + id;
-            if ( localStorage[ notify ] != "false" ) {
-                new Notify().Render({ content: i18n.GetLang( tip ), action: i18n.GetLang( "tips_confirm" ), callback:function () {
-                    localStorage[ notify ] = false;
-                }});
-                setTimeout( function() { render( id ); }, 1000 );
-            }
+            $( ".introjs-tooltipbuttons" ).append( '<a class="introjs-button introjs-notshowbutton" role="button" tabindex="0">不再显示</a>' );
+            $( ".introjs-tooltipbuttons .introjs-notshowbutton" ).on( "click", function( evnt ) {
+                localStorage[ "simptab-" + id + "-notify" ] = false;
+                intros.exit();
+            })
         }, 200 );
         firstload[id] = false;
     }
