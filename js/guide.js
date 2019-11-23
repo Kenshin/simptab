@@ -153,14 +153,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
         if ( $( ".introjs-overlay" ).length > 0 ) return;
         if ( localStorage[ "simptab-" + id + "-notify" ] == "false" ) return;
 
-        render( id );
         setTimeout( function() {
+            render( id );
             $( ".introjs-tooltipbuttons" ).append( '<a class="introjs-button introjs-notshowbutton" role="button" tabindex="0">' + i18n.GetLang( "tips_confirm" ) + '</a>' );
             $( ".introjs-tooltipbuttons .introjs-notshowbutton" ).on( "click", function( evnt ) {
                 localStorage[ "simptab-" + id + "-notify" ] = false;
                 intros.exit();
             })
-        }, 200 );
+        }, 500 );
         firstload[id] = false;
     }
 
