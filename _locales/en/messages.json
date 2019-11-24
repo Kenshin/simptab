@@ -1107,5 +1107,89 @@
 
     "permissions_failed": {
         "message": "Failed to gain permissions. Some features may not be available. You are recommended to re-install this extension."
+    },
+
+    "guide_all_start": {
+        "message": ""
+    },
+
+    "guide_all_intro": {
+        "message": ""
+    },
+
+    "guide_all_feature": {
+        "message": ""
+    },
+
+    "guide_all_controlbar": {
+        "message": ""
+    },
+
+    "guide_all_clock": {
+        "message": ""
+    },
+
+    "guide_all_setting": {
+        "message": ""
+    },
+
+    "guide_all_topsite": {
+        "message": ""
+    },
+
+    "guide_all_noise": {
+        "message": ""
+    },
+
+    "guide_all_bookmarks": {
+        "message": ""
+    },
+
+    "guide_all_quickbar": {
+        "message": ""
+    },
+
+    "guide_all_options": {
+        "message": ""
+    },
+
+    "guide_all_zenmode": {
+        "message": ""
+    },
+
+    "guide_all_end": {
+        "message": ""
+    },
+
+    "guide_noise": {
+        "message": ""
+    },
+
+    "guide_bookmarks": {
+        "message": ""
+    },
+
+    "guide_quickbar": {
+        "message": ""
+    },
+
+    "guide_setting": {
+        "message": ""
+    },
+
+    "guide_favorite": {
+        "message": ""
+    },
+
+    "guide_zenmode": {
+        "message": ""
+    },
+
+    "guide_earth": {
+        "message": ""
+    },
+
+    "guide_history": {
+        "message": ""
     }
 }
