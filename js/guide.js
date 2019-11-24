@@ -64,10 +64,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
             ],
             bookmarks: [
                 {
-                    intro: '<a href="http://ksria.com/simptab/docs/#/" target="_blank">书签栏</a> 简洁直观的二级平铺目录，书签再多也不怕。<br><br>快捷键 <kbd>b</kbd> 开启/关闭<br><br>'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif"><br><a href="http://ksria.com/simptab/docs/#/" target="_blank">书签栏</a> 简洁直观的二级平铺目录，书签再多也不怕。<br><br>快捷键 <kbd>b</kbd> 开启/关闭<br><br>'
                 },
                 {
-                    intro: '<a href="http://ksria.com/simptab/docs/#/" target="_blank">快捷搜索栏</a> 开启书签栏后，即可使用快捷搜索栏，支持关键字搜索书签，并默认接入多种 <a href="http://ksria.com/simptab/docs/#/" target="_blank">搜索引擎</a>。<br><br>快捷键 <kbd>q</kbd> 开启/关闭'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/quickbar.gif"><br><a href="http://ksria.com/simptab/docs/#/" target="_blank">快捷搜索栏</a> 开启书签栏后，即可使用快捷搜索栏，支持关键字搜索书签，并默认接入多种 <a href="http://ksria.com/simptab/docs/#/" target="_blank">搜索引擎</a>。<br><br>快捷键 <kbd>q</kbd> 开启/关闭'
                 },
             ],
             setting: [
