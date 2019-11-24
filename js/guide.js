@@ -39,7 +39,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n" ], function( $, Mouse
                     intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/topsites.gif"><br><a href="" target="_blank">常用网址</a> 与 Chrome 默认标签页一样。<br>支持 简单模式 · 九宫格模式 · 隐藏 三种模式。<br>并拥有 <a href="" target="_blank">自定义</a> 功能。'
                 },
                 {
-                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/noise.gif"><br><a href="" target="_blank">白噪音</a> 也是 简 Tab 独有的功能，辅以 <a href="" target="_blank">全屏化</a> + <a href="" target="_blank">自动更换背景</a>，可获得 <b>音乐相册级的</b> 视听享受。<br><br>快捷键 <kbd>w</kbd> 开启/关闭<br><br><b>注意：</b> 在任何界面中都没有白噪音的开启方式，只能选择通过快捷键操作。'
+                    intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/noise.gif"><br><a href="" target="_blank">白噪音</a> 也是 简 Tab 独有的功能，辅以 <a href="" target="_blank">全屏化</a> + <a href="" target="_blank">自动更换背景</a>，可获得 <b>音乐相册级</b> 的视听享受。<br><br>快捷键 <kbd>w</kbd> 开启/关闭<br><br><b>注意：</b> 在任何界面中都没有白噪音的开启方式，只能选择通过快捷键操作。'
                 },
                 {
                     intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif"><br><a href="" target="_blank">书签栏</a> 简洁直观的二级平铺目录，书签再多也不怕。<br><br>快捷键 <kbd>b</kbd> 开启/关闭<br><br><b>注意：</b> 因为要申请新的权限，所以书签栏 <b>默认关闭</b>，请 <b>手动</b> 在选项页中选择开启此功能。'
