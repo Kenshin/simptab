@@ -150,6 +150,17 @@ img {
     margin-top: 31px!important;
 }
 
+.setting .hidden {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    top: 31px;
+    bottom: 0;
+    background: rgba(0, 0, 0, .4);
+    border-radius: 4px;
+    cursor: no-drop;
+}
+
 /*
 * control
 */
