@@ -234,7 +234,8 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap"
     }
 
     function pinState() {
-        var ls      = localStorage["simptab-pin"] || 0,
+        localStorage["simptab-pin"] == undefined && localStorage.setItem( "simptab-pin", 0 );
+        var ls      = localStorage["simptab-pin"],
             message = i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", ls / 60 ),
             html    = '<div class="downlist">\
                         <span class="list-field" value="30">'  + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "0.5" )  + '</span>\
