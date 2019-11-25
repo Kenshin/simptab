@@ -766,7 +766,7 @@
     },
 
     "notify_refresh": {
-        "message": "新背景获取中，请稍后才能继续操作。"
+        "message": "随机背景获取中，请稍后..."
     },
 
     "notify_not_refresh": {

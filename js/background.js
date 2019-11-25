@@ -507,6 +507,9 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
                     new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
                 } else {
+                    localStorage[ "simptab-background-mode" ] == "time"
+                        && $( ".background" ).hasClass( "bgearth" )
+                        && new Notify().Render( i18n.GetLang( "notify_refresh" ) );
                     localStorage[ "simptab-background-update" ] = "true";
                     //bgeffect( "add" );
                     this.Get( true );
