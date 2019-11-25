@@ -1,6 +1,6 @@
 define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "options", "guide" ], function( $, _, Notify, i18n, files, vo, message, options, guide ) {
 
-    var current, base64,
+    var current, base64, timestart,
         MAX     = 5,
         saveImg = function( url, cur_vo ) {
             files.GetDataURI( url ).then( function( result ) {
@@ -19,17 +19,26 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
         };
 
     function open() {
-        $( ".history" ).css({ "transform": "translateY(0px)", "opacity": 0.8 }).addClass( "open" );
-        guide.Tips( "history" );
+        timestart = true;
+        setTimeout( function() {
+            if ( !timestart ) return;
+            !$( ".history" ).hasClass( "open" ) &&
+                $( ".history" ).css({ "transform": "translateY(0px)", "opacity": 0.8 }).addClass( "open" );
+            guide.Tips( "history" );
+        }, 1000 );
     }
 
     function close() {
-        $( ".history" ).css({ "transform": "translateY(-300px)", "opacity": 0 }).removeClass( "open" );
+        $( ".history" ).hasClass( "open" ) &&
+            $( ".history" ).css({ "transform": "translateY(-300px)", "opacity": 0 }).removeClass( "open" );
     }
 
     function listen() {
         $( ".history-overlay" ).mouseenter( function() {
             open();
+        });
+        $( ".history-overlay" ).mouseleave( function() {
+            timestart = false;
         });
         $( ".history" ).mouseleave( function() {
             close();
