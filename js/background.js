@@ -217,6 +217,13 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             console.error( "error.message     = ", error.message     );
             console.error( "error.data        = ", error.data        );
             console.groupEnd();
+        } finally {
+            if ( localStorage[ "simptab-background-mode" ] == "time" && $( ".background" ).hasClass( "bgearth" ) ) {
+                $( ".background" ).removeClass( "bgearth" );
+                controlbar.Set( true );
+                setRemoteBackground( true, vo.cur.hdurl );
+                vo.Set( vo.new );
+            }
         }
     }
 
