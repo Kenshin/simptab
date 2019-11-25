@@ -774,7 +774,7 @@
     },
 
     "notify_refresh_failed": {
-        "message": "下一張背景獲取失敗，請重新獲取。"
+        "message": "新的背景獲取失敗，請重新獲取。"
     },
 
     "notify_mange_remove": {

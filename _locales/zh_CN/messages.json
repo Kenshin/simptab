@@ -774,7 +774,7 @@
     },
 
     "notify_refresh_failed": {
-        "message": "下一张背景获取失败，请重新获取。"
+        "message": "新的背景获取失败，请重新获取。"
     },
 
     "notify_mange_remove": {
