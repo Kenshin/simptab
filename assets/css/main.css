@@ -55,14 +55,41 @@ img {
 }
 
 .progress {
-    position: fixed;
-    left: 5px;
-    bottom: 5px;
+    position: fixed!important;
+    left: 8px;
+    bottom: 8px;
 
     width:20px;
     height:20px;
 
-    z-index: 200;
+    z-index: 20000;
+}
+
+.progress svg path {
+    transition: stroke .35s cubic-bezier(.4,0,.2,1);
+}
+
+.progress .warning {
+    position: relative;
+}
+
+.progress .warning i {
+    font-size: 20px;
+    color: #F39C12;
+}
+
+.progress .warning span {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+
+    width: 15px;
+    height: 15px;
+
+    background-color: #fff;
+    border-radius: 50%;
+
+    z-index: -1;
 }
 
 .sidebar {

@@ -1,5 +1,5 @@
 
-define([ "jquery", "progressbar" ], function( $, ProgressBar ) {
+define([ "jquery", "progressbar", "i18n" ], function( $, ProgressBar, i18n ) {
 
     "use strict";
     var circle;
@@ -45,9 +45,19 @@ define([ "jquery", "progressbar" ], function( $, ProgressBar ) {
                     circle.animate( verify( perc ) );
                     break;
                 case "success":
-                case "writefailed":
                     circle.animate( 1, function() {
                         circle.set( 0 );
+                    });
+                    break;
+                case "writefailed":
+                case "remotefailed":
+                    circle.animate( 1, function() {
+                        circle.set( 1 );
+                        $( ".progress" )
+                            .attr( "data-balloon", i18n.GetLang( "notify_refresh_failed" ) )
+                            .attr( "data-balloon-pos", "right" )
+                            .html( '<div class="warning"><i class="fas fa-exclamation-circle"></i><span></span></div>' )
+                            //.find( "svg path" ).css({ "stroke": state == "remotefailed" ? "#F39C12" : "#F44336" });
                     });
                     break;
                 default:
