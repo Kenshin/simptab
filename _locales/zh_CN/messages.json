@@ -1190,7 +1190,7 @@
     },
 
     "guide_earth": {
-        "message": "感谢 <a target=\"_blank\" href=\"http://himawari8.nict.go.jp/\">向日葵-8號</a> 提供，详细请看 <a target=\"_blank\" href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻\">地球每刻</a><br><br>- 此模式下 <b>无法使用</b> <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多种背景源</a> <a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">历史记录</a> <a href=\"http://ksria.com/simptab/docs/#/设置栏?id=自动更换背景\" target=\"_blank\">自动播放</a> 功能<br>- 地球每刻的照片 <b>每小时更新一次</b>"
+        "message": "感谢 <a target=\"_blank\" href=\"http://himawari8.nict.go.jp/\">向日葵-8號</a> 提供，详细请看 <a target=\"_blank\" href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻\">地球每刻</a><br><br>- 此模式下 <b>无法使用</b> <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多种背景源</a> <a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">历史记录</a> <a href=\"http://ksria.com/simptab/docs/#/设置栏?id=自动更换背景\" target=\"_blank\">自动播放</a> 等功能<br>- 地球每刻的照片 <b>每小时更新一次</b>"
     },
 
     "guide_history": {
