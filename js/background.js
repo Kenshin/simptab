@@ -177,8 +177,8 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             // sync vo
             isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
-            localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
-            localStorage[ "simptab-background-mode" ] == "time"
+            localStorage[ "simptab-background-mode" ]   == "time" && history.Add( vo.new );
+            localStorage[ "simptab-background-mode" ]   == "time"
                 && $( ".background" ).hasClass( "bgearth" )
                 && $( ".background" ).removeClass( "bgearth" )
                 && new Notify().Render( i18n.GetLang( "notify_eartch_to_time" ))
