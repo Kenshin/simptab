@@ -870,7 +870,7 @@
     },
 
     "notify_zen_mode_exit": {
-        "message": "已退出禪模式，2秒後，頁面自動刷新。"
+        "message": "已退出禪模式，2秒後頁面自動刷新。"
     },
 
     "notify_mobile_send": {
