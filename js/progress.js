@@ -57,6 +57,7 @@ define([ "jquery", "progressbar", "i18n" ], function( $, ProgressBar, i18n ) {
                             .attr( "data-balloon", i18n.GetLang( "notify_refresh_failed" ) )
                             .attr( "data-balloon-pos", "right" )
                             .html( '<div class="warning"><i class="fas fa-exclamation-circle"></i><span></span></div>' )
+                            .find( "i" ).css({ "color": state == "remotefailed" ? "#F39C12" : "#F44336" });
                             //.find( "svg path" ).css({ "stroke": state == "remotefailed" ? "#F39C12" : "#F44336" });
                     });
                     break;
