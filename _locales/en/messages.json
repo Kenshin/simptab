@@ -909,6 +909,10 @@
         "message": "Update background image only once every hour, don't call it many times."
     },
 
+    "notify_eartch_to_time": {
+        "message": "New background loading success, will refresh automatically after 2 seconds."
+    },
+
     "notify_history_min": {
         "message": "This is the first history background."
     },

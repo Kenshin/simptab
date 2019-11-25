@@ -909,6 +909,10 @@
         "message": "此功能每隔一小时才会刷新一次，请勿多次调用。"
     },
 
+    "notify_eartch_to_time": {
+        "message": "随机背景获取成功，2秒后自动刷新本页才能生效。"
+    },
+
     "notify_history_min": {
         "message": "当前已经是最后一张历史记录了。"
     },

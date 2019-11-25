@@ -179,7 +179,11 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
             console.log( "======= New Background Obj is ", vo );
             localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
-            localStorage[ "simptab-background-mode" ] == "time" && $( ".background" ).hasClass("bgearth") && $( ".background" ).removeClass( "bgearth" );
+            localStorage[ "simptab-background-mode" ] == "time"
+                && $( ".background" ).hasClass( "bgearth" )
+                && $( ".background" ).removeClass( "bgearth" )
+                && new Notify().Render( i18n.GetLang( "notify_eartch_to_time" ))
+                && setTimeout( function () { window.location.reload(); }, 2000 );
             // test code
             //localStorage[ "simptab-background-mode" ] == "time" && $( ".controlink[url=desktop]" )[0].click();
         }
