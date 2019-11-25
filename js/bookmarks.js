@@ -1,6 +1,7 @@
 define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $, _, Waves, i18n, message, guide ) {
 
     var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [], search: [] },
+        timestart,
         getBgColor = function ( chars ) {
             var idx = bgColors.idx.indexOf( chars.toLowerCase() ),
                 bg  = bgColors.colors[idx];
@@ -45,16 +46,22 @@ define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $,
         fileHTML = "";
 
     function open() {
-        $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
-        $( ".bm-overlay" ).width( "50%" );
-        $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
-        if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
-            $(".folders").css( "width", "71px" );
-        }
-        guide.Tips( "bookmarks" );
+        timestart = true;
+        setTimeout( function() {
+            if ( !timestart ) return;
+            if ( $( ".bm" ).hasClass( "open" ) ) return;
+            $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
+            $( ".bm-overlay" ).width( "50%" );
+            $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
+            if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
+                $(".folders").css( "width", "71px" );
+            }
+            guide.Tips( "bookmarks" );
+        }, 500 );
     }
 
     function close() {
+        if ( !$( ".bm" ).hasClass( "open" ) ) return;
         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
         $( ".bm-overlay" ).removeAttr( "style" );
     }
@@ -62,6 +69,9 @@ define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $,
     function bmListen() {
         $( ".bm-overlay" ).mouseenter( function() {
             open();
+        });
+        $( ".bm-overlay" ).mouseleave( function() {
+            timestart = false;
         });
         $( ".bm" ).mouseleave( function() {
             close();
