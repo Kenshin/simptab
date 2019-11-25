@@ -18,14 +18,14 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
             });
         };
 
-    function open() {
+    function open( delay ) {
         timestart = true;
         setTimeout( function() {
             if ( !timestart ) return;
             !$( ".history" ).hasClass( "open" ) &&
                 $( ".history" ).css({ "transform": "translateY(0px)", "opacity": 0.8 }).addClass( "open" );
             guide.Tips( "history" );
-        }, 1000 );
+        }, delay || 1000 );
     }
 
     function close() {
@@ -116,7 +116,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
                 listen();
             }, 10 );
             message.Subscribe( message.TYPE.OPEN_HISTORY, function( event ) {
-                !$( ".history" ).hasClass( "open" ) ? open() : close();
+                !$( ".history" ).hasClass( "open" ) ? open( 1 ) : close();
             });
         }
     }

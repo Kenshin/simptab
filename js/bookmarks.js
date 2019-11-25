@@ -45,7 +45,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $,
                     ',
         fileHTML = "";
 
-    function open() {
+    function open( delay ) {
         timestart = true;
         setTimeout( function() {
             if ( !timestart ) return;
@@ -57,7 +57,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $,
                 $(".folders").css( "width", "71px" );
             }
             guide.Tips( "bookmarks" );
-        }, 500 );
+        }, delay || 500 );
     }
 
     function close() {
@@ -339,7 +339,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $,
         },
 
         Listen: function() {
-            !$( ".bm" ).hasClass( "open" ) ? open() : close();
+            !$( ".bm" ).hasClass( "open" ) ? open( 1 ) : close();
         },
 
         QuickbarListen: function() {
