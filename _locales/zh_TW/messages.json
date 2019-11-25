@@ -894,7 +894,7 @@
     },
 
     "notify_eartch_mode": {
-        "message": "「地球每刻」模式下無法使用此功能！"
+        "message": "<a href='<a href='背景更换模式?id=地球每刻' target='_blank'>地球每刻</a> 模式下無法使用此功能！"
     },
 
     "notify_eartch_loading": {
