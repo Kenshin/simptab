@@ -275,9 +275,10 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap"
 
     function hiddenState() {
         if ( localStorage["simptab-background-mode"] != "earth" ) return;
-        $( ".originstate, .autostate" ).append( '<div class="hidden"></div>' ).css({ position: "relative" });
+        //$( ".originstate, .autostate" ).append( '<div class="hidden"></div>' ).css({ position: "relative" });
         $( $( ".changestate" ).children()[0] ).append( '<div class="hidden" style="left:0;right:0;top:0"></div>' ).css({ position: "relative" });
         $( $( ".changestate" ).children()[2] ).append( '<div class="hidden" style="left:0;right:0;top:0"></div>' ).css({ position: "relative" });
+        $( $( ".autostate"  ) ).append( '<div class="hidden"></div>' ).css({ position: "relative" });
     }
 
     return {
