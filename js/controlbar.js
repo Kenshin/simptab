@@ -186,7 +186,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         $input.trigger("click");
                         break;
                     case "refresh":
-                        isPinTimeout() ? callBack( url, "time" ) : new Notify().Render( 2, "当前背景未到固定更换时间，如需马上更换，请取消固定。" );
+                        isPinTimeout() ? callBack( url, "time" ) : new Notify().Render( 2, i18n.GetLang( "notify_pin_not_changed" ) );
                         break;
                     case "dislike":
                         var is_dislike = $target.find( "span" ).hasClass( "dislike" );
