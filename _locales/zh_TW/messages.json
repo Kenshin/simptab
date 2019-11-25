@@ -1130,7 +1130,7 @@
     },
 
     "guide_all_setting": {
-        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/setting.gif\" style=\"height:150px\"><br><a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻\" target=\"_blank\">地球每刻模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=随机更换背景源\" target=\"_blank\">隨機更換背景源</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=相冊模式\" target=\"_blank\">相冊模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a><br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a><br><br>請使用快捷鍵 <kbd>s</kbd> 開啟/關閉"
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/setting.gif\" style=\"height:150px\"><br><a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻\" target=\"_blank\">地球每刻模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=随机更换背景源\" target=\"_blank\">隨機更換背景源</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=相冊模式\" target=\"_blank\">相冊模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a><br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a><br><br>快捷鍵 <kbd>s</kbd> 開啟/關閉"
     },
 
     "guide_all_topsite": {
@@ -1142,7 +1142,7 @@
     },
 
     "guide_all_bookmarks": {
-        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a> 簡潔直觀的二級平鋪目錄，書籤再多也不怕。<br><br>快捷鍵 <kbd>b</kbd> 開啟/關閉<br><br><b>注意：</b> 因為要申請新的許可權，所以書籤欄 <b>默認關閉</b>，請 <b>手動</b> 在選項頁中選擇開啟此功能。"
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a> 簡潔直觀的二級平鋪目錄，書籤再多也不怕。<br><br>快捷鍵 <kbd>b</kbd> 開啟/關閉<br>滑鼠左移到邊緣 <kbd>並停留超過 0.5s </kbd> 開啟/關閉<br><br><b>注意：</b> 因為要申請新的許可權，所以書籤欄 <b>默認關閉</b>，請 <b>手動</b> 在選項頁中選擇開啟此功能。"
     },
 
     "guide_all_quickbar": {
