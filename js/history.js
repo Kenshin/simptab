@@ -23,6 +23,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "date", "message",
             pin    = vo.cur.pin,
             diff   = date.TimeDiff( pin ),
             result = pin == -1 || diff > limit ? true : false;
+        result && $( ".controlink[url='pin']" ).find("span").attr( "class", "icon pin" );
         return result;
     }
 

@@ -70,6 +70,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
             pin    = vo.cur.pin,
             diff   = date.TimeDiff( pin ),
             result = pin == -1 || diff > limit ? true : false;
+        result && $( ".controlink[url='pin']" ).find("span").attr( "class", "icon pin" );
         return result;
     }
 
