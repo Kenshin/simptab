@@ -1166,7 +1166,7 @@
     },
 
     "guide_bookmarks": {
-        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a> 簡潔直觀的二級平鋪目錄，書籤再多也不怕。<br><br>快捷鍵 <kbd>b</kbd> 開啟/關閉<br><br>"
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a> 簡潔直觀的二級平鋪目錄，書籤再多也不怕。<br><br>快捷鍵 <kbd>b</kbd> 開啟/關閉<br>滑鼠左移到邊緣 <kbd>並停留超過 0.5s </kbd> 開啟/關閉"
     },
 
     "guide_quickbar": {
@@ -1174,7 +1174,7 @@
     },
 
     "guide_setting": {
-        "message": "<a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- 背景圖顯示方式<br>- 背景顯示形式<br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a><br>- 背景源隨便更換頻率 等<br><br>請使用快捷鍵 <kbd>s</kbd> 開啟/關閉"
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- 背景圖顯示方式<br>- 背景顯示形式<br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a><br>- 背景源隨便更換頻率 等<br><br>快捷鍵 <kbd>s</kbd> 開啟/關閉"
     },
 
     "guide_favorite": {
@@ -1190,6 +1190,6 @@
     },
 
     "guide_history": {
-        "message": "<a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">歷史記錄</a> 是 簡 Tab 獨有功能，包含了以下幾個特點：<br><br>- 最多可以記錄 <b>五組</b> 之前的背景圖片<br>- 滑鼠移到新標籤頁上方中部即可自動打開歷史記錄列表<br><br>支持快捷鍵 <kbd>→</kbd> <kbd>←</kbd> 翻頁 <br>支持快捷鍵 <kbd>h</kbd> 開啟/關閉"
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">歷史記錄</a> 是 簡 Tab 獨有功能，包含了以下幾個特點：<br><br>- 最多可以記錄 <b>五組</b> 之前的背景圖片<br>- 滑鼠移到新標籤頁上方中部即可自動打開歷史記錄列表<br><br>快捷鍵 <kbd>→</kbd> <kbd>←</kbd> 翻頁 <br>快捷鍵 <kbd>h</kbd> 開啟/關閉<br>滑鼠上移到邊緣 <kbd>並停留超過 1s </kbd> 開啟/關閉"
     }
 }
