@@ -78,7 +78,7 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
                     </div>',
             "1.5.5": '\
                     <div class="carousel-item" id="1.5.5">\
-                        <img src="http://st.ksria.cn/welcome-zenmode-scripts.png?201812301148">\
+                        <img src="http://st.ksria.cn/welcome-zenmode-scripts.png?201911051148">\
                         <div class="content">\
                             <h2 class="title">' + i18n.GetLang( "welcome_155_title_1" ) +'</h2>\
                             <div class="desc">' + i18n.GetLang( "welcome_155_desc_1" ) +'</div>\
