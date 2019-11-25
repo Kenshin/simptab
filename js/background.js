@@ -208,7 +208,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             throw error;
         }
         catch( error ) {
-            new Notify().Render( 2, i18n.GetLang( "notify_refresh_failed" ));
+            //new Notify().Render( 2, i18n.GetLang( "notify_refresh_failed" ));
             console.group( "===== SimpTab failed ====="             );
             console.error( "error             = ", error             );
             console.error( "error.stack       = ", error.stack       );
