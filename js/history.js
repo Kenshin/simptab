@@ -1,4 +1,4 @@
-define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "options", "guide" ], function( $, _, Notify, i18n, files, vo, message, options, guide ) {
+define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "date", "message", "options", "guide" ], function( $, _, Notify, i18n, files, vo, date, message, options, guide ) {
 
     var current, base64, timestart,
         MAX     = 5,
@@ -17,6 +17,14 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
                     });
             });
         };
+
+    function isPinTimeout() {
+        var limit  = localStorage[ "simptab-pin" ],
+            pin    = vo.cur.pin,
+            diff   = date.TimeDiff( pin ),
+            result = pin == -1 || diff > limit ? true : false;
+        return result;
+    }
 
     function open( delay ) {
         timestart = true;
@@ -44,6 +52,10 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
             close();
         });
         $( ".history" ).on( "click", "img", function( event ) {
+            if ( !isPinTimeout() ) {
+                new Notify().Render( 2, i18n.GetLang( "notify_pin_not_changed" ) );
+                return;
+            }
             var history = JSON.parse( localStorage[ "simptab-history" ] ),
                 idx     = event.target.dataset.idx,
                 item    = history[ idx ],

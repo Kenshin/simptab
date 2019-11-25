@@ -761,6 +761,10 @@
         "message": "已取消當前背景的固定。"
     },
 
+    "notify_pin_not_changed": {
+        "message": "當前背景未到固定更換時間，如需馬上更換，請取消固定。"
+    },
+
     "notify_refresh": {
         "message": "新背景獲取中，請稍後才能繼續操作。"
     },

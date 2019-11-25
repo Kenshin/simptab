@@ -761,6 +761,10 @@
         "message": "Background pinning is cancelled."
     },
 
+    "notify_pin_not_changed": {
+        "message": "Current background is Pined."
+    },
+
     "notify_refresh": {
         "message": "New background loading, please wait a moment."
     },

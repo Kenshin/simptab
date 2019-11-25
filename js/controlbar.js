@@ -65,6 +65,14 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         setFavorteIcon();
     }
 
+    function isPinTimeout() {
+        var limit  = localStorage[ "simptab-pin" ],
+            pin    = vo.cur.pin,
+            diff   = date.TimeDiff( pin ),
+            result = pin == -1 || diff > limit ? true : false;
+        return result;
+    }
+
     return {
         Listen: function ( callBack ) {
 
@@ -178,7 +186,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         $input.trigger("click");
                         break;
                     case "refresh":
-                        callBack( url, "time" );
+                        isPinTimeout() ? callBack( url, "time" ) : new Notify().Render( 2, "当前背景未到固定更换时间，如需马上更换，请取消固定。" );
                         break;
                     case "dislike":
                         var is_dislike = $target.find( "span" ).hasClass( "dislike" );
@@ -277,7 +285,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         AutoPlay: function() {
             options.Storage.db.carousel && options.Storage.db.carousel != -1 &&
                 setInterval(function() {
-                    $(".controlbar").find("a[url=refresh]")[0].click();
+                    isPinTimeout()
+                        ? $(".controlbar").find("a[url=refresh]")[0].click()
+                        : new Notify().Render( 2, i18n.GetLang( "notify_pin_not_changed" ) );
                 }, 1000 * 60 * parseInt( options.Storage.db.carousel ));
         },
 
