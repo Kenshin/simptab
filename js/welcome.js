@@ -108,6 +108,9 @@ define([ "jquery", "mousetrap", "lodash", "carousel", "i18n" ], function( $, Mou
         var detail = "";
         if ( ver.first ) {
             Object.keys( details ).forEach( function( item ) {
+                if ( ver.first && [ "1.5.5" ].includes( item ) ) {
+                    return true;
+                }
                 detail += details[item];
             });
         } else detail = details[ ver.update ];
