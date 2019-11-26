@@ -8,6 +8,11 @@ notify-gp notify-content {
     font-size: 13px;
 }
 
+notify-gp notify-content a {
+    font-weight: bold;
+    cursor: help;
+}
+
 notify-gp notify-content kbd {
     display: inline-block;
 
