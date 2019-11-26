@@ -128,9 +128,10 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "date", "message",
                 render();
                 listen();
             }, 10 );
-            message.Subscribe( message.TYPE.OPEN_HISTORY, function( event ) {
-                !$( ".history" ).hasClass( "open" ) ? open( 1 ) : close();
-            });
+        },
+
+        Action: function() {
+            !$( ".history" ).hasClass( "open" ) ? open( 1 ) : close();
         }
     }
 });
