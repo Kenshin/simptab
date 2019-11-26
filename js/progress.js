@@ -69,6 +69,18 @@ define([ "jquery", "progressbar", "i18n" ], function( $, ProgressBar, i18n ) {
                             //.find( "svg path" ).css({ "stroke": state == "remotefailed" ? "#F39C12" : "#F44336" });
                     });
                     break;
+                case "earth_loading":
+                    $( ".progress" )
+                        .attr( "data-balloon", i18n.GetLang( "notify_eartch_loading" ) )
+                        .attr( "data-balloon-pos", "right" )
+                        .html( '<div class="loading"></div>' );
+                    break;
+                case "earth_complete":
+                    $( ".progress" )
+                        .removeAttr( "data-balloon" )
+                        .removeAttr( "data-balloon-pos" )
+                        .find( ".loading" ).remove();
+                    break;
                 default:
                     circle.set( 0 );
             }
