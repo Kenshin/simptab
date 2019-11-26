@@ -137,10 +137,6 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     message.Subscribe( message.TYPE.UPDATE_EARTH, function() {
         background.Earth();
     });
-    message.Subscribe( message.TYPE.HISTORY, function( event ) {
-        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && !options.Storage.db.history && new Notify().Render( i18n.GetLang( "notify_history_no_usage" ));
-        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Get( event.data );
-    });
     message.Subscribe( message.TYPE.SET_BACKGROUND, function( event ) {
         background.Set( event.data );
     });
@@ -157,6 +153,11 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && !options.Storage.db.history && new Notify().Render( i18n.GetLang( "notify_history_no_usage" ));
         localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" &&  options.Storage.db.history && history.Action();
     });
+    message.Subscribe( message.TYPE.HISTORY, function( event ) {
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && !options.Storage.db.history && new Notify().Render( i18n.GetLang( "notify_history_no_usage" ));
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Get( event.data );
+    });
+    localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
     permissions.Verify( [ 'bookmarks' ], function( result ) {
         result && bookmarks.Render( options.Storage.db.search );
@@ -173,8 +174,6 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     localStorage["simptab-zenmode"] == "true" && zen.Render();
 
     noise.Init();
-
-    localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
     guide.Init( introJs );
     //guide.Render();
