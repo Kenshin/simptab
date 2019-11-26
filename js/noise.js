@@ -113,16 +113,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message", 
 
     return {
         Init: function() {
-            message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
-                guide.Tips( "noise" );
-                if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
-                    $( ".noise-mode .close" ).click();
-                } else {
-                    render();
-                    open();
-                    close();
-                }
-            });
+            guide.Tips( "noise" );
+            if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
+                $( ".noise-mode .close" ).click();
+            } else {
+                render();
+                open();
+                close();
+            }
         }
     }
 
