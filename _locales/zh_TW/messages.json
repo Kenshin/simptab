@@ -914,7 +914,7 @@
     },
 
     "notify_history_no_usage": {
-        "message": "當前並未啟用 <a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">歷史記錄</a> 功能，請在選項頁開啟此功能。"
+        "message": "當前並未啟用 <a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">歷史記錄</a> 功能，請在 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=背景源\" target=\"_blank\">選項頁 · 背景</a> 開啟此功能。"
     },
 
     "notify_history_min": {
