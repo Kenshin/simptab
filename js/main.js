@@ -157,6 +157,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" &&  options.Storage.db.history && history.Action();
     });
     message.Subscribe( message.TYPE.HISTORY, function( event ) {
+        if ( $( ".introjs-overlay, .welcome-overlay" ).length > 0 ) return;
         localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && !options.Storage.db.history && new Notify().Render( i18n.GetLang( "notify_history_no_usage" ));
         localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Get( event.data );
     });
