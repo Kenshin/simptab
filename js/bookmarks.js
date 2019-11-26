@@ -34,13 +34,13 @@ define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $,
                         <span class="name" id="search" class="waves-effect waves-block"><icon id="search"><i class="fas fa-search"></i></icon></span>\
                         <span class="full">' + i18n.GetLang( "bm_foder_search" ) + '</span>\
                     </div>\
-                    <div class="folder special root" data-balloon="' + i18n.GetLang( "bm_foder_root" ) + '" data-balloon-pos="right">\
-                        <span class="name" id="root" class="active waves-effect waves-block"><icon id="root"><i class="far fa-bookmark"></i></icon></span>\
-                        <span class="full">' + i18n.GetLang( "bm_foder_root" ) + '</span>\
-                    </div>\
                     <div class="folder special recent" data-balloon="' + i18n.GetLang( "bm_foder_recent" ) + '" data-balloon-pos="right">\
                         <span class="name" id="recent" class="waves-effect waves-block"><icon id="recent"><i class="far fa-clock"></i></icon></span>\
                         <span class="full">' + i18n.GetLang( "bm_foder_recent" ) + '</span>\
+                    </div>\
+                    <div class="folder special root" data-balloon="' + i18n.GetLang( "bm_foder_root" ) + '" data-balloon-pos="right">\
+                        <span class="name" id="root" class="active waves-effect waves-block"><icon id="root"><i class="far fa-bookmark"></i></icon></span>\
+                        <span class="full">' + i18n.GetLang( "bm_foder_root" ) + '</span>\
                     </div>\
                     ',
         fileHTML = "";
