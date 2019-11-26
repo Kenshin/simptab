@@ -30,6 +30,13 @@ define([ "jquery", "progressbar", "i18n" ], function( $, ProgressBar, i18n ) {
 
             switch ( state ) {
                 case "ready":
+                    if ( circle == undefined ) {
+                        $( ".progress" )
+                            .removeAttr( "data-balloon" )
+                            .removeAttr( "data-balloon-pos" )
+                            .find( ".warning" ).remove();
+                        this.Init();
+                    }
                     circle.animate( 0 );
                     break;
                 case "remote":
@@ -53,6 +60,7 @@ define([ "jquery", "progressbar", "i18n" ], function( $, ProgressBar, i18n ) {
                 case "remotefailed":
                     circle.animate( 1, function() {
                         circle.set( 1 );
+                        circle = undefined;
                         $( ".progress" )
                             .attr( "data-balloon", i18n.GetLang( "notify_refresh_failed" ) )
                             .attr( "data-balloon-pos", "right" )
