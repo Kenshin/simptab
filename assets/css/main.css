@@ -1335,6 +1335,10 @@ img {
     text-transform: initial;
 }
 
+.options div[version] {
+    position: relative;
+}
+
 .options .head {
     padding: 30px 0 0 25px;
     font-size: 21px;
