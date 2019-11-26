@@ -5,11 +5,11 @@ define([ "jquery", "progressbar", "i18n" ], function( $, ProgressBar, i18n ) {
     var circle;
 
     function verify( perc ) {
-      while ( perc <= 0.4 || perc >= 0.9 ) {
-        perc = Math.random();
-      }
-      console.log( "exact perc is " + perc )
-      return perc;
+        while ( perc <= 0.4 || perc >= 0.9 ) {
+            perc = Math.random();
+        }
+        console.log( "exact perc is " + perc )
+        return perc;
     }
 
     return {
