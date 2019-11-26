@@ -292,11 +292,7 @@ define([ "jquery", "vo", "permissions", "options" ], function( $, vo, permission
 
         Download: function( url, name ) {
             permissions.Verify( [ "downloads" ], function( result ) {
-                if ( !result ) {
-                    var $a = $( '<a style="display:none" href=' + url + ' download="' + name + '"></a>' ).appendTo( "body" );
-                    $a[0].click();
-                    $a.remove();
-                } else {
+                if ( result && options.Storage.db.download != "" ) {
                     var end = options.Storage.db.download.endsWith( "/" ) ? "" : "/";
                     chrome.downloads.download({
                         url: url,
@@ -306,6 +302,10 @@ define([ "jquery", "vo", "permissions", "options" ], function( $, vo, permission
                     }, function( downloadId ) {
                         console.log( downloadId )
                     });
+                } else {
+                    var $a = $( '<a style="display:none" href=' + url + ' download="' + name + '"></a>' ).appendTo( "body" );
+                    $a[0].click();
+                    $a.remove();
                 }
             });
         },
