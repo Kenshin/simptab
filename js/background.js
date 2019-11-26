@@ -529,10 +529,11 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 is_notify && new Notify().Render( i18n.GetLang( "notify_eartch_update_failed" ) );
                 return;
             }
-            var notify   = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" }),
+            var notify,
                 getEarth = function () {
+                    !notify && progress.Set( "earth_loading" );
                     apis.Earth( function ( base64 ) {
-                        notify.complete();
+                        notify && notify.complete();
                         message.Publish( message.TYPE.SET_BACKGROUND, { url: base64, mode: 'earch' });
                         files.DataURI( base64 );
                         files
@@ -549,10 +550,11 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                                     setTimeout( function () {
                                         window.location.reload();
                                     }, 2000 );
-                                }
+                                } else progress.Set( "earth_complete" );
                         });
                     });
             };
+            if ( is_notify ) { notify = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" }); }
             getEarth();
         },
 
