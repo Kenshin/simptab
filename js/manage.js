@@ -67,6 +67,15 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                     </ul>\
                 </div>';
 
+    function isPinTimeout() {
+        var limit  = localStorage[ "simptab-pin" ],
+            pin    = vo.cur.pin,
+            diff   = date.TimeDiff( pin ),
+            result = pin == -1 || diff > limit ? true : false;
+        result && $( ".controlink[url='pin']" ).find("span").attr( "class", "icon pin" );
+        return result;
+    }
+
     function closeListenEvent() {
         $( ".manage .close" ).click( function( event ) {
             albumLoad = 0;
@@ -148,6 +157,10 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
     }
 
     function setBackground( url, name, new_vo ) {
+        if ( !isPinTimeout() ) {
+            new Notify().Render( 2, i18n.GetLang( "notify_pin_not_changed" ) );
+            return;
+        }
         if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
             new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
             return;
