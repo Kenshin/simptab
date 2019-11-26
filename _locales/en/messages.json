@@ -913,6 +913,10 @@
         "message": "New background loading success, will refresh automatically after 2 seconds."
     },
 
+    "notify_history_no_usage": {
+        "message": "Current not open history feature, please open it from options."
+    },
+
     "notify_history_min": {
         "message": "This is the first history background."
     },

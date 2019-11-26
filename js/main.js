@@ -138,6 +138,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         background.Earth();
     });
     message.Subscribe( message.TYPE.HISTORY, function( event ) {
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && !options.Storage.db.history && new Notify().Render( i18n.GetLang( "notify_history_no_usage" ));
         localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Get( event.data );
     });
     message.Subscribe( message.TYPE.SET_BACKGROUND, function( event ) {
@@ -151,6 +152,10 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     });
     message.Subscribe( message.TYPE.CLOSE_ZENMODE, function( event ) {
         zen.ESC();
+    });
+    message.Subscribe( message.TYPE.OPEN_HISTORY, function( event ) {
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && !options.Storage.db.history && new Notify().Render( i18n.GetLang( "notify_history_no_usage" ));
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" &&  options.Storage.db.history && history.Action();
     });
 
     permissions.Verify( [ 'bookmarks' ], function( result ) {

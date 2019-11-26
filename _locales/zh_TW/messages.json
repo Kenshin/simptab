@@ -913,6 +913,10 @@
         "message": "隨機背景獲取成功，2秒後自動刷新本頁才能生效。"
     },
 
+    "notify_history_no_usage": {
+        "message": "當前並未啟用 <a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">歷史記錄</a> 功能，請在選項頁開啟此功能。"
+    },
+
     "notify_history_min": {
         "message": "當前已經是最後一張歷史記錄了。"
     },
