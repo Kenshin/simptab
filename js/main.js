@@ -138,7 +138,7 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
         background.Earth();
     });
     message.Subscribe( message.TYPE.HISTORY, function( event ) {
-        localStorage["simptab-zenmode"] != "true" && options.Storage.db.history && history.Get( event.data );
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Get( event.data );
     });
     message.Subscribe( message.TYPE.SET_BACKGROUND, function( event ) {
         background.Set( event.data );
