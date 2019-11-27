@@ -38,6 +38,8 @@
 
 - :bug: 修復 全局 `ESC` 退出邏輯混亂的問題
 
+- :bug: 修復 `必應隨機背景源` 失效的問題
+
 - :bug: 修復 [快捷搜索欄](书签栏?id=快捷搜索栏) 的各種相關問題
 
 - :bug: 修復 [設置欄](设置栏) 滾動條錯誤的問題
@@ -45,6 +47,9 @@
 - :bug: 修復 [Issues Bugs](https://github.com/Kenshin/simptab/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
 
 - :bug: 修復  [固定](控制栏?id=固定) 邏輯，優先順序高於 [歷史記錄](历史记录) `自動播放` `刷新（下一張）` 小於 `地球每刻`
+
+- :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.5](http://st.ksria.cn/feature%201.5.5.png)
 
 ***
 
