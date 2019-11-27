@@ -1,3 +1,52 @@
+#### 1.5.5
+
+> 2019-11-27
+
+- :sparkles: 新增 [12/24 制式轉換](选项页?id=时间)
+
+- :sparkles: 新增 [自定義標題欄](选项页?id=自定义标题)
+
+- :sparkles: 新增 [禪模式 · 腳本管理器](禅模式?id=脚本管理器)
+
+  ![](https://s2.ax1x.com/2019/11/27/Q9Sm8K.png)
+
+- :sparkles: 新增 [全屏](控制栏?id=全屏化)
+
+- :sparkles: 新增 [自定義下載文件夾](背景源?id=自定义下载位置)
+
+- :sparkles: 新增 [全局性自定義腳本](选项页?id=自定义脚本)
+
+- :sparkles: 新增 **新手引導**
+
+- :sparkles: 新增 <kbd>esc</kbd> 退出方案，支持絕大多數界面/功能
+
+- :sparkles: 新增 <kbd>`</kbd> 進入/退出 [禅模式](禅模式)
+
+- :lipstick:  優化 **背景進入/更換** 時的緩動效果
+
+- :lipstick:  優化 **界面彈出** 時的效率
+
+- :lipstick:  優化 [設置欄](设置栏) 的項目設置，去掉了與背景無關的項目，將其轉移到了 [选项页](选项页) 
+
+- :lipstick:  優化 [选项页](选项页)  的界面設計
+
+- :lipstick:  優化 [書籤欄](书签栏) [歷史記錄](历史记录) 太過靈活的問題
+
+- :lipstick:  優化 [固定](控制栏?id=固定) 改為 `Dropdown` 方式
+
+- :lipstick: 優化 [地球每刻](背景源?id=地球每刻) [過頻繁的更新提示](https://github.com/Kenshin/simptab/issues/59)
+
+- :bug: 修復 全局 `ESC` 退出邏輯混亂的問題
+
+- :bug: 修復 [快捷搜索欄](书签栏?id=快捷搜索栏) 的各種相關問題
+
+- :bug: 修復 [設置欄](设置栏) 滾動條錯誤的問題
+
+- :bug: 修復 [Issues Bugs](https://github.com/Kenshin/simptab/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+- :bug: 修復  [固定](控制栏?id=固定) 邏輯，優先順序高於 [歷史記錄](历史记录) `自動播放` `刷新（下一張）` 小於 `地球每刻`
+
+***
 
 #### 1.5.4.330
 
@@ -19,6 +68,8 @@
 - :sparkles: 新增 禪模式 `自定義腳本`，通過此功能，只需要使用簡單的 JavaScript 可以讓禪模式擁有更多 **玩法**  👉 <https://github.com/Kenshin/simptab/labels/script>
 
   ![Xnip2019-02-02_15-28-19.jpg](https://i.loli.net/2019/02/02/5c55469fdb4a1.jpg)
+
+***
 
 #### 1.5.4
 
@@ -58,6 +109,8 @@
 
 - :memo: 截至到目前全部的功能
   ![SimpTab 1.5.4](https://i.loli.net/2018/12/29/5c270d58131ea.png)
+
+***
 
 #### 1.5.3.1129
 
