@@ -69,27 +69,27 @@
       <img src="https://i.loli.net/2018/12/30/5c2841e3aef3f.png">
     </details>
 
-- 多种布局；
+- 多种布局
 
   > 包括： `左上角对齐` · `居中对齐` · `相框效果`
 
-- 背景加载进度； _左下角，只在加载时显示_ 
+- 背景加载进度 _左下角，只在加载时显示_ 
 
-- 支持 `快捷键` / `多功能框` 操作；
+- 支持 `快捷键` / `多功能框` 操作
 
-- [常用网址](http://ksria.com/simptab/docs/#/常用网址)； _包括： `简单` · `高级` · `隐藏` 三种模式_ 以及 ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) **[自定义功能](http://ksria.com/simptab/docs/#/常用网址?id=自定义)**
+- [常用网址](http://ksria.com/simptab/docs/#/常用网址) _包括： `简单` · `高级` · `隐藏` 三种模式_ 以及 ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) **[自定义功能](http://ksria.com/simptab/docs/#/常用网址?id=自定义)**
 
-- 上传 · 收藏 · 下载；
+- 上传 · 收藏 · 下载
 
-- 固定； _保留当前背景一段时间_ 
+- 固定 _保留当前背景一段时间_ 
 
-- 不再显示（删除）功能；
+- 不再显示（删除）功能
 
-- [书签栏](http://ksria.com/simptab/docs/#/书签栏)；
+- [书签栏](http://ksria.com/simptab/docs/#/书签栏)
 
-- [收藏与订阅管理器](http://ksria.com/simptab/docs/#/背景管理器)；
+- [收藏与订阅管理器](http://ksria.com/simptab/docs/#/背景管理器)
 
-- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [选项页](http://ksria.com/simptab/docs/#/选项页)；
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [选项页](http://ksria.com/simptab/docs/#/选项页)
 
   > 包括： **精选集按照顺序加载** 以及 [自定义 Unsplash 源](http://ksria.com/simptab/docs/#/背景源?id=自定义unsplash源) · 自定义搜索 · 自定义站点 · 自定义样式等。
 
@@ -97,7 +97,7 @@
     <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
   </details>
 
-- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禅模式](http://ksria.com/simptab/docs/#/禅模式)；
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禅模式](http://ksria.com/simptab/docs/#/禅模式)
 
   <details><summary>截图</summary>
     <img src="https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg">

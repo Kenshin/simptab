@@ -35,7 +35,7 @@
 
 #### 主要功能一覽：
 
-- 自動識別語言； _包括： `簡體` · `繁體` · `英文`_ 
+- 自動識別語言 _包括： `簡體` · `繁體` · `英文`_ 
 
 - 多種更換壁紙方式：
   * 每日更換背景： 每日只更換一次背景，背景僅來自 `Bing.com`
@@ -69,27 +69,27 @@
       <img src="https://i.loli.net/2018/12/30/5c2841e3aef3f.png">
     </details>
 
-- 多種布局；
+- 多種布局
 
   > 包括： `左上角對齊` · `居中對齊` · `相框效果`
 
-- 背景載入進度； _左下角，只在載入時顯示_ 
+- 背景載入進度 _左下角，只在載入時顯示_ 
 
-- 支持 `快捷鍵` / `多功能框` 操作；
+- 支持 `快捷鍵` / `多功能框` 操作
 
-- [常用網址](http://ksria.com/simptab/docs/#/常用网址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 以及 ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) **[自定義功能](http://ksria.com/simptab/docs/#/常用网址?id=自定义)**
+- [常用網址](http://ksria.com/simptab/docs/#/常用网址) _包括： `簡單` · `高級` · `隱藏` 三種模式_ 以及 ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) **[自定義功能](http://ksria.com/simptab/docs/#/常用网址?id=自定义)**
 
-- 上傳 · 收藏 · 下載；
+- 上傳 · 收藏 · 下載
 
-- 固定； _保留當前背景一段時間_ 
+- 固定 _保留當前背景一段時間_ 
 
-- 不再顯示（刪除）功能；
+- 不再顯示（刪除）功能
 
-- [書籤欄](http://ksria.com/simptab/docs/#/书签栏)；
+- [書籤欄](http://ksria.com/simptab/docs/#/书签栏)
 
-- [收藏與訂閱管理器](http://ksria.com/simptab/docs/#/背景管理器)；
+- [收藏與訂閱管理器](http://ksria.com/simptab/docs/#/背景管理器)
 
-- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [選項頁](http://ksria.com/simptab/docs/#/选项页)；
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [選項頁](http://ksria.com/simptab/docs/#/选项页)
 
   > 包括： **精選集按照順序載入** 以及 [自定義 Unsplash 源](http://ksria.com/simptab/docs/#/多种背景源?id=自定义unsplash源) · 自定義搜索 · 自定義站點 · 自定義樣式等。
 
@@ -97,7 +97,7 @@
     <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
   </details>
 
-- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禪模式](http://ksria.com/simptab/docs/#/禅模式)；
+- ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [禪模式](http://ksria.com/simptab/docs/#/禅模式)
 
   <details><summary>截圖</summary>
     <img src="https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg">

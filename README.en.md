@@ -51,25 +51,25 @@
     <img src="https://i.loli.net/2018/12/30/5c2841e3aef3f.png">
   </details>
 
-- Multiple layouts; (picture frame effect, top left aligned, center aligned)
+- Multiple layouts (picture frame effect, top left aligned, center aligned)
 
   > include: `top left aligned` · `center aligned` · `photo frame`
 
-- Background loading progress; ( Lower left corner, only at load time. )
+- Background loading progress ( Lower left corner, only at load time. )
 
-- Support `shortcuts` / `omnibox` operation;
+- Support `shortcuts` / `omnibox` operation
 
-- Top sites; ( include: simptab, senior, hidden modes. )
+- Top sites ( include: simptab, senior, hidden modes. )
 
-- Upload · Favorite · Download;
+- Upload · Favorite · Download
 
-- Pin; ( Don't change the background for some time )
+- Pin ( Don't change the background for some time )
 
-- Dislike; ( Prevent the background from appearing again )
+- Dislike ( Prevent the background from appearing again )
 
-- Bookmarks;
+- Bookmarks
 
-- Background Manage;
+- Background Manage
 
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [Options](http://ksria.com/simptab/docs/#/选项页)；
 
