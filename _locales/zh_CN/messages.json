@@ -1142,7 +1142,7 @@
     },
 
     "guide_all_setting": {
-        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/setting.gif\" style=\"height:150px\"><br><a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">设置栏</a> 主要针对背景源的一些常规设置，包括：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=地球每刻\" target=\"_blank\">地球每刻模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=背景更换模式\" target=\"_blank\">随机更换背景源</a><br>- <a href=\"http://ksria.com/simptab/docs/#背景源?id=背景更换模式/\" target=\"_blank\">相册模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禅模式</a><br>- 开启/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多种背景源</a><br><br>快捷键 <kbd>s</kbd> 开启/关闭"
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/setting.gif\" style=\"height:150px\"><br><a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">设置栏</a> 主要针对背景源的一些常规设置，包括：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=地球每刻\" target=\"_blank\">地球每刻模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=背景更换模式\" target=\"_blank\">随机更换背景源</a><br>- <a href=\"http://ksria.com/simptab/docs/#背景源?id=背景更换模式\" target=\"_blank\">相册模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禅模式</a><br>- 开启/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多种背景源</a><br><br>快捷键 <kbd>s</kbd> 开启/关闭"
     },
 
     "guide_all_topsite": {
