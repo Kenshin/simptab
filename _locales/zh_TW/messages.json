@@ -1190,7 +1190,7 @@
     },
 
     "guide_favorite": {
-        "message": "關於收藏的使用，請留意以下幾點：<br><br>- 上傳的圖片均保存在 Chrome 本地的安全沙箱中<br>- 當收藏夾 <b>沒有任何內容並只啟用收藏夾源</b> 時會出現錯誤<br>- 上傳的本地圖片也保存在收藏夾裡面<br>- 請在 <a href=\"http://ksria.com/simptab/docs/#/背景管理器\" target=\"_blank\">背景管理器</a> 中收藏夾的圖片<br><br> 快捷鍵 <kbd>a</kbd> 添加/刪除"
+        "message": "歡迎首次使用收藏，請留意以下幾點：<br><br>- 上傳的圖片均保存在 <b>Chrome 本地的安全沙箱<b> 中<br>- 上傳的本地圖片也保存在收藏夾裡面<br>- 請在 <a href=\"http://ksria.com/simptab/docs/#/背景管理器\" target=\"_blank\">背景管理器</a> 中收藏夾的圖片<br><br> 快捷鍵 <kbd>a</kbd> 添加/刪除"
     },
 
     "guide_zenmode": {
