@@ -341,12 +341,6 @@ define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap"
                     value   = event.target.value == "true" ? "false" : "true";
                 updateCkState( idx + ":" + value );
                 setting.UpdateOriginsMode( idx, value );
-                if ( idx == "10" && value == "true" ) {
-                    localStorage["simptab-favorite-notify"] != "false" &&
-                    new Notify().Render({ content: i18n.GetLang( "tips_favorite" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
-                        localStorage["simptab-favorite-notify"] = false;
-                    }});
-                }
             });
 
             // listen originstate checkbox button event
