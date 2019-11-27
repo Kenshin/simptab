@@ -694,7 +694,7 @@
     },
 
     "tips_explore": {
-        "message": "向下滚动即可加载更多，显示速度取决于你的网速，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=探索'>探索</a> 。"
+        "message": "向下滚动即可加载更多，显示速度取决于你的网速，详细请看 <a target='_blank' href='http://ksria.com/simptab/docs/#/背景管理器?id=探索'>探索</a> 。"
     },
 
     "tips_earth": {
