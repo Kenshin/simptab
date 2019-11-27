@@ -914,7 +914,7 @@
     },
 
     "notify_history_no_usage": {
-        "message": "當前並未啟用 <a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">歷史記錄</a> 功能，請在 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=背景源\" target=\"_blank\">選項頁 · 背景</a> 開啟此功能。"
+        "message": "當前並未啟用 <a href=\"http://ksria.com/simptab/docs/#/背景源?id=历史记录\" target=\"_blank\">歷史記錄</a> 功能，請在 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=背景源\" target=\"_blank\">選項頁 · 背景</a> 開啟此功能。"
     },
 
     "notify_history_min": {
@@ -1150,7 +1150,7 @@
     },
 
     "guide_all_noise": {
-        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/noise.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a> 也是 簡 Tab 獨有的功能，輔以 <a href=\"http://ksria.com/simptab/docs/#/控制栏?id=全屏化\" target=\"_blank\">全屏化</a> + <a href=\"http://ksria.com/simptab/docs/#/设置栏?id=自动更换背景\" target=\"_blank\">自動更換背景</a>，可獲得 <b>音樂相冊級</b> 的視聽享受。<br><br>快捷鍵 <kbd>w</kbd> 開啟/關閉<br><br><b>注意：</b> 在任何界面中都沒有白噪音的開啟方式，只能選擇通過快捷鍵操作。"
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/noise.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a> 也是 簡 Tab 獨有的功能，輔以 <a href=\"http://ksria.com/simptab/docs/#/控制栏?id=全屏化\" target=\"_blank\">全屏化</a> + <a href=\"http://ksria.com/simptab/docs/#/背景源?id=自动更换背景\" target=\"_blank\">自動更換背景</a>，可獲得 <b>音樂相冊級</b> 的視聽享受。<br><br>快捷鍵 <kbd>w</kbd> 開啟/關閉<br><br><b>注意：</b> 在任何界面中都沒有白噪音的開啟方式，只能選擇通過快捷鍵操作。"
     },
 
     "guide_all_bookmarks": {
@@ -1174,7 +1174,7 @@
     },
 
     "guide_noise": {
-        "message": "<a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a> 也是 簡 Tab 獨有的功能，輔以 <a href=\"http://ksria.com/simptab/docs/#/控制栏?id=全屏化\" target=\"_blank\">全屏化</a> + <a href=\"http://ksria.com/simptab/docs/#/设置栏?id=自动更换背景\" target=\"_blank\">自動更換背景</a>，可獲得 <b>音樂相冊級的</b> 視聽享受。<br><br>快捷鍵 <kbd>w</kbd> 開啟/關閉<br><br><b>注意：</b> 在任何界面中都沒有白噪音的開啟方式，只能選擇通過快捷鍵操作。"
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a> 也是 簡 Tab 獨有的功能，輔以 <a href=\"http://ksria.com/simptab/docs/#/控制栏?id=全屏化\" target=\"_blank\">全屏化</a> + <a href=\"http://ksria.com/simptab/docs/#/背景源?id=自动更换背景\" target=\"_blank\">自動更換背景</a>，可獲得 <b>音樂相冊級的</b> 視聽享受。<br><br>快捷鍵 <kbd>w</kbd> 開啟/關閉<br><br><b>注意：</b> 在任何界面中都沒有白噪音的開啟方式，只能選擇通過快捷鍵操作。"
     },
 
     "guide_bookmarks": {
@@ -1198,10 +1198,10 @@
     },
 
     "guide_earth": {
-        "message": "感謝 <a target=\"_blank\" href=\"http://himawari8.nict.go.jp/\">向日葵-8號</a> 提供，詳細請看 <a target=\"_blank\" href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻\">地球每刻</a><br><br>- 此模式下 <b>無法使用</b> <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a> <a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">歷史記錄</a> <a href=\"http://ksria.com/simptab/docs/#/设置栏?id=自动更换背景\" target=\"_blank\">自動播放</a> 等功能<br>- 地球每刻的照片 <b>每小時更新一次</b>"
+        "message": "感謝 <a target=\"_blank\" href=\"http://himawari8.nict.go.jp/\">向日葵-8號</a> 提供，詳細請看 <a target=\"_blank\" href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻\">地球每刻</a><br><br>- 此模式下 <b>無法使用</b> <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=历史记录\" target=\"_blank\">歷史記錄</a> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=自动更换背景\" target=\"_blank\">自動播放</a> 等功能<br>- 地球每刻的照片 <b>每小時更新一次</b>"
     },
 
     "guide_history": {
-        "message": "<a href=\"http://ksria.com/simptab/docs/#/历史记录\" target=\"_blank\">歷史記錄</a> 是 簡 Tab 獨有功能，包含了以下幾個特點：<br><br>- 最多可以記錄 <b>五組</b> 之前的背景圖片<br>- 滑鼠移到新標籤頁上方中部即可自動打開歷史記錄列表<br><br>快捷鍵 <kbd>→</kbd> <kbd>←</kbd> 翻頁 <br>快捷鍵 <kbd>h</kbd> 開啟/關閉<br>滑鼠上移到邊緣 <kbd>並停留超過 1s </kbd> 開啟/關閉"
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/背景源?id=历史记录\" target=\"_blank\">歷史記錄</a> 是 簡 Tab 獨有功能，包含了以下幾個特點：<br><br>- 最多可以記錄 <b>五組</b> 之前的背景圖片<br>- 滑鼠移到新標籤頁上方中部即可自動打開歷史記錄列表<br><br>快捷鍵 <kbd>→</kbd> <kbd>←</kbd> 翻頁 <br>快捷鍵 <kbd>h</kbd> 開啟/關閉<br>滑鼠上移到邊緣 <kbd>並停留超過 1s </kbd> 開啟/關閉"
     }
 }
