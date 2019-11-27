@@ -1146,7 +1146,7 @@
     },
 
     "guide_all_topsite": {
-        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/topsites.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/常用网址\" target=\"_blank\">常用網址</a> 與 Chrome 默認標籤頁一樣。<br>支持 簡單模式 · 九宮格模式 · 隱藏 三種模式。<br>並擁有 <a href=\"http://ksria.com/simptab/docs/#/常用网址?id=自定义\" target=\"_blank\">自定義</a> 功能。"
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/topsites.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/常用网址\" target=\"_blank\">常用網址</a> 與 Chrome 默認標籤頁一樣。<br>支持 簡單模式 · 九宮格模式 · 隱藏 三種模式。<br>並擁有 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=自定义站点\" target=\"_blank\">自定義</a> 功能。"
     },
 
     "guide_all_noise": {
