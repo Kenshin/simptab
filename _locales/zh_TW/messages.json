@@ -894,7 +894,7 @@
     },
 
     "notify_eartch_mode": {
-        "message": "<a href='http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻' target='_blank'>地球每刻</a> 模式下無法使用此功能！"
+        "message": "<a href='http://ksria.com/simptab/docs/#/背景源?id=地球每刻' target='_blank'>地球每刻</a> 模式下無法使用此功能！"
     },
 
     "notify_eartch_loading": {
@@ -1122,7 +1122,7 @@
     },
 
     "guide_all_start": {
-        "message": "<a href=\"http://ksria.com/simptab/docs/#/\" target=\"_blank\">簡 Tab</a> 是一個純粹、極簡的 新標籤頁擴展。<br>它的設計哲學：<b>只呈現美圖，無任何干擾</b>，但這並不意味它僅代表簡單，它的功能包含：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a><br>- 豐富的 <a href=\"http://ksria.com/simptab/docs/#/选项页\" target=\"_blank\">定製化選項</a><br>- <a href=\"http://ksria.com/simptab/docs/#/常用网址\" target=\"_blank\">常用網址</a><br>- <a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a><br>- <a href=\"http://ksria.com/simptab/docs/#/快捷搜索栏\" target=\"_blank\">快捷搜索欄</a><br>- <a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a>"
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/\" target=\"_blank\">簡 Tab</a> 是一個純粹、極簡的 新標籤頁擴展。<br>它的設計哲學：<b>只呈現美圖，無任何干擾</b>，但這並不意味它僅代表簡單，它的功能包含：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多種背景源</a><br>- 豐富的 <a href=\"http://ksria.com/simptab/docs/#/选项页\" target=\"_blank\">定製化選項</a><br>- <a href=\"http://ksria.com/simptab/docs/#/常用网址\" target=\"_blank\">常用網址</a><br>- <a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a><br>- <a href=\"http://ksria.com/simptab/docs/#/快捷搜索栏\" target=\"_blank\">快捷搜索欄</a><br>- <a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a>"
     },
 
     "guide_all_intro": {
@@ -1142,7 +1142,7 @@
     },
 
     "guide_all_setting": {
-        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/setting.gif\" style=\"height:150px\"><br><a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻\" target=\"_blank\">地球每刻模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=随机更换背景源\" target=\"_blank\">隨機更換背景源</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=相冊模式\" target=\"_blank\">相冊模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a><br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a><br><br>快捷鍵 <kbd>s</kbd> 開啟/關閉"
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/setting.gif\" style=\"height:150px\"><br><a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=地球每刻\" target=\"_blank\">地球每刻模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=随机更换背景源\" target=\"_blank\">隨機更換背景源</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=相冊模式\" target=\"_blank\">相冊模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a><br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多種背景源</a><br><br>快捷鍵 <kbd>s</kbd> 開啟/關閉"
     },
 
     "guide_all_topsite": {
@@ -1186,7 +1186,7 @@
     },
 
     "guide_setting": {
-        "message": "<a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- 背景圖顯示方式<br>- 背景顯示形式<br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a><br>- 背景源隨便更換頻率 等<br><br>快捷鍵 <kbd>s</kbd> 開啟/關閉"
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- 背景圖顯示方式<br>- 背景顯示形式<br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多種背景源</a><br>- 背景源隨便更換頻率 等<br><br>快捷鍵 <kbd>s</kbd> 開啟/關閉"
     },
 
     "guide_favorite": {
@@ -1198,7 +1198,7 @@
     },
 
     "guide_earth": {
-        "message": "感謝 <a target=\"_blank\" href=\"http://himawari8.nict.go.jp/\">向日葵-8號</a> 提供，詳細請看 <a target=\"_blank\" href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=地球每刻\">地球每刻</a><br><br>- 此模式下 <b>無法使用</b> <a href=\"http://ksria.com/simptab/docs/#/背景更换模式?id=多种背景源\" target=\"_blank\">多種背景源</a> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=历史记录\" target=\"_blank\">歷史記錄</a> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=自动更换背景\" target=\"_blank\">自動播放</a> 等功能<br>- 地球每刻的照片 <b>每小時更新一次</b>"
+        "message": "感謝 <a target=\"_blank\" href=\"http://himawari8.nict.go.jp/\">向日葵-8號</a> 提供，詳細請看 <a target=\"_blank\" href=\"http://ksria.com/simptab/docs/#/背景源?id=地球每刻\">地球每刻</a><br><br>- 此模式下 <b>無法使用</b> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多種背景源</a> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=历史记录\" target=\"_blank\">歷史記錄</a> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=自动更换背景\" target=\"_blank\">自動播放</a> 等功能<br>- 地球每刻的照片 <b>每小時更新一次</b>"
     },
 
     "guide_history": {
