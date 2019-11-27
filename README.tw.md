@@ -2,17 +2,17 @@
 <h1 align="center">簡 Tab - 極簡的 Chrome 新標籤頁擴展</h1>
 <p align="center">望你每次打開都有好心情；去除多餘功能，只關註標簽頁呈現效果。</p>
 <p align="center">
-   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.4-blue.svg"></a>
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.5-blue.svg"></a>
    <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.4/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
+   <a href="http://ksria.com/simptab/crx/1.5.5/simptab.crx"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
    <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
 </p>
 
 ***
 
 #### 馬上使用：
-* [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.4/simptab.crx)
+* [Chrome 應用商店](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc) 或者 [離線下載](http://ksria.com/simptab/crx/1.5.5/simptab.crx)
 
 * 有任何問題請看 [幫助中心](http://ksria.com/simptab/docs/#) 或者 加入 **[SimpTab 的討論群](https://gitter.im/Kenshin/simptab)**
 
@@ -44,13 +44,13 @@
 
   * 只顯示當前背景：永不更換背景源
 
-  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) 地球每刻：得益於 [向日葵-8號](http://himawari8.nict.go.jp/) 現在可以在新標籤頁顯示地球自拍照了，詳細請看 [地球每刻](http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻)
+  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) 地球每刻：得益於 [向日葵-8號](http://himawari8.nict.go.jp/) 現在可以在新標籤頁顯示地球自拍照了，詳細請看 [地球每刻](http://ksria.com/simptab/docs/#/背景源?id=地球每刻)
 
     <details><summary>截圖</summary>
       <img src="https://i.loli.net/2018/12/30/5c2841e3144ab.png">
     </details>
 
-- [多種類型的背景源](http://ksria.com/simptab/docs/#/多种背景源)，包括：
+- [多種類型的背景源](http://ksria.com/simptab/docs/#/背景源?id=多种背景源)，包括：
   * `bing.com` · `wallhaven.cc` · `unsplash.com` · `googleartproject.com` · `desktoppr.co` · `visualhunt.com`
 
   * SimpTab 精選集  
@@ -61,7 +61,7 @@
 
     > 點擊 控制欄「收藏」後的背景集合
 
-  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [探索](http://ksria.com/simptab/docs/#/多种背景源?id=探索)
+  * ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [探索](http://ksria.com/simptab/docs/#/背景管理器?id=探索)
 
     > 来自 Unsplash 的精美背景合辑
 
@@ -77,7 +77,7 @@
 
 - 支持 `快捷鍵` / `多功能框` 操作；
 
-- [常用網址](http://ksria.com/simptab/docs/#/功能一览#常用网址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 以及 ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) **[自定義功能](http://ksria.com/simptab/docs/#/选项页?id=自定义站点)**
+- [常用網址](http://ksria.com/simptab/docs/#/常用网址)； _包括： `簡單` · `高級` · `隱藏` 三種模式_ 以及 ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) **[自定義功能](http://ksria.com/simptab/docs/#/常用网址?id=自定义)**
 
 - 上傳 · 收藏 · 下載；
 
@@ -85,13 +85,13 @@
 
 - 不再顯示（刪除）功能；
 
-- [書籤欄](http://ksria.com/simptab/docs/#/功能一览#主要功能之一)；
+- [書籤欄](http://ksria.com/simptab/docs/#/书签栏)；
 
-- [收藏與訂閱管理器](http://ksria.com/simptab/docs/#/功能一览#主要功能之二)；
+- [收藏與訂閱管理器](http://ksria.com/simptab/docs/#/背景管理器)；
 
 - ![1.5.3](https://img.shields.io/badge/1.5.3-red.svg) [選項頁](http://ksria.com/simptab/docs/#/选项页)；
 
-  > 包括： **精選集按照順序載入** 以及 [自定義 Unsplash 源](http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash) · 自定義搜索 · 自定義站點 · 自定義樣式等。
+  > 包括： **精選集按照順序載入** 以及 [自定義 Unsplash 源](http://ksria.com/simptab/docs/#/多种背景源?id=自定义unsplash源) · 自定義搜索 · 自定義站點 · 自定義樣式等。
 
   <details><summary>截圖</summary>
     <img src="https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg">
@@ -105,7 +105,7 @@
     <img src="https://i.loli.net/2018/11/23/5bf7a3625cc20.jpg">
   </details>
 
-- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [歷史記錄](http://ksria.com/simptab/docs/#/多种背景源?id=历史记录)
+- ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [歷史記錄](http://ksria.com/simptab/docs/#/背景源?id=历史记录)
 
 - ![1.5.4](https://img.shields.io/badge/1.5.4-red.svg) [白噪音](http://ksria.com/simptab/docs/#/白噪音)
 
@@ -128,8 +128,6 @@
 * [更新日誌](http://ksria.com/simptab/docs/#/CHANGELOG)
 
 * [幫助中心](http://ksria.com/simptab/docs/)
-
-* [功能一覽](http://ksria.com/simptab/docs/#/功能一覽)
 
 * [反饋](https://github.com/kenshin/simptab/issues)
 
