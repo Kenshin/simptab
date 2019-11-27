@@ -402,7 +402,7 @@
     },
 
     "options_custom_unsplash_notice": {
-        "message": "支持自定義源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>自定義 Unsplash</a>"
+        "message": "支持自定義源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash源' target='_blank'>自定義 Unsplash</a>"
     },
 
     "options_custom_unsplash_screen_label": {
@@ -1070,7 +1070,7 @@
     },
 
     "welcome_153_desc_3": {
-        "message": "自定義站點，自定義樣式，更豐富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>個性定製化</a>"
+        "message": "自定義站點，自定義樣式，更豐富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash源' target='_blank'>個性定製化</a>"
     },
 
     "welcome_154_title_1": {
