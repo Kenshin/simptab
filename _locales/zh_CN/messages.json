@@ -402,7 +402,7 @@
     },
 
     "options_custom_unsplash_notice": {
-        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash源' target='_blank'>自定义 Unsplash</a>"
+        "message": "支持自定义源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；详细说明请访问 <a href='http://ksria.com/simptab/docs/#/背景源?id=自定义Unsplash源' target='_blank'>自定义 Unsplash</a>"
     },
 
     "options_custom_unsplash_screen_label": {
@@ -414,7 +414,7 @@
     },
 
     "options_custom_unsplash_screen_notice": {
-        "message": "可更改为适合自己的分辨率，格式：widthxheigh 如： 3200x1800 详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=更改Unsplash源分辨率' target='_blank'>更改 Unsplash 源分辨率</a>"
+        "message": "可更改为适合自己的分辨率，格式：widthxheigh 如： 3200x1800 详细说明请访问 <a href='http://ksria.com/simptab/docs/#/背景源?id=更改Unsplash源分辨率' target='_blank'>更改 Unsplash 源分辨率</a>"
     },
 
     "options_custom_mobile_lable": {
@@ -466,7 +466,7 @@
     },
 
     "options_history_notice": {
-        "message": "启用后会自动记录最多五张的历史记录，并且只在「随机更换壁纸」模型下使用，详细请看 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=历史记录' target='_blank'>历史记录</a>"
+        "message": "启用后会自动记录最多五张的历史记录，并且只在「随机更换壁纸」模型下使用，详细请看 <a href='http://ksria.com/simptab/docs/#/背景源?id=历史记录' target='_blank'>历史记录</a>"
     },
 
     "options_download_label": {
@@ -474,7 +474,7 @@
     },
 
     "options_download_notice": {
-        "message": "配合 Haze 或 Automator 等方式可实现在 PC 端自动播放背景，详细请看 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义下载位置' target='_blank'>自定义下载位置</a>"
+        "message": "配合 Haze 或 Automator 等方式可实现在 PC 端自动播放背景，详细请看 <a href='http://ksria.com/simptab/docs/#/背景源?id=自定义下载位置' target='_blank'>自定义下载位置</a>"
     },
 
     "options_download_placeholder": {
@@ -1070,7 +1070,7 @@
     },
 
     "welcome_153_desc_3": {
-        "message": "自定义站点，自定义样式，更丰富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash源' target='_blank'>个性定制化</a>"
+        "message": "自定义站点，自定义样式，更丰富的 Unsplash <a href='http://ksria.com/simptab/docs/#/背景源?id=自定义Unsplash源' target='_blank'>个性定制化</a>"
     },
 
     "welcome_154_title_1": {
