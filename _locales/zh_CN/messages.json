@@ -514,7 +514,7 @@
     },
 
     "options_custom_tp_notice": {
-        "message": "目前仅支持最多九个网址，每行一个，详细请看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义站点' target='_blank'>自定义站点</a>"
+        "message": "目前仅支持最多九个网址，每行一个，详细请看 <a href='http://ksria.com/simptab/docs/#/常用网址?id=自定义' target='_blank'>自定义站点</a>"
     },
 
     "options_custom_search": {
@@ -1146,7 +1146,7 @@
     },
 
     "guide_all_topsite": {
-        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/topsites.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/常用网址\" target=\"_blank\">常用网址</a> 与 Chrome 默认标签页一样。<br>支持 简单模式 · 九宫格模式 · 隐藏 三种模式。<br>并拥有 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=自定义站点\" target=\"_blank\">自定义</a> 功能。"
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/topsites.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/常用网址\" target=\"_blank\">常用网址</a> 与 Chrome 默认标签页一样。<br>支持 简单模式 · 九宫格模式 · 隐藏 三种模式。<br>并拥有 <a href=\"http://ksria.com/simptab/docs/#/常用网址?id=自定义\" target=\"_blank\">自定义</a> 功能。"
     },
 
     "guide_all_noise": {
