@@ -118,11 +118,8 @@
 #### 投票：
 * 简 Tab 是一个免费并开源的项目，如果觉得不错，请给我 [投票](https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc)
 
-#### 照片集：
-* <http://ksria.com/simptab/gallery.html>
-
 #### 全部功能：
-![全部功能](http://st.ksria.cn/feature%201.5.4.png)
+![全部功能](http://st.ksria.cn/feature%201.5.5.png)
 
 #### 相关链接：
 * [更新日志](http://ksria.com/simptab/docs/#/CHANGELOG)
