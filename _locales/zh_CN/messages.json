@@ -414,7 +414,7 @@
     },
 
     "options_custom_unsplash_screen_notice": {
-        "message": "可更改为适合自己的分辨率，格式：widthxheigh 如： 3200x1800 详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=更改Unsplash源分辨率' target='_blank'>更改Unsplash源分辨率</a>"
+        "message": "可更改为适合自己的分辨率，格式：widthxheigh 如： 3200x1800 详细说明请访问 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=更改Unsplash源分辨率' target='_blank'>更改 Unsplash 源分辨率</a>"
     },
 
     "options_custom_mobile_lable": {
