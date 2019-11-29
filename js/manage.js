@@ -7,7 +7,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
         io     = new IntersectionObserver( observerImg ),
         oriImg = chrome.extension.getURL( "/assets/images/loading.gif" ),
         rTmpl  = '\
-                <div class="close"><span class="close"></span></div>\
+                <div class="close"><span class="waves-effect close"><i class="fas fa-times-circle"></i></span></div>\
                 <div class="tabs">\
                     <div class="tab tab-active" idx="0">' + i18n.GetLang( "manage_tab_fav" ) + '</div>\
                     <div class="tab" idx="1">' + i18n.GetLang( "manage_tab_sub" ) + '</div>\
@@ -22,9 +22,9 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 <div class="photograph">\
                     <img src="' + oriImg + '" data-src=<%- album %>>\
                     <ul class="toolbox">\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="useicon"></span></li>\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="removeicon"></span></li>\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_use"    ) + '" data-balloon-pos="up" class="waves-effect useicon"><i class="fas fa-check-circle"></i></span></li>\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="waves-effect downicon"><i class="fas fa-arrow-circle-down"></i></span></li>\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_remove" ) + '" data-balloon-pos="up" class="waves-effect removeicon"><i class="fas fa-minus-circle"></i></span></li>\
                     </ul>\
                 </div>',
         subTmpl = '\
@@ -42,30 +42,39 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 <div class="photograph">\
                     <img src="' + oriImg + '" data-src=<%- album.thumb %>>\
                     <ul class="toolbox">\
+                        <li><a href="<%= album.link %>" target="_blank"><span class="waves-effect linkicon"><i class="fas fa-home"></i></span></a></li>\
                         <li>\
                             <a href="<%= album.contact %>" target="_blank">\
-                                <span data-balloon="<%= album.name %>" data-balloon-pos="up" class="authoricon"></span>\
+                                <span data-balloon="<%= album.name %>" data-balloon-pos="up" class="waves-effect authoricon"><i class="fas fa-user-circle"></i></span>\
                             </a>\
                         </li>\
-                        <li><a href="<%= album.link %>" target="_blank"><span class="linkicon"></span></a></li>\
-                        <li><span type="explore" data-vo="<%= encodeURI(JSON.stringify( album )) %>" data-balloon="' + i18n.GetLang( "manage_toolbar_use" ) + '" data-balloon-pos="up" class="useicon"></span></li>\
-                        <li><span type="explore" data-balloon="' + i18n.GetLang( "manage_toolbar_down" ) + '" data-balloon-pos="up" class="downicon" url="<%= album.down %>" ></span></li>\
+                        <li><span type="explore" data-vo="<%= encodeURI(JSON.stringify( album )) %>" data-balloon="' + i18n.GetLang( "manage_toolbar_use" ) + '" data-balloon-pos="up" class="waves-effect useicon"><i class="fas fa-check-circle"></i></span></li>\
+                        <li><span type="explore" data-balloon="' + i18n.GetLang( "manage_toolbar_down" ) + '" data-balloon-pos="up" class="waves-effect downicon" url="<%= album.down %>" ><i class="fas fa-arrow-circle-down"></i></span></li>\
                     </ul>\
                 </div>',
         imgTmpl = '\
                 <div class="image">\
                     <img src="' + oriImg + '" data-src=<%- image.url %>>\
                     <ul class="toolbox">\
+                        <li><a href="<%= image.info %>" target="_blank"><span class="waves-effect linkicon"><i class="fas fa-home"></i></span></a></li>\
                         <li>\
                             <a href="<%= image.contact == "" ? "#" : image.contact %>" target="<%= image.contact == "" ? "_self" : "_blank" %>">\
-                                <span data-balloon="<%= image.name == "" ? "' + i18n.GetLang( "notify_mange_no_user" ) + '" : image.name %>" data-balloon-pos="up" class="authoricon"></span>\
+                                <span data-balloon="<%= image.name == "" ? "' + i18n.GetLang( "notify_mange_no_user" ) + '" : image.name %>" data-balloon-pos="up" class="waves-effect authoricon"><i class="fas fa-user-circle"></i></span>\
                             </a>\
                         </li>\
-                        <li><a href="<%= image.info %>" target="_blank"><span class="linkicon"></span></a></li>\
-                        <li><span data-vo="<%= encodeURI(JSON.stringify( image )) %>" data-balloon="' + i18n.GetLang( "manage_toolbar_use" ) + '" data-balloon-pos="up" class="useicon"></span></li>\
-                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="downicon"></span></li>\
+                        <li><span data-vo="<%= encodeURI(JSON.stringify( image )) %>" data-balloon="' + i18n.GetLang( "manage_toolbar_use" ) + '" data-balloon-pos="up" class="waves-effect useicon"><i class="fas fa-check-circle"></i></span></li>\
+                        <li><span data-balloon="' + i18n.GetLang( "manage_toolbar_down"   ) + '" data-balloon-pos="up" class="waves-effect downicon"><i class="fas fa-arrow-circle-down"></i></span></li>\
                     </ul>\
                 </div>';
+
+    function isPinTimeout() {
+        var limit  = localStorage[ "simptab-pin" ],
+            pin    = vo.cur.pin,
+            diff   = date.TimeDiff( pin ),
+            result = pin == -1 || diff > limit ? true : false;
+        result && $( ".controlink[url='pin']" ).find("span").attr( "class", "icon pin" );
+        return result;
+    }
 
     function closeListenEvent() {
         $( ".manage .close" ).click( function( event ) {
@@ -100,11 +109,11 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
 
     function toolbarListenEvent() {
         $( "body" ).on( "click", ".manage .toolbox span", function( event ) {
-            var url    = $( event.target ).parent().parent().prev().attr( "src" ),
-                new_vo = $( event.target ).attr( "data-vo" ),
-                type   = $( event.target ).attr( "type" ),
+            var url    = $( event.currentTarget ).parent().parent().prev().attr( "src" ),
+                new_vo = $( event.currentTarget ).attr( "data-vo" ),
+                type   = $( event.currentTarget ).attr( "type" ),
                 name   = url && url.replace( vo.constructor.FAVORITE, "" ).replace( ".jpg", "" );
-            switch( event.target.className ) {
+            switch( event.currentTarget.className.replace( "waves-effect ", "" ) ) {
                 case "useicon":
                     new_vo && ( new_vo = JSON.parse( decodeURI( new_vo )) );
                     if ( type == "explore" ) {
@@ -115,15 +124,15 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                     break;
                 case "downicon":
                     if ( type == "explore" ) {
-                        url = $( event.target ).attr( "url" );
+                        url = $( event.currentTarget ).attr( "url" );
                     }
                     files.Download( url, "simptab-wallpaper-" + date.Now() + ".png" );
                     break;
                 case "removeicon":
                     files.Delete( name, function( result ) {
                         new Notify().Render( i18n.GetLang( "notify_mange_remove" ) );
-                        $( event.target ).parent().parent().parent().slideUp( function() {
-                            $( event.target ).parent().parent().parent().remove();
+                        $( event.currentTarget ).parent().parent().parent().slideUp( function() {
+                            $( event.currentTarget ).parent().parent().parent().remove();
                         });
                         files.DeleteFavorite( files.FavoriteVO(), name );
                     }, function( error ) {
@@ -148,6 +157,10 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
     }
 
     function setBackground( url, name, new_vo ) {
+        if ( !isPinTimeout() ) {
+            new Notify().Render( 2, i18n.GetLang( "notify_pin_not_changed" ) );
+            return;
+        }
         if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
             new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
             return;
@@ -365,7 +378,7 @@ define([ "jquery", "lodash", "notify", "i18n", "vo", "date", "options", "files",
                 getSubscribeTmpl();
                 toolbarListenEvent();
                 scrollListenEvent();
-            }, 10 );
+            }, 300 );
         }
     };
 });

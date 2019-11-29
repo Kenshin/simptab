@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ], function( $, Mousetrap, _, Notify, i18n, message, comps ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "unveil", "i18n", "message", "comps", "guide" ], function( $, Mousetrap, _, Notify, unveil, i18n, message, comps, guide ) {
 
     "use strict";
 
@@ -55,6 +55,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
         Storage.prototype.Verify = function( target ) {
             if ( target.version == "1.5.3" ) {
                 target.version = "1.5.4";
+            }
+            if ( target.version == "1.5.4" ) {
+                target.version = "1.5.5";
             }
             return target;
         }
@@ -278,31 +281,118 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             storage.db.script = event.target.value;
             storage.Set();
         });
-        $( ".setting-zen-mode" ).on( "click", ".script .subtitle span", function( event ) {
+        $( ".setting-zen-mode" ).on( "click", ".footer .manage", function( event ) {
             var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || "{}" ),
                 runat  = function() {
-                    close();
-                    new Function( manage.script )();
+                    scriptManage( manage );
                 };
             if ( $.isEmptyObject( manage )) {
-                $.ajax({
-                    type       : "GET",
-                    url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/manage.json?" + Math.round(+new Date()),
-                    dataType   : "json"
-                }).then( function( result ) {
-                    if ( result && result.version == "" ) {
-                        new Notify().Render( i18n.GetLang( "notify_zen_mode_script_loader_none" ) );
-                    } else if ( result && result.version ) {
-                        manage = result;
-                        localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( manage );
-                        new Notify().Render( i18n.GetLang( "notify_zen_mode_script_loader_success" ) );
-                        runat();
-                    }
-                }, function( jqXHR, textStatus, errorThrown ) {
-                    new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
+                getScriptConfig( function( result ) {
+                    manage = result;
+                    runat();
                 });
             } else runat();
+            close();
         });
+    }
+
+    function getScriptConfig( callback ) {
+        var notify = new Notify().Render({ state: "loading", content: i18n.GetLang( "notify_snippets" ) });
+        $.ajax({
+            type       : "GET",
+            url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/config.json?" + Math.round(+new Date()),
+            dataType   : "json"
+        }).then( function( result ) {
+            notify.complete();
+            if ( result && result.items.length > 0 ) {
+                localStorage[ "simptab-zenmode-manage" ] = JSON.stringify( result );
+                callback( result );
+            } else new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
+        }, function( jqXHR, textStatus, errorThrown ) {
+            notify.complete();
+            new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
+        });
+    }
+
+    function getScriptVersion() {
+        var notify = new Notify().Render({ state: "loading", content: i18n.GetLang( "notify_snippets_update" ) });
+        $.ajax({
+            type       : "GET",
+            url        : "https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/script/version.json?" + Math.round(+new Date()),
+            dataType   : "json"
+        }).then( function( result ) {
+            if ( result && result.version ) {
+                notify.complete();
+                var manage = JSON.parse( localStorage[ "simptab-zenmode-manage" ] || {} );
+                if ( manage.version != result.version ) {
+                    getScriptConfig( function() {
+                        new Notify().Render( i18n.GetLang( "notify_snippets_update_success" ) );
+                    });
+                } else new Notify().Render( i18n.GetLang( "notify_snippets_update_none" ) );
+            }
+        }, function( jqXHR, textStatus, errorThrown ) {
+            notify.complete();
+            new Notify().Render( 2, i18n.GetLang( "notify_zen_mode_script_loader_failed" ) );
+        });
+    }
+
+    function scriptManage( result ) {
+        var oriImg = chrome.extension.getURL( "/assets/images/loading.gif" ),
+            html = '<div class="script">\
+                        <img src="' + oriImg + '" data-src=<%- root + item.snap %>>\
+                        <div class="toolbar">\
+                            <div class="title"     data-balloon-pos="up" data-balloon="<%- item.title %>"><i class="fab fa-readme waves-effect"></i></i></div>\
+                            <div class="desc"      data-balloon-pos="up" data-balloon="<%- item.desc || "' + i18n.GetLang( "zen_mode_setting_snippets_toolbar_desc" ) + '" %>"><i class="fas fa-eye waves-effect"></i></div>\
+                            <a   class="user"      data-balloon-pos="up" data-balloon="<%- item.author.name %>" href="<%- item.author.contact %>" target="_blank"><i class="fas fa-user waves-effect"></i></a>\
+                            <a   class="home"      data-balloon-pos="up" data-balloon="' + i18n.GetLang( "zen_mode_setting_snippets_toolbar_home" ) + '" href="<%- item.link %>" target="_blank"><i class="fas fa-home waves-effect"></i></a>\
+                            <div class="version"   data-balloon-pos="up" data-balloon="<%- item.version %>"><i class="fas fa-code-branch waves-effect"></i></div>\
+                            <div class="download"  data-balloon-pos="up" data-balloon="' + i18n.GetLang( "zen_mode_setting_snippets_toolbar_download" ) + '" data-src="<%- root + item.download %>"><i class="fas fa-cloud-download-alt waves-effect"></i></div>\
+                        </div>\
+                    </div>',
+            scrComp  = _.template( '<% jq.each( items, function( idx, item ) { %>' + html + '<% }); %>', { 'imports': { 'jq': jQuery, 'root': result.root }} ),
+            srcHtml  = scrComp({ 'items': result.items }),
+            tmpl     = '\
+                        <div class="close"><span class="close"></span></div>\
+                        <div class="scripts">\
+                            ' + srcHtml + '\
+                        </div>\
+                        <div class="footer">\
+                            <div class="waves-effect version">' + i18n.GetLang( "zen_mode_setting_snippets_footer_version" ) + result.version + '</div>\
+                            <a   class="waves-effect button help" href="http://ksria.com/simptab/docs/#/禅模式?id=自定义脚本" target="_blank">' + i18n.GetLang( "zen_mode_setting_snippets_footer_howto" ) + '</a>\
+                            <div class="waves-effect button update">' + i18n.GetLang( "zen_mode_setting_snippets_footer_update" ) + '</div>\
+                            <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
+                        </div>';
+        $( "body" ).append( '<div class="dialog-overlay"><div class="dialog-bg"><div class="dialog snippets"></div></div></div>' );
+        setTimeout( function() {
+            $( ".dialog-bg" ).addClass( "dialog-bg-show" );
+            $( ".dialog" ).html( tmpl );
+            $( ".snippets .exit, .snippets .close" ).click( function( event ) {
+                $( "body" ).off( "click", ".snippets .toolbox span" );
+                $( ".dialog-bg" ).removeClass( "dialog-bg-show" );
+                setTimeout( function() {
+                    $( ".dialog-overlay" ).remove();
+                }, 400 );
+            });
+            $( ".snippets .toolbar .download i" ).on( "click", function( event ) {
+                $.get( $(event.currentTarget).parent().attr("data-src"), function( result ) {
+                    storage.db = storage.Verify( JSON.parse( result ) );
+                    storage.Set();
+                    new Notify().Render( i18n.GetLang( "notify_zen_mode_import_success" ));
+                });
+            });
+            $( ".snippets .footer .update" ).on( "click", function( event ) {
+                getScriptVersion();
+            });
+            setTimeout( function() {
+                $( ".snippets .script" ).find( "img" ).each( function( idx, item ) {
+                    var $target = $( item ),
+                        lazy    = $target.attr( "data-src" );
+                    lazy && $target.unveil( 200, function() {
+                        $( this ).removeAttr( "data-src" );
+                    });
+                })
+            }, 400 );
+        }, 450 );
     }
 
     /*********************************************
@@ -314,6 +404,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             new Notify().Render( i18n.GetLang( "notify_zen_mode_exit" ) );
             exit();
             close();
+            setTimeout( function() { location.reload(); }, 2000 );
         });
         $( ".setting-zen-mode" ).on( "click", ".footer .close", function( event ) {
             close();
@@ -370,13 +461,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
                         <div class="script" style="margin-top: 15px;">\
                             <div class="title">' + i18n.GetLang( "zen_mode_setting_script" ) + '</div>\
                             ' + scriptView() + '\
-                            <div class="subtitle"><a href="http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F?id=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%84%9A%E6%9C%AC" target="_blank">' + i18n.GetLang( "zen_mode_setting_script_howto" ) + '</a> & <span>' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</span></div>\
                         </div>\
                         <div class="footer">\
+                            <div class="waves-effect button manage">' + i18n.GetLang( "zen_mode_setting_script_manage" ) + '</div>\
                             <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
                             <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
-                            <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
                             <div class="waves-effect button close">' + i18n.GetLang( "zen_mode_setting_close" ) + '</div>\
+                            <div class="waves-effect button exit">' + i18n.GetLang( "zen_mode_setting_exit" ) + '</div>\
                         </div>\
                     </div>';
         $( "body" ).append( tmpl );
@@ -433,7 +524,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     function ohtersMode() {
         $( ".controlbar" ).addClass( "controlbar-zen-mode" );
         $( ".progress"   ).addClass( "progress-zen-mode" );
-        $( ".clock"      ).append( '<div class="setting-trigger-zen-mode"></div>' );
+        $( "body"        ).append( '<div class="setting-trigger-zen-mode"><i class="fas fa-cog"></i></div>' );
         storage.db.script != "" && run();
         custom();
         storage.db.theme == "#ffffff" && $( ".setting-trigger-zen-mode" ).addClass( "setting-trigger-white-zen-mode" );
@@ -456,7 +547,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
 
     function shortcuts() {
         var styles = "";
-        [ "5", "6", "7", "f", "m", "s", "a", "n", "u" ].forEach( function( value ) {
+        [ "5", "6", "7", "f", "m", "a", "n", "u", "d", "e", "←", "→" ].forEach( function( value ) {
             styles += ".keycode-" + value + "{text-decoration: line-through!important;}";
             Mousetrap.unbind( value );
         });
@@ -464,16 +555,9 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
     }
 
     function subscribe() {
-        message.Subscribe( message.TYPE.OPEN_ZENMODE, function( event ) {
+        message.Subscribe( message.TYPE.OPEN_ZENMODE_OPTIONS, function( event ) {
             $( ".setting-trigger-zen-mode" )[0].click();
         });
-    }
-
-    function notify() {
-        localStorage["simptab-zenmode-notify"] != "false" &&
-            new Notify().Render({ content: i18n.GetLang( "tips_zen_mode" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
-                localStorage["simptab-zenmode-notify"] = false;
-            }});
     }
 
     return {
@@ -482,7 +566,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
             dayMode();
             devicesMode();
             ohtersMode();
-            notify();
+            guide.Tips( "zenmode" );
 
             setTimeout( function() {
                 topSitesMode();
@@ -501,6 +585,14 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "message", "comps" ]
 
         Exit: function() {
             exit();
+        },
+
+        ESC: function() {
+            new Notify().Render({ content: i18n.GetLang( "notify_zen_mode_esc" ), action: i18n.GetLang( "notify_zen_mode_esc_confirm" ), cancel: i18n.GetLang( "notify_zen_mode_esc_cancel" ), callback: function( type ) {
+                type == "action" && exit();
+                type == "action" && new Notify().Render( i18n.GetLang( "notify_zen_mode_exit" ) );
+                type == "action" && setTimeout( function() { location.reload(); }, 2000 );
+            }});
         }
     }
 

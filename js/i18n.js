@@ -13,6 +13,7 @@ define([ "jquery" ], function( $ ) {
         $($( ".controlbar" ).find( "a[url*=chrome]" )[2]).attr("data-balloon", i18n( "controlbar_apps" ));
         $($( ".controlbar" ).find( "a[url*=chrome]" )[3]).attr("data-balloon", i18n( "controlbar_newtab" ));
 
+        $( ".controlbar" ).find( "a[url=fullscreen]" ).attr("data-balloon", i18n( "controlbar_fullscreen" ));
         $( ".controlbar" ).find( "a[url=info]" ).attr("data-balloon", i18n( "controlbar_info" ));
         $( ".controlbar" ).find( "a[url=download]" ).attr("data-balloon", i18n( "controlbar_download" ));
         $( ".controlbar" ).find( "a[url=upload]" ).attr("data-balloon", i18n( "controlbar_upload" ));
@@ -59,11 +60,16 @@ define([ "jquery" ], function( $ ) {
         $($(".setting .contact").find("a")[3]).attr( "title", i18n( "setting_contact_gplus" ));
         $($(".setting .contact").find("a")[4]).attr( "title", i18n( "setting_contact_me" ));
 
-        $.each( $(".pinstate section"), function( idx, item ) {
-            $(item).attr( "data-balloon", i18n( "setting_pin_tooltip" ).replace( "#1", $(item).attr( "data-balloon" ) ) );
-        });
-
         $($( ".zenstate" ).find("label")).text( i18n( "setting_zen_state" ));
+
+        $($( ".otherstate" ).find( "label[for=options]"   )).text( i18n( "setting_other_state_options" ));
+        $($( ".otherstate" ).find( "label[for=manage]"    )).text( i18n( "controlbar_manage" ));
+        $($( ".otherstate" ).find( "label[for=shortcuts]" )).text( i18n( "shortcuts_title" ));
+        $($( ".otherstate" ).find( "label[for=help]"      )).text( i18n( "setting_other_state_help" ));
+
+        //$.each( $(".pinstate section"), function( idx, item ) {
+        //    $(item).attr( "data-balloon", i18n( "setting_pin_tooltip" ).replace( "#1", $(item).attr( "data-balloon" ) ) );
+        //});
 
     }
 

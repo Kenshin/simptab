@@ -41,6 +41,10 @@
         "message": "Apps"
     },
 
+    "controlbar_fullscreen": {
+        "message": "Full Screen"
+    },
+
     "controlbar_info": {
         "message": "Information"
     },
@@ -198,11 +202,11 @@
     },
 
     "setting_ts_state_simple": {
-        "message": "Show Top Sites at the bottom"
+        "message": "Simple mode"
     },
 
     "setting_ts_state_senior": {
-        "message": "Show Top Sites in the center"
+        "message": "Senior mode"
     },
 
     "setting_pin_tooltip": {
@@ -210,7 +214,15 @@
     },
 
     "setting_zen_state": {
-        "message": "Enable Zen mode"
+        "message": "Zen mode"
+    },
+
+    "setting_other_state_options": {
+        "message": "More options..."
+    },
+
+    "setting_other_state_help": {
+        "message": "Help & Getting started"
     },
 
     "setting_contact_weibo": {
@@ -313,6 +325,22 @@
         "message": "Open/Close Keymaps"
     },
 
+    "shortcuts_key_up": {
+        "message": "Full Screen"
+    },
+
+    "shortcuts_key_opt": {
+        "message": "Open/Close zen mode or photograph option"
+    },
+
+    "shortcuts_key_zen": {
+        "message": "Open/Close zen mode"
+    },
+
+    "shortcuts_key_history": {
+        "message": "Open/Close History"
+    },
+
     "shortcuts_key_bookmarks": {
         "message": "Open/Close Bookmarks"
     },
@@ -362,7 +390,7 @@
     },
 
     "options_custom_unsplash": {
-        "message": "Background origins"
+        "message": "Backgrounds"
     },
 
     "options_custom_unsplash_cbx": {
@@ -410,11 +438,11 @@
     },
 
     "options_carousel_value_5": {
-        "message": "Every five minutes"
+        "message": "Every 5 minutes"
     },
 
     "options_carousel_value_10": {
-        "message": "Every ten minutes"
+        "message": "Every 10 minutes"
     },
 
     "options_carousel_value_30": {
@@ -423,6 +451,10 @@
 
     "options_carousel_value_60": {
         "message": "Every 60 minutes"
+    },
+
+    "options_carousel_value_suffix": {
+        "message": "changed"
     },
 
     "options_carousel_notice": {
@@ -437,12 +469,44 @@
         "message": "When enabled, up to five history background records and only used by 'Change background randomly' model."
     },
 
+    "options_download_label": {
+        "message": "Enabel Custom download folder?"
+    },
+
+    "options_download_notice": {
+        "message": "Usage mklink / ln / Haze / Automatorz Automatic download background image."
+    },
+
+    "options_download_placeholder": {
+        "message": "Default Chrome download path"
+    },
+
     "options_custom_style": {
         "message": "Custom global Style"
     },
 
+    "options_custom_style_notice": {
+        "message": "Custom global Style"
+    },
+
+    "options_bookmarks": {
+        "message": "Bookmarks"
+    },
+
+    "options_bookmarks_label": {
+        "message": "Enable Bookmarks?"
+    },
+
+    "options_bookmarks_notice": {
+        "message": "Default disable Bookmarks, if enable, please enable Bookmarks permissions."
+    },
+
     "options_custom_tp": {
-        "message": "Custom Topsites"
+        "message": "Topsites"
+    },
+
+    "options_custom_tp_carousel_label": {
+        "message": "Pleas select topsites mode"
     },
 
     "options_custom_tp_cbx": {
@@ -455,6 +519,50 @@
 
     "options_custom_search": {
         "message": "Custom Search"
+    },
+
+    "options_custom_search_notice": {
+        "message": "Usage shortcuts q s Open"
+    },
+
+    "options_custom_script": {
+        "message": "Custom script"
+    },
+
+    "options_custom_script_notice": {
+        "message": "This is script is global, so can usage zen-mode."
+    },
+
+    "options_custom_title": {
+        "message": "Custom New Tab title"
+    },
+
+    "options_custom_title_notice": {
+        "message": "Support text and (function(){xxxx})()"
+    },
+
+    "options_custom_hour": {
+        "message": "Clock"
+    },
+
+    "options_custom_hour_state_notice": {
+        "message": "Show clock at the right-bottom corner?"
+    },
+
+    "options_custom_hour_notice": {
+        "message": "Default is 24 hours, changed to 12 hours?"
+    },
+
+    "options_footer_notice": {
+        "message": "Auto saved, please refresh new tab."
+    },
+
+    "options_footer_collapse": {
+        "message": "Collapsible"
+    },
+
+    "options_footer_collapse_no": {
+        "message": "Collapsible"
     },
 
     "options_footer_clear": {
@@ -513,10 +621,6 @@
         "message": "Custom Script"
     },
 
-    "zen_mode_setting_script_howto": {
-        "message": "How to use"
-    },
-
     "zen_mode_setting_script_manage": {
         "message": "Script Loader"
     },
@@ -535,6 +639,30 @@
 
     "zen_mode_setting_close": {
         "message": "Close"
+    },
+
+    "zen_mode_setting_snippets_toolbar_desc": {
+        "message": "No description"
+    },
+
+    "zen_mode_setting_snippets_toolbar_home": {
+        "message": "Homepage"
+    },
+
+    "zen_mode_setting_snippets_toolbar_download": {
+        "message": "Install"
+    },
+
+    "zen_mode_setting_snippets_footer_version": {
+        "message": "Current version:"
+    },
+
+    "zen_mode_setting_snippets_footer_howto": {
+        "message": "How to use"
+    },
+
+    "zen_mode_setting_snippets_footer_update": {
+        "message": "Update"
     },
 
     "noise_mode_cafe001": {
@@ -565,10 +693,6 @@
         "message": "Current version: #1. #4To learn more, please visit #2CHANGELOG#3."
     },
 
-    "tips_zen_mode": {
-        "message": "Welcome to zen mode. Use shortcut c or mouse to move the lower right corner to pop up the options."
-    },
-
     "tips_explore": {
         "message": "Scroll down to load more, background loading depending on your network speed."
     },
@@ -578,11 +702,27 @@
     },
 
     "tips_favorite": {
-        "message": "When favorite empty and only usage favorite origin will be errors."
+        "message": "Welcome usage Favorite, shortcuts <kbd>a</kbd> startup it."
     },
 
     "tips_noise": {
-        "message": "Welcome usage White noise, shortcuts w startup it."
+        "message": "Welcome usage White noise, shortcuts <kbd>w</kbd> startup it."
+    },
+
+    "tips_bookmarks": {
+        "message": "Welcome usage Bookmarks, shortcuts <kbd>b</kbd> startup it."
+    },
+
+    "tips_setting": {
+        "message": "Welcome usage Setting, shortcuts <kbd>s</kbd> startup it."
+    },
+
+    "tips_zenmode": {
+        "message": "Welcome to zen mode, shortcuts <kbd>`</kbd> startup it."
+    },
+
+    "tips_history": {
+        "message": "Welcome to zen mode, shortcuts <kbd>h</kbd> startup it."
     },
 
     "tips_confirm": {
@@ -619,6 +759,10 @@
 
     "notify_pin_del": {
         "message": "Background pinning is cancelled."
+    },
+
+    "notify_pin_not_changed": {
+        "message": "Current background is Pined."
     },
 
     "notify_refresh": {
@@ -661,6 +805,10 @@
         "message": "Not any bookmarks."
     },
 
+    "notify_bm_permissions": {
+        "message": "Bookmarks need permissions, is it permissions?"
+    },
+
     "notify_double_open": {
         "message": "Please close dialog."
     },
@@ -673,12 +821,28 @@
         "message": "Successful, please refresh."
     },
 
+    "notify_getting_started": {
+        "message": "Getting started"
+    },
+
     "notify_options_agree": {
         "message": "Agree "
     },
 
     "notify_zen_mode": {
-        "message": "Please fresh current new tab."
+        "message": "2's, auto re-fresh current new tab."
+    },
+
+    "notify_zen_mode_esc": {
+        "message": "is Exist zen mode?"
+    },
+
+    "notify_zen_mode_esc_confirm": {
+        "message": "YES"
+    },
+
+    "notify_zen_mode_esc_cancel": {
+        "message": "NO"
     },
 
     "notify_zen_mode_theme_random": {
@@ -706,7 +870,7 @@
     },
 
     "notify_zen_mode_exit": {
-        "message": "Exit zen mode success, please refresh new tab."
+        "message": "Exit zen mode success, 2's after auto refresh."
     },
 
     "notify_mobile_send": {
@@ -745,6 +909,14 @@
         "message": "Update background image only once every hour, don't call it many times."
     },
 
+    "notify_eartch_to_time": {
+        "message": "New background loading success, will refresh automatically after 2 seconds."
+    },
+
+    "notify_history_no_usage": {
+        "message": "Current not open history feature, please open it from options."
+    },
+
     "notify_history_min": {
         "message": "This is the first history background."
     },
@@ -755,6 +927,22 @@
 
     "notify_favorite_empty": {
         "message": "Favorite origin is empty, re-set default background."
+    },
+
+    "notify_snippets": {
+        "message": "Loading snippets manger..."
+    },
+
+    "notify_snippets_update": {
+        "message": "Update snippets manager..."
+    },
+
+    "notify_snippets_update_success": {
+        "message": "Update success, please re-open."
+    },
+
+    "notify_snippets_update_none": {
+        "message": "No update."
     },
 
     "version_detail": {
@@ -803,6 +991,10 @@
 
     "version_detail_9": {
         "message": "Add: Earth every moment, White noise, Background explore;"
+    },
+
+    "version_detail_10": {
+        "message": "Add: Zen mode scripts manage, Custom titile,Custom download path;"
     },
 
     "welcome_start_title": {
@@ -886,7 +1078,7 @@
     },
 
     "welcome_154_desc_1": {
-        "message": "Earth background image via <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%9C%B0%E7%90%83%E6%AF%8F%E5%88%BB'>向日葵-8號</a>"
+        "message": "Earth background image via <a target='_blank' href='http://ksria.com/simptab/docs/#/背景源?id=地球每刻'>向日葵-8號</a>"
     },
 
     "welcome_154_title_2": {
@@ -905,6 +1097,14 @@
         "message": "Record max five background image history and background manage add explore tab"
     },
 
+    "welcome_155_title_1": {
+        "message": "Zen mode | Scripts manage"
+    },
+
+    "welcome_155_desc_1": {
+        "message": "Scripts Manage, custom New Tab title, custom download path"
+    },
+
     "permissions": {
         "message": "Additional permissions are required for the update, <a href='#' class='permissions'>allow</a> them to update."
     },
@@ -919,5 +1119,89 @@
 
     "permissions_failed": {
         "message": "Failed to gain permissions. Some features may not be available. You are recommended to re-install this extension."
+    },
+
+    "guide_all_start": {
+        "message": ""
+    },
+
+    "guide_all_intro": {
+        "message": ""
+    },
+
+    "guide_all_feature": {
+        "message": ""
+    },
+
+    "guide_all_controlbar": {
+        "message": ""
+    },
+
+    "guide_all_clock": {
+        "message": ""
+    },
+
+    "guide_all_setting": {
+        "message": ""
+    },
+
+    "guide_all_topsite": {
+        "message": ""
+    },
+
+    "guide_all_noise": {
+        "message": ""
+    },
+
+    "guide_all_bookmarks": {
+        "message": ""
+    },
+
+    "guide_all_quickbar": {
+        "message": ""
+    },
+
+    "guide_all_options": {
+        "message": ""
+    },
+
+    "guide_all_zenmode": {
+        "message": ""
+    },
+
+    "guide_all_end": {
+        "message": ""
+    },
+
+    "guide_noise": {
+        "message": ""
+    },
+
+    "guide_bookmarks": {
+        "message": ""
+    },
+
+    "guide_quickbar": {
+        "message": ""
+    },
+
+    "guide_setting": {
+        "message": ""
+    },
+
+    "guide_favorite": {
+        "message": ""
+    },
+
+    "guide_zenmode": {
+        "message": ""
+    },
+
+    "guide_earth": {
+        "message": ""
+    },
+
+    "guide_history": {
+        "message": ""
     }
 }

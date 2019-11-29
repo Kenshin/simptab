@@ -13,6 +13,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             { short: "2", long: "history"  },
             { short: "3", long: "apps"     },
             { short: "4", long: "newtab"   },
+            { short: "",  long: "up"       },
             { short: "5", long: "info"     },
             { short: "6", long: "download" },
             { short: "7", long: "upload", hiden: true },
@@ -39,9 +40,13 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         Keys.prototype.GLOBALS_KEY_MAP = [
             { short: "esc", long: "esc"  },
             { short: "?",   long: "help" },
+            { short: "up",  long: "up"   },
+            { short: "`",   long: "zen"  },
+            { short: "s",   long: "opt"  },
         ];
 
         Keys.prototype.OTHERS_KEY_MAP = [
+            { short: "h", long: "history"},
             { short: "b", long: "bookmarks"},
             { short: "q", long: "quickbar" },
             { short: "z", long: "topsites" },
@@ -109,7 +114,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
             var new_key = formatShortcut( shortcut.short );
             Mousetrap.bind( new_key , function() {
                 console.log("click = " + shortcut.short.replace( / /g, "" ) );
-                controlbar.AutoClick( idx );
+                if ( shortcut.short == "s" && localStorage["simptab-zenmode"] == "true" ) message.Publish( message.TYPE.OPEN_ZENMODE_OPTIONS );
+                else controlbar.AutoClick( idx );
             });
         });
     }
@@ -119,6 +125,9 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         keys.OTHERS_KEY_MAP.forEach( function( item ) { binds.push( item.short ) });
         Mousetrap.bind( binds, function( event, combo ) {
             switch ( combo ) {
+                case "h":
+                    message.Publish( message.TYPE.OPEN_HISTORY );
+                    break;
                 case "b":
                     message.Publish( message.TYPE.OPEN_BOOKMARKS );
                     break;
@@ -126,7 +135,7 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                     message.Publish( message.TYPE.OPEN_QUICKBAR );
                     break;
                 case "c":
-                    message.Publish( message.TYPE.OPEN_ZENMODE  );
+                    message.Publish( message.TYPE.OPEN_ZENMODE_OPTIONS  );
                     break;
                 case "w":
                     message.Publish( message.TYPE.OPEN_NOISE    );
@@ -201,6 +210,8 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
     function createKeymapTmpl( title, map, prefix ) {
         var html = "";
         $.each( map, function( idx, shortcut ) {
+            if ( shortcut.short == "" ) return true;
+            shortcut.short == "up"    && ( shortcut.short = "↑" );
             shortcut.short == "left"  && ( shortcut.short = "←" );
             shortcut.short == "right" && ( shortcut.short = "→" );
             var key  = shortcut.short,
@@ -236,6 +247,12 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 open();
             }
         });
+        Mousetrap.bind( "up", function() {
+            $( ".controlbar li a[url=fullscreen]" ).find( "span" ).click();
+        });
+        Mousetrap.bind( "`", function() {
+            message.Publish( localStorage["simptab-zenmode"] == "true" ? message.TYPE.CLOSE_ZENMODE : message.TYPE.OPEN_ZENMODE );
+        });
     }
 
     function listenESC() {
@@ -252,18 +269,22 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
                 case "shortcuts":
                     close();
                     break;
+                case "noise-mode":
                 case "bm-overlay":
-                    if ( $( ".bm" ).hasClass( "open" ) ) {
+                    if ( $( ".history" ).hasClass( "open" ) ) {
+                        $( ".history" ).css({ "transform": "translateY(-300px)", "opacity": 0 }).removeClass( "open" );
+                    } else if ( $( ".bm" ).hasClass( "open" ) ) {
                         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
+                    } else if ( $( ".setting" ).hasClass( "open" )) {
+                        $( ".controlink .settingicon" ).trigger( "click" );
                     } else {
-                        $( ".setting" ).hasClass( "open" ) &&
-                            $( ".controlink .settingicon" ).trigger( "click" );
+                        localStorage["simptab-zenmode"] == "true" && message.Publish( message.TYPE.CLOSE_ZENMODE );
                     }
                     break;
                 case "setting-zen-mode":
                     $( ".setting-zen-mode" ).find( ".footer .close" )[0].click();
                     break;
-                case "noise-mode":
+                case "noise-mode active":
                     $( ".noise-mode" ).find( ".close" )[0].click();
                     break;
             }

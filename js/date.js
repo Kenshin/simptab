@@ -1,5 +1,5 @@
 
-define([ "jquery" ], function( $ ) {
+define([ "jquery", "options" ], function( $, options ) {
 
     "use strict";
 
@@ -14,16 +14,21 @@ define([ "jquery" ], function( $ ) {
         Toggle: function( type ) {
             if ( type == "show" ) {
                 $( "#time" ).fadeIn( 500 );
-                var date = new Date();
+                var date    = new Date(),
+                    getTime = function() {
+                        var time  = new Date().toLocaleString('en-US',{ hour12: options.Storage.db.hour12 }).replace( /[\d/,]+ /i, '' ).replace( /:\d+( AM| PM)?$/i, '' ),
+                            sufix = '';
+                        options.Storage.db.hour12 && ( sufix = new Date().getHours() > 11 ? ' PM' : ' AM' );
+                        return time + sufix;
+                    };
 
                 // set date
                 $( "#time" ).attr("data-balloon", date.getFullYear() + "-" + ( date.getUTCMonth() + 1 ) + "-" + date.getDate() );
 
                 // set time
-                $( "#time" ).text( date.getHours() + ":" + format(date.getMinutes()) );
+                $( "#time" ).text( getTime() );
                 setInterval(function() {
-                    date = new Date();
-                    $( "#time" ).text( date.getHours() + ":" + format(date.getMinutes()) );
+                    $( "#time" ).text( getTime() );
                 }, 1000 * 30 );
             }
             else {

@@ -1,5 +1,5 @@
 
-define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
+define([ "jquery", "waves", "i18n", "zen", "permissions", "options", "mousetrap", "guide" ], function( $, Waves, i18n, zen, permissions, options, Mousetrap, guide ) {
 
     "use strict";
 
@@ -90,12 +90,12 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
                     vals   : [ "normal", "simple", "senior" ],
                     default: 1
                 },
-                "pinstate"  : {
-                    value  : getLS( "simptab-pin" ),
-                    type   : "simptab-pin",
-                    vals   : [ "30", "60", "120", "240", "480" ],
-                    default: 0
-                }
+                //"pinstate"  : {
+                //    value  : getLS( "simptab-pin" ),
+                //    type   : "simptab-pin",
+                //    vals   : [ "30", "60", "120", "240", "480" ],
+                //    default: 0
+                //}
             });
 
         }
@@ -161,9 +161,7 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
     }
 
     function bookmarksPermissions() {
-        chrome.permissions.contains({
-            permissions: [ 'bookmarks' ],
-        }, function( result ) {
+        permissions.Verify( [ 'bookmarks' ], function( result ) {
             var $target = $( ".bmstate .lineradio" ), span;
             if ( result ) {
                 span = '<span class="checked"></span>';
@@ -181,13 +179,13 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
 
     function setbookmarksPermissions( type ) {
         if ( type == "true" ) {
-            chrome.permissions.request({ permissions: [ 'bookmarks' ]}, function( result ) {
-                new Notify().Render( result ? i18n.GetLang( "permissions_success" ) : i18n.GetLang( "permissions_failed" ) );
+            permissions.Request([ 'bookmarks' ], function( result ) {
+                //TO-DO
             });
         } else {
-            chrome.permissions.remove({ permissions: [ 'bookmarks' ]}, function( result ) {
-                new Notify().Render( result ? i18n.GetLang( "permissions_disable" ) : i18n.GetLang( "permissions_failed" ) );
-          });
+            permissions.Remove([ 'bookmarks' ], function( result ) {
+                //TO-DO
+            });
         }
     }
 
@@ -204,6 +202,83 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
         }
         $target.find( "input" ).val( zen );
         $target.prepend( span );
+    }
+
+    function autoState() {
+        var message = options.Storage.db.carousel == -1 ? i18n.GetLang( "options_carousel_value_1" ) : i18n.GetLang( "options_carousel_value_" + options.Storage.db.carousel ),
+            suffix  = options.Storage.db.carousel == -1 ? "" : i18n.GetLang( "options_carousel_value_suffix" ),
+            html    = '<div class="downlist">\
+                        <span class="list-field" value="-1">' + i18n.GetLang( "options_carousel_value_1" )  + '</span>\
+                        <span class="list-field" value="5">'  + i18n.GetLang( "options_carousel_value_5" )  + '</span>\
+                        <span class="list-field" value="10">' + i18n.GetLang( "options_carousel_value_10" ) + '</span>\
+                        <span class="list-field" value="30">' + i18n.GetLang( "options_carousel_value_30" ) + '</span>\
+                        <span class="list-field" value="60">' + i18n.GetLang( "options_carousel_value_60" ) + '</span>\
+                      </div>';
+        $( ".autostate" ).append( html ).find( "label" ).text( i18n.GetLang( "options_custom_unsplash" ) + message + suffix );
+        $( ".autostate .downlist .list-field[value=" + options.Storage.db.carousel + "]" ).addClass( "lrselected" );
+        $( ".autostate .dropdown" ).on( "click", function() {
+            $( ".autostate .downlist" ).addClass( "show" );
+        });
+        $( ".autostate .downlist .list-field" ).on( "click", function( event ) {
+            const $target = $( event.currentTarget ),
+                  value   = $target.attr( "value" ),
+                  text    = $target.text();
+            $( ".autostate .downlist .list-field" ).removeClass( "lrselected" );
+            $target.addClass( "lrselected" );
+            options.Storage.db.carousel = value;
+            options.Storage.Set();
+            $( ".autostate .downlist" ).removeClass( "show" );
+            var suffix = value == -1 ? "" : i18n.GetLang( "options_carousel_value_suffix" );
+            $( ".autostate .dropdown label" ).text( i18n.GetLang( "options_custom_unsplash" ) + text + suffix );
+        });
+    }
+
+    function pinState() {
+        localStorage["simptab-pin"] == undefined && localStorage.setItem( "simptab-pin", 30 );
+        var ls      = localStorage["simptab-pin"],
+            message = i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", ls / 60 ),
+            html    = '<div class="downlist">\
+                        <span class="list-field" value="30">'  + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "0.5" )  + '</span>\
+                        <span class="list-field" value="60">'  + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "1" )  + '</span>\
+                        <span class="list-field" value="120">' + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "2" ) + '</span>\
+                        <span class="list-field" value="240">' + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "4" ) + '</span>\
+                        <span class="list-field" value="480">' + i18n.GetLang( "setting_pin_tooltip" ).replace( "#1", "8" ) + '</span>\
+                      </div>';
+        $( ".pinstate" ).append( html ).find( "label" ).text( i18n.GetLang( "options_custom_unsplash" ) + message );
+        $( ".pinstate .downlist .list-field[value=" + ls + "]" ).addClass( "lrselected" );
+        $( ".pinstate .dropdown" ).on( "click", function() {
+            $( ".pinstate .downlist" ).addClass( "show" );
+        });
+        $( ".pinstate .downlist .list-field" ).on( "click", function( event ) {
+            const $target = $( event.currentTarget ),
+                  value   = $target.attr( "value" ),
+                  text    = $target.text();
+            $( ".pinstate .downlist .list-field" ).removeClass( "lrselected" );
+            $target.addClass( "lrselected" );
+            localStorage["simptab-pin"] = value;
+            $( ".pinstate .downlist" ).removeClass( "show" );
+            $( ".pinstate .dropdown label" ).text( i18n.GetLang( "options_custom_unsplash" ) + text );
+        });
+    }
+
+    function otherState() {
+        $( ".otherstate label" ).on( "click", function( event ) {
+            const $target = $( event.currentTarget ),
+                  id      = $target.attr( "for" );
+            if ( id == "shortcuts" ) {
+                Mousetrap.trigger( "?" );
+            } else if ( id == "help" ) {
+                guide.Render( "all", true );
+            } else $( ".controlbar" ).find( "a[url=" + id + "]" ).click();
+        });
+    }
+
+    function hiddenState() {
+        if ( localStorage["simptab-background-mode"] != "earth" ) return;
+        //$( ".originstate, .autostate" ).append( '<div class="hidden"></div>' ).css({ position: "relative" });
+        $( $( ".changestate" ).children()[0] ).append( '<div class="hidden" style="left:0;right:0;top:0"></div>' ).css({ position: "relative" });
+        $( $( ".changestate" ).children()[2] ).append( '<div class="hidden" style="left:0;right:0;top:0"></div>' ).css({ position: "relative" });
+        $( $( ".autostate"  ) ).append( '<div class="hidden"></div>' ).css({ position: "relative" });
     }
 
     return {
@@ -231,6 +306,17 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
 
             // zen mode checked
             zendmodeState();
+
+            // auto changed backgrounds
+            autoState();
+
+            // pin state
+            pinState();
+
+            // ohter state
+            otherState();
+
+            hiddenState();
         },
 
         Listen: function ( callback ) {
@@ -255,12 +341,6 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
                     value   = event.target.value == "true" ? "false" : "true";
                 updateCkState( idx + ":" + value );
                 setting.UpdateOriginsMode( idx, value );
-                if ( idx == "10" && value == "true" ) {
-                    localStorage["simptab-favorite-notify"] != "false" &&
-                    new Notify().Render({ content: i18n.GetLang( "tips_favorite" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
-                        localStorage["simptab-favorite-notify"] = false;
-                    }});
-                }
             });
 
             // listen originstate checkbox button event
@@ -288,12 +368,13 @@ define([ "jquery", "waves", "i18n", "zen" ], function( $, Waves, i18n, zen ) {
                     $span.removeAttr( "class" ).addClass( "checked" );
                     $target.addClass( "lrselected" );
                     zen.Init();
+                    new Notify().Render( i18n.GetLang( "notify_zen_mode" ) );
+                    setTimeout( function() { location.reload(); }, 2000 );
                 } else {
                     $span.removeAttr( "class" ).addClass( "unchecked" );
                     $target.removeClass( "lrselected" );
                     zen.Exit();
                 }
-                new Notify().Render( i18n.GetLang( "notify_zen_mode" ) );
                 localStorage["simptab-zenmode"] = value;
                 event.target.value = value;
             });

@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function( $, Mousetrap, _, Notify, i18n, comps ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "permissions", "guide" ], function( $, Mousetrap, _, Notify, i18n, comps, permissions, guide ) {
 
     "use strict";
 
@@ -16,10 +16,13 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         custom: "",
                     },
                     css: "",
+                    title: "",
                     search: [
                         '{"key":"g",  "color": "#4285F4", "title":"谷歌搜索",    "query": "https://www.google.com/search?q={query}"}',
                         '{"key":"b",  "color": "#0C8484", "title":"必应搜索",    "query": "https://bing.com/search?q={query}"}',
+                        '{"key":"dj", "color": "#AC525C", "title":"多吉翻译",    "query": "https://www.dogedoge.com/results?q={query}"}',
                         '{"key":"d",  "color": "#DE5833", "title":"DuckDuckGo", "query": "https://duckduckgo.com/?q={query}"}',
+                        '{"key":"mg", "color": "#26262A", "title":"Magi",       "query": "https://magi.com/search?q={query}"}',
                         '{"key":"bd", "color": "#2319DC", "title":"百度搜索",    "query": "https://www.baidu.com/s?wd={query}"}',
                         '{"key":"wx", "color": "#1AAD19", "title":"微信搜索",    "query": "https://weixin.sogou.com/weixin?type=2&s_from=input&query={query}"}',
                         '{"key":"z",  "color": "#0084FF", "title":"知乎搜索",    "query": "http://zhihu.sogou.com/zhihu?query={query}"}',
@@ -29,7 +32,6 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         '{"key":"tb", "color": "#FF692F", "title":"淘宝",       "query": "https://s.taobao.com/search?q={query}"}',
                         '{"key":"v2", "color": "#333344", "title":"V2EX",      "query": "https://www.sov2ex.com/?q={query}"}',
                         '{"key":"db", "color": "#55711C", "title":"豆瓣搜索",    "query": "https://www.douban.com/search?source=suggest&q={query}"}',
-                        '{"key":"fy", "color": "#4285F4", "title":"谷歌翻译",    "query": "https://translate.google.cn/#auto/en/{query}"}',
                     ],
                     unsplash: [ "collection/3593484", "collection/3593482", "collection/2463312", "collection/614656", "collection/1111575", "collection/1717137", "collection/445266", "collection/610876", "collection/1457745", "collection/782142", "collection/1136512", "collection/869152", "collection/782123", "collection/595970", "collection/641379", "collection/488182", "collection/142376" ],
                     unsplash_screen: "",
@@ -39,7 +41,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     },
                     mobile_host: "",
                     carousel: "-1",
+                    hour12: false,
                     history: false,
+                    script: "",
+                    download: "",
                 };
 
             function Storage() {
@@ -70,6 +75,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     target.history     = false;
                     target.version     = "1.5.4";
                 }
+                if ( target.version == "1.5.4" ) {
+                    target.title       = "";
+                    target.hour12      = false;
+                    target.script      = "";
+                    target.download    = ""
+                    target.search.push( '{"key":"dj", "color": "#AC525C", "title":"多吉翻译",    "query": "https://www.dogedoge.com/results?q={query}"}' );
+                    target.search.push( '{"key":"mg", "color": "#26262A", "title":"Magi",       "query": "https://magi.com/search?q={query}"}' );
+                    target.version     = "1.5.5";
+                }
                 return target;
             }
 
@@ -78,7 +92,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
         })();
 
     /*********************************************
-     * Custom unsplash
+     * Custom Unsplash
      *********************************************/
 
     function unsplashView() {
@@ -103,7 +117,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                         <div class="division"></div>\
                         <div class="switche" style="margin-bottom:0;">\
                             <div class="label">' + i18n.GetLang( "options_carousel_label" ) + '</div>\
-                            ' + comps.Dropdown( ".options", "carousel-dpd", items, !storage.db.carousel ? "-1" : storage.db.carousel ) + '\
+                            ' + comps.Dropdown( ".options .custom-unsplash", "carousel-dpd", items, !storage.db.carousel ? "-1" : storage.db.carousel ) + '\
                         </div>\
                         <div class="notice">' + i18n.GetLang( "options_carousel_notice" ) + '</div>\
                         <div class="division"></div>\
@@ -112,6 +126,15 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                             ' + comps.Switches( "history-cbx" ) + '\
                         </div>\
                         <div class="notice">' + i18n.GetLang( "options_history_notice" ) + '</div>\
+                        <div class="division"></div>\
+                        <div class="switche">\
+                            <div class="label" version-item="custom-download" version="1.5.5">' + i18n.GetLang( "options_download_label" ) + '</div>\
+                            ' + comps.Switches( "custom-download-cbx" ) + '\
+                        </div>\
+                        <div class="notice">' + i18n.GetLang( "options_download_notice" ) + '</div>\
+                        <div class="custom-download-fields hide">\
+                            <input class="md-input custom-download" type="text" placeholder="' + i18n.GetLang( "options_download_placeholder" ) + '"/>\
+                        </div>\
                         <div class="division"></div>\
                     </div>\
                    ';
@@ -143,7 +166,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.db.mobile_host = event.target.value;
             storage.Set();
         });
-        $( ".options .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
+        $( ".options .custom-unsplash .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
             storage.db.carousel = event.data.value;
             storage.Set();
             new Notify().Render( i18n.GetLang( "notify_carousel" ) );
@@ -155,14 +178,44 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.db.history = value;
             storage.Set();
         });
+        permissions.Verify( [ "downloads" ], function( result ) {
+            if ( !result ) return;
+            $( ".options .custom-unsplash .custom-download-cbx" ).find( "input" ).prop( "checked", true );
+            $( ".options" ).find( ".custom-unsplash .custom-download-fields" ).removeClass( "hide" );
+            $( ".options" ).find( ".custom-unsplash .custom-download" ).val( storage.db.download );
+        });
+        $( ".options" ).on( "change", ".custom-unsplash .custom-download-cbx input", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            if ( value ) {
+                permissions.Request( [ "downloads" ], function( result ) {
+                    if ( !result ) return;
+                    $cb.val( value );
+                    $( ".options" ).find( ".custom-unsplash .custom-download-fields" ).removeClass( "hide" );
+                    $( ".options" ).find( ".custom-unsplash .custom-download" ).val( storage.db.download || "" );
+                });
+            } else {
+                permissions.Remove( [ "downloads" ], function( result ) {
+                    if ( !result ) return;
+                    $cb.val( value );
+                    $( ".options" ).find( ".custom-unsplash .custom-download-fields" ).addClass( "hide" );
+                    $( ".options" ).find( ".custom-unsplash .custom-download" ).val( "" );
+                });
+            }
+        });
+        $( ".options" ).on( "keyup", ".custom-unsplash .custom-download", function( event ) {
+            storage.db.download = event.target.value;
+            storage.db.download != "" && storage.Set();
+        });
     }
 
     /*********************************************
-     * Custom style
+     * Custom Style
      *********************************************/
 
     function customStyleView() {
-        var tmpl = '<textarea class="md-textarea"></textarea>';
+        var tmpl = '<textarea class="md-textarea"></textarea>\
+                    <div class="notice">' + i18n.GetLang( "options_custom_style_notice" ) + '</div>';
         return tmpl;
     }
 
@@ -181,11 +234,17 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
-     * Custom topsites
+     * Custom Topsites
      *********************************************/
 
     function customTpView() {
-        var tmpl = '<div class="switche">\
+        var tp    = localStorage["simptab-topsites"] || "simple";
+        var items = [{name: i18n.GetLang( "setting_ts_state_normal" ), value: "normal" },{name: i18n.GetLang( "setting_ts_state_simple" ), value: "simple" },{name:i18n.GetLang( "setting_ts_state_senior" ) , value: "senior" }];
+        var tmpl = '<div class="switche" style="margin-bottom:0;">\
+                        <div class="label">' + i18n.GetLang( "options_custom_tp_carousel_label" ) + '</div>\
+                        ' + comps.Dropdown( ".options .custom-tp", "carousel-dpd", items, tp ) + '\
+                    </div>\
+                    <div class="switche">\
                         <div class="label">' + i18n.GetLang( "options_custom_tp_cbx" ) + '</div>\
                         ' + comps.Switches( "custom-tp-cbx" ) + '\
                    </div>\
@@ -216,6 +275,10 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
             storage.db.topsites.custom = event.target.value;
             storage.Set();
         });
+        $( ".options .custom-tp .carousel-dpd" )[0].addEventListener( "dropdown", function( event ) {
+            localStorage["simptab-topsites"] = event.data.value;
+            $( ".tsstate" ).find("input[value=" + event.data.value + "]").click();
+        });
     }
 
     /*********************************************
@@ -223,7 +286,8 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
      *********************************************/
 
     function customSearchView() {
-        var tmpl = '<textarea class="md-textarea"></textarea>';
+        var tmpl = '<textarea class="md-textarea"></textarea>\
+                    <div class="notice">' + i18n.GetLang( "options_custom_search_notice" ) + '</div>';
         return tmpl;
     }
 
@@ -236,14 +300,111 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
     }
 
     /*********************************************
+     * Custom Title
+     *********************************************/
+
+    function customTitleView() {
+        var tmpl = '<input class="md-input" type="text" placeholder=""/>\
+                    <div class="notice">' + i18n.GetLang( "options_custom_title_notice" ) + '</div>';
+        return tmpl;
+    }
+
+    function customTitleModel() {
+        $( ".options .custom-title" ).find( "input" ).val( storage.db.title );
+        $( ".options" ).on( "keyup", ".custom-title input", function( event ) {
+            storage.db.title = event.target.value;
+            storage.Set();
+        });
+    }
+
+    /*********************************************
+     * Custom Bookmarks
+     *********************************************/
+
+    function customBookmarksView() {
+        var tmpl = '<div class="switche">\
+                        <div class="label">' + i18n.GetLang( "options_bookmarks_label" ) + '</div>\
+                        ' + comps.Switches( "bookmarks-cbx" ) + '\
+                    </div>\
+                    <div class="notice">' + i18n.GetLang( "options_bookmarks_notice" ) + '</div>\
+                    ';
+        return tmpl;
+    }
+
+    function customBookmarksModel() {
+        $( ".options .bookmarks" ).find( "input[id=bookmarks-cbx]" ).prop( "checked", $(".bmstate").find("span.checked").length > 0 ? true : false );
+        $( ".options" ).on( "change", ".bookmarks #bookmarks-cbx", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            $( ".bmstate" ).find("input").click();
+        });
+    }
+
+    /*********************************************
+     * Custom Hour
+     *********************************************/
+
+    function customHourView() {
+        var tmpl = '<div class="switche">\
+                        <div class="label">' + i18n.GetLang( "options_custom_hour_state_notice" ) + '</div>\
+                        ' + comps.Switches( "custom-hour-state-cbx" ) + '\
+                    </div>\
+                    <div class="switche">\
+                        <div class="label">' + i18n.GetLang( "options_custom_hour_notice" ) + '</div>\
+                        ' + comps.Switches( "custom-hour-cbx" ) + '\
+                   </div>\
+                   ';
+        return tmpl;
+    }
+
+    function customHourModel() {
+        $( ".options .custom-hour" ).find( "input[id=custom-hour-cbx]" ).prop( "checked", storage.db.hour12 );
+        $( ".options" ).on( "change", ".custom-hour #custom-hour-cbx", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            storage.db.hour12 = value;
+            storage.Set();
+        });
+        $( ".options .custom-hour" ).find( "input[id=custom-hour-state-cbx]" ).prop( "checked", localStorage["simptab-background-clock"] == "hide" ? false : true );
+        $( ".options" ).on( "change", ".custom-hour #custom-hour-state-cbx", function( event ) {
+            var $cb   = $(this),
+                value = $cb.prop( "checked" );
+            $cb.val( value );
+            $($( ".clockstate" ).children()[ value ? 0 : 1]).find("input").click();
+        });
+    }
+
+    /*********************************************
+     * Custom Script
+     *********************************************/
+
+    function customScriptView() {
+        var tmpl = '<textarea class="md-textarea"></textarea>\
+                    <div class="notice">' + i18n.GetLang( "options_custom_script_notice" ) + '</div>';
+        return tmpl;
+    }
+
+    function customScriptModel() {
+        $( ".options .custom-script" ).find( "textarea" ).text( storage.db.script );
+        $( ".options" ).on( "keyup", ".custom-script textarea", function( event ) {
+            storage.db.script = event.target.value;
+            storage.Set();
+        });
+    }
+
+    /*********************************************
      * Footer
      *********************************************/
 
     function footerView() {
         var tmpl = '<div class="footer">\
-                        <div class="waves-effect button import">' + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
-                        <div class="waves-effect button export">' + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
-                        <div class="waves-effect button clear">'  + i18n.GetLang( "options_footer_clear" )    + '</div>\
+                        <span>' + i18n.GetLang( "options_footer_notice" ) + '</span>\
+                        <div class="waves-effect button collapse">' + i18n.GetLang( "options_footer_collapse" ) + '</div>\
+                        <div class="waves-effect button import">'   + i18n.GetLang( "zen_mode_setting_import" ) + '</div>\
+                        <div class="waves-effect button export">'   + i18n.GetLang( "zen_mode_setting_export" ) + '</div>\
+                        <div class="waves-effect button clear">'    + i18n.GetLang( "options_footer_clear"    ) + '</div>\
                    </div>\
                    ';
         return tmpl;
@@ -284,6 +445,18 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 new Notify().Render( i18n.GetLang( "notify_options_clear_success" ));
             });
         });
+        $( ".options" ).on( "click", ".footer .collapse", function( event ) {
+            if ( !$( event.currentTarget ).hasClass( "open" ) ) {
+                $( ".options .group:not(.active)" ).addClass( "active" );
+                $( ".options .title i:not(.active)" ).addClass( "active" );
+                $( event.currentTarget ).text( i18n.GetLang( "options_footer_collapse_no" ) );
+            } else {
+                $( ".options .group.active" ).removeClass( "active" );
+                $( event.currentTarget ).text( i18n.GetLang( "options_footer_collapse" ) );
+                $( ".options .title i" ).removeClass( "active" );
+            }
+            $( event.currentTarget ).toggleClass( "open" );
+        });
     }
 
     /*********************************************
@@ -292,16 +465,24 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
 
     function render() {
         var tmpl = '\
-                    <div class="close"><span class="close"></span></div>\
+                    <div class="close"><span class="waves-effect close"><i class="fas fa-times-circle"></i></span></div>\
                     <div class="options">\
                         <div class="head">' + i18n.GetLang( "options_head" ) + '</div>\
                         <div class="content">\
                             <div class="title">' + i18n.GetLang( "options_custom_unsplash" ) + '</div>\
                             <div class="group custom-unsplash">' + unsplashView() + '</div>\
+                            <div class="title" version-item="custom-title" version="1.5.5">' + i18n.GetLang( "options_custom_title" ) + '</div>\
+                            <div class="group custom-title">' + customTitleView() + '</div>\
+                            <div class="title" version-item="hour12" version="1.5.5">' + i18n.GetLang( "options_custom_hour" ) + '</div>\
+                            <div class="group custom-hour">' + customHourView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_style" ) + '</div>\
                             <div class="group custom-style">' + customStyleView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_search" ) + '</div>\
                             <div class="group custom-search">' + customSearchView() + '</div>\
+                            <div class="title" version-item="custom-script" version="1.5.5">' + i18n.GetLang( "options_custom_script" ) + '</div>\
+                            <div class="group custom-script">' + customScriptView() + '</div>\
+                            <div class="title">' + i18n.GetLang( "options_bookmarks" ) + '</div>\
+                            <div class="group bookmarks">' + customBookmarksView() + '</div>\
                             <div class="title">' + i18n.GetLang( "options_custom_tp" ) + '</div>\
                             <div class="group custom-tp">' + customTpView() + '</div>\
                         </div>\
@@ -309,11 +490,25 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                     </div>\
                     ';
         $( ".dialog" ).html( tmpl );
+        collapse();
         unsplashModel();
         customTpModel();
         customStyleModel();
         customSearchModel();
+        customScriptModel();
+        customTitleModel();
+        customHourModel();
+        customBookmarksModel();
         footerModel();
+        guide.Hints( ".options" );
+    }
+
+    function collapse() {
+        $( ".options .title" ).prepend( '<i class="fas fa-caret-right"></i>' );
+        $( ".options .title" ).on( "click", function( event ) {
+            $( event.currentTarget ).next().toggleClass( "active" );
+            $( event.currentTarget ).find( "i" ).toggleClass( "active" );
+        });
     }
 
     function close() {
@@ -338,7 +533,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps" ], function(
                 $( ".dialog-bg" ).addClass( "dialog-bg-show" );
                 render();
                 close();
-            }, 10 );
+            }, 450 );
         },
 
         Storage: storage,

@@ -1,6 +1,7 @@
-define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves, i18n, message ) {
+define([ "jquery", "lodash", "waves", "i18n", "message", "guide" ], function( $, _, Waves, i18n, message, guide ) {
 
     var bookmarks  = { origin: [], root: [], folders: [], recent: [], all: [], search: [] },
+        timestart,
         getBgColor = function ( chars ) {
             var idx = bgColors.idx.indexOf( chars.toLowerCase() ),
                 bg  = bgColors.colors[idx];
@@ -30,28 +31,37 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         },
         folderHTML = '\
                     <div class="folder special search" data-balloon="' + i18n.GetLang( "bm_foder_search" ) + '" data-balloon-pos="right">\
-                        <span id="search" class="waves-effect waves-block"><icon id="search"></icon></span>\
-                    </div>\
-                    <div class="folder special root" data-balloon="' + i18n.GetLang( "bm_foder_root" ) + '" data-balloon-pos="right">\
-                        <span id="root" class="active waves-effect waves-block"><icon id="root"></icon></span>\
+                        <span class="name" id="search" class="waves-effect waves-block"><icon id="search"><i class="fas fa-search"></i></icon></span>\
+                        <span class="full">' + i18n.GetLang( "bm_foder_search" ) + '</span>\
                     </div>\
                     <div class="folder special recent" data-balloon="' + i18n.GetLang( "bm_foder_recent" ) + '" data-balloon-pos="right">\
-                        <span id="recent" class="waves-effect waves-block"><icon id="recent"></icon></span>\
+                        <span class="name" id="recent" class="waves-effect waves-block"><icon id="recent"><i class="far fa-clock"></i></icon></span>\
+                        <span class="full">' + i18n.GetLang( "bm_foder_recent" ) + '</span>\
+                    </div>\
+                    <div class="folder special root" data-balloon="' + i18n.GetLang( "bm_foder_root" ) + '" data-balloon-pos="right">\
+                        <span class="name" id="root" class="active waves-effect waves-block"><icon id="root"><i class="far fa-bookmark"></i></icon></span>\
+                        <span class="full">' + i18n.GetLang( "bm_foder_root" ) + '</span>\
                     </div>\
                     ',
         fileHTML = "";
 
-    function open() {
-        $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
-        $( ".bm-overlay" ).width( "50%" );
-        $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
-        if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
-            $(".folders").css( "overflow-y", "auto" );
-        }
+    function open( delay ) {
+        timestart = true;
+        setTimeout( function() {
+            if ( !timestart ) return;
+            if ( $( ".bm" ).hasClass( "open" ) ) return;
+            $( ".bm" ).css({ "transform": "translateX(0px)", "opacity": 0.8 }).addClass( "open" );
+            $( ".bm-overlay" ).width( "50%" );
+            $( ".bm .files" ).children().length == 0 && $( ".bm .files" ).html( fileHTML );
+            if ( $(".folders").height() < $(".folder").length * $(".folder").height() ) {
+                $(".folders").css( "width", "71px" );
+            }
+            guide.Tips( "bookmarks" );
+        }, delay || 500 );
     }
 
     function close() {
-        $(".folders").css( "overflow-y", "initial" );
+        if ( !$( ".bm" ).hasClass( "open" ) ) return;
         $( ".bm" ).css({ "transform": "translateX(-300px)", "opacity": 0 }).removeClass( "open" );
         $( ".bm-overlay" ).removeAttr( "style" );
     }
@@ -59,6 +69,9 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
     function bmListen() {
         $( ".bm-overlay" ).mouseenter( function() {
             open();
+        });
+        $( ".bm-overlay" ).mouseleave( function() {
+            timestart = false;
         });
         $( ".bm" ).mouseleave( function() {
             close();
@@ -70,16 +83,15 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
     }
 
     function folderListen() {
-        $( "body" ).on( "click", ".bm .folders .folder span", function( event ) {
-            var id      = event.target.id,
-                $target = $( event.target ),
-                tag     = event.target.tagName.toLowerCase();
+        $( "body" ).on( "click", ".bm .folders .folder", function( event ) {
+            var $target = $( event.currentTarget ),
+                id      = $target.find( 'span.name' ).attr( "id" ),
+                tag     = event.currentTarget.tagName.toLowerCase();
 
             if ( id != "search" ) {
                 $( ".bm .folders .folder span" ).removeClass( "active" );
-                tag == "span" ?
-                    $target.addClass( "active" ) :
-                    $target.parent().addClass( "active" );
+                $( ".bm .folders .folder" ).removeClass( "active" );
+                $target.addClass( 'active' ).find( 'span.name' ).addClass( 'active' );
             }
 
             if ( id == "search" ) {
@@ -112,6 +124,7 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
             if ( result && result.length > 0 && result[0].children && result[0].children.length > 0 ) {
                 bookmarks.origin = result[0].children[0].children;
                 fmtBookmarks( bookmarks.origin, true );
+                countMaxWith();
             } else {
                 new Notify().Render( i18n.GetLang( "notify_bm_empty" ));
                 $( ".bm-overlay" ).remove();
@@ -160,7 +173,8 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
             title = folder.title.substr( 0, 1 ),
             tmpl  = '\
                     <div class="folder normal" data-balloon="' + folder.title + '" data-balloon-pos="right">\
-                        <span id="' + id + '" class="waves-effect waves-block" style="background-color: ' + getBgColor( title ) + '">' + title + '</span>\
+                        <span class="name" id="' + id + '" class="waves-effect waves-block" style="background-color: ' + getBgColor( title ) + '">' + title + '</span>\
+                        <span class="full">' + folder.title + '</span>\
                     </div>';
         folderHTML += tmpl;
         $( ".bm .folders" ).html( folderHTML );
@@ -183,6 +197,18 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         var compiled= _.template( fileTmpl ),
             html    = compiled({ title: title, url: url, avatar: avatar, bgColor: bgColor });
         fileHTML += html;
+    }
+
+    function countMaxWith() {
+        var width = 0;
+        $( '.folders .folder .full' ).map( function( idx, item ) {
+            if ( $(item).text().length > width ) {
+                width = $(item).text().length;
+            }
+        });
+        var max = $('.folder').width() + width * 26;
+        max > 450 && ( max = 450 );
+        $( 'head' ).append( '<style type="text/css">.bm .folders:hover{width: '+ max +'px!important;overflow-y: auto!important;}</style>' );
     }
 
     function bmSearch( value ) {
@@ -218,16 +244,22 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
         });
         $( ".quickbar .search input" ).on( "keydown", function( event ) {
             var key     = event.keyCode,
+                input   = event.currentTarget,
+                cursor  = event.target.selectionStart,
                 $target = $( ".quickbar .results" );
             if ( key == 40 ) {
                 if ( !$target.find( ".result" ).hasClass( "active" )) {
                     $target.find( ".result:first-child" ).addClass( "active" );
                 } else {
                     $target.find( ".result.active" ).removeClass( "active" ).next().addClass( "active" );
+                    !$target.find( ".result" ).hasClass( "active" ) && $target.find( ".result:first-child" ).addClass( "active" );
                 }
+                setTimeout( function() { input.setSelectionRange( cursor, cursor ) }, 5 );
             } else if ( key == 38 ) {
                 $target.find( ".result" ).hasClass( "active" ) &&
                     $target.find( ".result.active" ).removeClass( "active" ).prev().addClass( "active" );
+                !$target.find( ".result" ).hasClass( "active" ) && $target.find( ".result:last-child" ).addClass( "active" );
+                setTimeout( function() { input.setSelectionRange( cursor, cursor ) }, 5 );
             } else if ( key == 13 ) {
                 $target.find( ".result" ).hasClass( "active" ) ?
                     $target.find( ".result.active" )[0].click()
@@ -303,16 +335,15 @@ define([ "jquery", "lodash", "waves", "i18n", "message" ], function( $, _, Waves
                 getSearch( data );
                 getBookmarks();
                 folderListen();
-            }, 10 );
+            }, 300 );
         },
 
         Listen: function() {
-            message.Subscribe( message.TYPE.OPEN_BOOKMARKS, function( event ) {
-                !$( ".bm" ).hasClass( "open" ) ? open() : close();
-            });
-            message.Subscribe( message.TYPE.OPEN_QUICKBAR, function( event ) {
-                openQuickbar();
-            });
+            !$( ".bm" ).hasClass( "open" ) ? open( 1 ) : close();
+        },
+
+        QuickbarListen: function() {
+            openQuickbar();
         }
     }
 });

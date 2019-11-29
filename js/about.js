@@ -2,7 +2,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
 
     var prefix = i18n.GetLang( 'lang' ) == "cn" ? "" : i18n.GetLang( 'lang' ),
         rTmpl  = '\
-                <div class="close"><span class="close"></span></div>\
+                <div class="close"><span class="waves-effect close"><i class="fas fa-times-circle"></i></span></div>\
                     <div class="about">\
                         <div class="banner"><img src="filesystem:' + chrome.extension.getURL( "temporary/background.jpg" ) + '?' + +new Date() + '"/></div>\
                         <div class="content">\
@@ -51,7 +51,7 @@ define([ "jquery", "lodash", "notify", "i18n" ], function( $, _, Notify, i18n ) 
                 closeListenEvent();
                 moreAbout();
                 localStorage["simptab-background-mode"] == "earth" && $( ".dialog" ).width( 800 );
-            }, 10 );
+            }, 300 );
         }
     }
 });

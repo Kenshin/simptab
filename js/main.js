@@ -11,6 +11,7 @@ requirejs.config({
       "notify"     : "vender/notify/notify.min",
       "waves"      : "vender/waves/waves.min",
       "carousel"   : "vender/carousel/carousel",
+      "intro"      : "vender/intro/intro.min",
 
       "main"       : "js/main",
       "background" : "js/background",
@@ -37,6 +38,8 @@ requirejs.config({
       "history"    : "js/history",
       "comps"      : "js/components",
       "message"    : "js/message",
+      "permissions": "js/permissions",
+      "guide"      : "js/guide",
     },
     shim: {
         "mousetrap"    : {
@@ -49,7 +52,7 @@ requirejs.config({
 });
 
 // main
-requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo", "history" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo, history ) {
+requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "setting", "i18n", "shortcuts", "files", "topsites", "version", "progress", "waves", "message", "bookmarks", "welcome", "zen", "options", "noise", "vo", "history", "permissions", "guide", "intro" ], function ( $, _, Notify, background, date, controlbar, setting, i18n, shortcuts, files, topsites, version, progress, Waves, message, bookmarks, welcome, zen, options, noise, vo, history, permissions, guide, introJs ) {
 
     progress.Init();
 
@@ -108,10 +111,18 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     // short cuts init
     shortcuts.Init();
 
+    // custom title
+    if ( options.Storage.db.title.startsWith( '(function()' ) ) new Function( options.Storage.db.title )();
+    else options.Storage.db.title && ( document.title = options.Storage.db.title );
+
     version.Init( function( ver ) {
-        welcome.Render( ver );
+        welcome.Render( ver, function() {
+            new Notify().Render({ content: i18n.GetLang( "notify_getting_started" ), action: i18n.GetLang( "notify_zen_mode_esc_confirm" ), cancel: i18n.GetLang( "notify_zen_mode_esc_cancel" ), callback:function ( type ) {
+                type == "action" && guide.Render( "all", !ver.first );
+            }});
+        });
     });
-    // welcome.Render({ first: false, update: "1.5.2" });
+    //welcome.Render({ first: true, update: "1.5.2" }, function() { guide.Render(); });
 
     // waves config
     Waves.attach( '.icon',      [ 'waves-circle']);
@@ -126,19 +137,55 @@ requirejs([ "jquery", "lodash", "notify", "background", "date" , "controlbar", "
     message.Subscribe( message.TYPE.UPDATE_EARTH, function() {
         background.Earth();
     });
-    message.Subscribe( message.TYPE.HISTORY, function( event ) {
-        localStorage["simptab-zenmode"] != "true" && options.Storage.db.history && history.Get( event.data );
+    message.Subscribe( message.TYPE.SET_BACKGROUND, function( event ) {
+        background.Set( event.data );
     });
+    message.Subscribe( message.TYPE.SET_BACKGROUND_POSITION, function( event ) {
+        background.SetPosition( event.data );
+    });
+    message.Subscribe( message.TYPE.OPEN_ZENMODE, function( event ) {
+        $( ".zenstate input" ).click();
+    });
+    message.Subscribe( message.TYPE.CLOSE_ZENMODE, function( event ) {
+        zen.ESC();
+    });
+    message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
+        noise.Init();
+    });
+    message.Subscribe( message.TYPE.OPEN_HISTORY, function( event ) {
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && !options.Storage.db.history && new Notify().Render( i18n.GetLang( "notify_history_no_usage" ));
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" &&  options.Storage.db.history && history.Action();
+    });
+    message.Subscribe( message.TYPE.HISTORY, function( event ) {
+        if ( $( ".introjs-overlay, .welcome-overlay" ).length > 0 ) return;
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && !options.Storage.db.history && new Notify().Render( i18n.GetLang( "notify_history_no_usage" ));
+        localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Get( event.data );
+    });
+    localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
 
-    chrome.permissions.contains({ permissions: [ 'bookmarks' ]}, function( result ) {
+    permissions.Verify( [ 'bookmarks' ], function( result ) {
         result && bookmarks.Render( options.Storage.db.search );
-        result && bookmarks.Listen();
+        message.Subscribe( message.TYPE.OPEN_BOOKMARKS, function( event ) {
+            result ? bookmarks.Listen() : new Notify().Render({ content: i18n.GetLang( "notify_bm_permissions" ), action: i18n.GetLang( "notify_options_agree" ), cancel: i18n.GetLang( "notify_zen_mode_esc_cancel" ), callback:function ( type ) {
+                type == "action" && permissions.Request( [ "bookmarks" ], function( result ) { });
+            }});
+        });
+        message.Subscribe( message.TYPE.OPEN_QUICKBAR, function( event ) {
+            result && bookmarks.QuickbarListen();
+        });
     });
 
     localStorage["simptab-zenmode"] == "true" && zen.Render();
 
-    noise.Init();
+    guide.Init( introJs );
+    //guide.Render();
 
-    localStorage["simptab-zenmode"] != "true" && localStorage[ "simptab-background-mode" ] == "time" && options.Storage.db.history && history.Init();
+    localStorage[ "simptab-background-mode" ] == "earth" && guide.Tips( "earth" );
+
+    try {
+        options.Storage.db.script != "" && setTimeout( function() { new Function( options.Storage.db.script )(); }, 1000 );
+    } catch ( error ) {
+        console.error( '此脚本运行时出现错误，错误信息 ', error )
+    }
 
 });

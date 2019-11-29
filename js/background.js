@@ -177,9 +177,13 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             // sync vo
             isPinTimeout() ? vo.Set( vo.new ) : writePinBackground();
             localStorage[ "simptab-background-update" ] == "true" && updateBackground();
+            localStorage[ "simptab-background-mode" ]   == "time" && history.Add( vo.new );
+            localStorage[ "simptab-background-mode" ]   == "time"
+                && $( ".background" ).hasClass( "bgearth" )
+                && $( ".background" ).removeClass( "bgearth" )
+                && new Notify().Render( i18n.GetLang( "notify_eartch_to_time" ))
+                && setTimeout( function () { window.location.reload(); }, 2000 );
             console.log( "======= New Background Obj is ", vo );
-            localStorage[ "simptab-background-mode" ] == "time" && history.Add( vo.new );
-            localStorage[ "simptab-background-mode" ] == "time" && $( "body" ).hasClass("bgearth") && $( "body" ).removeClass( "bgearth" );
             // test code
             //localStorage[ "simptab-background-mode" ] == "time" && $( ".controlink[url=desktop]" )[0].click();
         }
@@ -192,7 +196,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
         // re-set simptab-background-update
         localStorage[ "simptab-background-update" ] = "false";
-        bgeffect( "delete" );
+        //bgeffect( "delete" );
 
         // when bing.com( today ) remote failed, set vo.new == vo.cur and refresh current backgrond
         if ( error.data.apis_vo && error.data.apis_vo.origin == "today" && vo.cur && vo.cur.type != "default" ) {
@@ -204,7 +208,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             throw error;
         }
         catch( error ) {
-            new Notify().Render( 2, i18n.GetLang( "notify_refresh_failed" ));
+            //new Notify().Render( 2, i18n.GetLang( "notify_refresh_failed" ));
             console.group( "===== SimpTab failed ====="             );
             console.error( "error             = ", error             );
             console.error( "error.stack       = ", error.stack       );
@@ -213,6 +217,13 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             console.error( "error.message     = ", error.message     );
             console.error( "error.data        = ", error.data        );
             console.groupEnd();
+        } finally {
+            if ( localStorage[ "simptab-background-mode" ] == "time" && $( ".background" ).hasClass( "bgearth" ) ) {
+                $( ".background" ).removeClass( "bgearth" );
+                controlbar.Set( true );
+                setRemoteBackground( true, vo.cur.hdurl );
+                vo.Set( vo.new );
+            }
         }
     }
 
@@ -244,17 +255,18 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
         // update controlbar
         message.Publish( message.TYPE.UPDATE_CONTROLBAR, { url: 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date() });
         // remove effect
-        bgeffect( "delete" );
+        //bgeffect( "delete" );
         // re-set simptab-background-update
         localStorage[ "simptab-background-update" ] = "false";
     }
 
+    /*
     function bgeffect( type ) {
         var url = 'filesystem:' + chrome.extension.getURL( "/" ) + 'temporary/background.jpg' + '?' + +new Date();
         if ( type == "add" ) {
-            $( "body" ).append( '<div class="bgeffect" style="background-image: url(' + url +');"></div>' );
+            $( ".background" ).append( '<div class="bgeffect" style="background-image: url(' + url +');"></div>' );
             setTimeout( function() {
-                $( "body" ).find( ".bgeffect" ).css( 'filter', 'blur(50px)' );
+                $( ".background" ).find( ".bgeffect" ).css( 'filter', 'blur(50px)' );
             }, 1 );
         } else {
             $( ".bgeffect" ).css( 'background-image', 'url(' + url +')' );
@@ -263,8 +275,45 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
             });
         }
     }
+    */
 
     return {
+        Set: function( data ) {
+            if ( $( ".background" ).css( "background-image" ) != "none" ) {
+                // no-reload( update call )
+                data.mode == 'earch' && $( ".background" ).addClass( "bgearth" );
+                $( ".background"      ).addClass( "bghidden" );
+                $( ".bgmask-bg > img" ).removeClass( "bgshow" );
+                setTimeout( function() {
+                    $( ".background"      ).css({ "background-image": 'url("' + data.url + '")' }).removeClass( "bghidden" );
+                    $( ".bgmask-bg > img" ).attr( "src", data.url );
+                    setTimeout( function() { $( ".bgmask-bg > img" ).addClass( "bgshow" )}, 150 );
+                }, 200 );
+            } else {
+                // re-load
+                $( ".background" ).css( "background-image", 'url("' + data.url + '")' );
+                setTimeout( function() { $( '.background' ).addClass( "bgshow" )}, 150 );
+            }
+        },
+
+        SetPosition: function() {
+            var value = localStorage[ "simptab-background-position" ];
+            if ( value == "mask" ) {
+                var url       = vo.cur.type == "default" ? vo.cur.hdurl : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
+                    maxHeight = 800,
+                    height    = $( "body" ).height(),
+                    earth     = vo.cur.type == "earth" ? "background-size: contain;background-repeat: no-repeat;background-color: black;" : "";
+                $( ".background" ).addClass( "bgmask" ).after( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
+                height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
+                setTimeout( function() { $( ".bgmask-bg > img" ).addClass( "bgshow" )}, 150 );
+            } else {
+                $( ".background" ).removeClass( "bgmask" );
+                $( ".bgmask-bg" ).remove();
+                vo.cur.type == "default" || !value || value == "center" ? $( ".background" ).addClass( "bgcenter" ) : $( ".background" ).removeClass( "bgcenter" );
+                vo.cur.type == "earth" && $( ".background" ).addClass( "bgearth" );
+            }
+        },
+
         Get: function( is_random ) {
 
             progress.Set( "ready" );
@@ -282,7 +331,7 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
 
         Valid: function() {
             setTimeout( function() {
-                if ( $("body").css( "background-image" ) == "none" ) {
+                if ( $( ".background" ).css( "background-image" ) == "none" ) {
                     controlbar.Set( true );
                 }
             }, 5 * 1000 );
@@ -465,27 +514,27 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                 if ( localStorage[ "simptab-background-mode" ] == "earth" ) {
                     new Notify().Render( 2, i18n.GetLang( "notify_eartch_mode" ) );
                 } else {
+                    localStorage[ "simptab-background-mode" ] == "time"
+                        && $( ".background" ).hasClass( "bgearth" )
+                        && new Notify().Render( i18n.GetLang( "notify_refresh" ) );
                     localStorage[ "simptab-background-update" ] = "true";
-                    bgeffect( "add" );
+                    //bgeffect( "add" );
                     this.Get( true );
                 }
             }
         },
 
         Earth: function( is_notify ) {
-            localStorage["simptab-earth-notify"] != "false" &&
-                    new Notify().Render({ content: i18n.GetLang( "tips_earth" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
-                        localStorage["simptab-earth-notify"] = false;
-                    }});
             if ( vo.cur.type == "earth" && date.Now() - vo.cur.enddate < 10000 ) {
                 is_notify && new Notify().Render( i18n.GetLang( "notify_eartch_update_failed" ) );
                 return;
             }
-            var notify   = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" }),
+            var notify,
                 getEarth = function () {
+                    !notify && progress.Set( "earth_loading" );
                     apis.Earth( function ( base64 ) {
-                        notify.complete();
-                        $( "body" ).css( "background-image", "url(" + base64 + ")" ).addClass( "bgearth" );
+                        notify && notify.complete();
+                        message.Publish( message.TYPE.SET_BACKGROUND, { url: base64, mode: 'earch' });
                         files.DataURI( base64 );
                         files
                             .Add( vo.constructor.BACKGROUND, files.DataURI() )
@@ -501,10 +550,11 @@ define([ "jquery", "date", "i18n", "setting", "apis", "vo", "files", "controlbar
                                     setTimeout( function () {
                                         window.location.reload();
                                     }, 2000 );
-                                }
+                                } else progress.Set( "earth_complete" );
                         });
                     });
             };
+            if ( is_notify ) { notify = new Notify().Render({ content: i18n.GetLang( "notify_eartch_loading" ), state: "loading" }); }
             getEarth();
         },
 

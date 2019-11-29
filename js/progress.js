@@ -1,15 +1,15 @@
 
-define([ "jquery", "progressbar" ], function( $, ProgressBar ) {
+define([ "jquery", "progressbar", "i18n" ], function( $, ProgressBar, i18n ) {
 
     "use strict";
     var circle;
 
     function verify( perc ) {
-      while ( perc <= 0.4 || perc >= 0.9 ) {
-        perc = Math.random();
-      }
-      console.log( "exact perc is " + perc )
-      return perc;
+        while ( perc <= 0.4 || perc >= 0.9 ) {
+            perc = Math.random();
+        }
+        console.log( "exact perc is " + perc )
+        return perc;
     }
 
     return {
@@ -30,6 +30,13 @@ define([ "jquery", "progressbar" ], function( $, ProgressBar ) {
 
             switch ( state ) {
                 case "ready":
+                    if ( circle == undefined ) {
+                        $( ".progress" )
+                            .removeAttr( "data-balloon" )
+                            .removeAttr( "data-balloon-pos" )
+                            .find( ".warning" ).remove();
+                        this.Init();
+                    }
                     circle.animate( 0 );
                     break;
                 case "remote":
@@ -45,10 +52,34 @@ define([ "jquery", "progressbar" ], function( $, ProgressBar ) {
                     circle.animate( verify( perc ) );
                     break;
                 case "success":
-                case "writefailed":
                     circle.animate( 1, function() {
                         circle.set( 0 );
                     });
+                    break;
+                case "writefailed":
+                case "remotefailed":
+                    circle.animate( 1, function() {
+                        circle.set( 1 );
+                        circle = undefined;
+                        $( ".progress" )
+                            .attr( "data-balloon", i18n.GetLang( "notify_refresh_failed" ) )
+                            .attr( "data-balloon-pos", "right" )
+                            .html( '<div class="warning"><i class="fas fa-exclamation-circle"></i><span></span></div>' )
+                            .find( "i" ).css({ "color": state == "remotefailed" ? "#F39C12" : "#F44336" });
+                            //.find( "svg path" ).css({ "stroke": state == "remotefailed" ? "#F39C12" : "#F44336" });
+                    });
+                    break;
+                case "earth_loading":
+                    $( ".progress" )
+                        .attr( "data-balloon", i18n.GetLang( "notify_eartch_loading" ) )
+                        .attr( "data-balloon-pos", "right" )
+                        .html( '<div class="loading"></div>' );
+                    break;
+                case "earth_complete":
+                    $( ".progress" )
+                        .removeAttr( "data-balloon" )
+                        .removeAttr( "data-balloon-pos" )
+                        .find( ".loading" ).remove();
                     break;
                 default:
                     circle.set( 0 );
