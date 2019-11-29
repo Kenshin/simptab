@@ -1,4 +1,4 @@
-define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", "options" ], function( $, i18n, vo, date, files, setting, manage, about, options ) {
+define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", "options", "message", "guide" ], function( $, i18n, vo, date, files, setting, manage, about, options, message, guide ) {
 
     "use strict";
 
@@ -13,26 +13,12 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
     function setBackground( url ) {
         // hack code
         if ( $("body").css( "background-image" ) != "none" && localStorage[ "simptab-background-update" ] == "true" ) return;
-        $("body").css({ "background-image": "url(" + url + ")" });
+        message.Publish( message.TYPE.SET_BACKGROUND, { url: url });
     }
 
     function setBackgroundPosition( is_settingclick ) {
         if ( !is_settingclick && $( "body" ).find( ".bgmask-bg" ).length > 0 ) return;
-        var value = localStorage[ "simptab-background-position" ];
-        if ( value == "mask" ) {
-            var url       = vo.cur.type == "default" ? vo.cur.hdurl : "filesystem:" + chrome.extension.getURL( "/" ) + "temporary/background.jpg",
-                maxHeight = 800,
-                height    = $( "body" ).height(),
-                earth     = vo.cur.type == "earth" ? "background-size: contain;background-repeat: no-repeat;background-color: black;" : "";
-            $( "body" ).addClass( "bgmask" ).prepend( '<div class="bgmask-bg"><img src="' + url + '"></div>' );
-            $( "head" ).append( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')' + earth + '}</style>' );
-            height <= maxHeight && $( ".bgmask-bg" ).find( "img" ).height( height - 300 );
-        } else {
-            $( "body" ).removeClass( "bgmask" ).find( ".bgmask-bg" ).remove();
-            $( ".bgmask-filter" ).remove();
-            vo.cur.type == "default" || !value || value == "center" ? $( "body" ).addClass( "bgcenter" ) : $( "body" ).removeClass( "bgcenter" );
-            vo.cur.type == "earth" && $( "body" ).addClass( "bgearth" );
-        }
+        message.Publish( message.TYPE.SET_BACKGROUND_POSITION, {});
     }
 
     function setUploadState( is_show ) {
@@ -71,15 +57,21 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
 
     function update( url, info ) {
         // change background
-        $( "body" ).css( "background-image", 'url("' + url + '")' );
-        // change background mask
-        $( "head" ).find( ".bgmask-filter" ).html( '<style class="bgmask-filter">.bgmask::before{background: url(' + url + ')}</style>' );
-        $( "body" ).find( ".bgmask-bg > img" ).attr( "src", url );
+        message.Publish( message.TYPE.SET_BACKGROUND, { url: url, mode: 'update' });
         // change conntrolbar download url and info
         $($( ".controlbar" ).find( "a" )[4]).attr( "href", info == undefined ? "#" : info );
         $( ".controlbar" ).find( "a[url=info]" ).prev().text( vo.cur.type );
         // change favorite
         setFavorteIcon();
+    }
+
+    function isPinTimeout() {
+        var limit  = localStorage[ "simptab-pin" ],
+            pin    = vo.cur.pin,
+            diff   = date.TimeDiff( pin ),
+            result = pin == -1 || diff > limit ? true : false;
+        result && $( ".controlink[url='pin']" ).find("span").attr( "class", "icon pin" );
+        return result;
     }
 
     return {
@@ -99,7 +91,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                 $( ".controlink[url=about]" ).parent().addClass( "horz-toolbox-show-3" );
             });
 
-            $($( ".controlbar li" )[8]).mouseleave( function( event ) {
+            $($( ".controlbar li" )[9]).mouseleave( function( event ) {
                 $( ".controlink[url=setting]" ).prev().removeClass( "horz-toolbox-show" );
                 $( ".controlink[url=manage]" ).parent().removeClass( "horz-toolbox-show-1" );
                 $( ".controlink[url=options]" ).parent().removeClass( "horz-toolbox-show-2" );
@@ -140,11 +132,10 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         var width = parseInt( i18n.GetSettingWidth() );
                         if ( !$target.hasClass( "close" )) {
                             $( ".setting" ).css({ "transform": "translateX(0px)", "opacity": 0.8 });
-                            $( ".sidebar" ).animate({ right: width }, 500, function() {
-                                $target.addClass( "close" );
-                                $( ".setting" ).addClass( "open" );
-                            });
-
+                            $( ".sidebar" ).css({ right: width });
+                            $target.addClass( "close" );
+                            $( ".setting" ).addClass( "open" );
+                            guide.Tips( "setting" );
                             //$( ".seniorgp, .bottom" ).animate({ right: parseInt($(".bottom").css("right")) + width }, 500 ); // 116-simptab-optimize-layout
 
                             // 116-simptab-optimize-layout
@@ -160,16 +151,20 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         }
                         else {
                            $( ".setting" ).css({ "transform": "translateX(" + width + "px)", "opacity": 0 });
-                           $( ".sidebar" ).animate({ right: 0 }, 600, function() {
-                                $target.removeClass( "close" );
-                                $( ".setting" ).removeClass( "open" );
-                            });
+                           $( ".sidebar" ).css({ right: 0 });
+                            $target.removeClass( "close" );
+                            $( ".setting" ).removeClass( "open" );
                             //$( ".seniorgp, .bottom" ).animate({ right: "65px" }, 500 );    // 116-simptab-optimize-layout
                         }
+                        break;
+                    case "fullscreen":
+                        $target.find( "span" ).hasClass( 'exit' ) ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+                        $target.find( "span" ).toggleClass( 'exit' );
                         break;
                     case "favorite":
                         var is_favorite = $($target.find("span")).hasClass("unfavoriteicon") ? true : false;
                         callBack( url, is_favorite );
+                        guide.Tips( "favorite" );
                         break;
                     case "download":
                         files.SaveBgfromURI( "download", files.DataURI() )
@@ -192,7 +187,7 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
                         $input.trigger("click");
                         break;
                     case "refresh":
-                        callBack( url, "time" );
+                        isPinTimeout() ? callBack( url, "time" ) : new Notify().Render( 2, i18n.GetLang( "notify_pin_not_changed" ) );
                         break;
                     case "dislike":
                         var is_dislike = $target.find( "span" ).hasClass( "dislike" );
@@ -291,7 +286,9 @@ define([ "jquery", "i18n", "vo", "date", "files", "setting", "manage", "about", 
         AutoPlay: function() {
             options.Storage.db.carousel && options.Storage.db.carousel != -1 &&
                 setInterval(function() {
-                    $(".controlbar").find("a[url=refresh]")[0].click();
+                    isPinTimeout()
+                        ? $(".controlbar").find("a[url=refresh]")[0].click()
+                        : new Notify().Render( 2, i18n.GetLang( "notify_pin_not_changed" ) );
                 }, 1000 * 60 * parseInt( options.Storage.db.carousel ));
         },
 

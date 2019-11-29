@@ -1,6 +1,6 @@
-define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "options" ], function( $, _, Notify, i18n, files, vo, message, options ) {
+define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "date", "message", "options", "guide" ], function( $, _, Notify, i18n, files, vo, date, message, options, guide ) {
 
-    var current, base64,
+    var current, base64, timestart,
         MAX     = 5,
         saveImg = function( url, cur_vo ) {
             files.GetDataURI( url ).then( function( result ) {
@@ -18,22 +18,45 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
             });
         };
 
-    function open() {
-        $( ".history" ).css({ "transform": "translateY(0px)", "opacity": 0.8 }).addClass( "open" );
+    function isPinTimeout() {
+        var limit  = localStorage[ "simptab-pin" ],
+            pin    = vo.cur.pin,
+            diff   = date.TimeDiff( pin ),
+            result = pin == -1 || diff > limit ? true : false;
+        result && $( ".controlink[url='pin']" ).find("span").attr( "class", "icon pin" );
+        return result;
+    }
+
+    function open( delay ) {
+        timestart = true;
+        setTimeout( function() {
+            if ( !timestart ) return;
+            !$( ".history" ).hasClass( "open" ) &&
+                $( ".history" ).css({ "transform": "translateY(0px)", "opacity": 0.8 }).addClass( "open" );
+            guide.Tips( "history" );
+        }, delay || 1000 );
     }
 
     function close() {
-        $( ".history" ).css({ "transform": "translateY(-300px)", "opacity": 0 }).removeClass( "open" );
+        $( ".history" ).hasClass( "open" ) &&
+            $( ".history" ).css({ "transform": "translateY(-300px)", "opacity": 0 }).removeClass( "open" );
     }
 
     function listen() {
         $( ".history-overlay" ).mouseenter( function() {
             open();
         });
+        $( ".history-overlay" ).mouseleave( function() {
+            timestart = false;
+        });
         $( ".history" ).mouseleave( function() {
             close();
         });
         $( ".history" ).on( "click", "img", function( event ) {
+            if ( !isPinTimeout() ) {
+                new Notify().Render( 2, i18n.GetLang( "notify_pin_not_changed" ) );
+                return;
+            }
             var history = JSON.parse( localStorage[ "simptab-history" ] ),
                 idx     = event.target.dataset.idx,
                 item    = history[ idx ],
@@ -82,6 +105,7 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
         },
 
         Get: function( type ) {
+            if ( $( ".introjs-overlay, .welcome-overlay" ).length > 0 ) return;
             current  = $( ".history" ).find( "img.active" ).attr( "data-idx" );
             !current && ( current = $( ".history" ).find( "img[id=" + vo.cur.enddate + "]" ).attr("data-idx") );
             !current && ( current = 0 );
@@ -104,6 +128,10 @@ define([ "jquery", "lodash", "notify", "i18n", "files", "vo", "message", "option
                 render();
                 listen();
             }, 10 );
+        },
+
+        Action: function() {
+            !$( ".history" ).hasClass( "open" ) ? open( 1 ) : close();
         }
     }
 });

@@ -1,5 +1,5 @@
 
-define([ "jquery", "vo" ], function( $, vo ) {
+define([ "jquery", "vo", "permissions", "options" ], function( $, vo, permissions, options ) {
 
     "use strict";
 
@@ -291,9 +291,23 @@ define([ "jquery", "vo" ], function( $, vo ) {
         },
 
         Download: function( url, name ) {
-            const $a = $( '<a style="display:none" href=' + url + ' download="' + name + '"></a>' ).appendTo( "body" );
-            $a[0].click();
-            $a.remove();
+            permissions.Verify( [ "downloads" ], function( result ) {
+                if ( result && options.Storage.db.download != "" ) {
+                    var end = options.Storage.db.download.endsWith( "/" ) ? "" : "/";
+                    chrome.downloads.download({
+                        url: url,
+                        filename: options.Storage.db.download + end + name,
+                        saveAs: false,
+                        conflictAction: "uniquify"
+                    }, function( downloadId ) {
+                        console.log( downloadId )
+                    });
+                } else {
+                    var $a = $( '<a style="display:none" href=' + url + ' download="' + name + '"></a>' ).appendTo( "body" );
+                    $a[0].click();
+                    $a.remove();
+                }
+            });
         },
 
         // hack code source from Add()

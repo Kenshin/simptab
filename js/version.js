@@ -84,6 +84,12 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
                 details : i18n.GetLang( "version_detail_9" ),
                 permissions: [],
                 removePermissions : []
+            },
+            "1.5.5" : {
+                level   : 11,
+                details : i18n.GetLang( "version_detail_10" ),
+                permissions: [],
+                removePermissions : []
             }
         };
 
@@ -120,6 +126,7 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
         }
 
         Version.prototype.Save = function() {
+            this.old = localStorage["simptab-version"] || "";
             this.cur = this.new;
             localStorage["simptab-version"] = this.new;
         }
@@ -200,7 +207,9 @@ define([ "jquery", "notify", "i18n" ], function( $, Notify, i18n ) {
 
                 version.isPermissions() && containsPermissions();
                 version.Save();
-                callback({ first: details == "" ? true : false, update: version.cur });
+                var detail = { first: details == "" ? true : false, update: version.cur, old: version.old }
+                localStorage["simptab-version-details"] = JSON.stringify( detail );
+                callback( detail );
             }
             else {
                 version.GetPermissions();

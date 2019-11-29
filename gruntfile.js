@@ -40,7 +40,7 @@ module.exports = function( grunt ) {
       publish: {
         files: [{
             expand: true,
-            src: [ "_locales/**", "assets/**", "!assets/**/*.woff", "vender/require.js", "manifest.json", "vender/waves/waves.min.css", "vender/notify/notify.min.css", "vender/balloon.min.css", "vender/carousel/carousel.css" ],
+            src: [ "_locales/**", "assets/**", "!assets/**/*.woff", "vender/require.js", "manifest.json", "vender/waves/waves.min.css", "vender/notify/notify.min.css", "vender/balloon.min.css", "vender/carousel/carousel.css", "vender/intro/intro.min.css" ],
             dest: "dest-extension"
           }]
       }

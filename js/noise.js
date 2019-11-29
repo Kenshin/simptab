@@ -1,5 +1,5 @@
 
-define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ], function( $, Mousetrap, _, Notify, i18n, comps, message ) {
+define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message", "guide" ], function( $, Mousetrap, _, Notify, i18n, comps, message, guide ) {
 
     "use strict";
 
@@ -34,35 +34,35 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
                     <div class="noise-mode">\
                         <div class="sfx">\
                             <div class="waves-effect waves-block effect" type="cafe001">\
-                                <div class="avatar"></div>\
+                                <div class="avatar"><i class="fas fa-coffee"></i></div>\
                                 <div class="label">' + i18n.GetLang( "noise_mode_cafe001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "cafe001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="jazz001">\
-                                <div class="avatar"></div>\
+                                <div class="avatar"><i class="fas fa-compact-disc"></i></div>\
                                 <div class="label">' + i18n.GetLang( "noise_mode_jazz001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "jazz001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="rain001">\
-                                <div class="avatar"></div>\
+                                <div class="avatar"><i class="fas fa-umbrella"></i></div>\
                                 <div class="label">' + i18n.GetLang( "noise_mode_rain001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "rain001" ) + '\
                                 </div>\
                             </div>\
                             <div class="waves-effect waves-block effect" type="thun001">\
-                                <div class="avatar"></div>\
+                                <div class="avatar"><i class="fas fa-bolt"></i></div>\
                                 <div class="label">' + i18n.GetLang( "noise_mode_thun001" ) + '</div>\
                                 <div class="volum">\
                                     ' + comps.Slider( 0, 100, 50, "thun001" ) + '\
                                 </div>\
                             </div>\
                         </div>\
-                        <span class="close"></span>\
+                        <span class="waves-effect close"><i class="fas fa-times-circle"></i></span>\
                     </div>';
         $( "body" ).append( tmpl );
 
@@ -71,7 +71,7 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
 
     function model() {
        $( ".noise-mode .sfx .effect .avatar" ).on( "click", function( event ) {
-            var $parent = $( event.target ).parent(),
+            var $parent = $( event.currentTarget ).parent(),
                 key     = $parent.attr( "type" ),
                 $volume = $parent.find( ".volum" ),
                 volume  = $parent.find( ".md-slider-root input" ).val();
@@ -101,31 +101,26 @@ define([ "jquery", "mousetrap", "lodash", "notify", "i18n", "comps", "message" ]
 
     function open() {
         setTimeout( function(){
-            $( ".noise-mode" ).css({ "transform": "translateY(0px)", "opacity": 1, "pointer-events": "inherit" });
+            $( ".noise-mode" ).addClass( "active" );
         }, 10 );
     }
 
     function close() {
         $( ".noise-mode .close" ).click( function( event ) {
-            $( ".noise-mode" ).css({ "transform": "translateY(100px)", "opacity": 0, "pointer-events": "none" });
+            $( ".noise-mode" ).toggleClass( "active" );
         });
     }
 
     return {
         Init: function() {
-            message.Subscribe( message.TYPE.OPEN_NOISE, function( event ) {
-                localStorage["simptab-noise-notify"] != "false" &&
-                new Notify().Render({ content: i18n.GetLang( "tips_noise" ), action: i18n.GetLang( "tips_confirm" ), callback:function (){
-                    localStorage["simptab-noise-notify"] = false;
-                }});
-                if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
-                    open();
-                } else {
-                    render();
-                    open();
-                    close();
-                }
-            });
+            guide.Tips( "noise" );
+            if ( $( "body" ).find( ".noise-mode" ).length > 0 ) {
+                $( ".noise-mode .close" ).click();
+            } else {
+                render();
+                open();
+                close();
+            }
         }
     }
 

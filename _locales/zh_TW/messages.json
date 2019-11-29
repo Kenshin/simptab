@@ -41,6 +41,10 @@
         "message": "應用"
     },
 
+    "controlbar_fullscreen": {
+        "message": "全屏"
+    },
+
     "controlbar_info": {
         "message": "詳細信息"
     },
@@ -194,15 +198,15 @@
     },
 
     "setting_ts_state_normal": {
-        "message": "常用網址（隱藏模式）"
+        "message": "不啟用"
     },
 
     "setting_ts_state_simple": {
-        "message": "常用網址（簡單模式）"
+        "message": "簡單模式"
     },
 
     "setting_ts_state_senior": {
-        "message": "常用網址（高級模式）"
+        "message": "高級模式"
     },
 
     "setting_pin_tooltip": {
@@ -210,7 +214,15 @@
     },
 
     "setting_zen_state": {
-        "message": "啟用 禪模式"
+        "message": "禪模式"
+    },
+
+    "setting_other_state_options": {
+        "message": "更多設置選項..."
+    },
+
+    "setting_other_state_help": {
+        "message": "幫助與新手入門"
     },
 
     "setting_contact_weibo": {
@@ -286,7 +298,7 @@
     },
 
     "quickbar_input_placeholder": {
-        "message": "搜索內容包括：書籤欄與最近常用網址"
+        "message": "包括：書籤欄與最近常用網址，並接入多種搜索引擎，快捷鍵 s + 空格"
     },
 
     "shortcuts_title": {
@@ -311,6 +323,22 @@
 
     "shortcuts_key_help": {
         "message": "打開/關閉快捷鍵一覽"
+    },
+
+    "shortcuts_key_up": {
+        "message": "全屏"
+    },
+
+    "shortcuts_key_opt": {
+        "message": "打開/關閉禪模式或圖模式的設置欄"
+    },
+
+    "shortcuts_key_zen": {
+        "message": "打開/關閉禪模式"
+    },
+
+    "shortcuts_key_history": {
+        "message": "打開/關閉歷史記錄"
     },
 
     "shortcuts_key_bookmarks": {
@@ -374,7 +402,7 @@
     },
 
     "options_custom_unsplash_notice": {
-        "message": "支持自定義源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>自定義 Unsplash</a>"
+        "message": "支持自定義源，例如 https://source.unsplash.com/<b>{xxxx}</b> 用, 分割；詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/背景源?id=自定义unsplash源' target='_blank'>自定義 Unsplash</a>"
     },
 
     "options_custom_unsplash_screen_label": {
@@ -386,7 +414,7 @@
     },
 
     "options_custom_unsplash_screen_notice": {
-        "message": "可更改為適合自己的解析度，格式：widthxheigh 如： 3200x1800 詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/多種背景源?id=自定義解析度' target='_blank'>自定義解析度</a>"
+        "message": "可更改為適合自己的解析度，格式：widthxheigh 如： 3200x1800 詳細說明請訪問 <a href='http://ksria.com/simptab/docs/#/背景源?id=更改unsplash源分辨率' target='_blank'>自定義解析度</a>"
     },
 
     "options_custom_mobile_lable": {
@@ -402,11 +430,11 @@
     },
 
     "options_carousel_label": {
-        "message": "背景是否自動播放（顯示下一張）？"
+        "message": "背景是否自動更換（顯示下一張）？"
     },
 
     "options_carousel_value_1": {
-        "message": "不自動播放"
+        "message": "不自動更換"
     },
 
     "options_carousel_value_5": {
@@ -425,8 +453,12 @@
         "message": "每隔 60 分鐘"
     },
 
+    "options_carousel_value_suffix": {
+        "message": "更換"
+    },
+
     "options_carousel_notice": {
-        "message": "當自動播放時，不建議關閉標籤頁，並配合 <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>白噪音</a> 效果更好。"
+        "message": "當自動更換時，不建議關閉標籤頁，並配合 <a href='http://ksria.com/simptab/docs/#/白噪音' target='_blank'>白噪音</a> 效果更好。"
     },
 
     "options_history_label": {
@@ -434,27 +466,103 @@
     },
 
     "options_history_notice": {
-        "message": "啟用後會自動記錄最多五張的歷史記錄，並且只在「隨機更換壁紙」模型下使用，詳細請看 <a href='http://ksria.com/simptab/docs/#/多种背景源?id=历史记录' target='_blank'>歷史記錄</a>"
+        "message": "啟用後會自動記錄最多五張的歷史記錄，並且只在「隨機更換壁紙」模型下使用，詳細請看 <a href='http://ksria.com/simptab/docs/#/背景源?id=历史记录' target='_blank'>歷史記錄</a>"
+    },
+
+    "options_download_label": {
+        "message": "是否啟用自定義下載位置功能？"
+    },
+
+    "options_download_notice": {
+        "message": "配合 Haze 或 Automator 等方式可實現在 PC 端自動播放背景，詳細請看 <a href='http://ksria.com/simptab/docs/#/背景源?id=自定義下載位置' target='_blank'>自定義下載位置</a>"
+    },
+
+    "options_download_placeholder": {
+        "message": "默認為 Chrome 設定的下載位置，填寫後可下載到對應文件夾中"
     },
 
     "options_custom_style": {
-        "message": "自定義樣式（ 全局 ）"
+        "message": "全局 · 自定義樣式"
+    },
+
+    "options_custom_style_notice": {
+        "message": "與 <a href='http://ksria.com/simptab/docs/#/禅模式?id=自定义样式' target='_blank'>禅模式 · 自定义样式</a> 的區別在於前者只應用於禪模式；此自定樣式屬於全局，詳細請看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义样式' target='_blank'>自定义样式</a><"
+    },
+
+    "options_bookmarks": {
+        "message": "書籤欄"
+    },
+
+    "options_bookmarks_label": {
+        "message": "是否啟用書籤欄？"
+    },
+
+    "options_bookmarks_notice": {
+        "message": "默認不啟用書籤欄，啟用時需要申請許可權"
     },
 
     "options_custom_tp": {
-        "message": "自定義站點（ Topsites ）"
+        "message": "常用網址"
+    },
+
+    "options_custom_tp_carousel_label": {
+        "message": "請選擇常用工具欄的顯示方式"
     },
 
     "options_custom_tp_cbx": {
-        "message": "是否啟用自定義站點功能？"
+        "message": "是否自定義常用網址？"
     },
 
     "options_custom_tp_notice": {
-        "message": "目前僅支持最多九個網址，每行一個用小寫 , 分隔 → simptab, http://ksria.com/simptab"
+        "message": "目前僅支持最多九個網址，每行一個，詳細請看，<a href='http://ksria.com/simptab/docs/#/常用网址?id=自定义' target='_blank'>自定义站点</a>"
     },
 
     "options_custom_search": {
         "message": "自定義搜索"
+    },
+
+    "options_custom_search_notice": {
+        "message": "此功能需要開啟 <a href='http://ksria.com/simptab/docs/#/书签栏' target='_blank'>書籤欄</a> 後才能使用，使用快捷鍵 q 打開 <a href='http://ksria.com/simptab/docs/#/书签栏?id=快捷搜索栏' target='_blank'>快捷搜索欄</a>，再使用 s 觸發搜索，詳細請看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义搜索' target='_blank'>自定義搜索</a>"
+    },
+
+    "options_custom_script": {
+        "message": "全局 · 自定義腳本"
+    },
+
+    "options_custom_script_notice": {
+        "message": "有別於：禪模式小腳本，此處的腳本為全局性，即：在禪模式下也可使用，詳細請看 <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义脚本' target='_blank'>自定義腳本</a>"
+    },
+
+    "options_custom_title": {
+        "message": "自定義標題"
+    },
+
+    "options_custom_title_notice": {
+        "message": "自定義新標籤頁的標題，支持 文本 或 自執行語句，詳細請看 <a href='http://ksria.com/simptab/docs/#/選項頁?id=自定义标题' target='_blank'>自定義標題</a>"
+    },
+
+    "options_custom_hour": {
+        "message": "時間"
+    },
+
+    "options_custom_hour_state_notice": {
+        "message": "是否在右下角顯示時間？"
+    },
+
+    "options_custom_hour_notice": {
+        "message": "默認為 24 小時制，是否啟用 12 小時制？"
+    },
+
+    "options_footer_notice": {
+        "message": "自動保存，刷新頁面生效。"
+    },
+
+    "options_footer_collapse": {
+        "message": "全部展開"
+    },
+
+    "options_footer_collapse_no": {
+        "message": "全部縮進"
     },
 
     "options_footer_clear": {
@@ -513,10 +621,6 @@
         "message": "自定義腳本"
     },
 
-    "zen_mode_setting_script_howto": {
-        "message": "如何使用"
-    },
-
     "zen_mode_setting_script_manage": {
         "message": "腳本管理器"
     },
@@ -535,6 +639,30 @@
 
     "zen_mode_setting_close": {
         "message": "關閉"
+    },
+
+    "zen_mode_setting_snippets_toolbar_desc": {
+        "message": "暫無描述"
+    },
+
+    "zen_mode_setting_snippets_toolbar_home": {
+        "message": "主頁"
+    },
+
+    "zen_mode_setting_snippets_toolbar_download": {
+        "message": "安裝"
+    },
+
+    "zen_mode_setting_snippets_footer_version": {
+        "message": "當前版本："
+    },
+
+    "zen_mode_setting_snippets_footer_howto": {
+        "message": "如何使用"
+    },
+
+    "zen_mode_setting_snippets_footer_update": {
+        "message": "檢查更新"
     },
 
     "noise_mode_cafe001": {
@@ -565,24 +693,36 @@
         "message": "安裝到 最新版本 #1，#4詳細請看 #2更新日誌#3"
     },
 
-    "tips_zen_mode": {
-        "message": "歡迎來到 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%A6%85%E6%A8%A1%E5%BC%8F'>禪模式</a>，使用快捷鍵 c 或者滑鼠移動右下角彈出選項卡。"
-    },
-
     "tips_explore": {
-        "message": "向下滾動即可載入更多，顯示速度取決於你的網速，詳細請看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=探索'>探索</a> 。"
+        "message": "向下滾動即可載入更多，顯示速度取決於你的網速，詳細請看 <a target='_blank' href='http://ksria.com/simptab/docs/#/背景管理器?id=探索'>探索</a> 。"
     },
 
     "tips_earth": {
-        "message": "歡迎使用地球每刻，感謝 <a target='_blank' href='http://himawari8.nict.go.jp/'>向日葵-8號</a> 提供，詳細請看 <a target='_blank' href='http://ksria.com/simptab/docs/#/多种背景源?id=地球每刻'>地球每刻</a> 。"
+        "message": "欢迎首次使用地球每刻，请看下面的提示信息。"
     },
 
     "tips_favorite": {
-        "message": "當收藏夾沒有任何內容並僅啟用收藏夾源的情況下會出現錯誤。"
+        "message": "歡迎首次使用收藏，請看下面的提示信息。"
     },
 
     "tips_noise": {
-        "message": "歡迎使用白噪音，快捷鍵 w 即可打開，更多細節請訪問 <a target='_blank' href='http://ksria.com/simptab/docs/#/白噪音'>白噪音</a> 。"
+        "message": "歡迎首次使用白噪音，請看下方的提示信息。"
+    },
+
+    "tips_bookmarks": {
+        "message": "歡迎首次使用書籤欄，請看下面的提示信息。"
+    },
+
+    "tips_setting": {
+        "message": "歡迎首次使用設定，請看下面的提示信息。"
+    },
+
+    "tips_zenmode": {
+        "message": "歡迎首次使用禪模式，請看下面的提示信息。"
+    },
+
+    "tips_history": {
+        "message": "歡迎首次使用歷史記錄，請看下面的提示信息。"
     },
 
     "tips_confirm": {
@@ -621,8 +761,12 @@
         "message": "已取消當前背景的固定。"
     },
 
+    "notify_pin_not_changed": {
+        "message": "當前背景未到固定更換時間，如需馬上更換，請取消固定。"
+    },
+
     "notify_refresh": {
-        "message": "新背景獲取中，請稍後才能繼續操作。"
+        "message": "隨機背景獲取中，請稍後..."
     },
 
     "notify_not_refresh": {
@@ -630,7 +774,7 @@
     },
 
     "notify_refresh_failed": {
-        "message": "下一張背景獲取失敗，請重新獲取。"
+        "message": "新的背景獲取失敗，請重新獲取。"
     },
 
     "notify_mange_remove": {
@@ -661,6 +805,10 @@
         "message": "當前環境並未有任何書籤。"
     },
 
+    "notify_bm_permissions": {
+        "message": "當前未授權獲取書籤欄的許可權，是否授權？"
+    },
+
     "notify_double_open": {
         "message": "請先退出當前模式。"
     },
@@ -673,12 +821,28 @@
         "message": "已恢復初始值，請刷新本頁。"
     },
 
+    "notify_getting_started": {
+        "message": "為了完美呈現美景，所以隱藏了大多數操作，是否看下入門操作？"
+    },
+
     "notify_options_agree": {
         "message": "同意 "
     },
 
     "notify_zen_mode": {
-        "message": "刷新當前頁面後生效。"
+        "message": "2秒後，自動刷新頁面後進入禪模式。"
+    },
+
+    "notify_zen_mode_esc": {
+        "message": "是否退出禪模式？"
+    },
+
+    "notify_zen_mode_esc_confirm": {
+        "message": "確認"
+    },
+
+    "notify_zen_mode_esc_cancel": {
+        "message": "取消"
     },
 
     "notify_zen_mode_theme_random": {
@@ -706,7 +870,7 @@
     },
 
     "notify_zen_mode_exit": {
-        "message": "已退出禪模式，頁面刷新後生效。"
+        "message": "已退出禪模式，2秒後頁面自動刷新。"
     },
 
     "notify_mobile_send": {
@@ -730,7 +894,7 @@
     },
 
     "notify_eartch_mode": {
-        "message": "「地球每刻」模式下無法使用此功能！"
+        "message": "<a href='http://ksria.com/simptab/docs/#/背景源?id=地球每刻' target='_blank'>地球每刻</a> 模式下無法使用此功能！"
     },
 
     "notify_eartch_loading": {
@@ -738,11 +902,19 @@
     },
 
     "notify_eartch_update_success": {
-        "message": "獲取成功，2秒後，自動刷新本頁才能生效。"
+        "message": "獲取成功，2秒後自動刷新本頁才能生效。"
     },
 
     "notify_eartch_update_failed": {
         "message": "此功能每隔一小時才會刷新一次，請勿多次調用。"
+    },
+
+    "notify_eartch_to_time": {
+        "message": "隨機背景獲取成功，2秒後自動刷新本頁才能生效。"
+    },
+
+    "notify_history_no_usage": {
+        "message": "當前並未啟用 <a href=\"http://ksria.com/simptab/docs/#/背景源?id=历史记录\" target=\"_blank\">歷史記錄</a> 功能，請在 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=背景源\" target=\"_blank\">選項頁 · 背景</a> 開啟此功能。"
     },
 
     "notify_history_min": {
@@ -755,6 +927,22 @@
 
     "notify_favorite_empty": {
         "message": "收藏夾背景源暫無任何內容，已自動設置默認背景。"
+    },
+
+    "notify_snippets": {
+        "message": "正在載入腳本管理器，請稍等..."
+    },
+
+    "notify_snippets_update": {
+        "message": "正在更新最新腳本管理器，請稍等..."
+    },
+
+    "notify_snippets_update_success": {
+        "message": "已更新到最新版本，請重新進入！"
+    },
+
+    "notify_snippets_update_none": {
+        "message": "當前已是最新版本，無需更新。"
     },
 
     "version_detail": {
@@ -803,6 +991,10 @@
 
     "version_detail_9": {
         "message": "新增：地球每刻，白噪音，發送到手機，探索頻道等；"
+    },
+
+    "version_detail_10": {
+        "message": "新增：禪模式 · 腳本管理器，自定義標題，自定義下載位置等；"
     },
 
     "welcome_start_title": {
@@ -870,7 +1062,7 @@
     },
 
     "welcome_153_desc_2": {
-        "message": "內置多種搜索方案，一鍵直達，<a href='http://ksria.com/simptab/docs/#/功能一览?id=快捷搜索栏' target='_blank'>還可定製化</a>"
+        "message": "內置多種搜索方案，一鍵直達，<a href='http://ksria.com/simptab/docs/#/书签栏?id=快捷搜索栏' target='_blank'>還可定製化</a>"
     },
 
     "welcome_153_title_3": {
@@ -878,7 +1070,7 @@
     },
 
     "welcome_153_desc_3": {
-        "message": "自定義站點，自定義樣式，更豐富的 Unsplash <a href='http://ksria.com/simptab/docs/#/多种背景源?id=自定义Unsplash' target='_blank'>個性定製化</a>"
+        "message": "自定義站點，自定義樣式，更豐富的 Unsplash <a href='http://ksria.com/simptab/docs/#/背景源?id=自定义unsplash源' target='_blank'>個性定製化</a>"
     },
 
     "welcome_154_title_1": {
@@ -886,7 +1078,7 @@
     },
 
     "welcome_154_desc_1": {
-        "message": "來自 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%9C%B0%E7%90%83%E6%AF%8F%E5%88%BB'>向日葵-8號</a> 的地球自拍照，讓你更愛這顆星球"
+        "message": "來自 <a target='_blank' href='http://ksria.com/simptab/docs/#/背景源?id=地球每刻'>向日葵-8號</a> 的地球自拍照，讓你更愛這顆星球"
     },
 
     "welcome_154_title_2": {
@@ -894,7 +1086,7 @@
     },
 
     "welcome_154_desc_2": {
-        "message": "從現在開始，內置 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E7%99%BD%E5%99%AA%E9%9F%B3'>白噪音</a> 的 簡 Tab 會讓你更加專註的工作、學習"
+        "message": "從現在開始，內置 <a target='_blank' href='http://ksria.com/simptab/docs/#/白噪音'>白噪音</a> 的 簡 Tab 會讓你更加專註的工作、學習"
     },
 
     "welcome_154_title_3": {
@@ -902,7 +1094,15 @@
     },
 
     "welcome_154_desc_3": {
-        "message": "<a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95'>歷史記錄</a> · 精選自你的 Unsplash 源的 <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90?id=%E6%8E%A2%E7%B4%A2'>探索頻道</a> · <a target='_blank' href='http://ksria.com/simptab/docs/#/%E5%8F%91%E9%80%81%E5%88%B0%E6%89%8B%E6%9C%BA'>發送背景到手機</a>"
+        "message": "<a target='_blank' href='http://ksria.com/simptab/docs/#/背景源?id=历史记录'>歷史記錄</a> · 精選自你的 Unsplash 源的 <a target='_blank' href='http://ksria.com/simptab/docs/#/背景管理器?id=探索'>探索頻道</a> · <a target='_blank' href='http://ksria.com/simptab/docs/#/发送到手机'>發送背景到手機</a>"
+    },
+
+    "welcome_155_title_1": {
+        "message": "「上新了」禪模式 · 腳本管理器"
+    },
+
+    "welcome_155_desc_1": {
+        "message": "全新的 <a href='http://ksria.com/simptab/docs/#/禅模式?id=脚本管理器' target='_blank'>腳本管理器</a>，讓你一鍵切換！以及 <a href='http://ksria.com/simptab/docs/#/选项页?id=背景源' target='_blank'>自定義背景下載位置</a> · <a href='http://ksria.com/simptab/docs/#/选项页?id=自定义标题' target='_blank'>自定義標題</a> 等"
     },
 
     "permissions": {
@@ -919,5 +1119,89 @@
 
     "permissions_failed": {
         "message": "許可權獲取失敗，新功能無法啟用，建議重新安裝。"
+    },
+
+    "guide_all_start": {
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/\" target=\"_blank\">簡 Tab</a> 是一個純粹、極簡的 新標籤頁擴展。<br>它的設計哲學：<b>只呈現美圖，無任何干擾</b>，但這並不意味它僅代表簡單，它的功能包含：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多種背景源</a><br>- 豐富的 <a href=\"http://ksria.com/simptab/docs/#/选项页\" target=\"_blank\">定製化選項</a><br>- <a href=\"http://ksria.com/simptab/docs/#/常用网址\" target=\"_blank\">常用網址</a><br>- <a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a><br>- <a href=\"http://ksria.com/simptab/docs/#/书签栏?id=快捷搜索栏\" target=\"_blank\">快捷搜索欄</a><br>- <a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a>"
+    },
+
+    "guide_all_intro": {
+        "message": "同樣主打極簡體驗，與其它同類產品不同，簡 Tab 隱藏了絕大多數 <b>干擾元素</b>，但這些功能均可通過快捷鍵呼出。<br><br>請記住快捷鍵 <kbd>?</kbd><br>同時，絕大多數界面均支持 <kbd>esc</kbd> 退出。"
+    },
+
+    "guide_all_feature": {
+        "message": "接下來介紹幾個經常需要使用的功能，包括：<br><br>- 控制欄<br>- 時鐘<br>- 設置欄<br>- 常用網址<br>- 白噪音<br>- 書籤欄<br>- 快捷搜索欄<br>- 選項頁"
+    },
+
+    "guide_all_controlbar": {
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/控制栏\" target=\"_blank\">控制欄</a> 默認只能通過滑鼠右移顯示，它集成了絕大多數與背景有關的操作，如：上傳、下載、固定、不喜歡等。<br><br>這裡的操作均支持 <a href=\"http://ksria.com/simptab/docs/#/快捷键\" target=\"_blank\">快捷鍵</a>。"
+    },
+
+    "guide_all_clock": {
+        "message": "界面上唯一可一直顯示的元素，可選擇 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=时间\" target=\"_blank\">隱藏</a> 且 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=时间\" target=\"_blank\">可修改</a> 12/24 小時制。"
+    },
+
+    "guide_all_setting": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/setting.gif\" style=\"height:150px\"><br><a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=地球每刻\" target=\"_blank\">地球每刻模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=背景更换模式\" target=\"_blank\">隨機更換背景源</a><br>- <a href=\"http://ksria.com/simptab/docs/#/背景源?id=背景更换模式\" target=\"_blank\">相冊模式</a><br>- <a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a><br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多種背景源</a><br><br>快捷鍵 <kbd>s</kbd> 開啟/關閉"
+    },
+
+    "guide_all_topsite": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/topsites.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/常用网址\" target=\"_blank\">常用網址</a> 與 Chrome 默認標籤頁一樣。<br>支持 簡單模式 · 九宮格模式 · 隱藏 三種模式。<br>並擁有 <a href=\"http://ksria.com/simptab/docs/#/常用网址?id=自定义\" target=\"_blank\">自定義</a> 功能。"
+    },
+
+    "guide_all_noise": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/noise.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a> 也是 簡 Tab 獨有的功能，輔以 <a href=\"http://ksria.com/simptab/docs/#/控制栏?id=全屏化\" target=\"_blank\">全屏化</a> + <a href=\"http://ksria.com/simptab/docs/#/背景源?id=自动更换背景\" target=\"_blank\">自動更換背景</a>，可獲得 <b>音樂相冊級</b> 的視聽享受。<br><br>快捷鍵 <kbd>w</kbd> 開啟/關閉<br><br><b>注意：</b> 在任何界面中都沒有白噪音的開啟方式，只能選擇通過快捷鍵操作。"
+    },
+
+    "guide_all_bookmarks": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a> 簡潔直觀的二級平鋪目錄，書籤再多也不怕。<br><br>快捷鍵 <kbd>b</kbd> 開啟/關閉<br>滑鼠左移到邊緣 <kbd>並停留超過 0.5s </kbd> 開啟/關閉<br><br><b>注意：</b> 因為要申請新的許可權，所以書籤欄 <b>默認關閉</b>，請 <b>手動</b> 在選項頁中選擇開啟此功能。"
+    },
+
+    "guide_all_quickbar": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/quickbar.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/书签栏?id=快捷搜索栏\" target=\"_blank\">快捷搜索欄</a> 開啟書籤欄後，即可使用快捷搜索欄，支持關鍵字搜索書籤，並默認接入多種 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=自定义搜索\" target=\"_blank\">搜索引擎</a>。<br><br>快捷鍵 <kbd>q</kbd> 開啟/關閉"
+    },
+
+    "guide_all_options": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/options.png\"><br><a href=\"http://ksria.com/simptab/docs/#/选项页\" target=\"_blank\">選項頁</a> 包含了大量的可定製選項，如：更靈活的深度定製 · 標題欄 · 自定義樣式 · 自定義腳本 · 自定義常用網址 等。<br><br>快捷鍵 <kbd>o</kbd> 開啟/關閉"
+    },
+
+    "guide_all_zenmode": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/zenmode.png\"><br><a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a> 與圖模式相反，它追求的是 <b>極簡的高度定製化</b> 效果。<br>界面上任意元素均可定製，並包含了 <a href=\"http://ksria.com/simptab/docs/#/禅模式?id=脚本管理器\" target=\"_blank\">腳本管理器</a>。<br><br>快捷鍵 <kbd>`</kbd> 開啟/關閉"
+    },
+
+    "guide_all_end": {
+        "message": "<img src=\"../assets/images/welcome-start.webp\"><br>以上就是關於簡 Tab 的大部分功能介紹，更詳細的介紹請看 <a href=\"http://ksria.com/simptab/docs/#/\" target=\"_blank\">幫助文檔</a>。"
+    },
+
+    "guide_noise": {
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/白噪音\" target=\"_blank\">白噪音</a> 也是 簡 Tab 獨有的功能，輔以 <a href=\"http://ksria.com/simptab/docs/#/控制栏?id=全屏化\" target=\"_blank\">全屏化</a> + <a href=\"http://ksria.com/simptab/docs/#/背景源?id=自动更换背景\" target=\"_blank\">自動更換背景</a>，可獲得 <b>音樂相冊級的</b> 視聽享受。<br><br>快捷鍵 <kbd>w</kbd> 開啟/關閉<br><br><b>注意：</b> 在任何界面中都沒有白噪音的開啟方式，只能選擇通過快捷鍵操作。"
+    },
+
+    "guide_bookmarks": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/bookmarks.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/书签栏\" target=\"_blank\">書籤欄</a> 簡潔直觀的二級平鋪目錄，書籤再多也不怕。<br><br>快捷鍵 <kbd>b</kbd> 開啟/關閉<br>滑鼠左移到邊緣 <kbd>並停留超過 0.5s </kbd> 開啟/關閉"
+    },
+
+    "guide_quickbar": {
+        "message": "<img src=\"https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/guide/quickbar.gif\"><br><a href=\"http://ksria.com/simptab/docs/#/书签栏?id=快捷搜索栏\" target=\"_blank\">快捷搜索欄</a> 開啟書籤欄後，即可使用快捷搜索欄，支持關鍵字搜索書籤，並默認接入多種 <a href=\"http://ksria.com/simptab/docs/#/选项页?id=自定义搜索\" target=\"_blank\">搜索引擎</a>。<br><br>快捷鍵 <kbd>q</kbd> 開啟/關閉"
+    },
+
+    "guide_setting": {
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/设置栏\" target=\"_blank\">設置欄</a> 主要針對背景源的一些常規設置，包括：<br><br>- 背景圖顯示方式<br>- 背景顯示形式<br>- 開啟/禁用 <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多種背景源</a><br>- 背景源隨便更換頻率 等<br><br>快捷鍵 <kbd>s</kbd> 開啟/關閉"
+    },
+
+    "guide_favorite": {
+        "message": "歡迎首次使用收藏，請留意以下幾點：<br><br>- 上傳的圖片均保存在 <b>Chrome 本地的安全沙箱<b> 中<br>- 上傳的本地圖片也保存在收藏夾裡面<br>- 請在 <a href=\"http://ksria.com/simptab/docs/#/背景管理器\" target=\"_blank\">背景管理器</a> 中收藏夾的圖片<br><br> 快捷鍵 <kbd>a</kbd> 添加/刪除"
+    },
+
+    "guide_zenmode": {
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/禅模式\" target=\"_blank\">禪模式</a> 與圖模式相反，它追求的是 <b>極簡的高度定製化</b> 效果。<br>界面上任意元素均可定製，並包含了 <a href=\"http://ksria.com/simptab/docs/#/禅模式?id=脚本管理器\" target=\"_blank\">腳本管理器</a><br><br>快捷鍵 <kbd>`</kbd> 開啟/關閉<br>快捷鍵 <kbd>s</kbd> 開啟/關閉禪模式的選項頁"
+    },
+
+    "guide_earth": {
+        "message": "感謝 <a target=\"_blank\" href=\"http://himawari8.nict.go.jp/\">向日葵-8號</a> 提供，詳細請看 <a target=\"_blank\" href=\"http://ksria.com/simptab/docs/#/背景源?id=地球每刻\">地球每刻</a><br><br>- 此模式下 <b>無法使用</b> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=多种背景源\" target=\"_blank\">多種背景源</a> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=历史记录\" target=\"_blank\">歷史記錄</a> <a href=\"http://ksria.com/simptab/docs/#/背景源?id=自动更换背景\" target=\"_blank\">自動播放</a> 等功能<br>- 地球每刻的照片 <b>每小時更新一次</b>"
+    },
+
+    "guide_history": {
+        "message": "<a href=\"http://ksria.com/simptab/docs/#/背景源?id=历史记录\" target=\"_blank\">歷史記錄</a> 是 簡 Tab 獨有功能，包含了以下幾個特點：<br><br>- 最多可以記錄 <b>五組</b> 之前的背景圖片<br>- 滑鼠移到新標籤頁上方中部即可自動打開歷史記錄列表<br><br>快捷鍵 <kbd>→</kbd> <kbd>←</kbd> 翻頁 <br>快捷鍵 <kbd>h</kbd> 開啟/關閉<br>滑鼠上移到邊緣 <kbd>並停留超過 1s </kbd> 開啟/關閉"
     }
 }
