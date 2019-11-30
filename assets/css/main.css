@@ -344,6 +344,9 @@ header {
 .main .feature[data-type=bookmarks] .icon {
   background: url("../image/bookmarks.png") no-repeat;
 }
+.main .feature[data-type=topsites] .icon {
+  background: url("../image/topsites.png") no-repeat;
+}
 .main .feature[data-type=controlbar] .icon {
   background: url("../image/setting.png") no-repeat;
 }
