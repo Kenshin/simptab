@@ -338,6 +338,9 @@ header {
 .main .feature[data-type=positionmode] .icon {
   background: url("../image/time.png") no-repeat;
 }
+.main .feature[data-type=unsplash] .icon {
+  background: url("../image/unsplash.png") no-repeat;
+}
 .main .feature[data-type=bgmanage] .icon {
   background: url("../image/subscribe.png") no-repeat;
 }
