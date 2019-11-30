@@ -359,6 +359,9 @@ header {
 .main .feature[data-type=zenmode] .icon {
   background: url("../image/zenmode.png") no-repeat;
 }
+.main .feature[data-type=options] .icon {
+  background: url("../image/options.png") no-repeat;
+}
 .middle {
   margin-bottom: 25px;
   padding: 0 147px;
