@@ -39,6 +39,7 @@ var gulp   = require( 'gulp' ),
     paths  = {
         src  : 'js/',
         dest : 'publish/',
+        vender: 'vender/',
         port : 3000,
         html : '*.html',
         js   : 'js/*.js',
@@ -100,6 +101,7 @@ gulp.task( 'copy', function( cb ) {
     gulp.src( paths.image + '*'    ).pipe( gulp.dest( paths.dest + paths.image ));
     gulp.src( paths.font  + '*'    ).pipe( gulp.dest( paths.dest + paths.font  ));
     gulp.src( paths.local + '**/*' ).pipe( gulp.dest( paths.dest + paths.local ));
+    gulp.src( paths.vender + '**/*' ).pipe( gulp.dest( paths.dest + paths.vender ));
     gulp.src( paths.csssrc + '/changelog.css' ).pipe( gulp.dest( paths.dest + paths.csssrc ));
     cb();
 });
