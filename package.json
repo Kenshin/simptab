@@ -1,5 +1,5 @@
 {
-  "name": "SimpTab(WWW)",
+  "name": "simptab_www",
   "version": "1.0.3",
   "engines": {
     "node": ">= 0.10.0"
