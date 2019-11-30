@@ -353,6 +353,9 @@ header {
 .main .feature[data-type=shortcuts] .icon {
   background: url("../image/shortcuts.png") no-repeat;
 }
+.main .feature[data-type=zenmode] .icon {
+  background: url("../image/zenmode.png") no-repeat;
+}
 .middle {
   margin-bottom: 25px;
   padding: 0 147px;
