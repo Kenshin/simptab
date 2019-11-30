@@ -67,8 +67,7 @@ $( document ).ready( function() {
         if ( lang == "en"    ) $($(".top ul li a")[1]).attr( "href", "http://ksria.com/simptab/docs/#/CHANGELOG.en" );
 
         $.each( $(".feature"), function( idx, item ) {
-            $( item ).find( ".desc" ).html( t( "desc" + (++idx) ));
-            $( item ).find( ".content" ).attr( "data-tooltip", t( "feature" + (idx) ));
+            $( item ).find( ".desc" ).text( t( $(item).attr( "data-type" ) ));
         });
 
         $( ".feature .learnmore").html( t( "learn" ));
