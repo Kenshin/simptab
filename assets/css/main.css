@@ -332,22 +332,22 @@ header {
   font-weight: bold;
   line-height: 19px;
 }
-.main .feature:nth-child(1) .icon {
+.main .feature[data-type=origins] .icon {
   background: url("../image/multi-language.png") no-repeat;
 }
-.main .feature:nth-child(2) .icon {
+.main .feature[data-type=positionmode] .icon {
   background: url("../image/time.png") no-repeat;
 }
-.main .feature:nth-child(3) .icon {
+.main .feature[data-type=bgmanage] .icon {
   background: url("../image/subscribe.png") no-repeat;
 }
-.main .feature:nth-child(4) .icon {
+.main .feature[data-type=bookmarks] .icon {
   background: url("../image/bookmarks.png") no-repeat;
 }
-.main .feature:nth-child(5) .icon {
+.main .feature[data-type=controlbar] .icon {
   background: url("../image/setting.png") no-repeat;
 }
-.main .feature:nth-child(6) .icon {
+.main .feature[data-type=shortcuts] .icon {
   background: url("../image/shortcuts.png") no-repeat;
 }
 .middle {
