@@ -95,7 +95,7 @@ $( document ).ready( function() {
         var lng = i18n.lng();
         lng     = lng === "en" ? lng : lng.split("-")[1];
         lng     = lng === "cn" ? ""  : "." + lng;
-        window.location.href = "https://github.com/kenshin/simptab/blob/master/README" + lng + ".md";
+        window.location.href = lng == ".en" ? "http://github.com/kenshin/simptab/blob/master/README" + lng + ".md" : "http://ksria.com/simptab/docs/#/";
     });
 
 });
