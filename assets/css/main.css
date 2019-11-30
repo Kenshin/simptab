@@ -331,6 +331,7 @@ header {
   font-size: 14px;
   font-weight: bold;
   line-height: 19px;
+  cursor: pointer;
 }
 .main .feature[data-type=origins] .icon {
   background: url("../image/multi-language.png") no-repeat;
