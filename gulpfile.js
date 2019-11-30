@@ -125,11 +125,11 @@ gulp.task( 'js', function() {
         .pipe( gulp.dest( paths.dest + 'js' ) );
 });
 
-gulp.task( 'publish', [ 'clean' ], function() {
+gulp.task( 'deploy', [ 'clean' ], function() {
     gulp.start( 'html', 'css', 'js', 'copy' );
 });
 
-gulp.task( 'deploy', function( cb ) {
+gulp.task( 'publish', function( cb ) {
     runsyn(
         'clean',
         'copy',
