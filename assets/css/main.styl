@@ -45,7 +45,12 @@ body
 
     background: url( ../image/bg.png ) repeat
 
-    div
+    header div,
+    div.main,
+    div.middle,
+    div.copyright,
+    .main .feature,
+    .footer ul li div
         adapter-display( flex )
         all-browser "justify-content",  center
         all-browser "align-items",      center
@@ -377,6 +382,7 @@ header
 
             // support
             &:nth-child(1) div
+                    all-browser "align-items", flex-start
 
                     // share
                     nav
@@ -384,7 +390,7 @@ header
                         all-browser "flex-flow",   row nowrap
                         all-browser "justify-content", flex-start
 
-                        padding: 1px 0
+                        margin-top: 4px
 
                         a
                             adapter-display( flex )
@@ -419,9 +425,12 @@ header
 
             // author
             &:nth-child(2) div
+                all-browser "align-items", flex-start
 
                 .photo
                     display: block
+
+                    margin-right: 10px;
 
                     width : 46px
                     height: @width
@@ -444,7 +453,7 @@ header
                         nav
                             adapter-display( flex )
 
-                            padding: 1px 0
+                            margin-top: 4px
 
                             a
                                 adapter-display( flex )
@@ -502,11 +511,6 @@ header
         .download
             zoom: 0.9
 
-@media (max-width: 1213px)
-    .main
-        padding: 0
-        zoom: 0.7
-
 @media (max-width: 1024px)
     .middle
         zoom 0.9
@@ -514,6 +518,8 @@ header
 @media (max-width: 945px)
     .middle
         zoom 0.8
+    .footer ul li
+        width: initial
 
 @media (max-width: 840px)
     .middle
