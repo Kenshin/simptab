@@ -48,4 +48,4 @@
 全功能
 ---
 
-![功能一览](http://st.ksria.cn/feature%201.5.25.png)
+![功能一览](http://st.ksria.cn/feature%201.5.5.png)
