@@ -1,7 +1,5 @@
 "use strict";
 $( document ).ready( function() {
-
-    
     var lang = navigator.language;
 
     // set 'en-XX' to 'en'
