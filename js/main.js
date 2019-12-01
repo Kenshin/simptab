@@ -130,6 +130,16 @@ function tooltips( id ) {
                 element: $( ".feature[data-type=positionmode]" )[0],
                 position: 'right',
                 intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/www/earth.jpg" alt="地球每刻"><br><span style="border-left:.25em solid rgba(255,255,255,0.9);padding-left:5px;">地球每刻由 <a href="http://himawari8.nict.go.jp/" target="_blank">向日葵-8號</a> 提供，详细请看 <a href="https://simptab.art/docs/#/%E8%83%8C%E6%99%AF%E6%BA%90?id=%e5%9c%b0%e7%90%83%e6%af%8f%e5%88%bb" target="_blank">地球每刻</a></span>'
+            }],
+            controlbar: [{
+                element: $( ".feature[data-type=controlbar]" )[0],
+                position: 'left',
+                intro: '直观的控制栏，包含多种操作方案：<br><ul><li>上传 · 下载</li><li>收藏</li><li>固定</li><li>下一张（刷新）</li><li>不喜欢</li></ul>详细请看开发文档 <a href="https://simptab.art/docs/#/%E6%8E%A7%E5%88%B6%E6%A0%8F" target="_blank">控制栏</a>'
+            }],
+            unsplash: [{
+                element: $( ".feature[data-type=unsplash]" )[0],
+                position: 'left',
+                intro: '深度集成 对 Unsplash 源的定制化设置，包含：<ul><li>自定义 Unsplash 源</li><li>更改 Unsplash 源分辨率</li></ul>'
             }]
         },
         intros = introJs();
