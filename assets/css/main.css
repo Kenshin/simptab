@@ -319,6 +319,10 @@ header {
   margin-top: 10px;
   box-shadow: 0 5px 30px rgba(0,0,0,0.2);
 }
+.main .feature.active {
+  margin-top: 10px;
+  box-shadow: none;
+}
 .main .feature div {
   padding-bottom: 6px;
 }
