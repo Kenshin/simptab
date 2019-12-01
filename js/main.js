@@ -121,7 +121,7 @@ function tooltips( id ) {
             positionmode: [{
                 element: $( ".feature[data-type=positionmode]" )[0],
                 position: 'right',
-                intro: '简 Tab 具有多种方式的壁纸更换模式，包括：<ul><li>每天更换背景<br><abbr>每天更换一次，背景源只来源于 必应每日图片</abbr></li><li>随机更换<br><abbr>每次新打开标签页，即可看到一副新的背景图</abbr></li><li>只显示当前背景</li><li>地球每刻</li></ul>'
+                intro: '简 Tab 具有多种方式的壁纸更换模式，包括：<ul><li>每天更换背景<br><abbr>每天更换一次，背景源只来源于 必应每日图片</abbr></li><li>随机更换<br><abbr>每次新打开标签页，即可看到一副新的背景图</abbr></li><li>只显示当前背景</li><li>地球每刻</li></ul>详细请看开发文档 <a href="https://simptab.art/docs/#/%E8%83%8C%E6%99%AF%E6%BA%90?id=%e5%a4%9a%e7%a7%8d%e8%83%8c%e6%99%af%e6%ba%90" target="_blank">背景更换模式</a>'
             },
             {
                 element: $( ".feature[data-type=positionmode]" )[0],
