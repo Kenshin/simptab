@@ -122,7 +122,7 @@ function tooltips( id ) {
             {
                 element: $( ".feature[data-type=positionmode]" )[0],
                 position: 'right',
-                intro: '<img src="./assets/image/earth.png" alt="地球每刻"><br><span style="border-left:.25em solid rgba(255,255,255,0.9);padding-left:5px;">地球每刻由 <a href="http://himawari8.nict.go.jp/" target="_blank">向日葵-8號</a> 提供，详细请看 <a href="https://simptab.art/docs/#/%E8%83%8C%E6%99%AF%E6%BA%90?id=%e5%9c%b0%e7%90%83%e6%af%8f%e5%88%bb" target="_blank">地球每刻</a></span>'
+                intro: '<img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/www/earth.jpg" alt="地球每刻"><br><span style="border-left:.25em solid rgba(255,255,255,0.9);padding-left:5px;">地球每刻由 <a href="http://himawari8.nict.go.jp/" target="_blank">向日葵-8號</a> 提供，详细请看 <a href="https://simptab.art/docs/#/%E8%83%8C%E6%99%AF%E6%BA%90?id=%e5%9c%b0%e7%90%83%e6%af%8f%e5%88%bb" target="_blank">地球每刻</a></span>'
             }]
         },
         intros = introJs();
