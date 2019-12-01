@@ -227,7 +227,14 @@ header
         margin:  30px
 
         background-color: #eff0f2
-        all-browser "border-radius", 8px
+        all-browser "border-radius", 10px
+
+        box-shadow: 0 2px 5px rgba(0,0,0,.05);
+        transition: all 0.3s linear;
+
+        &:hover
+            margin-top: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,.2);
 
         div
             padding-bottom: 6px
