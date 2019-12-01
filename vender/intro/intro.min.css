@@ -25,19 +25,19 @@
 }
 
 .introjs-arrow.right {
-    border-left-color: rgba(15,15,15,0.8);
+    border-left-color: transparent;
 }
 
 .introjs-arrow.left {
-    border-right-color: rgba(15,15,15,0.8);
+    border-right-color: transparent;
 }
 
 .introjs-arrow.bottom-right {
-    border-top-color: rgba(15,15,15,0.8);
+    border-top-color: transparent;
 }
 
 .introjs-arrow.left-bottom {
-    border-right-color: rgba(15,15,15,0.8);
+    border-right-color: transparent;
 }
 
 .introjs-tooltip {
