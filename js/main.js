@@ -95,8 +95,10 @@ $( document ).ready( function() {
         window.location.href = lng == ".en" ? "http://github.com/kenshin/simptab/blob/master/README" + lng + ".md" : "http://ksria.com/simptab/docs/#/";
     });
 
-    $( ".feature .learnmore").on( "click", function( event ) {
-        var id = $( event.currentTarget ).parent().parent().attr( "data-type" );
+    $( ".feature .learnmore" ).on( "click", function( event ) {
+        var $target = $( event.currentTarget ).parent().parent(),
+            id      = $target.attr( "data-type" );
+        $target.addClass( "active" );
         tooltips( id );
     });
 
@@ -116,6 +118,7 @@ function tooltips( id ) {
     var steps  = {
             origins: [{
                 element: $( ".feature[data-type=origins]" )[0],
+                position: 'right',
                 intro: '简 Tab 支持从多个壁纸源获取数据，包括：<ul><li>必应每日图片</li><li>必应随机图片</li><li>wallhaven.cc</li><li>unsplash.com</li><li>googleartproject.com</li><li>desktoppr.co</li><li>visualhunt.com</li></ul>详细请看开发文档 <a href="https://simptab.art/docs/#/%E8%83%8C%E6%99%AF%E6%BA%90?id=%e5%a4%9a%e7%a7%8d%e8%83%8c%e6%99%af%e6%ba%90" target="_blank">多种背景源</a>'
             }],
             positionmode: [{
@@ -140,8 +143,11 @@ function tooltips( id ) {
         hideNext: true,
         exitOnEsc: true,
         exitOnOverlayClick: true,
-        overlayOpacity: 0.2,
+        overlayOpacity: 0.8,
         steps: steps[id],
+    });
+    intros.onexit( function() {
+        $( ".feature" ).removeClass( "active" );
     });
     intros.start();
 }
