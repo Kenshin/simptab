@@ -100,6 +100,10 @@ $( document ).ready( function() {
         tooltips( id );
     });
 
+    Waves.init();
+    Waves.attach( '.feature', [ "waves-block" ]);
+    Waves.attach( '.btn-download', [ "waves-button", "waves-float" ]);
+    Waves.attach( '.feature .learnmore', [ "waves-button", "waves-float" ]);
 });
 
 function getQueryString( name ) {
