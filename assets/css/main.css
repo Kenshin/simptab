@@ -197,11 +197,8 @@ header {
   -o-border-radius: 6px;
   -ms-border-radius: 6px;
   border-radius: 6px;
-  -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
-  -o-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
-  -ms-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
-  box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+  box-shadow: 0 2rem 1.5rem -1.5rem rgba(33,37,41,0.15), 0 0 1.5rem 0.5rem rgba(33,37,41,0.05) !important;
+  transition: all 0.3s linear;
 }
 .describe .introduce .btn-download span {
   display: block;
