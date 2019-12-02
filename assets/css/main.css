@@ -192,6 +192,7 @@ header {
   text-decoration: none;
 /*text-shadow: #000 0 1px 2px;*/
   background-color: #7c4dff;
+  border: 1px solid transparent;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -o-border-radius: 6px;
@@ -236,20 +237,9 @@ header {
   font-size: 10px;
 }
 .describe .introduce .btn-download:hover {
-  text-decoration: none;
-  background-position: 0 -15px;
-  background: #7c4dff;
-  background: rgba(124,77,255,0.89);
-  -webkit-transition: background-position 0.1s linear;
-  -moz-transition: background-position 0.1s linear;
-  -o-transition: background-position 0.1s linear;
-  -ms-transition: background-position 0.1s linear;
-  transition: background-position 0.1s linear;
-  -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0);
-  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0);
-  -o-box-shadow: 0 1px 5px rgba(0,0,0,0);
-  -ms-box-shadow: 0 1px 5px rgba(0,0,0,0);
-  box-shadow: 0 1px 5px rgba(0,0,0,0);
+  background-color: #fafafa;
+  border: 1px solid #7c4dff;
+  color: #7c4dff;
 }
 .describe .introduce .btn-offline-download {
   padding: 0 2px;
@@ -424,17 +414,13 @@ header {
   text-decoration: none;
   font-weight: bold;
   line-height: 1.5;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
 }
 .middle a:hover {
   background-color: transparent;
-  border: 1px solid transparent;
-  -webkit-border-color: #7c4dff;
-  -moz-border-color: #7c4dff;
-  -o-border-color: #7c4dff;
-  -ms-border-color: #7c4dff;
-  border-color: #7c4dff;
+  border: 1px solid #7c4dff;
   color: #7c4dff;
-  margin: 0 59px 28px 59px;
 }
 .middle a div {
   padding-left: 5px;

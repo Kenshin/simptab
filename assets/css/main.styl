@@ -148,7 +148,8 @@ header
             /*text-shadow: #000 0 1px 2px;*/
 
             background-color: #7C4DFF
-
+            border 1px solid transparent
+    
             all-browser : "border-radius", 6px
             box-shadow: 0 2rem 1.5rem -1.5rem rgba(33,37,41,.15),0 0 1.5rem .5rem rgba(33,37,41,.05)!important;
             transition: all 0.3s linear;
@@ -179,13 +180,9 @@ header
                     font-size  : 10px
 
             &:hover
-                text-decoration: none
-                background-position: 0 -15px
-                background #7C4DFF
-                background rgba(124, 77, 255, 0.89)
-
-                all-browser "transition", background-position 0.1s linear
-                all-browser "box-shadow", 0 1px 5px rgba(0, 0, 0, 0)
+                background-color #fafafa
+                border 1px solid #7C4DFF
+                color #7C4DFF
 
         .btn-offline-download
             padding: 0 2px
@@ -324,13 +321,13 @@ header
         font-weight bold
         line-height 1.5
 
+        border 1px solid transparent
+        transition all .2s ease-in-out
+
         &:hover
             background-color transparent
-            border 1px solid transparent
-            all-browser "border-color" #7C4DFF
+            border 1px solid #7C4DFF
             color #7C4DFF
-
-            margin 0 59px 28px 59px
 
         div
             padding-left 5px
