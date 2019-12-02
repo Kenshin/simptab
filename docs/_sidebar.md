@@ -17,19 +17,19 @@
 * **进阶功能**
   * [快捷键](快捷键)
   * [背景源](背景源)
-  * [背景管理器](背景管理器) ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)
+  * [背景管理器](背景管理器  ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png))
   * [自定义样式](选项页?id=自定义样式)
   * [自定义脚本](选项页?id=自定义脚本)
   * [自定义搜索](选项页?id=自定义搜索)
   * [自定义站点](常用网址?id=自定义)
   * [发送到手机](发送到手机)
 
-* **禅模式** ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)
-  * [禅模式](禅模式)
+* **禅模式**
+  * [禅模式  ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](禅模式)
 
 * **使用技巧**
-  * [支持 4K 分辨率](显示%204K%20分辨率的背景源)  ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)
-  * [自定义 Unsplash 源](背景源?id=自定义Unsplash源)  ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)
+  * [支持 4K 分辨率  ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](显示%204K%20分辨率的背景源)
+  * [自定义 Unsplash 源  ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](背景源?id=自定义Unsplash源)
 
 * **更新日志**
   * [简体中文](CHANGELOG)
