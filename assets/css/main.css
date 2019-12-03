@@ -407,6 +407,16 @@ header {
   border-radius: 10px;
   box-shadow: 0 2rem 1.5rem -1.5rem rgba(33,37,41,0.15), 0 0 1.5rem 0.5rem rgba(33,37,41,0.05);
 }
+.main .feature .more kbd {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: #fafafa;
+  font-size: 12px;
+  line-height: 12px;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
 .main .feature .more .title {
   font-size: 15px;
   font-weight: 400;
