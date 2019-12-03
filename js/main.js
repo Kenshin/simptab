@@ -1,6 +1,7 @@
 "use strict";
+var i18nn, lang;
 $( document ).ready( function() {
-    var lang = navigator.language;
+    lang = navigator.language;
 
     // set 'en-XX' to 'en'
     if ( lang.split("-")[0] == "en" ) {
@@ -48,6 +49,8 @@ $( document ).ready( function() {
 
     // i18n init
     i18n.init( options, function( t ) {
+
+        i18nn = t;
 
         $($(".title div")[0]).html( t( "title" ));
         $($(".title div")[1]).html( t( "desc" ));
@@ -180,10 +183,11 @@ function tooltips( id ) {
         shortcuts   : '<div class="title">键盘党的最爱</div><img src="https://simptab-1254315611.cos.ap-shanghai.myqcloud.com/www/shortcuts.jpg" alt="快捷键"><div class="details">支持全局 <kbd>ESC</kbd> 不仅如此，几乎每个功能均支持快捷键。</div><a class="learnmore" href="https://simptab.art/docs/#/%E5%BF%AB%E6%8D%B7%E9%94%AE" target="_blank">快捷键</a>',
     };
     var $target = $( ".feature[data-type=" + id + "]" );
-    $target.append( '<div class="more">' + steps[id] + '</div>' );
+    $target.append( '<div class="more">' + i18nn( "feature_" + id ) + '</div>' );
     $target.find( ".icon, .desc, .content" ).addClass( "hide" );
     setTimeout( function() {
         $target.find( ".more" ).addClass( "active" );
+        lang == "en" && $target.find( ".more .learnmore" ).hide();
     }, 200 );
 
     $( ".feature .more" ).one( "click", function( event ) {
