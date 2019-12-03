@@ -150,10 +150,12 @@ header {
   font-weight: 400;
 }
 .describe .introduce .title div:nth-child(1) {
-  font-size: 50px;
+  font-size: 45px;
+  font-weight: 300;
 }
 .describe .introduce .title div:nth-child(2) {
-  font-size: 40px;
+  font-size: 28px;
+  font-weight: 100;
 }
 .describe .introduce .download {
   -webkit-justify-content: center;
@@ -185,6 +187,7 @@ header {
   color: #fff;
   font-size: 33px;
   text-decoration: none;
+  font-weight: 400;
 /*text-shadow: #000 0 1px 2px;*/
   background-color: #7c4dff;
   border: 1px solid transparent;
@@ -226,6 +229,7 @@ header {
   padding: 0;
   margin: 0;
   line-height: 48px;
+  font-weight: 200;
 }
 .describe .introduce .btn-download nav div {
   padding-top: 5px;
@@ -765,6 +769,17 @@ header {
 }
 .footer ul li:nth-child(2) div div div nav span[class^="linkin"]:hover {
   background: url("../image/linkin-hover-icon.png") no-repeat;
+}
+/**
+ * 4K
+ */
+@media only screen and (max-device-width: 2560px) {
+  .describe .introduce .title div:nth-child(1) {
+    font-size: 50px;
+  }
+  .describe .introduce .title div:nth-child(2) {
+    font-size: 35px;
+  }
 }
 /**
  * iPad pro 12 and below

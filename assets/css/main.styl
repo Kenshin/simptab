@@ -121,9 +121,12 @@ header
 
             div
                 &:nth-child(1)
-                    font-size: 50px
+                    font-size: 45px
+                    font-weight: 300
+
                 &:nth-child(2)
-                    font-size: 40px
+                    font-size: 28px
+                    font-weight: 100
 
         .download
             all-browser "justify-content", center
@@ -140,6 +143,7 @@ header
             font-size: 33px
 
             text-decoration: none
+            font-weight: 400
             /*text-shadow: #000 0 1px 2px;*/
 
             background-color: #7C4DFF
@@ -169,6 +173,7 @@ header
                     margin : 0
 
                     line-height: 48px
+                    font-weight: 200
 
                 div
                     padding-top: 5px
@@ -577,6 +582,17 @@ header
 
                             span[class^="linkin"]:hover
                                 background: url( ../image/linkin-hover-icon.png ) no-repeat
+
+/**
+ * 4K
+ */
+@media only screen and (max-device-width: 2560px)
+    .describe .introduce .title
+        div:nth-child(1)
+            font-size: 50px
+
+        div:nth-child(2)
+            font-size: 35px
 
 /**
  * iPad pro 12 and below
