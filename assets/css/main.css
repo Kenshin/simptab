@@ -399,6 +399,7 @@ header {
   text-align: left;
 }
 .main .feature .more .title {
+  font-size: 15px;
   font-weight: 400;
 }
 .main .feature .more .details {
