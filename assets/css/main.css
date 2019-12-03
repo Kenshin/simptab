@@ -472,7 +472,7 @@ header {
   background-color: #7c4dff;
   font-size: 21px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 200;
   line-height: 1.5;
   border: 1px solid transparent;
   box-shadow: 0 2rem 1.5rem -1.5rem rgba(33,37,41,0.15), 0 0 1.5rem 0.5rem rgba(33,37,41,0.05);
