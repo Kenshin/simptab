@@ -345,6 +345,9 @@ header {
 .main .feature[data-type=positionmode] .icon {
   background: url("../image/time.png") no-repeat;
 }
+.main .feature[data-type=earth] .icon {
+  background: url("../image/earth.png") no-repeat;
+}
 .main .feature[data-type=unsplash] .icon {
   background: url("../image/unsplash.png") no-repeat;
 }
