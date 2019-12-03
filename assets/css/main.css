@@ -85,7 +85,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 10px;
+  margin-left: 20px;
   padding-bottom: 5px;
   transition: border-color 0.5s;
   -webkit-border-bottom: 2px solid transparent;
@@ -101,11 +101,6 @@ header {
   -o-border-bottom: 2px solid #fff;
   -ms-border-bottom: 2px solid #fff;
   border-bottom: 2px solid #fff;
-}
-.top ul li:nth-child(4) a,
-.top ul li:nth-child(5) a,
-.top ul li:nth-child(6) a {
-  min-width: 50px;
 }
 .top ul li img {
   padding-right: 5px;

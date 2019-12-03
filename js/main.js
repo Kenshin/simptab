@@ -61,8 +61,8 @@ $( document ).ready( function() {
         $($(".top ul li a")[0]).text( t( "nav3" ) );
         $($(".top ul li a")[1]).text( t( "nav2" ) );
         $($(".top ul li a")[2]).text( t( "nav4" ) );
-        $($(".top ul li a")[6]).text( t( "nav5" ) );
-        $($(".top ul li a")[7]).text( t( "nav6" ) );
+        $($(".top ul li a")[3]).text( t( "nav5" ) );
+        $($(".top ul li a")[4]).text( t( "nav6" ) );
 
         if ( lang == "zh-tw" ) $($(".top ul li a")[1]).attr( "href", "http://ksria.com/simptab/docs/#/CHANGELOG.tw" );
         if ( lang == "en"    ) $($(".top ul li a")[1]).attr( "href", "http://ksria.com/simptab/docs/#/CHANGELOG.en" );
