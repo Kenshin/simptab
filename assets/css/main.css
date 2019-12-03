@@ -405,6 +405,7 @@ header {
   margin-bottom: 6px;
   max-width: 200px;
   border-radius: 10px;
+  box-shadow: 0 2rem 1.5rem -1.5rem rgba(33,37,41,0.15), 0 0 1.5rem 0.5rem rgba(33,37,41,0.05);
 }
 .main .feature .more .title {
   font-size: 15px;
