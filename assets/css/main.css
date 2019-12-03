@@ -401,12 +401,20 @@ header {
   margin-top: 0;
   text-align: left;
 }
+.main .feature .more img {
+  margin-bottom: 6px;
+  max-width: 200px;
+  border-radius: 10px;
+}
 .main .feature .more .title {
   font-size: 15px;
   font-weight: 400;
 }
 .main .feature .more .details {
   width: 100%;
+}
+.main .feature .more .details a {
+  color: inherit;
 }
 .middle {
   margin-bottom: 25px;
