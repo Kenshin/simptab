@@ -264,10 +264,10 @@ header {
   font-size: 13px;
   color: #fff;
 }
-.describe .banner {
-  height: 656px;
-  width: 853px;
-  background: url("../image/introduce.jpg") no-repeat;
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .main {
   -webkit-flex-flow: row wrap;
@@ -282,6 +282,8 @@ header {
   justify-content: center;
   padding: 0 147px;
   margin: 25px 0;
+  max-width: 1400px;
+  width: 100%;
   font: 300 12px/1.8 -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
 .main .feature {
@@ -769,123 +771,38 @@ header {
 .footer ul li:nth-child(2) div div div nav span[class^="linkin"]:hover {
   background: url("../image/linkin-hover-icon.png") no-repeat;
 }
-@media (max-width: 1391px) {
-  .describe .banner {
-    zoom: 0.8;
-  }
-  .describe .title {
-    zoom: 0.9;
-  }
-  .describe .download {
-    zoom: 0.9;
-  }
-}
-@media (max-width: 1024px) {
-  .middle {
-    zoom: 0.9;
-  }
-}
-@media (max-width: 945px) {
-  .middle {
-    zoom: 0.8;
-  }
-  .footer ul li {
-    width: initial;
-  }
-}
-@media (max-width: 840px) {
-  .middle {
-    zoom: 0.7;
-  }
-}
-@media (max-width: 735px) {
-  .middle {
-    zoom: 0.6;
-  }
-}
-@media (max-width: 718px) {
-  .describe {
-    -webkit-flex-flow: column nowrap;
-    -moz-flex-flow: column nowrap;
-    -o-flex-flow: column nowrap;
-    -ms-flex-flow: column nowrap;
-    flex-flow: column nowrap;
-  }
-  .describe .banner {
-    zoom: 0.5;
-  }
-  .describe .title {
-    zoom: 0.6;
-  }
-  .describe .download {
-    zoom: 0.5;
+/**
+ * iPad pro 12 and below
+ */
+@media only screen and (max-device-width: 1024px) {
+  .top {
+    justify-content: center;
   }
   .main {
-    zoom: 0.6;
+    padding: 0 5%;
   }
 }
-@media (max-width: 640px) {
+/**
+ * iPad mini
+ */
+@media only screen and (max-device-width: 768px) {
   .main {
-    zoom: 0.5;
+    padding: 0 20px;
   }
 }
-@media (max-width: 480px) {
-  .describe .title {
-    zoom: 0.5;
-  }
-  .describe .banner {
-    zoom: 0.3;
-  }
+/**
+* iPhone XS Max and below
+*/
+@media only screen and (max-device-width: 414px) {
   .main {
-    zoom: 0.4;
-  }
-  .footer {
-    zoom: 0.6;
+    padding: 0 20px;
   }
 }
-@media (max-width: 414px) {
+/**
+* iPhone SE and below
+*/
+@media only screen and (max-device-width: 320px) {
   .main {
-    zoom: 0.3;
-  }
-  .footer {
-    zoom: 0.6;
-  }
-  .middle a div {
-    width: 300px;
-  }
-}
-@media (max-width: 360px) {
-  .middle a div {
-    width: 280px;
-  }
-}
-@media (max-width: 375px) {
-  .middle a div {
-    width: 290px;
-  }
-}
-@media (max-width: 320px) {
-  .describe .title {
-    zoom: 0.4;
-  }
-  .main {
-    zoom: 0.3;
-  }
-  .middle a div {
-    width: 250px;
-  }
-}
-@media (max-width: 979px) {
-  .footer ul li div {
-    -webkit-flex-flow: column nowrap;
-    -moz-flex-flow: column nowrap;
-    -o-flex-flow: column nowrap;
-    -ms-flex-flow: column nowrap;
-    flex-flow: column nowrap;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -o-align-items: center;
-    -ms-align-items: center;
-    align-items: center;
+    padding: 0 20px;
   }
 }
