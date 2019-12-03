@@ -18,10 +18,10 @@ body {
   background: url("../image/bg.png") repeat;
 }
 body header div,
-body div.main,
+body div.features,
 body div.middle,
 body div.copyright,
-body .main .feature,
+body .features .feature,
 body .footer ul li div {
 /*
   display: type
@@ -269,7 +269,7 @@ header {
   justify-content: center;
   align-items: center;
 }
-.main {
+.features {
   -webkit-flex-flow: row wrap;
   -moz-flex-flow: row wrap;
   -o-flex-flow: row wrap;
@@ -286,7 +286,7 @@ header {
   width: 100%;
   font: 300 12px/1.8 -apple-system, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
-.main .feature {
+.features .feature {
   -webkit-flex-flow: column nowrap;
   -moz-flex-flow: column nowrap;
   -o-flex-flow: column nowrap;
@@ -304,28 +304,28 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   transition: all 0.3s linear;
 }
-.main .feature:hover {
+.features .feature:hover {
   margin-top: 10px;
   box-shadow: 0 5px 30px rgba(0,0,0,0.2);
 }
-.main .feature div {
+.features .feature div {
   padding-bottom: 6px;
 }
-.main .feature .hide {
+.features .feature .hide {
   opacity: 0.1;
   transform: scale(0.85);
 }
-.main .feature .icon {
+.features .feature .icon {
   width: 128px;
   height: 128px;
   transition: all 0.2s;
 }
-.main .feature .desc {
+.features .feature .desc {
   font-size: 20px;
   color: #b3b3b3;
   transition: all 0.2s;
 }
-.main .feature .learnmore {
+.features .feature .learnmore {
   color: #fff;
   background-color: #1dba90;
   -webkit-border-radius: 3px;
@@ -341,43 +341,43 @@ header {
   transition: all 0.2s;
   cursor: pointer;
 }
-.main .feature[data-type=origins] .icon {
+.features .feature[data-type=origins] .icon {
   background: url("../image/multi-language.png") no-repeat;
 }
-.main .feature[data-type=positionmode] .icon {
+.features .feature[data-type=positionmode] .icon {
   background: url("../image/time.png") no-repeat;
 }
-.main .feature[data-type=earth] .icon {
+.features .feature[data-type=earth] .icon {
   background: url("../image/earth.png") no-repeat;
 }
-.main .feature[data-type=unsplash] .icon {
+.features .feature[data-type=unsplash] .icon {
   background: url("../image/unsplash.png") no-repeat;
 }
-.main .feature[data-type=bgmanage] .icon {
+.features .feature[data-type=bgmanage] .icon {
   background: url("../image/subscribe.png") no-repeat;
 }
-.main .feature[data-type=bookmarks] .icon {
+.features .feature[data-type=bookmarks] .icon {
   background: url("../image/bookmarks.png") no-repeat;
 }
-.main .feature[data-type=topsites] .icon {
+.features .feature[data-type=topsites] .icon {
   background: url("../image/topsites.png") no-repeat;
 }
-.main .feature[data-type=controlbar] .icon {
+.features .feature[data-type=controlbar] .icon {
   background: url("../image/setting.png") no-repeat;
 }
-.main .feature[data-type=shortcuts] .icon {
+.features .feature[data-type=shortcuts] .icon {
   background: url("../image/shortcuts.png") no-repeat;
 }
-.main .feature[data-type=noise] .icon {
+.features .feature[data-type=noise] .icon {
   background: url("../image/noise.png") no-repeat;
 }
-.main .feature[data-type=zenmode] .icon {
+.features .feature[data-type=zenmode] .icon {
   background: url("../image/zenmode.png") no-repeat;
 }
-.main .feature[data-type=options] .icon {
+.features .feature[data-type=options] .icon {
   background: url("../image/options.png") no-repeat;
 }
-.main .feature .more {
+.features .feature .more {
   position: absolute;
   top: 0;
   left: 0;
@@ -395,21 +395,21 @@ header {
   opacity: 0;
   transform: scale(0.95);
 }
-.main .feature .more.active {
+.features .feature .more.active {
   opacity: 1;
   transform: scale(1);
 }
-.main .feature .more ul {
+.features .feature .more ul {
   margin-top: 0;
   text-align: left;
 }
-.main .feature .more img {
+.features .feature .more img {
   margin-bottom: 6px;
   max-width: 200px;
   border-radius: 10px;
   box-shadow: 0 2rem 1.5rem -1.5rem rgba(33,37,41,0.15), 0 0 1.5rem 0.5rem rgba(33,37,41,0.05);
 }
-.main .feature .more kbd {
+.features .feature .more kbd {
   display: inline-block;
   padding: 2px 5px;
   background-color: #fafafa;
@@ -419,14 +419,14 @@ header {
   border: 1px solid #ccc;
   border-radius: 3px;
 }
-.main .feature .more .title {
+.features .feature .more .title {
   font-size: 15px;
   font-weight: 400;
 }
-.main .feature .more .details {
+.features .feature .more .details {
   width: 100%;
 }
-.main .feature .more .details a {
+.features .feature .more .details a {
   color: inherit;
 }
 .middle {
@@ -778,7 +778,7 @@ header {
   .top {
     justify-content: center;
   }
-  .main {
+  .features {
     padding: 0 5%;
   }
 }
@@ -786,7 +786,7 @@ header {
  * iPad mini
  */
 @media only screen and (max-device-width: 768px) {
-  .main {
+  .features {
     padding: 0 20px;
   }
 }
@@ -794,7 +794,7 @@ header {
 * iPhone XS Max and below
 */
 @media only screen and (max-device-width: 414px) {
-  .main {
+  .features {
     padding: 0 20px;
   }
 }
@@ -802,7 +802,7 @@ header {
 * iPhone SE and below
 */
 @media only screen and (max-device-width: 320px) {
-  .main {
+  .features {
     padding: 0 20px;
   }
 }

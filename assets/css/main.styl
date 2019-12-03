@@ -46,10 +46,10 @@ body
     background: url( ../image/bg.png ) repeat
 
     header div,
-    div.main,
+    div.features,
     div.middle,
     div.copyright,
-    .main .feature,
+    .features .feature,
     .footer ul li div
         adapter-display( flex )
         all-browser "justify-content",  center
@@ -206,7 +206,7 @@ header
     justify-content: center;
     align-items: center;
 
-.main
+.features
     all-browser "flex-flow",       row wrap
     all-browser "justify-content", center
 
@@ -590,26 +590,26 @@ header
     .top
         justify-content: center;
 
-    .main
+    .features
         padding: 0 5%;
 
 /**
  * iPad mini
  */
 @media only screen and (max-device-width: 768px)
-    .main
+    .features
         padding: 0 20px;
 
 /**
 * iPhone XS Max and below
 */
 @media only screen and (max-device-width: 414px)
-    .main
+    .features
         padding: 0 20px;
 
 /**
 * iPhone SE and below
 */
 @media only screen and (max-device-width: 320px)
-    .main
+    .features
         padding: 0 20px;
