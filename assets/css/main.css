@@ -128,6 +128,10 @@ header {
   font-weight: bold;
   padding: 0 10px;
 }
+.describe .banner {
+  width: 850px;
+  height: 655px;
+}
 .describe .introduce {
   -webkit-flex-flow: column nowrap;
   -moz-flex-flow: column nowrap;
