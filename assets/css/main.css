@@ -102,6 +102,11 @@ header {
   -ms-border-bottom: 2px solid #fff;
   border-bottom: 2px solid #fff;
 }
+.top ul li:nth-child(6) a,
+.top ul li:nth-child(7) a,
+.top ul li:nth-child(8) a {
+  min-width: 50px;
+}
 .top ul li img {
   padding-right: 5px;
   height: 15px;
