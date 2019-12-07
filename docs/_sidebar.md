@@ -10,6 +10,7 @@
   * [设置栏](设置栏)
   * [书签栏](书签栏)
   * [搜索栏](书签栏?id=快捷搜索栏)
+  * [历史记录](背景源?id=历史记录)
   * [选项页](选项页)
   * [常用网址](常用网址)
   * [白噪音 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](白噪音)
@@ -29,8 +30,9 @@
   * [脚本管理器 ![QMnbuj.png](https://s2.ax1x.com/2019/12/03/QMnbuj.png)](禅模式?id=脚本管理器)
 
 * **使用技巧**
-  * [支持 4K 分辨率 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](显示%204K%20分辨率的背景源)
   * [自定义 Unsplash 源 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](背景源?id=自定义Unsplash源)
+  * [支持 4K 分辨率 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](显示%204K%20分辨率的背景源)
+  * [只显示你喜欢的 Unsplash 源  ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](只显示你喜欢的%20Unsplash%20源)
 
 * **更新日志**
   * [简体中文](CHANGELOG)
