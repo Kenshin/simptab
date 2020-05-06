@@ -302,6 +302,18 @@ define([ "jquery", "mousetrap", "controlbar", "i18n", "topsites", "message" ], f
         });
     }
 
+    //overwriting Mousetrap stopCallback function
+    Mousetrap.prototype.stopCallback=function(e, element, combo) {
+
+        // if the element has the class "mousetrap" then no need to stop
+        if ((' ' + element.className + ' ').indexOf(' mousetrap ') > -1 || combo == 'esc') {
+            return false;
+        }
+
+        // stop for input, select, and textarea
+        return element.tagName == 'INPUT' || element.tagName == 'SELECT' || element.tagName == 'TEXTAREA' || (element.contentEditable && element.contentEditable == 'true');
+    }
+
     return {
         Init: function () {
             listenCurrentTab();
