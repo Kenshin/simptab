@@ -2,7 +2,6 @@
 
 * **快速开始**
   * [常见问题](常见问题)
-  * [离线安装 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](离线安装)
   * [搜索栏常驻](https://github.com/Kenshin/simptab/issues/82)
   
 * **基础功能**
@@ -13,26 +12,24 @@
   * [历史记录](背景源?id=历史记录)
   * [选项页](选项页)
   * [常用网址](常用网址)
-  * [白噪音 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](白噪音)
+  * [白噪音](白噪音)
 
 * **进阶功能**
   * [快捷键](快捷键)
   * [背景源](背景源)
-  * [背景管理器 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](背景管理器)
+  * [背景管理器](背景管理器)
   * [自定义样式](选项页?id=自定义样式)
-  * [自定义脚本](选项页?id=自定义脚本)
   * [自定义搜索](选项页?id=自定义搜索)
   * [自定义站点](常用网址?id=自定义)
-  * [发送到手机](发送到手机)
 
 * **禅模式**
-  * [禅模式 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](禅模式)
-  * [脚本管理器 ![QMnbuj.png](https://s2.ax1x.com/2019/12/03/QMnbuj.png)](禅模式?id=脚本管理器)
+  * [禅模式](禅模式)
+  * [脚本管理器](禅模式?id=脚本管理器)
 
 * **使用技巧**
-  * [自定义 Unsplash 源 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](背景源?id=自定义Unsplash源)
-  * [支持 4K 分辨率 ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](显示%204K%20分辨率的背景源)
-  * [只显示你喜欢的 Unsplash 源  ![Qnmz2d.png](https://s2.ax1x.com/2019/12/02/Qnmz2d.png)](只显示你喜欢的%20Unsplash%20源)
+  * [自定义 Unsplash 源](背景源?id=自定义Unsplash源)
+  * [支持 4K 分辨率](显示%204K%20分辨率的背景源)
+  * [只显示你喜欢的 Unsplash 源 ](只显示你喜欢的%20Unsplash%20源)
 
 * **更新日志**
   * [简体中文](CHANGELOG)

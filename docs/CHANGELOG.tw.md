@@ -1,3 +1,27 @@
+#### 1.6.0
+
+> 2026-08-19
+
+- :sparkles: 新增 適配 MV3 方案
+
+- :lipstick: 優化 腳本管理器 → 改為內建腳本方案
+
+- :sparkles: 新增 搜尋：接入了瀏覽器歷史記錄（預設關閉，需要在選項卡 → 書籤列開啟）
+
+- :bug: 修復 整體 UI / UE 升級，更符合現代應用方案，包括：控制列/書籤列/歷史記錄/常用網址/選項卡/背景管理器/腳本管理器/提示/白噪音/快捷鍵一覽 → 優化顯示/隱藏邏輯 + 現代 UI/UE + 更新 Icon + 背景半透明並自動調整對比度
+
+- :bug: 修復 必應隨機背景源：使用新背景源 [bing.npanuhin.me](https://bing.npanuhin.me/)（多市場年份歸檔 JSON + `_UHD` 3840×2160；失敗退回官方近 8 天）
+
+- :bug: 修復 地球每刻背景源：直連 NICT 向日葵（`latest.json` + 四塊 `2d/550` 瓦片拼接），廢棄已下線的 `simptab.now.sh` 代理
+
+- :bug: 修復 Unsplash.com 背景源：使用官方方案，同時可填入使用者自己的 Access Key
+
+- :bug: 修復 Unsplash.it 背景源：更名為 Lorem Picsum 並更新顯示邏輯
+
+- :bug: 修復 Google Art 背景源：恢復使用
+
+- :bug: 修復 去掉了 SimpTab 精選集 / desktoppr.co / visualhunt.com 背景源
+
 #### 1.5.5
 
 > 2019-11-27

@@ -1,3 +1,27 @@
+#### 1.6.0
+
+> 2026-08-19
+
+- :sparkles: Added MV3 adaptation
+
+- :lipstick: Improved Script Manager → switched to built-in script solution
+
+- :sparkles: Added Search: integrated browser history (off by default; enable in Options → Bookmarks Bar)
+
+- :bug: Fixed Overall UI/UE upgrade to a more modern design, including: Control Bar / Bookmarks Bar / History / Frequently Visited / Options Tab / Background Manager / Script Manager / Notifications / White Noise / Shortcuts Overview → optimized show/hide logic + modern UI/UE + updated icons + semi-transparent background with auto contrast adjustment
+
+- :bug: Fixed Bing random background source: using new source [bing.npanuhin.me](https://bing.npanuhin.me/) (multi-market yearly archive JSON + `_UHD` 3840×2160; falls back to official last 8 days on failure)
+
+- :bug: Fixed Earth Live background source: direct connection to NICT Himawari (`latest.json` + four `2d/550` tile stitching), deprecated the now-offline `simptab.now.sh` proxy
+
+- :bug: Fixed Unsplash.com background source: using official API; users can also enter their own Access Key
+
+- :bug: Fixed Unsplash.it background source: renamed to Lorem Picsum with updated display logic
+
+- :bug: Fixed Google Art background source: restored
+
+- :bug: Fixed Removed SimpTab Curated / desktoppr.co / visualhunt.com background sources
+
 #### 1.5.5
 
 > 2019-11-27
