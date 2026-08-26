@@ -1,14 +1,42 @@
+#### 1.6.0.819
+
+> 2026-08-26
+
+- :sparkles: 新增 小版本更新僅出現更新提示
+
+- :sparkles: 新增 上傳圖片支援多圖上傳
+
+- :art: 優化 相簿模式視覺更新
+
+  ![image-20260826121545528](https://res.cloudinary.com/simpread/image/upload/v1787717747/config/001afaed7851f1e29fd747cbfe7c2556.png)
+
+- :bug: 修復 相框模式下白底的問題 [#144](https://github.com/Kenshin/simptab/issues/141)
+
+- :bug: 修復 較小尺寸下對話框被右上角控制列遮擋
+
+- :bug: 修復 無法使用上傳背景的功能，新增支援多圖上傳
+
+- :bug: 修復 背景管理器 → 收藏 Tab 刪除錯誤
+
+- :bug: 修復 背景管理器 → 探索 Tab 偶爾出現無法載入的問題
+
+- :bug: 修復 禪模式匯入 1.6.0 之前版本後沒有顯示腳本的問題
+
 #### 1.6.0
 
 > 2026-08-19
 
-- :sparkles: 新增 適配 MV3 方案
+- :building_construction: 重构 適配 MV3 方案
+
+- :art: 界面 **液態玻璃設計界面**
+
+  > 包括：控制列/書籤列/歷史記錄/常用網址/選項卡/背景管理器/腳本管理器/提示/白噪音/快捷鍵一覽 → 優化顯示/隱藏邏輯 + 現代 UI/UE + 更新 Icon + 背景半透明並自動調整對比度
+
+  ![image-20260826121816596](https://res.cloudinary.com/simpread/image/upload/v1787717898/config/2ecb1e23ba13fdbed331117e7ba791dd.png)
 
 - :lipstick: 優化 腳本管理器 → 改為內建腳本方案
 
 - :sparkles: 新增 搜尋：接入了瀏覽器歷史記錄（預設關閉，需要在選項卡 → 書籤列開啟）
-
-- :bug: 修復 整體 UI / UE 升級，更符合現代應用方案，包括：控制列/書籤列/歷史記錄/常用網址/選項卡/背景管理器/腳本管理器/提示/白噪音/快捷鍵一覽 → 優化顯示/隱藏邏輯 + 現代 UI/UE + 更新 Icon + 背景半透明並自動調整對比度
 
 - :bug: 修復 必應隨機背景源：使用新背景源 [bing.npanuhin.me](https://bing.npanuhin.me/)（多市場年份歸檔 JSON + `_UHD` 3840×2160；失敗退回官方近 8 天）
 

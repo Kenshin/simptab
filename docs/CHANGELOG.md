@@ -1,14 +1,41 @@
+#### 1.6.0.819
+
+> 2026-08-26
+
+- :sparkles: 新增 小版本更新仅出现更新提示
+
+- :sparkles: 新增 上传图片支持多图上传
+
+- :art: 优化 相册模式视觉更新
+  ![image-20260826121545528](https://res.cloudinary.com/simpread/image/upload/v1787717747/config/001afaed7851f1e29fd747cbfe7c2556.png)
+
+- :bug: 修复 相框模式下白底的问题 [#144](https://github.com/Kenshin/simptab/issues/141)
+
+- :bug: 修复 较小尺寸下对话框被右上角控制栏遮挡
+
+- :bug: 修复 无法使用上传背景的功能，新增支持多图上传
+
+- :bug: 修复 背景管理器 → 收藏 Tab 删除错误
+
+- :bug: 修复 背景管理器 → 探索 Tab 偶尔出现无法加载的问题
+
+- :bug: 修复 禅模式导入 1.6.0 之前版本后没有显示脚本的问题
+
 #### 1.6.0
 
 > 2026-08-19
 
-- :sparkles: 新增 适配 MV3 方案
+- :building_construction: 重构 **适配 MV3 方案**
+
+- :art: 界面 **液态玻璃设计界面**
+
+  > 更符合现代应用方案，包括：控制栏/书签栏/历史记录/常用网址/选项卡/背景管理器/脚本管理器/提示/白噪音/快捷键一览 → 优化显示/隐藏逻辑 + 现代 UI/UE + 更新 Icon + 背景半透明并自动调整对比度
+
+  ![image-20260826121816596](https://res.cloudinary.com/simpread/image/upload/v1787717898/config/2ecb1e23ba13fdbed331117e7ba791dd.png)
 
 - :lipstick: 优化 脚本管理器 → 改为内置脚本方案
 
 - :sparkles: 新增 搜索：接入了浏览器历史记录（默认关闭，需要在选项卡 → 书签栏开启）
-
-- :bug: 修复 整体 UI / UE 升级，更符合现代应用方案，包括：控制栏/书签栏/历史记录/常用网址/选项卡/背景管理器/脚本管理器/提示/白噪音/快捷键一览 → 优化显示/隐藏逻辑 + 现代 UI/UE + 更新 Icon + 背景半透明并自动调整对比度
 
 - :bug: 修复 必应随机背景源：使用新背景源 [bing.npanuhin.me](https://bing.npanuhin.me/)（多市场年份归档 JSON + `_UHD` 3840×2160；失败退回官方近 8 天）
 

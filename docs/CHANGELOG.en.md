@@ -1,14 +1,41 @@
+#### 1.6.0.819
+
+> 2026-08-26
+
+- :sparkles: Added Minor version updates now only show an update notification
+
+- :sparkles: Added Upload images now supports multi-image upload
+
+- :art: Improved Album mode visual update
+  ![image-20260826121545528](https://res.cloudinary.com/simpread/image/upload/v1787717747/config/001afaed7851f1e29fd747cbfe7c2556.png)
+
+- :bug: Fixed White background issue in frame mode [#144](https://github.com/Kenshin/simptab/issues/141)
+
+- :bug: Fixed Dialog being blocked by the top-right control bar at smaller sizes
+
+- :bug: Fixed Unable to use background upload feature; added multi-image upload support
+
+- :bug: Fixed Background Manager → Favorites Tab deletion error
+
+- :bug: Fixed Background Manager → Explore Tab occasionally failing to load
+
+- :bug: Fixed Zen mode not showing scripts after importing versions prior to 1.6.0
+
 #### 1.6.0
 
 > 2026-08-19
 
-- :sparkles: Added MV3 adaptation
+- :building_construction: Rebuild MV3 adaptation
+
+- :art: Liquid Glass UI
+
+   > including: Control Bar / Bookmarks Bar / History / Frequently Visited / Options Tab / Background Manager / Script Manager / Notifications / White Noise / Shortcuts Overview → optimized show/hide logic + modern UI/UE + updated icons + semi-transparent background with auto contrast adjustment
+
+  ![image-20260826121816596](https://res.cloudinary.com/simpread/image/upload/v1787717898/config/2ecb1e23ba13fdbed331117e7ba791dd.png)
 
 - :lipstick: Improved Script Manager → switched to built-in script solution
 
 - :sparkles: Added Search: integrated browser history (off by default; enable in Options → Bookmarks Bar)
-
-- :bug: Fixed Overall UI/UE upgrade to a more modern design, including: Control Bar / Bookmarks Bar / History / Frequently Visited / Options Tab / Background Manager / Script Manager / Notifications / White Noise / Shortcuts Overview → optimized show/hide logic + modern UI/UE + updated icons + semi-transparent background with auto contrast adjustment
 
 - :bug: Fixed Bing random background source: using new source [bing.npanuhin.me](https://bing.npanuhin.me/) (multi-market yearly archive JSON + `_UHD` 3840×2160; falls back to official last 8 days on failure)
 
