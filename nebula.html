@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimpTab · Nebula demo</title>
+<!--
+  Standalone iframe-ready demo for simptab.art (and local open).
+  Approximates mask mode "nebula" · duo (cool/warm sampled from the fixed hero photo).
+  No postMessage / no extension coupling — native WebGL only.
+-->
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #05020f;
+  }
+
+  .nebula-fx {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .nebula-wash {
+    position: absolute;
+    inset: 0;
+    background-color: var(--nebula-deep, #05020f);
+    background-image:
+      radial-gradient(62% 48% at 56% 58%, var(--nebula-mid, #1a0a40) 0%, transparent 64%),
+      radial-gradient(58% 52% at 8% 78%, var(--nebula-cool, #0a2848) 0%, transparent 68%),
+      radial-gradient(55% 48% at 96% 18%, var(--nebula-warm, #3a1020) 0%, transparent 66%);
+  }
+
+  .nebula-wash-photo {
+    position: absolute;
+    inset: -10%;
+    background: center / cover no-repeat var(--nebula-photo);
+    filter: blur(64px) saturate(1.22) brightness(0.45);
+    opacity: 0.2;
+    transform: scale(1.12);
+    mix-blend-mode: soft-light;
+  }
+
+  .nebula-wash::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 85% 75% at 50% 48%, transparent 44%, rgba(0, 0, 0, 0.28) 100%),
+      var(--nebula-veil, rgba(5, 2, 15, 0.55));
+  }
+
+  .nebula-mist {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .nebula-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.11;
+    mix-blend-mode: overlay;
+    background-repeat: repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .bgmask-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .bgmask-frame {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 16px;
+    max-width: min(72vw, 1100px);
+    max-height: 72vh;
+    border-radius: 16px;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 2px 4px rgba(0, 0, 0, 0.18),
+      0 12px 28px rgba(0, 0, 0, 0.32),
+      0 36px 72px rgba(0, 0, 0, 0.45),
+      0 64px 120px rgba(0, 0, 0, 0.28);
+  }
+
+  .bgmask-frame img {
+    display: block;
+    max-width: min(68vw, 1040px);
+    max-height: calc(72vh - 32px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+  <div class="nebula-fx" aria-hidden="true">
+    <div class="nebula-wash">
+      <div class="nebula-wash-photo"></div>
+    </div>
+    <canvas class="nebula-mist" id="mist"></canvas>
+    <div class="nebula-grain"></div>
+  </div>
+
+  <div class="bgmask-bg">
+    <div class="bgmask-frame">
+      <img
+        id="hero"
+        crossorigin="anonymous"
+        src="https://images.unsplash.com/photo-1462332420958-a05d1e002413?q=80&amp;w=1507&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Nebula"
+        decoding="async">
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    /* Fixed demo asset — no parent postMessage */
+    var PHOTO =
+      "https://images.unsplash.com/photo-1462332420958-a05d1e002413?q=80&w=1507&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+    /* Fallback until photo samples (matches js/nebula.js DEFAULT) */
+    var DEFAULT = {
+      deep:   [ 0.03, 0.01, 0.10 ],
+      mid:    [ 0.10, 0.04, 0.33 ],
+      accent: [ 0.20, 0.10, 0.56 ],
+      hot:    [ 0.35, 0.22, 0.72 ],
+      cool:   [ 0.02, 0.05, 0.16 ],
+      warm:   [ 0.12, 0.03, 0.10 ]
+    };
+    var PAL = {
+      deep: DEFAULT.deep.slice(),
+      mid: DEFAULT.mid.slice(),
+      accent: DEFAULT.accent.slice(),
+      hot: DEFAULT.hot.slice(),
+      cool: DEFAULT.cool.slice(),
+      warm: DEFAULT.warm.slice()
+    };
+    /* Lifted chroma for WebGL volume (setUniforms in nebula.js) */
+    var MIST = null;
+
+    function clamp01( n ) { return Math.max( 0, Math.min( 1, n ) ); }
+    function copy3( a ) { return [ a[0], a[1], a[2] ]; }
+
+    function rgbCss( c ) {
+      return "rgb(" + Math.round( c[0] * 255 ) + "," +
+        Math.round( c[1] * 255 ) + "," + Math.round( c[2] * 255 ) + ")";
+    }
+
+    function rgbaCss( c, a ) {
+      return "rgba(" + Math.round( c[0] * 255 ) + "," +
+        Math.round( c[1] * 255 ) + "," + Math.round( c[2] * 255 ) + "," + a + ")";
+    }
+
+    function hueOf( r, g, b ) {
+      var max = Math.max( r, g, b ), min = Math.min( r, g, b ), d = max - min, h = 0;
+      if ( d < 1e-6 ) return 0;
+      if ( max === r ) h = ( ( g - b ) / d ) % 6;
+      else if ( max === g ) h = ( b - r ) / d + 2;
+      else h = ( r - g ) / d + 4;
+      h *= 60;
+      if ( h < 0 ) h += 360;
+      return h;
+    }
+
+    function darkenHue( c, amount ) {
+      var a = clamp01( amount );
+      return [ clamp01( c[0] * ( 1 - a ) ), clamp01( c[1] * ( 1 - a ) ), clamp01( c[2] * ( 1 - a ) ) ];
+    }
+
+    function rgbToHsl( r, g, b ) {
+      var max = Math.max( r, g, b ), min = Math.min( r, g, b ), d = max - min,
+          h = 0, s = 0, l = ( max + min ) * 0.5;
+      if ( d > 1e-6 ) {
+        s = l > 0.5 ? d / ( 2 - max - min ) : d / ( max + min );
+        if ( max === r ) h = ( ( g - b ) / d + ( g < b ? 6 : 0 ) ) / 6;
+        else if ( max === g ) h = ( ( b - r ) / d + 2 ) / 6;
+        else h = ( ( r - g ) / d + 4 ) / 6;
+      }
+      return [ h * 360, s, l ];
+    }
+
+    function hslToRgb( h, s, l ) {
+      var c, x, m, hp, r, g, b;
+      h = ( ( h % 360 ) + 360 ) % 360;
+      s = clamp01( s ); l = clamp01( l );
+      c = ( 1 - Math.abs( 2 * l - 1 ) ) * s;
+      hp = h / 60;
+      x = c * ( 1 - Math.abs( hp % 2 - 1 ) );
+      r = g = b = 0;
+      if ( hp < 1 ) { r = c; g = x; }
+      else if ( hp < 2 ) { r = x; g = c; }
+      else if ( hp < 3 ) { g = c; b = x; }
+      else if ( hp < 4 ) { g = x; b = c; }
+      else if ( hp < 5 ) { r = x; b = c; }
+      else { r = c; b = x; }
+      m = l - c * 0.5;
+      return [ clamp01( r + m ), clamp01( g + m ), clamp01( b + m ) ];
+    }
+
+    function siblingTone( c, hueShift, darkAmt ) {
+      var hsl = rgbToHsl( c[0], c[1], c[2] ),
+          sat = Math.min( 1, Math.max( 0.28, hsl[1] * 1.35 + 0.08 ) ),
+          lum = Math.min( 0.55, Math.max( 0.22, hsl[2] * 0.95 + 0.06 ) ),
+          rgb = hslToRgb( hsl[0] + hueShift, sat, lum );
+      return darkenHue( rgb, darkAmt );
+    }
+
+    /** Dominant hue from photo → duo cool/warm siblings (js/nebula.js samplePalette) */
+    function samplePalette( img ) {
+      var size = 64, c, ctx, data, i,
+          bins = {}, bin, key, bestKey = "", bestW = 0,
+          dark = [0,0,0], nDark = 0,
+          r, g, b, a, max, min, lum, sat, h, w,
+          dominant, accent, hot, out;
+
+      c = document.createElement( "canvas" );
+      c.width = size;
+      c.height = size;
+      ctx = c.getContext( "2d", { willReadFrequently: true } );
+      if ( !ctx || !img || !img.naturalWidth ) return {
+        deep: copy3( DEFAULT.deep ), mid: copy3( DEFAULT.mid ),
+        accent: copy3( DEFAULT.accent ), hot: copy3( DEFAULT.hot ),
+        cool: copy3( DEFAULT.cool ), warm: copy3( DEFAULT.warm )
+      };
+      ctx.drawImage( img, 0, 0, size, size );
+      data = ctx.getImageData( 0, 0, size, size ).data;
+
+      for ( i = 0; i < data.length; i += 4 ) {
+        r = data[i] / 255; g = data[i+1] / 255; b = data[i+2] / 255; a = data[i+3] / 255;
+        if ( a < 0.5 ) continue;
+        max = Math.max( r, g, b ); min = Math.min( r, g, b );
+        lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        sat = max < 1e-4 ? 0 : ( max - min ) / max;
+        if ( lum < 0.14 ) {
+          dark[0] += r; dark[1] += g; dark[2] += b; nDark++;
+        }
+        if ( sat < 0.1 || lum < 0.05 || lum > 0.82 ) continue;
+        h = hueOf( r, g, b );
+        key = String( Math.floor( h / 18 ) );
+        w = sat * ( lum < 0.55 ? 1.15 : 0.65 );
+        bin = bins[ key ];
+        if ( !bin ) {
+          bin = bins[ key ] = { r: 0, g: 0, b: 0, w: 0, sat: 0, hot: 0, ar: 0, ag: 0, ab: 0, hr: 0, hg: 0, hb: 0 };
+        }
+        bin.r += r * w; bin.g += g * w; bin.b += b * w; bin.w += w;
+        if ( sat > bin.sat && lum > 0.12 && lum < 0.7 ) {
+          bin.sat = sat; bin.ar = r; bin.ag = g; bin.ab = b;
+        }
+        if ( lum > bin.hot && sat > 0.12 && lum < 0.78 ) {
+          bin.hot = lum; bin.hr = r; bin.hg = g; bin.hb = b;
+        }
+      }
+
+      for ( key in bins ) {
+        if ( !bins.hasOwnProperty( key ) ) continue;
+        if ( bins[ key ].w > bestW ) { bestW = bins[ key ].w; bestKey = key; }
+      }
+      if ( !bestKey || bestW < 1e-6 ) {
+        return {
+          deep: copy3( DEFAULT.deep ), mid: copy3( DEFAULT.mid ),
+          accent: copy3( DEFAULT.accent ), hot: copy3( DEFAULT.hot ),
+          cool: copy3( DEFAULT.cool ), warm: copy3( DEFAULT.warm )
+        };
+      }
+
+      bin = bins[ bestKey ];
+      dominant = [ bin.r / bin.w, bin.g / bin.w, bin.b / bin.w ];
+      accent = bin.sat > 0 ? [ bin.ar, bin.ag, bin.ab ] : copy3( dominant );
+      hot = bin.hot > 0 ? [ bin.hr, bin.hg, bin.hb ] : copy3( accent );
+
+      out = {
+        deep: darkenHue( dominant, 0.78 ),
+        mid: darkenHue( dominant, 0.52 ),
+        accent: darkenHue( accent, 0.28 ),
+        hot: darkenHue( hot, 0.2 ),
+        cool: siblingTone( dominant, -40, 0.42 ),
+        warm: siblingTone( dominant, 38, 0.38 )
+      };
+      if ( nDark > 8 ) {
+        out.deep = [
+          clamp01( out.deep[0] * 0.55 + ( dark[0] / nDark ) * 0.45 ),
+          clamp01( out.deep[1] * 0.55 + ( dark[1] / nDark ) * 0.45 ),
+          clamp01( out.deep[2] * 0.55 + ( dark[2] / nDark ) * 0.45 )
+        ];
+      }
+      out.deep = out.deep.map( function( v ) { return Math.min( v, 0.16 ); });
+      out.mid  = out.mid.map( function( v ) { return Math.min( v, 0.38 ); });
+      out.accent = out.accent.map( function( v ) { return Math.min( v, 0.58 ); });
+      out.hot = out.hot.map( function( v ) { return Math.min( v, 0.7 ); });
+      out.cool = out.cool.map( function( v ) { return Math.min( v, 0.48 ); });
+      out.warm = out.warm.map( function( v ) { return Math.min( v, 0.5 ); });
+      return out;
+    }
+
+    function liftMist( pal ) {
+      return {
+        deep: [
+          Math.min( 0.22, pal.deep[0] * 1.4 + 0.02 ),
+          Math.min( 0.18, pal.deep[1] * 1.35 + 0.015 ),
+          Math.min( 0.28, pal.deep[2] * 1.45 + 0.03 )
+        ],
+        mid: [
+          Math.min( 0.55, pal.mid[0] * 2.1 + 0.05 ),
+          Math.min( 0.48, pal.mid[1] * 2.0 + 0.04 ),
+          Math.min( 0.62, pal.mid[2] * 2.2 + 0.06 )
+        ],
+        accent: [
+          Math.min( 0.62, pal.accent[0] * 2.2 + 0.05 ),
+          Math.min( 0.55, pal.accent[1] * 2.1 + 0.04 ),
+          Math.min( 0.7,  pal.accent[2] * 2.35 + 0.06 )
+        ],
+        hot: [
+          Math.min( 0.7,  pal.hot[0] * 2.15 + 0.06 ),
+          Math.min( 0.55, pal.hot[1] * 1.95 + 0.04 ),
+          Math.min( 0.78, pal.hot[2] * 2.25 + 0.08 )
+        ],
+        cool: [
+          Math.min( 0.55, pal.cool[0] * 2.4 + 0.05 ),
+          Math.min( 0.52, pal.cool[1] * 2.5 + 0.06 ),
+          Math.min( 0.72, pal.cool[2] * 2.7 + 0.08 )
+        ],
+        warm: [
+          Math.min( 0.68, pal.warm[0] * 2.6 + 0.07 ),
+          Math.min( 0.48, pal.warm[1] * 2.2 + 0.04 ),
+          Math.min( 0.5,  pal.warm[2] * 2.3 + 0.04 )
+        ]
+      };
+    }
+
+    function applyPalette( pal ) {
+      PAL = pal;
+      MIST = liftMist( pal );
+      document.documentElement.style.setProperty( "--nebula-deep", rgbCss( pal.deep ) );
+      document.documentElement.style.setProperty( "--nebula-mid", rgbCss( pal.mid ) );
+      document.documentElement.style.setProperty( "--nebula-cool", rgbCss( pal.cool ) );
+      document.documentElement.style.setProperty( "--nebula-warm", rgbCss( pal.warm ) );
+      document.documentElement.style.setProperty( "--nebula-veil", rgbaCss( pal.deep, 0.55 ) );
+      document.body.style.backgroundColor = rgbCss( pal.deep );
+    }
+
+    document.documentElement.style.setProperty( "--nebula-photo", 'url("' + PHOTO + '")' );
+    applyPalette( PAL );
+
+    var VERT = "attribute vec2 a_pos; void main(){ gl_Position = vec4(a_pos, 0.0, 1.0); }";
+    /* Same volume mist as js/nebula.js (duo: u_trio = 0) */
+    var FRAG = [
+      "precision highp float;",
+      "uniform float u_time;",
+      "uniform vec2 u_resolution;",
+      "uniform vec2 u_mouse;",
+      "uniform vec3 u_deep;",
+      "uniform vec3 u_mid;",
+      "uniform vec3 u_accent;",
+      "uniform vec3 u_hot;",
+      "uniform vec3 u_cool;",
+      "uniform vec3 u_warm;",
+      "uniform float u_trio;",
+      "vec3 mod289(vec3 x){return x - floor(x*(1.0/289.0))*289.0;}",
+      "vec2 mod289(vec2 x){return x - floor(x*(1.0/289.0))*289.0;}",
+      "vec3 permute(vec3 x){return mod289(((x*34.0)+1.0)*x);}",
+      "float snoise(vec2 v){",
+      "  const vec4 C = vec4(0.211324865405187,0.366025403784439,-0.577350269189626,0.024390243902439);",
+      "  vec2 i = floor(v + dot(v, C.yy));",
+      "  vec2 x0 = v - i + dot(i, C.xx);",
+      "  vec2 i1 = (x0.x > x0.y) ? vec2(1.0,0.0) : vec2(0.0,1.0);",
+      "  vec4 x12 = x0.xyxy + C.xxzz;",
+      "  x12.xy -= i1;",
+      "  i = mod289(i);",
+      "  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));",
+      "  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);",
+      "  m = m*m; m = m*m;",
+      "  vec3 x = 2.0 * fract(p * C.www) - 1.0;",
+      "  vec3 h = abs(x) - 0.5;",
+      "  vec3 ox = floor(x + 0.5);",
+      "  vec3 a0 = x - ox;",
+      "  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);",
+      "  vec3 g;",
+      "  g.x = a0.x * x0.x + h.x * x0.y;",
+      "  g.yz = a0.yz * x12.xz + h.yz * x12.yw;",
+      "  return 130.0 * dot(m, g);",
+      "}",
+      "float fbm(vec2 p){",
+      "  float v = 0.0; float a = 0.55;",
+      "  for(int i=0;i<4;i++){ v += a*snoise(p); p *= 2.05; a *= 0.5; }",
+      "  return v;",
+      "}",
+      "void main(){",
+      "  vec2 uv = gl_FragCoord.xy / u_resolution.xy;",
+      "  vec2 p = uv;",
+      "  p.x *= u_resolution.x / u_resolution.y;",
+      "  float t = u_time * 0.05;",
+      "  vec2 drift = (u_mouse - 0.5) * 0.12;",
+      "  vec2 st = p * 0.85 + drift;",
+      "  st += vec2(fbm(st + t), fbm(st - t)) * 0.38;",
+      "  float n1 = fbm(st * 1.45 + t * 2.0);",
+      "  float n2 = fbm(st * 2.8 - t * 1.1);",
+      "  float n3 = fbm(st * 5.2 + t * 0.6);",
+      "  float filament = n2 * 0.65 + n3 * 0.35;",
+      "  float ridge = 1.0 - abs(filament);",
+      "  ridge = ridge * ridge * ridge;",
+      "  vec3 col = mix(vec3(0.002, 0.002, 0.006), u_deep * 0.5, 0.35);",
+      "  float tr = clamp(u_trio, 0.0, 1.0);",
+      "  float aspect = u_resolution.x / u_resolution.y;",
+      "  vec2 c1 = mix(vec2(aspect * 0.62, 0.82), vec2(aspect * 0.48, 0.58), tr)",
+      "    + drift * mix(1.0, 0.5, tr);",
+      "  float mass = smoothstep(mix(1.12, 1.05, tr), mix(0.04, 0.02, tr), length(p - c1) + n1 * mix(0.34, 0.32, tr));",
+      "  float massCore = smoothstep(mix(0.72, 0.68, tr), 0.02, length(p - c1) + n1 * mix(0.22, 0.2, tr));",
+      "  float tongue = smoothstep(0.52, 0.015, abs(p.x - (aspect * mix(0.57, 0.5, tr)) - n1 * mix(0.24, 0.2, tr)))",
+      "    * smoothstep(1.15, 0.08, abs(uv.y - mix(0.55, 0.52, tr)));",
+      "  vec2 c2 = mix(vec2(aspect * 0.14, 0.34), vec2(aspect * 0.12, 0.28), tr)",
+      "    + drift * mix(0.4, 0.45, tr);",
+      "  float mass2 = smoothstep(mix(0.88, 0.95, tr), 0.0, length(p - c2) + fbm(st*1.15 - t)*mix(0.28, 0.3, tr));",
+      "  vec2 c3 = mix(vec2(aspect * 1.02, 0.46), vec2(aspect * 1.05, 0.72), tr)",
+      "    - drift * mix(0.35, 0.4, tr);",
+      "  float mass3 = smoothstep(mix(0.86, 0.92, tr), 0.0, length(p - c3) + fbm(st*0.9 + t*0.75)*mix(0.24, 0.26, tr));",
+      "  col = mix(col, u_cool, clamp(mass2 * mix(0.85, 0.92, tr), 0.0, 1.0));",
+      "  col = mix(col, u_warm, clamp(mass3 * mix(0.78, 0.88, tr), 0.0, 1.0));",
+      "  col = mix(col, u_deep, clamp(mass * mix(0.9, 0.35, tr) + mass2 * mix(0.12, 0.0, tr) + mass3 * mix(0.1, 0.0, tr), 0.0, 1.0));",
+      "  col = mix(col, u_mid, clamp(mix(mass*mass*1.22 + massCore*0.52 + mass2*0.12, mass * 0.98 + massCore * 0.35, tr), 0.0, 1.0));",
+      "  col = mix(col, u_accent, clamp(mix(massCore*0.65 + mass2*0.18 + ridge*mass*0.52, massCore * 0.55 + ridge * mass * 0.4, tr), 0.0, 1.0));",
+      "  col += mix(u_mid, u_hot, mix(0.8, 0.75, tr)) * tongue * mass * mix(0.55, 0.48, tr);",
+      "  col += u_mid * ridge * mass * mix(0.26, 0.22, tr);",
+      "  col += u_cool * max(filament, 0.0) * mass2 * mix(0.28, 0.32, tr);",
+      "  col += u_warm * mass3 * (mix(0.22, 0.26, tr) + ridge * mix(0.18, 0.2, tr));",
+      "  col += mix(u_accent, u_hot, mix(0.55, 0.5, tr)) * massCore * ridge * mix(0.1, 0.08, tr);",
+      "  col *= 1.0 - massCore * 0.04;",
+      "  float pocket = smoothstep(0.15, 0.55, n2) * (1.0 - massCore * 0.85) * 0.28;",
+      "  col *= 1.0 - pocket;",
+      "  col = col * 1.12 + u_mid * 0.04;",
+      "  float pulse = 0.93 + 0.07 * sin(u_time * 0.4);",
+      "  col *= pulse;",
+      "  float vig = smoothstep(1.65, 0.28, length(uv - vec2(0.47, 0.5)));",
+      "  col *= mix(0.5, 1.0, vig);",
+      "  col = min(col, vec3(0.82));",
+      "  float a = clamp(0.62 + mass * mix(0.4, 0.42, tr) + mass2 * mix(0.22, 0.24, tr) + mass3 * mix(0.18, 0.22, tr) + massCore * mix(0.14, 0.12, tr), 0.0, 1.0);",
+      "  gl_FragColor = vec4(col, a);",
+      "}"
+    ].join( "\n" );
+
+    var canvas = document.getElementById( "mist" );
+    var gl = canvas.getContext( "webgl", { alpha: true, antialias: false, premultipliedAlpha: true } )
+      || canvas.getContext( "experimental-webgl", { alpha: true, antialias: false } );
+    if ( !gl ) return;
+
+    function compile( type, src ) {
+      var s = gl.createShader( type );
+      gl.shaderSource( s, src );
+      gl.compileShader( s );
+      if ( !gl.getShaderParameter( s, gl.COMPILE_STATUS ) ) {
+        console.warn( gl.getShaderInfoLog( s ) );
+        gl.deleteShader( s );
+        return null;
+      }
+      return s;
+    }
+
+    var vs = compile( gl.VERTEX_SHADER, VERT );
+    var fs = compile( gl.FRAGMENT_SHADER, FRAG );
+    if ( !vs || !fs ) return;
+
+    var prog = gl.createProgram();
+    gl.attachShader( prog, vs );
+    gl.attachShader( prog, fs );
+    gl.linkProgram( prog );
+    if ( !gl.getProgramParameter( prog, gl.LINK_STATUS ) ) {
+      console.warn( gl.getProgramInfoLog( prog ) );
+      return;
+    }
+
+    var buf = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, buf );
+    gl.bufferData( gl.ARRAY_BUFFER, new Float32Array([
+      -1, -1,  1, -1,  -1, 1,
+      -1,  1,  1, -1,   1, 1
+    ]), gl.STATIC_DRAW );
+
+    var locs = {
+      time:   gl.getUniformLocation( prog, "u_time" ),
+      res:    gl.getUniformLocation( prog, "u_resolution" ),
+      mouse:  gl.getUniformLocation( prog, "u_mouse" ),
+      deep:   gl.getUniformLocation( prog, "u_deep" ),
+      mid:    gl.getUniformLocation( prog, "u_mid" ),
+      accent: gl.getUniformLocation( prog, "u_accent" ),
+      hot:    gl.getUniformLocation( prog, "u_hot" ),
+      cool:   gl.getUniformLocation( prog, "u_cool" ),
+      warm:   gl.getUniformLocation( prog, "u_warm" ),
+      trio:   gl.getUniformLocation( prog, "u_trio" )
+    };
+
+    var mouse = { x: 0.5, y: 0.5 };
+    var mouseTarget = { x: 0.5, y: 0.5 };
+    var t0 = performance.now();
+
+    function resize() {
+      var dpr = Math.min( window.devicePixelRatio || 1, 2 );
+      var w = Math.max( 1, Math.floor( window.innerWidth * dpr ) );
+      var h = Math.max( 1, Math.floor( window.innerHeight * dpr ) );
+      if ( canvas.width !== w || canvas.height !== h ) {
+        canvas.width = w;
+        canvas.height = h;
+        gl.viewport( 0, 0, w, h );
+      }
+    }
+
+    window.addEventListener( "pointermove", function( e ) {
+      mouseTarget.x = e.clientX / Math.max( 1, window.innerWidth );
+      mouseTarget.y = 1 - e.clientY / Math.max( 1, window.innerHeight );
+    }, { passive: true });
+
+    window.addEventListener( "resize", resize );
+
+    function tick( now ) {
+      requestAnimationFrame( tick );
+      resize();
+      mouse.x += ( mouseTarget.x - mouse.x ) * 0.03;
+      mouse.y += ( mouseTarget.y - mouse.y ) * 0.03;
+      gl.useProgram( prog );
+      var aPos = gl.getAttribLocation( prog, "a_pos" );
+      gl.enableVertexAttribArray( aPos );
+      gl.vertexAttribPointer( aPos, 2, gl.FLOAT, false, 0, 0 );
+      gl.uniform1f( locs.time, ( now - t0 ) / 1000 );
+      gl.uniform2f( locs.res, canvas.width, canvas.height );
+      gl.uniform2f( locs.mouse, mouse.x, mouse.y );
+      var mist = MIST || liftMist( PAL );
+      gl.uniform3f( locs.deep, mist.deep[0], mist.deep[1], mist.deep[2] );
+      gl.uniform3f( locs.mid, mist.mid[0], mist.mid[1], mist.mid[2] );
+      gl.uniform3f( locs.accent, mist.accent[0], mist.accent[1], mist.accent[2] );
+      gl.uniform3f( locs.hot, mist.hot[0], mist.hot[1], mist.hot[2] );
+      gl.uniform3f( locs.cool, mist.cool[0], mist.cool[1], mist.cool[2] );
+      gl.uniform3f( locs.warm, mist.warm[0], mist.warm[1], mist.warm[2] );
+      gl.uniform1f( locs.trio, 0 );
+      gl.enable( gl.BLEND );
+      gl.blendFunc( gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA );
+      gl.clearColor( 0, 0, 0, 0 );
+      gl.clear( gl.COLOR_BUFFER_BIT );
+      gl.drawArrays( gl.TRIANGLES, 0, 6 );
+    }
+
+    function trySample() {
+      var hero = document.getElementById( "hero" );
+      if ( !hero || !hero.naturalWidth ) return;
+      try {
+        applyPalette( samplePalette( hero ) );
+      } catch ( e ) {
+        console.warn( "nebula demo sample failed", e );
+      }
+    }
+
+    (function bindHero() {
+      var hero = document.getElementById( "hero" );
+      if ( !hero ) return;
+      if ( hero.complete && hero.naturalWidth ) trySample();
+      else hero.addEventListener( "load", trySample );
+      hero.addEventListener( "error", function() {
+        console.warn( "nebula demo: hero failed to load; keeping DEFAULT palette" );
+      });
+    })();
+
+    requestAnimationFrame( tick );
+  })();
+  </script>
+</body>
+</html>
