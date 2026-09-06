@@ -7,6 +7,7 @@
 <!--
   Standalone iframe-ready demo for simptab.art (and local open).
   Approximates mask mode "nebula" · duo (cool/warm sampled from the fixed hero photo).
+  DEFAULT palette is pre-baked from that photo so the wall is warm before load finishes.
   No postMessage / no extension coupling — native WebGL only.
 -->
 <style>
@@ -15,7 +16,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #05020f;
+    background: #291405; /* warm deep from fixed photo — before JS */
   }
 
   .nebula-fx {
@@ -29,11 +30,11 @@
   .nebula-wash {
     position: absolute;
     inset: 0;
-    background-color: var(--nebula-deep, #05020f);
+    background-color: var(--nebula-deep, #291405);
     background-image:
-      radial-gradient(62% 48% at 56% 58%, var(--nebula-mid, #1a0a40) 0%, transparent 64%),
-      radial-gradient(58% 52% at 8% 78%, var(--nebula-cool, #0a2848) 0%, transparent 68%),
-      radial-gradient(55% 48% at 96% 18%, var(--nebula-warm, #3a1020) 0%, transparent 66%);
+      radial-gradient(62% 48% at 56% 58%, var(--nebula-mid, #3c240e) 0%, transparent 64%),
+      radial-gradient(58% 52% at 8% 78%, var(--nebula-cool, #620517) 0%, transparent 68%),
+      radial-gradient(55% 48% at 96% 18%, var(--nebula-warm, #5e6905) 0%, transparent 66%);
   }
 
   .nebula-wash-photo {
@@ -52,7 +53,7 @@
     inset: 0;
     background:
       radial-gradient(ellipse 85% 75% at 50% 48%, transparent 44%, rgba(0, 0, 0, 0.28) 100%),
-      var(--nebula-veil, rgba(5, 2, 15, 0.55));
+      var(--nebula-veil, rgba(41, 20, 5, 0.55));
   }
 
   .nebula-mist {
@@ -141,14 +142,14 @@
     var PHOTO =
       "https://images.unsplash.com/photo-1462332420958-a05d1e002413?q=80&w=1507&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
-    /* Fallback until photo samples (matches js/nebula.js DEFAULT) */
+    /* Hardcoded from fixed PHOTO sample (duo) — avoids indigo flash before load */
     var DEFAULT = {
-      deep:   [ 0.03, 0.01, 0.10 ],
-      mid:    [ 0.10, 0.04, 0.33 ],
-      accent: [ 0.20, 0.10, 0.56 ],
-      hot:    [ 0.35, 0.22, 0.72 ],
-      cool:   [ 0.02, 0.05, 0.16 ],
-      warm:   [ 0.12, 0.03, 0.10 ]
+      deep:   [ 0.160, 0.078, 0.019 ],
+      mid:    [ 0.234, 0.140, 0.057 ],
+      accent: [ 0.203, 0.065, 0.000 ],
+      hot:    [ 0.684, 0.596, 0.474 ],
+      cool:   [ 0.384, 0.019, 0.091 ],
+      warm:   [ 0.370, 0.411, 0.021 ]
     };
     var PAL = {
       deep: DEFAULT.deep.slice(),
