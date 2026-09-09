@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimpTab · Mural demo</title>
+<!--
+  Standalone iframe-ready demo for simptab.art (and local open).
+  Approximates mask mode "mural":
+    - soft 4-color radial wash (colors sampled from the hero photo)
+    - wash_spin = one-shot carousel then hold (product startMuralWashSpin)
+  Fixed hero: Unsplash Ai2TRdvI6gM — bird's-eye seashore.
+  No postMessage / no extension coupling.
+-->
+<style>
+  @property --mask-mural-c0 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #7ec8c9;
+  }
+  @property --mask-mural-c1 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #2a6f8f;
+  }
+  @property --mask-mural-c2 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #b5d4dc;
+  }
+  @property --mask-mural-c3 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #a8d5e5;
+  }
+  @property --mask-mural-base {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #c5e8e6;
+  }
+
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #c5e8e6;
+  }
+
+  /* Product .bgmask-mural */
+  .mural-wall {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(24px);
+    -webkit-filter: blur(24px);
+    transform: scale(1.12);
+    background-color: var(--mask-mural-base);
+    background-image:
+      radial-gradient(72% 58% at 16% 82%, var(--mask-mural-c0) 0%, var(--mask-mural-c0) 22%, transparent 72%),
+      radial-gradient(56% 72% at 78% 26%, var(--mask-mural-c1) 0%, var(--mask-mural-c1) 22%, transparent 72%),
+      radial-gradient(78% 62% at 88% 84%, var(--mask-mural-c2) 0%, var(--mask-mural-c2) 22%, transparent 72%),
+      radial-gradient(50% 44% at 24% 16%, var(--mask-mural-c3) 0%, var(--mask-mural-c3) 22%, transparent 72%),
+      radial-gradient(130% 120% at 30% 20%, var(--mask-mural-base), var(--mask-mural-base));
+    transition:
+      --mask-mural-c0 .65s ease-out,
+      --mask-mural-c1 .65s ease-out,
+      --mask-mural-c2 .65s ease-out,
+      --mask-mural-c3 .65s ease-out,
+      --mask-mural-base .65s ease-out;
+  }
+
+  /* Product .bgmask-mural-cycle during wash_spin */
+  .mural-wall.is-cycle {
+    transition:
+      --mask-mural-c0 1.8s ease-in-out,
+      --mask-mural-c1 1.8s ease-in-out,
+      --mask-mural-c2 1.8s ease-in-out,
+      --mask-mural-c3 1.8s ease-in-out,
+      --mask-mural-base 1.8s ease-in-out;
+  }
+
+  .bgmask-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .bgmask-frame {
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    height: 450px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity .35s ease-out;
+    box-shadow: 0 40px 96px rgba(0, 0, 0, 0.45);
+  }
+
+  .bgmask-frame.is-ready {
+    opacity: 1;
+  }
+
+  .mural-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background: center / cover no-repeat url("images/mural.jpeg");
+  }
+</style>
+</head>
+<body>
+  <div class="mural-wall" id="wall" aria-hidden="true"></div>
+
+  <div class="bgmask-bg">
+    <div class="bgmask-frame" id="frame">
+      <div class="mural-photo" role="img" aria-label="Bird's eye view of seashore"></div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    /* Local Unsplash Ai2TRdvI6gM — https://unsplash.com/photos/birds-eye-view-of-seashore-Ai2TRdvI6gM */
+    var PHOTO = "images/mural.jpeg";
+
+    /* First-demo fallback — sea / sand accents until sample lands */
+    var DEFAULT = {
+      colors: [ "#7ec8c9", "#2a6f8f", "#b5d4dc", "#a8d5e5" ],
+      base: "#c5e8e6"
+    };
+
+    var wall  = document.getElementById( "wall" );
+    var frame = document.getElementById( "frame" );
+    var FRAME_H = 450;
+
+    function clamp01( n ) { return Math.max( 0, Math.min( 1, n ) ); }
+
+    function rgbHex( r, g, b ) {
+      function h( n ) {
+        var s = Math.round( clamp01( n ) * 255 ).toString( 16 );
+        return s.length < 2 ? "0" + s : s;
+      }
+      return "#" + h( r ) + h( g ) + h( b );
+    }
+
+    function luminance( r, g, b ) {
+      return 0.299 * r + 0.578 * g + 0.114 * b;
+    }
+
+    /**
+     * Sample 4 mural colors from the photo (same spirit as the first demo):
+     * deep / high-chroma / pale sand / light accent — not raw frequency quantize
+     * (freq alone collapses this seashore into similar gray-blues).
+     */
+    function sampleMural( img ) {
+      var size = 48, canvas, ctx, data, i, r, g, b, a, max, min, lum, sat,
+          deep, vivid, pale, light, cand, hex, out, base;
+
+      canvas = document.createElement( "canvas" );
+      canvas.width = size;
+      canvas.height = size;
+      ctx = canvas.getContext( "2d", { willReadFrequently: true } );
+      if ( !ctx || !img || !img.naturalWidth ) {
+        return { colors: DEFAULT.colors.slice(), base: DEFAULT.base };
+      }
+      ctx.drawImage( img, 0, 0, size, size );
+      try {
+        data = ctx.getImageData( 0, 0, size, size ).data;
+      } catch ( e ) {
+        /* Cross-origin / file:// taint — keep DEFAULT, still allow wash spin */
+        return { colors: DEFAULT.colors.slice(), base: DEFAULT.base };
+      }
+
+      deep  = { score: -1, r: 0, g: 0, b: 0 }; /* darkest with some chroma */
+      vivid = { score: -1, r: 0, g: 0, b: 0 }; /* highest saturation */
+      pale  = { score: -1, r: 0, g: 0, b: 0 }; /* light sand / soft wall */
+      light = { score: -1, r: 0, g: 0, b: 0 }; /* bright but still tinted */
+
+      for ( i = 0; i < data.length; i += 4 ) {
+        a = data[ i + 3 ] / 255;
+        if ( a < 0.5 ) continue;
+        r = data[ i ] / 255;
+        g = data[ i + 1 ] / 255;
+        b = data[ i + 2 ] / 255;
+        max = Math.max( r, g, b );
+        min = Math.min( r, g, b );
+        lum = luminance( r, g, b );
+        sat = max < 1e-4 ? 0 : ( max - min ) / max;
+        if ( lum < 0.06 || lum > 0.97 ) continue;
+
+        /* deep ocean */
+        if ( sat > 0.12 && lum < 0.55 ) {
+          cand = ( 0.55 - lum ) * 2 + sat;
+          if ( cand > deep.score ) { deep = { score: cand, r: r, g: g, b: b }; }
+        }
+        /* turquoise / wave chroma */
+        if ( sat > 0.18 && lum > 0.2 && lum < 0.75 ) {
+          cand = sat * 2 + ( 1 - Math.abs( lum - 0.45 ) );
+          if ( cand > vivid.score ) { vivid = { score: cand, r: r, g: g, b: b }; }
+        }
+        /* sand / pale wall */
+        if ( lum > 0.62 && sat < 0.35 ) {
+          cand = lum - sat * 0.4;
+          if ( cand > pale.score ) { pale = { score: cand, r: r, g: g, b: b }; }
+        }
+        /* light tinted water / foam edge */
+        if ( lum > 0.55 && sat > 0.08 ) {
+          cand = lum + sat;
+          if ( cand > light.score ) { light = { score: cand, r: r, g: g, b: b }; }
+        }
+      }
+
+      function toHex( slot, fallback ) {
+        if ( !slot || slot.score < 0 ) return fallback;
+        return rgbHex( slot.r, slot.g, slot.b );
+      }
+
+      out = [
+        toHex( vivid, DEFAULT.colors[ 0 ] ),
+        toHex( deep,  DEFAULT.colors[ 1 ] ),
+        toHex( pale,  DEFAULT.colors[ 2 ] ),
+        toHex( light, DEFAULT.colors[ 3 ] )
+      ];
+      if ( pale.score >= 0 ) {
+        base = rgbHex( pale.r, pale.g, pale.b );
+      } else {
+        base = out[ 0 ];
+        for ( i = 1; i < out.length; i++ ) {
+          hex = out[ i ];
+          if ( parseLum( hex ) > parseLum( base ) ) base = hex;
+        }
+      }
+
+      return { colors: out, base: base };
+    }
+
+    function parseLum( hex ) {
+      var n = parseInt( hex.slice( 1 ), 16 );
+      return luminance(
+        ( ( n >> 16 ) & 255 ) / 255,
+        ( ( n >> 8 ) & 255 ) / 255,
+        ( n & 255 ) / 255
+      );
+    }
+
+    function paintWall( m ) {
+      var i;
+      for ( i = 0; i < 4; i++ ) {
+        wall.style.setProperty( "--mask-mural-c" + i, m.colors[ i ] || m.base );
+      }
+      wall.style.setProperty( "--mask-mural-base", m.base || m.colors[ 0 ] );
+      document.body.style.backgroundColor = m.base || m.colors[ 0 ];
+    }
+
+    /**
+     * Product startMuralWashSpin: ~1s total, 3 steps, then hold.
+     * stepMs = duration / (steps + 1) = 250ms; cycle ease 1.8s.
+     */
+    function startWashSpin( m, durationMs ) {
+      var colors = ( m.colors || DEFAULT.colors ).slice( 0, 4 ),
+          base = m.base || colors[ 0 ],
+          duration = durationMs || 1000,
+          steps = 3,
+          stepMs = duration / ( steps + 1 ),
+          step = 0, i, phase;
+
+      clearInterval( startWashSpin._t );
+      wall.classList.add( "is-cycle" );
+      startWashSpin._t = setInterval( function() {
+        step++;
+        if ( step > steps ) {
+          clearInterval( startWashSpin._t );
+          wall.classList.remove( "is-cycle" );
+          return;
+        }
+        phase = step % 4;
+        for ( i = 0; i < 4; i++ ) {
+          wall.style.setProperty( "--mask-mural-c" + i, colors[ ( i + phase ) % 4 ] || base );
+        }
+      }, stepMs );
+    }
+
+    function layout() {
+      /* Keep original promo width (≤72vw / 1100); only height shrinks to 450 */
+      var frameW = Math.min( window.innerWidth * 0.72, 1100 );
+      frame.style.width = frameW + "px";
+      frame.style.height = FRAME_H + "px";
+      frame.style.maxWidth = "none";
+      frame.style.maxHeight = "none";
+      frame.classList.add( "is-ready" );
+    }
+
+    function begin( mural ) {
+      paintWall( mural );
+      layout();
+      /* Product muralColorEaseMs lead, then wash_spin 1000ms */
+      setTimeout( function() {
+        startWashSpin( mural, 1000 );
+      }, 150 );
+    }
+
+    paintWall( DEFAULT );
+    layout();
+
+    var probe = new Image();
+    probe.onload = function() {
+      var mural;
+      try {
+        mural = sampleMural( probe );
+      } catch ( e ) {
+        mural = { colors: DEFAULT.colors.slice(), base: DEFAULT.base };
+      }
+      begin( mural );
+    };
+    probe.onerror = function() {
+      begin( DEFAULT );
+    };
+    probe.src = PHOTO;
+
+    window.addEventListener( "resize", layout );
+  })();
+  </script>
+</body>
+</html>
