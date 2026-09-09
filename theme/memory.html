@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimpTab · Memory demo</title>
+<!--
+  Standalone iframe-ready demo for simptab.art (and local open).
+  Approximates mask mode "memory" · atmosphere blur wall + polaroid paper texture.
+  Fixed hero: Unsplash Q6LO0SCx3n0 (flo-p) — orange classic vehicle on the road.
+  No postMessage / no extension coupling.
+-->
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #2a1a12; /* warm fallback from hero — before image paints */
+  }
+
+  /* Atmosphere wall — same photo, heavy blur (product memory_wall=blur) */
+  .memory-wall {
+    position: fixed;
+    inset: -10%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .memory-wall-photo {
+    position: absolute;
+    inset: 0;
+    background: center / cover no-repeat var(--memory-photo);
+    filter: blur(36px) saturate(1.05) brightness(0.92);
+    -webkit-filter: blur(36px) saturate(1.05) brightness(0.92);
+    transform: scale(1.12);
+  }
+
+  /* Paper veil above blur, under polaroid */
+  .memory-veil {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      165deg,
+      rgba(232, 230, 225, 0.4) 0%,
+      rgba(220, 214, 205, 0.28) 45%,
+      rgba(48, 42, 36, 0.14) 100%
+    );
+  }
+
+  .bgmask-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .bgmask-frame {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    --mask-mem-pad-t: 14px;
+    --mask-mem-pad-r: 12px;
+    --mask-mem-pad-b: 40px;
+    --mask-mem-pad-l: 12px;
+    --mask-mem-radius: 8px;
+    padding: var(--mask-mem-pad-t) var(--mask-mem-pad-r) var(--mask-mem-pad-b) var(--mask-mem-pad-l);
+    border-radius: var(--mask-mem-radius);
+    background-color: #e8e6e1;
+    background-image: url("images/mask-memory-paper.png");
+    background-size: 256px auto;
+    background-repeat: repeat;
+    /* paper → wall: near contact + light ambient */
+    box-shadow:
+      0 1px 1px rgba(0, 0, 0, 0.14),
+      1px 2px 4px rgba(0, 0, 0, 0.12),
+      2px 6px 14px rgba(0, 0, 0, 0.14),
+      3px 12px 28px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .bgmask-frame.is-ready {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Warm wash + soft vignette over the photo well */
+  .bgmask-frame::after {
+    content: "";
+    position: absolute;
+    top: var(--mask-mem-pad-t);
+    right: var(--mask-mem-pad-r);
+    bottom: var(--mask-mem-pad-b);
+    left: var(--mask-mem-pad-l);
+    border-radius: 1px;
+    background: linear-gradient(
+      165deg,
+      rgba(255, 214, 170, 0.12) 0%,
+      rgba(255, 236, 210, 0.04) 42%,
+      rgba(90, 55, 30, 0.08) 100%
+    );
+    box-shadow: inset 0 0 48px rgba(55, 35, 18, 0.22);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .bgmask-frame img {
+    display: block;
+    position: relative;
+    z-index: 0;
+    border: none;
+    border-radius: 1px;
+    background: transparent;
+    box-shadow: none;
+    object-fit: cover;
+    object-position: center;
+    /* Film grade + contact shadow onto paper */
+    filter: sepia(0.38) saturate(0.7) contrast(0.9) brightness(1.06) hue-rotate(-6deg)
+      drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2))
+      drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+    -webkit-filter: sepia(0.38) saturate(0.7) contrast(0.9) brightness(1.06) hue-rotate(-6deg)
+      drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2))
+      drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+  }
+</style>
+</head>
+<body>
+  <div class="memory-wall" aria-hidden="true">
+    <div class="memory-wall-photo"></div>
+  </div>
+  <div class="memory-veil" aria-hidden="true"></div>
+
+  <div class="bgmask-bg">
+    <div class="bgmask-frame" id="frame">
+      <img
+        id="hero"
+        src="images/memory.jpeg"
+        alt="Memory — orange classic vehicle"
+        decoding="async">
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    /* Local copy of Unsplash Q6LO0SCx3n0 (flo-p) — https://unsplash.com/photos/orange-classic-vehicle-park-on-road-Q6LO0SCx3n0 */
+    var PHOTO = "images/memory.jpeg";
+
+    var frame = document.getElementById( "frame" );
+    var hero  = document.getElementById( "hero" );
+
+    document.documentElement.style.setProperty( "--memory-photo", 'url("' + PHOTO + '")' );
+
+    /**
+     * Product memoryPhotoWell + memoryFilmLayout (js/background.js).
+     * Promo landscape: fill a 16:9 well with object-fit:cover so the polaroid
+     * hits the same ~720×394 showcase size as the extension (wide car photos).
+     */
+    function memoryPhotoWell( nw, nh ) {
+      var r = nw / nh, maxR = 16 / 9, minR = 9 / 16;
+      if ( nw >= nh ) {
+        /* Showcase crop to 16:9 (product only crops when wider than 16:9). */
+        return { wellW: nw, wellH: Math.round( nw / maxR ) };
+      }
+      if ( r < minR ) {
+        return { wellW: nw, wellH: Math.round( nw / minR ) };
+      }
+      return { wellW: nw, wellH: nh };
+    }
+
+    function memoryFilmLayout( nw, nh ) {
+      var well, pw, ph, short, thin, lead, thick, pad, filmW, filmH, maxW, maxH, scale;
+      if ( !nw || !nh ) {
+        return {
+          imgW: 0, imgH: 0, frameW: 0, frameH: 0,
+          pad: { top: 14, right: 12, bottom: 40, left: 12 },
+          radius: 8
+        };
+      }
+      well  = memoryPhotoWell( nw, nh );
+      pw    = well.wellW;
+      ph    = well.wellH;
+      short = Math.min( pw, ph );
+      thin  = Math.max( 16, Math.round( short * 0.07 ) );
+      lead  = Math.max( thin + 1, Math.round( thin * 1.2 ) );
+      thick = Math.round( thin * 3.2 );
+      if ( pw > ph ) {
+        pad = { top: thin, right: thick, bottom: thin, left: lead };
+      } else {
+        pad = { top: lead, right: thin, bottom: thick, left: thin };
+      }
+      filmW = pw + pad.left + pad.right;
+      filmH = ph + pad.top + pad.bottom;
+      maxW  = Math.min( window.innerWidth * 0.56, 720 );
+      maxH  = window.innerHeight * 0.56;
+      scale = Math.min( maxW / filmW, maxH / filmH, 1 );
+      return {
+        imgW:   Math.max( 1, Math.round( pw * scale ) ),
+        imgH:   Math.max( 1, Math.round( ph * scale ) ),
+        frameW: Math.max( 1, Math.round( filmW * scale ) ),
+        frameH: Math.max( 1, Math.round( filmH * scale ) ),
+        pad: {
+          top:    Math.max( 1, Math.round( pad.top * scale ) ),
+          right:  Math.max( 1, Math.round( pad.right * scale ) ),
+          bottom: Math.max( 1, Math.round( pad.bottom * scale ) ),
+          left:   Math.max( 1, Math.round( pad.left * scale ) )
+        },
+        radius: 8
+      };
+    }
+
+    function layout() {
+      var nw = hero.naturalWidth, nh = hero.naturalHeight, film, pad;
+      if ( !nw || !nh ) return;
+      film = memoryFilmLayout( nw, nh );
+      pad  = film.pad;
+      frame.classList.toggle( "bgmask-memory-landscape", nw > nh );
+      frame.classList.toggle( "bgmask-memory-portrait", nw <= nh );
+      frame.style.setProperty( "--mask-mem-pad-t", pad.top + "px" );
+      frame.style.setProperty( "--mask-mem-pad-r", pad.right + "px" );
+      frame.style.setProperty( "--mask-mem-pad-b", pad.bottom + "px" );
+      frame.style.setProperty( "--mask-mem-pad-l", pad.left + "px" );
+      frame.style.setProperty( "--mask-mem-radius", film.radius + "px" );
+      frame.style.padding = pad.top + "px " + pad.right + "px " + pad.bottom + "px " + pad.left + "px";
+      frame.style.borderRadius = film.radius + "px";
+      /* border-box: width/height include padding — same as revealMaskFrame */
+      frame.style.maxWidth = "none";
+      frame.style.maxHeight = "none";
+      frame.style.width = film.frameW + "px";
+      frame.style.height = film.frameH + "px";
+      hero.style.maxWidth = "none";
+      hero.style.maxHeight = "none";
+      hero.style.width = film.imgW + "px";
+      hero.style.height = film.imgH + "px";
+      hero.style.objectFit = "cover";
+      hero.style.objectPosition = "center";
+      frame.classList.add( "is-ready" );
+    }
+
+    if ( hero.complete && hero.naturalWidth ) layout();
+    else hero.addEventListener( "load", layout );
+    window.addEventListener( "resize", layout );
+  })();
+  </script>
+</body>
+</html>
