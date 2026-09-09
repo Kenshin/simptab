@@ -9,7 +9,7 @@
   Approximates mask mode "art" (画廊):
     - solid gallery wall = PickWallForArt(photo palette) — photo extension color
     - dark wood picture-frame (mask-art-wood.png)
-  Fixed hero: images/art.png (Pissarro orchard).
+  Fixed hero: images/art.jpg (Pissarro orchard).
   No postMessage / no extension coupling.
 -->
 <style>
@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* Pre-baked PickWallForArt from art.png — before sample lands */
+    /* Pre-baked PickWallForArt from art.jpg — before sample lands */
     background: #a78758;
     transition: background-color .5s ease;
   }
@@ -110,7 +110,7 @@
     <div class="bgmask-frame" id="frame">
       <img
         id="hero"
-        src="images/art.png"
+        src="images/art.jpg"
         alt="Art gallery — Pissarro orchard"
         decoding="async">
     </div>
@@ -120,8 +120,8 @@
   (function () {
     "use strict";
 
-    var PHOTO = "images/art.png";
-    /* Pre-baked from art.png via product PickWallForArt — used until / if sample works */
+    var PHOTO = "images/art.jpg";
+    /* Pre-baked from art.jpg via product PickWallForArt — used until / if sample works */
     var DEFAULT_WALL = "#a78758";
 
     var wall  = document.getElementById( "wall" );
