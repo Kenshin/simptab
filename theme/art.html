@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimpTab · Art demo</title>
+<!--
+  Standalone iframe-ready demo for simptab.art (and local open).
+  Approximates mask mode "art" (画廊):
+    - solid gallery wall = PickWallForArt(photo palette) — photo extension color
+    - dark wood picture-frame (mask-art-wood.png)
+  Fixed hero: images/art.png (Pissarro orchard).
+  No postMessage / no extension coupling.
+-->
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Pre-baked PickWallForArt from art.png — before sample lands */
+    background: #a78758;
+    transition: background-color .5s ease;
+  }
+
+  .art-wall {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--art-wall, #a78758);
+    transition: background-color .5s ease;
+  }
+
+  .bgmask-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  /* Product body.simptab-mask-art .bgmask-frame */
+  .bgmask-frame {
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: var(--mask-frame, #3a2f28);
+    background-image:
+      linear-gradient(var(--mask-frame-wash, rgba(0, 0, 0, 0.12)), var(--mask-frame-wash, rgba(0, 0, 0, 0.12))),
+      url("images/mask-art-wood.png");
+    background-size: auto, 280px auto;
+    background-repeat: repeat;
+    border-radius: 1px;
+    box-shadow:
+      0 0 0 1px var(--mask-frame-edge, rgba(0, 0, 0, 0.45)),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 1px 0 0 rgba(255, 255, 255, 0.06),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+      inset -1px 0 0 rgba(0, 0, 0, 0.2),
+      0 10px 20px rgba(0, 0, 0, 0.28),
+      0 28px 64px rgba(0, 0, 0, 0.42);
+    opacity: 0;
+    transition: opacity .35s ease-out;
+  }
+
+  .bgmask-frame.is-ready {
+    opacity: 1;
+  }
+
+  /* Product rabbet */
+  .bgmask-frame::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 1px;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.55),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      inset 0 3px 10px rgba(0, 0, 0, 0.45),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .bgmask-frame img {
+    display: block;
+    position: relative;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    max-width: none;
+    max-height: none;
+  }
+</style>
+</head>
+<body>
+  <div class="art-wall" id="wall" aria-hidden="true"></div>
+
+  <div class="bgmask-bg">
+    <div class="bgmask-frame" id="frame">
+      <img
+        id="hero"
+        src="images/art.png"
+        alt="Art gallery — Pissarro orchard"
+        decoding="async">
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    var PHOTO = "images/art.png";
+    /* Pre-baked from art.png via product PickWallForArt — used until / if sample works */
+    var DEFAULT_WALL = "#a78758";
+
+    var wall  = document.getElementById( "wall" );
+    var frame = document.getElementById( "frame" );
+    var hero  = document.getElementById( "hero" );
+    var PAD   = 20;
+
+    function clamp01( n ) { return Math.max( 0, Math.min( 1, n ) ); }
+
+    function rgbHex( r, g, b ) {
+      function h( n ) {
+        var s = Math.round( clamp01( n ) * 255 ).toString( 16 );
+        return s.length < 2 ? "0" + s : s;
+      }
+      return "#" + h( r ) + h( g ) + h( b );
+    }
+
+    function parseHex( hex ) {
+      hex = ( hex || "" ).replace( "#", "" );
+      if ( hex.length === 3 ) {
+        hex = hex[ 0 ] + hex[ 0 ] + hex[ 1 ] + hex[ 1 ] + hex[ 2 ] + hex[ 2 ];
+      }
+      var n = parseInt( hex, 16 );
+      return { r: ( n >> 16 ) & 255, g: ( n >> 8 ) & 255, b: n & 255 };
+    }
+
+    function luminance( r, g, b ) {
+      return ( 0.299 * r + 0.578 * g + 0.114 * b ) / 255;
+    }
+
+    function saturation( r, g, b ) {
+      var max = Math.max( r, g, b ) / 255,
+          min = Math.min( r, g, b ) / 255;
+      if ( max === 0 ) return 0;
+      return ( max - min ) / max;
+    }
+
+    function lightenHex( hex, amount ) {
+      var rgb = parseHex( hex ), t = clamp01( amount );
+      return rgbHex(
+        ( rgb.r + ( 255 - rgb.r ) * t ) / 255,
+        ( rgb.g + ( 255 - rgb.g ) * t ) / 255,
+        ( rgb.b + ( 255 - rgb.b ) * t ) / 255
+      );
+    }
+
+    /** Product artFrameTint(wall) */
+    function artFrameTint( wallColor ) {
+      var rgb = parseHex( wallColor ),
+          L = luminance( rgb.r, rgb.g, rgb.b );
+      if ( L < 0.35 ) {
+        return { frame: "#2e2620", wash: "rgba(0,0,0,0.2)", edge: "rgba(0,0,0,0.4)" };
+      }
+      if ( L > 0.55 ) {
+        return { frame: "#4a3f36", wash: "rgba(255,255,255,0.08)", edge: "rgba(0,0,0,0.28)" };
+      }
+      return { frame: "#3a2f28", wash: "rgba(0,0,0,0.12)", edge: "rgba(0,0,0,0.35)" };
+    }
+
+    function paintArtWall( wallColor ) {
+      var tint = artFrameTint( wallColor || DEFAULT_WALL );
+      wall.style.setProperty( "--art-wall", wallColor );
+      document.body.style.backgroundColor = wallColor;
+      document.body.style.setProperty( "--mask-frame", tint.frame );
+      document.body.style.setProperty( "--mask-frame-wash", tint.wash );
+      document.body.style.setProperty( "--mask-frame-edge", tint.edge );
+    }
+
+    /**
+     * Product palette.quantize → up to 4 hex colors.
+     */
+    function quantize( img, count ) {
+      var maxSide = 64, w, h, scale, cw, ch, canvas, ctx, data,
+          buckets = {}, i, key, r, g, b, a, entry, list, out = [], j, c, ok, dist;
+
+      w = img.naturalWidth || img.width;
+      h = img.naturalHeight || img.height;
+      if ( !w || !h ) return [];
+      scale = Math.min( 1, maxSide / Math.max( w, h ) );
+      cw = Math.max( 1, Math.round( w * scale ) );
+      ch = Math.max( 1, Math.round( h * scale ) );
+      canvas = document.createElement( "canvas" );
+      canvas.width = cw;
+      canvas.height = ch;
+      ctx = canvas.getContext( "2d", { willReadFrequently: true } );
+      if ( !ctx ) return [];
+      ctx.drawImage( img, 0, 0, cw, ch );
+      try {
+        data = ctx.getImageData( 0, 0, cw, ch ).data;
+      } catch ( e ) {
+        return [];
+      }
+
+      for ( i = 0; i < data.length; i += 4 ) {
+        a = data[ i + 3 ];
+        if ( a < 128 ) continue;
+        r = data[ i ]; g = data[ i + 1 ]; b = data[ i + 2 ];
+        key = ( ( r >> 4 ) << 8 ) | ( ( g >> 4 ) << 4 ) | ( b >> 4 );
+        entry = buckets[ key ];
+        if ( !entry ) buckets[ key ] = { r: r, g: g, b: b, n: 1 };
+        else { entry.r += r; entry.g += g; entry.b += b; entry.n++; }
+      }
+
+      list = Object.keys( buckets ).map( function( k ) {
+        entry = buckets[ k ];
+        return {
+          r: Math.round( entry.r / entry.n ),
+          g: Math.round( entry.g / entry.n ),
+          b: Math.round( entry.b / entry.n ),
+          n: entry.n
+        };
+      }).sort( function( x, y ) { return y.n - x.n; });
+
+      for ( j = 0; j < list.length && out.length < count; j++ ) {
+        c = list[ j ];
+        ok = true;
+        for ( i = 0; i < out.length; i++ ) {
+          dist = Math.abs( c.r - out[ i ].r ) + Math.abs( c.g - out[ i ].g ) + Math.abs( c.b - out[ i ].b );
+          if ( dist < 48 ) { ok = false; break; }
+        }
+        if ( ok ) out.push( c );
+      }
+
+      return out.map( function( c ) {
+        return rgbHex( c.r / 255, c.g / 255, c.b / 255 );
+      });
+    }
+
+    /** Product palette.PickWallForArt */
+    function pickWallForArt( colors ) {
+      var FRAME_L = 0.25, i, hex, rgb, L, S, dL, score,
+          best = null, bestScore = -Infinity, brightest = null, brightL = -1;
+
+      if ( !colors || !colors.length ) return DEFAULT_WALL;
+
+      for ( i = 0; i < colors.length; i++ ) {
+        hex = colors[ i ];
+        rgb = parseHex( hex );
+        L = luminance( rgb.r, rgb.g, rgb.b );
+        S = saturation( rgb.r, rgb.g, rgb.b );
+        dL = L - FRAME_L;
+        if ( L > brightL ) { brightL = L; brightest = hex; }
+        score = 0;
+        score -= Math.abs( L - 0.55 ) * 2.5;
+        if ( L < 0.4 ) score -= ( 0.4 - L ) * 4;
+        if ( L > 0.78 ) score -= ( L - 0.78 ) * 5;
+        if ( dL < 0.25 ) score -= ( 0.25 - dL ) * 4;
+        score -= Math.abs( S - 0.28 ) * 1.2;
+        if ( S < 0.06 ) score -= 0.35;
+        if ( score > bestScore ) { bestScore = score; best = hex; }
+      }
+
+      best = best || brightest || colors[ 0 ];
+      rgb = parseHex( best );
+      L = luminance( rgb.r, rgb.g, rgb.b );
+      if ( L < 0.45 ) {
+        return lightenHex( best, Math.min( 0.55, ( 0.55 - L ) / Math.max( 0.15, 1 - L ) ) );
+      }
+      return best;
+    }
+
+    function layout( nw, nh ) {
+      var maxW, maxH, imgMaxW, imgMaxH, scale, imgW, imgH;
+      if ( !nw || !nh ) { nw = 1200; nh = 917; }
+      maxW = Math.min( window.innerWidth * 0.72, 1100 );
+      maxH = window.innerHeight * 0.72;
+      imgMaxW = Math.max( 1, maxW - PAD * 2 );
+      imgMaxH = Math.max( 1, maxH - PAD * 2 );
+      scale = Math.min( imgMaxW / nw, imgMaxH / nh, 1 );
+      imgW = Math.max( 1, Math.round( nw * scale ) );
+      imgH = Math.max( 1, Math.round( nh * scale ) );
+      hero.style.width = imgW + "px";
+      hero.style.height = imgH + "px";
+      frame.classList.add( "is-ready" );
+    }
+
+    paintArtWall( DEFAULT_WALL );
+    layout( 1200, 917 );
+
+    function reveal() {
+      var nw = hero.naturalWidth, nh = hero.naturalHeight;
+      layout( nw, nh );
+      /* Prefer decoding the on-page img (same origin as CSS) for palette */
+      var colors = quantize( hero, 4 );
+      paintArtWall( colors.length ? pickWallForArt( colors ) : DEFAULT_WALL );
+    }
+
+    if ( hero.complete && hero.naturalWidth ) {
+      reveal();
+    } else {
+      hero.addEventListener( "load", reveal );
+      hero.addEventListener( "error", function() {
+        paintArtWall( DEFAULT_WALL );
+        layout( 1200, 917 );
+      });
+    }
+
+    window.addEventListener( "resize", function() {
+      if ( hero.naturalWidth ) layout( hero.naturalWidth, hero.naturalHeight );
+      else layout( 1200, 917 );
+    });
+  })();
+  </script>
+</body>
+</html>
