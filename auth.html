@@ -1,45 +1,303 @@
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>授权 · 简 Tab</title>
+    <meta name="author" content="Kenshin">
+    <meta name="description" content="简 Tab (SimpTab) - 极简的 Chrome 新标签页扩展，望你每次打开都有好心情">
+    <meta name="keywords" content="Chrome 扩展, 新标签页, Dropbox, 授权, SimpTab">
+    <meta name="thumbnail" content="http://st.ksria.cn/introduce2.png">
+
+    <meta property="og:title" content="授权 · 简 Tab (SimpTab)">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:url" content="https://simptab.art/auth.html">
+    <meta property="og:image" content="http://st.ksria.cn/introduce2.png">
+    <meta property="og:site_name" content="https://simptab.art">
+    <meta property="og:description" content="简 Tab 授权回调页，授权成功后将自动关闭">
+
+    <title>授权 · 简 Tab (SimpTab)</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <meta name="theme-color" content="#1dba90">
+
     <style>
-        body {
+        :root {
+            --st-teal: #1dba90;
+            --st-teal-deep: #159a76;
+            --st-purple: #7c4dff;
+            --st-ink: #333;
+            --st-muted: #8a9399;
+            --st-paper: #fafafa;
+            --st-card: #ffffff;
+            --st-footer: #333;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
             margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
+            font-family: -apple-system, "PingFang SC", Verdana, "Helvetica Neue",
+                "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif",
+                "WenQuanYi Micro Hei", sans-serif;
+            color: var(--st-ink);
+            background: var(--st-paper) url(./assets/image/bg.png);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* —— top bar（对齐 index header 青绿） —— */
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            padding: 0 28px;
+            background: var(--st-teal);
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .top .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+        }
+
+        .top .logo .mark {
+            display: block;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            object-fit: contain;
+            background: transparent;
+        }
+
+        .top .nav-home {
+            color: rgba(255, 255, 255, 0.92);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.25s ease;
+        }
+
+        .top .nav-home:hover {
+            border-bottom-color: #fff;
+        }
+
+        /* —— main（简悦 auth：居中主文案 + 底波） —— */
+        .auth {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 24px 120px;
+            overflow: hidden;
+        }
+
+        .auth .wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .auth .card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+            padding: 40px 32px 36px;
+            background: var(--st-card);
+            border-radius: 12px;
+            box-shadow:
+                0 2rem 1.5rem -1.5rem rgba(33, 37, 41, 0.12),
+                0 0 1.5rem 0.5rem rgba(33, 37, 41, 0.04);
+        }
+
+        .auth .icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .auth .icon {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f5f6f8;
-            color: #2c3238;
-        }
-        .box {
-            text-align: center;
-            padding: 48px 40px;
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
             background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-            max-width: 420px;
+            box-shadow:
+                0 2rem 1.5rem -1.5rem rgba(33, 37, 41, 0.15),
+                0 0 1.5rem 0.5rem rgba(33, 37, 41, 0.05);
         }
-        h1 { font-size: 20px; font-weight: 600; margin: 0 0 12px; }
-        p  { font-size: 14px; line-height: 1.6; margin: 0; color: #66707a; }
+
+        .auth .icon svg {
+            display: block;
+            width: 45px;
+            height: 45px;
+        }
+
+        .auth .icon img {
+            display: block;
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+        }
+
+        .auth .icon.dropbox svg { fill: #0061ff; }
+
+        .auth .title {
+            margin: 0 0 14px;
+            font-size: 26px;
+            font-weight: 300;
+            line-height: 1.4;
+            color: var(--st-ink);
+        }
+
+        .auth .title span {
+            color: var(--st-teal);
+            font-weight: 500;
+        }
+
+        .auth .title.is-cancel span {
+            color: #F44336;
+        }
+
+        .auth .notice {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--st-muted);
+        }
+
+        .auth .notice.is-action {
+            cursor: pointer;
+            color: var(--st-purple);
+        }
+
+        .auth .notice.is-action:hover {
+            text-decoration: underline;
+        }
+
+        /* —— footer —— */
+        .footer {
+            flex-shrink: 0;
+            background: var(--st-footer);
+            color: #fff;
+            text-align: center;
+            padding: 16px 20px;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .footer a {
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            background: #fff;
+            color: #000;
+            border-radius: 3px;
+            transition: background-color 0.4s ease;
+        }
+
+        @media (max-width: 560px) {
+            .top { padding: 0 16px; height: 60px; }
+            .auth { padding: 32px 16px 96px; }
+            .auth .card { padding: 32px 20px 28px; }
+            .auth .title { font-size: 22px; }
+            .auth .icon { width: 72px; height: 72px; }
+            .auth .icon svg { width: 32px; height: 32px; }
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1 id="title">授权成功</h1>
-        <p id="notice">此页为授权回调，扩展将自动关闭此标签。</p>
+    <div class="top">
+        <a class="logo" href="https://simptab.art" title="简 Tab">
+            <img class="mark" src="./assets/favicon/favicon-32x32.png" width="32" height="32" alt="简 Tab">
+            <span>简 Tab</span>
+        </a>
+        <a class="nav-home" href="https://simptab.art">官网</a>
     </div>
+
+    <main class="auth">
+        <div class="card">
+            <div class="icons" aria-hidden="true">
+                <span class="icon simptab" title="简 Tab">
+                    <img src="./assets/favicon/android-icon-96x96.png" width="52" height="52" alt="简 Tab">
+                </span>
+                <span class="icon dropbox" title="Dropbox">
+                    <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="52" height="52"><path d="M229.741714 403.968l282.258286 174.299429-195.437714 162.889143-279.990857-182.272zM793.161143 721.115429l0 61.732571-279.990857 167.424 0 0.585143-0.585143-0.585143-0.585143 0.585143 0-0.585143-279.405714-167.424 0-61.732571 83.968 54.857143 195.437714-162.304 0-1.170286 0.585143 0.585143 0.585143-0.585143 0 1.170286 196.022857 162.304zM316.562286 67.437714l195.437714 162.889143-282.258286 173.714286-193.170286-154.258286zM794.258286 403.968l193.170286 154.843429-279.405714 182.272-196.022857-162.889143zM708.022857 67.437714l279.405714 182.272-193.170286 154.258286-282.258286-173.714286z" fill="#195BF7"></path></svg>
+                </span>
+            </div>
+            <h1 class="title" id="title">简 Tab 已连接 <span>你的</span> Dropbox</h1>
+            <p class="notice" id="notice">此页为授权页面，授权成功后将会自动关闭</p>
+        </div>
+
+        <svg class="wave" viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="#1dba90" fill-opacity="0.12" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,138.7C1248,139,1344,117,1392,106.7L1440,96L1440,160L1392,160C1344,160,1248,160,1152,160C1056,160,960,160,864,160C768,160,672,160,576,160C480,160,384,160,288,160C192,160,96,160,48,160L0,160Z"></path>
+            <path fill="#7c4dff" fill-opacity="0.08" d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,112C840,117,960,107,1080,96C1200,85,1320,75,1380,69.3L1440,64L1440,160L1380,160C1320,160,1200,160,1080,160C960,160,840,160,720,160C600,160,480,160,360,160C240,160,120,160,60,160L0,160Z"></path>
+        </svg>
+    </main>
+
+    <div class="footer">
+        <span>SimpTab · Auth</span>
+        <span>&nbsp;&copy;&nbsp;2014–2026 <a href="https://simptab.art">simptab.art</a> by <a href="http://kenshin.wang" target="_blank" rel="noopener">Kenshin</a></span>
+    </div>
+
     <script>
         (function () {
             var params = new URLSearchParams( location.search ),
                 error  = params.get( "error" ),
+                code   = params.get( "code" ),
                 title  = document.getElementById( "title" ),
                 notice = document.getElementById( "notice" );
+
             if ( error === "access_denied" ) {
-                title.textContent  = "已取消授权";
-                notice.textContent = "可以关闭当前页了。";
+                title.className = "title is-cancel";
+                title.innerHTML = "你已取消 <span>简 Tab</span> 的授权";
+                notice.textContent = "可以关闭当前页了";
+                notice.classList.add( "is-action" );
+                notice.addEventListener( "click", function() { window.close(); } );
+                return;
+            }
+
+            if ( code ) {
+                title.innerHTML = "简 Tab 已连接 <span>你的</span> Dropbox";
+                notice.textContent = "此页为授权页面，授权成功后将会自动关闭";
             }
         })();
     </script>
