@@ -1,0 +1,1384 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>相框主题 — 简 Tab (SimpTab)</title><meta name="description" content="简 Tab 相框主题：星云、画廊、画壁、回忆。"><meta name="author" content="Kenshin"><meta name="theme-color" content="#1dba90"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet"><style>@property --art-w0 { syntax: '<color>'; inherits: false; initial-value: #d4b88a; }
+    @property --art-w1 { syntax: '<color>'; inherits: false; initial-value: #8f6f42; }
+    @property --art-w2 { syntax: '<color>'; inherits: false; initial-value: #c4a574; }
+    @property --art-w3 { syntax: '<color>'; inherits: false; initial-value: #b08950; }
+    @property --mural-w0 { syntax: '<color>'; inherits: false; initial-value: #7ec8c9; }
+    @property --mural-w1 { syntax: '<color>'; inherits: false; initial-value: #2a6f8f; }
+    @property --mural-w2 { syntax: '<color>'; inherits: false; initial-value: #a8d5e5; }
+    @property --mural-w3 { syntax: '<color>'; inherits: false; initial-value: #5eb8c8; }
+
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Segoe UI',
+                   Verdana, 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', sans-serif;
+      --font-serif: 'Source Serif 4', 'Songti SC', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+      --ink: #111827;
+      --ink-soft: rgba(17, 24, 39, 0.72);
+      --ink-on-dark: #f8fafc;
+      --ink-on-dark-soft: rgba(248, 250, 252, 0.78);
+      --intro-paper: #f7f1e8;
+      --intro-ink: #1c1410;
+      --primary: #1dba90;
+      --surface-green: #e8f8f3;
+      --rounded-lg: 16px;
+      --rounded-xl: 24px;
+      --rounded-xxl: 32px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background: #0f0a07;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ===== TOP NAV（暖纸底；滚动出边线；主题段液态玻璃 + 下滚收起/上滑唤出） ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--intro-paper);
+      border-bottom: 1px solid transparent;
+      transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1),
+                  background 0.35s ease,
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+      will-change: transform;
+    }
+    /* 离开页顶后出现细分割线（Intro 内滚动） */
+    header.is-scrolled {
+      border-bottom-color: rgba(28, 20, 16, 0.06);
+    }
+    /* 任一主题段：液态玻璃，去掉底边；默认浅色字（深色氛围段） */
+    header.is-glass {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.07) 100%
+      );
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border-bottom-color: transparent;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    }
+    /* 浅色主题（画壁）：玻璃上仍用暖墨字，避免发白 */
+    header.is-glass.is-glass-ink {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.42) 0%,
+        rgba(255, 255, 255, 0.22) 100%
+      );
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+    header.is-away {
+      transform: translateY(-100%);
+      pointer-events: none;
+      box-shadow: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      header { transition: none; }
+    }
+    .top {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 60px;
+      padding: 0 10px;
+      font: 300 12px/1.8 var(--font-sans);
+    }
+    .top ul {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      list-style: none;
+    }
+    .top ul li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 20px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.5s;
+    }
+    .top ul li:hover {
+      border-bottom: 2px solid rgba(28, 20, 16, 0.55);
+    }
+    header.is-glass:not(.is-glass-ink) .top ul li:hover {
+      border-bottom-color: rgba(247, 241, 232, 0.85);
+    }
+    /* 导航 SVG 原为白底绿条设计，纸色顶栏压成暖墨 */
+    .top ul li > img {
+      padding-right: 5px;
+      cursor: inherit;
+      filter: brightness(0) saturate(100%);
+      opacity: 0.72;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    header.is-glass:not(.is-glass-ink) .top ul li > img {
+      filter: none;
+      opacity: 0.92;
+    }
+    .top ul li a {
+      color: var(--intro-ink);
+      font-weight: 500;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 12px;
+      transition: color 0.3s ease;
+    }
+    header.is-glass:not(.is-glass-ink) .top ul li a {
+      color: #f7f1e8;
+    }
+    .lang-dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+    .lang-dropdown .lang-current {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--intro-ink);
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 4px 0;
+      transition: color 0.3s ease;
+    }
+    header.is-glass:not(.is-glass-ink) .lang-dropdown .lang-current {
+      color: #f7f1e8;
+    }
+    .lang-dropdown .lang-current img {
+      height: 15px;
+    }
+    .lang-dropdown .lang-current .arrow {
+      font-size: 10px;
+      margin-left: 2px;
+      transition: transform 0.2s;
+    }
+    .lang-dropdown:hover .lang-current .arrow {
+      transform: rotate(180deg);
+    }
+    .lang-dropdown .lang-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      min-width: 140px;
+      padding: 6px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      transition: all 0.2s ease;
+      z-index: 100;
+      margin-top: 8px;
+    }
+    .lang-dropdown:hover .lang-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .lang-menu a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      color: #333 !important;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none !important;
+      text-transform: none !important;
+      transition: background 0.15s;
+    }
+    .lang-menu a:hover {
+      background: var(--surface-green);
+    }
+    .lang-menu a.active {
+      color: var(--primary) !important;
+      font-weight: 600;
+    }
+    .lang-menu a img {
+      height: 14px;
+      width: 14px;
+      padding: 0 !important;
+      filter: none !important;
+      opacity: 1 !important;
+    }
+
+    /* ===== INTRO HERO（暖纸底 · 左文案 / 右五卡紧凑拼贴） ===== */
+    .theme-intro {
+      position: relative;
+      background: var(--intro-paper);
+      color: var(--intro-ink);
+      padding: clamp(56px, 10vh, 112px) clamp(20px, 5vw, 64px) clamp(48px, 8vh, 88px);
+      overflow: hidden;
+    }
+
+    .theme-intro__inner {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: clamp(16px, 2.5vw, 36px);
+      align-items: center;
+    }
+
+    .theme-intro__copy {
+      width: min(100%, 420px);
+    }
+
+    .theme-intro__kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      margin-bottom: 14px;
+    }
+
+    .theme-intro__title {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 4.8vw, 52px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      margin-bottom: 18px;
+      color: var(--intro-ink);
+    }
+
+    .theme-intro__desc {
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 1.65;
+      color: rgba(28, 20, 16, 0.72);
+      max-width: 34em;
+      margin-bottom: 28px;
+    }
+
+    .theme-intro__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: var(--intro-ink);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 10px 24px rgba(28, 20, 16, 0.18);
+    }
+    .theme-intro__cta:hover {
+      background: #2a1a12;
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(28, 20, 16, 0.22);
+    }
+
+    .theme-intro__stage {
+      position: relative;
+      width: min(100%, 420px);
+      margin: 0 auto; /* 在右栏绿框内水平居中 */
+      aspect-ratio: 1 / 1.02;
+    }
+
+    /* 半透明不规则 blob，垫在照片下（偏中心） */
+    .theme-intro__blob {
+      position: absolute;
+      pointer-events: none;
+      filter: blur(26px);
+      opacity: 0.62;
+      z-index: 0;
+    }
+    .theme-intro__blob--a {
+      width: 56%; height: 42%;
+      left: 8%; top: 18%;
+      background: rgba(167, 135, 88, 0.48);
+      border-radius: 58% 42% 63% 37% / 44% 56% 40% 60%;
+      transform: rotate(-12deg);
+    }
+    .theme-intro__blob--b {
+      width: 48%; height: 40%;
+      right: 6%; top: 24%;
+      background: rgba(126, 200, 201, 0.42);
+      border-radius: 40% 60% 48% 52% / 55% 38% 62% 45%;
+      transform: rotate(18deg);
+    }
+    .theme-intro__blob--c {
+      width: 42%; height: 34%;
+      left: 24%; bottom: 16%;
+      background: rgba(42, 26, 18, 0.16);
+      border-radius: 62% 38% 44% 56% / 36% 58% 42% 64%;
+      transform: rotate(-8deg);
+    }
+    .theme-intro__blob--d {
+      width: 32%; height: 28%;
+      right: 20%; bottom: 30%;
+      background: rgba(201, 164, 90, 0.32);
+      border-radius: 48% 52% 36% 64% / 60% 40% 55% 45%;
+      transform: rotate(22deg);
+    }
+
+    .theme-intro__collage {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    .theme-intro__card {
+      position: absolute;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      will-change: transform;
+      cursor: pointer;
+    }
+    /* 白边相纸感 · 小圆角 */
+    .theme-intro__card-tilt {
+      display: block;
+      padding: 5px 5px 7px;
+      border-radius: 3px;
+      background: #fff;
+      box-shadow:
+        0 1px 2px rgba(28, 20, 16, 0.06),
+        0 12px 28px rgba(28, 20, 16, 0.14);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .theme-intro__card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 1px;
+      vertical-align: top;
+    }
+    .theme-intro__card:hover {
+      z-index: 10;
+    }
+    .theme-intro__card:focus-visible {
+      outline: 2px solid #1dba90;
+      outline-offset: 3px;
+    }
+
+    /*
+      向心叠放：星云最大居中盖住原空档，
+      其余四卡贴边压住星云四角，尺寸各异。
+    */
+    .theme-intro__card--nebula {
+      left: 18%;
+      top: 25%;
+      width: 64%;
+      z-index: 5;
+    }
+    .theme-intro__card--nebula .theme-intro__card-tilt {
+      padding: 6px 6px 26px; /* 拍立得宽底 */
+      transform: rotate(-5deg);
+    }
+
+    .theme-intro__card--frame {
+      left: 2%;
+      top: 7%;
+      width: 34%;
+      z-index: 2;
+      cursor: default;
+      pointer-events: none; /* 仅装饰，不跳转 */
+    }
+    .theme-intro__card--frame .theme-intro__card-tilt { transform: rotate(-8deg); }
+
+    .theme-intro__card--art {
+      right: 0;
+      top: 6%;
+      width: 28%;
+      z-index: 3;
+    }
+    .theme-intro__card--art .theme-intro__card-tilt { transform: rotate(7deg); }
+
+    .theme-intro__card--mural {
+      left: 0;
+      bottom: 2%;
+      width: 52%;
+      z-index: 4;
+    }
+    .theme-intro__card--mural .theme-intro__card-tilt { transform: rotate(3deg); }
+
+    .theme-intro__card--memory {
+      right: 0;
+      bottom: 4%;
+      width: 38%;
+      z-index: 6;
+    }
+    .theme-intro__card--memory .theme-intro__card-tilt { transform: rotate(-4deg); }
+
+    .theme-intro__card--frame:hover .theme-intro__card-tilt { transform: rotate(-8deg) translateY(-3px); }
+    .theme-intro__card--nebula:hover .theme-intro__card-tilt { transform: rotate(-5deg) translateY(-3px); }
+    .theme-intro__card--art:hover .theme-intro__card-tilt { transform: rotate(7deg) translateY(-3px); }
+    .theme-intro__card--mural:hover .theme-intro__card-tilt { transform: rotate(3deg) translateY(-3px); }
+    .theme-intro__card--memory:hover .theme-intro__card-tilt { transform: rotate(-4deg) translateY(-3px); }
+    .theme-intro__card:hover .theme-intro__card-tilt {
+      box-shadow:
+        0 1px 2px rgba(28, 20, 16, 0.06),
+        0 16px 32px rgba(28, 20, 16, 0.2);
+    }
+
+    @media (max-width: 860px) {
+      .theme-intro__inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .theme-intro__stage {
+        width: min(100%, 320px);
+        margin: 0 auto;
+      }
+    }
+
+    /* ===== SECTION SHELL ===== */
+    .theme-section {
+      position: relative;
+      min-height: 100vh;
+      scroll-margin-top: 76px; /* sticky header 60 + 余量 */
+      padding: clamp(64px, 10vh, 120px) clamp(20px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .theme-section__bg {
+      position: absolute;
+      inset: -55% -35%;
+      z-index: 0;
+      pointer-events: none;
+      will-change: transform;
+      /* 上沿多留纯色，避免浪下立刻接上深色 mesh 形成「第二刀」 */
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 78%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 78%, transparent 100%);
+    }
+
+    .theme-section__blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(48px);
+      opacity: 0.55;
+      will-change: transform;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 72%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 72%, transparent 100%);
+    }
+
+    .theme-section__inner {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, 100%);
+      display: grid;
+      gap: clamp(28px, 4vw, 48px);
+      align-items: center;
+    }
+
+    .theme-section--hero .theme-section__inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .theme-section--split .theme-section__inner {
+      grid-template-columns: 1fr 1.15fr;
+    }
+
+    .theme-section--split.is-flip .theme-section__inner {
+      grid-template-columns: 1.15fr 1fr;
+    }
+
+    .theme-section--split.is-flip .theme-copy { order: 2; }
+    .theme-section--split.is-flip .theme-stage { order: 1; }
+
+    @media (max-width: 860px) {
+      .theme-section--split .theme-section__inner,
+      .theme-section--split.is-flip .theme-section__inner {
+        grid-template-columns: 1fr;
+      }
+      .theme-section--split.is-flip .theme-copy,
+      .theme-section--split.is-flip .theme-stage { order: unset; }
+      .theme-section { min-height: auto; padding: 72px 20px 88px; }
+    }
+
+    /* ===== COPY ===== */
+    .theme-copy {
+      will-change: transform;
+    }
+
+    .theme-kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      opacity: 0.7;
+    }
+
+    .theme-title {
+      font-size: clamp(36px, 5.5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -1.2px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .theme-desc {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.55;
+      max-width: 34em;
+    }
+
+    .theme-section--hero .theme-desc {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== STAGE ===== */
+    .theme-stage {
+      position: relative;
+      will-change: transform;
+    }
+
+    .theme-stage__frame {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.18);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.12) inset,
+        0 18px 48px rgba(0, 0, 0, 0.28);
+      aspect-ratio: 16 / 10;
+      max-height: min(48vh, 420px);
+    }
+
+    /* 画壁：框内图本就偏「满」，舞台再略收一点 */
+    .theme--mural .theme-stage__frame {
+      aspect-ratio: 16 / 11;
+      max-height: min(42vh, 360px);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    @media (max-width: 860px) {
+      .theme--mural .theme-stage__frame {
+        margin-right: auto;
+        max-width: 100%;
+      }
+    }
+
+    .theme-stage__frame iframe,
+    .theme-stage__browser-body iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: transparent;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+
+    .theme-stage__frame iframe.is-loaded,
+    .theme-stage__browser-body iframe.is-loaded {
+      opacity: 1;
+    }
+
+    .theme-stage__placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .theme-stage.is-loaded .theme-stage__placeholder {
+      opacity: 0;
+    }
+
+    /* Browser chrome · nebula only */
+    .theme-stage__browser {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #1c1917;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.08) inset,
+        0 24px 64px rgba(0, 0, 0, 0.42);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .theme-stage__browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      background: linear-gradient(180deg, #2a2623 0%, #221e1b 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .theme-stage__dots {
+      display: flex;
+      gap: 7px;
+      flex-shrink: 0;
+    }
+
+    .theme-stage__dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4b5563;
+    }
+    .theme-stage__dots span:nth-child(1) { background: #ff5f57; }
+    .theme-stage__dots span:nth-child(2) { background: #febc2e; }
+    .theme-stage__dots span:nth-child(3) { background: #28c840; }
+
+    .theme-stage__url {
+      flex: 1;
+      min-width: 0;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .theme-stage__browser-body {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: #140e0a;
+    }
+
+    /* ===== THEME PALETTES ===== */
+    /* 星云 · 深暖 mesh：中部保留层次，底边收成纯色对接画廊浪 */
+    .theme--nebula {
+      color: var(--ink-on-dark);
+      background: #291405;
+    }
+    .theme--nebula .theme-desc { color: var(--ink-on-dark-soft); }
+    .theme--nebula .theme-section__bg {
+      background:
+        linear-gradient(to bottom, #291405 0%, #291405 18%, rgba(41, 20, 5, 0) 34%),
+        linear-gradient(to top, #291405 0%, #291405 18%, rgba(41, 20, 5, 0) 34%),
+        radial-gradient(58% 52% at 18% 55%, #721820 0%, transparent 70%),
+        radial-gradient(55% 48% at 88% 42%, #6a7510 0%, transparent 68%),
+        radial-gradient(62% 48% at 56% 48%, #4a2e18 0%, transparent 66%),
+        #291405;
+      -webkit-mask-image: radial-gradient(
+        ellipse 90% 68% at 50% 36%,
+        #000 10%,
+        #000 40%,
+        transparent 74%
+      );
+      mask-image: radial-gradient(
+        ellipse 90% 68% at 50% 36%,
+        #000 10%,
+        #000 40%,
+        transparent 74%
+      );
+    }
+    .theme--nebula .theme-section__blob--a {
+      width: 46vw; height: 46vw; max-width: 520px; max-height: 520px;
+      left: -8%; top: 8%;
+      background: #8b1e2d;
+      opacity: 0.35;
+      -webkit-mask-image: radial-gradient(
+        ellipse 82% 70% at 50% 38%,
+        #000 10%,
+        #000 40%,
+        transparent 72%
+      );
+      mask-image: radial-gradient(
+        ellipse 82% 70% at 50% 38%,
+        #000 10%,
+        #000 40%,
+        transparent 72%
+      );
+    }
+    .theme--nebula .theme-section__blob--b {
+      width: 38vw; height: 38vw; max-width: 420px; max-height: 420px;
+      right: -6%; top: 28%;
+      background: #a67c1a;
+      opacity: 0.28;
+      -webkit-mask-image: radial-gradient(
+        ellipse 80% 68% at 50% 36%,
+        #000 10%,
+        #000 38%,
+        transparent 70%
+      );
+      mask-image: radial-gradient(
+        ellipse 80% 68% at 50% 36%,
+        #000 10%,
+        #000 38%,
+        transparent 70%
+      );
+    }
+
+    /* 画廊 · 浅墙褐：中部柔斑；文案居中时一次性 wash 2s；上下 mask 收纯色 */
+    .theme--art {
+      color: #1f1710;
+      background: #a78758;
+      --art-w0: #d4b88a;
+      --art-w1: #8f6f42;
+      --art-w2: #c4a574;
+      --art-w3: #b08950;
+    }
+    .theme--art .theme-desc { color: rgba(31, 23, 16, 0.78); }
+    .theme--art .theme-section__bg {
+      background:
+        radial-gradient(58% 46% at 78% 48%, var(--art-w0) 0%, transparent 58%),
+        radial-gradient(46% 40% at 28% 52%, var(--art-w1) 0%, transparent 54%),
+        radial-gradient(38% 34% at 58% 56%, var(--art-w2) 0%, transparent 52%),
+        radial-gradient(34% 36% at 24% 58%, var(--art-w3) 0%, transparent 50%),
+        #a78758;
+      /* 线性收边 ∩ 中部径向 → 顶/底始终露 section 纯色对接浪 */
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%),
+        radial-gradient(ellipse 78% 46% at 50% 52%, #000 0%, #000 28%, transparent 56%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%),
+        radial-gradient(ellipse 78% 46% at 50% 52%, #000 0%, #000 28%, transparent 56%);
+      mask-composite: intersect;
+    }
+    .theme--art .theme-section__bg.is-wash {
+      animation: art-wash-spin 4s ease 1 forwards;
+    }
+    @keyframes art-wash-spin {
+      0% {
+        --art-w0: #d4b88a;
+        --art-w1: #8f6f42;
+        --art-w2: #c4a574;
+        --art-w3: #b08950;
+      }
+      100% {
+        --art-w0: #8f6f42;
+        --art-w1: #c4a574;
+        --art-w2: #b08950;
+        --art-w3: #d4b88a;
+      }
+    }
+    .theme--art .theme-section__blob--a {
+      width: 44vw; height: 44vw; max-width: 480px; max-height: 480px;
+      right: 4%; top: 28%;
+      background: #dfc49a;
+      opacity: 0.48;
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 28%, #000 72%, transparent 100%),
+        radial-gradient(ellipse 78% 58% at 50% 50%, #000 0%, #000 32%, transparent 60%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 28%, #000 72%, transparent 100%),
+        radial-gradient(ellipse 78% 58% at 50% 50%, #000 0%, #000 32%, transparent 60%);
+      mask-composite: intersect;
+    }
+    .theme--art .theme-stage__frame {
+      background: #a78758;
+      box-shadow: 0 22px 50px rgba(60, 40, 15, 0.35);
+    }
+
+    /* 画壁 · 海青柔斑；文案居中时一次性 wash（同画廊）；上下 mask 收纯色 */
+    .theme--mural {
+      color: #0f2a33;
+      background: #c5e8e6;
+      --mural-w0: #7ec8c9;
+      --mural-w1: #2a6f8f;
+      --mural-w2: #a8d5e5;
+      --mural-w3: #5eb8c8;
+    }
+    .theme--mural .theme-desc { color: rgba(15, 42, 51, 0.75); }
+    .theme--mural .theme-section__bg {
+      background:
+        radial-gradient(64% 48% at 18% 50%, var(--mural-w0) 0%, transparent 66%),
+        radial-gradient(54% 52% at 82% 52%, var(--mural-w1) 0%, transparent 68%),
+        radial-gradient(44% 38% at 48% 48%, var(--mural-w2) 0%, transparent 60%),
+        radial-gradient(40% 36% at 62% 56%, var(--mural-w3) 0%, transparent 56%),
+        #c5e8e6;
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%),
+        radial-gradient(ellipse 86% 52% at 50% 50%, #000 8%, #000 36%, transparent 68%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%),
+        radial-gradient(ellipse 86% 52% at 50% 50%, #000 8%, #000 36%, transparent 68%);
+      mask-composite: intersect;
+    }
+    .theme--mural .theme-section__bg.is-wash {
+      animation: mural-wash-spin 4s ease 1 forwards;
+    }
+    @keyframes mural-wash-spin {
+      0% {
+        --mural-w0: #7ec8c9;
+        --mural-w1: #2a6f8f;
+        --mural-w2: #a8d5e5;
+        --mural-w3: #5eb8c8;
+      }
+      100% {
+        --mural-w0: #2a6f8f;
+        --mural-w1: #a8d5e5;
+        --mural-w2: #5eb8c8;
+        --mural-w3: #7ec8c9;
+      }
+    }
+    .theme--mural .theme-stage__frame {
+      box-shadow: 0 22px 50px rgba(20, 70, 90, 0.28);
+    }
+
+    /* 回忆 · 暖纸氛围（顶部先稳住纯色，柔斑偏中下） */
+    .theme--memory {
+      color: #1c1410;
+      background: #2a1a12;
+    }
+    .theme--memory .theme-kicker,
+    .theme--memory .theme-title { color: #f7f1e8; }
+    .theme--memory .theme-desc { color: rgba(247, 241, 232, 0.78); }
+    .theme--memory .theme-section__bg {
+      background:
+        radial-gradient(60% 55% at 72% 48%, #c9a45a 0%, transparent 62%),
+        radial-gradient(50% 45% at 16% 78%, #6b5340 0%, transparent 60%),
+        radial-gradient(40% 40% at 48% 95%, #3d2a20 0%, transparent 55%),
+        #2a1a12;
+      filter: saturate(0.92);
+      /* 固定下移，避免上沿 mesh 顶进 mural→memory 浪缝；不做视差 */
+      transform: translate3d(0, 402.94px, 0);
+      will-change: auto;
+    }
+    .theme--memory .theme-section__blob--a {
+      width: 48vw; height: 48vw; max-width: 520px; max-height: 520px;
+      right: -8%; top: 0;
+      background: #e5c578;
+      opacity: 0.22;
+    }
+    .theme--memory .theme-section__blob--b {
+      width: 40vw; height: 40vw; max-width: 440px; max-height: 440px;
+      left: -10%; bottom: -4%;
+      background: #8a6a3e;
+      opacity: 0.28;
+    }
+    .theme--memory .theme-stage__frame {
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
+      background: #1c120e;
+    }
+
+    /* ===== WAVE DIVIDERS =====
+       两色浪线即可：下一主题纯色铺底 + 上一主题浪形压顶。
+       不加半透明描边，避免浪下脏色细带。 */
+    .theme-wave {
+      display: block;
+      width: 100%;
+      height: clamp(110px, 15vw, 168px);
+      margin-top: -1px;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 2;
+      line-height: 0;
+      overflow: hidden;
+    }
+
+    /* display:block 会压过原生 hidden，需显式关掉 */
+    .theme-wave[hidden] {
+      display: none !important;
+    }
+
+    .theme-wave svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .theme-wave--intro-nebula { background: #291405; }
+    .theme-wave--nebula-art { background: #a78758; }
+    .theme-wave--art-mural  { background: #c5e8e6; }
+    .theme-wave--mural-memory { background: #2a1a12; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .theme-section__bg,
+      .theme-section__blob,
+      .theme-copy,
+      .theme-stage,
+      .theme-intro__card {
+        will-change: auto !important;
+        transform: none !important;
+      }
+      /* 回忆底图偏移是接缝修复，不是动效，保留 */
+      .theme--memory .theme-section__bg {
+        transform: translate3d(0, 402.94px, 0) !important;
+      }
+      .theme--art .theme-section__bg.is-wash,
+      .theme--mural .theme-section__bg.is-wash {
+        animation: none !important;
+      }
+    }</style></head><body><!-- ===== TOP NAV（同 price.html） ===== --><header><div class="top"><ul><li><img src="./assets/image/home-flag.svg" alt=""> <a href="./index.html" id="homeNavLink" data-i18n="nav_home">首页</a></li><li><img src="./assets/image/premium-flag.svg" alt=""> <a href="./price.html" id="premiumNavLink" data-i18n="nav_premium">高级账户</a></li><li class="lang-dropdown" id="downloadDropdown"><img src="./assets/image/download-flag.svg" alt=""><div class="lang-current"><span data-i18n="nav_download">下载</span></div><div class="lang-menu"><a id="downloadChrome" href="https://chrome.google.com/webstore/detail/kbgmbmkhepchmmcnbdbclpkpegbgikjc" target="_blank" rel="noopener noreferrer"><img src="./assets/image/chrome-flag.svg" alt="">Chrome</a> <a id="downloadEdge" href="#" target="_blank" rel="noopener noreferrer" hidden><img src="./assets/image/edge-flag.svg" alt="">Edge</a></div></li><li class="lang-dropdown" id="langDropdown"><div class="lang-current"><img id="langCurrentFlag" src="./assets/image/zh-cn-flag.svg" alt=""> <span id="langCurrentName">简体中文</span> <span class="arrow">▼</span></div><div class="lang-menu"><a href="?lang=zh-cn" data-lang="zh-cn"><img src="./assets/image/zh-cn-flag.svg" alt="">简体中文</a> <a href="?lang=zh-tw" data-lang="zh-tw"><img src="./assets/image/zh-tw-flag.svg" alt="">繁體中文</a> <a href="?lang=en" data-lang="en"><img src="./assets/image/en-flag.svg" alt="">English</a></div></li></ul></div></header><!-- 0 · Intro --><section class="theme-intro" id="top" aria-labelledby="theme-intro-title"><div class="theme-intro__inner"><div class="theme-intro__copy"><span class="theme-intro__kicker" data-i18n="intro_kicker">Frame · Themes</span><h1 class="theme-intro__title" id="theme-intro-title" data-i18n-html="intro_title">换一张图<br>墙与氛围一起变</h1><p class="theme-intro__desc" data-i18n-html="intro_desc">星云、画廊、画壁、回忆为高级账户专属，向下滚动即可预览主题。<br>喜欢的话，前往开通高级账户。</p><a class="theme-intro__cta" id="introCta" href="./price.html" data-i18n="intro_cta">开通高级账户</a></div><div class="theme-intro__stage"><div class="theme-intro__blob theme-intro__blob--a" aria-hidden="true"></div><div class="theme-intro__blob theme-intro__blob--b" aria-hidden="true"></div><div class="theme-intro__blob theme-intro__blob--c" aria-hidden="true"></div><div class="theme-intro__blob theme-intro__blob--d" aria-hidden="true"></div><div class="theme-intro__collage"><div class="theme-intro__card theme-intro__card--frame" data-parallax="0.1" data-parallax-x="0.05" aria-hidden="true"><span class="theme-intro__card-tilt"><img src="./assets/image/mask-thumb-frame.webp" alt="" width="640" height="400" loading="eager" decoding="async"></span></div><a class="theme-intro__card theme-intro__card--nebula" href="#nebula" data-parallax="0.12" data-parallax-x="-0.08"><span class="theme-intro__card-tilt"><img src="./assets/image/mask-thumb-nebula.webp" alt="星云主题预览" width="640" height="400" loading="eager" decoding="async" data-i18n-alt="alt_nebula"> </span></a><a class="theme-intro__card theme-intro__card--art" href="#art" data-parallax="0.16" data-parallax-x="0.1"><span class="theme-intro__card-tilt"><img src="./assets/image/mask-thumb-art.webp" alt="画廊主题预览" width="640" height="400" loading="eager" decoding="async" data-i18n-alt="alt_art"> </span></a><a class="theme-intro__card theme-intro__card--mural" href="#mural" data-parallax="0.14" data-parallax-x="-0.06"><span class="theme-intro__card-tilt"><img src="./assets/image/mask-thumb-mural.webp" alt="画壁主题预览" width="640" height="400" loading="eager" decoding="async" data-i18n-alt="alt_mural"> </span></a><a class="theme-intro__card theme-intro__card--memory" href="#memory" data-parallax="0.18" data-parallax-x="0.08"><span class="theme-intro__card-tilt"><img src="./assets/image/mask-thumb-memory.webp" alt="回忆主题预览" width="640" height="400" loading="eager" decoding="async" data-i18n-alt="alt_memory"></span></a></div></div></div></section><!-- wave · Intro → 星云 --><div class="theme-wave theme-wave--intro-nebula" aria-hidden="true"><svg viewBox="0 0 1440 168" preserveAspectRatio="none"><rect width="1440" height="168" fill="#291405"/><path fill="#f7f1e8" d="M0,0 L1440,0 L1440,58
+        C1280,96 1120,128 960,118
+        C760,104 600,64 420,72
+        C260,80 120,108 0,92 Z"/></svg></div><!-- 1 · 星云 --><section class="theme-section theme-section--hero theme--nebula" data-theme="nebula" id="nebula"><div class="theme-section__bg" data-parallax="0.75"></div><div class="theme-section__blob theme-section__blob--a" data-parallax="1.7" data-parallax-x="1.9"></div><div class="theme-section__blob theme-section__blob--b" data-parallax="1.45" data-parallax-x="-1.6"></div><div class="theme-section__inner"><div class="theme-copy" data-parallax="0.28"><span class="theme-kicker" data-i18n="nebula_kicker">Frame · Nebula</span><h2 class="theme-title" data-i18n="nebula_title">星云</h2><p class="theme-desc" data-i18n="nebula_desc">以宇宙深空星云为灵感，呈现沉浸式的星云动态背景墙。</p></div><div class="theme-stage" data-parallax="0.55"><div class="theme-stage__browser"><div class="theme-stage__browser-bar"><div class="theme-stage__dots" aria-hidden="true"><span></span><span></span><span></span></div><div class="theme-stage__url">🔒 simptab.art</div></div><div class="theme-stage__browser-body"><div class="theme-stage__placeholder" data-i18n="nebula_loading">加载星云…</div><iframe title="星云主题演示" data-src="./theme/nebula.html" sandbox="allow-scripts allow-same-origin" loading="lazy" referrerpolicy="no-referrer"></iframe></div></div></div></div></section><!-- wave · 星云 → 画廊 --><div class="theme-wave theme-wave--nebula-art" aria-hidden="true"><svg viewBox="0 0 1440 168" preserveAspectRatio="none"><rect width="1440" height="168" fill="#a78758"/><path fill="#291405" d="M0,0 L1440,0 L1440,64
+        C1260,118 1080,148 920,126
+        C740,98 600,52 440,66
+        C260,82 120,122 0,98 Z"/></svg></div><!-- 2 · 画廊 --><section class="theme-section theme-section--split theme--art" data-theme="art" id="art"><div class="theme-section__bg" data-parallax="0.7"></div><div class="theme-section__blob theme-section__blob--a" data-parallax="1.65" data-parallax-x="1.85"></div><div class="theme-section__inner"><div class="theme-copy" data-parallax="0.32"><span class="theme-kicker" data-i18n="art_kicker">Frame · Art</span><h2 class="theme-title" data-i18n="art_title">画廊</h2><p class="theme-desc" data-i18n="art_desc">浅墙上的深木画框，仿佛在充满名画的画廊中驻足观赏。</p></div><div class="theme-stage" data-parallax="0.6"><div class="theme-stage__frame"><div class="theme-stage__placeholder" data-i18n="art_loading">加载画廊…</div><iframe title="画廊主题演示" data-src="./theme/art.html" sandbox="allow-scripts allow-same-origin" loading="lazy" referrerpolicy="no-referrer"></iframe></div></div></div></section><!-- wave · 画廊 → 画壁 --><div class="theme-wave theme-wave--art-mural" aria-hidden="true"><svg viewBox="0 0 1440 168" preserveAspectRatio="none"><rect width="1440" height="168" fill="#c5e8e6"/><path fill="#a78758" d="M0,0 L1440,0 L1440,44
+        C1220,52 1050,70 900,96
+        C720,132 560,152 380,142
+        C220,132 100,100 0,82 Z"/></svg></div><!-- 3 · 画壁 --><section class="theme-section theme-section--split is-flip theme--mural" data-theme="mural" id="mural"><div class="theme-section__bg" data-parallax="0.7"></div><div class="theme-section__inner"><div class="theme-copy" data-parallax="0.32"><span class="theme-kicker" data-i18n="mural_kicker">Frame · Mural</span><h2 class="theme-title" data-i18n="mural_title">画壁</h2><p class="theme-desc" data-i18n="mural_desc">从照片中提取主色调，生成光晕流转的背景墙效果。</p></div><div class="theme-stage" data-parallax="0.6"><div class="theme-stage__frame"><div class="theme-stage__placeholder" data-i18n="mural_loading">加载画壁…</div><iframe title="画壁主题演示" data-src="./theme/mural.html" sandbox="allow-scripts allow-same-origin" loading="lazy" referrerpolicy="no-referrer"></iframe></div></div></div></section><!-- wave · 画壁 → 回忆 --><div class="theme-wave theme-wave--mural-memory" aria-hidden="true"><svg viewBox="0 0 1440 168" preserveAspectRatio="none"><rect width="1440" height="168" fill="#2a1a12"/><path fill="#c5e8e6" d="M0,0 L1440,0 L1440,72
+        C1260,40 1100,30 960,58
+        C780,92 640,140 460,132
+        C280,124 140,84 0,66 Z"/></svg></div><!-- 4 · 回忆 --><section class="theme-section theme-section--split theme--memory" data-theme="memory" id="memory"><div class="theme-section__bg"></div><div class="theme-section__blob theme-section__blob--a"></div><div class="theme-section__blob theme-section__blob--b" data-parallax="1.4" data-parallax-x="1.55"></div><div class="theme-section__inner"><div class="theme-copy" data-parallax="0.32"><span class="theme-kicker" data-i18n="memory_kicker">Frame · Memory</span><h2 class="theme-title" data-i18n="memory_title">回忆</h2><p class="theme-desc" data-i18n="memory_desc">拍立得相纸装裱，让你的回忆具象化。</p></div><div class="theme-stage" data-parallax="0.6"><div class="theme-stage__frame"><div class="theme-stage__placeholder" data-i18n="memory_loading">加载回忆…</div><iframe title="回忆主题演示" data-src="./theme/memory.html" sandbox="allow-scripts allow-same-origin" loading="lazy" referrerpolicy="no-referrer"></iframe></div></div></div></section><script>/**
+   * i18n — same detection as price.html / main.js
+   * Priority: URL ?lang= > cookie "lang" > navigator.language > fallback "en"
+   */
+  (function () {
+    'use strict';
+
+    function getQueryString(name) {
+      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+      try {
+        var r = window.location.search.substr(1).match(reg);
+        if (r !== null) return unescape(r[2]);
+      } catch (e) {}
+      return null;
+    }
+
+    function getCookie(name) {
+      try {
+        var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
+        return m ? decodeURIComponent(m[1]) : undefined;
+      } catch (e) { return undefined; }
+    }
+
+    function setCookie(name, value, days) {
+      try {
+        var d = new Date();
+        d.setTime(d.getTime() + (days || 365) * 86400000);
+        document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + d.toUTCString() + ';path=/';
+      } catch (e) {}
+    }
+
+    var lang = 'en';
+    try { lang = navigator.language || 'en'; } catch (e) {}
+    if (lang.split('-')[0] === 'en') lang = 'en';
+    var ck = getCookie('lang');
+    if (ck !== undefined) lang = ck;
+    var qs = getQueryString('lang');
+    if (qs !== null) lang = qs;
+    lang = lang.toLowerCase();
+    if (lang !== 'en' && lang !== 'zh-cn' && lang !== 'zh-tw') lang = 'en';
+    setCookie('lang', lang, 365);
+
+    var T = {
+      'zh-cn': {
+        nav_home: '首页', nav_premium: '高级账户', nav_download: '下载',
+        intro_kicker: 'Frame · Themes',
+        intro_title: '换一张图<br>墙与氛围一起变',
+        intro_desc: '星云、画廊、画壁、回忆为高级账户专属，向下滚动即可预览主题。<br>喜欢的话，前往开通高级账户。',
+        intro_cta: '开通高级账户',
+        nebula_kicker: 'Frame · Nebula', nebula_title: '星云',
+        nebula_desc: '以宇宙深空星云为灵感，呈现沉浸式的星云动态背景墙。',
+        nebula_loading: '加载星云…',
+        art_kicker: 'Frame · Art', art_title: '画廊',
+        art_desc: '浅墙上的深木画框，仿佛在充满名画的画廊中驻足观赏。',
+        art_loading: '加载画廊…',
+        mural_kicker: 'Frame · Mural', mural_title: '画壁',
+        mural_desc: '从照片中提取主色调，生成光晕流转的背景墙效果。',
+        mural_loading: '加载画壁…',
+        memory_kicker: 'Frame · Memory', memory_title: '回忆',
+        memory_desc: '拍立得相纸装裱，让你的回忆具象化。',
+        memory_loading: '加载回忆…',
+        alt_nebula: '星云主题预览', alt_art: '画廊主题预览',
+        alt_mural: '画壁主题预览', alt_memory: '回忆主题预览'
+      },
+      'zh-tw': {
+        nav_home: '首頁', nav_premium: '高級帳戶', nav_download: '下載',
+        intro_kicker: 'Frame · Themes',
+        intro_title: '換一張圖<br>牆與氛圍一起變',
+        intro_desc: '星雲、畫廊、畫壁、回憶為高級帳戶專屬，向下滾動即可預覽主題。<br>喜歡的話，前往開通高級帳戶。',
+        intro_cta: '開通高級帳戶',
+        nebula_kicker: 'Frame · Nebula', nebula_title: '星雲',
+        nebula_desc: '以宇宙深空星雲為靈感，呈現沉浸式的星雲動態背景牆。',
+        nebula_loading: '載入星雲…',
+        art_kicker: 'Frame · Art', art_title: '畫廊',
+        art_desc: '淺牆上的深木畫框，彷彿在充滿名畫的畫廊中駐足觀賞。',
+        art_loading: '載入畫廊…',
+        mural_kicker: 'Frame · Mural', mural_title: '畫壁',
+        mural_desc: '從照片中提取主色調，生成光暈流轉的背景牆效果。',
+        mural_loading: '載入畫壁…',
+        memory_kicker: 'Frame · Memory', memory_title: '回憶',
+        memory_desc: '拍立得相紙裝裱，讓你的回憶具象化。',
+        memory_loading: '載入回憶…',
+        alt_nebula: '星雲主題預覽', alt_art: '畫廊主題預覽',
+        alt_mural: '畫壁主題預覽', alt_memory: '回憶主題預覽'
+      },
+      'en': {
+        nav_home: 'Home', nav_premium: 'Premium', nav_download: 'Download',
+        intro_kicker: 'Frame · Themes',
+        intro_title: 'Change a photo<br>and the mood shifts with it',
+        intro_desc: 'Nebula, Art, Mural, and Memory are Premium frame themes. Scroll down to preview.<br>Like what you see? Get Premium.',
+        intro_cta: 'Get Premium',
+        nebula_kicker: 'Frame · Nebula', nebula_title: 'Nebula',
+        nebula_desc: 'Inspired by deep-space nebulae — an immersive volumetric fog wall.',
+        nebula_loading: 'Loading Nebula…',
+        art_kicker: 'Frame · Art', art_title: 'Art',
+        art_desc: 'A deep wood frame on a light wall — like pausing in a gallery of paintings.',
+        art_loading: 'Loading Art…',
+        mural_kicker: 'Frame · Mural', mural_title: 'Mural',
+        mural_desc: 'Colors sampled from the photo bloom into a soft wash on the wall.',
+        mural_loading: 'Loading Mural…',
+        memory_kicker: 'Frame · Memory', memory_title: 'Memory',
+        memory_desc: 'Polaroid paper edges that make a memory feel tangible.',
+        memory_loading: 'Loading Memory…',
+        alt_nebula: 'Nebula theme preview', alt_art: 'Art theme preview',
+        alt_mural: 'Mural theme preview', alt_memory: 'Memory theme preview'
+      }
+    };
+
+    var t = T[lang] || T.en;
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-alt');
+      if (t[key] !== undefined) el.setAttribute('alt', t[key]);
+    });
+
+    var langAttr = { 'zh-cn': 'zh-CN', 'zh-tw': 'zh-TW', 'en': 'en' };
+    document.documentElement.lang = langAttr[lang] || 'en';
+
+    var titleMap = {
+      'zh-cn': '主题 — 简 Tab (SimpTab)',
+      'zh-tw': '主題 — 簡 Tab (SimpTab)',
+      'en': 'Themes — SimpTab'
+    };
+    document.title = titleMap[lang] || titleMap.en;
+
+    var homeLink = document.getElementById('homeNavLink');
+    if (homeLink) homeLink.href = './index.html?lang=' + lang;
+    var premiumLink = document.getElementById('premiumNavLink');
+    if (premiumLink) premiumLink.href = './price.html?lang=' + lang;
+    var introCta = document.getElementById('introCta');
+    if (introCta) introCta.href = './price.html?lang=' + lang;
+
+    /* 双商店：Chrome 已知；Edge 填入 STORE_EDGE 后自动显示 */
+    var STORE_CHROME = 'https://chrome.google.com/webstore/detail/kbgmbmkhepchmmcnbdbclpkpegbgikjc';
+    var STORE_EDGE = ''; /* 例：https://microsoftedge.microsoft.com/addons/detail/... */
+    var chromeLink = document.getElementById('downloadChrome');
+    if (chromeLink) {
+      chromeLink.href = STORE_CHROME + '?hl=' + encodeURIComponent(lang);
+    }
+    var edgeLink = document.getElementById('downloadEdge');
+    if (edgeLink) {
+      if (STORE_EDGE) {
+        edgeLink.href = STORE_EDGE;
+        edgeLink.hidden = false;
+      } else {
+        edgeLink.hidden = true;
+      }
+    }
+
+    try {
+      var langUi = {
+        'zh-cn': { flag: './assets/image/zh-cn-flag.svg', name: '简体中文' },
+        'zh-tw': { flag: './assets/image/zh-tw-flag.svg', name: '繁體中文' },
+        'en': { flag: './assets/image/en-flag.svg', name: 'English' }
+      };
+      var current = langUi[lang] || langUi.en;
+      var flagEl = document.getElementById('langCurrentFlag');
+      var nameEl = document.getElementById('langCurrentName');
+      if (flagEl) flagEl.src = current.flag;
+      if (nameEl) nameEl.textContent = current.name;
+      document.querySelectorAll('#langDropdown .lang-menu a').forEach(function (a) {
+        if (a.getAttribute('data-lang') === lang) a.classList.add('active');
+      });
+    } catch (e) {}
+  })();</script><script>(function () {
+    'use strict';
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.theme-section'));
+    var parallaxNodes = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+    var ticking = false;
+    var headerEl = document.querySelector('header');
+    var introEl = document.querySelector('.theme-intro');
+    var lastScrollY = window.scrollY || 0;
+    var headerAway = false;
+
+    /* 顶栏显隐：
+       - 仅在 Intro 内：下滚收起 / 上滑即唤出（无距离阈值）
+       - 离开 Intro（星云及之后）：强制隐藏，主题 100% 沉浸 */
+    function updateHeaderChrome() {
+      if (!headerEl) return;
+      var y = window.scrollY || window.pageYOffset || 0;
+      var delta = y - lastScrollY;
+      var goingDown = delta > 2;
+      var goingUp = delta < -2;
+
+      var onIntro = true;
+      if (introEl) {
+        onIntro = introEl.getBoundingClientRect().bottom > 64;
+      }
+
+      var overTheme = false;
+      var glassInk = false;
+      var i;
+      for (i = 0; i < sections.length; i++) {
+        var r = sections[i].getBoundingClientRect();
+        if (r.top < 64 && r.bottom > 48) {
+          overTheme = true;
+          if (sections[i].classList.contains('theme--mural')) glassInk = true;
+          break;
+        }
+      }
+
+      /* 玻璃态仅在顶栏可能可见时有意义；主题区强制 away 后看不到 */
+      headerEl.classList.toggle('is-glass', overTheme && onIntro);
+      headerEl.classList.toggle('is-glass-ink', overTheme && onIntro && glassInk);
+      headerEl.classList.toggle('is-scrolled', onIntro && y > 8 && !overTheme);
+
+      var nextAway;
+      if (!onIntro) {
+        nextAway = true;
+      } else if (y < 24) {
+        nextAway = false;
+      } else if (goingDown) {
+        nextAway = true;
+      } else if (goingUp) {
+        nextAway = false;
+      } else {
+        nextAway = headerAway;
+      }
+
+      if (nextAway !== headerAway) {
+        headerAway = nextAway;
+        headerEl.classList.toggle('is-away', headerAway);
+      }
+      lastScrollY = y;
+    }
+
+    /* ---------- Parallax（data-parallax 节点） ---------- */
+    function updateParallax() {
+      if (reduceMotion) return;
+      var vh = window.innerHeight || 1;
+      parallaxNodes.forEach(function (el) {
+        var section = el.closest('.theme-section, .theme-intro');
+        if (!section) return;
+        var rect = section.getBoundingClientRect();
+        if (rect.bottom < -vh * 0.2 || rect.top > vh * 1.2) return;
+        var speedY = parseFloat(el.getAttribute('data-parallax')) || 0;
+        var speedX = parseFloat(el.getAttribute('data-parallax-x')) || 0;
+        var delta = (rect.top + rect.height * 0.5) - vh * 0.5;
+        var y = delta * speedY;
+        var x = delta * speedX;
+        el.style.transform = 'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0)';
+      });
+    }
+
+    /* ---------- 画廊 / 画壁：每次滚到触发点 → 一轮 4s 洗色（单圈停终态） ---------- */
+    function createWashTrigger(sectionSel, animName, finalVars) {
+      var section = document.querySelector(sectionSel);
+      var copy = section ? section.querySelector('.theme-copy') : null;
+      var bg = section ? section.querySelector('.theme-section__bg') : null;
+      var armed = true;
+      var busy = false;
+      var keys = Object.keys(finalVars);
+
+      function clearBaked() {
+        keys.forEach(function (key) {
+          bg.style.removeProperty(key);
+        });
+      }
+
+      function check() {
+        if (reduceMotion || !copy || !bg || busy) return;
+        var vh = window.innerHeight || 1;
+        var r = copy.getBoundingClientRect();
+        var mid = r.top + r.height * 0.5;
+        var inZone = Math.abs(mid - vh * 0.5) < vh * 0.12;
+        if (inZone && armed) {
+          armed = false;
+          busy = true;
+          clearBaked();
+          bg.classList.remove('is-wash');
+          void bg.offsetWidth;
+          bg.classList.add('is-wash');
+        } else if (!inZone && !busy) {
+          armed = true;
+        }
+      }
+
+      if (bg) {
+        bg.addEventListener('animationend', function (e) {
+          if (e.animationName !== animName) return;
+          keys.forEach(function (key) {
+            bg.style.setProperty(key, finalVars[key]);
+          });
+          bg.classList.remove('is-wash');
+          busy = false;
+        });
+      }
+
+      return check;
+    }
+
+    var checkArtWash = createWashTrigger('.theme--art', 'art-wash-spin', {
+      '--art-w0': '#8f6f42',
+      '--art-w1': '#c4a574',
+      '--art-w2': '#b08950',
+      '--art-w3': '#d4b88a'
+    });
+    var checkMuralWash = createWashTrigger('.theme--mural', 'mural-wash-spin', {
+      '--mural-w0': '#2a6f8f',
+      '--mural-w1': '#a8d5e5',
+      '--mural-w2': '#5eb8c8',
+      '--mural-w3': '#7ec8c9'
+    });
+
+    function onFrame() {
+      ticking = false;
+      updateHeaderChrome();
+      updateParallax();
+      checkArtWash();
+      checkMuralWash();
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(onFrame);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onFrame();
+
+    /* Intro 拼贴：点卡滚到对应分区（经典相框无分区，仍去定价页） */
+    document.querySelectorAll('.theme-intro__card[href^="#"]').forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        var id = card.getAttribute('href').slice(1);
+        var target = id && document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        if (history.replaceState) history.replaceState(null, '', '#' + id);
+      });
+    });
+
+    /* ---------- Iframe lazy load / unload ----------
+       - Load when section enters near viewport
+       - Keep at most one "hot" iframe fully active when possible
+       - Unload (about:blank) when far away to stop WebGL / timers
+    */
+    var LOAD_MARGIN = '200px 0px';
+
+    function stageOf(iframe) {
+      return iframe.closest('.theme-stage');
+    }
+
+    function loadIframe(iframe) {
+      var src = iframe.getAttribute('data-src');
+      if (!src || iframe.getAttribute('data-active') === '1') return;
+      iframe.setAttribute('data-active', '1');
+      iframe.addEventListener('load', function onLoad() {
+        iframe.removeEventListener('load', onLoad);
+        if (iframe.getAttribute('src') && iframe.getAttribute('src') !== 'about:blank') {
+          iframe.classList.add('is-loaded');
+          var stage = stageOf(iframe);
+          if (stage) stage.classList.add('is-loaded');
+        }
+      });
+      iframe.src = src;
+    }
+
+    function unloadIframe(iframe) {
+      if (iframe.getAttribute('data-active') !== '1') return;
+      iframe.setAttribute('data-active', '0');
+      iframe.classList.remove('is-loaded');
+      var stage = stageOf(iframe);
+      if (stage) stage.classList.remove('is-loaded');
+      /* Kill WebGL / rAF inside demos */
+      iframe.src = 'about:blank';
+    }
+
+    function mostVisibleSection() {
+      var best = null;
+      var bestScore = -1;
+      var vh = window.innerHeight || 1;
+      sections.forEach(function (sec) {
+        var r = sec.getBoundingClientRect();
+        var visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+        if (visible > bestScore) {
+          bestScore = visible;
+          best = sec;
+        }
+      });
+      return best;
+    }
+
+    function syncIframes() {
+      var hot = mostVisibleSection();
+      sections.forEach(function (sec) {
+        var iframe = sec.querySelector('iframe[data-src]');
+        if (!iframe) return;
+        var r = sec.getBoundingClientRect();
+        var vh = window.innerHeight || 1;
+        var near = r.bottom > -vh * 0.35 && r.top < vh * 1.35;
+        var far = r.bottom < -vh * 0.85 || r.top > vh * 1.85;
+
+        if (far) {
+          unloadIframe(iframe);
+          return;
+        }
+        if (near) {
+          /* Prefer hot section; also pre-load adjacent if near */
+          if (sec === hot || Math.abs((r.top + r.bottom) / 2 - vh / 2) < vh * 0.85) {
+            loadIframe(iframe);
+          }
+        }
+      });
+    }
+
+    var io;
+    if ('IntersectionObserver' in window) {
+      io = new IntersectionObserver(function () {
+        syncIframes();
+      }, { root: null, rootMargin: LOAD_MARGIN, threshold: [0, 0.15, 0.4, 0.7] });
+      sections.forEach(function (sec) { io.observe(sec); });
+    }
+
+    var syncTimer = null;
+    function onScrollSync() {
+      window.clearTimeout(syncTimer);
+      syncTimer = window.setTimeout(syncIframes, 80);
+    }
+    window.addEventListener('scroll', onScrollSync, { passive: true });
+    window.addEventListener('resize', onScrollSync, { passive: true });
+    /* First paint: load hero if in view */
+    syncIframes();
+  })();</script></body></html>
