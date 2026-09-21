@@ -1,4 +1,4 @@
-# 设置栏 (/docs/%E8%AE%BE%E7%BD%AE%E6%A0%8F)
+# 设置栏 (/%E8%AE%BE%E7%BD%AE%E6%A0%8F)
 
 
 

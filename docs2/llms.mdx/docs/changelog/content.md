@@ -1,4 +1,4 @@
-# 更新日志（简体中文） (/docs/changelog)
+# 更新日志（简体中文） (/changelog)
 
 
 
