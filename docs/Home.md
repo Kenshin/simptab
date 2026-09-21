@@ -1,12 +1,10 @@
-<p align="center"><img src="http://ksria.com/simptab/assets/favicon/apple-icon-180x180.png" /></p>
+<p align="center"><img src="https://res.cloudinary.com/simpread/image/upload/v1789968771/simptab/simptab/c03e518c339063a2e9f41e35fda3f2b2.png" /></p>
 <h1 align="center">简 Tab - 极简的 Chrome 新标签页扩展</h1>
 <p align="center">望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。</p>
 <p align="center">
    <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.5-blue.svg"></a>
-   <a target="_blank" href="http://ksria.com/simptab"><img src="https://img.shields.io/badge/website-_simptab.ksria.com-1DBA90.svg"></a>
+   <a target="_blank" href="https://simptab.art"><img src="https://img.shields.io/badge/website-_simptab.art-1DBA90.svg"></a>
    <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
-   <a href="http://ksria.com/simptab/crx/1.5.5/simptab.zip"><img src="https://img.shields.io/badge/download-_crx-brightgreen.svg"></a>
-   <a href="https://gitter.im/Kenshin/simptab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Kenshin/simptab.svg"></a>
 </p>
 
 ***
@@ -31,21 +29,21 @@
 
 功能介绍
 ---
-![Snapshot](http://st.ksria.cn/start@webstore.png)
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968758/simptab/simptab/393a36f5488a553c73a8c80d3fd8d228.png)
 
-![Snapshot](http://st.ksria.cn/subscribe@webstore.png)
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968760/simptab/simptab/65e156f3c15a0f75774f28722638430d.png)
 
-![Snapshot](http://st.ksria.cn/mask@webstore.png?20181011)
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968762/simptab/simptab/f8f16acc00ebfd72a53cc81088f11b2f.png)
 
-![Snapshot](http://st.ksria.cn/bookmarks@webstore.png)
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968764/simptab/simptab/a64d179ab5f811ce152163a4721fe788.png)
 
-![Snapshot](http://st.ksria.cn/zenmode@webstore.png)
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968765/simptab/simptab/95c91695a0aa99d4a88b52fea793d29c.png)
 
-![Snapshot](http://st.ksria.cn/quickbar@webstore.png)
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968767/simptab/simptab/7eea41dfabcc71029647ab2915d941f6.png)
 
-![Snapshot](http://st.ksria.cn/options@webstore.png)
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968768/simptab/simptab/a5d28064b4e474abd7f43db52f476ec5.png)
 
 全功能
 ---
 
-![功能一览](http://st.ksria.cn/feature%201.5.5.png)
+![功能一览](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/0051810111fc5bc2719733c1201a860f.png)

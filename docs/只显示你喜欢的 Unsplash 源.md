@@ -12,7 +12,7 @@
 
 > 根据下图设置
 
-![QtKHQs.jpg](https://s2.ax1x.com/2019/12/07/QtKHQs.jpg)
+![QtKHQs.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968783/simptab/simptab/c76642325b954e2754cdc2ff5d0d4e4a.jpg)
 
 1. 将上个步骤得到的 id 填入到此，只添入你需要的 id 其余删除
 

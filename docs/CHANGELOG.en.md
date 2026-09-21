@@ -59,7 +59,7 @@
 
 - :sparkles: Add Zen mode scripts manage
 
-  ![](https://s2.ax1x.com/2019/11/27/Q9Sm8K.png)
+  ![](https://res.cloudinary.com/simpread/image/upload/v1789968646/simptab/simptab/406b9967035d92c0bb8187e24638d399.png)
 
 - :sparkles: Add Fullscreen
 
@@ -94,7 +94,7 @@
 - :bug: Fix  [Issues Bugs](https://github.com/Kenshin/simptab/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
 
 - :memo: All features
-  ![SimpTab 1.5.5](http://st.ksria.cn/feature%201.5.5.png)
+  ![SimpTab 1.5.5](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/0051810111fc5bc2719733c1201a860f.png)
 
 ***
 
@@ -115,7 +115,7 @@
 - :bug: Fix `Bookmark` & `Send to mobile` shortcuts repeated questions
 - :sparkles: Add `Custom Script` via Zen mode, you can usage js write zen-mode
 
-  ![Xnip2019-02-02_15-28-19.jpg](https://i.loli.net/2019/02/02/5c55469fdb4a1.jpg)
+  ![Xnip2019-02-02_15-28-19.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/4e3a81c72aaf8da9e95ca2ee707c6c46.jpg)
 
 ***
 
@@ -127,19 +127,19 @@
 
   > Earth every moment image via [向日葵-8號](http://himawari8.nict.go.jp/)
 
-  ![Xnip2018-12-28_14-33-18.jpg](https://i.loli.net/2018/12/28/5c25c57aa4589.jpg)
+  ![Xnip2018-12-28_14-33-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968674/simptab/simptab/a10bf60d8723ba3bdfa357252cb12834.jpg)
 
 - :sparkles: Add auto play background
 
 - :sparkles: Add History background image record
 
-  ![Xnip2018-12-28_14-12-53.jpg](https://i.loli.net/2018/12/28/5c25bfb86f655.jpg)
+  ![Xnip2018-12-28_14-12-53.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968676/simptab/simptab/c4fcf844927c356f1f4fd0d0c632c3fb.jpg)
 
 - :sparkles: Add Explore
 
 - :sparkles: Add White noise
 
-  ![Xnip2018-12-28_14-50-20.jpg](https://i.loli.net/2018/12/28/5c25c7c50db43.jpg)
+  ![Xnip2018-12-28_14-50-20.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968677/simptab/simptab/84161a95f2ac703da9a380de45bc78e7.jpg)
 
 - :sparkles: Add Send background image to iOS devices
 
@@ -148,7 +148,7 @@
 - :lipstick: Optimize options UI
 
 - :memo: 1.5.4 All Feature
-  ![SimpTab 1.5.4](https://i.loli.net/2018/12/29/5c270d58131ea.png)
+  ![SimpTab 1.5.4](https://res.cloudinary.com/simpread/image/upload/v1789968678/simptab/simptab/c0e0c4b2d7838ffc74ad393f74bc6374.png)
 
 ***
 
@@ -157,7 +157,7 @@
 > 2018-11-29
 
 - :sparkles: Add Custom Unsplash resolution
-  ![Xnip2018-11-30_11-45-10.jpg](https://i.loli.net/2018/11/30/5c00b254426b3.jpg)
+  ![Xnip2018-11-30_11-45-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968679/simptab/simptab/607d6d8faf57f1855962b85e63b0e9c2.jpg)
 
 - :bug: Fix `Custom Unsplash origin` bug
 
@@ -183,11 +183,11 @@
 
 - :sparkles: Add [Zen mode](http://ksria.com/simptab/docs/#/禅模式)
 
-  ![禅模式](https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg)
+  ![禅模式](https://res.cloudinary.com/simpread/image/upload/v1789968680/simptab/simptab/235e4e85acfe5020bbb0278c12c9381c.jpg)
 
 - :sparkles: Add [Options](http://ksria.com/simptab/docs/#/选项页)
 
-  ![Options](https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg)
+  ![Options](https://res.cloudinary.com/simpread/image/upload/v1789968681/simptab/simptab/8b37f5d101e90bbb01c82724f54d515d.jpg)
 
   > Include some important feature:
 
@@ -203,7 +203,7 @@
 
 -  :lipstick: Optimize Merge `Bookmark` `History` `Apps` [#46](https://github.com/Kenshin/simptab/issues/46)
 
-  ![Xnip2018-11-24_16-42-13.jpg](https://i.loli.net/2018/11/24/5bf90f0077050.jpg)
+  ![Xnip2018-11-24_16-42-13.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968682/simptab/simptab/3324f723a1ddfbd36e4161e15f4a6299.jpg)
 
 - :fire: Remove failed origins: `flickr.com`
 
@@ -216,7 +216,7 @@
 > 2018-10-14
 
 - :sparkles: Add `Bookmarks`
-  ![2018-10-12_141443.png](https://i.loli.net/2018/10/12/5bc03d1ce05cc.png)
+  ![2018-10-12_141443.png](https://res.cloudinary.com/simpread/image/upload/v1789968684/simptab/simptab/a2b4809fc53d314104bc1ccaadd124af.png)
 
   1. Need to apply for permission
 
@@ -228,7 +228,7 @@
 - :sparkles: Add `Background Manage` 
   > For details, please see (Feature)[http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1]
 
-  ![2018-10-11_13-56-35.png](https://i.loli.net/2018/10/12/5bc03f7e85fd7.png)
+  ![2018-10-11_13-56-35.png](https://res.cloudinary.com/simpread/image/upload/v1789968685/simptab/simptab/a2c85d77d2d38e29c88d14eba0551670.png)
   1. Open  `Background Manage`
 
   2. Include: `Favorite` 与 `Subscibe` Tab
@@ -238,26 +238,26 @@
   4. In this order: Author · Photos link · Set photo to background · Download
 
 - :sparkles: Add `About page`
-  ![2018-10-12_144121.png](https://i.loli.net/2018/10/12/5bc0487f163d2.png)
+  ![2018-10-12_144121.png](https://res.cloudinary.com/simpread/image/upload/v1789968687/simptab/simptab/86ac3b820189c151eb21f3620a22a22b.png)
 
 - :sparkles:  Add `Welcome page`
-  ![2018-10-12_145647.png](https://i.loli.net/2018/10/12/5bc048bf612f8.png)
+  ![2018-10-12_145647.png](https://res.cloudinary.com/simpread/image/upload/v1789968688/simptab/simptab/3f4a0376a897a69feb8c919612064a3b.png)
 
 - :sparkles: Add `Not Change background` checkitem
 
-  ![2018-10-12_150254.png](https://i.loli.net/2018/10/12/5bc047edc3abf.png)
+  ![2018-10-12_150254.png](https://res.cloudinary.com/simpread/image/upload/v1789968689/simptab/simptab/cbad6ed5389b60f159280a6423346c8e.png)
 
 - :sparkles: Add `Refresh` checkitem
 
-  ![2018-10-12_151000.png](https://i.loli.net/2018/10/12/5bc049456454d.png)
+  ![2018-10-12_151000.png](https://res.cloudinary.com/simpread/image/upload/v1789968690/simptab/simptab/a5efed5c5357d9eaf611225f2b185ec2.png)
 
 - :lipstick: Optimize `shortcuts`
 
-  ![快捷键](https://i.loli.net/2018/10/11/5bbefe9e22160.png)
+  ![快捷键](https://res.cloudinary.com/simpread/image/upload/v1789968691/simptab/simptab/b14f2b5e6a8b11146c34e6e37d9bde45.png)
 
 - :lipstick: Optimize `Bing today` `Bing random` `Favorite origins` priority
 
-  ![2018-10-12_151532.png](https://i.loli.net/2018/10/12/5bc04a94bcb15.png)
+  ![2018-10-12_151532.png](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/795485add43d62f1ec9d62918ec79d55.png)
 
 - :hammer: Rework `main.html` layout
 
@@ -272,7 +272,7 @@
 - :hammer: Rework `Topsites - senior` UI
 
 - :memo: 1.5.2 All feature
-  ![SimpTab 1.5.2](https://i.loli.net/2018/10/11/5bbf2d08da9c1.png)
+  ![SimpTab 1.5.2](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/7062c432e5c809e56fa6cdc01f0da1df.png)
 
 ***
 
@@ -282,7 +282,7 @@
 
 - :sparkles: Add **【SimpTab Collections】**  
 
-  ![Imgur](https://i.imgur.com/pblZLv0.png)
+  ![Imgur](https://res.cloudinary.com/simpread/image/upload/v1789968694/simptab/simptab/697b4f2188c8c2fa0cbc6e0475f0425a.png)
 
 - :sparkles: Add [Waves](http://fian.my.id/Waves/) Effect
 

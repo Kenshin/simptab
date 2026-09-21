@@ -59,7 +59,7 @@
 
 - :sparkles: 新增 [禅模式 · 脚本管理器](禅模式?id=脚本管理器)
 
-  ![](https://s2.ax1x.com/2019/11/27/Q9Sm8K.png)
+  ![](https://res.cloudinary.com/simpread/image/upload/v1789968646/simptab/simptab/406b9967035d92c0bb8187e24638d399.png)
 
 - :sparkles: 新增 [全屏](控制栏?id=全屏化)
 
@@ -100,7 +100,7 @@
 - :bug: 修复  [固定](控制栏?id=固定) 逻辑，优先级高于 [历史记录](历史记录)  `自动播放` `刷新（下一张）` 小于 `地球每刻`
 
 - :memo: 截至到目前全部的功能
-  ![SimpTab 1.5.5](http://st.ksria.cn/feature%201.5.5.png)
+  ![SimpTab 1.5.5](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/0051810111fc5bc2719733c1201a860f.png)
 
 ***
 
@@ -125,7 +125,7 @@
 - :bug: 修复 `书签栏` 与 `发送到手机` 快捷键重复的问题， `发送到手机` 改为 快捷键 `e`
 - :sparkles: 新增 禅模式 `自定义脚本`，通过此功能，只需要使用简单的 JavaScript 可以让禅模式拥有更多 **玩法**  👉 <https://github.com/Kenshin/simptab/labels/script>
 
-  ![Xnip2019-02-02_15-28-19.jpg](https://i.loli.net/2019/02/02/5c55469fdb4a1.jpg)
+  ![Xnip2019-02-02_15-28-19.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/4e3a81c72aaf8da9e95ca2ee707c6c46.jpg)
 
 ***
 
@@ -139,13 +139,13 @@
 
   > 地球每刻的照片均来自 [向日葵-8號](http://himawari8.nict.go.jp/) ，由于不愿过多消耗向日葵-8號的带宽，通过简 Tab 访问并获取到的地球照片均来在于自建的服务，每小时更新一次。
 
-  ![Xnip2018-12-28_14-33-18.jpg](https://i.loli.net/2018/12/28/5c25c57aa4589.jpg)
+  ![Xnip2018-12-28_14-33-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968674/simptab/simptab/a10bf60d8723ba3bdfa357252cb12834.jpg)
 
 - :sparkles: 新增 [背景自动更新](多种背景源?id=背景自动更新)
 
 - :sparkles: 新增 [历史记录](多种背景源?id=历史记录)
 
-  ![Xnip2018-12-28_14-12-53.jpg](https://i.loli.net/2018/12/28/5c25bfb86f655.jpg)
+  ![Xnip2018-12-28_14-12-53.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968676/simptab/simptab/c4fcf844927c356f1f4fd0d0c632c3fb.jpg)
 
 - :sparkles: 新增 [探索](多种背景源?id=探索)
 
@@ -155,7 +155,7 @@
 
   > 得益于 [背景自动播放](多种背景源?id=背景自动播放) 与 [地球每刻](多种背景源?id=地球每刻) 功能，现在你可以在新标签页停留更多的时间，播放白噪音就是一个非常不错的方案。目前内置了：咖啡馆、爵士乐、下雨天、雷声 四种音效，未来会加入更多音源。
 
-  ![Xnip2018-12-28_14-50-20.jpg](https://i.loli.net/2018/12/28/5c25c7c50db43.jpg)
+  ![Xnip2018-12-28_14-50-20.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968677/simptab/simptab/84161a95f2ac703da9a380de45bc78e7.jpg)
 
 - :sparkles: 新增 [发送到手机](发送到手机)
 
@@ -166,7 +166,7 @@
 - :lipstick: 优化了 `选项卡` 界面布局；
 
 - :memo: 截至到目前全部的功能
-  ![SimpTab 1.5.4](https://i.loli.net/2018/12/29/5c270d58131ea.png)
+  ![SimpTab 1.5.4](https://res.cloudinary.com/simpread/image/upload/v1789968678/simptab/simptab/c0e0c4b2d7838ffc74ad393f74bc6374.png)
 
 ***
 
@@ -177,7 +177,7 @@
 > **本次更新为静默更新（不会有任何提示）**
 
 - :sparkles: 新增 更改 Unsplash 源分辨率；详情请看 [自定义分辨率](多种背景源?id=自定义分辨率)
-  ![Xnip2018-11-30_11-45-10.jpg](https://i.loli.net/2018/11/30/5c00b254426b3.jpg)
+  ![Xnip2018-11-30_11-45-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968679/simptab/simptab/607d6d8faf57f1855962b85e63b0e9c2.jpg)
 
 - :bug: 修复 `自定义 Unsplash 源` 的逻辑错误；
 
@@ -207,11 +207,11 @@
 
   > 包含了：多种主题 · 模块化 · 自定义样式 等，适合喜欢纯色背景且无干扰界面的用户。
 
-  ![禅模式](https://i.loli.net/2018/11/23/5bf79e09c11f6.jpg)
+  ![禅模式](https://res.cloudinary.com/simpread/image/upload/v1789968680/simptab/simptab/235e4e85acfe5020bbb0278c12c9381c.jpg)
 
 - :sparkles: 新增 [选项页](http://ksria.com/simptab/docs/#/选项页)；
 
-  ![选项页](https://i.loli.net/2018/11/23/5bf7b165cfe22.jpg)
+  ![选项页](https://res.cloudinary.com/simpread/image/upload/v1789968681/simptab/simptab/8b37f5d101e90bbb01c82724f54d515d.jpg)
 
   > 包括以下几个重要功能：
 
@@ -226,7 +226,7 @@
 
 - 💄  优化了  `Bookmark` `History` `Apps` 合并为一个横向 icon bar [#46](https://github.com/Kenshin/simptab/issues/46)
 
-  ![Xnip2018-11-24_16-42-13.jpg](https://i.loli.net/2018/11/24/5bf90f0077050.jpg)
+  ![Xnip2018-11-24_16-42-13.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968682/simptab/simptab/3324f723a1ddfbd36e4161e15f4a6299.jpg)
 
 - :fire: 去掉了 已失效的背景源 `flickr.com`；
 
@@ -239,7 +239,7 @@
 > 2018-10-14
 
 - :sparkles: 新增 `书签栏`；
-  ![2018-10-12_141443.png](https://i.loli.net/2018/10/12/5bc03d1ce05cc.png)
+  ![2018-10-12_141443.png](https://res.cloudinary.com/simpread/image/upload/v1789968684/simptab/simptab/a2b4809fc53d314104bc1ccaadd124af.png)
   1. 需要申请权限，侧栏 → 选中 `开启书签栏`；
 
   2. 搜索（支持：`域名` 和 `标题`）
@@ -250,7 +250,7 @@
 - :sparkles: 新增 `背景管理器` （点击控制栏 → 设定 → 背景管理器）
   > 详细说明请看 (功能一览)[http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1]
 
-  ![2018-10-11_13-56-35.png](https://i.loli.net/2018/10/12/5bc03f7e85fd7.png)
+  ![2018-10-11_13-56-35.png](https://res.cloudinary.com/simpread/image/upload/v1789968685/simptab/simptab/a2c85d77d2d38e29c88d14eba0551670.png)
   1. 开启  `背景管理器` ；
 
   2. 1.5.2 包含：`收藏` 与 `订阅` 两个 Tab ；
@@ -260,29 +260,29 @@
   4. 依次为：照片的作者 · 照片的出处 · 设置为当前背景 · 下载；
 
 - :sparkles: 新增 `关于` 页面；
-  ![2018-10-12_144121.png](https://i.loli.net/2018/10/12/5bc0487f163d2.png)
+  ![2018-10-12_144121.png](https://res.cloudinary.com/simpread/image/upload/v1789968687/simptab/simptab/86ac3b820189c151eb21f3620a22a22b.png)
 
 - :sparkles: 新增 `欢迎` 页面；
-  ![2018-10-12_145647.png](https://i.loli.net/2018/10/12/5bc048bf612f8.png)
+  ![2018-10-12_145647.png](https://res.cloudinary.com/simpread/image/upload/v1789968688/simptab/simptab/3f4a0376a897a69feb8c919612064a3b.png)
 
 - :sparkles: 新增 `只显示当前背景` 的选项；
   > 与 `Pin` 的区别是，选中此项后，当前背景永不再改变；后者只是固定一段时间；
 
-  ![2018-10-12_150254.png](https://i.loli.net/2018/10/12/5bc047edc3abf.png)
+  ![2018-10-12_150254.png](https://res.cloudinary.com/simpread/image/upload/v1789968689/simptab/simptab/cbad6ed5389b60f159280a6423346c8e.png)
 
 - :sparkles: 新增 `刷新（下一张）` 的选项；
   > 点击后，会在当前 New Tab 基础上更新下一张背景；
 
-  ![2018-10-12_151000.png](https://i.loli.net/2018/10/12/5bc049456454d.png)
+  ![2018-10-12_151000.png](https://res.cloudinary.com/simpread/image/upload/v1789968690/simptab/simptab/a5efed5c5357d9eaf611225f2b185ec2.png)
 
 - :lipstick: 优化了 `全局快捷键`
   > 通过全局快捷键 <kbd>?</kbd> 呼出
 
-  ![快捷键](https://i.loli.net/2018/10/11/5bbefe9e22160.png)
+  ![快捷键](https://res.cloudinary.com/simpread/image/upload/v1789968691/simptab/simptab/b14f2b5e6a8b11146c34e6e37d9bde45.png)
 
 - :lipstick: 优化了 `必应每日更新` `必应随机背景` `收藏夹背景源` 的优先级，现在可以关闭它们；
 
-  ![2018-10-12_151532.png](https://i.loli.net/2018/10/12/5bc04a94bcb15.png)
+  ![2018-10-12_151532.png](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/795485add43d62f1ec9d62918ec79d55.png)
 
 - :hammer: 重构了页面布局，使其更符合 HTML5 与 Material Design 风格；
 
@@ -297,7 +297,7 @@
 - :hammer: 重构了 `Topsites - 高级模式(九宫格)` 的 UI;
 
 - :memo: 截至到目前全部的功能
-  ![SimpTab 1.5.2](https://i.loli.net/2018/10/11/5bbf2d08da9c1.png)
+  ![SimpTab 1.5.2](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/7062c432e5c809e56fa6cdc01f0da1df.png)
 
 ***
 
@@ -308,12 +308,12 @@
 - :sparkles: 增加了 全新的 **【SimpTab 精选集】**；  
   > 类似 iOS 某些壁纸 App 的方式，通过手动采集的方式更新，每周一期。  
 
-  ![Imgur](https://i.imgur.com/pblZLv0.png)
+  ![Imgur](https://res.cloudinary.com/simpread/image/upload/v1789968694/simptab/simptab/697b4f2188c8c2fa0cbc6e0475f0425a.png)
 
 - :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
 
 - :sparkles: 增加了 全新的背景布局：`相框布局`；
-  ![Imgur](https://i.imgur.com/7HuDEdpl.png)
+  ![Imgur](https://res.cloudinary.com/simpread/image/upload/v1789968730/simptab/simptab/5754c4a09f7cd2b869223ae6b8d7c4ba.jpg)
 
 - :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格； _包括：Topsites / 侧栏 / Tooltip / Clock 等_
 
