@@ -1,0 +1,2646 @@
+# 简 Tab - 帮助中心 (/docs)
+
+
+
+<p align="center"><img src="https://res.cloudinary.com/simpread/image/upload/v1789968771/simptab/simptab/c03e518c339063a2e9f41e35fda3f2b2.png" /></p>
+<h1 align="center">简 Tab - 极简的 Chrome 新标签页扩展</h1>
+<p align="center">望你每次打开都有好心情；去除多余功能，只关注标签页呈现效果。</p>
+<p align="center">
+   <a href="https://github.com/kenshin/simptab/releases"><img src="https://img.shields.io/badge/lastest_version-1.5.5-blue.svg"></a>
+   <a target="_blank" href="https://simptab.art"><img src="https://img.shields.io/badge/website-_simptab.art-1DBA90.svg"></a>
+   <a target="_blank" href="https://chrome.google.com/webstore/detail/simptab-new-tab/kbgmbmkhepchmmcnbdbclpkpegbgikjc"><img src="https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg"></a>
+</p>
+
+***
+
+# 简 Tab - 帮助中心 [#简-tab---帮助中心]
+
+## 文档中心 [#文档中心]
+
+> 请看 **左侧目录**
+
+## 联络方式 [#联络方式]
+
+* [邮件](kenshin@ksria.com)
+
+* [微博](http://weibo.com/23784148)
+
+* 提交问题到 [Github issues](https://github.com/Kenshin/simptab/issues/new)
+
+* 如果你有 `Github` 账户的话，也可以 [Gitter Chat](https://gitter.im/kenshin/simptab?utm_source=badge\&utm_medium=badge\&utm_campaign=pr-badge)
+
+## 功能介绍 [#功能介绍]
+
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968758/simptab/simptab/393a36f5488a553c73a8c80d3fd8d228.png)
+
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968760/simptab/simptab/65e156f3c15a0f75774f28722638430d.png)
+
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968762/simptab/simptab/f8f16acc00ebfd72a53cc81088f11b2f.png)
+
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968764/simptab/simptab/a64d179ab5f811ce152163a4721fe788.png)
+
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968765/simptab/simptab/95c91695a0aa99d4a88b52fea793d29c.png)
+
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968767/simptab/simptab/7eea41dfabcc71029647ab2915d941f6.png)
+
+![Snapshot](https://res.cloudinary.com/simpread/image/upload/v1789968768/simptab/simptab/a5d28064b4e474abd7f43db52f476ec5.png)
+
+## 全功能 [#全功能]
+
+![功能一览](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/0051810111fc5bc2719733c1201a860f.png)
+
+
+# 书签栏 (/docs/%E4%B9%A6%E7%AD%BE%E6%A0%8F)
+
+
+
+> 此功能最低要求 1.5.2 版本。
+
+## 书签栏 [#书签栏]
+
+**注意：**
+
+* 1.5.5 版本已把此功能从 [设置栏](设置栏) 转移到了 选项页；
+
+* 此功能需要申请新的权限，所以 **默认不启用**；
+
+启用后，鼠标移动左侧或者快捷键 <kbd>b</kbd> 打开，如下图
+
+![Xnip2018-11-24\_11-57-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968772/simptab/simptab/7f5692a6d77ec6488169bdc5f13a463b.jpg)
+
+## 快捷搜索栏 [#快捷搜索栏]
+
+> 依附在 `书签栏` 的一个工具条，使用快捷键 <kbd>q</kbd> 打开，打开后，可以输入书签的 `关键字来进行模糊查询` 。
+>
+> **1.5.3 版增加了搜索引擎的接入，即可以在快捷搜索栏中输入关键字一键直达对应的搜索引擎，详细 [请看这里](选项页#自定义搜索)**
+
+
+# 功能一览 (/docs/%E5%8A%9F%E8%83%BD%E4%B8%80%E8%A7%88)
+
+
+
+## 主要功能之一 [#主要功能之一]
+
+> 包括：控制栏 & 设定栏 & 书签栏
+
+![控制栏 & 设定栏 & 书签栏](https://res.cloudinary.com/simpread/image/upload/v1789968773/simptab/simptab/f15b962887d515e90776cce0ff9ff45c.png)
+
+## 主要功能之二 [#主要功能之二]
+
+> 包括：收藏 & 订阅管理，即 **背景管理器**
+
+![收藏 & 订阅管理器](https://res.cloudinary.com/simpread/image/upload/v1789968774/simptab/simptab/fa3fa729e9545046f7b8159620ef0c0d.png)
+
+## 多种背景源 [#多种背景源]
+
+> 简 Tab 最先独创的功能，具有多种背景源，详细请看 [多种背景源](多种背景源)
+
+## 常用网址 [#常用网址]
+
+> 包括：简单模式 & 高级模式，在 1.5.3 版本开始可以 **修改** 它们，详细请看 [自定义站点](选项页#自定义站点)
+
+![常用网址](https://res.cloudinary.com/simpread/image/upload/v1789968775/simptab/simptab/a4686c3818e218d9616a38ae7ae1ad3d.png)
+
+## 书签栏 [#书签栏]
+
+> 书签栏是 1.5.2 新增加的功能。
+
+默认为不启动（因为需要获取权限），启动方式如下：
+
+![Xnip2018-11-24\_11-55-31.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968776/simptab/simptab/210e73dc30ef6bc8e34f7ba896877109.jpg)
+
+启用后，鼠标移动左侧或者快捷键 <kbd>b</kbd> 打开，如下图（ 书签栏的细节可以看 [功能一览](功能一览#主要功能之一) 的图示）
+
+![Xnip2018-11-24\_11-57-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968772/simptab/simptab/7f5692a6d77ec6488169bdc5f13a463b.jpg)
+
+## 快捷搜索栏 [#快捷搜索栏]
+
+> 依附在 `书签栏` 的一个工具条，使用快捷键 <kbd>q</kbd> 打开，打开后，可以输入书签的 `关键字来进行模糊查询` 。
+>
+> **1.5.3 版增加了搜索引擎的接入，即可以在快捷搜索栏中输入关键字一键直达对应的搜索引擎，详细 [请看这里](选项页#自定义搜索)**
+
+![Xnip2018-11-24\_12-14-38.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968777/simptab/simptab/d7710a639d118995e574e21f51be65c5.jpg)
+
+## 禅模式 [#禅模式]
+
+> 禅模式为 1.5.3 增加的功能，详细请访问 [禅模式](禅模式)
+
+## 快捷键 [#快捷键]
+
+> <kbd>?</kbd> : 打开 `快捷键一览`
+
+![快捷键一览](https://res.cloudinary.com/simpread/image/upload/v1789968778/simptab/simptab/107f7c525e828081ba8d33c94f5d9170.jpg)
+
+## 选项页 [#选项页]
+
+> 1.5.3 增加了新的选项页，更加灵活的定制 简 Tab，详细请看 [选项页](选项页)
+
+## 全部功能 [#全部功能]
+
+![全部功能](https://res.cloudinary.com/simpread/image/upload/v1789968779/simptab/simptab/3460f3bba88683d494d0f4fe07cfe1d7.png)
+
+
+# 发送到手机 (/docs/%E5%8F%91%E9%80%81%E5%88%B0%E6%89%8B%E6%9C%BA)
+
+
+
+## 发送到手机 [#发送到手机]
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本；此功能需要 JSBox 端的配合才能实现，所以目前只限 iOS 设备。
+
+## 如何使用 [#如何使用]
+
+* 确保你的手机已经安装了 JSBox
+
+* 下载 [简 Tab JSBox](https://xteko.com/redir?url=http://ksria.com/simptab/jsbox/simtab-1.0.0.box?20181228\&name=简%20Tab) 并在 JSBox 中打开；
+
+  ![simptab@jsbox.png](https://res.cloudinary.com/simpread/image/upload/v1789968780/simptab/simptab/351dde85e04a64553cc2d8cc291f4053.png)
+
+* 确保 简 Tab 与你的手机处于同一网络地址；（ 一般情况下连接同一 WIFI 即可 ）
+
+* 点击「开启监测」；
+
+* 默认端口 3100，可随意修改；
+
+* 随便在 Chrome 中打开一个新标签页，快捷键 o → 打开选项卡；
+
+* 在下图红框中填入上图显示的监听地址；如 `http://192.168.31.57:3100`
+
+* 刷新当前页面（新标签页）；
+
+* 鼠标移动到右侧 → 显示控制栏 → 点击发送到手机 icon
+
+  ![Xnip2018-12-28\_15-57-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968781/simptab/simptab/656f21dacd562aa203ed086c882bc4a1.jpg)
+
+* 发送成功后会有提示，同时稍等几秒后，手机端会有接受成功的提示；
+
+* 手机端接受成功后会提示是否打开相册？
+
+
+# 只显示你喜欢的 Unsplash 源 (/docs/%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%BD%A0%E5%96%9C%E6%AC%A2%E7%9A%84%20Unsplash%20%E6%BA%90)
+
+
+
+> 用到的知识可以看看 [自定义unsplash源](背景源#自定义unsplash源)
+
+## 例子 [#例子]
+
+> 最近喜欢看看 挪威 的景色，所以可以让 简 Tab 只显示挪威的景色背景，只需要以下几个步骤：
+
+1. 搜索关键字 `norway` 得到类似 [https://unsplash.com/s/photos/norway](https://unsplash.com/s/photos/norway) 这样的地址
+
+2. 进入 Collections 找到喜欢的合辑
+
+3. 记住这个合辑在地址栏的 id e.g. [https://unsplash.com/collections/2010956/nature-norway](https://unsplash.com/collections/2010956/nature-norway) 对应的 `2010956`
+
+> 根据下图设置
+
+![QtKHQs.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968783/simptab/simptab/c76642325b954e2754cdc2ff5d0d4e4a.jpg)
+
+1. 将上个步骤得到的 id 填入到此，只添入你需要的 id 其余删除
+
+2. 只启用 **Unsplash 源**
+
+3. 可以将背景设置为每隔 x 分钟自动更换
+
+   最后，可以配合 [白噪音](白噪音) + [全屏](控制栏#全屏化) 在你的副屏上使用，效果更佳。
+
+***
+
+当然，不仅可以设置 `collections` 单张图片 某个用户的图片 等一切 [https://source.unsplash.com/](https://source.unsplash.com/) 支持的方案均可。
+
+
+# 多种背景源 (/docs/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90)
+
+
+
+## 多种背景源 [#多种背景源]
+
+最初的版本包含了 ： `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `收藏`, `精选集`。
+
+**注意：**
+
+* 1.5.1 去掉了失效的背景源 `500px.com` `nasa.gov`
+* 1.5.3 去掉了背景质量较低的 `flickr.com`
+
+## 收藏 [#收藏]
+
+> 简 Tab 独有的功能，可以将任意背景保存到本地（以便重复显示），详细请看 [功能一览 · 背景管理器](功能一览#主要功能之二)
+
+## SimpTab 精选集 [#simptab-精选集]
+
+> 简 Tab 独有的功能，每周一期，每期若干张手工采集精选壁纸，类似 iOS App 的做法，获取往期壁纸，请关注 [简 Tab 精选集小秘](https://weibo.com/u/6632928109)，与收藏类似，详细请看 [功能一览](功能一览#主要功能之二)
+
+## 探索 [#探索]
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 快捷键 m → 背景管理器 → 选项卡第三个选项，即可找到探索；
+* 探索频道中的背景均来自「自定义 Unsplash 源」，进入「探索 Tab」后，显示的背景均来自与此；
+* 当「自定义 Unsplash 源」无任何内容时，无法使用探索；
+* 探索的背景是随机显示，滚动条向下到底后自动加载，加载的速度取决于你的网速；
+* 偶尔会发生无法加载的情况，请关闭背景管理器（ ESC 退出）后重新进入；
+
+![Xnip2018-12-28\_15-03-33.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968784/simptab/simptab/5ff78bc0a41740ebd6f9d5204fd751cb.jpg)
+
+## 自定义Unsplash [#自定义unsplash]
+
+> 1.5.3 版本支持自定义 Unsplash 源的功能，位置在 选项页 → 自定义 Unsplash 源，以下是一些常见的自定义方案
+
+* 将你的 Unsplash 帐号加入到自定义 Unsplash 源
+
+```
+user/{username}
+```
+
+* 将你的 Unsplash 帐号中 `likes` 的照片加入到自定义 Unsplash 源
+
+```
+user/{username}/likes
+```
+
+* 将你的 Unsplash 帐号中的 `collections` 加入到 自定义 Unsplash 源
+
+```
+collection/{上图的 ID}
+```
+
+* 根据你的 `Chrome / 桌面分辨率` 显示图片（在上面三个的基础上修改）
+
+```
+user/{username}/1920x1080,user/{username}/likes/1920x1080,collection/2463312/1920x1080
+```
+
+更丰富的自定义请直接访问 [Unsplash Source](https://source.unsplash.com/)
+
+## 自定义分辨率 [#自定义分辨率]
+
+> 此功能仅针对 \*\*Unsplash 源 \*\* 并需要 1.5.3.1129 （及以上版本） 的支持；
+
+![Xnip2018-11-30\_11-45-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968679/simptab/simptab/607d6d8faf57f1855962b85e63b0e9c2.jpg)
+
+**提示：**
+
+* Unsplash 源默认的分辨率为 2560 x 1440;
+* 可独立对任何自定义 Unsplash 源 设置分辨率，如 `collection/3593484/1080x1920` 或 `collection/3593482/4096×2160,collection/3593484/1080x1920` 均为合法设置；
+* 分辨率设置的越高，加载的会越慢，但视觉效果越好，在这种情况下可以不需要使用 「相框模式」，如下图：
+  ![Xnip2018-11-30\_11-54-50.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968786/simptab/simptab/22050fad707256fad99ddcd8fbeec7d0.jpg)
+* 分辨率越低，加载的会越快，所以建议根据自身的网络环境与分辨率设置；
+* 关于常见分辨率可以看 [维基百科](https://zh.wikipedia.org/wiki/%E6%98%BE%E7%A4%BA%E5%88%86%E8%BE%A8%E7%8E%87%E5%88%97%E8%A1%A8) 的说明；
+* 随着 1.5.3.1129 发布，同时新增加了两个 collenction，其中的照片均来自于 [Unsplash Archive](https://unsplash.com/@unsplasharchive/collections)
+  * [Unsplash Archive with Horizontal screen](https://unsplash.com/collections/3593484/unsplash-archive-with-horizontal-screen) 即`collection/3593484` 适合扁平（宽大于高）的浏览器样式，如上图效果；
+  * [Unsplash Archive with Vertical screen](https://unsplash.com/collections/3593482/unsplash-archive-with-vertical-screen) 即 `collection/3593482` 适合狭长（宽小于高）的浏览器样式，如下图：
+    ![Xnip2018-11-30\_11-54-50.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968787/simptab/simptab/59f596a08eee819244a346eee6010bdb.jpg)
+
+## 历史记录 [#历史记录]
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 历史记录可以记录 **最多五组** 之前的背景图片；
+* 支持快捷键 <kbd>→ </kbd> 和 <kbd>←</kbd> 切换；
+* 鼠标移到新标签页上方中部即可自动打开历史记录列表；
+* 开启此功能需要 快捷键 o → 打开选项卡 → 勾选「是否启用历史记录功能？」（勾选刷新后生效）
+
+![Xnip2018-12-28\_14-12-53.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968676/simptab/simptab/c4fcf844927c356f1f4fd0d0c632c3fb.jpg)
+
+## 背景自动更新 [#背景自动更新]
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 开启后可以将新标签页当作一个「相册」来看待，尤其是拥有副屏的用户。
+* 每隔 5 / 10 / 30 / 60 自动更换背景；
+* 自动更换的背景源依赖与「自定义 Unsplash 源」，当「自定义 Unsplash 源」无任何背景时无法使用；
+* 默认关闭，可通过 快捷键 o → 选项卡 → 「背景是否自动播放（显示下一张）？」选择更新时间来开启；
+
+![Xnip2018-12-28\_14-30-07.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968790/simptab/simptab/690c0cf30fd04fa8664f546f97a6e702.jpg)
+
+## 地球每刻 [#地球每刻]
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 感谢 [向日葵-8號](http://himawari8.nict.go.jp/) 提供地球自拍照；
+* 由于不愿过多消耗 [向日葵-8號](http://himawari8.nict.go.jp/) 的带宽，通过简 Tab 访问并获取到的地球照片均来在于 **自建的服务**；
+* 地球每刻的照片每小时更新一次；
+* 在此模式下，[背景自动播放](多种背景源#背景自动播放) 与 [历史记录](多种背景源#历史记录) 均无法使用；
+* 目前地球每刻提供了 `1100 x 1100` 的分辨率，未来会提供更高清的分辨率照片；
+* 快捷键 s 或鼠标移动右侧 → 开启侧栏 → 选中第四个选项「地球每刻」即可进入；
+
+![Xnip2018-12-28\_14-33-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968674/simptab/simptab/a10bf60d8723ba3bdfa357252cb12834.jpg)
+
+
+# 常用网址 (/docs/%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80)
+
+
+
+# 常用网址 [#常用网址]
+
+> 常用网址一般指代 Topsites
+
+> 包括：**简单模式** · **高级模式** · **隐藏**，在 1.5.3 版本开始可以 **修改** 它们，详细请看 [自定义站点](#自定义)
+
+![常用网址](https://res.cloudinary.com/simpread/image/upload/v1789968775/simptab/simptab/a4686c3818e218d9616a38ae7ae1ad3d.png)
+
+# 自定义 [#自定义]
+
+> 1.5.3 开始，你可以用自定义的站点来替代默认的 Topsites （同时适用于 简单模式 · 高级模式 ） ，目前仅支持最多 **9 个** 自定义站点，具体用法如下：
+
+启用 「是否启用自定义站点功能？」
+
+![Xnip2018-11-23\_16-42-54.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968794/simptab/simptab/378dec6e9474242f6f5cb7c4b742c46c.jpg)
+
+每行一个，形式为 `<标题>,<URL>` 如下
+
+```
+trello,https://trello.com/
+简悦, http://ksria.com/simpread/
+```
+
+并支持快捷键，触发键为 <kbd>z</kbd> \~ `<1-9>` 号，如上面的 `z 1` 即打开 [Trello](https://trello.com/);`z 2` 打开 [简悦](http://ksria.com/simpread/)
+
+
+# 常见问题 (/docs/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
+
+
+
+**Q:** 简 Tab( `SimpTab` ) 的定位是什么？
+
+> 正如宣传 `SimpTab` 时的标语：
+> `极简` 的 `Chrome新标签页` 扩展，一张美图，一段旅行，望你每次打开都有好心情。
+
+**Q:** 如何形容 `SimpTab` ？
+
+> 关键词：`极简`、`只关注如何呈现漂亮的背景`、`开源`。\
+> 无论 `SimpTab` 将会如何更新，它的使命和意义都在这三点！
+
+**Q:** 请问论 `SimpTab` 是否为免费产品？
+
+> 此产品为免费使用，并且代码开源，地址：[https://github.com/kenshin/simptab](https://github.com/kenshin/simptab)
+
+**Q:** 目前都包含哪些背景源？
+
+> `bing.com`, `wallhaven.cc`, `unsplash.com`, `googleartproject.com`, `desktoppr.co`, `visualhunt.com`, `favorite`, `simptab images`.
+
+**Q:** 每日更换背景与随机更换背景的区别。
+
+> 每日更换：每天只更换一个背景，并且背景来自 `Bing.com`；\
+> 随机更换：根据选择的背景源，会随机显示一个背景源的图片。
+
+**Q:** 背景的 `加载机制` 是什么？
+
+> 采用 `预加载` 机制。 即：显示的 `当前背景` 是 `上一次` 加载的背景，同时 `新背景` 也会加载，用于下次打开 `新标签页` 时显示。
+
+**Q:** 我选择了随机更换背景，为什么有的时候打开新标签页后，还是一样的背景？
+
+> 由于新的背景是从各个背景源下载，下载的时候会有时间差，当新背景未下载完毕前，关闭新标签页或者新标签页显示了地址栏的内容，再次打开时，仍旧为当前（旧）背景。\
+> 新背景页在加载的时候，会在新标签页的左下角显示一个加载进度，用于提示。
+
+**Q:** 为什么我没有选择任何背景源，背景也会变化？
+
+> `SimpTab` 有几个默认显示的源，并不在背景源列表中，所以会产生这种情况。\
+> 默认显示的源，包括：`bing.com` 的历史图片、用户 `自行上传` 的图片、二十四节气（只在对应的日期显示）。
+
+**Q:** 为什么有的背景源加载较慢？
+
+> 由于国内的网络环境比较复杂，所以，并不是每个背景源都能访问到，所以最好手动在浏览器里面确认上述背景源是否可以打开。\
+> 建议 `绿色上网` 。
+
+**Q:** 下载的背景源能否用作商业用途？
+
+> `SimpTab` 的背景源来自上述网址，具体请详细确认上述网站的授权协议。
+
+**Q:** 收藏 `Favorite` 的含义是什么？
+
+> 由于 `1.4.0` （含以上版本） 增加了很多背景源，导致同一张图片出现的几率非常小。 `SimpTab` 会随机读取 `Favorite` 中的数据，收藏后意味着下次出现这张背景的几率比较大。
+
+**Q:** `omnibox` 的用处是什么？
+
+> 为了方便某些只用键盘操作的，键盘控。比如我 ヽ(´▽\`)/
+
+**Q:** 上传 `upload` 的图片都存在了哪里？
+
+> 由于 `Chrome` 的安全机制，所以 `上传` 的图片都存在了 `Chrome` 文件系统中，类似 `chrome-extension://xxxxxx/temporary/` 里面。\
+> 安全性 与 `Chrome` 的安全性一致。
+
+**Q:** 上传 `upload` 的图片 如何管理？
+
+> `SimpTab` 暂时未提供管理功能，（ 后续版本将会提供支持 ）。如果全部删除的话，可以使用删除 `SimpTab` 的办法；如果逐一删除的话，当背景显示了某个需要删除的上传图片时，点击 `favorite` 即可删除。
+
+**Q:** 上传 `upload` 的图片 为什么 不马上显示？
+
+> 这是由 `SimpTab` 的背景显示机制决定，而且 `SimpTab` 暂时不具有 `上传图片` 即可显示的功能。
+
+**Q:** 如何知道 `当前背景` 来自哪个背景源？
+
+> 鼠标悬停到 `第四个图标` 上，稍等即可看到。
+
+**Q:** 为什么有的背景有 `详细信息` ，而有的背景没有。（ 详细信息指：第四个图标）
+
+> 因为有的背景源对应的背景有 `详细信息` ，所以显示；反之，有的没有，所以不显示。
+
+**Q:** 固定 `pin` 的含义？
+
+> 有的时候，希望某个背景停留的时间长一些，所以自然就有了 `pin` 功能。目前能 `pin` 的时间段包括： 半小时 → 8小时，且不可自定义。
+
+**Q:** 固定 `pin` 与 收藏 `favorite` 的区别？
+
+> 前者只是让当前背景停留一段时间，超过这段时间后，如果没有 `收藏` 的话，除非再加载到它，否则不会再显示了。\
+> 后者会让当前图片保存到 `chrome-extension://xxxxxx/temporary/` 物理路径下，再显示的几率变大很多。
+
+**Q:** 固定 `pin` 超时后，为什么还不更换 新的背景。
+
+> 为了确保每次打开 `新标签页` 都是瞬间加载，所以 `SimpTab` 采用了 `预加载机制` 。\
+> 超过 `pin` 所停留的时间后，第一次打开 `SimpTab` 会显示旧的背景，但同时 `加载新的背景` ，加载完毕后，再打开 `标签页` 就是显示新的背景。但加载有个 `时间差` ，当还未加载成功时，关闭了 `当前标签` ，所以 `新的背景` 还未加载成功，因此再打开时，还是之前的背景。
+
+**Q:** 固定 `pin` 8小时后，第二天（ `未超过8小时` ）为什么又加载了新的背景。
+
+> `SimpTab` 会在新的一天加载 `bing.com` 的背景，无论是否超过 `pin` 的时间。\
+> 理论上 `第二天` 已经超过了 `pin` 的最大时间为 `8小时`，只有在夜晚的时候，那么，恭喜你是个夜猫子。 ^\_^
+
+**Q:** 不喜欢（不再显示） `dislike` 的含义是什么？
+
+> 由于背景源比较多，自然会有些不喜欢的背景加载出来，所以加入了此功能。
+
+**Q:** 为什么选择了 不喜欢（不再显示） `dislike` 后，当前背景还再显示？
+
+> 同理于 `预加载机制`，只有新的背景加载完毕，并刷新后，才会显示新的背景。同时，被 `dislike` 的背景，将永远不会再出现。
+
+**Q:** 如何取消已经 不喜欢（不再显示） `dislike` 的背景？
+
+> 如果仍停留在当前背景下，再次点击 `dislike` 即可；如果当前背景是新的背景了，则永远无法再次取消。（ 除非重新安装 `SimpTab` ）
+
+**Q:** 为什么有的时候，不喜欢（不再显示） `dislike` 不显示？
+
+> `dislike` 在 特殊场景下为隐藏状态，这些场景包括： `每日更新`， `默认背景`， `上传的背景`。
+
+**Q:** 为什么有的时候，不喜欢（不再显示） `dislike` 不显示，但点击了 `favorite` / `pin` 之后又显示了？
+
+> `dislike` 与 `favorite` / `pin` 为互斥情况，当前者选中时，后者隐藏；反之，前者隐藏。\
+> `dislike` 的含义导致了这种情况；即：选择了 `dislike` 的背景，当然不需要 `favorite` / `pin`；反之亦然。
+
+**Q:** 为什么有的时候，会突然显示默认背景？
+
+> 为了确保每个标签页都有背景 `SimpTab` 有 `容错机制` ，当 `新背景` 加载失败 `超时5秒` 后，显示 `默认背景`。\
+> 这种情况一般发生 `在新的一天且第一次打开` 新标签页 情况下。 但由于 `bing.com` 的可靠性，所以一般不会发生这种问题，除非是由于网络 断开 或者 `bing.com` 发生问题时 才会发生。
+
+
+# 快捷键 (/docs/%E5%BF%AB%E6%8D%B7%E9%94%AE)
+
+
+
+> 简 Tab 为了让新标签页呈现  **极致美景**，所以隐藏了绝大多数的操作界面，但这些操作界面均支持快捷键。
+
+![Q9DHbt.png](https://res.cloudinary.com/simpread/image/upload/v1789968796/simptab/simptab/13b6bc97de29cf245b039fd203fb107d.png)
+
+> 请记住两个最重要的快捷键
+
+<kbd>?</kbd>
+
+在界面的任意位置，输入 <kbd>?</kbd> 即可呼出，其中包含了简 Tab 全部的快捷键指令。
+
+<kbd>esc</kbd>
+
+绝大多数的界面/功能，均支持通过 <kbd>esc</kbd> 退出。
+
+
+# 控制栏 (/docs/%E6%8E%A7%E5%88%B6%E6%A0%8F)
+
+
+
+> 控制栏是 简 Tab 最重要的功能集合，同时全部功能均支持快捷键操作。
+
+## 原生功能 [#原生功能]
+
+> Chrome 原生的一些常用功能集，支持快捷键。
+
+* `书签` 快捷键 <kbd>1</kdb>
+
+* `下载` 快捷键 <kbd>2</kdb>
+
+* `应用` 快捷键 <kbd>3</kdb>
+
+* Chrome 默认标签页 快捷键 <kbd>4</kdb>
+
+## 全屏化 [#全屏化]
+
+> 全屏化新标签，配合 [白噪音](白噪音)  & [背景自动播放](选项页#背景源]) 可实现类似 **相册级视听效果** 支持快捷键 <kbd>↑</kdb>
+
+## 背景详细信息 [#背景详细信息]
+
+> 某些 [背景源](背景源) 会有关于这个背景的信息，支持快捷键 <kbd>5</kdb>
+
+## 下载 [#下载]
+
+> 将当前背景下载，并支持 [自定义下载文件夹](选项页#背景源)，支持快捷键 <kbd>6</kdb>
+
+## 上传 [#上传]
+
+> 从本地上传图片到，并支持 [自定义下载文件夹](选项页#背景源)，支持快捷键 <kbd>7</kdb>
+
+* 上传的图片均保存在 **Chrome 本地的安全沙箱** 中
+
+* 请在 [背景管理器](#背景管理器) 中收藏夹的图片
+
+## 下一张 [#下一张]
+
+> 在不关闭新标签页的前提下，直接显示下一张背景，支持快捷键 <kbd>f</kdb>
+
+\*\*注意 \*\*：此功能仅限选择了 **随机更换背景** 时才会有效。
+
+## 收藏 [#收藏]
+
+> 支持快捷键 <kbd>a</kdb>
+
+* 上传的图片均保存在 **Chrome 本地的安全沙箱** 中
+
+* 当收藏夹 *没有任何内容并只启用收藏夹源* 时会出现错误
+
+* 上传的本地图片也保存在收藏夹里面
+
+* 请在 [背景管理器](背景管理器) 中收藏夹的图片
+
+## 固定 [#固定]
+
+> 将当前背景固定 xxx 时间，即在这个时间段内，无法更换其它背景。支持快捷键 <kbd>n</kdb>
+
+\*\*注意 \*\*：固定 优先级 **高于** 下一张 · 背景管理器中下载的背景 · 历史记录 等一切可以更换背景的功能。
+
+## 不喜欢 [#不喜欢]
+
+> 加入到此的背景将永远不会被显示出来，支持快捷键 <kbd>u</kdb>
+
+## 发送到手机 [#发送到手机]
+
+> 可将当前背景发送到手机，详细请看 [发送到手机](发送到手机)，支持快捷键 <kbd>e</kdb>
+
+## 背景管理器 [#背景管理器]
+
+> 详细请看 [背景管理器](背景管理器) 支持快捷键 <kbd>m</kdb>
+
+## 选项 [#选项]
+
+> 详细请看 [选项页](选项页) 支持快捷键 <kbd>o</kdb>
+
+## 关于 [#关于]
+
+> 支持快捷键 <kbd>t</kdb>
+
+
+# 显示 4K 分辨率的背景源 (/docs/%E6%98%BE%E7%A4%BA%204K%20%E5%88%86%E8%BE%A8%E7%8E%87%E7%9A%84%E8%83%8C%E6%99%AF%E6%BA%90)
+
+
+
+> 得益于 [1.5.3.1129](http://ksria.com/simptab/docs/#/CHANGELOG#_1531129) 的发布，从现在开始可以让你的 New Tab 显示 Unsplash 上的高清 4K 大图了。
+>
+> 如果你对 New Tab 的背景有极高的质量要求，可以看看本文。
+
+## 背景介绍 [#背景介绍]
+
+> 为什么 简 Tab 默认无法显示高清 4K 呢？
+
+简 Tab 1.0.0 版本始于 2014 年，那个时候只是为了显示 Bing.com 上的背景而开发的，历经了四年多的时间，在功能上与最初的版本差距很大了，为了向上兼容以及开箱即用，默认情况下，并不会让你在 New Tab 上显示 Unsplash 上的高清 4K 大图。
+
+> 为了达到上述目的，请先关闭 **除 `Unsplash 源` 以外** 的其它全部背景源。
+>
+> 方法 → 鼠标移动到右侧或快捷键 <kbd>s</kbd> 然后根据下图所示勾选。
+
+![Xnip2018-12-01\_11-26-35.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968798/simptab/simptab/a296e231a58abb3d48e1bf5dd8bdb7a8.jpg)
+
+*小提示：根据上述的操作，相当于取消掉了 **每日 Bing.com 的自动更换功能** 。*
+
+## 基础设置 [#基础设置]
+
+> 只需要两步即可，`只启用 Unsplash` 为第一步；第二步如下：
+
+快捷键 <kbd>o</kbd> 打开选项卡，然后按照下图的说明将分辨率改为 `4096x2160` （即 4K 分辨率）
+
+![Xnip2018-12-01\_11-34-50.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968799/simptab/simptab/def889e44fa41f00a82f7873ecdb1e31.jpg)
+
+*小提示：你可以任意修改这个值，符合自身的要求即可；一些主流常用分辨率请看 [维基百科](https://zh.wikipedia.org/wiki/%E6%98%BE%E7%A4%BA%E5%88%86%E8%BE%A8%E7%8E%87%E5%88%97%E8%A1%A8) 的说明*
+
+## 进阶设置 [#进阶设置]
+
+> [1.5.3](http://ksria.com/simptab/docs/#/CHANGELOG#_153) 增加了自定义 Unsplash 源，虽然默认已经加入了一些源，如果你对 Unsplash 显示的背景类型/喜好也有要求，可以看看以下的设置。
+
+快捷键 <kbd>o</kbd> 打开选项卡，然后修改 [自定义 Unsplash 源](http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90#%E8%87%AA%E5%AE%9A%E4%B9%89unsplash) ，修改规则：
+
+* 此功能依据 [Unsplash Source](https://source.unsplash.com/) 的规则，所以只要是 \*\*[https://source.unsplash.com/\*\*\`\{xxxx}\`](https://source.unsplash.com/**`\{xxxx}`) 支持的方式均可，比如： `random` `user/erondu` `user/jackie/likes` `collection/190727` 等；
+* 支持多个源（用 `,` 分割）根据上面的例子可修改为：`random,user/erondu,user/jackie/likes,collection/190727`
+
+## 高级设置 [#高级设置]
+
+> 如果你是一个对背景的长宽显示比例要求非常苛刻的用户，也可以根据下面的方式调教。
+
+[1.5.3](http://ksria.com/simptab/docs/#/CHANGELOG#_153) 自定义 Unsplash 源支持单独为任何单一源设置分辨率，只要在每个源的后面根据 [Unsplash Source](https://source.unsplash.com/) 的格式加入 `widthxheight` 即可，根据上面的例子可修改为：
+
+`random/2560x1440,user/erondu/1600x900,user/jackie/likes/3200x1800,collection/190727`
+
+*小提示：前面三个会依据已加入的分辨率显示，只有 `collection/190727` 依据 **基础设置** 录入的值设置。*
+
+## 两个特殊的集合 [#两个特殊的集合]
+
+* 随着 1.5.3.1129 发布，同时新增加了两个 collenction，其中的照片均来自于 [Unsplash Archive](https://unsplash.com/@unsplasharchive/collections)
+
+  * [Unsplash Archive with Horizontal screen](https://unsplash.com/collections/3593484/unsplash-archive-with-horizontal-screen) 即 `collection/3593484` 适合扁平（宽大于高）的浏览器样式；
+  * [Unsplash Archive with Vertical screen](https://unsplash.com/collections/3593482/unsplash-archive-with-vertical-screen) 即 `collection/3593482` 适合狭长（宽小于高）的浏览器样式；
+
+  *我会不定期往这两个 collections 加入一些适合做 New Tab 的壁纸；*
+
+## 一点补充 [#一点补充]
+
+> 请关注 &#x2A;*[简 Tab 的官微](https://weibo.com/u/6632928109)** 会不定期推荐来自 `SimpTab 精选集` 的背景源，也请订阅/留意 &#x2A;*微博 → [#Unsplash#](https://s.weibo.com/weibo/%23Unsplash%23)** 或 Twitter [#simptab-unsplash](https://twitter.com/hashtag/simptab-unsplash?src=hash) 也会不定期推送一些在 Unsplash 上的精选 collection
+
+## 最后 [#最后]
+
+还是那句话「介绍了这么多，希望 简 Tab 能给你的 New Tab 带去一些别样的风景，望你每次打开都有好心情。」
+
+
+# 白噪音 (/docs/%E7%99%BD%E5%99%AA%E9%9F%B3)
+
+
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+***
+
+![Xnip2018-12-28\_14-50-20.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968677/simptab/simptab/84161a95f2ac703da9a380de45bc78e7.jpg)
+
+## 含义 [#含义]
+
+得益于 1.5.4 增加了 [背景自动播放](多种背景源#背景自动播放) 与 [地球每刻](多种背景源#地球每刻) 功能，现在你可以在新标签页停留更多的时间，播放白噪音就是一个非常不错的方案。
+
+## 开启/关闭 [#开启关闭]
+
+* 仅支持快捷键 <kbd>w</kbd> 进入；
+* 在界面上无任何进入标识；
+* 支持 ESC 隐藏；
+
+## 说明 [#说明]
+
+* 目前内置了 `咖啡馆` `爵士乐` `下雨天` `雷声` 四种白噪音，可同时叠加使用；
+* 未来会加入更多的白噪音；
+* 白噪音提供的 MP3 均为免费使用的音源，同时放在了自建的 腾讯云 上；
+* 可同时更改不同 BGM 的音量大小；
+* 同时支持 「图片模式」和 [禅模式](禅模式) 。
+
+
+# 禅模式 (/docs/%E7%A6%85%E6%A8%A1%E5%BC%8F)
+
+
+
+> 此功能最低要求 1.5.3 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+***
+
+## 含义 [#含义]
+
+比显示美景的 简 Tab 还要更加的极致简约，只显示纯色背景 ⬇
+
+![Xnip2018-11-23\_14-27-55.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968680/simptab/simptab/235e4e85acfe5020bbb0278c12c9381c.jpg)
+
+## 模块 [#模块]
+
+* 时间
+* 日期
+* 当前网速 & 电池电量
+* Topsites
+* 书签栏
+* 快捷搜索
+
+## 进入 [#进入]
+
+> 打开 简 Tab 的侧栏，选中 「启用 禅模式」后刷新 New Tab 即可。
+
+![Xnip2018-11-23\_14-31-55.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968802/simptab/simptab/c24bcffb16b5a6d2bc9318f029032ebb.jpg)
+
+## 退出 [#退出]
+
+> 进入禅模式后，鼠标在右下角点击对应的 icon 或者 快捷键 <kbd>c</kbd> 打开禅模式的选项页
+
+![Xnip2018-11-23\_14-35-23.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968803/simptab/simptab/7e29515b34d9eb227fb6ad931557e4fc.jpg)
+
+## 功能（设置） [#功能设置]
+
+> 这里的设置仅针对于禅模式，可通过&#x2A;*快捷键 <kbd>c</kbd>** 或 **鼠标移动右下角** 进入。
+
+![Xnip2018-11-27\_11-37-55.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968804/simptab/simptab/3a1824f9914d51b49f090de4650eb782.jpg)
+
+### 主题 [#主题]
+
+包含默认的几种给定的配色。（选中后每次打开 New Tab 均显示这种颜色的背景）
+
+* 随机
+
+  倒数第二个选项。（选中后每次打开 New Tab 随机显示一种主题色的背景）
+
+* 白色
+
+  选中为白底黑字显示 New Tab
+
+* 自定义背景色
+
+  倒数最后一个选项。（ 支持 `CSS3 background-color` 的值）
+
+### 模块设置 [#模块设置]
+
+> 包含了 大小 · 以及是否显示某些模块 的功能
+
+### 自定义样式 [#自定义样式]
+
+> 支持自定义样式，仅作用于禅模式
+
+### 导入 / 导出 [#导入--导出]
+
+> 可以导入/ 导出当前配置，&#x2A;*注意：配置文件的中的版本号需与当前 简 Tab 的版本对应。**
+
+# 自定义脚本 [#自定义脚本]
+
+> 此功能最低要求 1.5.4.202 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+通过 [自定义脚本](https://github.com/Kenshin/simptab/labels/script) 可以实现多种形式的禅模式，如下图：
+
+![Xnip2019-02-02\_15-21-38.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968804/simptab/simptab/4ba9f5708d014dc2e1aff2172c51eafa.jpg)![Xnip2019-02-02\_15-28-19.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/4e3a81c72aaf8da9e95ca2ee707c6c46.jpg)
+
+# 脚本管理器 [#脚本管理器]
+
+> 1.5.5. 新增加的脚本管理器，可对全部脚本进行 **预览、设置脚本、更新脚本管理器** 等功能。
+
+![Q9Sm8K.png](https://res.cloudinary.com/simpread/image/upload/v1789968646/simptab/simptab/406b9967035d92c0bb8187e24638d399.png)
+
+> 位置在 <kbd>s</kbd> → 选项页 → 脚本管理器（下方第一个 Button）打开
+
+![Q9SoI1.png](https://res.cloudinary.com/simpread/image/upload/v1789968809/simptab/simptab/2958e132ace75d7665a8a2f049bd12ae.png)
+
+# 预设 [#预设]
+
+目前可以在 [这里](https://github.com/Kenshin/simptab/issues/63) 查看全部的脚本，以下是几个预设的脚本
+
+通过 `自定义样式` 配合 [Google Fonts](https://fonts.google.com/) 可以实现不同效果的样式，如下图：
+
+```
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
+
+#time {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900!important;
+}
+
+.day-zen-mode {
+    margin-top: 5px!important;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 40px!important;
+}
+```
+
+![Xnip2018-11-23\_14-50-55.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968810/simptab/simptab/649b64c0fa279b589c7bc6e783cdabf5.jpg)
+
+```
+@import url('https://fonts.googleapis.com/css?family=Audiowide');
+
+#time {
+    font-family: 'Audiowide', sans-serif;
+    font-weight: 900!important;
+}
+
+```
+
+![Xnip2018-11-23\_14-58-22.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968811/simptab/simptab/9e50441a6e98f035572f04ea724101c4.jpg)
+
+```
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+#time {
+    font-family: 'Press Start 2P', sans-serif;
+}
+```
+
+![Xnip2018-11-23\_15-01-16.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968813/simptab/simptab/ba9ad0fa930658d6e603930216b404cb.jpg)
+
+```
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Kosugi+Maru');
+
+#time {
+    font-family: 'Audiowide', sans-serif;
+    font-weight: 900!important;
+}
+
+.day-zen-mode {
+    font-family: 'Kosugi Maru', sans-serif;
+    font-size: 35px!important;
+}
+
+.devices-zen-mode {
+    margin-top: 5px!important;
+    font-family: 'Audiowide', sans-serif;
+    font-size: 12px!important;
+}
+```
+
+![Xnip2018-11-23\_15-07-52.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968814/simptab/simptab/2439c112b434825b66081cef2e8bc6fb.jpg)
+
+
+# 离线安装 (/docs/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85)
+
+
+
+## 原因 [#原因]
+
+Chrome 从 70 版本开始就已经全面 **封禁了从本地拖拽到 Chrome 安装扩展** 的方式。
+
+所以，无法访问 Chrome webstore 的用户使用上述方式均提示 **CRX\_HEADER\_INVALID** 错误的原因。
+
+## 解决 [#解决]
+
+1. 进入 [简 Tab 官网](https://simptab.art/)，并选择 **离线下载**
+
+2. 下载后的内容解压缩到你需要的目录
+
+3. 在 Chrome 进入 `chrome://extensions/`
+
+4. 使用 **开发者模式**  的方式安装，如下图
+
+   ![Qnebtg.png](https://res.cloudinary.com/simpread/image/upload/v1789968816/simptab/simptab/a27160e7b4d54a19851e760160333c10.png)
+
+   1. 右侧勾选 **开发者模式**
+   2. 左侧点击 **加载已压缩的扩展程序**
+
+## 弊端 [#弊端]
+
+> 这种方式与在 Chrome webstore 安装 crx 如出一辙，但唯一的缺点是：**无法自动升级**
+
+
+# 背景源 (/docs/%E8%83%8C%E6%99%AF%E6%BA%90)
+
+
+
+> 背景源是 简 Tab 最重要的核心，简 Tab 的全部功能均以此为主。
+> 由于操作上的便利，所以关于背景源的功能，大多分散在各个模块中，以下只是集中说明。
+
+## 背景更换模式 [#背景更换模式]
+
+> 主要操作位置 → 设置栏
+
+* 每天更换背景
+  每天更换一次，背景源只来源于 **必应每日图片**
+
+* 随机更换
+  每次新打开标签页，即可看到一副新的背景图（ 是否显示 **新的** 背景图取决于背景图的下载速度
+
+* 只显示当前背景
+
+* 地球每刻
+
+  详细请看 [背景源](背景源#地球每刻)
+
+* 禅模式
+
+  详细请看 [禅模式](禅模式)
+
+## 背景图显示模式 [#背景图显示模式]
+
+> 主要操作位置 → 设置栏
+
+* 居中对齐
+
+* 左上对齐
+
+* 相框模式
+
+  为 简 Tab 独有功能，即以居中显示相框的效果，适合任意分辨率的背景和浏览器，如下图
+
+  ![QphtIA.png](https://res.cloudinary.com/simpread/image/upload/v1789968818/simptab/simptab/df2689c18ddc23a1b0623fedf4af66ba.png)
+
+## 多种背景源 [#多种背景源]
+
+> 主要操作位置 → 设置栏
+
+包括：
+
+* 必应每日图片
+
+* 必应随机图片
+
+* 向日葵-8號
+
+* unsplash.com
+
+* picsum.photos
+
+* googleartproject.com
+
+* wallhaven.cc
+
+以及以下三种 **简 Tab 独有源**：
+
+* [收藏](控制栏#收藏)
+
+* [探索]()
+
+**注意：**
+
+* 1.5.1 去掉了 失效的背景源 `500px.com` `nasa.gov`
+* 1.5.3 去掉了 背景质量较低的 `flickr.com`
+* 1.6.0 去掉了 SimpTab 精选集 / desktoppr.co / visualhunt.com 背景源
+
+## 自定义Unsplash源 [#自定义unsplash源]
+
+> 主要操作位置 → 选项页
+
+> 1.6.0 支持自定义 Unsplash Access Key（可选）
+
+内置 Key 是 Demo 额度，公开仓库共用会很容易 403。可在 [Unsplash Developers](https://unsplash.com/oauth/applications) 创建应用，把 Access Key 贴到这里。
+
+> 1.5.3 版本支持自定义 Unsplash 源的功能，位置在 选项页 → 自定义 Unsplash 源，以下是一些常见的自定义方案
+
+* 将你的 Unsplash 帐号加入到自定义 Unsplash 源
+
+```
+user/{username}
+```
+
+* 将你的 Unsplash 帐号中 `likes` 的照片加入到自定义 Unsplash 源
+
+```
+user/{username}/likes
+```
+
+* 将你的 Unsplash 帐号中的 `collections` 加入到 自定义 Unsplash 源
+
+  ![Xnip2019-11-30\_11-16-39.png](https://res.cloudinary.com/simpread/image/upload/v1789968820/simptab/simptab/6cb57183bf682fe24646e57023a27163.png)
+
+```
+collection/{上图的 ID}
+```
+
+* 根据你的 `Chrome / 桌面分辨率` 显示图片（在上面三个的基础上修改）
+
+```
+user/{username}/1920x1080,user/{username}/likes/1920x1080,collection/2463312/1920x1080
+```
+
+更丰富的自定义请直接访问 [Unsplash Source](https://source.unsplash.com/)
+
+## 更改Unsplash源分辨率 [#更改unsplash源分辨率]
+
+> 主要操作位置 → 选项页
+
+> 此功能仅针对 \*\*Unsplash 源 \*\* 并需要 1.5.3.1129 （及以上版本） 的支持；
+
+![Xnip2018-11-30\_11-45-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968679/simptab/simptab/607d6d8faf57f1855962b85e63b0e9c2.jpg)
+
+**提示：**
+
+* Unsplash 源默认的分辨率为 2560 x 1440;
+* 可独立对任何自定义 Unsplash 源 设置分辨率，如 `collection/3593484/1080x1920` 或 `collection/3593482/4096×2160,collection/3593484/1080x1920` 均为合法设置；
+* 分辨率设置的越高，加载的会越慢，但视觉效果越好，在这种情况下可以不需要使用 「相框模式」，如下图：
+  ![Xnip2018-11-30\_11-54-50.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968786/simptab/simptab/22050fad707256fad99ddcd8fbeec7d0.jpg)
+* 分辨率越低，加载的会越快，所以建议根据自身的网络环境与分辨率设置；
+* 关于常见分辨率可以看 [维基百科](https://zh.wikipedia.org/wiki/%E6%98%BE%E7%A4%BA%E5%88%86%E8%BE%A8%E7%8E%87%E5%88%97%E8%A1%A8) 的说明；
+* 随着 1.5.3.1129 发布，同时新增加了两个 collenction，其中的照片均来自于 [Unsplash Archive](https://unsplash.com/@unsplasharchive/collections)
+  * [Unsplash Archive with Horizontal screen](https://unsplash.com/collections/3593484/unsplash-archive-with-horizontal-screen) 即`collection/3593484` 适合扁平（宽大于高）的浏览器样式，如上图效果；
+  * [Unsplash Archive with Vertical screen](https://unsplash.com/collections/3593482/unsplash-archive-with-vertical-screen) 即 `collection/3593482` 适合狭长（宽小于高）的浏览器样式，如下图：
+    ![Xnip2018-11-30\_11-54-50.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968787/simptab/simptab/59f596a08eee819244a346eee6010bdb.jpg)
+
+## 自动更换背景 [#自动更换背景]
+
+> 主要操作位置 → 选项页
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+> 配合 [控制栏](控制栏#全屏化) 和 [白噪音](白噪音) 效果更好！
+
+* 开启后可以将新标签页当作一个「相册」来看待，尤其是拥有副屏的用户。
+* 每隔 5 / 10 / 30 / 60 自动更换背景；
+* 自动更换的背景源依赖于 [自定义 Unsplash 源](#自定义Unsplash源)，当 自定义 Unsplash 源 无任何背景时无法使用；
+* 默认关闭，可通过 快捷键 <kbd>o</kbd> → 选项卡 → [背景是否自动更换（显示下一张）？
+  ](#自动更换背景) 选择更新时间来开启 或 [设置栏](设置栏) 开启。
+
+## 历史记录 [#历史记录]
+
+> 主要操作位置 → 选项页
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 历史记录可以记录 **最多五组** 之前的背景图片；
+* 支持快捷键 <kbd>→ </kbd> 和 <kbd>←</kbd> 切换；
+* 鼠标移到新标签页上方中部即可自动打开历史记录列表；
+* 开启此功能需要 快捷键 o → 打开选项卡 → 勾选「是否启用历史记录功能？」（勾选刷新后生效）
+
+![Xnip2018-12-28\_14-12-53.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968676/simptab/simptab/c4fcf844927c356f1f4fd0d0c632c3fb.jpg)
+
+## 自定义下载位置 [#自定义下载位置]
+
+> 主要操作位置 → 选项页
+
+> 此功能最低要求 1.5.5 版本。
+
+可以在 Chrome 默认下载目录下，自行设定下载文件夹，如果配合 Haze 或 Automator 等方式可实现在 PC 端自动更换壁纸。
+
+同时也可以利用一些命令行可以实现，如下：
+
+```
+# windows
+mklink /D "C:\Users\<user>\Downloads\desktop" "C:\Picture"
+
+# mac
+ln -s /home/<user>/desktop /Users/<user>/Pictures
+```
+
+## 收藏 [#收藏]
+
+> 收藏是 简 Tab 最初版本就自带的功能，它主要的功能包括：
+
+* 将任意 [背景源](#多种背景源) 的背景收藏到 Chrome 本地的安全沙箱中
+
+* 通过 [控制栏](控制栏#上传) 的背景也被收藏到 Chrome 本地的安全沙箱中
+
+* 可以在 [背景管理器](背景管理器#收藏) 中对这些收藏的背景进行管理
+
+在 [控制栏](控制栏#收藏) 对当前背景的 **收藏/取消收藏**；管理则在 [背景管理器](背景管理器#收藏)
+
+## 背景管理器 [#背景管理器]
+
+> 主要操作位置 → [背景管理器](背景管理器)
+
+> 里面包含了 **收藏集 · 探索** 三类特殊背景源
+
+## 地球每刻 [#地球每刻]
+
+> 主要操作位置 → 设置栏
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 感谢 [向日葵-8號](http://himawari8.nict.go.jp/) 提供地球自拍照；
+* 由于不愿过多消耗 [向日葵-8號](http://himawari8.nict.go.jp/) 的带宽，通过简 Tab 访问并获取到的地球照片均来在于 **自建的服务**；
+* 地球每刻的照片每小时更新一次；
+* 在此模式下，[背景自动播放](多种背景源#背景自动播放) 与 [历史记录](多种背景源#历史记录) 均无法使用；
+* 目前地球每刻提供了 `1100 x 1100` 的分辨率，未来会提供更高清的分辨率照片；
+* 快捷键 s 或鼠标移动右侧 → 开启侧栏 → 选中第四个选项「地球每刻」即可进入；
+
+![Xnip2018-12-28\_14-33-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968674/simptab/simptab/a10bf60d8723ba3bdfa357252cb12834.jpg)
+
+
+# 背景管理器 (/docs/%E8%83%8C%E6%99%AF%E7%AE%A1%E7%90%86%E5%99%A8)
+
+
+
+> 此功能最低要求 1.5.2 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+## 介绍 [#介绍]
+
+![Qphwxf.png](https://res.cloudinary.com/simpread/image/upload/v1789968827/simptab/simptab/256b0ace62c133cf38facf08bf6ee305.png)
+
+背景管理器主要针对以下三种背景源的管理：
+
+* 收藏
+
+* SimpTab 精选集
+
+* 探索  &#x2A;背景图来自 **自定义 Unsplash 源***
+
+管理包括了：**删除** · **设定为当前新标签页背景** · **下载** · **背景详细信息** 等。
+
+***
+
+> 以下是关于这三种背景源的介绍
+
+## 收藏 [#收藏]
+
+详细请看 [控制栏 · 收藏](#控制栏#收藏)
+
+## SimpTab精选集 [#simptab精选集]
+
+> 简 Tab 独有的功能，每周一期，每期若干张手工采集精选壁纸，类似 iOS App 的做法，获取往期壁纸，请关注 [简 Tab 精选集小秘](https://weibo.com/u/6632928109)，与收藏类似，详细请看 [功能一览](功能一览#主要功能之二)
+
+## 探索 [#探索]
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 快捷键 m → 背景管理器 → 选项卡第三个选项，即可找到探索；
+* 探索频道中的背景均来自「自定义 Unsplash 源」，进入「探索 Tab」后，显示的背景均来自与此；
+* 当「自定义 Unsplash 源」无任何内容时，无法使用探索；
+* 探索的背景是随机显示，滚动条向下到底后自动加载，加载的速度取决于你的网速；
+* 偶尔会发生无法加载的情况，请关闭背景管理器（ ESC 退出）后重新进入；
+
+![Xnip2018-12-28\_15-03-33.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968784/simptab/simptab/5ff78bc0a41740ebd6f9d5204fd751cb.jpg)
+
+
+# 设置栏 (/docs/%E8%AE%BE%E7%BD%AE%E6%A0%8F)
+
+
+
+> 设置栏是 简 Tab 最重要的功能集合，主要针对背景的一些快捷常规性设置。
+
+## 背景更换模式 [#背景更换模式]
+
+详细请看 [背景源](背景源#背景更换模式)
+
+## 背景图显示模式 [#背景图显示模式]
+
+详细请看 [背景源](背景源#背景图显示模式)
+
+## 多种背景源 [#多种背景源]
+
+详细请看 [背景源](背景源#多种背景源)
+
+## 自动更换背景 [#自动更换背景]
+
+详细请看 [背景源](背景源#自动更换背景)
+
+
+# 选项页 (/docs/%E9%80%89%E9%A1%B9%E9%A1%B5)
+
+
+
+> 此功能最低要求 1.5.3 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+***
+
+## 打开 [#打开]
+
+> 支持快捷键 <kbd>o</kbd> 或者 通过控制栏，如下图
+
+![Xnip2018-11-23\_15-46-25.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968828/simptab/simptab/43fe3613bf74530a59dd23d77e5b4d96.jpg)
+
+## 功能 [#功能]
+
+### 背景源 [#背景源]
+
+> 包含了以下功能，并且这些功能的介绍请看 [背景源](背景源)
+
+1. [自定义 Unsplash 源](背景源#自定义Unsplash源)
+
+2. [更改 Unsplash 源分辨率](背景源#更改Unsplash源分辨率)
+
+3. [自动更换背景](背景源#自动更换背景)
+
+4. [历史记录](背景源#历史记录)
+
+5. [自定义下载位置功能](背景源#自定义下载位置)
+
+### 时间 [#时间]
+
+> 在 1.5.5 之前此功能在 **设置栏**，先已移动到 **选项页**，同时增加 **可更改 12/24 小时制式**。
+
+### 自定义标题 [#自定义标题]
+
+> 此功能最低要求 1.5.5 版本。
+
+通过此功能，可以自定义新标签，支持：
+
+* 字符串，如 `我是新标签`；
+
+* 自执行语句，如 `(function(){xxx})()`
+
+### 自定义样式 [#自定义样式]
+
+> 与 [禅模式 · 自定义样式](禅模式#自定义样式)  的区别在于前者只应用于 **禅模式**，而选项页的自定样式属于全局。
+
+### 自定义搜索 [#自定义搜索]
+
+> 1.5.3 支持快捷搜索栏的自定义搜索，默认给出以下搜索引擎：
+
+```
+{"key":"g",  "color": "#4285F4", "title":"谷歌搜索",    "query": "https://www.google.com/search?q={query}"}
+{"key":"b",  "color": "#0C8484", "title":"必应搜索",    "query": "https://bing.com/search?q={query}"}
+{"key":"d",  "color": "#DE5833", "title":"DuckDuckGo", "query": "https://duckduckgo.com/?q={query}"}
+{"key":"bd", "color": "#2319DC", "title":"百度搜索",    "query": "https://www.baidu.com/s?wd={query}"}
+{"key":"wx", "color": "#1AAD19", "title":"微信搜索",    "query": "https://weixin.sogou.com/weixin?type=2&s_from=input&query={query}"}
+{"key":"z",  "color": "#0084FF", "title":"知乎搜索",    "query": "http://zhihu.sogou.com/zhihu?query={query}"}
+{"key":"bk", "color": "#459DF5", "title":"百科搜索",    "query": "http://www.baike.com/wiki/{query}"}
+{"key":"wk", "color": "#1177BB", "title":"维基百科",    "query": "https://zh.wikipedia.org/wiki/{query}"}
+{"key":"jd", "color": "#C81522", "title":"京东",       "query": "https://search.jd.com/Search?keyword={query}&enc=utf-8"}
+{"key":"tb", "color": "#FF692F", "title":"淘宝",       "query": "https://s.taobao.com/search?q={query}"}
+{"key":"v2", "color": "#333344", "title":"V2EX",      "query": "https://www.sov2ex.com/?q={query}"}
+{"key":"db", "color": "#55711C", "title":"豆瓣搜索",    "query": "https://www.douban.com/search?source=suggest&q={query}"}
+{"key":"fy", "color": "#4285F4", "title":"谷歌翻译",    "query": "https://translate.google.cn/#auto/en/{query}"}
+{"key":"dj", "color": "#AC525C", "title":"多吉翻译",    "query": "https://www.dogedoge.com/results?q={query}"}
+{"key":"mg", "color": "#26262A", "title":"Magi",       "query": "https://magi.com/search?q={query}"}
+```
+
+可以自行添加，添加方法如下：
+
+```
+{"key":"<快捷键>",  "color": "<颜色值>", "title":"<搜索引擎的名称>",    "query": "<查询语句，用 {query} 替换关键字>"}
+```
+
+使用快捷键 <kbd>q</kbd> 打开 快捷搜索栏，再使用 <kbd>s</kbd> 触发搜索，目前支持两中搜索方式：
+
+* 搜索全部 `s <搜索内容>`
+
+![Xnip2018-11-24\_11-46-02.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968830/simptab/simptab/c22e51c8335ec84efa7fc1055d62c544.jpg)
+
+* 搜索指定引擎 `s <key> <搜索内容>` （ 其中 `key` 的定义在 [选项页](选项页#自定义搜索) 且 **只能是第一个字母**，如下图 ）
+
+![Xnip2018-11-24\_11-48-32.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968830/simptab/simptab/dc80158a1e0e48340a0233cdbaaac8a9.jpg)
+
+### 书签栏 [#书签栏]
+
+详细请看 [书签栏](书签栏)
+
+### 常用网址 [#常用网址]
+
+详细请看 [常用网址](常用网址)
+
+
+# Changelog (English) (/docs/changelog/en)
+
+
+
+#### 1.6.0.819 [#160819]
+
+> 2026-08-26
+
+* :sparkles: Added Minor version updates now only show an update notification
+
+* :sparkles: Added Upload images now supports multi-image upload
+
+* :art: Improved Album mode visual update
+  ![image-20260826121545528](https://res.cloudinary.com/simpread/image/upload/v1787717747/config/001afaed7851f1e29fd747cbfe7c2556.png)
+
+* :bug: Fixed White background issue in frame mode [#144](https://github.com/Kenshin/simptab/issues/141)
+
+* :bug: Fixed Dialog being blocked by the top-right control bar at smaller sizes
+
+* :bug: Fixed Unable to use background upload feature; added multi-image upload support
+
+* :bug: Fixed Background Manager → Favorites Tab deletion error
+
+* :bug: Fixed Background Manager → Explore Tab occasionally failing to load
+
+* :bug: Fixed Zen mode not showing scripts after importing versions prior to 1.6.0
+
+#### 1.6.0 [#160]
+
+> 2026-08-19
+
+* :building\_construction: Rebuild MV3 adaptation
+
+* :art: Liquid Glass UI
+
+  > including: Control Bar / Bookmarks Bar / History / Frequently Visited / Options Tab / Background Manager / Script Manager / Notifications / White Noise / Shortcuts Overview → optimized show/hide logic + modern UI/UE + updated icons + semi-transparent background with auto contrast adjustment
+
+  ![image-20260826121816596](https://res.cloudinary.com/simpread/image/upload/v1787717898/config/2ecb1e23ba13fdbed331117e7ba791dd.png)
+
+* :lipstick: Improved Script Manager → switched to built-in script solution
+
+* :sparkles: Added Search: integrated browser history (off by default; enable in Options → Bookmarks Bar)
+
+* :bug: Fixed Bing random background source: using new source [bing.npanuhin.me](https://bing.npanuhin.me/) (multi-market yearly archive JSON + `_UHD` 3840×2160; falls back to official last 8 days on failure)
+
+* :bug: Fixed Earth Live background source: direct connection to NICT Himawari (`latest.json` + four `2d/550` tile stitching), deprecated the now-offline `simptab.now.sh` proxy
+
+* :bug: Fixed Unsplash.com background source: using official API; users can also enter their own Access Key
+
+* :bug: Fixed Unsplash.it background source: renamed to Lorem Picsum with updated display logic
+
+* :bug: Fixed Google Art background source: restored
+
+* :bug: Fixed Removed SimpTab Curated / desktoppr.co / visualhunt.com background sources
+
+#### 1.5.5 [#155]
+
+> 2019-11-27
+
+* :sparkles: Add Custom New Tab title
+
+* :sparkles: Add 12/24 hour convert
+
+* :sparkles: Add Zen mode scripts manage
+
+  ![](https://res.cloudinary.com/simpread/image/upload/v1789968646/simptab/simptab/406b9967035d92c0bb8187e24638d399.png)
+
+* :sparkles: Add Fullscreen
+
+* :sparkles: Add Custom scripts
+
+* :sparkles: Add Guide syste
+
+* :sparkles: Add <kbd>esc</kbd>
+
+* :sparkles: Add <kbd>\`</kbd> open/close Zen mode
+
+* :lipstick: Optimize Background image show/hide effect performance
+
+* :lipstick: Optimize All popup Window effect performance
+
+* :lipstick: Optimize Setting bar items
+
+* :lipstick: Optimize Options UI
+
+* :lipstick: Optimize Bookmarks History open/close performance
+
+* :lipstick: Optimize Controlbar Pin changed to Dropbox UI
+
+* :lipstick: Optimize Earth changed notify logic
+
+* :lipstick: Optimize `ESC` logic
+
+* :bug: Fix Bing random background origin bug
+
+* :bug: Fix Setting scrollbar error bug
+
+* :bug: Fix  [Issues Bugs](https://github.com/Kenshin/simptab/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+* :memo: All features
+  ![SimpTab 1.5.5](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/0051810111fc5bc2719733c1201a860f.png)
+
+***
+
+#### 1.5.4.303 [#154303]
+
+> 2019-03-31
+
+* :bug: Fix `Zen mode` background auto play bug
+* :bug: Fix `Zen mode` Histroy can be usage bug
+* :bug: Fix `Background Manage` style bug
+
+***
+
+#### 1.5.4.202 [#154202]
+
+> 2019-02-02
+
+* :bug: Fix `Bookmark` & `Send to mobile` shortcuts repeated questions
+* :sparkles: Add `Custom Script` via Zen mode, you can usage js write zen-mode
+
+  ![Xnip2019-02-02\_15-28-19.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/4e3a81c72aaf8da9e95ca2ee707c6c46.jpg)
+
+***
+
+#### 1.5.4 [#154]
+
+> 2018-12-31
+
+* :sparkles: Add Earth every moment
+
+  > Earth every moment image via [向日葵-8號](http://himawari8.nict.go.jp/)
+
+  ![Xnip2018-12-28\_14-33-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968674/simptab/simptab/a10bf60d8723ba3bdfa357252cb12834.jpg)
+
+* :sparkles: Add auto play background
+
+* :sparkles: Add History background image record
+
+  ![Xnip2018-12-28\_14-12-53.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968676/simptab/simptab/c4fcf844927c356f1f4fd0d0c632c3fb.jpg)
+
+* :sparkles: Add Explore
+
+* :sparkles: Add White noise
+
+  ![Xnip2018-12-28\_14-50-20.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968677/simptab/simptab/84161a95f2ac703da9a380de45bc78e7.jpg)
+
+* :sparkles: Add Send background image to iOS devices
+
+* :lipstick: Optimize background download logic
+
+* :lipstick: Optimize options UI
+
+* :memo: 1.5.4 All Feature
+  ![SimpTab 1.5.4](https://res.cloudinary.com/simpread/image/upload/v1789968678/simptab/simptab/c0e0c4b2d7838ffc74ad393f74bc6374.png)
+
+***
+
+#### 1.5.3.1129 [#1531129]
+
+> 2018-11-29
+
+* :sparkles: Add Custom Unsplash resolution
+  ![Xnip2018-11-30\_11-45-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968679/simptab/simptab/607d6d8faf57f1855962b85e63b0e9c2.jpg)
+
+* :bug: Fix `Custom Unsplash origin` bug
+
+* :bug:  Fix  disable origin can be work bug
+
+* :bug: Fix all origins disable logic bug
+
+***
+
+#### 1.5.3.1127 [#1531127]
+
+> 2018-11-27
+
+* :bug: First into Zen mode can't find option bug [#51](https://github.com/Kenshin/simptab/issues/51)
+
+* :bug: Global options and Zen mode options can be multiple open bug
+
+***
+
+#### 1.5.3 [#153]
+
+> 2018-11-25
+
+* :sparkles: Add [Zen mode](http://ksria.com/simptab/docs/#/禅模式)
+
+  ![禅模式](https://res.cloudinary.com/simpread/image/upload/v1789968680/simptab/simptab/235e4e85acfe5020bbb0278c12c9381c.jpg)
+
+* :sparkles: Add [Options](http://ksria.com/simptab/docs/#/选项页)
+
+  ![Options](https://res.cloudinary.com/simpread/image/upload/v1789968681/simptab/simptab/8b37f5d101e90bbb01c82724f54d515d.jpg)
+
+  > Include some important feature:
+
+  * [Custom Unsplash](http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90#%e8%87%aa%e5%ae%9a%e4%b9%89unsplash) and **subscribe background in sequence**
+
+  * Quick bar add multi-search[#47](https://github.com/Kenshin/simptab/issues/47)
+
+  * Custom Topsites
+
+  * Custom Golbal CSS [#43](https://github.com/Kenshin/simptab/issues/43)
+
+* :lipstick: Add Custom Topsites shortcuts, trigger key is z \~ `<1-9>`, more about [Custom Topsites](http://ksria.com/simptab/docs/#/%E9%80%89%E9%A1%B9%E9%A1%B5#%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ab%99%e7%82%b9)  [#19](https://github.com/Kenshin/simptab/issues/19)
+
+* :lipstick: Optimize Merge `Bookmark` `History` `Apps` [#46](https://github.com/Kenshin/simptab/issues/46)
+
+![Xnip2018-11-24\_16-42-13.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968682/simptab/simptab/3324f723a1ddfbd36e4161e15f4a6299.jpg)
+
+* :fire: Remove failed origins: `flickr.com`
+
+* :bug: Fix [#40](https://github.com/Kenshin/simptab/issues/40) [#41](https://github.com/Kenshin/simptab/issues/41) [#46](https://github.com/Kenshin/simptab/issues/46) Bug
+
+***
+
+#### 1.5.2 [#152]
+
+> 2018-10-14
+
+* :sparkles: Add `Bookmarks`
+  ![2018-10-12\_141443.png](https://res.cloudinary.com/simpread/image/upload/v1789968684/simptab/simptab/a2b4809fc53d314104bc1ccaadd124af.png)
+
+  1. Need to apply for permission
+
+  2. Search, support: `domain` & `title` keywords
+
+  > Search box like Quick bar style.
+
+  3. Recent
+
+* :sparkles: Add `Background Manage`
+
+  > For details, please see (Feature)\[[http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1](http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1)]
+
+  ![2018-10-11\_13-56-35.png](https://res.cloudinary.com/simpread/image/upload/v1789968685/simptab/simptab/a2c85d77d2d38e29c88d14eba0551670.png)
+
+  1. Open  `Background Manage`
+
+  2. Include: `Favorite` 与 `Subscibe` Tab
+
+  3. `Favorite` 与 `Subscibe` difference between, `Favorite`  can be remove
+
+  4. In this order: Author · Photos link · Set photo to background · Download
+
+* :sparkles: Add `About page`
+  ![2018-10-12\_144121.png](https://res.cloudinary.com/simpread/image/upload/v1789968687/simptab/simptab/86ac3b820189c151eb21f3620a22a22b.png)
+
+* :sparkles:  Add `Welcome page`
+  ![2018-10-12\_145647.png](https://res.cloudinary.com/simpread/image/upload/v1789968688/simptab/simptab/3f4a0376a897a69feb8c919612064a3b.png)
+
+* :sparkles: Add `Not Change background` checkitem
+
+  ![2018-10-12\_150254.png](https://res.cloudinary.com/simpread/image/upload/v1789968689/simptab/simptab/cbad6ed5389b60f159280a6423346c8e.png)
+
+* :sparkles: Add `Refresh` checkitem
+
+  ![2018-10-12\_151000.png](https://res.cloudinary.com/simpread/image/upload/v1789968690/simptab/simptab/a5efed5c5357d9eaf611225f2b185ec2.png)
+
+* :lipstick: Optimize `shortcuts`
+
+  ![快捷键](https://res.cloudinary.com/simpread/image/upload/v1789968691/simptab/simptab/b14f2b5e6a8b11146c34e6e37d9bde45.png)
+
+* :lipstick: Optimize `Bing today` `Bing random` `Favorite origins` priority
+
+  ![2018-10-12\_151532.png](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/795485add43d62f1ec9d62918ec79d55.png)
+
+* :hammer: Rework `main.html` layout
+
+* :lipstick: Optimize setting bar layout
+
+* :hammer: Optmize all `font-family`
+
+* :hammer: Rework Tooltip,  new scheme uses a third-party library [Balloon.css](https://kazzkiq.github.io/balloon.css/)
+
+* :hammer: Unified `bookmarks` 与 `setting` Effect
+
+* :hammer: Rework `Topsites - senior` UI
+
+* :memo: 1.5.2 All feature
+  ![SimpTab 1.5.2](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/7062c432e5c809e56fa6cdc01f0da1df.png)
+
+***
+
+#### 1.5.1 [#151]
+
+> 2018-08-12
+
+* :sparkles: Add &#x2A;*【SimpTab Collections】**
+
+  ![Imgur](https://res.cloudinary.com/simpread/image/upload/v1789968694/simptab/simptab/697b4f2188c8c2fa0cbc6e0475f0425a.png)
+
+* :sparkles: Add [Waves](http://fian.my.id/Waves/) Effect
+
+* :lipstick: Optimize UI，like Google Metarial Design *Include: Topsites / Setting / Tooltip / Clock*
+
+* :arrow\_up: Update venders *Include: jQuery / Notify*
+
+* :bug: Fix `bing.com Today` not work bug [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
+
+* :bug: Fix `bing.com Random` not work bug &#x2A;origin from [https://bingwallpaper.com/](https://bingwallpaper.com/)*
+
+* :bug: Fix `favorite` loading slow bug
+
+* :fire: Remove Setting bar sharde
+
+* :fire: Remove failed origins: `500px.com` `nasa.gov`
+
+***
+
+#### 1.5.0 [#150]
+
+> 2016-02-11
+
+* :sparkles: Add pin feature.
+
+* :sparkles: Add dislike feature.
+
+* :sparkles: Add background remote cdns feature.
+
+* :bug: Fix checkbox/radio item click invalid bug. [issues 16](https://github.com/kenshin/simptab/issues/16)
+
+***
+
+#### 1.4.3 [#143]
+
+> 2016-01-20
+
+* :sparkles: More detailed version for version feature.
+
+* :sparkles: Dynamic set permissions.
+
+* :sparkles: Add background position item, intelligent adjusting background position.
+
+* :pencil2: Modify settin bar icon.
+
+***
+
+#### 1.4.2 [#142]
+
+> 2015-12-25
+
+* :sparkles: Add new background: [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
+
+* :sparkles: Add special day(SimpTab Images) to Setting bar.
+
+***
+
+#### 1.4.1 [#141]
+
+> 2015-12-23
+
+* :sparkles: Add 'senior' and 'normal' topsites.( old topsites only 'simple' mode.)
+
+* :bug: Fix 'simple' mode topsites hover display speed.
+
+* :bug: Fix notifiaction show z-index bug. [issues 8](https://github.com/kenshin/simptab/issues/8)
+
+***
+
+#### 1.4.0 [#140]
+
+> 2015-12-10
+
+* :sparkles: Feature: [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+
+* :sparkles: Add multi background origin: `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
+
+* :sparkles: Add update multi customer background.
+
+* :sparkles: Add fovorite background.
+
+* :sparkles: Add top sites.
+
+* :sparkles: Add Download new background progress.
+
+* :sparkles: Add Favorite/Upload background notification.
+
+* :sparkles: Add Support omnibox shortcuts.
+
+* :hammer: Rework source.
+
+* :bug: Fix same version 1.0.3 bugs,include: [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
+
+***
+
+#### 1.0.3 [#103]
+
+> 2014-08-29
+
+* :bug: Fix Download background's duplication of name error.
+
+* :bug: Fix when first running, info and download's title exist's error.
+
+* :bug: Fix when background is default wallpaper, info and download's title exist's error.
+
+* :bug: Fix when locale not zh-cn, change knows to search link.
+
+* :bug: Fix change clock's font-family to `roboto.ttf`.
+
+***
+
+#### 1.0.2 [#102]
+
+> 2014-08-28
+
+* :sparkles: Add multi-language to main.html's title.
+
+* :sparkles: Add open Bookmark/Apps/Histroy/Info at current tab page.
+
+* :sparkles: Add controlbar to shortcuts.
+
+***
+
+#### 1.0.1 [#101]
+
+> 2014-08-22
+
+* :sparkles: Add website and Rote link with main.html's footer.
+
+* :pencil2: Modify sns share title multi-language.
+
+* :bug: Fixed issues change SimpTab - Minimalistic New Tab Page by Chrome Extensions to SimpTab - New Tab from main.html's title.
+
+* :bug: Fixed issues some of the copywriting error.
+
+***
+
+#### 1.0.0 [#100]
+
+> 2014-08-20
+
+* :sparkles: Add Automatic recognition of languages (Chinese simplified, Chinese traditional, English).
+
+* :sparkles: Add Daily/randomly changing background from Bing.com.
+
+* :sparkles: Add Downloading (HD) background from Bing.com.
+
+* :sparkles: Add View the current background of meaning.
+
+
+# 更新日志（简体中文） (/docs/changelog)
+
+
+
+#### 1.6.0.819 [#160819]
+
+> 2026-08-26
+
+* :sparkles: 新增 小版本更新仅出现更新提示
+
+* :sparkles: 新增 上传图片支持多图上传
+
+* :art: 优化 相册模式视觉更新
+  ![image-20260826121545528](https://res.cloudinary.com/simpread/image/upload/v1787717747/config/001afaed7851f1e29fd747cbfe7c2556.png)
+
+* :bug: 修复 相框模式下白底的问题 [#144](https://github.com/Kenshin/simptab/issues/141)
+
+* :bug: 修复 较小尺寸下对话框被右上角控制栏遮挡
+
+* :bug: 修复 无法使用上传背景的功能，新增支持多图上传
+
+* :bug: 修复 背景管理器 → 收藏 Tab 删除错误
+
+* :bug: 修复 背景管理器 → 探索 Tab 偶尔出现无法加载的问题
+
+* :bug: 修复 禅模式导入 1.6.0 之前版本后没有显示脚本的问题
+
+#### 1.6.0 [#160]
+
+> 2026-08-19
+
+* :building\_construction: 重构 **适配 MV3 方案**
+
+* :art: 界面 **液态玻璃设计界面**
+
+  > 更符合现代应用方案，包括：控制栏/书签栏/历史记录/常用网址/选项卡/背景管理器/脚本管理器/提示/白噪音/快捷键一览 → 优化显示/隐藏逻辑 + 现代 UI/UE + 更新 Icon + 背景半透明并自动调整对比度
+
+  ![image-20260826121816596](https://res.cloudinary.com/simpread/image/upload/v1787717898/config/2ecb1e23ba13fdbed331117e7ba791dd.png)
+
+* :lipstick: 优化 脚本管理器 → 改为内置脚本方案
+
+* :sparkles: 新增 搜索：接入了浏览器历史记录（默认关闭，需要在选项卡 → 书签栏开启）
+
+* :bug: 修复 必应随机背景源：使用新背景源 [bing.npanuhin.me](https://bing.npanuhin.me/)（多市场年份归档 JSON + `_UHD` 3840×2160；失败退回官方近 8 天）
+
+* :bug: 修复 地球每刻背景源：直连 NICT 向日葵（`latest.json` + 四块 `2d/550` 瓦片拼接），废弃已下线的 `simptab.now.sh` 代理
+
+* :bug: 修复 Unsplash.com 背景源：使用官方方案，同时可填入用户自己的 Access Key
+
+* :bug: 修复 Unsplash.it 背景源：更名为 Lorem Picsum 并更新显示逻辑
+
+* :bug: 修复 Google Art 背景源：恢复使用
+
+* :bug: 修复 去掉了 SimpTab 精选集 / desktoppr.co / visualhunt.com 背景源
+
+#### 1.5.5 [#155]
+
+> 2019-11-27
+
+* :sparkles: 新增 [12/24 制式转换](选项页#时间)
+
+* :sparkles: 新增 [自定义标题栏](选项页#自定义标题栏)
+
+* :sparkles: 新增 [禅模式 · 脚本管理器](禅模式#脚本管理器)
+
+  ![](https://res.cloudinary.com/simpread/image/upload/v1789968646/simptab/simptab/406b9967035d92c0bb8187e24638d399.png)
+
+* :sparkles: 新增 [全屏](控制栏#全屏化)
+
+* :sparkles: 新增 [自定义下载文件夹](背景源#自定义下载位置)
+
+* :sparkles: 新增 [全局性自定义脚本](选项页#自定义脚本)
+
+* :sparkles: 新增 **新手引导**
+
+* :sparkles: 新增 <kbd>esc</kbd> 退出方案，支持绝大多数界面/功能
+
+* :sparkles: 新增 <kbd>\`</kbd> 进入/退出 [禅模式](禅模式)
+
+* :lipstick:  优化 **背景进入/更换** 时的缓动效果
+
+* :lipstick:  优化 **界面弹出** 时的效率
+
+* :lipstick:  优化 [设置栏](设置栏) 的项目设置，去掉了与背景无关的项目，将其转移到了 [选项页](选项页)
+
+* :lipstick:  优化 [选项页](选项页)  的界面设计
+
+* :lipstick:  优化 [书签栏](选项页)  [历史记录](历史记录)  太过灵活的问题
+
+* :lipstick:  优化 [固定](控制栏#固定) 改为 `Dropdown` 方式
+
+* :lipstick: 优化 [地球每刻](背景源#地球每刻) [过频繁的更新提示](https://github.com/Kenshin/simptab/issues/59)
+
+* :bug: 修复 全局 `ESC` 退出逻辑混乱的问题
+
+* :bug: 修复 `必应随机背景源` 失效的问题
+
+* :bug: 修复 [快捷搜索栏](书签栏#快捷搜索栏) 的各种相关问题
+
+* :bug: 修复 [设置栏](设置栏) 滚动条错误的问题
+
+* :bug: 修复 [Issues Bugs](https://github.com/Kenshin/simptab/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+* :bug: 修复  [固定](控制栏#固定) 逻辑，优先级高于 [历史记录](历史记录)  `自动播放` `刷新（下一张）` 小于 `地球每刻`
+
+* :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.5](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/0051810111fc5bc2719733c1201a860f.png)
+
+***
+
+#### 1.5.4.330 [#154330]
+
+> 2019-03-31
+
+> **本次更新为静默更新（不会有任何提示）**
+
+* :bug: 修复 `禅模式` 下自动播放的错误；
+* :bug: 修复 `禅模式` 下历史背景可用的错误；
+* :bug: 修复 `背景管理器` 的样式错误；
+
+***
+
+#### 1.5.4.202 [#154202]
+
+> 2019-02-02
+
+> **本次更新为静默更新（不会有任何提示）**
+
+* :bug: 修复 `书签栏` 与 `发送到手机` 快捷键重复的问题， `发送到手机` 改为 快捷键 `e`
+* :sparkles: 新增 禅模式 `自定义脚本`，通过此功能，只需要使用简单的 JavaScript 可以让禅模式拥有更多 **玩法**  👉 [https://github.com/Kenshin/simptab/labels/script](https://github.com/Kenshin/simptab/labels/script)
+
+  ![Xnip2019-02-02\_15-28-19.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/4e3a81c72aaf8da9e95ca2ee707c6c46.jpg)
+
+***
+
+#### 1.5.4 [#154]
+
+> 2018-12-31
+
+> 本次更新的摘要说明，[请看这里](http://ksria.com/simptab/welcome/version_1.5.4.html)
+
+* :sparkles: 新增 [地球每刻](多种背景源#地球每刻)；
+
+  > 地球每刻的照片均来自 [向日葵-8號](http://himawari8.nict.go.jp/) ，由于不愿过多消耗向日葵-8號的带宽，通过简 Tab 访问并获取到的地球照片均来在于自建的服务，每小时更新一次。
+
+  ![Xnip2018-12-28\_14-33-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968674/simptab/simptab/a10bf60d8723ba3bdfa357252cb12834.jpg)
+
+* :sparkles: 新增 [背景自动更新](多种背景源#背景自动更新)
+
+* :sparkles: 新增 [历史记录](多种背景源#历史记录)
+
+  ![Xnip2018-12-28\_14-12-53.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968676/simptab/simptab/c4fcf844927c356f1f4fd0d0c632c3fb.jpg)
+
+* :sparkles: 新增 [探索](多种背景源#探索)
+
+  > 背景管理器增加了新的 Tab - 探索，通过它可以随机显示来自 [自定义Unsplash](多种背景源#自定义Unsplash) 的精美壁纸。
+
+* :sparkles: 新增 [白噪音](白噪音)
+
+  > 得益于 [背景自动播放](多种背景源#背景自动播放) 与 [地球每刻](多种背景源#地球每刻) 功能，现在你可以在新标签页停留更多的时间，播放白噪音就是一个非常不错的方案。目前内置了：咖啡馆、爵士乐、下雨天、雷声 四种音效，未来会加入更多音源。
+
+  ![Xnip2018-12-28\_14-50-20.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968677/simptab/simptab/84161a95f2ac703da9a380de45bc78e7.jpg)
+
+* :sparkles: 新增 [发送到手机](发送到手机)
+
+  > 借助 JSBox 可以将新标签页中的背景发送到手机端（ iOS 设备）上了。
+
+* :lipstick: 优化了`下载背景到本地` 的算法；
+
+* :lipstick: 优化了 `选项卡` 界面布局；
+
+* :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.4](https://res.cloudinary.com/simpread/image/upload/v1789968678/simptab/simptab/c0e0c4b2d7838ffc74ad393f74bc6374.png)
+
+***
+
+#### 1.5.3.1129 [#1531129]
+
+> 2018-11-29
+
+> **本次更新为静默更新（不会有任何提示）**
+
+* :sparkles: 新增 更改 Unsplash 源分辨率；详情请看 [自定义分辨率](多种背景源#自定义分辨率)
+  ![Xnip2018-11-30\_11-45-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968679/simptab/simptab/607d6d8faf57f1855962b85e63b0e9c2.jpg)
+
+* :bug: 修复 `自定义 Unsplash 源` 的逻辑错误；
+
+* :bug:  修复 已 disable 的背景源仍在工作的错误；
+
+* :bug: 修复 当取消全部背景源时的逻辑错误；
+
+***
+
+#### 1.5.3.1127 [#1531127]
+
+> 2018-11-27
+
+> **本次更新为静默更新（不会有任何提示）** ，主要修复以下两个问题：
+
+* :bug: 进入禅模式后，不容易找到选项卡的问题； [#51](https://github.com/Kenshin/simptab/issues/51)
+
+* :bug: （全局）选项页 · （禅模式）选项页重复开启的问题；
+
+***
+
+#### 1.5.3 [#153]
+
+> 2018-11-25
+
+* :sparkles: 新增 [禅模式](http://ksria.com/simptab/docs/#/禅模式)；
+
+  > 包含了：多种主题 · 模块化 · 自定义样式 等，适合喜欢纯色背景且无干扰界面的用户。
+
+  ![禅模式](https://res.cloudinary.com/simpread/image/upload/v1789968680/simptab/simptab/235e4e85acfe5020bbb0278c12c9381c.jpg)
+
+* :sparkles: 新增 [选项页](http://ksria.com/simptab/docs/#/选项页)；
+
+  ![选项页](https://res.cloudinary.com/simpread/image/upload/v1789968681/simptab/simptab/8b37f5d101e90bbb01c82724f54d515d.jpg)
+
+  > 包括以下几个重要功能：
+
+  * [自定义Unsplash](http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90#%e8%87%aa%e5%ae%9a%e4%b9%89unsplash) 以及 精选集背景的顺序显示；
+
+  * 快捷搜索栏接入多种搜索引擎并可定制化； [#47](https://github.com/Kenshin/simptab/issues/47)
+
+  * Topsites 在 `简单模式 · 高级模式` 的基础上增加了自定义的功能；
+
+  * 全局化的自定义样式； [#43](https://github.com/Kenshin/simptab/issues/43)
+
+* :sparkles: 新增 自定义站点的 快捷键支持，触发键为 z \~ `<1-9>` 号，详细请看 [自定义站点](http://ksria.com/simptab/docs/#/%E9%80%89%E9%A1%B9%E9%A1%B5#%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ab%99%e7%82%b9)  [#19](https://github.com/Kenshin/simptab/issues/19)
+
+* 💄  优化了  `Bookmark` `History` `Apps` 合并为一个横向 icon bar [#46](https://github.com/Kenshin/simptab/issues/46)
+
+  ![Xnip2018-11-24\_16-42-13.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968682/simptab/simptab/3324f723a1ddfbd36e4161e15f4a6299.jpg)
+
+* :fire: 去掉了 已失效的背景源 `flickr.com`；
+
+* :bug: 修复了 [#40](https://github.com/Kenshin/simptab/issues/40) [#41](https://github.com/Kenshin/simptab/issues/41) [#46](https://github.com/Kenshin/simptab/issues/46) 错误；
+
+***
+
+#### 1.5.2 [#152]
+
+> 2018-10-14
+
+* :sparkles: 新增 `书签栏`；
+  ![2018-10-12\_141443.png](https://res.cloudinary.com/simpread/image/upload/v1789968684/simptab/simptab/a2b4809fc53d314104bc1ccaadd124af.png)
+
+  1. 需要申请权限，侧栏 → 选中 `开启书签栏`；
+
+  2. 搜索（支持：`域名` 和 `标题`）
+
+  > 点击后，打开类似 Quick bar 的搜索。
+
+  3. 近期使用的 URL;
+
+* :sparkles: 新增 `背景管理器` （点击控制栏 → 设定 → 背景管理器）
+
+  > 详细说明请看 (功能一览)\[[http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1](http://ksria.com/simptab/docs/#/功能一览?id=主要功能之一-1)]
+
+  ![2018-10-11\_13-56-35.png](https://res.cloudinary.com/simpread/image/upload/v1789968685/simptab/simptab/a2c85d77d2d38e29c88d14eba0551670.png)
+
+  1. 开启  `背景管理器` ；
+
+  2. 1.5.2 包含：`收藏` 与 `订阅` 两个 Tab ；
+
+  3. `收藏` 与 `订阅` 的区别：前者可以删除；
+
+  4. 依次为：照片的作者 · 照片的出处 · 设置为当前背景 · 下载；
+
+* :sparkles: 新增 `关于` 页面；
+  ![2018-10-12\_144121.png](https://res.cloudinary.com/simpread/image/upload/v1789968687/simptab/simptab/86ac3b820189c151eb21f3620a22a22b.png)
+
+* :sparkles: 新增 `欢迎` 页面；
+  ![2018-10-12\_145647.png](https://res.cloudinary.com/simpread/image/upload/v1789968688/simptab/simptab/3f4a0376a897a69feb8c919612064a3b.png)
+
+* :sparkles: 新增 `只显示当前背景` 的选项；
+
+  > 与 `Pin` 的区别是，选中此项后，当前背景永不再改变；后者只是固定一段时间；
+
+  ![2018-10-12\_150254.png](https://res.cloudinary.com/simpread/image/upload/v1789968689/simptab/simptab/cbad6ed5389b60f159280a6423346c8e.png)
+
+* :sparkles: 新增 `刷新（下一张）` 的选项；
+
+  > 点击后，会在当前 New Tab 基础上更新下一张背景；
+
+  ![2018-10-12\_151000.png](https://res.cloudinary.com/simpread/image/upload/v1789968690/simptab/simptab/a5efed5c5357d9eaf611225f2b185ec2.png)
+
+* :lipstick: 优化了 `全局快捷键`
+
+  > 通过全局快捷键 <kbd>?</kbd> 呼出
+
+  ![快捷键](https://res.cloudinary.com/simpread/image/upload/v1789968691/simptab/simptab/b14f2b5e6a8b11146c34e6e37d9bde45.png)
+
+* :lipstick: 优化了 `必应每日更新` `必应随机背景` `收藏夹背景源` 的优先级，现在可以关闭它们；
+
+  ![2018-10-12\_151532.png](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/795485add43d62f1ec9d62918ec79d55.png)
+
+* :hammer: 重构了页面布局，使其更符合 HTML5 与 Material Design 风格；
+
+* :lipstick: 优化了侧栏的布局，去掉了无用的分享功能；
+
+* :hammer: 重构了全部的字体样式，去掉了之前 `繁体` `English` 的特殊字体方案；
+
+* :hammer: 重构了 Tooltip，新方案使用了第三方库 [Balloon.css](https://kazzkiq.github.io/balloon.css/)
+
+* :hammer: 统一了 `bookmarks` 与 `setting` 的动效；
+
+* :hammer: 重构了 `Topsites - 高级模式(九宫格)` 的 UI;
+
+* :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.2](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/7062c432e5c809e56fa6cdc01f0da1df.png)
+
+***
+
+#### 1.5.1 [#151]
+
+> 2018-08-12
+
+* :sparkles: 增加了 全新的 &#x2A;*【SimpTab 精选集】**；
+
+  > 类似 iOS 某些壁纸 App 的方式，通过手动采集的方式更新，每周一期。
+
+  ![Imgur](https://res.cloudinary.com/simpread/image/upload/v1789968694/simptab/simptab/697b4f2188c8c2fa0cbc6e0475f0425a.png)
+
+* :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 动效；
+
+* :sparkles: 增加了 全新的背景布局：`相框布局`；
+  ![Imgur](https://res.cloudinary.com/simpread/image/upload/v1789968730/simptab/simptab/5754c4a09f7cd2b869223ae6b8d7c4ba.jpg)
+
+* :lipstick: 优化了 界面，使其更符合 Google Metarial Design 风格； *包括：Topsites / 侧栏 / Tooltip / Clock 等*
+
+* :lipstick: 更新了 若干依赖；*包括： jQuery / Notify*
+
+* :bug: 修复了 `bing.com 每日图片` 无法获取的错误； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
+
+* :bug: 修复了 `随机 bing.com` 的地址源失效问题；&#x2A;新的地址来源于 [https://bingwallpaper.com/](https://bingwallpaper.com/)*
+
+* :bug: 修复了 `收藏` 后的壁纸加载慢的问题；
+
+* :fire: 去掉了 侧栏分享的功能；
+
+* :fire: 去掉了 已失效的背景源 `500px.com` `nasa.gov`；
+
+***
+
+#### 1.5.0 [#150]
+
+> 2016-02-11
+
+* :sparkles: 增加了 `Pin` 功能；
+
+  > 可以固定一段时间，包括： 0.5, 1, 2, 4, 8 小时
+
+* :sparkles: 增加了 `dislike` 功能；
+
+  > 加入后不再显示当前背景；
+
+* :sparkles: 增加了 背景源的 CDN 功能；
+
+* :bug: 修复了 `checkbox/radio` 偶尔无法点击的错误； [issues 16](https://github.com/kenshin/simptab/issues/16)
+
+***
+
+#### 1.4.3 [#143]
+
+> 2016-01-20
+
+* :sparkles: 增加了 版本介绍；
+
+* :sparkles: 增加了 `动态权限设定` 功能；
+
+* :sparkles: 增加了 `背景源的显示位置`，包括： `居中`和 `左上角` 对其；
+
+* :pencil2: 优化了设定栏的 icon；
+
+***
+
+#### 1.4.2 [#142]
+
+> 2015-12-25
+
+* :sparkles: 增加了 新的背景源： [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
+
+* :sparkles: 增加了 新的背景源： `SimpTab Images`.
+
+***
+
+#### 1.4.1 [#141]
+
+> 2015-12-23
+
+* :sparkles: 常用网址增加了全新的： `高级布局` 方式；
+
+* :bug: 调整了 `常用网址（简单布局）` 鼠标 hover 时的显示速度.
+
+* :bug: 修复 `Notifiy` z-index 错误； [issues 8](https://github.com/kenshin/simptab/issues/8)
+
+***
+
+#### 1.4.0 [#140]
+
+> 2015-12-10
+
+* :sparkles: 增加了 多语言，包括： [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+
+* :sparkles: 增加了 新的背景源： `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
+
+* :sparkles: 增加了 `上传背景源` 功能；
+
+* :sparkles: 增加了 `fovorite` 功能；
+
+* :sparkles: 增加了 `top sites` 功能；
+
+* :sparkles: 增加了 加载新的背景源时的进度显示；
+
+* :sparkles: 增加了 `Favorite/Upload` 背景源的提示；
+
+* :sparkles: 增加了 `omnibox` 快捷键；
+
+* :hammer: 重构了代码；
+
+* :bug: 修复了 `1.0.3` 版版的错误，包括： [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
+
+***
+
+#### 1.0.3 [#103]
+
+> 2014-08-29
+
+* :sparkles: 增加了 `clock's font-family` to `roboto.ttf`.
+
+* :bug: 修复了 下载背景时重复命名的错误；
+
+* :bug: 修复了 第一次安装下载背景的错误；
+
+* :bug: 修复了 默认背景下载时命名的错误；
+
+* :bug: 修复了 非 `zh-cn` 环境下 `info 链接` 指向的错误；
+
+***
+
+#### 1.0.2 [#102]
+
+> 2014-08-28
+
+* :sparkles: 增加了 `main.html's title` 的多语言；
+
+* :sparkles: 增加了 `Bookmark/Apps/Histroy/Info` 在本页打开的功能；
+
+* :sparkles: 增加了 `controlbar` 的快捷键方案；
+
+***
+
+#### 1.0.1 [#101]
+
+> 2014-08-22
+
+* :sparkles: 增加了 `footer 栏` 投票的链接；
+
+* :pencil2: 优化了 `分享 icon` 的多语言；
+
+* :bug: 修复了 main.html's title 为 `SimpTab - Minimalistic New Tab Page by Chrome Extensions`;
+
+* :bug: 修复了 一些文案上的错误；
+
+***
+
+#### 1.0.0 [#100]
+
+> 2014-08-20
+
+* :sparkles: 增加了 `多语言` 环境；
+
+* :sparkles: 增加了 `每日/随机` （ 从 `bing.com` ）更换背景；
+
+* :sparkles: 增加了 `下载背景` 功能；
+
+* :sparkles: 增加了 `info` 功能；
+
+
+# 更新日志（繁體中文） (/docs/changelog/tw)
+
+
+
+#### 1.6.0.819 [#160819]
+
+> 2026-08-26
+
+* :sparkles: 新增 小版本更新僅出現更新提示
+
+* :sparkles: 新增 上傳圖片支援多圖上傳
+
+* :art: 優化 相簿模式視覺更新
+
+  ![image-20260826121545528](https://res.cloudinary.com/simpread/image/upload/v1787717747/config/001afaed7851f1e29fd747cbfe7c2556.png)
+
+* :bug: 修復 相框模式下白底的問題 [#144](https://github.com/Kenshin/simptab/issues/141)
+
+* :bug: 修復 較小尺寸下對話框被右上角控制列遮擋
+
+* :bug: 修復 無法使用上傳背景的功能，新增支援多圖上傳
+
+* :bug: 修復 背景管理器 → 收藏 Tab 刪除錯誤
+
+* :bug: 修復 背景管理器 → 探索 Tab 偶爾出現無法載入的問題
+
+* :bug: 修復 禪模式匯入 1.6.0 之前版本後沒有顯示腳本的問題
+
+#### 1.6.0 [#160]
+
+> 2026-08-19
+
+* :building\_construction: 重构 適配 MV3 方案
+
+* :art: 界面 **液態玻璃設計界面**
+
+  > 包括：控制列/書籤列/歷史記錄/常用網址/選項卡/背景管理器/腳本管理器/提示/白噪音/快捷鍵一覽 → 優化顯示/隱藏邏輯 + 現代 UI/UE + 更新 Icon + 背景半透明並自動調整對比度
+
+  ![image-20260826121816596](https://res.cloudinary.com/simpread/image/upload/v1787717898/config/2ecb1e23ba13fdbed331117e7ba791dd.png)
+
+* :lipstick: 優化 腳本管理器 → 改為內建腳本方案
+
+* :sparkles: 新增 搜尋：接入了瀏覽器歷史記錄（預設關閉，需要在選項卡 → 書籤列開啟）
+
+* :bug: 修復 必應隨機背景源：使用新背景源 [bing.npanuhin.me](https://bing.npanuhin.me/)（多市場年份歸檔 JSON + `_UHD` 3840×2160；失敗退回官方近 8 天）
+
+* :bug: 修復 地球每刻背景源：直連 NICT 向日葵（`latest.json` + 四塊 `2d/550` 瓦片拼接），廢棄已下線的 `simptab.now.sh` 代理
+
+* :bug: 修復 Unsplash.com 背景源：使用官方方案，同時可填入使用者自己的 Access Key
+
+* :bug: 修復 Unsplash.it 背景源：更名為 Lorem Picsum 並更新顯示邏輯
+
+* :bug: 修復 Google Art 背景源：恢復使用
+
+* :bug: 修復 去掉了 SimpTab 精選集 / desktoppr.co / visualhunt.com 背景源
+
+#### 1.5.5 [#155]
+
+> 2019-11-27
+
+* :sparkles: 新增 [12/24 制式轉換](选项页#时间)
+
+* :sparkles: 新增 [自定義標題欄](选项页#自定义标题)
+
+* :sparkles: 新增 [禪模式 · 腳本管理器](禅模式#脚本管理器)
+
+  ![](https://res.cloudinary.com/simpread/image/upload/v1789968646/simptab/simptab/406b9967035d92c0bb8187e24638d399.png)
+
+* :sparkles: 新增 [全屏](控制栏#全屏化)
+
+* :sparkles: 新增 [自定義下載文件夾](背景源#自定义下载位置)
+
+* :sparkles: 新增 [全局性自定義腳本](选项页#自定义脚本)
+
+* :sparkles: 新增 **新手引導**
+
+* :sparkles: 新增 <kbd>esc</kbd> 退出方案，支持絕大多數界面/功能
+
+* :sparkles: 新增 <kbd>\`</kbd> 進入/退出 [禅模式](禅模式)
+
+* :lipstick:  優化 **背景進入/更換** 時的緩動效果
+
+* :lipstick:  優化 **界面彈出** 時的效率
+
+* :lipstick:  優化 [設置欄](设置栏) 的項目設置，去掉了與背景無關的項目，將其轉移到了 [选项页](选项页)
+
+* :lipstick:  優化 [选项页](选项页)  的界面設計
+
+* :lipstick:  優化 [書籤欄](书签栏) [歷史記錄](历史记录) 太過靈活的問題
+
+* :lipstick:  優化 [固定](控制栏#固定) 改為 `Dropdown` 方式
+
+* :lipstick: 優化 [地球每刻](背景源#地球每刻) [過頻繁的更新提示](https://github.com/Kenshin/simptab/issues/59)
+
+* :bug: 修復 全局 `ESC` 退出邏輯混亂的問題
+
+* :bug: 修復 `必應隨機背景源` 失效的問題
+
+* :bug: 修復 [快捷搜索欄](书签栏#快捷搜索栏) 的各種相關問題
+
+* :bug: 修復 [設置欄](设置栏) 滾動條錯誤的問題
+
+* :bug: 修復 [Issues Bugs](https://github.com/Kenshin/simptab/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+* :bug: 修復  [固定](控制栏#固定) 邏輯，優先順序高於 [歷史記錄](历史记录) `自動播放` `刷新（下一張）` 小於 `地球每刻`
+
+* :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.5](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/0051810111fc5bc2719733c1201a860f.png)
+
+***
+
+#### 1.5.4.330 [#154330]
+
+> 2019-03-31
+
+> **本次更新為靜默更新（不會有任何提示）**
+
+* :bug: 修復 `禪模式` 下自動播放的錯誤；
+* :bug: 修復 `禪模式` 下歷史背景可用的錯誤；
+* :bug: 修復 `背景管理器` 的樣式錯誤；
+
+#### 1.5.4.202 [#154202]
+
+> 2019-02-02
+
+> **本次更新為靜默更新（不會有任何提示）**
+
+* :bug: 修復 `書籤欄` 與 `發送到手機` 快捷鍵重複的問題， `發送到手機` 改為 快捷鍵 `e`
+* :sparkles: 新增 禪模式 `自定義腳本`，通過此功能，只需要使用簡單的 JavaScript 可以讓禪模式擁有更多 **玩法**  👉 [https://github.com/Kenshin/simptab/labels/script](https://github.com/Kenshin/simptab/labels/script)
+
+  ![Xnip2019-02-02\_15-28-19.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968672/simptab/simptab/4e3a81c72aaf8da9e95ca2ee707c6c46.jpg)
+
+***
+
+#### 1.5.4 [#154]
+
+> 2018-12-31
+
+> 本次更新的摘要說明，[請看這裡](http://ksria.com/simptab/welcome/version_1.5.4.html)
+
+* :sparkles: 新增 [地球每刻](多种背景源#地球每刻)；
+
+  > 地球每刻的照片均來自 向日葵-8號 ，由於不願過多消耗向日葵-8號的帶寬，通過簡 Tab 訪問並獲取到的地球照片均來在於自建的服務，每小時更新一次。
+
+  ![Xnip2018-12-28\_14-33-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968674/simptab/simptab/a10bf60d8723ba3bdfa357252cb12834.jpg)
+
+* :sparkles: 新增 [背景自動更新](多种背景源#背景自动更新)
+
+* :sparkles: 新增 [歷史記錄](多种背景源#历史记录)
+
+  ![Xnip2018-12-28\_14-12-53.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968676/simptab/simptab/c4fcf844927c356f1f4fd0d0c632c3fb.jpg)
+
+* :sparkles: 新增 [探索](多种背景源#探索)
+
+  > 背景管理器增加了新的 Tab - 探索，通過它可以隨機顯示來自 [自定義Unsplash](多种背景源#自定义Unsplash) 的精美壁紙。
+
+* :sparkles: 新增 [白噪音](白噪音)
+
+  > 得益於 [背景自動播放](多种背景源#背景自动播放) 與 [地球每刻](多种背景源#地球每刻) 功能，現在你可以在新標籤頁停留更多的時間，播放白噪音就是一個非常不錯的方案。目前內置了：咖啡館、爵士樂、下雨天、雷聲 四種音效，未來會加入更多音源。
+
+  ![Xnip2018-12-28\_14-50-20.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968677/simptab/simptab/84161a95f2ac703da9a380de45bc78e7.jpg)
+
+* :sparkles: 新增 [發送到手機](发送到手机)
+
+  > 藉助 JSBox 可以將新標籤頁中的背景發送到手機端（ iOS 設備）上了。
+
+* :lipstick: 優化了`下載背景到本地` 的演算法；
+
+* :lipstick: 優化了 `選項卡` 界面布局；
+
+* :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.4](https://res.cloudinary.com/simpread/image/upload/v1789968678/simptab/simptab/c0e0c4b2d7838ffc74ad393f74bc6374.png)
+
+***
+
+#### 1.5.3.1129 [#1531129]
+
+> 2018-11-29
+
+> **本次更新為靜默更新（不會有任何提示）**
+
+* :sparkles: 新增 更改 Unsplash 源解析度；詳情請看 [自定義解析度](多種背景源#自定義解析度)
+  ![Xnip2018-11-30\_11-45-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968679/simptab/simptab/607d6d8faf57f1855962b85e63b0e9c2.jpg)
+
+* :bug: 修復 `自定義 Unsplash 源` 的邏輯錯誤；
+
+* :bug:  修復 已 disable 的背景源仍在工作的錯誤；
+
+* :bug: 修復 當取消全部背景源時的邏輯錯誤；
+
+***
+
+#### 1.5.3.1127 [#1531127]
+
+> 2018-11-27
+
+> **本次更新為靜默更新（不會有任何提示）** ，主要修復以下兩個問題：
+
+* :bug: 進入禪模式後，不容易找到選項卡的問題； [#51](https://github.com/Kenshin/simptab/issues/51)
+
+* :bug: （全局）選項頁 · （禪模式）選項頁重複開啟的問題；
+
+***
+
+#### 1.5.3 [#153]
+
+> 2018-11-25
+
+* :sparkles: 新增 [禪模式](http://ksria.com/simptab/docs/#/禅模式)；
+
+  > 包含了：多種主題 · 模塊化 · 自定義樣式 等，適合喜歡純色背景且無干擾界面的用戶。
+
+  ![禪模式](https://res.cloudinary.com/simpread/image/upload/v1789968680/simptab/simptab/235e4e85acfe5020bbb0278c12c9381c.jpg)
+
+* :sparkles: 新增 [選項頁](http://ksria.com/simptab/docs/#/选项页)；
+
+  ![選項頁](https://res.cloudinary.com/simpread/image/upload/v1789968681/simptab/simptab/8b37f5d101e90bbb01c82724f54d515d.jpg)
+
+  > 包括以下幾個重要功能：
+
+  * [自定義Unsplash](http://ksria.com/simptab/docs/#/%E5%A4%9A%E7%A7%8D%E8%83%8C%E6%99%AF%E6%BA%90#%e8%87%aa%e5%ae%9a%e4%b9%89unsplash) 以及 精選集背景的順序顯示；
+
+  * 快捷搜索欄接入多種搜索引擎並可定製化； [#47](https://github.com/Kenshin/simptab/issues/47)
+
+  * Topsites 在 `簡單模式 · 高級模式` 的基礎上增加了自定義的功能；
+
+  * 全局化的自定義樣式； [#43](https://github.com/Kenshin/simptab/issues/43)
+
+* :sparkles: 新增 自定義站點的 快捷鍵支持，觸發鍵為 z \~ `<1-9>` 號，詳細請看 [自定義站點](http://ksria.com/simptab/docs/#/%E9%80%89%E9%A1%B9%E9%A1%B5#%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ab%99%e7%82%b9)  [#19](https://github.com/Kenshin/simptab/issues/19)
+
+* :lipstick: 優化了  `Bookmark` `History` `Apps` 合并為一個橫向 icon bar [#46](https://github.com/Kenshin/simptab/issues/46)
+
+  ![Xnip2018-11-24\_16-42-13.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968682/simptab/simptab/3324f723a1ddfbd36e4161e15f4a6299.jpg)
+
+* :fire: 去掉了 已失效的背景源 `flickr.com`；
+
+* :bug: 修復了 [#40](https://github.com/Kenshin/simptab/issues/40) [#41](https://github.com/Kenshin/simptab/issues/41) [#46](https://github.com/Kenshin/simptab/issues/46) 錯誤；
+
+***
+
+#### 1.5.2 [#152]
+
+> 2018-10-14
+
+* :sparkles: 新增 `書籤欄`；
+  ![2018-10-12\_141443.png](https://res.cloudinary.com/simpread/image/upload/v1789968684/simptab/simptab/a2b4809fc53d314104bc1ccaadd124af.png)
+
+  1. 需要申請許可權，側欄 → 選中 `開啟書籤欄`；
+
+  2. 搜索（支持：`域名` 和 `標題`）
+
+  > 點擊後，打開類似 Quick bar 的搜索。
+
+  3. 近期使用的 URL;
+
+* :sparkles: 新增 `背景管理器` （點擊控制欄 → 設定 → 背景管理器）
+
+  > 詳細說明請看 (功能一覽)\[[http://ksria.com/simptab/docs/#/功能一覽?id=主要功能之一-1](http://ksria.com/simptab/docs/#/功能一覽?id=主要功能之一-1)]
+
+  ![2018-10-11\_13-56-35.png](https://res.cloudinary.com/simpread/image/upload/v1789968685/simptab/simptab/a2c85d77d2d38e29c88d14eba0551670.png)
+
+  1. 開啟  `背景管理器` ；
+
+  2. 1.5.2 包含：`收藏` 與 `訂閱` 兩個 Tab ；
+
+  3. `收藏` 與 `訂閱` 的區別：前者可以刪除；
+
+  4. 依次為：照片的作者 · 照片的出處 · 設置為當前背景 · 下載；
+
+* :sparkles: 新增 `關於` 頁面；
+  ![2018-10-12\_144121.png](https://res.cloudinary.com/simpread/image/upload/v1789968687/simptab/simptab/86ac3b820189c151eb21f3620a22a22b.png)
+
+* :sparkles: 新增 `歡迎` 頁面；
+  ![2018-10-12\_145647.png](https://res.cloudinary.com/simpread/image/upload/v1789968688/simptab/simptab/3f4a0376a897a69feb8c919612064a3b.png)
+
+* :sparkles: 新增 `只顯示當前背景` 的選項；
+
+  > 與 `Pin` 的區別是，選中此項後，當前背景永不再改變；後者只是固定一段時間；
+
+  ![2018-10-12\_150254.png](https://res.cloudinary.com/simpread/image/upload/v1789968689/simptab/simptab/cbad6ed5389b60f159280a6423346c8e.png)
+
+* :sparkles: 新增 `刷新（下一張）` 的選項；
+
+  > 點擊後，會在當前 New Tab 基礎上更新下一張背景；
+
+  ![2018-10-12\_151000.png](https://res.cloudinary.com/simpread/image/upload/v1789968690/simptab/simptab/a5efed5c5357d9eaf611225f2b185ec2.png)
+
+* :lipstick: 優化了 `全局快捷鍵`
+
+  > 通過全局快捷鍵 <kbd>?</kbd> 呼出
+
+  ![快捷鍵](https://res.cloudinary.com/simpread/image/upload/v1789968691/simptab/simptab/b14f2b5e6a8b11146c34e6e37d9bde45.png)
+
+* :lipstick: 優化了 `必應每日更新` `必應隨機背景` `收藏夾背景源` 的優先順序，現在可以關閉它們；
+
+  ![2018-10-12\_151532.png](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/795485add43d62f1ec9d62918ec79d55.png)
+
+* :hammer: 重構了頁面布局，使其更符合 HTML5 與 Material Design 風格；
+
+* :lipstick: 優化了側欄的布局，去掉了無用的分享功能；
+
+* :hammer: 重構了全部的字體樣式，去掉了之前 `繁體` `English` 的特殊字體方案；
+
+* :hammer: 重構了 Tooltip，新方案使用了第三方庫 [Balloon.css](https://kazzkiq.github.io/balloon.css/)
+
+* :hammer: 統一了 `bookmarks` 與 `setting` 的動效；
+
+* :hammer: 重構了 `Topsites - 高級模式(九宮格)` 的 UI;
+
+* :memo: 截至到目前全部的功能
+  ![SimpTab 1.5.2](https://res.cloudinary.com/simpread/image/upload/v1789968693/simptab/simptab/7062c432e5c809e56fa6cdc01f0da1df.png)
+
+***
+
+#### 1.5.1 [#151]
+
+> 2018-08-12
+
+* :sparkles: 增加了 全新的 &#x2A;*【SimpTab 精選集】**；
+
+  > 類似 iOS 某些壁紙 App 的方式，通過手動採集的方式更新，每周一期。
+
+  ![Imgur](https://res.cloudinary.com/simpread/image/upload/v1789968694/simptab/simptab/697b4f2188c8c2fa0cbc6e0475f0425a.png)
+
+* :sparkles: 增加了 [Waves](http://fian.my.id/Waves/) 動效；
+
+* :sparkles: 增加了 全新的背景布局：`相框布局`；
+  ![Imgur](https://res.cloudinary.com/simpread/image/upload/v1789968730/simptab/simptab/5754c4a09f7cd2b869223ae6b8d7c4ba.jpg)
+
+* :lipstick: 優化了 界面，使其更符合 Google Metarial Design 風格； *包括：Topsites / 側欄 / Tooltip / Clock 等*
+
+* :lipstick: 更新了 若干依賴；*包括： jQuery / Notify*
+
+* :bug: 修復了 `bing.com 每日圖片` 無法獲取的錯誤； [issues 31](https://github.com/kenshin/simptab/issues/31) · [issues 34](https://github.com/kenshin/simptab/issues/34)
+
+* :bug: 修復了 `隨機 bing.com` 的地址源失效問題；&#x2A;新的地址來源於 [https://bingwallpaper.com/](https://bingwallpaper.com/)*
+
+* :bug: 修復了 `收藏` 後的壁紙載入慢的問題；
+
+* :fire: 去掉了 側欄分享的功能；
+
+* :fire: 去掉了 已失效的背景源 `500px.com` `nasa.gov`；
+
+***
+
+#### 1.5.0 [#150]
+
+> 2016-02-11
+
+* :sparkles: 增加了 `Pin` 功能；
+
+  > 可以固定一段時間，包括： 0.5, 1, 2, 4, 8 小時
+
+* :sparkles: 增加了 `dislike` 功能；
+
+  > 加入後不再顯示當前背景；
+
+* :sparkles: 增加了 背景源的 CDN 功能；
+
+* :bug: 修復了 `checkbox/radio` 偶爾無法點擊的錯誤； [issues 16](https://github.com/kenshin/simptab/issues/16)
+
+***
+
+#### 1.4.3 [#143]
+
+> 2016-01-20
+
+* :sparkles: 增加了 版本介紹；
+
+* :sparkles: 增加了 `動態許可權設定` 功能；
+
+* :sparkles: 增加了 `背景源的顯示位置`，包括： `居中`和 `左上角` 對其；
+
+* :pencil2: 優化了設定欄的 icon；
+
+***
+
+#### 1.4.2 [#142]
+
+> 2015-12-25
+
+* :sparkles: 增加了 新的背景源： [NASA Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html)
+
+* :sparkles: 增加了 新的背景源： `SimpTab Images`.
+
+***
+
+#### 1.4.1 [#141]
+
+> 2015-12-23
+
+* :sparkles: 常用網址增加了全新的： `高級布局` 方式；
+
+* :bug: 調整了 `常用網址（簡單布局）` 滑鼠 hover 時的顯示速度.
+
+* :bug: 修復 `Notifiy` z-index 錯誤； [issues 8](https://github.com/kenshin/simptab/issues/8)
+
+***
+
+#### 1.4.0 [#140]
+
+> 2015-12-10
+
+* :sparkles: 增加了 多語言，包括： [Chinese Simplified](https://github.com/kenshin/simptab/blob/master/README.md) | [Traditional Chinese](https://github.com/kenshin/simptab/blob/master/README.tw.md) | [English](https://github.com/kenshin/simptab/blob/master/README.en.md)
+
+* :sparkles: 增加了 新的背景源： `bing.com`, `wallhaven.cc`, `unsplash.com`, `flickr.com`, `googleartproject.com`, `500px.com`, `desktoppr.co`, `visualhunt.com`, `nasa apod`, `simptab images`.
+
+* :sparkles: 增加了 `上傳背景源` 功能；
+
+* :sparkles: 增加了 `fovorite` 功能；
+
+* :sparkles: 增加了 `top sites` 功能；
+
+* :sparkles: 增加了 載入新的背景源時的進度顯示；
+
+* :sparkles: 增加了 `Favorite/Upload` 背景源的提示；
+
+* :sparkles: 增加了 `omnibox` 快捷鍵；
+
+* :hammer: 重構了代碼；
+
+* :bug: 修復了 `1.0.3` 版版的錯誤，包括： [issues 5](https://github.com/kenshin/simptab/issues/5), [issues 7](https://github.com/kenshin/simptab/issues/7)
+
+***
+
+#### 1.0.3 [#103]
+
+> 2014-08-29
+
+* :sparkles: 增加了 `clock's font-family` to `roboto.ttf`.
+
+* :bug: 修復了 下載背景時重複命名的錯誤；
+
+* :bug: 修復了 第一次安裝下載背景的錯誤；
+
+* :bug: 修復了 默認背景下載時命名的錯誤；
+
+* :bug: 修復了 非 `zh-cn` 環境下 `info 鏈接` 指向的錯誤；
+
+***
+
+#### 1.0.2 [#102]
+
+> 2014-08-28
+
+* :sparkles: 增加了 `main.html's title` 的多語言；
+
+* :sparkles: 增加了 `Bookmark/Apps/Histroy/Info` 在本頁打開的功能；
+
+* :sparkles: 增加了 `controlbar` 的快捷鍵方案；
+
+***
+
+#### 1.0.1 [#101]
+
+> 2014-08-22
+
+* :sparkles: 增加了 `footer 欄` 投票的鏈接；
+
+* :pencil2: 優化了 `分享 icon` 的多語言；
+
+* :bug: 修復了 main.html's title 為 `SimpTab - Minimalistic New Tab Page by Chrome Extensions`;
+
+* :bug: 修復了 一些文案上的錯誤；
+
+***
+
+#### 1.0.0 [#100]
+
+> 2014-08-20
+
+* :sparkles: 增加了 `多語言` 環境；
+
+* :sparkles: 增加了 `每日/隨機` （ 從 `bing.com` ）更換背景；
+
+* :sparkles: 增加了 `下載背景` 功能；
+
+* :sparkles: 增加了 `info` 功能；
