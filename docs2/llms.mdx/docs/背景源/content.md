@@ -1,0 +1,209 @@
+# 背景源 (/docs/%E8%83%8C%E6%99%AF%E6%BA%90)
+
+
+
+> 背景源是 简 Tab 最重要的核心，简 Tab 的全部功能均以此为主。
+> 由于操作上的便利，所以关于背景源的功能，大多分散在各个模块中，以下只是集中说明。
+
+## 背景更换模式 [#背景更换模式]
+
+> 主要操作位置 → 设置栏
+
+* 每天更换背景
+  每天更换一次，背景源只来源于 **必应每日图片**
+
+* 随机更换
+  每次新打开标签页，即可看到一副新的背景图（ 是否显示 **新的** 背景图取决于背景图的下载速度
+
+* 只显示当前背景
+
+* 地球每刻
+
+  详细请看 [背景源](背景源#地球每刻)
+
+* 禅模式
+
+  详细请看 [禅模式](禅模式)
+
+## 背景图显示模式 [#背景图显示模式]
+
+> 主要操作位置 → 设置栏
+
+* 居中对齐
+
+* 左上对齐
+
+* 相框模式
+
+  为 简 Tab 独有功能，即以居中显示相框的效果，适合任意分辨率的背景和浏览器，如下图
+
+  ![QphtIA.png](https://res.cloudinary.com/simpread/image/upload/v1789968818/simptab/simptab/df2689c18ddc23a1b0623fedf4af66ba.png)
+
+## 多种背景源 [#多种背景源]
+
+> 主要操作位置 → 设置栏
+
+包括：
+
+* 必应每日图片
+
+* 必应随机图片
+
+* 向日葵-8號
+
+* unsplash.com
+
+* picsum.photos
+
+* googleartproject.com
+
+* wallhaven.cc
+
+以及以下三种 **简 Tab 独有源**：
+
+* [收藏](控制栏#收藏)
+
+* [探索]()
+
+**注意：**
+
+* 1.5.1 去掉了 失效的背景源 `500px.com` `nasa.gov`
+* 1.5.3 去掉了 背景质量较低的 `flickr.com`
+* 1.6.0 去掉了 SimpTab 精选集 / desktoppr.co / visualhunt.com 背景源
+
+## 自定义Unsplash源 [#自定义unsplash源]
+
+> 主要操作位置 → 选项页
+
+> 1.6.0 支持自定义 Unsplash Access Key（可选）
+
+内置 Key 是 Demo 额度，公开仓库共用会很容易 403。可在 [Unsplash Developers](https://unsplash.com/oauth/applications) 创建应用，把 Access Key 贴到这里。
+
+> 1.5.3 版本支持自定义 Unsplash 源的功能，位置在 选项页 → 自定义 Unsplash 源，以下是一些常见的自定义方案
+
+* 将你的 Unsplash 帐号加入到自定义 Unsplash 源
+
+```
+user/{username}
+```
+
+* 将你的 Unsplash 帐号中 `likes` 的照片加入到自定义 Unsplash 源
+
+```
+user/{username}/likes
+```
+
+* 将你的 Unsplash 帐号中的 `collections` 加入到 自定义 Unsplash 源
+
+  ![Xnip2019-11-30\_11-16-39.png](https://res.cloudinary.com/simpread/image/upload/v1789968820/simptab/simptab/6cb57183bf682fe24646e57023a27163.png)
+
+```
+collection/{上图的 ID}
+```
+
+* 根据你的 `Chrome / 桌面分辨率` 显示图片（在上面三个的基础上修改）
+
+```
+user/{username}/1920x1080,user/{username}/likes/1920x1080,collection/2463312/1920x1080
+```
+
+更丰富的自定义请直接访问 [Unsplash Source](https://source.unsplash.com/)
+
+## 更改Unsplash源分辨率 [#更改unsplash源分辨率]
+
+> 主要操作位置 → 选项页
+
+> 此功能仅针对 \*\*Unsplash 源 \*\* 并需要 1.5.3.1129 （及以上版本） 的支持；
+
+![Xnip2018-11-30\_11-45-10.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968679/simptab/simptab/607d6d8faf57f1855962b85e63b0e9c2.jpg)
+
+**提示：**
+
+* Unsplash 源默认的分辨率为 2560 x 1440;
+* 可独立对任何自定义 Unsplash 源 设置分辨率，如 `collection/3593484/1080x1920` 或 `collection/3593482/4096×2160,collection/3593484/1080x1920` 均为合法设置；
+* 分辨率设置的越高，加载的会越慢，但视觉效果越好，在这种情况下可以不需要使用 「相框模式」，如下图：
+  ![Xnip2018-11-30\_11-54-50.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968786/simptab/simptab/22050fad707256fad99ddcd8fbeec7d0.jpg)
+* 分辨率越低，加载的会越快，所以建议根据自身的网络环境与分辨率设置；
+* 关于常见分辨率可以看 [维基百科](https://zh.wikipedia.org/wiki/%E6%98%BE%E7%A4%BA%E5%88%86%E8%BE%A8%E7%8E%87%E5%88%97%E8%A1%A8) 的说明；
+* 随着 1.5.3.1129 发布，同时新增加了两个 collenction，其中的照片均来自于 [Unsplash Archive](https://unsplash.com/@unsplasharchive/collections)
+  * [Unsplash Archive with Horizontal screen](https://unsplash.com/collections/3593484/unsplash-archive-with-horizontal-screen) 即`collection/3593484` 适合扁平（宽大于高）的浏览器样式，如上图效果；
+  * [Unsplash Archive with Vertical screen](https://unsplash.com/collections/3593482/unsplash-archive-with-vertical-screen) 即 `collection/3593482` 适合狭长（宽小于高）的浏览器样式，如下图：
+    ![Xnip2018-11-30\_11-54-50.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968787/simptab/simptab/59f596a08eee819244a346eee6010bdb.jpg)
+
+## 自动更换背景 [#自动更换背景]
+
+> 主要操作位置 → 选项页
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+> 配合 [控制栏](控制栏#全屏化) 和 [白噪音](白噪音) 效果更好！
+
+* 开启后可以将新标签页当作一个「相册」来看待，尤其是拥有副屏的用户。
+* 每隔 5 / 10 / 30 / 60 自动更换背景；
+* 自动更换的背景源依赖于 [自定义 Unsplash 源](#自定义Unsplash源)，当 自定义 Unsplash 源 无任何背景时无法使用；
+* 默认关闭，可通过 快捷键 <kbd>o</kbd> → 选项卡 → [背景是否自动更换（显示下一张）？
+  ](#自动更换背景) 选择更新时间来开启 或 [设置栏](设置栏) 开启。
+
+## 历史记录 [#历史记录]
+
+> 主要操作位置 → 选项页
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 历史记录可以记录 **最多五组** 之前的背景图片；
+* 支持快捷键 <kbd>→ </kbd> 和 <kbd>←</kbd> 切换；
+* 鼠标移到新标签页上方中部即可自动打开历史记录列表；
+* 开启此功能需要 快捷键 o → 打开选项卡 → 勾选「是否启用历史记录功能？」（勾选刷新后生效）
+
+![Xnip2018-12-28\_14-12-53.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968676/simptab/simptab/c4fcf844927c356f1f4fd0d0c632c3fb.jpg)
+
+## 自定义下载位置 [#自定义下载位置]
+
+> 主要操作位置 → 选项页
+
+> 此功能最低要求 1.5.5 版本。
+
+可以在 Chrome 默认下载目录下，自行设定下载文件夹，如果配合 Haze 或 Automator 等方式可实现在 PC 端自动更换壁纸。
+
+同时也可以利用一些命令行可以实现，如下：
+
+```
+# windows
+mklink /D "C:\Users\<user>\Downloads\desktop" "C:\Picture"
+
+# mac
+ln -s /home/<user>/desktop /Users/<user>/Pictures
+```
+
+## 收藏 [#收藏]
+
+> 收藏是 简 Tab 最初版本就自带的功能，它主要的功能包括：
+
+* 将任意 [背景源](#多种背景源) 的背景收藏到 Chrome 本地的安全沙箱中
+
+* 通过 [控制栏](控制栏#上传) 的背景也被收藏到 Chrome 本地的安全沙箱中
+
+* 可以在 [背景管理器](背景管理器#收藏) 中对这些收藏的背景进行管理
+
+在 [控制栏](控制栏#收藏) 对当前背景的 **收藏/取消收藏**；管理则在 [背景管理器](背景管理器#收藏)
+
+## 背景管理器 [#背景管理器]
+
+> 主要操作位置 → [背景管理器](背景管理器)
+
+> 里面包含了 **收藏集 · 探索** 三类特殊背景源
+
+## 地球每刻 [#地球每刻]
+
+> 主要操作位置 → 设置栏
+
+> 此功能最低要求 1.5.4 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+* 感谢 [向日葵-8號](http://himawari8.nict.go.jp/) 提供地球自拍照；
+* 由于不愿过多消耗 [向日葵-8號](http://himawari8.nict.go.jp/) 的带宽，通过简 Tab 访问并获取到的地球照片均来在于 **自建的服务**；
+* 地球每刻的照片每小时更新一次；
+* 在此模式下，[背景自动播放](多种背景源#背景自动播放) 与 [历史记录](多种背景源#历史记录) 均无法使用；
+* 目前地球每刻提供了 `1100 x 1100` 的分辨率，未来会提供更高清的分辨率照片；
+* 快捷键 s 或鼠标移动右侧 → 开启侧栏 → 选中第四个选项「地球每刻」即可进入；
+
+![Xnip2018-12-28\_14-33-18.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968674/simptab/simptab/a10bf60d8723ba3bdfa357252cb12834.jpg)

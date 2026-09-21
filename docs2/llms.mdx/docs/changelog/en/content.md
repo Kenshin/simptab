@@ -1,4 +1,4 @@
-# Changelog (English) (/changelog/en)
+# Changelog (English) (/docs/changelog/en)
 
 
 

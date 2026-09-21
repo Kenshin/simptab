@@ -1,0 +1,93 @@
+# 选项页 (/docs/%E9%80%89%E9%A1%B9%E9%A1%B5)
+
+
+
+> 此功能最低要求 1.5.3 版本，如低于此版本，[请升级](http://ksria.com/simptab/) 到最新版本。
+
+***
+
+## 打开 [#打开]
+
+> 支持快捷键 <kbd>o</kbd> 或者 通过控制栏，如下图
+
+![Xnip2018-11-23\_15-46-25.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968828/simptab/simptab/43fe3613bf74530a59dd23d77e5b4d96.jpg)
+
+## 功能 [#功能]
+
+### 背景源 [#背景源]
+
+> 包含了以下功能，并且这些功能的介绍请看 [背景源](背景源)
+
+1. [自定义 Unsplash 源](背景源#自定义Unsplash源)
+
+2. [更改 Unsplash 源分辨率](背景源#更改Unsplash源分辨率)
+
+3. [自动更换背景](背景源#自动更换背景)
+
+4. [历史记录](背景源#历史记录)
+
+5. [自定义下载位置功能](背景源#自定义下载位置)
+
+### 时间 [#时间]
+
+> 在 1.5.5 之前此功能在 **设置栏**，先已移动到 **选项页**，同时增加 **可更改 12/24 小时制式**。
+
+### 自定义标题 [#自定义标题]
+
+> 此功能最低要求 1.5.5 版本。
+
+通过此功能，可以自定义新标签，支持：
+
+* 字符串，如 `我是新标签`；
+
+* 自执行语句，如 `(function(){xxx})()`
+
+### 自定义样式 [#自定义样式]
+
+> 与 [禅模式 · 自定义样式](禅模式#自定义样式)  的区别在于前者只应用于 **禅模式**，而选项页的自定样式属于全局。
+
+### 自定义搜索 [#自定义搜索]
+
+> 1.5.3 支持快捷搜索栏的自定义搜索，默认给出以下搜索引擎：
+
+```
+{"key":"g",  "color": "#4285F4", "title":"谷歌搜索",    "query": "https://www.google.com/search?q={query}"}
+{"key":"b",  "color": "#0C8484", "title":"必应搜索",    "query": "https://bing.com/search?q={query}"}
+{"key":"d",  "color": "#DE5833", "title":"DuckDuckGo", "query": "https://duckduckgo.com/?q={query}"}
+{"key":"bd", "color": "#2319DC", "title":"百度搜索",    "query": "https://www.baidu.com/s?wd={query}"}
+{"key":"wx", "color": "#1AAD19", "title":"微信搜索",    "query": "https://weixin.sogou.com/weixin?type=2&s_from=input&query={query}"}
+{"key":"z",  "color": "#0084FF", "title":"知乎搜索",    "query": "http://zhihu.sogou.com/zhihu?query={query}"}
+{"key":"bk", "color": "#459DF5", "title":"百科搜索",    "query": "http://www.baike.com/wiki/{query}"}
+{"key":"wk", "color": "#1177BB", "title":"维基百科",    "query": "https://zh.wikipedia.org/wiki/{query}"}
+{"key":"jd", "color": "#C81522", "title":"京东",       "query": "https://search.jd.com/Search?keyword={query}&enc=utf-8"}
+{"key":"tb", "color": "#FF692F", "title":"淘宝",       "query": "https://s.taobao.com/search?q={query}"}
+{"key":"v2", "color": "#333344", "title":"V2EX",      "query": "https://www.sov2ex.com/?q={query}"}
+{"key":"db", "color": "#55711C", "title":"豆瓣搜索",    "query": "https://www.douban.com/search?source=suggest&q={query}"}
+{"key":"fy", "color": "#4285F4", "title":"谷歌翻译",    "query": "https://translate.google.cn/#auto/en/{query}"}
+{"key":"dj", "color": "#AC525C", "title":"多吉翻译",    "query": "https://www.dogedoge.com/results?q={query}"}
+{"key":"mg", "color": "#26262A", "title":"Magi",       "query": "https://magi.com/search?q={query}"}
+```
+
+可以自行添加，添加方法如下：
+
+```
+{"key":"<快捷键>",  "color": "<颜色值>", "title":"<搜索引擎的名称>",    "query": "<查询语句，用 {query} 替换关键字>"}
+```
+
+使用快捷键 <kbd>q</kbd> 打开 快捷搜索栏，再使用 <kbd>s</kbd> 触发搜索，目前支持两中搜索方式：
+
+* 搜索全部 `s <搜索内容>`
+
+![Xnip2018-11-24\_11-46-02.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968830/simptab/simptab/c22e51c8335ec84efa7fc1055d62c544.jpg)
+
+* 搜索指定引擎 `s <key> <搜索内容>` （ 其中 `key` 的定义在 [选项页](选项页#自定义搜索) 且 **只能是第一个字母**，如下图 ）
+
+![Xnip2018-11-24\_11-48-32.jpg](https://res.cloudinary.com/simpread/image/upload/v1789968830/simptab/simptab/dc80158a1e0e48340a0233cdbaaac8a9.jpg)
+
+### 书签栏 [#书签栏]
+
+详细请看 [书签栏](书签栏)
+
+### 常用网址 [#常用网址]
+
+详细请看 [常用网址](常用网址)
