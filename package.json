@@ -1,0 +1,9 @@
+{
+  "name": "simptab-website",
+  "private": true,
+  "description": "SimpTab 静态站（simptab.art）",
+  "scripts": {
+    "preview": "npx serve -l 3100 .",
+    "test": "npx serve -l 3100 ."
+  }
+}
