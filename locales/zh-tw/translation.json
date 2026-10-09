@@ -48,5 +48,7 @@
     "author"  : "作者",
     "end"     : "。",
     "job"     : "全栈開發工程師 · Flex 架構師",
-    "footer"  : "簡 Tab - 極簡的 Chrome 新標簽頁擴展，望妳每次打開都有好心情。"
+    "footer"  : "簡 Tab - 極簡的 Chrome 新標簽頁擴展，望妳每次打開都有好心情。",
+    "terms"   : "服務條款",
+    "privacy" : "隱私政策"
 }

@@ -48,5 +48,7 @@
     "author"  : "Author",
     "end"     : ".",
     "job"     : "Full-stack Engineer and Flex Architect",
-    "footer"  : "SimpTab - Minimalistic's chrome new tab page extension."
+    "footer"  : "SimpTab - Minimalistic's chrome new tab page extension.",
+    "terms"   : "Terms of Service",
+    "privacy" : "Privacy Policy"
 }
