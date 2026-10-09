@@ -1,0 +1,527 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>License — 简 Tab (SimpTab)</title><meta name="description" content="简 Tab 支付成功 — 获取并复制你的 Pro License。"><meta name="author" content="Kenshin"><meta name="robots" content="noindex"><meta property="og:title" content="License — 简 Tab (SimpTab)"><meta property="og:type" content="website"><meta property="og:url" content="https://simptab.art/license.html"><meta property="og:site_name" content="https://simptab.art"><link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png"><link rel="manifest" href="./assets/favicon/manifest.json"><meta name="theme-color" content="#1dba90"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root {
+      --primary: #1dba90;
+      --primary-dark: #17a07c;
+      --accent: #0891b2;
+      --canvas: #ffffff;
+      --surface-green: #e8f8f3;
+      --ink: #111827;
+      --ink-secondary: #4b5563;
+      --ink-muted: #9ca3af;
+      --border: #e5e7eb;
+      --border-light: #f3f4f6;
+      --ok: #059669;
+      --ok-bg: #ecfdf5;
+      --warn: #d97706;
+      --danger: #dc2626;
+      --rounded-sm: 8px;
+      --rounded-md: 12px;
+      --rounded-lg: 16px;
+      --rounded-full: 9999px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Segoe UI',
+                   Verdana, 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background: var(--canvas);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* —— header（对齐 account.html） —— */
+    header { background: var(--primary); }
+    .top {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 60px;
+      padding: 0 10px;
+      font: 300 12px/1.8 var(--font-sans);
+    }
+    .top ul {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      list-style: none;
+    }
+    .top ul li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 20px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.5s;
+    }
+    .top ul li:hover { border-bottom: 2px solid #fff; }
+    .top ul li img { padding-right: 5px; }
+    .top ul li a {
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .lang-dropdown { position: relative; cursor: pointer; }
+    .lang-dropdown .lang-current {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 4px 0;
+    }
+    .lang-dropdown .lang-current img { height: 15px; }
+    .lang-dropdown .lang-current .arrow {
+      font-size: 10px;
+      margin-left: 2px;
+      transition: transform 0.2s;
+    }
+    .lang-dropdown:hover .lang-current .arrow { transform: rotate(180deg); }
+    .lang-dropdown .lang-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      min-width: 140px;
+      padding: 6px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      transition: all 0.2s ease;
+      z-index: 100;
+      margin-top: 8px;
+    }
+    .lang-dropdown:hover .lang-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .lang-menu a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      color: #333 !important;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none !important;
+      text-transform: none !important;
+      transition: background 0.15s;
+    }
+    .lang-menu a:hover { background: var(--surface-green); }
+    .lang-menu a.active {
+      color: var(--primary) !important;
+      font-weight: 600;
+    }
+    .lang-menu a img {
+      height: 14px;
+      width: 14px;
+      padding: 0 !important;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+    .brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .brand .mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--ok-bg);
+      color: var(--ok);
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+    .brand h1 {
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+    .brand p {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--rounded-lg);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+      padding: 24px;
+    }
+    .status {
+      font-size: 14px;
+      color: var(--ink-secondary);
+      margin-bottom: 16px;
+    }
+    .status.waiting { color: var(--warn); }
+    .status.error { color: var(--danger); }
+    .status.ok { color: var(--ok); }
+    .license-box { display: none; margin-top: 8px; }
+    .license-box.show { display: block; }
+    .license-box label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      margin-bottom: 6px;
+    }
+    .license-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .license-row input {
+      flex: 1;
+      min-width: 0;
+      height: 44px;
+      padding: 0 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--border-light);
+      border: 1px solid transparent;
+      border-radius: var(--rounded-sm);
+      outline: none;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      padding: 0 18px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--rounded-full);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, opacity 0.15s;
+      text-decoration: none;
+      color: #fff;
+    }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn-block { width: 100%; margin-top: 16px; }
+    .hint {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+    .hint a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .hint a:hover { color: var(--primary-dark); }
+    .spin {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(217, 119, 6, 0.25);
+      border-top-color: var(--warn);
+      border-radius: 50%;
+      vertical-align: -2px;
+      margin-right: 6px;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* —— footer（对齐 account.html） —— */
+    .footer {
+      flex-shrink: 0;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 16px 20px;
+      font: 300 12px/1.8 var(--font-sans);
+    }
+    .footer a {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      background: #fff;
+      color: #000;
+      border-radius: 3px;
+      transition: background-color 0.4s ease;
+    }
+
+    @media (max-width: 768px) {
+      .top { justify-content: center; }
+      .top ul li { margin-left: 10px; }
+      main { padding: 36px 16px 48px; }
+      .card { padding: 22px 18px 18px; }
+      .license-row { flex-direction: column; }
+      .license-row .btn { width: 100%; }
+    }</style></head><body><header><div class="top"><ul><li><img src="./assets/image/home-flag.svg" alt=""> <a href="./index.html" id="homeNavLink" data-i18n="nav_home">首页</a></li><li><img src="./assets/image/theme-flag.svg" alt=""> <a href="./theme.html" id="themeNavLink" data-i18n="nav_theme">主题</a></li><li><img src="./assets/image/premium-flag.svg" alt=""> <a href="./price.html" id="premiumNavLink" data-i18n="nav_premium">高级账户</a></li><li class="lang-dropdown" id="langDropdown"><div class="lang-current"><img id="langCurrentFlag" src="./assets/image/zh-cn-flag.svg" alt=""> <span id="langCurrentName">简体中文</span> <span class="arrow">▼</span></div><div class="lang-menu"><a href="?lang=zh-cn" data-lang="zh-cn"><img src="./assets/image/zh-cn-flag.svg" alt="">简体中文</a> <a href="?lang=zh-tw" data-lang="zh-tw"><img src="./assets/image/zh-tw-flag.svg" alt="">繁體中文</a> <a href="?lang=en" data-lang="en"><img src="./assets/image/en-flag.svg" alt="">English</a></div></li></ul></div></header><main><div class="brand"><div class="mark" aria-hidden="true">✓</div><h1 id="title" data-i18n="title_waiting">支付成功</h1><p id="subtitle" data-i18n="subtitle_waiting">正在为你准备激活码…</p></div><div class="card"><div id="status" class="status waiting"><span class="spin" aria-hidden="true"></span> <span id="statusText" data-i18n="status_waiting">等待发码，通常只需几秒</span></div><div id="licenseBox" class="license-box"><label for="licenseInput" data-i18n="label_license">你的激活码（License）</label><div class="license-row"><input id="licenseInput" type="text" readonly="readonly" value=""> <button type="button" class="btn btn-primary" id="btnCopy" data-i18n="btn_copy">复制</button></div><p class="hint" id="hint" data-i18n-html="hint"></p></div><a class="btn btn-primary btn-block" href="./price.html" id="btnBack" data-i18n="btn_back" style="display:none">返回定价</a></div></main><div class="footer"><span data-i18n="footer_brand">SimpTab · License</span> <span>&nbsp;&copy;&nbsp;2014–2026 <a href="https://simptab.art">simptab.art</a> by <a href="http://kenshin.wang" target="_blank" rel="noopener">Kenshin</a></span></div><script>(function () {
+    "use strict";
+
+    // var API_HOST = "http://localhost:3000"; // local simpread-back-end
+    var API_HOST = "https://simpread.ksria.cn";
+    var POLL_MS = 2000;
+    var MAX_TRIES = 45;
+
+    var DOCS = {
+      "zh-cn": "https://simptab.art/docs/zh-cn/高级账户/#激活",
+      "zh-tw": "https://simptab.art/docs/zh-tw/高階賬戶/#購買憑證",
+      en: "https://simptab.art/docs/en/account/#purchase-credentials"
+    };
+
+    var T = {
+      "zh-cn": {
+        nav_home: "首页", nav_theme: "主题", nav_premium: "高级账户",
+        title_waiting: "支付成功",
+        title_ready: "激活码已就绪",
+        subtitle_waiting: "正在为你准备激活码…",
+        subtitle_ready: "请复制下方激活码，到扩展账户页激活高级账户。",
+        subtitle_error: "如已付款却无码，请联系客服并附上本页地址。",
+        status_waiting: "等待发码，通常只需几秒",
+        status_missing: "缺少订单参数（ref）。请从支付完成页进入。",
+        status_timeout: "暂未拿到激活码。请稍后刷新本页，或邮件 help@simptab.art（附 ref）。",
+        status_network: "网络异常，请刷新重试或联系 help@simptab.art。",
+        label_license: "你的激活码（License）",
+        btn_copy: "复制", btn_copied: "已复制",
+        btn_back: "返回定价",
+        hint: '请妥善保存。打开简 Tab → 选项 → 账户，粘贴激活码以开通高级账户，<a href="#docs" id="docsHintLink" target="_blank" rel="noopener">详细说明</a>，也可在 <a href="./account.html" id="accountHintLink">账户页</a> 管理设备。',
+        footer_brand: "SimpTab · License"
+      },
+      "zh-tw": {
+        nav_home: "首頁", nav_theme: "主題", nav_premium: "高級帳戶",
+        title_waiting: "付款成功",
+        title_ready: "啟用碼已就緒",
+        subtitle_waiting: "正在為你準備啟用碼…",
+        subtitle_ready: "請複製下方啟用碼，到擴充功能帳戶頁啟用高級帳戶。",
+        subtitle_error: "如已付款卻無碼，請聯絡客服並附上本頁地址。",
+        status_waiting: "等待發碼，通常只需幾秒",
+        status_missing: "缺少訂單參數（ref）。請從付款完成頁進入。",
+        status_timeout: "暫未取得啟用碼。請稍後重新整理本頁，或來信 help@simptab.art（附 ref）。",
+        status_network: "網路異常，請重新整理後重試，或聯絡 help@simptab.art。",
+        label_license: "你的啟用碼（License）",
+        btn_copy: "複製", btn_copied: "已複製",
+        btn_back: "返回定價",
+        hint: '請妥善保存。打開簡 Tab → 選項 → 帳戶，貼上啟用碼以開通高級帳戶，<a href="#docs" id="docsHintLink" target="_blank" rel="noopener">詳細說明</a>，也可在 <a href="./account.html" id="accountHintLink">帳戶頁</a> 管理裝置。',
+        footer_brand: "SimpTab · License"
+      },
+      en: {
+        nav_home: "Home", nav_theme: "Themes", nav_premium: "Premium",
+        title_waiting: "Payment successful",
+        title_ready: "License ready",
+        subtitle_waiting: "Preparing your license…",
+        subtitle_ready: "Copy the license below and activate Premium in the extension.",
+        subtitle_error: "If you paid but see no code, contact support with this page URL.",
+        status_waiting: "Issuing your license — usually a few seconds",
+        status_missing: "Missing order ref. Open this page from the payment completion flow.",
+        status_timeout: "License not ready yet. Refresh later, or email help@simptab.art with your ref.",
+        status_network: "Network error. Refresh or contact help@simptab.art.",
+        label_license: "Your license",
+        btn_copy: "Copy", btn_copied: "Copied",
+        btn_back: "Back to pricing",
+        hint: 'Keep it safe. In SimpTab → Options → Account, paste the license to activate Premium. See the <a href="#docs" id="docsHintLink" target="_blank" rel="noopener">detailed guide</a>, or manage devices on the <a href="./account.html" id="accountHintLink">Account page</a>.',
+        footer_brand: "SimpTab · License"
+      }
+    };
+
+    function getCookie( name ) {
+      var m = document.cookie.match( new RegExp( "(?:^|; )" + name + "=([^;]*)" ) );
+      return m ? decodeURIComponent( m[ 1 ] ) : undefined;
+    }
+    function setCookie( name, value, days ) {
+      var d = new Date();
+      d.setTime( d.getTime() + days * 864e5 );
+      document.cookie = name + "=" + encodeURIComponent( value ) + ";path=/;expires=" + d.toUTCString();
+    }
+    function getQueryString( key ) {
+      return new URLSearchParams( location.search ).get( key );
+    }
+
+    var lang = "en";
+    try { lang = navigator.language || "en"; } catch ( e ) {}
+    if ( lang.split( "-" )[ 0 ] === "en" ) lang = "en";
+    var ck = getCookie( "lang" );
+    if ( ck !== undefined ) lang = ck;
+    var qs = getQueryString( "lang" );
+    if ( qs !== null ) lang = qs;
+    lang = lang.toLowerCase();
+    if ( lang.indexOf( "zh" ) === 0 ) {
+      lang = ( lang.indexOf( "tw" ) !== -1 || lang.indexOf( "hk" ) !== -1 || lang.indexOf( "hant" ) !== -1 )
+        ? "zh-tw" : "zh-cn";
+    } else if ( lang !== "en" ) {
+      lang = "en";
+    }
+    setCookie( "lang", lang, 365 );
+
+    var t = T[ lang ] || T.en;
+    var titleMap = {
+      "zh-cn": "License — 简 Tab (SimpTab)",
+      "zh-tw": "License — 簡 Tab (SimpTab)",
+      en: "License — SimpTab"
+    };
+    document.documentElement.lang = ({ "zh-cn": "zh-CN", "zh-tw": "zh-TW", en: "en" })[ lang ] || "en";
+    document.title = titleMap[ lang ] || titleMap.en;
+
+    document.querySelectorAll( "[data-i18n]" ).forEach( function ( el ) {
+      var key = el.getAttribute( "data-i18n" );
+      if ( t[ key ] !== undefined ) el.textContent = t[ key ];
+    });
+    document.querySelectorAll( "[data-i18n-html]" ).forEach( function ( el ) {
+      var key = el.getAttribute( "data-i18n-html" );
+      if ( t[ key ] !== undefined ) el.innerHTML = t[ key ];
+    });
+
+    var flagMap = {
+      "zh-cn": { src: "./assets/image/zh-cn-flag.svg", name: "简体中文" },
+      "zh-tw": { src: "./assets/image/zh-tw-flag.svg", name: "繁體中文" },
+      en: { src: "./assets/image/en-flag.svg", name: "English" }
+    };
+    var flag = flagMap[ lang ] || flagMap.en;
+    var flagEl = document.getElementById( "langCurrentFlag" );
+    var nameEl = document.getElementById( "langCurrentName" );
+    if ( flagEl ) flagEl.src = flag.src;
+    if ( nameEl ) nameEl.textContent = flag.name;
+
+    // 切换语言时保留 ref / orderId
+    document.querySelectorAll( ".lang-menu a[data-lang]" ).forEach( function ( a ) {
+      var code = a.getAttribute( "data-lang" );
+      var p = new URLSearchParams( location.search );
+      p.set( "lang", code );
+      a.href = "?" + p.toString();
+      if ( code === lang ) a.classList.add( "active" );
+    });
+
+    [ "homeNavLink", "themeNavLink", "premiumNavLink", "btnBack", "accountHintLink" ].forEach( function ( id ) {
+      var el = document.getElementById( id );
+      if ( !el ) return;
+      var href = el.getAttribute( "href" ) || "";
+      var hash = "";
+      var base = href;
+      var hashIdx = href.indexOf( "#" );
+      if ( hashIdx !== -1 ) {
+        hash = href.slice( hashIdx );
+        base = href.slice( 0, hashIdx );
+      }
+      base = base.split( "?" )[ 0 ];
+      el.href = base + "?lang=" + lang + hash;
+    });
+
+    var docsLink = document.getElementById( "docsHintLink" );
+    if ( docsLink ) docsLink.href = DOCS[ lang ] || DOCS.en;
+
+    var $title = document.getElementById( "title" );
+    var $status = document.getElementById( "status" );
+    var $statusText = document.getElementById( "statusText" );
+    var $subtitle = document.getElementById( "subtitle" );
+    var $box = document.getElementById( "licenseBox" );
+    var $input = document.getElementById( "licenseInput" );
+    var $copy = document.getElementById( "btnCopy" );
+    var $back = document.getElementById( "btnBack" );
+
+    var ref = getQueryString( "ref" ) || "";
+    var orderId = getQueryString( "orderId" ) || "";
+
+    function setStatus( kind, text ) {
+      $status.style.display = "";
+      $status.className = "status " + kind;
+      $statusText.textContent = text;
+      var spin = $status.querySelector( ".spin" );
+      if ( spin ) spin.style.display = kind === "waiting" ? "inline-block" : "none";
+    }
+
+    function showLicense( license ) {
+      $title.textContent = t.title_ready;
+      $subtitle.textContent = t.subtitle_ready;
+      $status.style.display = "none";
+      $input.value = license;
+      $box.classList.add( "show" );
+    }
+
+    function showError( text ) {
+      $title.textContent = t.title_waiting;
+      $subtitle.textContent = t.subtitle_error;
+      setStatus( "error", text );
+      $back.style.display = "inline-flex";
+    }
+
+    function fetchLicense() {
+      var q = ref
+        ? ( "ref=" + encodeURIComponent( ref ) )
+        : ( "orderId=" + encodeURIComponent( orderId ) );
+      return fetch( API_HOST + "/simptabs/service/waffo/license?" + q, {
+        method: "GET",
+        credentials: "omit",
+        cache: "no-store"
+      }).then( function ( res ) { return res.json(); } );
+    }
+
+    function poll( tries ) {
+      fetchLicense().then( function ( json ) {
+        if ( json && json.code === 201 && json.data && json.data.license ) {
+          showLicense( json.data.license );
+          return;
+        }
+        if ( tries >= MAX_TRIES ) {
+          showError( t.status_timeout );
+          return;
+        }
+        setTimeout( function () { poll( tries + 1 ); }, POLL_MS );
+      }).catch( function () {
+        if ( tries >= MAX_TRIES ) {
+          showError( t.status_network );
+          return;
+        }
+        setTimeout( function () { poll( tries + 1 ); }, POLL_MS );
+      });
+    }
+
+    $copy.addEventListener( "click", function () {
+      var v = $input.value;
+      if ( !v ) return;
+      function done() {
+        $copy.textContent = t.btn_copied;
+        setTimeout( function () { $copy.textContent = t.btn_copy; }, 1600 );
+      }
+      if ( navigator.clipboard && navigator.clipboard.writeText ) {
+        navigator.clipboard.writeText( v ).then( done ).catch( function () {
+          $input.select();
+          document.execCommand( "copy" );
+          done();
+        });
+      } else {
+        $input.select();
+        document.execCommand( "copy" );
+        done();
+      }
+    });
+
+    if ( !ref && !orderId ) {
+      showError( t.status_missing );
+      return;
+    }
+
+    poll( 0 );
+  })();</script></body></html>
